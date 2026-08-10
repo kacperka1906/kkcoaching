@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Regulamin | KK Coaching"
+  description="Regulamin korzystania ze strony i usług KK Coaching."
+  lang="pl"
+  path="/pl/terms"
+  altPath="/terms"
+>
+  <section class="legal-page">
+    <div class="container">
+      <h1>Regulamin</h1>
+      <p class="notice">
+        <strong>Treść tymczasowa.</strong> Umowy coachingowe (polityka anulowania, warunki płatności,
+        odpowiedzialność) powinny zostać opracowane osobno od tego ogólnego regulaminu strony.
+      </p>
+
+      <h2>1. Korzystanie ze strony</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <h2>2. Brak porady medycznej</h2>
+      <p>Lorem ipsum dolor sit amet - wskazówki dotyczące coachingu i odżywiania nie zastępują porady lekarza ani dietetyka klinicznego.</p>
+
+      <h2>3. Odpowiedzialność</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <h2>4. Prawo właściwe</h2>
+      <p>Lorem ipsum dolor sit amet - prawo Anglii i Walii.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 72px 0; }
+  .legal-page .container { max-width: 760px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
+  .legal-page p { color: var(--steel); }
+  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+</style>

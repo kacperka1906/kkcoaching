@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Polityka Prywatności | KK Coaching"
+  description="Jak KK Coaching zbiera, wykorzystuje i chroni Twoje dane osobowe."
+  lang="pl"
+  path="/pl/privacy"
+  altPath="/privacy"
+>
+  <section class="legal-page">
+    <div class="container">
+      <h1>Polityka Prywatności</h1>
+      <p class="notice">
+        <strong>Treść tymczasowa.</strong> To jest wyłącznie szablon strukturalny. Przed publikacją
+        każda sekcja musi zostać zweryfikowana pod kątem RODO / Data Protection Act 2018 (UK).
+        Nie publikować z tekstem lorem ipsum.
+      </p>
+
+      <h2>1. Kto administruje danymi</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. KK Coaching, [adres do potwierdzenia], jest administratorem danych na tej stronie.</p>
+
+      <h2>2. Jakie dane zbieramy</h2>
+      <p>Lorem ipsum dolor sit amet: imię, e-mail, numer telefonu, lokalizacja, zainteresowanie usługą oraz cele podane w formularzu kontaktowym.</p>
+
+      <h2>3. Dlaczego je zbieramy</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, w celu odpowiedzi na zapytania i świadczenia usług coachingowych.</p>
+
+      <h2>4. Jak długo je przechowujemy</h2>
+      <p>Lorem ipsum dolor sit amet - okres przechowywania do ustalenia.</p>
+
+      <h2>5. Twoje prawa</h2>
+      <p>Lorem ipsum dolor sit amet - dostęp, sprostowanie, usunięcie danych i sposób realizacji tych praw.</p>
+
+      <h2>6. Cookies</h2>
+      <p>Zobacz naszą <a href="/pl/cookies">Politykę cookies</a>, aby dowiedzieć się więcej o cookies analitycznych i zgodzie.</p>
+
+      <h2>7. Kontakt</h2>
+      <p>Pytania dotyczące tej polityki: [adres e-mail do potwierdzenia].</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 72px 0; }
+  .legal-page .container { max-width: 760px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
+  .legal-page p { color: var(--steel); }
+  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+</style>

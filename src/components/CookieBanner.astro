@@ -1,0 +1,89 @@
+---
+interface Props { lang: 'en' | 'pl' }
+const { lang } = Astro.props;
+const prefix = lang === 'pl' ? '/pl' : '';
+
+const t = lang === 'pl'
+  ? {
+      text: 'Używamy plików cookie do analityki (Google Analytics), aby rozumieć ruch na stronie. Analityczne cookies uruchamiają się dopiero po Twojej zgodzie.',
+      accept: 'Akceptuję',
+      reject: 'Odrzuć opcjonalne',
+      policy: 'Polityka cookies'
+    }
+  : {
+      text: 'We use analytics cookies (Google Analytics) to understand site traffic. Analytics cookies only run after you consent.',
+      accept: 'Accept',
+      reject: 'Reject optional',
+      policy: 'Cookie Policy'
+    };
+---
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="cookie-banner__inner">
+    <p>{t.text} <a href={`${prefix}/cookies`}>{t.policy}</a></p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-reject" class="btn btn-outline-dark">{t.reject}</button>
+      <button id="cookie-accept" class="btn btn-primary">{t.accept}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Consent gate: GA4 (see src/components/Analytics.astro) is only injected into the DOM
+  // after this script sets window.__cookieConsent = true. No analytics script tag exists
+  // in the page source until then, satisfying "marketing tools must not run before consent".
+  const STORAGE_KEY = 'kk_cookie_consent'; // 'accepted' | 'rejected'
+  const banner = document.getElementById('cookie-banner');
+  const accept = document.getElementById('cookie-accept');
+  const reject = document.getElementById('cookie-reject');
+
+  function loadAnalyticsIfConsented() {
+    if (localStorage.getItem(STORAGE_KEY) === 'accepted') {
+      window.dispatchEvent(new CustomEvent('kk-analytics-consent-granted'));
+    }
+  }
+
+  const existing = localStorage.getItem(STORAGE_KEY);
+  if (!existing) {
+    banner?.removeAttribute('hidden');
+  } else {
+    loadAnalyticsIfConsented();
+  }
+
+  accept?.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, 'accepted');
+    banner?.setAttribute('hidden', '');
+    window.dispatchEvent(new CustomEvent('kk-analytics-consent-granted'));
+  });
+
+  reject?.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, 'rejected');
+    banner?.setAttribute('hidden', '');
+  });
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--graphite);
+    color: var(--off-white);
+    z-index: 200;
+    padding: 18px 24px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.25);
+  }
+  .cookie-banner__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cookie-banner__inner p { font-size: 0.85rem; color: #C7CBD1; max-width: 60ch; }
+  .cookie-banner__inner a { color: var(--white); text-decoration: underline; }
+  .cookie-banner__actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .cookie-banner__actions .btn { padding: 10px 18px; font-size: 0.85rem; }
+  .cookie-banner__actions .btn-outline-dark { color: var(--off-white); border-color: #454A52; }
+  .cookie-banner__actions .btn-outline-dark:hover { background: #23262c; }
+</style>

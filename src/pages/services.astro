@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import site from '../data/site.en.json';
+
+const allServices = (await getCollection('services'))
+  .filter(s => s.id.startsWith('en/'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Personal Training in Cwmbran | KK Coaching"
+  description="Personal Training 1:1, Online Coaching, Hybrid Coaching and one-off training plans with KK Coaching in Cwmbran and across the UK."
+  lang="en"
+  path="/services"
+  altPath="/pl/services"
+>
+  <section class="page-hero on-dark">
+    <div class="container">
+      <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
+      <h1>{site.servicesIntro.heading}</h1>
+      <p class="lead">{site.servicesIntro.body}</p>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container">
+      <div class="service-grid">
+        {allServices.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            tagline={service.data.tagline}
+            bullets={service.data.bullets}
+            ctaLabel={service.data.ctaLabel}
+            ctaTarget={service.data.ctaTarget}
+            image={service.data.image}
+            imageAlt={service.data.imageAlt}
+            minor={service.data.minor}
+          />
+        ))}
+      </div>
+      <!-- Pricing intentionally omitted per brief 6.4 - "do not publish unconfirmed pricing".
+           Add a `price` field to the services schema once pricing is decided. -->
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>{site.finalCta.heading}</h2>
+      <p>{site.finalCta.body}</p>
+      <a href="/contact" class="btn btn-secondary">{site.finalCta.cta}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 64px 0; }
+  .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
+  .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }
+</style>

@@ -1,0 +1,120 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: 'en' | 'pl';
+}
+const { lang } = Astro.props;
+const prefix = lang === 'pl' ? '/pl' : '';
+
+const nav = lang === 'pl'
+  ? [
+      { href: `${prefix}/about`, label: 'O mnie' },
+      { href: `${prefix}/services`, label: 'Coaching' },
+      { href: `${prefix}/transformations`, label: 'Przemiany' },
+      { href: `${prefix}/contact`, label: 'Kontakt' }
+    ]
+  : [
+      { href: '/about', label: 'About' },
+      { href: '/services', label: 'Coaching' },
+      { href: '/transformations', label: 'Transformations' },
+      { href: '/contact', label: 'Contact' }
+    ];
+---
+<header class="site-header">
+  <div class="container">
+    <a href={lang === 'pl' ? '/pl' : '/'} class="logo" aria-label="KK Coaching - home">
+      <Logo height={32} />
+    </a>
+    <nav class="main-nav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
+      <ul>
+        {nav.map(item => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="header-right">
+      <a class="lang-switch" href={lang === 'pl' ? '/' : '/pl'}>
+        {lang === 'pl' ? 'EN' : 'PL'}
+      </a>
+      <button class="nav-toggle" aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'} aria-expanded="false" id="navToggle">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.querySelector('.main-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+  });
+</script>
+
+<style>
+  .site-header {
+    background: var(--graphite);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  nav.main-nav a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  nav.main-nav a:hover { color: var(--red); }
+
+  .header-right { display: flex; align-items: center; gap: 18px; }
+  .lang-switch {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid #454A52;
+    border-radius: var(--radius);
+    padding: 4px 9px;
+  }
+  .lang-switch:hover { border-color: var(--red); color: var(--white); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    nav.main-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--graphite);
+      padding: 16px 24px 24px;
+    }
+    nav.main-nav.is-open { display: block; }
+    nav.main-nav ul { flex-direction: column; gap: 16px; }
+    .nav-toggle { display: block; }
+  }
+</style>

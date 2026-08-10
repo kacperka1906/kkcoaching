@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Cookie Policy | KK Coaching"
+  description="How KK Coaching uses cookies, including analytics cookies and consent."
+  lang="en"
+  path="/cookies"
+  altPath="/pl/cookies"
+>
+  <section class="legal-page">
+    <div class="container">
+      <h1>Cookie Policy</h1>
+      <p class="notice">
+        <strong>Placeholder content.</strong> Replace with reviewed wording before publishing.
+      </p>
+
+      <h2>1. What are cookies</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <h2>2. Cookies we use</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Purpose</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>kk_cookie_consent</td><td>Remembers your cookie choice</td><td>Necessary</td></tr>
+          <tr><td>_ga / _gid</td><td>Google Analytics 4 - traffic measurement</td><td>Analytics (optional)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>3. Managing consent</h2>
+      <p>Analytics cookies only load after you accept them via the banner shown on your first visit. You can withdraw consent at any time by clearing your browser's site data.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 72px 0; }
+  .legal-page .container { max-width: 760px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
+  .legal-page p { color: var(--steel); }
+  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #E3E5E8; font-size: 0.9rem; color: var(--steel); }
+  th { color: var(--graphite); }
+</style>

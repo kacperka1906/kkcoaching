@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Terms & Conditions | KK Coaching"
+  description="Terms and conditions for using the KK Coaching website and services."
+  lang="en"
+  path="/terms"
+  altPath="/pl/terms"
+>
+  <section class="legal-page">
+    <div class="container">
+      <h1>Terms &amp; Conditions</h1>
+      <p class="notice">
+        <strong>Placeholder content.</strong> Replace with reviewed wording before publishing.
+        Coaching agreements (cancellation policy, payment terms, liability) should be reviewed separately
+        from this general website terms page.
+      </p>
+
+      <h2>1. Use of this website</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <h2>2. No medical advice</h2>
+      <p>Lorem ipsum dolor sit amet - coaching and nutrition guidance provided does not replace medical or clinical dietetic advice.</p>
+
+      <h2>3. Liability</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <h2>4. Governing law</h2>
+      <p>Lorem ipsum dolor sit amet - laws of England and Wales.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 72px 0; }
+  .legal-page .container { max-width: 760px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
+  .legal-page p { color: var(--steel); }
+  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+</style>

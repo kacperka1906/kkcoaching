@@ -1,0 +1,143 @@
+# Decap CMS configuration.
+# This is what turns "edit a JSON/markdown file" into "fill in a form and click Save" for Kacper.
+# Docs: https://decapcms.org/docs/configuration-options/
+
+# Lets /admin work against local files during `npm run dev`, via `npx decap-server`
+# running alongside it (see README "Testing the CMS locally"). Netlify ignores this
+# flag in production - git-gateway below is what actually runs once deployed.
+local_backend: true
+
+backend:
+  name: git-gateway   # Requires Netlify Identity + Git Gateway enabled on the Netlify site.
+  branch: main
+
+# Netlify Identity handles the client's login (email/password). Set up an Identity
+# invite for Kacper's email once the site is deployed - see README.md.
+
+media_folder: "public/images"
+public_folder: "/images"
+
+publish_mode: simple
+
+collections:
+  # ---------- Site-wide copy (hero, about intro, process steps, contact details) ----------
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - label: "Site Copy (English)"
+        name: "site_en"
+        file: "src/data/site.en.json"
+        fields:
+          - { label: "Contact Email", name: "meta.contactEmail", widget: "string" }
+          - { label: "WhatsApp Number", name: "meta.whatsappNumber", widget: "string", hint: "Format: +44..." }
+          - { label: "Instagram URL", name: "meta.instagramUrl", widget: "string" }
+          - { label: "Facebook URL", name: "meta.facebookUrl", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Lead paragraph", name: "lead", widget: "text" }
+              - { label: "Primary button text", name: "ctaPrimary", widget: "string" }
+              - { label: "Secondary button text", name: "ctaSecondary", widget: "string" }
+              - { label: "Trust line", name: "trustLine", widget: "string" }
+              - { label: "Hero image", name: "image", widget: "image" }
+              - { label: "Image alt text", name: "imageAlt", widget: "string" }
+          - label: "Coach Story"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Short version (Home page)", name: "bodyShort", widget: "text" }
+              - { label: "Full version (About page)", name: "bodyFull", widget: "text" }
+              - { label: "Starting weight stat", name: "statStart", widget: "string" }
+              - { label: "Weight lost stat", name: "statLoss", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+
+      - label: "Site Copy (Polish)"
+        name: "site_pl"
+        file: "src/data/site.pl.json"
+        fields:
+          - { label: "Contact Email", name: "meta.contactEmail", widget: "string" }
+          - { label: "WhatsApp Number", name: "meta.whatsappNumber", widget: "string" }
+          - { label: "Instagram URL", name: "meta.instagramUrl", widget: "string" }
+          - { label: "Facebook URL", name: "meta.facebookUrl", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Wprowadzenie", name: "lead", widget: "text" }
+              - { label: "Tekst głównego przycisku", name: "ctaPrimary", widget: "string" }
+              - { label: "Tekst drugiego przycisku", name: "ctaSecondary", widget: "string" }
+              - { label: "Linia zaufania", name: "trustLine", widget: "string" }
+              - { label: "Zdjęcie hero", name: "image", widget: "image" }
+              - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
+
+  # ---------- Services (Personal Training, Online Coaching, Hybrid, Plan) ----------
+  - name: "services_en"
+    label: "Services (English)"
+    folder: "src/content/services/en"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "text" }
+      - { label: "Display order", name: "order", widget: "number" }
+      - { label: "De-emphasise this card (minor)", name: "minor", widget: "boolean", default: false }
+      - { label: "Button text", name: "ctaLabel", widget: "string" }
+      - { label: "Button link", name: "ctaTarget", widget: "string", default: "/contact" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image alt text", name: "imageAlt", widget: "string" }
+      - { label: "Bullet points", name: "bullets", widget: "list" }
+
+  - name: "services_pl"
+    label: "Usługi (Polski)"
+    folder: "src/content/services/pl"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Opis", name: "tagline", widget: "text" }
+      - { label: "Kolejność wyświetlania", name: "order", widget: "number" }
+      - { label: "Pomniejsz tę kartę", name: "minor", widget: "boolean", default: false }
+      - { label: "Tekst przycisku", name: "ctaLabel", widget: "string" }
+      - { label: "Link przycisku", name: "ctaTarget", widget: "string", default: "/pl/contact" }
+      - { label: "Zdjęcie", name: "image", widget: "image" }
+      - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
+      - { label: "Punkty", name: "bullets", widget: "list" }
+
+  # ---------- Transformations / testimonials ----------
+  - name: "testimonials"
+    label: "Transformations"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client name or initial", name: "name", widget: "string" }
+      - { label: "Age disclosed?", name: "ageDisclosed", widget: "boolean", default: false }
+      - { label: "Age", name: "age", widget: "number", required: false }
+      - { label: "Service type", name: "serviceType", widget: "string" }
+      - { label: "Duration of coaching", name: "duration", widget: "string" }
+      - { label: "Starting point", name: "startingPoint", widget: "string" }
+      - { label: "Result", name: "result", widget: "string" }
+      - label: "Written consent on file?"
+        name: "consentOnFile"
+        widget: "boolean"
+        default: false
+        hint: "Do NOT set to true unless you have the client's signed written consent. See brief section 7.1."
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Photo alt text", name: "imageAlt", widget: "string" }
+      - { label: "Feature on Home page", name: "featured", widget: "boolean", default: false }
+      - { label: "Client quote", name: "body", widget: "markdown" }
+
+  # ---------- FAQ ----------
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Display order", name: "order", widget: "number" }
+      - { label: "Answer", name: "body", widget: "markdown" }

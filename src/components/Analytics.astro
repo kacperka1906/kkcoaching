@@ -1,0 +1,40 @@
+---
+// GA4 measurement ID - fill in once the property is created (brief 11.6).
+const GA_MEASUREMENT_ID = 'G-REPLACE_ME';
+---
+<script define:vars={{ GA_MEASUREMENT_ID }}>
+  function injectGA() {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+
+    // Event tracking required by brief 11.6: form submit + WhatsApp/phone/email clicks.
+    document.addEventListener('submit', (e) => {
+      if (e.target instanceof HTMLFormElement && e.target.dataset.trackAs) {
+        gtag('event', 'form_submit', { form_name: e.target.dataset.trackAs });
+      }
+    });
+    document.querySelectorAll('a[href^="https://wa.me"]').forEach((el) => {
+      el.addEventListener('click', () => gtag('event', 'whatsapp_click'));
+    });
+    document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+      el.addEventListener('click', () => gtag('event', 'phone_click'));
+    });
+    document.querySelectorAll('a[href^="mailto:"]').forEach((el) => {
+      el.addEventListener('click', () => gtag('event', 'email_click'));
+    });
+  }
+
+  // Only ever runs after the cookie banner grants consent - see CookieBanner.astro.
+  window.addEventListener('kk-analytics-consent-granted', injectGA);
+</script>

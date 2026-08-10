@@ -1,0 +1,20 @@
+---
+// Client originally supplied logo_bright.png and logo_dark.png, but the two were
+// visually indistinguishable (same artwork, just rendered on different color
+// backgrounds before the transparency fix) - consolidated to a single logo.png.
+interface Props {
+  height?: number;
+}
+const { height = 34 } = Astro.props;
+---
+<img
+  src="/images/logo.png"
+  alt="KK Coaching"
+  height={height}
+  class="site-logo"
+  style={`height:${height}px; width:auto;`}
+/>
+
+<style>
+  .site-logo { display: block; }
+</style>

@@ -1,0 +1,160 @@
+---
+// Shared layout for every page. Handles per-page SEO (title, description, canonical,
+// hreflang, Open Graph) so pages only pass in props instead of repeating boilerplate.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'pl';
+  path?: string; // e.g. "/about" or "/pl/about" - used to build canonical + hreflang pairs
+  altPath?: string; // the equivalent URL in the other language, e.g. "/pl/about" when lang="en"
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  path = '/',
+  altPath,
+  structuredData
+} = Astro.props;
+
+const siteUrl = 'https://kkcoaching.fit';
+const canonical = `${siteUrl}${path}`;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- hreflang: brief 11.5 requires EN/PL alternates on every page -->
+  <link rel="alternate" hreflang="en" href={lang === 'en' ? canonical : `${siteUrl}${altPath ?? '/'}`} />
+  <link rel="alternate" hreflang="pl" href={lang === 'pl' ? canonical : `${siteUrl}${altPath ?? '/pl'}`} />
+  <link rel="alternate" hreflang="x-default" href={siteUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={`${siteUrl}/images/kacper.png`} />
+  <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'pl_PL'} />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  {structuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  )}
+</head>
+<body>
+  <a href="#main" class="skip-link">{lang === 'pl' ? 'Przejdź do treści głównej' : 'Skip to main content'}</a>
+  <Header lang={lang} />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer lang={lang} />
+  <CookieBanner lang={lang} />
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --graphite: #17191D;
+    --red: #A51F2E;
+    --red-hover: #8a1a27;
+    --off-white: #F3F4F6;
+    --steel: #454A52;
+    --white: #FFFFFF;
+    --radius: 4px;
+    --max-width: 1160px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--graphite);
+    background: var(--off-white);
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--red);
+    color: var(--white);
+    padding: 10px 16px;
+    z-index: 100;
+  }
+  .skip-link:focus { left: 12px; top: 12px; }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-primary { background: var(--red); color: var(--white); }
+  .btn-primary:hover { background: var(--red-hover); }
+  .btn-secondary { background: transparent; color: var(--white); border-color: var(--white); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+  .btn-outline-dark { background: transparent; color: var(--graphite); border-color: var(--graphite); }
+  .btn-outline-dark:hover { background: var(--graphite); color: var(--white); }
+
+  section { padding: 88px 0; }
+  section.tight { padding: 64px 0; }
+  section.on-dark { background: var(--graphite); color: var(--white); }
+  section.on-white { background: var(--white); }
+
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .section-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
+  .eyebrow {
+    color: var(--red);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  h1, h2, h3 { line-height: 1.25; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 14px; }
+  .section-head p { color: var(--steel); font-size: 1.05rem; }
+  section.on-dark .section-head p { color: #B7BBC1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>

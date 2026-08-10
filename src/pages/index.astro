@@ -1,0 +1,207 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import site from '../data/site.en.json';
+
+const allServices = (await getCollection('services'))
+  .filter(s => s.id.startsWith('en/'))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const testimonials = await getCollection('testimonials');
+const featured = testimonials.find(t => t.data.featured && t.data.consentOnFile) ?? testimonials[0];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'KK Coaching',
+  image: `${Astro.site}images/placeholder.png`,
+  url: String(Astro.site),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cwmbran',
+    addressRegion: 'Torfaen',
+    addressCountry: 'GB'
+  },
+  areaServed: 'GB'
+};
+---
+<BaseLayout
+  title="Personal Trainer Cwmbran & Online Coach | KK Coaching"
+  description="Personal training in Cwmbran and online coaching across the UK. Individual training, practical nutrition support and regular progress reviews. Book a free consultation."
+  lang="en"
+  path="/"
+  altPath="/pl"
+  structuredData={structuredData}
+>
+  <Hero
+    heading={site.hero.heading}
+    lead={site.hero.lead}
+    ctaPrimary={site.hero.ctaPrimary}
+    ctaPrimaryHref="/contact"
+    ctaSecondary={site.hero.ctaSecondary}
+    ctaSecondaryHref="/services"
+    trustLine={site.hero.trustLine}
+    image={site.hero.image}
+    imageAlt={site.hero.imageAlt}
+  />
+
+  <!-- Who it's for -->
+  <section aria-labelledby="who-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">{site.whoItsFor.eyebrow}</span>
+        <h2 id="who-heading">{site.whoItsFor.heading}</h2>
+        <p>{site.whoItsFor.body}</p>
+      </div>
+      <div class="card-grid">
+        {site.whoItsFor.cards.map(card => (
+          <article class="card">
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="on-dark" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
+        <h2 id="services-heading">{site.servicesIntro.heading}</h2>
+        <p>{site.servicesIntro.body}</p>
+      </div>
+      <div class="service-grid">
+        {allServices.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            tagline={service.data.tagline}
+            bullets={service.data.bullets}
+            ctaLabel={service.data.ctaLabel}
+            ctaTarget={service.data.ctaTarget}
+            image={service.data.image}
+            imageAlt={service.data.imageAlt}
+            minor={service.data.minor}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coach story -->
+  <section aria-labelledby="story-heading">
+    <div class="container">
+      <div class="story">
+        <img src={site.story.image} alt={site.story.imageAlt} width="500" height="600" loading="lazy" />
+        <div>
+          <span class="eyebrow">{site.story.eyebrow}</span>
+          <h2 id="story-heading">{site.story.heading}</h2>
+          <p>{site.story.bodyShort}</p>
+          <div class="stat-line">
+            <div><strong>{site.story.statStart}</strong><span>Starting point</span></div>
+            <div><strong>{site.story.statLoss}</strong><span>Weight lost</span></div>
+            <div><strong>{site.story.statQualification}</strong><span>Qualification</span></div>
+          </div>
+          <a href="/about" class="btn btn-outline-dark">{site.story.cta}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="tight on-white" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">{site.process.eyebrow}</span>
+        <h2 id="process-heading">{site.process.heading}</h2>
+        <p>{site.process.body}</p>
+      </div>
+      <div class="process-steps">
+        {site.process.steps.map((step, i) => (
+          <div class="process-step">
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Transformations -->
+  <section id="transformations" aria-labelledby="transform-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">{site.transformations.eyebrow}</span>
+        <h2 id="transform-heading">{site.transformations.heading}</h2>
+        <p>{site.transformations.body}</p>
+      </div>
+      {featured && (
+        <div class="transform-card">
+          <img src={featured.data.image} alt={featured.data.imageAlt} width="640" height="480" loading="lazy" />
+          <div class="transform-body">
+            <div class="meta">
+              <span>{featured.data.name}</span>
+              <span>{featured.data.serviceType}</span>
+              <span>{featured.data.duration}</span>
+            </div>
+            <blockquote>{featured.data.startingPoint} &rarr; {featured.data.result}</blockquote>
+          </div>
+        </div>
+      )}
+      <div class="center-cta">
+        <a href="/transformations" class="btn btn-outline-dark">{site.transformations.cta}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="contact" aria-labelledby="final-cta-heading">
+    <div class="container">
+      <h2 id="final-cta-heading">{site.finalCta.heading}</h2>
+      <p>{site.finalCta.body}</p>
+      <a href="/contact" class="btn btn-secondary">{site.finalCta.cta}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .card-grid { grid-template-columns: 1fr; } }
+  .card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; border: 1px solid #E3E5E8; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .card p { color: var(--steel); font-size: 0.95rem; }
+
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
+
+  .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .story { grid-template-columns: 1fr; } }
+  .story img { border-radius: var(--radius); }
+  .story .stat-line { display: flex; gap: 32px; margin: 24px 0 28px; }
+  .story .stat-line strong { display: block; font-size: 1.8rem; color: var(--red); }
+  .story .stat-line span { font-size: 0.8rem; color: var(--steel); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .process-steps { grid-template-columns: 1fr; } }
+  .process-step .num { color: var(--red); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 10px; display: block; }
+  .process-step h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .process-step p { color: var(--steel); font-size: 0.92rem; }
+
+  .transform-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid #E3E5E8; max-width: 640px; margin: 0 auto; }
+  .transform-card img { width: 100%; }
+  .transform-card .transform-body { padding: 28px; }
+  .transform-card .meta { display: flex; gap: 18px; font-size: 0.82rem; color: var(--steel); margin-bottom: 12px; flex-wrap: wrap; }
+  .transform-card blockquote { font-style: italic; border-left: 3px solid var(--red); padding-left: 16px; margin-top: 14px; }
+  .center-cta { text-align: center; margin-top: 40px; }
+
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }
+  .final-cta .btn-secondary { border-color: var(--white); }
+</style>

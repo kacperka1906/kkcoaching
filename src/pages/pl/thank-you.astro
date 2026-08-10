@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.pl.json';
+---
+<BaseLayout
+  title="Dziękujemy | KK Coaching"
+  description="Dziękujemy za kontakt z KK Coaching. Twoje zgłoszenie zostało odebrane."
+  lang="pl"
+  path="/pl/thank-you"
+  altPath="/thank-you"
+>
+  <section class="thank-you">
+    <div class="container">
+      <span class="eyebrow">Zgłoszenie odebrane</span>
+      <h1>Dziękujemy &mdash; wiadomość dotarła.</h1>
+      <p class="lead">Zwykle odpowiadam w ciągu 24 godzin. W międzyczasie, jeśli sprawa jest pilna, napisz na WhatsApp.</p>
+      <div class="actions">
+        <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} class="btn btn-primary" target="_blank" rel="noopener">Napisz na WhatsApp</a>
+        <a href="/pl" class="btn btn-outline-dark">Wróć na stronę główną</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you { padding: 120px 0; text-align: center; }
+  .thank-you h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 16px; }
+  .thank-you .lead { color: var(--steel); max-width: 52ch; margin: 0 auto 32px; }
+  .actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+</style>

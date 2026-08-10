@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.en.json';
+---
+<BaseLayout
+  title="Contact | Book a Free Consultation | KK Coaching"
+  description="Get in touch with KK Coaching. Book a free consultation for Personal Training, Online Coaching, Hybrid Coaching or a training plan."
+  lang="en"
+  path="/contact"
+  altPath="/pl/contact"
+>
+  <section class="page-hero on-dark">
+    <div class="container">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Book Your Free Consultation</h1>
+      <p class="lead">Fill in the form below or reach out directly &mdash; whichever is easiest on your phone.</p>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container contact-grid">
+      <form id="contact-form" data-track-as="contact_enquiry" novalidate>
+        <div class="field">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp <span aria-hidden="true">*</span></label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" placeholder="e.g. Cwmbran, or online" />
+        </div>
+        <div class="field">
+          <label for="language">Preferred language</label>
+          <select id="language" name="language">
+            <option value="English">English</option>
+            <option value="Polish">Polish</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="interest">Interested in</label>
+          <select id="interest" name="interest">
+            <option>Personal Training</option>
+            <option>Online Coaching</option>
+            <option>Hybrid Coaching</option>
+            <option>Training Plan</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="goal">Main goal <span aria-hidden="true">*</span></label>
+          <textarea id="goal" name="goal" rows="3" required></textarea>
+        </div>
+        <div class="field">
+          <label for="blocker">What is currently holding you back?</label>
+          <textarea id="blocker" name="blocker" rows="3"></textarea>
+        </div>
+
+        <!-- Honeypot: hidden from real users via CSS, invisible to screen readers via aria-hidden.
+             Bots that auto-fill every field will fill this in; the function rejects the submission. -->
+        <div class="field honeypot" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="field checkbox-field">
+          <input type="checkbox" id="consent" name="consent" required />
+          <label for="consent">
+            I agree to be contacted and I have read the <a href="/privacy">Privacy Policy</a>. <span aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send My Enquiry</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="contact-side">
+        <h2>Other ways to reach me</h2>
+        <ul class="contact-list">
+          <li>
+            <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">
+              WhatsApp
+            </a>
+          </li>
+          <li><a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a></li>
+          <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+        <p class="response-time">Typical response time: within 24 hours.</p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!status) return;
+
+    const formData = new FormData(form);
+
+    // Honeypot check on the client too (the function re-checks server-side - never trust the client alone).
+    if (formData.get('company')) {
+      window.location.href = '/thank-you';
+      return;
+    }
+
+    status.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData))
+      });
+
+      if (!res.ok) throw new Error('Request failed');
+
+      window.location.href = '/thank-you';
+    } catch (err) {
+      status.textContent = "Something went wrong sending your message. Please try WhatsApp or email instead.";
+    }
+  });
+</script>
+
+<style>
+  .page-hero { padding: 64px 0; }
+  .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
+  .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
+
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.92rem; }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    border: 1px solid #D8DBDE;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--white);
+  }
+  .field textarea { resize: vertical; }
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .checkbox-field { display: flex; align-items: flex-start; gap: 10px; }
+  .checkbox-field input { width: auto; margin-top: 4px; }
+  .checkbox-field label { font-weight: 400; font-size: 0.88rem; color: var(--steel); }
+  .checkbox-field a { color: var(--red); }
+
+  .form-status { margin-top: 14px; font-size: 0.9rem; color: var(--steel); }
+
+  .contact-side { background: var(--white); border: 1px solid #E3E5E8; border-radius: var(--radius); padding: 28px; }
+  .contact-side h2 { font-size: 1.15rem; margin-bottom: 16px; }
+  .contact-list { list-style: none; }
+  .contact-list li { margin-bottom: 12px; }
+  .contact-list a { color: var(--red); text-decoration: none; font-weight: 600; }
+  .contact-list a:hover { text-decoration: underline; }
+  .response-time { margin-top: 18px; font-size: 0.85rem; color: var(--steel); }
+</style>

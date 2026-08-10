@@ -1,0 +1,71 @@
+---
+import Logo from './Logo.astro';
+import siteEn from '../data/site.en.json';
+import sitePl from '../data/site.pl.json';
+
+interface Props { lang: 'en' | 'pl' }
+const { lang } = Astro.props;
+const site = lang === 'pl' ? sitePl : siteEn;
+const prefix = lang === 'pl' ? '/pl' : '';
+
+const labels = lang === 'pl'
+  ? { nav: 'Nawigacja', about: 'O mnie', services: 'Coaching', transformations: 'Przemiany', contact: 'Kontakt',
+      legal: 'Prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin' }
+  : { nav: 'Navigation', about: 'About', services: 'Coaching', transformations: 'Transformations', contact: 'Contact',
+      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Terms & Conditions' };
+---
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href={prefix || '/'} class="logo" aria-label="KK Coaching - home">
+          <Logo height={30} />
+        </a>
+        <p class="tagline">{site.meta.tagline}</p>
+      </div>
+      <div>
+        <h4>{labels.nav}</h4>
+        <ul>
+          <li><a href={`${prefix}/about`}>{labels.about}</a></li>
+          <li><a href={`${prefix}/services`}>{labels.services}</a></li>
+          <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
+          <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>{labels.legal}</h4>
+        <ul>
+          <li><a href={`${prefix}/privacy`}>{labels.privacy}</a></li>
+          <li><a href={`${prefix}/cookies`}>{labels.cookies}</a></li>
+          <li><a href={`${prefix}/terms`}>{labels.terms}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} KK Coaching &mdash; Kacper Kaszowski</span>
+      <span>Cwmbran, Torfaen, South Wales</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer { background: var(--graphite); color: #9CA1A8; padding: 56px 0 28px; font-size: 0.9rem; }
+  .logo { display: inline-flex; align-items: center; }
+  .tagline { margin-top: 12px; max-width: 36ch; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 8px; }
+  footer a { text-decoration: none; color: inherit; }
+  footer a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid #2A2D33;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+</style>
