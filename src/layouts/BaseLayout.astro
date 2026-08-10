@@ -4,6 +4,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -62,6 +63,7 @@ const canonical = `${siteUrl}${path}`;
   </main>
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
+  <Analytics />
 </body>
 </html>
 
