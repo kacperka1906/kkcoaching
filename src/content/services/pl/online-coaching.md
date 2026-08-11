@@ -5,8 +5,8 @@ order: 2
 minor: false
 ctaLabel: "Aplikuj na coaching online"
 ctaTarget: "/pl/contact"
-image: "/images/placeholder.png"
-imageAlt: "Coaching online z planem treningowym, żywieniem i monitoringiem postępów"
+image: "/images/online-coaching-placeholder.svg"
+imageAlt: "Coaching online z planem treningowym, żywieniem i monitoringiem postępów - grafika tymczasowa do podmiany na prawdziwy check-in"
 bullets:
   - "Indywidualny plan treningowy"
   - "Założenia kaloryczne, makroskładniki i praktyczne wskazówki żywieniowe"
