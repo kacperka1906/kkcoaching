@@ -3,15 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.en.json';
 ---
 <BaseLayout
-  title="Meet Your Coach | KK Coaching"
-  description="Meet Kacper Kaszowski, Level 3 Personal Trainer in Cwmbran. His own transformation, qualifications and coaching philosophy."
+  title="Kacper Kaszowski | Personal Trainer in Cwmbran | KK Coaching"
+  description="Meet Kacper Kaszowski, Level 3 Personal Trainer in Cwmbran and founder of KK Coaching. From losing 40+ kg to helping clients train with structure and confidence."
   lang="en"
   path="/about"
   altPath="/pl/about"
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
-      <img src="/images/kacper.png" alt="Portrait of Kacper Kaszowski" width="480" height="560" />
+      <img src={site.story.image} alt={site.story.imageAlt} width="480" height="560" />
       <div>
         <span class="eyebrow">Meet your coach</span>
         <h1>{site.story.heading}</h1>
@@ -24,20 +24,20 @@ import site from '../data/site.en.json';
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Lessons from the process</span>
-        <h2>What -40 kg actually taught me</h2>
+        <h2>What losing 40+ kg actually taught me</h2>
       </div>
       <div class="lesson-grid">
         <article class="card">
           <h3>Consistency beats intensity</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <p>The hardest part is not completing one perfect workout or following one perfect week of dieting. It is building a routine you can repeat for months. That is why my coaching prioritises consistent execution before unnecessary extremes.</p>
         </article>
         <article class="card">
           <h3>A plan has to fit real life</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <p>The best programme on paper is useless if your schedule, experience or lifestyle make it impossible to follow. Training and nutrition have to work around your life, not the other way around.</p>
         </article>
         <article class="card">
           <h3>Progress needs to be measured</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+          <p>Body weight is only one piece of information. Training performance, measurements, photos and adherence help show whether the plan is working and when something genuinely needs to change.</p>
         </article>
       </div>
     </div>
@@ -47,8 +47,8 @@ import site from '../data/site.en.json';
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Qualifications</span>
-        <h2 id="quals-heading">Credentials and scope</h2>
-        <!-- Level 4 Sports Nutrition: only mark as completed once the certificate is in hand (brief 5) -->
+        <h2 id="quals-heading">Qualified coaching with practical experience</h2>
+        <p>My own transformation gives me perspective. My qualifications give me the professional foundation to coach safely and effectively within my scope.</p>
       </div>
       <ul class="quals-list">
         <li>Level 2 Gym Instructor &mdash; completed</li>
