@@ -9,10 +9,16 @@ const site = lang === 'pl' ? sitePl : siteEn;
 const prefix = lang === 'pl' ? '/pl' : '';
 
 const labels = lang === 'pl'
-  ? { nav: 'Nawigacja', about: 'O mnie', services: 'Coaching', transformations: 'Przemiany', contact: 'Kontakt',
-      legal: 'Prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin' }
-  : { nav: 'Navigation', about: 'About', services: 'Coaching', transformations: 'Transformations', contact: 'Contact',
-      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Terms & Conditions' };
+  ? {
+      nav: 'Nawigacja', about: 'O mnie', services: 'Coaching', transformations: 'Przemiany', contact: 'Kontakt',
+      legal: 'Prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin',
+      direct: 'Kontakt bezpośredni'
+    }
+  : {
+      nav: 'Navigation', about: 'About', services: 'Coaching', transformations: 'Transformations', contact: 'Contact',
+      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Terms & Conditions',
+      direct: 'Direct contact'
+    };
 ---
 <footer>
   <div class="container">
@@ -22,6 +28,7 @@ const labels = lang === 'pl'
           <Logo height={30} />
         </a>
         <p class="tagline">{site.meta.tagline}</p>
+        <p class="location">Cwmbran, Torfaen, South Wales &middot; Online coaching across the UK</p>
       </div>
       <div>
         <h4>{labels.nav}</h4>
@@ -30,6 +37,15 @@ const labels = lang === 'pl'
           <li><a href={`${prefix}/services`}>{labels.services}</a></li>
           <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
           <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>{labels.direct}</h4>
+        <ul>
+          <li><a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a></li>
+          <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram</a></li>
+          {site.meta.facebookUrl && <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>}
         </ul>
       </div>
       <div>
@@ -43,7 +59,7 @@ const labels = lang === 'pl'
     </div>
     <div class="footer-bottom">
       <span>&copy; {new Date().getFullYear()} KK Coaching &mdash; Kacper Kaszowski</span>
-      <span>Cwmbran, Torfaen, South Wales</span>
+      <span>Personal Training Cwmbran &middot; Online Coaching</span>
     </div>
   </div>
 </footer>
@@ -51,9 +67,11 @@ const labels = lang === 'pl'
 <style>
   footer { background: var(--graphite); color: #9CA1A8; padding: 56px 0 28px; font-size: 0.9rem; }
   .logo { display: inline-flex; align-items: center; }
-  .tagline { margin-top: 12px; max-width: 36ch; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
-  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+  .tagline { margin-top: 12px; max-width: 36ch; color: #C7CBD1; }
+  .location { margin-top: 8px; max-width: 42ch; font-size: 0.82rem; }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 0.8fr 1.2fr 0.9fr; gap: 32px; margin-bottom: 40px; }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
   footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
   footer ul { list-style: none; }
   footer ul li { margin-bottom: 8px; }
