@@ -1,5 +1,4 @@
 ---
-// GA4 measurement ID - fill in once the property is created (brief 11.6).
 const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
 ---
 <script define:vars={{ GA_MEASUREMENT_ID }}>
@@ -18,12 +17,6 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
     gtag('js', new Date());
     gtag('config', GA_MEASUREMENT_ID);
 
-    // Event tracking required by brief 11.6: form submit + WhatsApp/phone/email clicks.
-    document.addEventListener('submit', (e) => {
-      if (e.target instanceof HTMLFormElement && e.target.dataset.trackAs) {
-        gtag('event', 'form_submit', { form_name: e.target.dataset.trackAs });
-      }
-    });
     document.querySelectorAll('a[href^="https://wa.me"]').forEach((el) => {
       el.addEventListener('click', () => gtag('event', 'whatsapp_click'));
     });
@@ -35,6 +28,5 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
     });
   }
 
-  // Only ever runs after the cookie banner grants consent - see CookieBanner.astro.
   window.addEventListener('kk-analytics-consent-granted', injectGA);
 </script>
