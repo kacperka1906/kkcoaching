@@ -6,7 +6,7 @@ minor: false
 ctaLabel: "Aplikuj na coaching online"
 ctaTarget: "/pl/contact"
 image: "/images/online-coaching-placeholder.svg"
-imageAlt: "Coaching online z planem treningowym, żywieniem i monitoringiem postępów - grafika tymczasowa do podmiany na prawdziwy check-in"
+imageAlt: "Coaching online KK Coaching z planem treningowym, wsparciem żywieniowym i regularnymi check-inami"
 bullets:
   - "Indywidualny plan treningowy"
   - "Założenia kaloryczne, makroskładniki i praktyczne wskazówki żywieniowe"
