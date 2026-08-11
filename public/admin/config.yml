@@ -20,7 +20,7 @@ public_folder: "/images"
 publish_mode: simple
 
 collections:
-  # ---------- Site-wide copy (hero, about intro, process steps, contact details) ----------
+  # ---------- Site-wide copy (hero, audience, about intro, process steps, contact details) ----------
   - name: "site_settings"
     label: "Site Settings"
     files:
@@ -43,6 +43,21 @@ collections:
               - { label: "Trust line", name: "trustLine", widget: "string" }
               - { label: "Hero image", name: "image", widget: "image" }
               - { label: "Image alt text", name: "imageAlt", widget: "string" }
+          - label: "Who this is for"
+            name: "whoItsFor"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "body", widget: "text" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                min: 4
+                max: 4
+                fields:
+                  - { label: "Card title", name: "title", widget: "string" }
+                  - { label: "Card text", name: "body", widget: "text" }
           - label: "Coach Story"
             name: "story"
             widget: "object"
@@ -73,6 +88,21 @@ collections:
               - { label: "Linia zaufania", name: "trustLine", widget: "string" }
               - { label: "Zdjęcie hero", name: "image", widget: "image" }
               - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
+          - label: "Dla kogo jest coaching"
+            name: "whoItsFor"
+            widget: "object"
+            fields:
+              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Wprowadzenie", name: "body", widget: "text" }
+              - label: "Karty"
+                name: "cards"
+                widget: "list"
+                min: 4
+                max: 4
+                fields:
+                  - { label: "Tytuł karty", name: "title", widget: "string" }
+                  - { label: "Treść karty", name: "body", widget: "text" }
 
   # ---------- Services (Personal Training, Online Coaching, Hybrid, Plan) ----------
   - name: "services_en"
