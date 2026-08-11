@@ -1,15 +1,16 @@
 ---
-title: "Hybrid Coaching"
-tagline: "Combine face-to-face sessions in Cwmbran with an online programme, progress tracking and support between sessions."
+title: "Hybrid Coaching - Personal Training + Online Support"
+tagline: "Combine face-to-face coaching in Cwmbran with an online programme, progress tracking and support between sessions. Ideal if you want hands-on coaching without needing every workout supervised."
 order: 3
 minor: false
 ctaLabel: "Explore Hybrid Coaching"
 ctaTarget: "/contact"
 image: "/images/placeholder.png"
-imageAlt: "Hybrid coaching combining in-person and online sessions"
+imageAlt: "Hybrid coaching in Cwmbran combining personal training with online support"
 bullets:
-  - "In-person technique coaching"
-  - "Independent training between sessions"
-  - "Online programme and progress tracking"
-  - "Support between sessions"
+  - "Face-to-face technique and exercise coaching"
+  - "Independent sessions between appointments"
+  - "Individual online training programme"
+  - "Progress tracking and regular reviews"
+  - "Support and adjustments between sessions"
 ---
