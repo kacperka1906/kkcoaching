@@ -8,12 +8,13 @@ import site from '../data/site.en.json';
   lang="en"
   path="/thank-you"
   altPath="/pl/thank-you"
+  noindex={true}
 >
   <section class="thank-you">
     <div class="container">
       <span class="eyebrow">Enquiry received</span>
       <h1>Thanks &mdash; your message is in.</h1>
-      <p class="lead">I usually reply within 24 hours. In the meantime, feel free to message on WhatsApp if it's urgent.</p>
+      <p class="lead">I usually reply within 24 hours. In the meantime, feel free to message on WhatsApp if you want to add anything to your enquiry.</p>
       <div class="actions">
         <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} class="btn btn-primary" target="_blank" rel="noopener">Message on WhatsApp</a>
         <a href="/" class="btn btn-outline-dark">Back to Home</a>
