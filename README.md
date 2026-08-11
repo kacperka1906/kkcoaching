@@ -4,7 +4,7 @@ Static frontend (Astro) + Decap CMS (client-editable content) + a serverless con
 form function. Built against `KK_Coaching_Brief_Strony_Internetowej_260806_150135.pdf`.
 No deployment has been done - this is the codebase only.
 
-## Stack
+## Stack and technology
 
 - **Astro** &mdash; static site generator, outputs plain HTML/CSS/minimal JS.
 - **Decap CMS** &mdash; gives Kacper a form-based editor (`/admin`) for text, services,
