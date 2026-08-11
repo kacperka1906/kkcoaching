@@ -6,7 +6,7 @@ minor: false
 ctaLabel: "Book a Free PT Consultation"
 ctaTarget: "/contact"
 image: "/images/personal-training-cwmbran-placeholder.svg"
-imageAlt: "One-to-one personal training in Cwmbran with KK Coaching - temporary image to replace with a real coaching session photo"
+imageAlt: "One-to-one personal training and exercise technique coaching in Cwmbran with KK Coaching"
 bullets:
   - "Free consultation and goal setting"
   - "Training matched to your experience and ability"
