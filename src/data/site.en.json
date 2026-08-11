@@ -1,4 +1,7 @@
 {
+  "meta.facebookUrl": "xx",
+  "meta.whatsappNumber": "07516327552",
+  "meta.contactEmail": "kacperkaszowskipt@gmail.com",
   "meta": {
     "siteName": "KK Coaching",
     "tagline": "Train. Transform. Thrive.",
@@ -7,6 +10,58 @@
     "instagramUrl": "REPLACE_ME",
     "facebookUrl": "REPLACE_ME",
     "trainingLocation": "REPLACE_ME - not confirmed, do not publish exact address yet"
+  },
+  "meta.instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
+  "transformations": {
+    "eyebrow": "Real results",
+    "heading": "Real people. Real work. Real progress.",
+    "body": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
+    "cta": "See Transformations"
+  },
+  "servicesIntro": {
+    "eyebrow": "Coaching options",
+    "heading": "Ways to work together",
+    "body": "Every option below explains who it is for, what it includes and what happens next."
+  },
+  "process": {
+    "eyebrow": "The process",
+    "heading": "A clear process. No guesswork.",
+    "body": "A simple coaching process that turns goals into measurable actions.",
+    "steps": [
+      {
+        "title": "Free consultation",
+        "body": "A conversation about your goal, experience, lifestyle and obstacles."
+      },
+      {
+        "title": "Your individual plan",
+        "body": "A programme matched to your goal, schedule, equipment and ability."
+      },
+      {
+        "title": "Train and track",
+        "body": "Following the plan, logging training and monitoring what matters."
+      },
+      {
+        "title": "Review and adjust",
+        "body": "Check-in review, feedback and adjustments when the data calls for it."
+      }
+    ]
+  },
+  "story": {
+    "heading": "I know what it feels like to start from the beginning.",
+    "eyebrow": "Meet your coach",
+    "imageAlt": "Kacper Kaszowski's own body transformation",
+    "statStart": "117 kg",
+    "cta": "Meet Your Coach",
+    "bodyFull": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I did not enter fitness because staying in shape had always been easy for me. I started at approximately 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I lost over 40 kg and completely rebuilt my physique. That journey taught me the difference between a plan that looks impressive on paper and one that a real person can follow for long enough to produce results. Today, I use that experience to help other people train with purpose, improve their nutrition and build results they can maintain.",
+    "statLoss": "-40 kg",
+    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I started at approximately 117 kg and lost over 40 kg through consistency, education and a more structured approach - and I now use that experience to help other people train with purpose.",
+    "image": "/images/kacper.png",
+    "statQualification": "L3 PT"
+  },
+  "finalCta": {
+    "heading": "Ready to stop guessing and start following a clear plan?",
+    "body": "Tell me where you are now, where you want to get and what has been holding you back. We will discuss the most suitable way to work together.",
+    "cta": "Book Your Free Consultation"
   },
   "hero": {
     "heading": "Personal Training in Cwmbran & Online Coaching",
@@ -22,49 +77,22 @@
     "heading": "Coaching built around your goal - and your real life.",
     "body": "You do not need perfect genetics, endless free time or years of gym experience. You need a plan you understand, a way to measure progress and someone who knows when to push, when to adjust and when to keep things simple.",
     "cards": [
-      { "title": "Lose body fat", "body": "Reduce body fat without crash diets or unnecessary extremes." },
-      { "title": "Build muscle and strength", "body": "Follow structured training with clear progression instead of random workouts." },
-      { "title": "Feel confident in the gym", "body": "Learn correct technique and understand what you are doing and why." },
-      { "title": "Stay consistent", "body": "Build a routine that works around your job, family and lifestyle." }
+      {
+        "title": "Lose body fat",
+        "body": "Reduce body fat without crash diets or unnecessary extremes."
+      },
+      {
+        "title": "Build muscle and strength",
+        "body": "Follow structured training with clear progression instead of random workouts."
+      },
+      {
+        "title": "Feel confident in the gym",
+        "body": "Learn correct technique and understand what you are doing and why."
+      },
+      {
+        "title": "Stay consistent",
+        "body": "Build a routine that works around your job, family and lifestyle."
+      }
     ]
-  },
-  "story": {
-    "eyebrow": "Meet your coach",
-    "heading": "I know what it feels like to start from the beginning.",
-    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I started at approximately 117 kg and lost over 40 kg through consistency, education and a more structured approach - and I now use that experience to help other people train with purpose.",
-    "bodyFull": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I did not enter fitness because staying in shape had always been easy for me. I started at approximately 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I lost over 40 kg and completely rebuilt my physique. That journey taught me the difference between a plan that looks impressive on paper and one that a real person can follow for long enough to produce results. Today, I use that experience to help other people train with purpose, improve their nutrition and build results they can maintain.",
-    "statStart": "117 kg",
-    "statLoss": "-40 kg",
-    "statQualification": "L3 PT",
-    "cta": "Meet Your Coach",
-    "image": "/images/kacper.png",
-    "imageAlt": "Kacper Kaszowski's own body transformation"
-  },
-  "process": {
-    "eyebrow": "The process",
-    "heading": "A clear process. No guesswork.",
-    "body": "A simple coaching process that turns goals into measurable actions.",
-    "steps": [
-      { "title": "Free consultation", "body": "A conversation about your goal, experience, lifestyle and obstacles." },
-      { "title": "Your individual plan", "body": "A programme matched to your goal, schedule, equipment and ability." },
-      { "title": "Train and track", "body": "Following the plan, logging training and monitoring what matters." },
-      { "title": "Review and adjust", "body": "Check-in review, feedback and adjustments when the data calls for it." }
-    ]
-  },
-  "transformations": {
-    "eyebrow": "Real results",
-    "heading": "Real people. Real work. Real progress.",
-    "body": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
-    "cta": "See Transformations"
-  },
-  "finalCta": {
-    "heading": "Ready to stop guessing and start following a clear plan?",
-    "body": "Tell me where you are now, where you want to get and what has been holding you back. We will discuss the most suitable way to work together.",
-    "cta": "Book Your Free Consultation"
-  },
-  "servicesIntro": {
-    "eyebrow": "Coaching options",
-    "heading": "Ways to work together",
-    "body": "Every option below explains who it is for, what it includes and what happens next."
   }
 }
