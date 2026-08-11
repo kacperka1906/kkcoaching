@@ -1,18 +1,11 @@
-# Decap CMS configuration.
-# This is what turns "edit a JSON/markdown file" into "fill in a form and click Save" for Kacper.
-# Docs: https://decapcms.org/docs/configuration-options/
+# Decap CMS configuration for KK Coaching.
+# Content changes made here are committed to GitHub through Netlify Git Gateway.
 
-# Lets /admin work against local files during `npm run dev`, via `npx decap-server`
-# running alongside it (see README "Testing the CMS locally"). Netlify ignores this
-# flag in production - git-gateway below is what actually runs once deployed.
 local_backend: true
 
 backend:
-  name: git-gateway   # Requires Netlify Identity + Git Gateway enabled on the Netlify site.
+  name: git-gateway
   branch: main
-
-# Netlify Identity handles the client's login (email/password). Set up an Identity
-# invite for Kacper's email once the site is deployed - see README.md.
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -20,7 +13,6 @@ public_folder: "/images"
 publish_mode: simple
 
 collections:
-  # ---------- Site-wide copy (hero, audience, about intro, process steps, contact details) ----------
   - name: "site_settings"
     label: "Site Settings"
     files:
@@ -28,10 +20,18 @@ collections:
         name: "site_en"
         file: "src/data/site.en.json"
         fields:
-          - { label: "Contact Email", name: "meta.contactEmail", widget: "string" }
-          - { label: "WhatsApp Number", name: "meta.whatsappNumber", widget: "string", hint: "Format: +44..." }
-          - { label: "Instagram URL", name: "meta.instagramUrl", widget: "string" }
-          - { label: "Facebook URL", name: "meta.facebookUrl", widget: "string" }
+          - label: "Contact & Brand"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Site name", name: "siteName", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Contact email", name: "contactEmail", widget: "string" }
+              - { label: "WhatsApp number", name: "whatsappNumber", widget: "string", hint: "Use international format, e.g. +447..." }
+              - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+              - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
+              - { label: "Training location", name: "trainingLocation", widget: "string" }
+
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -43,6 +43,7 @@ collections:
               - { label: "Trust line", name: "trustLine", widget: "string" }
               - { label: "Hero image", name: "image", widget: "image" }
               - { label: "Image alt text", name: "imageAlt", widget: "string" }
+
           - label: "Who this is for"
             name: "whoItsFor"
             widget: "object"
@@ -58,25 +59,79 @@ collections:
                 fields:
                   - { label: "Card title", name: "title", widget: "string" }
                   - { label: "Card text", name: "body", widget: "text" }
+
+          - label: "Coaching options intro"
+            name: "servicesIntro"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "body", widget: "text" }
+
           - label: "Coach Story"
             name: "story"
             widget: "object"
             fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Short version (Home page)", name: "bodyShort", widget: "text" }
               - { label: "Full version (About page)", name: "bodyFull", widget: "text" }
               - { label: "Starting weight stat", name: "statStart", widget: "string" }
-              - { label: "Weight lost stat", name: "statLoss", widget: "string" }
+              - { label: "Weight loss stat", name: "statLoss", widget: "string" }
+              - { label: "Qualification stat", name: "statQualification", widget: "string" }
+              - { label: "Button text", name: "cta", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image alt text", name: "imageAlt", widget: "string" }
+
+          - label: "Process"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "body", widget: "text" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                min: 4
+                max: 4
+                fields:
+                  - { label: "Step title", name: "title", widget: "string" }
+                  - { label: "Step text", name: "body", widget: "text" }
+
+          - label: "Transformations intro"
+            name: "transformations"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro paragraph", name: "body", widget: "text" }
+              - { label: "Button text", name: "cta", widget: "string" }
+
+          - label: "Final CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "body", widget: "text" }
+              - { label: "Button text", name: "cta", widget: "string" }
 
       - label: "Site Copy (Polish)"
         name: "site_pl"
         file: "src/data/site.pl.json"
         fields:
-          - { label: "Contact Email", name: "meta.contactEmail", widget: "string" }
-          - { label: "WhatsApp Number", name: "meta.whatsappNumber", widget: "string" }
-          - { label: "Instagram URL", name: "meta.instagramUrl", widget: "string" }
-          - { label: "Facebook URL", name: "meta.facebookUrl", widget: "string" }
+          - label: "Kontakt i marka"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Nazwa strony", name: "siteName", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Email kontaktowy", name: "contactEmail", widget: "string" }
+              - { label: "Numer WhatsApp", name: "whatsappNumber", widget: "string", hint: "Format międzynarodowy, np. +447..." }
+              - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+              - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
+              - { label: "Lokalizacja treningów", name: "trainingLocation", widget: "string" }
+
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -88,6 +143,7 @@ collections:
               - { label: "Linia zaufania", name: "trustLine", widget: "string" }
               - { label: "Zdjęcie hero", name: "image", widget: "image" }
               - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
+
           - label: "Dla kogo jest coaching"
             name: "whoItsFor"
             widget: "object"
@@ -104,7 +160,62 @@ collections:
                   - { label: "Tytuł karty", name: "title", widget: "string" }
                   - { label: "Treść karty", name: "body", widget: "text" }
 
-  # ---------- Services (Personal Training, Online Coaching, Hybrid, Plan) ----------
+          - label: "Wprowadzenie do form współpracy"
+            name: "servicesIntro"
+            widget: "object"
+            fields:
+              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Wprowadzenie", name: "body", widget: "text" }
+
+          - label: "Historia trenera"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Krótka wersja (strona główna)", name: "bodyShort", widget: "text" }
+              - { label: "Pełna wersja (O mnie)", name: "bodyFull", widget: "text" }
+              - { label: "Masa startowa", name: "statStart", widget: "string" }
+              - { label: "Redukcja masy", name: "statLoss", widget: "string" }
+              - { label: "Kwalifikacja", name: "statQualification", widget: "string" }
+              - { label: "Tekst przycisku", name: "cta", widget: "string" }
+              - { label: "Zdjęcie", name: "image", widget: "image" }
+              - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
+
+          - label: "Proces"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Wprowadzenie", name: "body", widget: "text" }
+              - label: "Kroki"
+                name: "steps"
+                widget: "list"
+                min: 4
+                max: 4
+                fields:
+                  - { label: "Tytuł kroku", name: "title", widget: "string" }
+                  - { label: "Treść kroku", name: "body", widget: "text" }
+
+          - label: "Wprowadzenie do przemian"
+            name: "transformations"
+            widget: "object"
+            fields:
+              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Wprowadzenie", name: "body", widget: "text" }
+              - { label: "Tekst przycisku", name: "cta", widget: "string" }
+
+          - label: "Końcowe CTA"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Nagłówek", name: "heading", widget: "string" }
+              - { label: "Treść", name: "body", widget: "text" }
+              - { label: "Tekst przycisku", name: "cta", widget: "string" }
+
   - name: "services_en"
     label: "Services (English)"
     folder: "src/content/services/en"
@@ -114,7 +225,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Tagline", name: "tagline", widget: "text" }
       - { label: "Display order", name: "order", widget: "number" }
-      - { label: "De-emphasise this card (minor)", name: "minor", widget: "boolean", default: false }
+      - { label: "De-emphasise this card", name: "minor", widget: "boolean", default: false }
       - { label: "Button text", name: "ctaLabel", widget: "string" }
       - { label: "Button link", name: "ctaTarget", widget: "string", default: "/contact" }
       - { label: "Image", name: "image", widget: "image" }
@@ -137,7 +248,6 @@ collections:
       - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
       - { label: "Punkty", name: "bullets", widget: "list" }
 
-  # ---------- Transformations / testimonials ----------
   - name: "testimonials"
     label: "Transformations"
     folder: "src/content/testimonials"
@@ -155,13 +265,12 @@ collections:
         name: "consentOnFile"
         widget: "boolean"
         default: false
-        hint: "Do NOT set to true unless you have the client's signed written consent. See brief section 7.1."
+        hint: "Only enable this once you have permission to publish the client's details/photo."
       - { label: "Photo", name: "image", widget: "image" }
       - { label: "Photo alt text", name: "imageAlt", widget: "string" }
       - { label: "Feature on Home page", name: "featured", widget: "boolean", default: false }
-      - { label: "Client quote", name: "body", widget: "markdown" }
+      - { label: "Client story / quote", name: "body", widget: "markdown" }
 
-  # ---------- FAQ ----------
   - name: "faq"
     label: "FAQ"
     folder: "src/content/faq"
@@ -170,4 +279,11 @@ collections:
     fields:
       - { label: "Question", name: "question", widget: "string" }
       - { label: "Display order", name: "order", widget: "number" }
+      - label: "Language"
+        name: "language"
+        widget: "select"
+        options:
+          - { label: "English", value: "en" }
+          - { label: "Polski", value: "pl" }
+        default: "en"
       - { label: "Answer", name: "body", widget: "markdown" }
