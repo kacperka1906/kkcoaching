@@ -3,17 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import site from '../../data/site.pl.json';
 ---
 <BaseLayout
-  title="Kontakt | Umów Bezpłatną Konsultację | KK Coaching"
-  description="Skontaktuj się z KK Coaching. Umów bezpłatną konsultację dla treningu personalnego, coachingu online, treningu hybrydowego lub planu treningowego."
+  title="Bezpłatna Konsultacja Personal Training Cwmbran | KK Coaching"
+  description="Umów bezpłatną konsultację z KK Coaching w sprawie treningu personalnego w Cwmbran, coachingu online lub prowadzenia hybrydowego. Opisz swój cel i zobaczmy, jak mogę Ci pomóc."
   lang="pl"
   path="/pl/contact"
   altPath="/contact"
 >
   <section class="page-hero on-dark">
     <div class="container">
-      <span class="eyebrow">Skontaktuj się</span>
-      <h1>Umów Bezpłatną Konsultację</h1>
-      <p class="lead">Wypełnij formularz poniżej albo napisz bezpośrednio &mdash; wybierz, co wygodniejsze na telefonie.</p>
+      <span class="eyebrow">Zacznij tutaj</span>
+      <h1>Umów bezpłatną konsultację</h1>
+      <p class="lead">Napisz, gdzie jesteś teraz, jaki efekt chcesz osiągnąć i co do tej pory najbardziej Ci przeszkadzało. Bez presji i bez sprzedażowego skryptu - sprawdzimy po prostu, czy mogę Ci pomóc i jaka forma współpracy będzie najlepsza.</p>
     </div>
   </section>
 
@@ -34,7 +34,7 @@ import site from '../../data/site.pl.json';
         </div>
         <div class="field">
           <label for="location">Lokalizacja</label>
-          <input type="text" id="location" name="location" placeholder="np. Cwmbran, lub online" />
+          <input type="text" id="location" name="location" placeholder="np. Cwmbran, Cardiff albo online" />
         </div>
         <div class="field">
           <label for="language">Preferowany język</label>
@@ -44,22 +44,22 @@ import site from '../../data/site.pl.json';
           </select>
         </div>
         <div class="field">
-          <label for="interest">Zainteresowanie</label>
+          <label for="interest">Interesuje mnie</label>
           <select id="interest" name="interest">
             <option>Trening personalny</option>
             <option>Coaching online</option>
-            <option>Trening hybrydowy</option>
+            <option>Coaching hybrydowy</option>
             <option>Plan treningowy</option>
-            <option>Nie wiem jeszcze</option>
+            <option>Jeszcze nie wiem</option>
           </select>
         </div>
         <div class="field">
-          <label for="goal">Główny cel <span aria-hidden="true">*</span></label>
-          <textarea id="goal" name="goal" rows="3" required></textarea>
+          <label for="goal">Co chcesz osiągnąć? <span aria-hidden="true">*</span></label>
+          <textarea id="goal" name="goal" rows="3" required placeholder="Redukcja, budowanie mięśni, siła, większa pewność siebie na siłowni..."></textarea>
         </div>
         <div class="field">
-          <label for="blocker">Co obecnie Ci przeszkadza?</label>
-          <textarea id="blocker" name="blocker" rows="3"></textarea>
+          <label for="blocker">Co obecnie najbardziej Ci przeszkadza?</label>
+          <textarea id="blocker" name="blocker" rows="3" placeholder="Brak czasu, regularności, dieta, brak konkretnego planu, wcześniejsze urazy..."></textarea>
         </div>
 
         <div class="field honeypot" aria-hidden="true">
@@ -75,11 +75,13 @@ import site from '../../data/site.pl.json';
         </div>
 
         <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
+        <p class="form-note">Bez presji i bez sprzedażowego skryptu. Zwykle odpowiadam w ciągu 24 godzin.</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 
       <aside class="contact-side">
-        <h2>Inne sposoby kontaktu</h2>
+        <h2>Wolisz napisać bezpośrednio?</h2>
+        <p>Wybierz najwygodniejszą opcję. Najszybciej zwykle odpowiadam na WhatsApp.</p>
         <ul class="contact-list">
           <li>
             <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">
@@ -88,7 +90,7 @@ import site from '../../data/site.pl.json';
           </li>
           <li><a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a></li>
           <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>
+          {site.meta.facebookUrl && <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>}
         </ul>
         <p class="response-time">Orientacyjny czas odpowiedzi: do 24 godzin.</p>
       </aside>
@@ -103,6 +105,11 @@ import site from '../../data/site.pl.json';
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!status) return;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     const formData = new FormData(form);
     if (formData.get('company')) {
@@ -121,6 +128,15 @@ import site from '../../data/site.pl.json';
 
       if (!res.ok) throw new Error('Request failed');
 
+      const gtag = (window as any).gtag;
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          form_name: 'contact_enquiry',
+          lead_language: 'pl',
+          interest: String(formData.get('interest') ?? '')
+        });
+      }
+
       window.location.href = '/pl/thank-you';
     } catch (err) {
       status.textContent = 'Coś poszło nie tak podczas wysyłania. Spróbuj przez WhatsApp lub e-mail.';
@@ -131,7 +147,7 @@ import site from '../../data/site.pl.json';
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
-  .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
+  .page-hero .lead { color: #C7CBD1; max-width: 64ch; }
   .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
   @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
   .field { margin-bottom: 18px; }
@@ -146,9 +162,11 @@ import site from '../../data/site.pl.json';
   .checkbox-field input { width: auto; margin-top: 4px; }
   .checkbox-field label { font-weight: 400; font-size: 0.88rem; color: var(--steel); }
   .checkbox-field a { color: var(--red); }
-  .form-status { margin-top: 14px; font-size: 0.9rem; color: var(--steel); }
+  .form-note { margin-top: 12px; font-size: 0.85rem; color: var(--steel); }
+  .form-status { margin-top: 8px; font-size: 0.9rem; color: var(--steel); }
   .contact-side { background: var(--white); border: 1px solid #E3E5E8; border-radius: var(--radius); padding: 28px; }
-  .contact-side h2 { font-size: 1.15rem; margin-bottom: 16px; }
+  .contact-side h2 { font-size: 1.2rem; margin-bottom: 8px; }
+  .contact-side > p { color: var(--steel); font-size: 0.92rem; margin-bottom: 18px; }
   .contact-list { list-style: none; }
   .contact-list li { margin-bottom: 12px; }
   .contact-list a { color: var(--red); text-decoration: none; font-weight: 600; }
