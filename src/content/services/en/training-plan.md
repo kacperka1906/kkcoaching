@@ -5,8 +5,8 @@ order: 4
 minor: true
 ctaLabel: "Ask About a Training Plan"
 ctaTarget: "/contact"
-image: "/images/placeholder.png"
-imageAlt: "Personalised gym training plan from KK Coaching"
+image: "/images/personalised-training-plan-placeholder.svg"
+imageAlt: "Personalised gym training plan from KK Coaching - temporary image to replace with a real programme image"
 bullets:
   - "Individual programme built around your goal"
   - "Exercise selection matched to your equipment and experience"
