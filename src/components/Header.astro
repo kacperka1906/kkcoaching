@@ -20,6 +20,8 @@ const nav = lang === 'pl'
       { href: '/transformations', label: 'Transformations' },
       { href: '/contact', label: 'Contact' }
     ];
+
+const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
 ---
 <header class="site-header">
   <div class="container">
@@ -32,6 +34,7 @@ const nav = lang === 'pl'
       </ul>
     </nav>
     <div class="header-right">
+      <a class="header-cta" href={`${prefix}/contact`}>{ctaLabel}</a>
       <a class="lang-switch" href={lang === 'pl' ? '/' : '/pl'}>
         {lang === 'pl' ? 'EN' : 'PL'}
       </a>
@@ -60,8 +63,8 @@ const nav = lang === 'pl'
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   .logo {
     display: inline-flex;
@@ -72,7 +75,7 @@ const nav = lang === 'pl'
   nav.main-nav ul {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 26px;
   }
   nav.main-nav a {
     color: var(--off-white);
@@ -82,7 +85,17 @@ const nav = lang === 'pl'
   }
   nav.main-nav a:hover { color: var(--red); }
 
-  .header-right { display: flex; align-items: center; gap: 18px; }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .header-cta {
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+  }
+  .header-cta:hover { background: var(--red-hover); }
   .lang-switch {
     color: var(--off-white);
     text-decoration: none;
@@ -90,7 +103,7 @@ const nav = lang === 'pl'
     font-weight: 700;
     border: 1px solid #454A52;
     border-radius: var(--radius);
-    padding: 4px 9px;
+    padding: 5px 9px;
   }
   .lang-switch:hover { border-color: var(--red); color: var(--white); }
 
@@ -103,6 +116,10 @@ const nav = lang === 'pl'
     cursor: pointer;
   }
 
+  @media (max-width: 900px) {
+    .header-cta { display: none; }
+  }
+
   @media (max-width: 760px) {
     nav.main-nav {
       display: none;
@@ -112,6 +129,7 @@ const nav = lang === 'pl'
       right: 0;
       background: var(--graphite);
       padding: 16px 24px 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
     }
     nav.main-nav.is-open { display: block; }
     nav.main-nav ul { flex-direction: column; gap: 16px; }
