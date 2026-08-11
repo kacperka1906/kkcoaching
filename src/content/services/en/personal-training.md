@@ -1,18 +1,17 @@
 ---
-title: "Personal Training 1:1"
-tagline: "Individual training sessions focused on your goals, technique and progression. Every session has a purpose, and your programme develops as you become stronger and more confident."
+title: "1:1 Personal Training in Cwmbran"
+tagline: "Face-to-face coaching for people who want to train with confidence, improve technique and make measurable progress with a programme built around their goal and ability."
 order: 1
 minor: false
-ctaLabel: "Enquire About Personal Training"
+ctaLabel: "Book a Free PT Consultation"
 ctaTarget: "/contact"
 image: "/images/placeholder.png"
-imageAlt: "1:1 personal training session in Cwmbran"
+imageAlt: "One-to-one personal training in Cwmbran with KK Coaching"
 bullets:
-  - "Consultation and goal setting"
-  - "Assessment of experience and ability"
-  - "Correct technique from the start"
-  - "Individual programme"
-  - "Progression tracking"
-  - "Guidance on activity and nutrition"
-  - "Regular progress reviews"
+  - "Free consultation and goal setting"
+  - "Training matched to your experience and ability"
+  - "Hands-on technique coaching"
+  - "Individual programme and clear progression"
+  - "Progress tracking and regular reviews"
+  - "Practical guidance on activity and nutrition"
 ---
