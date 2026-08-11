@@ -100,16 +100,16 @@ const structuredData = {
     <div class="container">
       <div class="story">
         <img src={site.story.image} alt={site.story.imageAlt} width="500" height="600" loading="lazy" />
-        <div>
+        <div class="story-copy">
           <span class="eyebrow">{site.story.eyebrow}</span>
           <h2 id="story-heading">{site.story.heading}</h2>
           <p>{site.story.bodyShort}</p>
-          <div class="stat-line">
-            <div><strong>{site.story.statStart}</strong><span>Punkt startowy</span></div>
-            <div><strong>{site.story.statLoss}</strong><span>Redukcja masy</span></div>
-            <div><strong>{site.story.statQualification}</strong><span>Kwalifikacja</span></div>
+          <div class="stat-line" aria-label="Historia Kacpra w liczbach">
+            <div class="stat-card"><strong>{site.story.statStart}</strong><span>Punkt startowy</span></div>
+            <div class="stat-card"><strong>{site.story.statLoss}</strong><span>Zredukowane</span></div>
+            <div class="stat-card"><strong>{site.story.statQualification}</strong><span>Formy współpracy</span></div>
           </div>
-          <a href="/pl/about" class="btn btn-outline-dark">{site.story.cta}</a>
+          <a href="/pl/about" class="btn btn-outline-dark story-cta">{site.story.cta}</a>
         </div>
       </div>
     </div>
@@ -181,11 +181,46 @@ const structuredData = {
   @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
 
   .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
-  @media (max-width: 860px) { .story { grid-template-columns: 1fr; } }
   .story img { border-radius: var(--radius); }
-  .story .stat-line { display: flex; gap: 32px; margin: 24px 0 28px; }
-  .story .stat-line strong { display: block; font-size: 1.8rem; color: var(--red); }
-  .story .stat-line span { font-size: 0.8rem; color: var(--steel); text-transform: uppercase; letter-spacing: 0.05em; }
+  .story-copy { min-width: 0; }
+  .story .stat-line { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 28px 0 30px; }
+  .story .stat-card {
+    min-width: 0;
+    background: #F6F7F8;
+    border: 1px solid #E3E5E8;
+    border-top: 3px solid var(--red);
+    border-radius: var(--radius);
+    padding: 18px 14px 16px;
+    text-align: center;
+  }
+  .story .stat-line strong {
+    display: block;
+    color: var(--red);
+    font-size: clamp(1.2rem, 2.3vw, 1.8rem);
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+  .story .stat-line span {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    line-height: 1.25;
+    color: var(--steel);
+    text-transform: uppercase;
+    letter-spacing: 0.045em;
+  }
+  @media (max-width: 860px) {
+    .story { grid-template-columns: 1fr; gap: 34px; }
+    .story img { width: min(100%, 520px); margin: 0 auto; }
+  }
+  @media (max-width: 560px) {
+    .story { gap: 26px; }
+    .story .stat-line { gap: 8px; margin: 24px 0; }
+    .story .stat-card { padding: 14px 6px 13px; border-radius: 10px; }
+    .story .stat-line strong { font-size: clamp(0.98rem, 4.7vw, 1.25rem); }
+    .story .stat-line span { margin-top: 7px; font-size: 0.61rem; letter-spacing: 0.025em; }
+    .story-cta { width: 100%; text-align: center; justify-content: center; }
+  }
 
   .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   @media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
