@@ -3,7 +3,7 @@ name: "Aneta"
 ageDisclosed: false
 serviceType: "Online Coaching"
 duration: "16 weeks"
-startingPoint: "Starting point shown in progress photos"
+startingPoint: "16-week starting point"
 result: "10 kg lost and 12 cm off the waist"
 consentOnFile: true
 image: "/images/client-transformation-aneta-10kg-16-weeks.svg"
