@@ -1,13 +1,13 @@
 ---
-name: "Kacper - my own story"
+name: Kacper - my own story
 ageDisclosed: false
-serviceType: "My own transformation"
-duration: "2022 - present"
-startingPoint: "~117 kg"
-result: "40+ kg lost and a complete physique transformation"
+serviceType: My own transformation
+duration: 2022 - present
+startingPoint: ~117 kg
+result: 40+ kg lost and a complete physique transformation
 consentOnFile: true
-image: "/images/kacper.png"
-imageAlt: "Kacper Kaszowski's own 40+ kg body transformation"
+image: /images/photo-collage.png-1-.png
+imageAlt: Kacper Kaszowski's own 40+ kg body transformation
 featured: false
 ---
 
