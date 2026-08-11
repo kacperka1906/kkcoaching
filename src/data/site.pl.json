@@ -1,4 +1,7 @@
 {
+  "meta.facebookUrl": "xx",
+  "meta.whatsappNumber": "+447516327552",
+  "meta.contactEmail": "kacperkaszowskipt@gmail.com",
   "meta": {
     "siteName": "KK Coaching",
     "tagline": "Trenuj. Przemień się. Rozwijaj się.",
@@ -7,6 +10,58 @@
     "instagramUrl": "UZUPEŁNIĆ",
     "facebookUrl": "UZUPEŁNIĆ",
     "trainingLocation": "UZUPEŁNIĆ - lokalizacja niepotwierdzona, nie publikować dokładnego adresu"
+  },
+  "meta.instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
+  "transformations": {
+    "eyebrow": "Prawdziwe efekty",
+    "heading": "Prawdziwi ludzie. Prawdziwa praca. Prawdziwe efekty.",
+    "body": "Efekty nie powstają dzięki jednemu idealnemu tygodniowi. Są wynikiem dobrze dobranego planu, regularnego działania, monitorowania postępów i odpowiednich korekt.",
+    "cta": "Zobacz przemiany"
+  },
+  "servicesIntro": {
+    "eyebrow": "Formy współpracy",
+    "heading": "Jak możemy współpracować",
+    "body": "Każda opcja poniżej opisuje dla kogo jest, co obejmuje i jaki jest kolejny krok."
+  },
+  "process": {
+    "eyebrow": "Proces",
+    "heading": "Konkretny proces. Bez zgadywania.",
+    "body": "Prosty system, który zamienia cel w mierzalne działania.",
+    "steps": [
+      {
+        "title": "Bezpłatna konsultacja",
+        "body": "Rozmowa o celu, doświadczeniu, stylu życia i przeszkodach."
+      },
+      {
+        "title": "Twój indywidualny plan",
+        "body": "Program dopasowany do celu, grafiku, sprzętu i możliwości."
+      },
+      {
+        "title": "Trening i monitoring",
+        "body": "Realizacja planu, zapisywanie treningów i monitorowanie wskaźników."
+      },
+      {
+        "title": "Analiza i korekta",
+        "body": "Analiza check-inu, feedback i korekty, kiedy pokazują to dane."
+      }
+    ]
+  },
+  "story": {
+    "heading": "Wiem, jak to jest zaczynać od początku.",
+    "eyebrow": "Poznaj swojego trenera",
+    "imageAlt": "Przemiana sylwetkowa Kacpra Kaszowskiego",
+    "statStart": "117 kg",
+    "cta": "Poznaj swojego trenera",
+    "bodyFull": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i trenerem personalnym Level 3 działającym w Cwmbran oraz online. Nie trafiłem do branży fitness dlatego, że dobra forma zawsze przychodziła mi łatwo. Zaczynałem z masą około 117 kg, niską pewnością siebie i dokładnie tymi samymi problemami, z którymi mierzy się wiele osób: przekombinowaną dietą, szukaniem szybkich rezultatów i brakiem pewności, czy wykonywany trening naprawdę prowadzi do celu. Dzięki regularności, edukacji i uporządkowanemu działaniu zredukowałem ponad 40 kg i całkowicie przebudowałem swoją sylwetkę. Ten proces nauczył mnie, że skuteczny plan nie musi wyglądać ekstremalnie. Musi być dopasowany, zrozumiały i możliwy do wykonywania przez wystarczająco długi czas. Dzisiaj wykorzystuję własne doświadczenie, aby pomagać innym trenować z konkretnym celem, poprawiać odżywianie i budować efekty, które można utrzymać.",
+    "statLoss": "-40 kg",
+    "bodyShort": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i trenerem personalnym Level 3 działającym w Cwmbran oraz online. Zaczynałem z masą około 117 kg i zredukowałem ponad 40 kg dzięki regularności, edukacji i uporządkowanemu działaniu.",
+    "image": "/images/kacper.png",
+    "statQualification": "L3 PT"
+  },
+  "finalCta": {
+    "heading": "Chcesz przestać działać przypadkowo i zacząć realizować konkretny plan?",
+    "body": "Napisz, w jakim miejscu jesteś obecnie, jaki efekt chcesz osiągnąć i co do tej pory najbardziej Ci przeszkadzało. Wspólnie wybierzemy najlepszą formę współpracy.",
+    "cta": "Umów bezpłatną konsultację"
   },
   "hero": {
     "heading": "Trening personalny w Cwmbran i coaching online",
@@ -22,49 +77,22 @@
     "heading": "Coaching dopasowany do Twojego celu - i do Twojego życia.",
     "body": "Nie potrzebujesz idealnej genetyki, całego dnia wolnego ani wielu lat doświadczenia. Potrzebujesz planu, który rozumiesz, jasnego sposobu oceny postępów i trenera, który wie, kiedy docisnąć, kiedy wprowadzić korektę, a kiedy po prostu dać planowi czas.",
     "cards": [
-      { "title": "Redukcja tkanki tłuszczowej", "body": "Popraw sylwetkę bez głodówek i skrajnych diet." },
-      { "title": "Budowanie mięśni i siły", "body": "Trenuj z planem, progresją i mierzalnym sposobem oceny." },
-      { "title": "Pewność siebie na siłowni", "body": "Poznaj poprawną technikę i rozumiej, co i po co robisz." },
-      { "title": "Regularność", "body": "Zbuduj rutynę dopasowaną do pracy, rodziny i stylu życia." }
+      {
+        "title": "Redukcja tkanki tłuszczowej",
+        "body": "Popraw sylwetkę bez głodówek i skrajnych diet."
+      },
+      {
+        "title": "Budowanie mięśni i siły",
+        "body": "Trenuj z planem, progresją i mierzalnym sposobem oceny."
+      },
+      {
+        "title": "Pewność siebie na siłowni",
+        "body": "Poznaj poprawną technikę i rozumiej, co i po co robisz."
+      },
+      {
+        "title": "Regularność",
+        "body": "Zbuduj rutynę dopasowaną do pracy, rodziny i stylu życia."
+      }
     ]
-  },
-  "story": {
-    "eyebrow": "Poznaj swojego trenera",
-    "heading": "Wiem, jak to jest zaczynać od początku.",
-    "bodyShort": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i trenerem personalnym Level 3 działającym w Cwmbran oraz online. Zaczynałem z masą około 117 kg i zredukowałem ponad 40 kg dzięki regularności, edukacji i uporządkowanemu działaniu.",
-    "bodyFull": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i trenerem personalnym Level 3 działającym w Cwmbran oraz online. Nie trafiłem do branży fitness dlatego, że dobra forma zawsze przychodziła mi łatwo. Zaczynałem z masą około 117 kg, niską pewnością siebie i dokładnie tymi samymi problemami, z którymi mierzy się wiele osób: przekombinowaną dietą, szukaniem szybkich rezultatów i brakiem pewności, czy wykonywany trening naprawdę prowadzi do celu. Dzięki regularności, edukacji i uporządkowanemu działaniu zredukowałem ponad 40 kg i całkowicie przebudowałem swoją sylwetkę. Ten proces nauczył mnie, że skuteczny plan nie musi wyglądać ekstremalnie. Musi być dopasowany, zrozumiały i możliwy do wykonywania przez wystarczająco długi czas. Dzisiaj wykorzystuję własne doświadczenie, aby pomagać innym trenować z konkretnym celem, poprawiać odżywianie i budować efekty, które można utrzymać.",
-    "statStart": "117 kg",
-    "statLoss": "-40 kg",
-    "statQualification": "L3 PT",
-    "cta": "Poznaj swojego trenera",
-    "image": "/images/kacper.png",
-    "imageAlt": "Przemiana sylwetkowa Kacpra Kaszowskiego"
-  },
-  "process": {
-    "eyebrow": "Proces",
-    "heading": "Konkretny proces. Bez zgadywania.",
-    "body": "Prosty system, który zamienia cel w mierzalne działania.",
-    "steps": [
-      { "title": "Bezpłatna konsultacja", "body": "Rozmowa o celu, doświadczeniu, stylu życia i przeszkodach." },
-      { "title": "Twój indywidualny plan", "body": "Program dopasowany do celu, grafiku, sprzętu i możliwości." },
-      { "title": "Trening i monitoring", "body": "Realizacja planu, zapisywanie treningów i monitorowanie wskaźników." },
-      { "title": "Analiza i korekta", "body": "Analiza check-inu, feedback i korekty, kiedy pokazują to dane." }
-    ]
-  },
-  "transformations": {
-    "eyebrow": "Prawdziwe efekty",
-    "heading": "Prawdziwi ludzie. Prawdziwa praca. Prawdziwe efekty.",
-    "body": "Efekty nie powstają dzięki jednemu idealnemu tygodniowi. Są wynikiem dobrze dobranego planu, regularnego działania, monitorowania postępów i odpowiednich korekt.",
-    "cta": "Zobacz przemiany"
-  },
-  "finalCta": {
-    "heading": "Chcesz przestać działać przypadkowo i zacząć realizować konkretny plan?",
-    "body": "Napisz, w jakim miejscu jesteś obecnie, jaki efekt chcesz osiągnąć i co do tej pory najbardziej Ci przeszkadzało. Wspólnie wybierzemy najlepszą formę współpracy.",
-    "cta": "Umów bezpłatną konsultację"
-  },
-  "servicesIntro": {
-    "eyebrow": "Formy współpracy",
-    "heading": "Jak możemy współpracować",
-    "body": "Każda opcja poniżej opisuje dla kogo jest, co obejmuje i jaki jest kolejny krok."
   }
 }
