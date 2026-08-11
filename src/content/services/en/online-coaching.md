@@ -5,8 +5,8 @@ order: 2
 minor: false
 ctaLabel: "Apply for Online Coaching"
 ctaTarget: "/contact"
-image: "/images/placeholder.png"
-imageAlt: "Online fitness coaching with training, nutrition and progress tracking"
+image: "/images/online-coaching-placeholder.svg"
+imageAlt: "Online fitness coaching with training, nutrition and progress tracking - temporary image to replace with a real coaching check-in photo"
 bullets:
   - "Individual training plan"
   - "Calorie, macronutrient and nutrition targets"
