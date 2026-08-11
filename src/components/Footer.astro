@@ -12,12 +12,14 @@ const labels = lang === 'pl'
   ? {
       nav: 'Nawigacja', about: 'O mnie', services: 'Coaching', transformations: 'Przemiany', contact: 'Kontakt',
       legal: 'Prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin',
-      direct: 'Kontakt bezpośredni'
+      direct: 'Kontakt bezpośredni', location: 'Cwmbran, Torfaen, South Wales · coaching online w całej Wielkiej Brytanii',
+      footerSeo: 'Personal Training Cwmbran · Coaching Online'
     }
   : {
       nav: 'Navigation', about: 'About', services: 'Coaching', transformations: 'Transformations', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Terms & Conditions',
-      direct: 'Direct contact'
+      direct: 'Direct contact', location: 'Cwmbran, Torfaen, South Wales · online coaching across the UK',
+      footerSeo: 'Personal Training Cwmbran · Online Coaching'
     };
 ---
 <footer>
@@ -28,7 +30,7 @@ const labels = lang === 'pl'
           <Logo height={30} />
         </a>
         <p class="tagline">{site.meta.tagline}</p>
-        <p class="location">Cwmbran, Torfaen, South Wales &middot; Online coaching across the UK</p>
+        <p class="location">{labels.location}</p>
       </div>
       <div>
         <h4>{labels.nav}</h4>
@@ -59,7 +61,7 @@ const labels = lang === 'pl'
     </div>
     <div class="footer-bottom">
       <span>&copy; {new Date().getFullYear()} KK Coaching &mdash; Kacper Kaszowski</span>
-      <span>Personal Training Cwmbran &middot; Online Coaching</span>
+      <span>{labels.footerSeo}</span>
     </div>
   </div>
 </footer>
