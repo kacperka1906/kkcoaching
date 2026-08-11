@@ -1,18 +1,17 @@
 ---
-title: "Trening personalny 1:1"
-tagline: "Indywidualne sesje treningowe skupione na Twoich celach, technice i progresji. Każda sesja ma cel, a program rozwija się wraz z Twoją siłą i pewnością siebie."
+title: "Trening personalny 1:1 w Cwmbran"
+tagline: "Treningi na żywo dla osób, które chcą poprawić technikę, trenować pewniej i robić mierzalny progres z planem dopasowanym do celu oraz poziomu zaawansowania."
 order: 1
 minor: false
-ctaLabel: "Zapytaj o trening personalny"
+ctaLabel: "Umów bezpłatną konsultację PT"
 ctaTarget: "/pl/contact"
 image: "/images/placeholder.png"
-imageAlt: "Sesja treningu personalnego 1:1 w Cwmbran"
+imageAlt: "Trening personalny 1:1 w Cwmbran z KK Coaching"
 bullets:
-  - "Konsultacja i określenie celu"
-  - "Ocena doświadczenia i możliwości"
-  - "Nauka prawidłowej techniki"
-  - "Indywidualny program"
-  - "Kontrola progresji"
-  - "Wskazówki dotyczące aktywności i odżywiania"
-  - "Regularna ocena efektów"
+  - "Bezpłatna konsultacja i określenie celu"
+  - "Trening dopasowany do doświadczenia i możliwości"
+  - "Nauka i korekta techniki na żywo"
+  - "Indywidualny program i jasna progresja"
+  - "Monitoring postępów i regularna ocena efektów"
+  - "Praktyczne wskazówki dotyczące aktywności i odżywiania"
 ---
