@@ -7,7 +7,6 @@ const testimonials = (await getCollection('testimonials')).filter(t => t.data.co
 const faqs = (await getCollection('faq'))
   .filter(item => item.data.language === 'pl')
   .sort((a, b) => a.data.order - b.data.order);
-const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła', 'Pewność siebie i technika', 'Coaching online', 'Trening personalny'];
 ---
 <BaseLayout
   title="Przemiany Podopiecznych | Personal Trainer Cwmbran | KK Coaching"
@@ -26,12 +25,6 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
 
   <section class="on-white">
     <div class="container">
-      <div class="filters" role="tablist" aria-label="Filtruj przemiany według kategorii">
-        {filters.map((f, i) => (
-          <button class="filter-btn" class:list={{ active: i === 0 }} data-filter={f}>{f}</button>
-        ))}
-      </div>
-
       {testimonials.length === 0 && (
         <p class="empty-state">Kolejne historie podopiecznych pojawią się tutaj wkrótce.</p>
       )}
@@ -87,30 +80,10 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
   </section>
 </BaseLayout>
 
-<script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.transform-card');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      cards.forEach(card => {
-        const type = card.querySelector('.meta span:nth-child(2)')?.textContent ?? '';
-        const show = filter === 'Wszystkie' || type.toLowerCase().includes((filter ?? '').toLowerCase());
-        (card as HTMLElement).style.display = show ? '' : 'none';
-      });
-    });
-  });
-</script>
-
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
   .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
-  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
-  .filter-btn { background: var(--white); border: 1px solid #D8DBDE; border-radius: 999px; padding: 8px 16px; font-size: 0.85rem; cursor: pointer; color: var(--steel); }
-  .filter-btn.active { background: var(--graphite); color: var(--white); border-color: var(--graphite); }
   .empty-state { color: var(--steel); font-style: italic; }
   .transform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   @media (max-width: 700px) { .transform-grid { grid-template-columns: 1fr; } }
