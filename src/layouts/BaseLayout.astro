@@ -64,6 +64,22 @@ const canonical = `${siteUrl}${path}`;
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
   <Analytics />
+
+  <!-- Netlify Identity: the invite email Kacper receives links here with the token
+       in the URL hash. This forwards straight to /admin so Decap CMS can pick it up
+       and show the "set your password" screen. -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+  <script is:inline>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', (user) => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
 
