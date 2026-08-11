@@ -175,6 +175,16 @@ const socialImage = `${siteUrl}/images/kacper.png`;
   .section-head p { color: var(--steel); font-size: 1.05rem; }
   section.on-dark .section-head p { color: #B7BBC1; }
 
+  /* Transformation graphics are portrait assets (4:5). Keep the full result visible
+     instead of cropping them to the old 4:3 placeholder ratio. */
+  .transform-card img {
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    background: var(--graphite);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
