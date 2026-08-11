@@ -1,97 +1,93 @@
 {
-  "meta.facebookUrl": "xx",
-  "meta.whatsappNumber": "07516327552",
-  "meta.contactEmail": "kacperkaszowskipt@gmail.com",
   "meta": {
     "siteName": "KK Coaching",
-    "tagline": "Train. Transform. Thrive.",
-    "contactEmail": "REPLACE_ME@kkcoaching.fit",
-    "whatsappNumber": "REPLACE_ME (E.164 format, e.g. +44...)",
-    "instagramUrl": "REPLACE_ME",
-    "facebookUrl": "REPLACE_ME",
-    "trainingLocation": "REPLACE_ME - not confirmed, do not publish exact address yet"
+    "tagline": "Train with purpose. Build results that last.",
+    "contactEmail": "kacperkaszowskipt@gmail.com",
+    "whatsappNumber": "+447516327552",
+    "instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
+    "facebookUrl": "",
+    "trainingLocation": "Cwmbran, Torfaen, South Wales"
   },
-  "meta.instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
   "transformations": {
     "eyebrow": "Real results",
     "heading": "Real people. Real work. Real progress.",
     "body": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
-    "cta": "See Transformations"
+    "cta": "See Client Results"
   },
   "servicesIntro": {
     "eyebrow": "Coaching options",
-    "heading": "Ways to work together",
-    "body": "Every option below explains who it is for, what it includes and what happens next."
+    "heading": "Choose the level of support that fits you",
+    "body": "Whether you want face-to-face coaching in Cwmbran, complete online support or a combination of both, the goal is the same: a clear plan, measurable progress and no more guesswork."
   },
   "process": {
     "eyebrow": "The process",
     "heading": "A clear process. No guesswork.",
-    "body": "A simple coaching process that turns goals into measurable actions.",
+    "body": "We start with where you are now, build around your real life and adjust the plan using your progress - not guesswork.",
     "steps": [
       {
         "title": "Free consultation",
-        "body": "A conversation about your goal, experience, lifestyle and obstacles."
+        "body": "We talk through your goal, training experience, schedule, lifestyle and what has been holding you back."
       },
       {
         "title": "Your individual plan",
-        "body": "A programme matched to your goal, schedule, equipment and ability."
+        "body": "You get a programme matched to your goal, ability, available equipment and weekly schedule."
       },
       {
         "title": "Train and track",
-        "body": "Following the plan, logging training and monitoring what matters."
+        "body": "You follow the plan while we track training, body data, adherence and the markers that matter for your goal."
       },
       {
         "title": "Review and adjust",
-        "body": "Check-in review, feedback and adjustments when the data calls for it."
+        "body": "We keep what is working and make changes when your progress, performance or adherence shows they are needed."
       }
     ]
   },
   "story": {
     "heading": "I know what it feels like to start from the beginning.",
     "eyebrow": "Meet your coach",
-    "imageAlt": "Kacper Kaszowski's own body transformation",
+    "imageAlt": "Kacper Kaszowski, Level 3 Personal Trainer in Cwmbran",
     "statStart": "117 kg",
     "cta": "Meet Your Coach",
-    "bodyFull": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I did not enter fitness because staying in shape had always been easy for me. I started at approximately 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I lost over 40 kg and completely rebuilt my physique. That journey taught me the difference between a plan that looks impressive on paper and one that a real person can follow for long enough to produce results. Today, I use that experience to help other people train with purpose, improve their nutrition and build results they can maintain.",
-    "statLoss": "-40 kg",
-    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I started at approximately 117 kg and lost over 40 kg through consistency, education and a more structured approach - and I now use that experience to help other people train with purpose.",
+    "bodyFull": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I did not get into fitness because staying in shape had always been easy for me. I started at around 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I lost over 40 kg and completely rebuilt my physique. That process taught me the difference between a plan that looks impressive on paper and one a real person can follow for long enough to produce results. Today I use that experience to help people lose fat, build muscle, train with confidence and create routines they can maintain in real life.",
+    "statLoss": "40+ kg",
+    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a Level 3 Personal Trainer based in Cwmbran. I started at around 117 kg and lost over 40 kg through consistency, education and a structured approach. Now I use that experience to help other people stop guessing, train with purpose and build results they can maintain.",
     "image": "/images/kacper.png",
     "statQualification": "L3 PT"
   },
   "finalCta": {
-    "heading": "Ready to stop guessing and start following a clear plan?",
-    "body": "Tell me where you are now, where you want to get and what has been holding you back. We will discuss the most suitable way to work together.",
+    "heading": "Ready to stop starting over?",
+    "body": "Tell me where you are now, what you want to achieve and what has been getting in the way. We will work out the most suitable way to move forward.",
     "cta": "Book Your Free Consultation"
   },
   "hero": {
     "heading": "Personal Trainer in Cwmbran & Online Fitness Coaching",
     "lead": "Tired of random workouts, diets you can't stick to or starting over every few weeks? Get a clear training plan, practical nutrition targets and ongoing support built around your goal, schedule and experience.",
     "ctaPrimary": "Book a Free Consultation",
-    "ctaSecondary": "Explore Coaching Options",
-    "trustLine": "Level 3 Personal Trainer • -41 kg personal transformation • Cwmbran + Online • English / Polski",
+    "ctaSecondary": "See Client Results",
+    "trustLine": "Level 3 Personal Trainer • 40+ kg personal transformation • Cwmbran + Online • English / Polski",
     "image": "/images/kacper.png",
-    "imageAlt": "Kacper Kaszowski, KK Coaching"
+    "imageAlt": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching"
   },
   "whoItsFor": {
     "eyebrow": "Who this is for",
-    "heading": "Coaching built around your goal - and your real life.",
-    "body": "You do not need perfect genetics, endless free time or years of gym experience. You need a plan you understand, a way to measure progress and someone who knows when to push, when to adjust and when to keep things simple.",
+    "heading": "A plan built around your goal - and your real life.",
+    "body": "You do not need perfect genetics, endless free time or years of gym experience. You need a plan you understand, a way to measure progress and support that helps you stay consistent when life is not perfect.",
     "cards": [
       {
-        "title": "Lose body fat",
-        "body": "Reduce body fat without crash diets or unnecessary extremes."
+        "title": "Lose fat without another crash diet",
+        "body": "Build a calorie deficit you can actually stick to and adjust it as your progress changes."
       },
       {
-        "title": "Build muscle and strength",
-        "body": "Follow structured training with clear progression instead of random workouts."
+        "title": "Build muscle with a structured plan",
+        "body": "Stop jumping between random workouts and know exactly how your training is progressing."
       },
       {
         "title": "Feel confident in the gym",
-        "body": "Learn correct technique and understand what you are doing and why."
+        "body": "Learn technique, understand your programme and stop wondering if you are doing everything wrong."
       },
       {
-        "title": "Stay consistent",
-        "body": "Build a routine that works around your job, family and lifestyle."
+        "title": "Get back on track and stay consistent",
+        "body": "Whether you have had a break, a busy few months or simply lost momentum, we will build a routine you can maintain."
       }
     ]
   }
