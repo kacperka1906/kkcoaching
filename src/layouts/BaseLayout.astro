@@ -1,6 +1,4 @@
 ---
-// Shared layout for every page. Handles per-page SEO (title, description, canonical,
-// hreflang, Open Graph) so pages only pass in props instead of repeating boilerplate.
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
@@ -10,9 +8,10 @@ interface Props {
   title: string;
   description: string;
   lang?: 'en' | 'pl';
-  path?: string; // e.g. "/about" or "/pl/about" - used to build canonical + hreflang pairs
-  altPath?: string; // the equivalent URL in the other language, e.g. "/pl/about" when lang="en"
+  path?: string;
+  altPath?: string;
   structuredData?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
 const {
@@ -21,11 +20,13 @@ const {
   lang = 'en',
   path = '/',
   altPath,
-  structuredData
+  structuredData,
+  noindex = false
 } = Astro.props;
 
 const siteUrl = 'https://kkcoaching.fit';
 const canonical = `${siteUrl}${path}`;
+const socialImage = `${siteUrl}/images/kacper.png`;
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -34,20 +35,25 @@ const canonical = `${siteUrl}${path}`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonical} />
 
-  <!-- hreflang: brief 11.5 requires EN/PL alternates on every page -->
   <link rel="alternate" hreflang="en" href={lang === 'en' ? canonical : `${siteUrl}${altPath ?? '/'}`} />
   <link rel="alternate" hreflang="pl" href={lang === 'pl' ? canonical : `${siteUrl}${altPath ?? '/pl'}`} />
   <link rel="alternate" hreflang="x-default" href={siteUrl} />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KK Coaching" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={`${siteUrl}/images/kacper.png`} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:image:alt" content="KK Coaching - Kacper Kaszowski, Personal Trainer in Cwmbran" />
   <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'pl_PL'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImage} />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
@@ -65,9 +71,6 @@ const canonical = `${siteUrl}${path}`;
   <CookieBanner lang={lang} />
   <Analytics />
 
-  <!-- Netlify Identity: the invite email Kacper receives links here with the token
-       in the URL hash. This forwards straight to /admin so Decap CMS can pick it up
-       and show the "set your password" screen. -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
   <script is:inline>
     if (window.netlifyIdentity) {

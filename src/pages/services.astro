@@ -9,8 +9,8 @@ const allServices = (await getCollection('services'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title="Personal Training in Cwmbran | KK Coaching"
-  description="Personal Training 1:1, Online Coaching, Hybrid Coaching and one-off training plans with KK Coaching in Cwmbran and across the UK."
+  title="Personal Training & Online Coaching Cwmbran | KK Coaching"
+  description="Compare 1:1 personal training in Cwmbran, online coaching, hybrid coaching and personalised training plans with KK Coaching. Find the level of support that fits your goal."
   lang="en"
   path="/services"
   altPath="/pl/services"
@@ -39,8 +39,6 @@ const allServices = (await getCollection('services'))
           />
         ))}
       </div>
-      <!-- Pricing intentionally omitted per brief 6.4 - "do not publish unconfirmed pricing".
-           Add a `price` field to the services schema once pricing is decided. -->
     </div>
   </section>
 
@@ -56,9 +54,9 @@ const allServices = (await getCollection('services'))
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
-  .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
-  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
+  .page-hero .lead { color: #C7CBD1; max-width: 64ch; }
+  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 800px) { .service-grid { grid-template-columns: 1fr; } }
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
   .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }

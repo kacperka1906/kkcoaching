@@ -4,12 +4,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import site from '../../data/site.pl.json';
 
 const testimonials = (await getCollection('testimonials')).filter(t => t.data.consentOnFile);
-const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+const faqs = (await getCollection('faq'))
+  .filter(item => item.data.language === 'pl')
+  .sort((a, b) => a.data.order - b.data.order);
 const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła', 'Pewność siebie i technika', 'Coaching online', 'Trening personalny'];
 ---
 <BaseLayout
-  title="Prawdziwe Przemiany Klientów | KK Coaching"
-  description="Prawdziwe przemiany sylwetkowe klientów KK Coaching w Cwmbran i online. Prawdziwi ludzie, prawdziwa praca, prawdziwe efekty."
+  title="Przemiany Podopiecznych | Personal Trainer Cwmbran | KK Coaching"
+  description="Zobacz prawdziwe historie progresu i przemiany KK Coaching z treningów personalnych w Cwmbran oraz coachingu online. Realna praca, konkretny proces i mierzalne efekty."
   lang="pl"
   path="/pl/transformations"
   altPath="/transformations"
@@ -31,23 +33,27 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
       </div>
 
       {testimonials.length === 0 && (
-        <p class="empty-state">Brak opublikowanych przemian &mdash; dodaj wpisy w <code>src/content/testimonials/</code> dopiero po uzyskaniu pisemnej zgody klienta.</p>
+        <p class="empty-state">Kolejne historie podopiecznych pojawią się tutaj wkrótce.</p>
       )}
 
       <div class="transform-grid">
-        {testimonials.map(t => (
-          <article class="transform-card">
-            <img src={t.data.image} alt={t.data.imageAlt} width="400" height="300" loading="lazy" />
-            <div class="transform-body">
-              <div class="meta">
-                <span>{t.data.name}</span>
-                <span>{t.data.serviceType}</span>
-                <span>{t.data.duration}</span>
+        {testimonials.map(async (t) => {
+          const { Content } = await t.render();
+          return (
+            <article class="transform-card">
+              <img src={t.data.image} alt={t.data.imageAlt} width="400" height="300" loading="lazy" />
+              <div class="transform-body">
+                <div class="meta">
+                  <span>{t.data.name}</span>
+                  <span>{t.data.serviceType}</span>
+                  <span>{t.data.duration}</span>
+                </div>
+                <div class="result-line">{t.data.startingPoint} &rarr; {t.data.result}</div>
+                <div class="client-story"><Content /></div>
               </div>
-              <blockquote>{t.data.startingPoint} &rarr; {t.data.result}</blockquote>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -69,7 +75,6 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
           );
         })}
       </div>
-      <p class="faq-note">Uwaga: treść FAQ jest obecnie w wersji angielskiej &mdash; przetłumacz pliki w <code>src/content/faq/</code> lub dodaj wersje <code>pl/</code>, tak jak przy usługach.</p>
     </div>
   </section>
 
@@ -113,7 +118,9 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
   .transform-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
   .transform-body { padding: 22px; }
   .meta { display: flex; gap: 14px; font-size: 0.8rem; color: var(--steel); margin-bottom: 10px; flex-wrap: wrap; }
-  .transform-card blockquote { font-style: italic; border-left: 3px solid var(--red); padding-left: 14px; }
+  .result-line { font-weight: 700; border-left: 3px solid var(--red); padding-left: 14px; margin: 12px 0 16px; }
+  .client-story { color: var(--steel); font-size: 0.92rem; }
+  .client-story :global(p) { margin-bottom: 10px; }
   .faq-list { max-width: 760px; margin: 0 auto; }
   .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
   .faq-item summary { font-weight: 700; cursor: pointer; list-style: none; }
@@ -121,7 +128,6 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
   .faq-item summary::after { content: '+'; float: right; color: var(--red); }
   .faq-item[open] summary::after { content: '\2212'; }
   .faq-answer { color: var(--steel); margin-top: 10px; font-size: 0.95rem; }
-  .faq-note { text-align: center; color: var(--steel); font-size: 0.82rem; margin-top: 24px; }
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
   .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }
