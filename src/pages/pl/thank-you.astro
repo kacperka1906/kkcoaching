@@ -8,12 +8,13 @@ import site from '../../data/site.pl.json';
   lang="pl"
   path="/pl/thank-you"
   altPath="/thank-you"
+  noindex={true}
 >
   <section class="thank-you">
     <div class="container">
       <span class="eyebrow">Zgłoszenie odebrane</span>
-      <h1>Dziękujemy &mdash; wiadomość dotarła.</h1>
-      <p class="lead">Zwykle odpowiadam w ciągu 24 godzin. W międzyczasie, jeśli sprawa jest pilna, napisz na WhatsApp.</p>
+      <h1>Dziękuję &mdash; wiadomość dotarła.</h1>
+      <p class="lead">Zwykle odpowiadam w ciągu 24 godzin. Jeśli chcesz coś dopisać do zgłoszenia, możesz w międzyczasie napisać na WhatsApp.</p>
       <div class="actions">
         <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} class="btn btn-primary" target="_blank" rel="noopener">Napisz na WhatsApp</a>
         <a href="/pl" class="btn btn-outline-dark">Wróć na stronę główną</a>
