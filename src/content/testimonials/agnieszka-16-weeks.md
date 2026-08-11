@@ -3,7 +3,7 @@ name: "Agnieszka"
 ageDisclosed: false
 serviceType: "Coaching"
 duration: "16 weeks"
-startingPoint: "Starting point shown in progress photos"
+startingPoint: "16-week starting point"
 result: "3 kg down and 8 cm added at the hips"
 consentOnFile: true
 image: "/images/client-transformation-agnieszka-16-weeks.svg"
