@@ -10,26 +10,33 @@ const allServices = (await getCollection('services'))
   .sort((a, b) => a.data.order - b.data.order);
 
 const testimonials = await getCollection('testimonials');
-const featured = testimonials.find(t => t.data.featured && t.data.consentOnFile) ?? testimonials[0];
+const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile);
+const featured = consentedTestimonials.find(t => t.data.featured) ?? consentedTestimonials[0];
 
+const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'KK Coaching',
-  image: `${Astro.site}images/placeholder.png`,
+  description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and progress tracking.',
+  image: `${Astro.site}images/kacper.png`,
   url: String(Astro.site),
+  email: site.meta.contactEmail,
+  telephone: site.meta.whatsappNumber,
+  sameAs,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Cwmbran',
     addressRegion: 'Torfaen',
     addressCountry: 'GB'
   },
-  areaServed: 'GB'
+  areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
+  knowsLanguage: ['English', 'Polish']
 };
 ---
 <BaseLayout
   title="Personal Trainer Cwmbran & Online Coach | KK Coaching"
-  description="Personal training in Cwmbran and online coaching across the UK. Individual training, practical nutrition support and regular progress reviews. Book a free consultation."
+  description="Personal trainer in Cwmbran and online fitness coaching across the UK. Individual training, practical nutrition support and regular progress reviews. Book a free consultation."
   lang="en"
   path="/"
   altPath="/pl"
@@ -41,13 +48,12 @@ const structuredData = {
     ctaPrimary={site.hero.ctaPrimary}
     ctaPrimaryHref="/contact"
     ctaSecondary={site.hero.ctaSecondary}
-    ctaSecondaryHref="/services"
+    ctaSecondaryHref="/transformations"
     trustLine={site.hero.trustLine}
     image={site.hero.image}
     imageAlt={site.hero.imageAlt}
   />
 
-  <!-- Who it's for -->
   <section aria-labelledby="who-heading">
     <div class="container">
       <div class="section-head">
@@ -66,7 +72,6 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services" class="on-dark" aria-labelledby="services-heading">
     <div class="container">
       <div class="section-head">
@@ -91,7 +96,6 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Coach story -->
   <section aria-labelledby="story-heading">
     <div class="container">
       <div class="story">
@@ -111,7 +115,6 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Process -->
   <section class="tight on-white" aria-labelledby="process-heading">
     <div class="container">
       <div class="section-head centered">
@@ -131,7 +134,6 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Transformations -->
   <section id="transformations" aria-labelledby="transform-heading">
     <div class="container">
       <div class="section-head centered">
@@ -158,7 +160,6 @@ const structuredData = {
     </div>
   </section>
 
-  <!-- Final CTA -->
   <section class="final-cta" id="contact" aria-labelledby="final-cta-heading">
     <div class="container">
       <h2 id="final-cta-heading">{site.finalCta.heading}</h2>
