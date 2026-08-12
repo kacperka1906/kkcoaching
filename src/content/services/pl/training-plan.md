@@ -5,8 +5,8 @@ order: 4
 minor: true
 ctaLabel: "Zapytaj o plan treningowy"
 ctaTarget: "/pl/contact"
-image: "/images/personalised-training-plan-placeholder.svg"
-imageAlt: "Indywidualny plan treningowy i uporządkowany program ćwiczeń od KK Coaching"
+image: "/images/personalised-training-plan.svg"
+imageAlt: "Indywidualny plan treningowy KK Coaching pokazany w aplikacji z seriami, zakresem powtórzeń, RIR i czasem przerw"
 bullets:
   - "Program zbudowany pod Twój cel i tygodniowy grafik"
   - "Ćwiczenia dopasowane do sprzętu i doświadczenia"
