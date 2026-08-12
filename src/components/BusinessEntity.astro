@@ -1,0 +1,69 @@
+---
+import siteEn from '../data/site.en.json';
+
+const siteUrl = 'https://kkcoaching.fit';
+const businessId = `${siteUrl}/#business`;
+const personId = `${siteUrl}/#kacper-kaszowski`;
+const locationId = `${siteUrl}/#jd-gyms-cwmbran-training-location`;
+const sameAs = [siteEn.meta.instagramUrl, siteEn.meta.facebookUrl].filter(Boolean);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': businessId,
+      name: 'KK Coaching',
+      alternateName: 'KK Coaching by Kacper Kaszowski',
+      url: `${siteUrl}/`,
+      description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and regular progress tracking.',
+      image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
+      logo: `${siteUrl}/images/logo.png`,
+      email: siteEn.meta.contactEmail,
+      telephone: siteEn.meta.whatsappNumber,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '17-18 Gwent Square',
+        addressLocality: 'Cwmbran',
+        addressRegion: 'Torfaen',
+        postalCode: 'NP44 1PW',
+        addressCountry: 'GB'
+      },
+      location: { '@id': locationId },
+      areaServed: [
+        { '@type': 'City', name: 'Cwmbran' },
+        { '@type': 'AdministrativeArea', name: 'Torfaen' },
+        { '@type': 'AdministrativeArea', name: 'South Wales' },
+        { '@type': 'Country', name: 'United Kingdom' }
+      ],
+      knowsLanguage: ['English', 'Polish'],
+      sameAs,
+      founder: { '@id': personId }
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Kacper Kaszowski',
+      jobTitle: 'Personal Trainer',
+      url: `${siteUrl}/about`,
+      image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
+      sameAs,
+      worksFor: { '@id': businessId }
+    },
+    {
+      '@type': 'Place',
+      '@id': locationId,
+      name: 'JD Gyms Cwmbran',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '17-18 Gwent Square',
+        addressLocality: 'Cwmbran',
+        addressRegion: 'Torfaen',
+        postalCode: 'NP44 1PW',
+        addressCountry: 'GB'
+      }
+    }
+  ]
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
