@@ -105,9 +105,11 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     color: var(--graphite);
     background: var(--off-white);
     line-height: 1.6;
+    overflow-wrap: break-word;
   }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
+  section[id] { scroll-margin-top: 88px; }
 
   .container {
     max-width: var(--max-width);
@@ -142,6 +144,7 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
+    line-height: 1.25;
     letter-spacing: 0.02em;
     border: 2px solid transparent;
     cursor: pointer;
@@ -175,14 +178,23 @@ const socialImage = `${siteUrl}/images/kacper.png`;
   .section-head p { color: var(--steel); font-size: 1.05rem; }
   section.on-dark .section-head p { color: #B7BBC1; }
 
-  /* Transformation graphics are portrait assets (4:5). Keep the full result visible
-     instead of cropping them to the old 4:3 placeholder ratio. */
   .transform-card img {
     width: 100%;
     height: auto !important;
     aspect-ratio: auto !important;
     object-fit: contain !important;
     background: var(--graphite);
+  }
+
+  @media (max-width: 620px) {
+    .container { padding-left: 18px; padding-right: 18px; }
+    section { padding: 62px 0; }
+    section.tight { padding: 48px 0; }
+    .section-head { margin-bottom: 32px; }
+    .section-head p { font-size: 0.98rem; }
+    .eyebrow { font-size: 0.74rem; letter-spacing: 0.1em; }
+    h2 { font-size: clamp(1.5rem, 7vw, 1.95rem); }
+    .btn { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {
