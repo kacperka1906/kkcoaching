@@ -201,6 +201,233 @@ collections:
               - { label: "Treść", name: "body", widget: "text" }
               - { label: "Tekst przycisku", name: "cta", widget: "string" }
 
+  - name: "pricing_settings"
+    label: "Ceny i pakiety / Pricing"
+    files:
+      - label: "Ceny, pakiety i wyróżnienia"
+        name: "pricing"
+        file: "src/data/pricing.json"
+        fields:
+          - { label: "Symbol waluty", name: "currency", widget: "string", default: "£" }
+          - label: "Etykiety / Labels"
+            name: "labels"
+            widget: "object"
+            fields:
+              - label: "Najlepszy wybór / Best value"
+                name: "bestValue"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Od / From"
+                name: "from"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Za trening / Per session"
+                name: "perSession"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Jednorazowo / One-off"
+                name: "oneOff"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+
+          - label: "Personal Training 1:1"
+            name: "personal"
+            widget: "object"
+            fields:
+              - label: "Teksty sekcji cennika"
+                name: "section"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Wprowadzenie"
+                    name: "intro"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Notatka pod cennikiem"
+                    name: "note"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Przycisk CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Pojedynczy trening / Pay as you go"
+                name: "payg"
+                widget: "object"
+                fields:
+                  - { label: "Aktywny", name: "enabled", widget: "boolean" }
+                  - label: "Nazwa"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
+                  - { label: "Długość treningu (min)", name: "sessionMinutes", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
+              - label: "Pakiety 1:1"
+                name: "packages"
+                widget: "list"
+                summary: "{{fields.id}} — £{{fields.price}}"
+                fields:
+                  - { label: "ID", name: "id", widget: "string", hint: "Techniczny identyfikator, np. weekly1" }
+                  - { label: "Aktywny", name: "enabled", widget: "boolean" }
+                  - label: "Nazwa"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
+                  - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Liczba treningów", name: "sessions", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
+
+          - label: "Online Coaching"
+            name: "online"
+            widget: "object"
+            fields:
+              - label: "Teksty sekcji cennika"
+                name: "section"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Wprowadzenie"
+                    name: "intro"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Notatka pod cennikiem"
+                    name: "note"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Przycisk CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - { label: "Aktywny", name: "enabled", widget: "boolean" }
+              - label: "Nazwa"
+                name: "name"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
+              - { label: "Płatność co ile tygodni", name: "billingWeeks", widget: "number", value_type: "int", min: 1 }
+              - { label: "Minimalny okres współpracy (tygodnie)", name: "minimumWeeks", widget: "number", value_type: "int", min: 1 }
+              - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
+
+          - label: "Hybrid Coaching"
+            name: "hybrid"
+            widget: "object"
+            fields:
+              - label: "Teksty sekcji cennika"
+                name: "section"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Wprowadzenie"
+                    name: "intro"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Notatka pod cennikiem"
+                    name: "note"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Przycisk CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - { label: "Wyróżnij Hybrid na kartach usług", name: "homeBadgeEnabled", widget: "boolean" }
+              - label: "Etykieta wyróżnienia Hybrid"
+                name: "homeBadge"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Pakiety Hybrid"
+                name: "packages"
+                widget: "list"
+                summary: "{{fields.id}} — £{{fields.price}}"
+                fields:
+                  - { label: "ID", name: "id", widget: "string", hint: "Techniczny identyfikator, np. weekly1" }
+                  - { label: "Aktywny", name: "enabled", widget: "boolean" }
+                  - label: "Nazwa"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
+                  - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Liczba treningów 1:1", name: "sessions", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
+
+          - label: "Indywidualny plan treningowy"
+            name: "trainingPlan"
+            widget: "object"
+            fields:
+              - { label: "Aktywny", name: "enabled", widget: "boolean" }
+              - { label: "Cena jednorazowa £", name: "price", widget: "number", value_type: "float", min: 0 }
+
   - name: "services_en"
     label: "Services (English)"
     folder: "src/content/services/en"
