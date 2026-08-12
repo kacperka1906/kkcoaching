@@ -1,10 +1,10 @@
 ---
-title: "Coaching hybrydowy — treningi 1:1 + pełne prowadzenie online"
-tagline: "Najszersza forma współpracy: wszystko, co dostajesz w coachingu online, plus regularny kontakt na żywo podczas treningów personalnych w Cwmbran."
+title: "Coaching hybrydowy — pełne prowadzenie online + treningi 1:1"
+tagline: "Najszersza forma współpracy: wszystko, co dostajesz w coachingu online, plus regularne treningi personalne 1:1 w Cwmbran i bieżąca praca nad techniką na żywo."
 order: 3
 minor: false
-ctaLabel: "Zapytaj o coaching hybrydowy"
-ctaTarget: "/pl/contact"
+ctaLabel: "Zobacz coaching hybrydowy"
+ctaTarget: "/pl/hybrid-coaching"
 image: "/images/hybrid-coaching-placeholder.svg"
 imageAlt: "Coaching hybrydowy w Cwmbran łączący trening personalny 1:1 z pełnym prowadzeniem online"
 bullets:
