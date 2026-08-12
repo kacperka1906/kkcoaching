@@ -10,9 +10,16 @@ interface Props {
   minor?: boolean;
 }
 const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = false } = Astro.props;
+const isHybrid = /hybrid|hybryd/i.test(title);
+const badgeLabel = isHybrid
+  ? (/hybryd/i.test(title) ? 'Najszersze prowadzenie' : 'Most complete')
+  : '';
 ---
-<article class:list={['service-card', { minor }]}>
-  <img src={image} alt={imageAlt} width="400" height="250" loading="lazy" />
+<article class:list={['service-card', { minor, featured: isHybrid }]}>
+  <div class="media-wrap">
+    <img src={image} alt={imageAlt} width="400" height="250" loading="lazy" decoding="async" />
+    {isHybrid && <span class="service-badge">{badgeLabel}</span>}
+  </div>
   <div class="service-body">
     <h3>{title}</h3>
     <p>{tagline}</p>
@@ -32,10 +39,32 @@ const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = f
     display: flex;
     flex-direction: column;
     min-width: 0;
+    position: relative;
   }
-  .service-card img { aspect-ratio: 16/10; object-fit: cover; }
+  .service-card.featured {
+    border: 2px solid var(--red);
+    box-shadow: 0 12px 30px rgba(23, 25, 29, 0.1);
+  }
+  .media-wrap { position: relative; }
+  .service-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+  .service-badge {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 999px;
+    padding: 7px 11px;
+    font-size: 0.68rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+  }
   .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
   .service-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .featured .service-body h3 { color: var(--red); }
   .service-body p { color: var(--steel); font-size: 0.95rem; }
   .service-body ul { list-style: none; margin: 14px 0 22px; font-size: 0.9rem; color: var(--steel); }
   .service-body ul li { padding-left: 18px; position: relative; margin-bottom: 6px; }
@@ -52,5 +81,7 @@ const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = f
     .service-body p { font-size: 0.92rem; }
     .service-body ul { font-size: 0.88rem; }
     .service-body .btn { width: 100%; align-self: stretch; }
+    .service-badge { left: 12px; top: 12px; font-size: 0.64rem; }
+    .service-card.featured { box-shadow: 0 8px 22px rgba(23, 25, 29, 0.08); }
   }
 </style>
