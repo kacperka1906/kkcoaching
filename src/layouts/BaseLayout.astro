@@ -194,6 +194,9 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     background: var(--graphite);
   }
 
+  /* Internal replacement labels stay out of the public-facing UI. */
+  .image-note { display: none !important; }
+
   @media (max-width: 620px) {
     .container { padding-left: 18px; padding-right: 18px; }
     section { padding: 58px 0; }
@@ -206,6 +209,7 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     .center-cta .btn,
     .final-cta .btn { width: 100%; max-width: 420px; }
     .center-cta { display: flex; justify-content: center; }
+    .faq-item summary { min-height: 48px; display: flex; align-items: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {

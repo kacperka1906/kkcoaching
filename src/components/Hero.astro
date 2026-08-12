@@ -77,14 +77,14 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
   .trust-line { color: #AEB3BA; font-size: 0.82rem; line-height: 1.5; letter-spacing: 0.01em; }
 
   @media (max-width: 620px) {
-    .hero { min-height: 780px; }
+    .hero { min-height: max(720px, calc(100svh - 72px)); }
     .hero-photo { object-position: 52% top; }
-    .hero-inner { padding-top: 360px; padding-bottom: 34px; }
+    .hero-inner { padding-top: clamp(330px, 48vh, 390px); padding-bottom: 32px; }
     .hero h1 { font-size: clamp(1.95rem, 9vw, 2.55rem); }
     .hero p.lead { font-size: 0.98rem; line-height: 1.55; }
     .hero-ctas { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .hero-ctas .btn { width: 100%; }
-    .trust-line { text-align: center; font-size: 0.76rem; }
+    .trust-line { text-align: center; font-size: 0.76rem; max-width: 42ch; margin: 0 auto; }
   }
 
   @media (min-width: 861px) {
