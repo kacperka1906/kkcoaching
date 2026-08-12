@@ -4,29 +4,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const onlineCore = [
   'Indywidualny plan treningowy na sesje ze mną i treningi wykonywane samodzielnie',
   'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja coachingowa z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
-  'Regularne check-iny i dokładna analiza postępów',
+  'Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
+  'Regularne raporty i dokładna analiza postępów',
   'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
   'Korekty treningu i żywienia na podstawie postępów',
-  'Ocena techniki z nagrań pomiędzy treningami 1:1',
-  'Kontakt przez WhatsApp pomiędzy check-inami i sesjami'
+  'Ocena techniki z nagrań między treningami 1:1',
+  'Kontakt przez WhatsApp między raportami i sesjami'
 ];
 
 const inPerson = [
-  'Regularne treningi personalne 1:1 w Cwmbran',
+  'Regularne treningi personalne 1:1 w JD Gyms Cwmbran',
   'Nauka ustawienia i techniki ćwiczeń na żywo',
-  'Bieżący feedback dotyczący wykonania, intensywności i progresji',
+  'Bieżące wskazówki dotyczące wykonania, intensywności i progresji',
   'Jeden program łączący treningi ze mną z sesjami, które wykonujesz samodzielnie'
 ];
 
 const faqs = [
   {
     q: 'Czym coaching hybrydowy różni się od coachingu online?',
-    a: 'Coaching hybrydowy zawiera cały zakres coachingu online i dodatkowo regularne treningi personalne 1:1 w Cwmbran. Aplikacja, plan, wsparcie żywieniowe, check-iny, monitoring postępów, analiza techniki i WhatsApp nadal pozostają częścią współpracy.'
+    a: 'Coaching hybrydowy łączy pełne prowadzenie online z regularnymi treningami personalnymi 1:1 w Cwmbran. Aplikacja, plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp nadal pozostają częścią współpracy.'
   },
   {
     q: 'Czy w coachingu hybrydowym nadal korzystam z aplikacji?',
-    a: 'Tak. Aplikacja pozostaje głównym miejscem na plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Treningi 1:1 są dodatkiem do całego systemu, a nie jego zamiennikiem.'
+    a: 'Tak. Aplikacja pozostaje głównym miejscem na plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Treningi 1:1 są częścią tego samego planu, a nie osobną usługą działającą obok.'
   },
   {
     q: 'Czy coaching hybrydowy jest tylko dla początkujących?',
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: 'Gdzie odbywają się treningi 1:1?',
-    a: 'Treningi 1:1 odbywają się w Cwmbran, Torfaen. Dostępne godziny i dokładną organizację ustalamy podczas bezpłatnej konsultacji.'
+    a: 'Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dostępne godziny ustalamy podczas bezpłatnej konsultacji.'
   },
   {
     q: 'Skąd mam wiedzieć, czy potrzebuję coachingu hybrydowego, online czy samych treningów 1:1?',
@@ -48,9 +48,9 @@ const structuredData = {
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/hybrid-coaching#service',
-      name: 'Coaching hybrydowy w Cwmbran',
+      name: 'Trening personalny w Cwmbran i coaching online',
       serviceType: 'Coaching hybrydowy — trening personalny i coaching online',
-      description: 'Pełne prowadzenie online z aplikacją coachingową, planem treningowym, wsparciem żywieniowym, kontrolą postępów i regularnymi treningami personalnymi 1:1 w Cwmbran.',
+      description: 'Pełne prowadzenie online z planem treningowym, wsparciem żywieniowym, regularnymi raportami i kontrolą postępów połączone z treningami personalnymi 1:1 w Cwmbran.',
       url: 'https://kkcoaching.fit/pl/hybrid-coaching',
       areaServed: {
         '@type': 'AdministrativeArea',
@@ -75,8 +75,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Coaching Hybrydowy Cwmbran | Online + Trening Personalny | KK Coaching"
-  description="Coaching hybrydowy w Cwmbran: pełne prowadzenie online, aplikacja, trening i żywienie, check-iny, kontrola postępów oraz regularne treningi personalne 1:1."
+  title="Trener personalny Cwmbran i coaching online | KK Coaching"
+  description="Treningi personalne 1:1 w Cwmbran połączone z pełnym prowadzeniem online: plan treningowy, żywienie, regularne raporty, aplikacja i kontrola postępów."
   lang="pl"
   path="/pl/hybrid-coaching"
   altPath="/hybrid-coaching"
@@ -85,18 +85,18 @@ const structuredData = {
   <section class="hybrid-hero on-dark">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Najszersza forma współpracy</span>
-        <h1>Coaching hybrydowy: pełne prowadzenie online + treningi 1:1</h1>
-        <p class="lead">Masz wszystko, co obejmuje coaching online, a do tego regularne treningi personalne w Cwmbran. Jeden system łączy Twój plan, żywienie, postępy i pracę, którą robimy razem na siłowni.</p>
+        <span class="eyebrow">Coaching hybrydowy</span>
+        <h1>Treningi 1:1 w Cwmbran i pełne prowadzenie online</h1>
+        <p class="lead">Masz indywidualny plan, wsparcie żywieniowe, regularną analizę postępów i kontakt ze mną przez cały tydzień, a do tego treningi 1:1 w Cwmbran, podczas których pracujemy nad techniką i progresją na żywo.</p>
         <div class="hero-actions">
           <a href="/pl/contact" class="btn btn-primary">Umów bezpłatną konsultację</a>
           <a href="/pl/services" class="btn btn-secondary">Porównaj opcje współpracy</a>
         </div>
         <div class="trust-row" aria-label="Najważniejsze elementy coachingu hybrydowego">
-          <span>Pełny coaching online</span>
-          <span>Aplikacja</span>
-          <span>Treningi 1:1</span>
-          <span>WhatsApp</span>
+          <span>JD Gyms Cwmbran</span>
+          <span>Pełne prowadzenie online</span>
+          <span>Regularne raporty</span>
+          <span>Kontakt na WhatsApp</span>
         </div>
       </div>
       <div class="hero-media">
@@ -109,18 +109,18 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Dlaczego hybrydowo</span>
-        <h2>Nie wybierasz między prowadzeniem online a treningiem na żywo. Dostajesz oba.</h2>
-        <p>Ta opcja ma sens, jeśli chcesz pełnego systemu prowadzenia przez cały tydzień, ale jednocześnie zależy Ci na regularnych sesjach, podczas których możemy pracować nad techniką, wykonaniem i progresją bezpośrednio na siłowni.</p>
+        <h2>Nie wybierasz między prowadzeniem online a treningiem na żywo. Łączysz oba.</h2>
+        <p>Ta opcja ma sens, jeśli chcesz mieć plan i wsparcie przez cały tydzień, ale jednocześnie zależy Ci na regularnych sesjach, podczas których możemy na bieżąco pracować nad techniką, wykonaniem i progresją.</p>
       </div>
       <div class="compare-grid">
         <article class="scope-card">
-          <span class="scope-label">Pełny system online</span>
-          <h3>Wszystko, co zawiera coaching online</h3>
+          <span class="scope-label">Pełne prowadzenie online</span>
+          <h3>Plan, żywienie, raporty i kontakt</h3>
           <ul>{onlineCore.map(item => <li>{item}</li>)}</ul>
         </article>
         <article class="scope-card featured">
           <span class="scope-label">Dodatkowo na żywo</span>
-          <h3>Plus regularne treningi personalne 1:1</h3>
+          <h3>Regularne treningi personalne 1:1</h3>
           <ul>{inPerson.map(item => <li>{item}</li>)}</ul>
         </article>
       </div>
@@ -130,11 +130,11 @@ const structuredData = {
   <section class="app-band on-dark">
     <div class="container app-grid">
       <div>
-        <span class="eyebrow">Jedna aplikacja coachingowa</span>
-        <h2>Plan i postępy są ze sobą połączone również pomiędzy treningami 1:1.</h2>
-        <p>W aplikacji masz aktualny plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Sesje 1:1 są częścią tego samego systemu, więc nie funkcjonują jako oddzielna rozpiska.</p>
+        <span class="eyebrow">Wszystko w jednej aplikacji</span>
+        <h2>Treningi ze mną i te wykonywane samodzielnie są częścią jednego planu.</h2>
+        <p>W aplikacji masz aktualny plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Dzięki temu widzę nie tylko to, co robimy razem na siłowni, ale też jak wygląda cały tydzień treningowy.</p>
       </div>
-      <div class="app-points" aria-label="Funkcje aplikacji coachingowej">
+      <div class="app-points" aria-label="Funkcje aplikacji">
         <span>Plan treningowy</span>
         <span>Instrukcje ćwiczeń</span>
         <span>Logowanie treningów</span>
@@ -148,7 +148,7 @@ const structuredData = {
       <div class="section-head centered">
         <span class="eyebrow">Wybierz tyle wsparcia, ile potrzebujesz</span>
         <h2>Nie każdy potrzebuje coachingu hybrydowego.</h2>
-        <p>Jeśli zależy Ci głównie na prowadzeniu na siłowni, trening personalny 1:1 może wystarczyć. Jeśli samodzielnie dobrze radzisz sobie z techniką, pełny coaching online może dać Ci wszystko, czego potrzebujesz. Hybryda jest dla osób, które realnie skorzystają z obu.</p>
+        <p>Jeśli zależy Ci głównie na prowadzeniu na siłowni, trening personalny 1:1 może wystarczyć. Jeśli samodzielnie dobrze radzisz sobie z techniką, pełne prowadzenie online może dać Ci wszystko, czego potrzebujesz. Hybryda ma sens wtedy, kiedy realnie skorzystasz z obu form.</p>
       </div>
       <div class="related-grid">
         <a href="/pl/personal-training-cwmbran" class="related-card">
@@ -156,7 +156,7 @@ const structuredData = {
           <span>Prowadzenie na żywo skupione na treningu, technice i progresji →</span>
         </a>
         <a href="/pl/online-coaching" class="related-card">
-          <strong>Coaching online</strong>
+          <strong>Trener personalny online</strong>
           <span>Pełne prowadzenie zdalne bez regularnych sesji 1:1 →</span>
         </a>
       </div>
@@ -183,7 +183,7 @@ const structuredData = {
   <section class="final-cta">
     <div class="container">
       <span class="eyebrow light">Zacznijmy od rozmowy</span>
-      <h2>Chcesz pełnego prowadzenia? Sprawdźmy, czy hybryda ma u Ciebie sens.</h2>
+      <h2>Chcesz połączyć treningi 1:1 z pełnym prowadzeniem? Sprawdźmy, czy ma to u Ciebie sens.</h2>
       <p>Napisz mi, jaki masz cel, jak teraz trenujesz i jakiego wsparcia potrzebujesz. Powiem Ci, czy coaching hybrydowy będzie najlepszym wyborem, czy wystarczy prostsza opcja.</p>
       <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
     </div>

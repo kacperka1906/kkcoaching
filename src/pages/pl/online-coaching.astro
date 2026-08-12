@@ -11,20 +11,20 @@ const outcomes = [
     body: 'Ustalamy kalorie, makroskładniki i praktyczne zasady, które da się pogodzić z pracą, rodziną, wyjściami i jedzeniem, które naprawdę lubisz.'
   },
   {
-    title: 'Stały kontakt, kiedy coś przestaje działać',
-    body: 'Regularne check-iny, dane z treningów i nagrania techniki pozwalają wyłapać problem wcześniej i wprowadzić konkretną zmianę zamiast zgadywać.'
+    title: 'Kontakt i szybka reakcja, kiedy pojawia się problem',
+    body: 'Regularne raporty, dane z treningów i nagrania techniki pozwalają wcześniej wyłapać problem i wprowadzić konkretną zmianę zamiast zgadywać.'
   }
 ];
 
 const included = [
   'Indywidualny plan treningowy',
   'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja coachingowa z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
-  'Regularne check-iny i analiza postępów',
+  'Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
+  'Regularne raporty i analiza postępów',
   'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
   'Zmiany planu wtedy, kiedy postępy pokazują, że są potrzebne',
   'Ocena techniki na podstawie nagrań z treningu',
-  'Kontakt przez WhatsApp pomiędzy check-inami',
+  'Kontakt przez WhatsApp między raportami',
   'Wyjaśnienie, dlaczego coś robimy — nie tylko lista poleceń'
 ];
 
@@ -61,7 +61,7 @@ const process = [
   {
     num: '03',
     title: 'Realizujesz plan i dajesz mi dane',
-    body: 'Trenujesz, zapisujesz najważniejsze informacje i wysyłasz nagrania, jeśli chcesz sprawdzić technikę. Dzięki temu widzę, co naprawdę dzieje się między check-inami.'
+    body: 'Trenujesz, zapisujesz najważniejsze informacje i wysyłasz nagrania, jeśli chcesz sprawdzić technikę. Dzięki temu widzę, co naprawdę dzieje się między raportami.'
   },
   {
     num: '04',
@@ -73,10 +73,10 @@ const process = [
 const faqs = [
   {
     q: 'Czy muszę mieszkać w UK, żeby korzystać z coachingu online?',
-    a: 'Nie. Coaching działa w pełni zdalnie, więc możesz mieszkać poza UK. Najważniejsze jest to, żebyśmy mogli sprawnie się komunikować i żebyś miał dostęp do sprzętu potrzebnego do realizacji planu.'
+    a: 'Nie. Współpraca odbywa się zdalnie, więc możesz mieszkać poza UK. Najważniejsze jest to, żebyśmy mogli sprawnie się komunikować i żebyś miał dostęp do sprzętu potrzebnego do realizacji planu.'
   },
   {
-    q: 'Czy coaching online jest tylko dla osób zaawansowanych?',
+    q: 'Czy trener personalny online jest tylko dla osób zaawansowanych?',
     a: 'Nie. Jeśli dopiero zaczynasz, plan będzie prostszy, a nagrania ćwiczeń pozwolą mi na bieżąco pomagać Ci z techniką. Jeśli trenujesz dłużej, skupimy się na jakości planu, progresji i tym, co faktycznie ogranicza postępy.'
   },
   {
@@ -88,8 +88,8 @@ const faqs = [
     a: 'W zależności od celu bierzemy pod uwagę trend masy ciała, pomiary, zdjęcia sylwetki, wyniki treningowe, aktywność i realizację planu. Jeden pomiar nie decyduje o zmianie — patrzymy na całość.'
   },
   {
-    q: 'Jaki mam kontakt pomiędzy check-inami?',
-    a: 'Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, z którymi nie ma sensu czekać do kolejnego check-inu. Możesz też wysyłać nagrania ćwiczeń do oceny techniki.'
+    q: 'Czy mogę pisać do Ciebie między raportami?',
+    a: 'Tak. Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, z którymi nie ma sensu czekać do kolejnego raportu. Możesz też wysyłać nagrania ćwiczeń do oceny techniki.'
   }
 ];
 
@@ -99,9 +99,9 @@ const structuredData = {
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/online-coaching#service',
-      name: 'Coaching online - trening, żywienie i kontrola postępów',
-      serviceType: 'Online Fitness Coaching',
-      description: 'Indywidualny coaching online z planem treningowym w aplikacji, założeniami żywieniowymi, regularnymi check-inami, kontrolą postępów, oceną techniki i stałym wsparciem.',
+      name: 'Trener personalny online - plan, żywienie i kontrola postępów',
+      serviceType: 'Online Personal Training',
+      description: 'Indywidualne prowadzenie online z planem treningowym w aplikacji, wsparciem żywieniowym, regularnymi raportami, analizą postępów, oceną techniki i kontaktem przez WhatsApp.',
       url: 'https://kkcoaching.fit/pl/online-coaching',
       areaServed: [
         { '@type': 'Country', name: 'United Kingdom' },
@@ -126,8 +126,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Coaching online | Trening i żywienie | KK Coaching"
-  description="Indywidualny coaching online: plan treningowy w aplikacji, założenia żywieniowe, regularne check-iny, kontrola postępów, ocena techniki i kontakt przez WhatsApp."
+  title="Trener personalny online | Coaching online | KK Coaching"
+  description="Trener personalny online: indywidualny plan treningowy, wsparcie żywieniowe, regularne raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp."
   lang="pl"
   path="/pl/online-coaching"
   altPath="/online-coaching"
@@ -136,22 +136,22 @@ const structuredData = {
   <section class="online-hero on-dark">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Pełne prowadzenie online</span>
-        <h1>Coaching online, w którym naprawdę wiesz, co robić</h1>
-        <p class="lead">Dostajesz plan treningowy, założenia żywieniowe, regularne check-iny i kontakt ze mną pomiędzy nimi. Wszystko jest dopasowane do Twojego celu i tego, jak naprawdę wygląda Twój tydzień.</p>
+        <span class="eyebrow">Coaching online</span>
+        <h1>Trener personalny online — plan, kontrola i wsparcie</h1>
+        <p class="lead">Dostajesz indywidualny plan treningowy, jasne zasady żywieniowe, regularne raporty i kontakt ze mną między nimi. Wszystko dopasowujemy do Twojego celu i tego, jak naprawdę wygląda Twój tydzień.</p>
         <div class="hero-actions">
-          <a href="/pl/contact" class="btn btn-primary">Zacznij coaching online</a>
+          <a href="/pl/contact" class="btn btn-primary">Zacznij współpracę online</a>
           <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany podopiecznych</a>
         </div>
-        <div class="trust-row" aria-label="Co obejmuje coaching online">
-          <span>Plan pod Ciebie</span>
-          <span>Aplikacja coachingowa</span>
-          <span>Technika z nagrań</span>
-          <span>WhatsApp</span>
+        <div class="trust-row" aria-label="Co obejmuje współpraca online">
+          <span>Indywidualny plan</span>
+          <span>Aplikacja</span>
+          <span>Ocena techniki</span>
+          <span>Kontakt na WhatsApp</span>
         </div>
       </div>
       <div class="hero-media">
-        <img src="/images/online-coaching-placeholder.svg" alt="Coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów" width="720" height="540" />
+        <img src="/images/online-coaching-placeholder.svg" alt="Trener personalny online KK Coaching z treningiem, żywieniem i kontrolą postępów" width="720" height="540" />
       </div>
     </div>
   </section>
@@ -179,7 +179,7 @@ const structuredData = {
       <div>
         <span class="eyebrow">Co dostajesz</span>
         <h2 id="included-heading">Nie znikam po wysłaniu Ci planu.</h2>
-        <p class="dark-copy">Najważniejsze rzeczy często dzieją się pomiędzy check-inami. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem.</p>
+        <p class="dark-copy">Problemy zwykle nie czekają do dnia raportu. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem.</p>
       </div>
       <ul class="check-list">
         {included.map(item => <li>{item}</li>)}
@@ -192,7 +192,7 @@ const structuredData = {
       <div class="section-head centered">
         <span class="eyebrow">Wszystko w jednej aplikacji</span>
         <h2 id="app-heading">Plan, treningi i postępy zawsze pod ręką.</h2>
-        <p>Nie musisz szukać rozpiski po wiadomościach ani prowadzić kilku osobnych notatek. Aplikacja jest centrum Twojego prowadzenia online — i jest również częścią coachingu hybrydowego.</p>
+        <p>Nie musisz szukać rozpiski po wiadomościach ani prowadzić kilku osobnych notatek. Aplikacja jest centrum Twojej współpracy online — i jest również częścią coachingu hybrydowego.</p>
       </div>
       <div class="app-grid">
         {appFeatures.map(item => (
@@ -233,9 +233,9 @@ const structuredData = {
       </div>
       <div class="results-grid">
         <article class="result-card">
-          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="16-tygodniowa przemiana Anety w coachingu online KK Coaching — 10 kg mniej i 12 cm mniej w talii" width="600" height="750" loading="lazy" />
+          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="16-tygodniowa przemiana Anety we współpracy online z KK Coaching — 10 kg mniej i 12 cm mniej w talii" width="600" height="750" loading="lazy" />
           <div class="result-copy">
-            <span>ANETA · COACHING ONLINE · 16 TYGODNI</span>
+            <span>ANETA · ONLINE · 16 TYGODNI</span>
             <h3>-10 kg · -12 cm w talii</h3>
             <p>Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania.</p>
           </div>
@@ -243,7 +243,7 @@ const structuredData = {
         <article class="result-card">
           <img src="/images/client-transformation-agnieszka-16-weeks.svg" alt="16-tygodniowa przemiana sylwetki Agnieszki w KK Coaching" width="600" height="750" loading="lazy" />
           <div class="result-copy">
-            <span>AGNIESZKA · COACHING · 16 TYGODNI</span>
+            <span>AGNIESZKA · ONLINE · 16 TYGODNI</span>
             <h3>-3 kg · +8 cm w biodrach</h3>
             <p>Plan dopasowany do jej życia i regularność zamiast próby robienia wszystkiego perfekcyjnie.</p>
           </div>
@@ -255,11 +255,11 @@ const structuredData = {
 
   <section class="coach-section on-dark" aria-labelledby="coach-heading">
     <div class="container coach-grid">
-      <img src="/images/kacper.png" alt="Kacper Kaszowski, założyciel KK Coaching i Level 3 Personal Trainer" width="500" height="600" loading="lazy" />
+      <img src="/images/kacper.png" alt="Kacper Kaszowski, trener personalny i założyciel KK Coaching" width="500" height="600" loading="lazy" />
       <div>
         <span class="eyebrow">Twój trener</span>
-        <h2 id="coach-heading">Sam przeszedłem przez etap zgadywania. Nie chcę, żeby moi klienci robili to samo.</h2>
-        <p class="dark-copy">Zaczynałem od około 117 kg i zredukowałem ponad 40 kg. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i komplikowanie rzeczy, które powinny być proste.</p>
+        <h2 id="coach-heading">Wiem, jak wygląda chaos od środka. Dlatego nie prowadzę klientów metodą prób i błędów.</h2>
+        <p class="dark-copy">Sam przeszedłem drogę od około 117 kg do 76 kg, a później przebudowałem sylwetkę. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i komplikowanie rzeczy, które powinny być proste.</p>
         <p class="dark-copy">Dziś pracuję inaczej: ustalamy jasny cel, dobieramy plan do realnego życia i zmieniamy go dopiero wtedy, kiedy postępy pokazują, że faktycznie trzeba coś poprawić.</p>
         <a href="/pl/about" class="btn btn-secondary">Poznaj moją historię</a>
       </div>
@@ -270,7 +270,7 @@ const structuredData = {
     <div class="container faq-wrap">
       <div class="section-head centered">
         <span class="eyebrow">Pytania</span>
-        <h2 id="faq-heading">Coaching online — FAQ</h2>
+        <h2 id="faq-heading">Trener personalny online — FAQ</h2>
       </div>
       <div class="faq-list">
         {faqs.map(item => (
@@ -287,8 +287,8 @@ const structuredData = {
     <div class="container">
       <span class="eyebrow light">Zacznijmy od rozmowy</span>
       <h2>Jeśli chcesz wiedzieć, co robić dalej — napisz.</h2>
-      <p>Powiedz mi, jaki masz cel, jak teraz trenujesz i z czym masz największy problem. Powiem Ci, czy coaching online ma w Twojej sytuacji sens i jak wygląda start współpracy.</p>
-      <a href="/pl/contact" class="btn btn-secondary">Zacznij coaching online</a>
+      <p>Powiedz mi, jaki masz cel, jak teraz trenujesz i z czym masz największy problem. Powiem Ci, czy współpraca online ma w Twojej sytuacji sens i jak wygląda start.</p>
+      <a href="/pl/contact" class="btn btn-secondary">Zacznij współpracę online</a>
     </div>
   </section>
 </BaseLayout>
