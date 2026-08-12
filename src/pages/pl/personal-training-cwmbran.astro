@@ -3,73 +3,73 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const benefits = [
   {
-    title: 'Schudnij bez kolejnego planu na dwa tygodnie',
-    body: 'Ustalamy realny deficyt, pilnujemy jakości treningu i wprowadzamy zmiany na podstawie postępów, a nie dlatego, że jeden tydzień nie wyszedł idealnie.'
+    title: 'Chcesz schudnąć i nie wracać ciągle do punktu wyjścia',
+    body: 'Ustalamy realny deficyt, pilnujemy jakości treningu i patrzymy na trend, a nie jeden gorszy tydzień. Plan ma działać również wtedy, kiedy życie nie jest idealne.'
   },
   {
-    title: 'Buduj mięśnie z jasnym planem progresji',
-    body: 'Wiesz co trenujesz, dlaczego dane ćwiczenie jest w planie i co ma poprawiać się z tygodnia na tydzień. Koniec z przypadkowymi treningami.'
+    title: 'Chcesz budować mięśnie zamiast tylko „robić trening”',
+    body: 'Wiesz, po co wykonujesz dane ćwiczenie, co ma się poprawiać i jak wygląda progres. Koniec z przypadkowym dobieraniem ćwiczeń z treningu na trening.'
   },
   {
-    title: 'Poczuj się pewniej na siłowni',
-    body: 'Uczysz się techniki na żywo, rozumiesz swój plan i przestajesz zastanawiać się przy każdej serii, czy robisz wszystko źle.'
+    title: 'Chcesz w końcu czuć się pewnie na siłowni',
+    body: 'Na żywo poprawiamy technikę, ustawienie i wykonanie. Z czasem przestajesz zastanawiać się przy każdej serii, czy robisz wszystko dobrze.'
   }
 ];
 
 const included = [
-  'Bezpłatna konsultacja i konkretne ustalenie celu',
+  'Bezpłatna konsultacja i ustalenie konkretnego celu',
   'Trening personalny 1:1 w Cwmbran',
-  'Indywidualny program dopasowany do poziomu i grafiku',
-  'Nauka techniki i korekta wykonania ćwiczeń na żywo',
-  'Jasne zasady progresji — wiesz, co ma się poprawiać',
-  'Monitoring postępów i regularna ocena efektów',
-  'Praktyczne wskazówki dotyczące aktywności, kalorii i odżywiania',
-  'Możliwość przejścia na coaching hybrydowy lub online, jeśli potrzebujesz większego wsparcia poza treningiem'
+  'Plan treningowy dopasowany do Twojego poziomu i grafiku',
+  'Nauka techniki i korekta ćwiczeń na żywo',
+  'Jasne zasady progresji — wiesz, czego oczekujemy od kolejnych tygodni',
+  'Regularna kontrola postępów',
+  'Praktyczne wskazówki dotyczące aktywności, kalorii i żywienia',
+  'Możliwość rozszerzenia współpracy o coaching online lub hybrydowy'
 ];
 
 const process = [
   {
     num: '01',
-    title: 'Bezpłatna konsultacja',
-    body: 'Rozmawiamy o celu, doświadczeniu, grafiku, wcześniejszych próbach i tym, co obecnie najbardziej blokuje Twój progres.'
+    title: 'Najpierw poznaję Twój punkt startowy',
+    body: 'Rozmawiamy o celu, doświadczeniu, grafiku, wcześniejszych próbach i o tym, co dziś najbardziej utrudnia Ci osiągnięcie efektu.'
   },
   {
     num: '02',
-    title: 'Budujemy Twój plan',
-    body: 'Trening dopasowuję do Twojego poziomu, liczby dostępnych dni, możliwości i efektu, który faktycznie chcesz osiągnąć.'
+    title: 'Układam plan pod Ciebie',
+    body: 'Dobieram trening do Twojego poziomu, możliwości, dostępnych dni i celu. Nie dostajesz gotowca skopiowanego od kogoś innego.'
   },
   {
     num: '03',
-    title: 'Trenujesz z konkretnym celem',
-    body: 'Na treningach 1:1 pracujemy nad techniką, wykonaniem, intensywnością i progresją, żeby każda seria miała swoje uzasadnienie.'
+    title: 'Trenujemy z konkretnym celem',
+    body: 'Na sesjach 1:1 pracujemy nad techniką, intensywnością i progresją. Każdy element planu ma swoje zadanie.'
   },
   {
     num: '04',
-    title: 'Analizujemy i korygujemy',
-    body: 'Patrzymy na wyniki treningowe, pomiary, realizację założeń i Twoje odczucia. Zostawiamy to, co działa, a zmieniamy tylko to, co trzeba.'
+    title: 'Sprawdzamy efekty i reagujemy',
+    body: 'Patrzymy na wyniki treningowe, pomiary i realizację planu. Jeśli coś działa — nie ruszamy tego. Jeśli nie działa — wiemy, co zmienić.'
   }
 ];
 
 const faqs = [
   {
     q: 'Czy muszę mieć doświadczenie na siłowni, żeby zacząć?',
-    a: 'Nie. Trening dopasowuję do Twojego aktualnego poziomu. Jeśli dopiero zaczynasz, możemy skupić się na podstawach techniki, obsłudze sprzętu i prostym planie, który naprawdę rozumiesz.'
+    a: 'Nie. Jeśli dopiero zaczynasz, zaczniemy od podstaw: techniki, obsługi sprzętu i prostego planu, który rozumiesz. Jeśli już trenujesz, skupimy się na tym, co można poprawić, żeby Twój trening dawał więcej.'
   },
   {
-    q: 'Czy trening personalny pomoże mi schudnąć i zbudować mięśnie?',
-    a: 'Tak. Sam trening to tylko część procesu, dlatego patrzymy też na aktywność, kalorie i praktyczne nawyki żywieniowe. Podejście będzie inne przy redukcji, budowaniu masy, rekompozycji czy zwykłym powrocie do regularności.'
+    q: 'Czy trening personalny pomoże mi schudnąć albo zbudować mięśnie?',
+    a: 'Tak, ale sam trening to tylko część układanki. W zależności od celu bierzemy też pod uwagę aktywność, kalorie i sposób odżywiania. Inaczej podejdziemy do redukcji, inaczej do budowania mięśni czy rekompozycji.'
   },
   {
     q: 'Gdzie odbywają się treningi?',
-    a: 'Treningi 1:1 są dostępne lokalnie w Cwmbran, Torfaen. Dokładne godziny i organizację treningów ustalamy podczas bezpłatnej konsultacji.'
+    a: 'Treningi 1:1 odbywają się w Cwmbran, Torfaen. Dokładne godziny i organizację ustalamy podczas bezpłatnej konsultacji.'
   },
   {
     q: 'Co jeśli potrzebuję wsparcia również pomiędzy treningami?',
-    a: 'Jeśli chcesz mieć większe wsparcie poza siłownią, możemy dobrać coaching hybrydowy lub online, tak żeby trening, założenia żywieniowe, monitoring postępów i check-iny działały jako jeden system.'
+    a: 'Możemy rozszerzyć współpracę o coaching hybrydowy lub online. Wtedy poza treningami 1:1 dochodzą m.in. regularne podsumowania, dokładniejszy monitoring, wsparcie żywieniowe i kontakt pomiędzy sesjami.'
   },
   {
     q: 'Jak zacząć?',
-    a: 'Umów bezpłatną konsultację i napisz mi, gdzie jesteś teraz, jaki masz cel i co do tej pory najbardziej Ci przeszkadzało. Najpierw ustalimy, czy trening personalny 1:1 jest dla Ciebie najlepszą opcją — bez zobowiązań.'
+    a: 'Umów bezpłatną konsultację. Powiedz mi, jaki masz cel, gdzie jesteś teraz i z czym masz największy problem. Na tej podstawie powiem Ci, czy trening 1:1 będzie dla Ciebie najlepszą opcją.'
   }
 ];
 
@@ -81,7 +81,7 @@ const structuredData = {
       '@id': 'https://kkcoaching.fit/pl/personal-training-cwmbran#service',
       name: 'Trening personalny 1:1 w Cwmbran',
       serviceType: 'Personal Training',
-      description: 'Trening personalny 1:1 w Cwmbran z indywidualnym planem, nauką techniki, monitoringiem postępów i praktycznym wsparciem żywieniowym.',
+      description: 'Trening personalny 1:1 w Cwmbran z indywidualnym planem, nauką techniki, kontrolą postępów i praktycznym wsparciem żywieniowym.',
       url: 'https://kkcoaching.fit/pl/personal-training-cwmbran',
       areaServed: {
         '@type': 'AdministrativeArea',
@@ -112,7 +112,7 @@ const structuredData = {
 ---
 <BaseLayout
   title="Personal Trainer Cwmbran | Trening Personalny 1:1 | KK Coaching"
-  description="Polski Personal Trainer w Cwmbran. Trening 1:1 pod redukcję, budowanie mięśni i większą pewność na siłowni. Indywidualny plan, technika i monitoring postępów. Umów bezpłatną konsultację."
+  description="Polski Personal Trainer w Cwmbran. Trening 1:1 pod redukcję, budowanie mięśni i większą pewność na siłowni. Indywidualny plan, technika i kontrola postępów."
   lang="pl"
   path="/pl/personal-training-cwmbran"
   altPath="/personal-training-cwmbran"
@@ -123,20 +123,19 @@ const structuredData = {
       <div class="hero-copy">
         <span class="eyebrow">Trening 1:1 w Cwmbran</span>
         <h1>Personal Trainer w Cwmbran</h1>
-        <p class="lead">Koniec ze zgadywaniem, co robić na treningu. Dostajesz prowadzenie 1:1, konkretny plan i praktyczne wsparcie dopasowane do Twojego celu, doświadczenia i normalnego życia.</p>
+        <p class="lead">Nie potrzebujesz kolejnej rozpiski z internetu. Potrzebujesz planu dopasowanego do Ciebie, dobrej techniki i jasnego kierunku, dzięki któremu wiesz, co robić na każdym treningu.</p>
         <div class="hero-actions">
           <a href="/pl/contact" class="btn btn-primary">Umów bezpłatną konsultację</a>
-          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany</a>
+          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany podopiecznych</a>
         </div>
         <div class="trust-row" aria-label="Dlaczego KK Coaching">
           <span>Level 3 Personal Trainer</span>
-          <span>Własna przemiana 40+ kg</span>
-          <span>Polski / English</span>
+          <span>Sam zredukowałem 40+ kg</span>
+          <span>PL / EN</span>
         </div>
       </div>
       <div class="hero-media">
         <img src="/images/personal-training-cwmbran-placeholder.svg" alt="Trening personalny 1:1 w Cwmbran z KK Coaching" width="720" height="540" />
-        <span class="image-note">Grafika tymczasowa — później zastąpimy ją prawdziwym zdjęciem z treningu w Cwmbran.</span>
       </div>
     </div>
   </section>
@@ -145,8 +144,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Dla kogo</span>
-        <h2 id="fit-heading">Nie potrzebujesz idealnego startu. Potrzebujesz jasnego następnego kroku.</h2>
-        <p>Trening personalny ma sens wtedy, kiedy plan jest dopasowany do osoby, a nie odwrotnie. Twoim celem może być zmiana sylwetki, nauczenie się poprawnego treningu, odzyskanie regularności albo po prostu większa pewność na siłowni.</p>
+        <h2 id="fit-heading">Nie musisz najpierw „ogarnąć się”, żeby zacząć.</h2>
+        <p>Możesz dopiero zaczynać, wracać po przerwie albo trenować od lat i nadal nie widzieć efektów, których oczekujesz. Zaczynamy od Twojej sytuacji i budujemy plan, który ma sens właśnie dla Ciebie.</p>
       </div>
       <div class="three-grid">
         {benefits.map(item => (
@@ -163,8 +162,8 @@ const structuredData = {
     <div class="container split">
       <div>
         <span class="eyebrow">Co dostajesz</span>
-        <h2 id="included-heading">Więcej niż kogoś, kto policzy Ci powtórzenia.</h2>
-        <p class="dark-copy">Dobry trening personalny powinien uczyć Cię trenować lepiej, a nie uzależniać od obecności trenera. Masz dostać strukturę, feedback i system progresji, który rozumiesz.</p>
+        <h2 id="included-heading">Nie stoję obok tylko po to, żeby liczyć powtórzenia.</h2>
+        <p class="dark-copy">Chcę, żebyś z czasem rozumiał swój trening, wiedział jak progresować i potrafił ocenić, czy plan działa. Moim zadaniem jest prowadzić Cię, poprawiać błędy i dać Ci system, który ma sens.</p>
       </div>
       <ul class="check-list">
         {included.map(item => <li>{item}</li>)}
@@ -176,8 +175,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Jak to działa</span>
-        <h2 id="process-heading">Od pierwszej rozmowy do mierzalnego progresu</h2>
-        <p>Bez losowych treningów i bez wywracania całego planu dlatego, że jeden tydzień nie był idealny. Budujemy, monitorujemy i korygujemy.</p>
+        <h2 id="process-heading">Wiesz, co robisz od pierwszego treningu.</h2>
+        <p>Bez losowych ćwiczeń i bez zmieniania wszystkiego po jednym gorszym tygodniu. Mamy plan, kontrolujemy efekt i reagujemy wtedy, kiedy jest ku temu powód.</p>
       </div>
       <div class="process-grid">
         {process.map(item => (
@@ -195,10 +194,10 @@ const structuredData = {
     <div class="container proof-grid">
       <img src="/images/photo-collage.png-1-.png" alt="Własna przemiana Kacpra Kaszowskiego po redukcji ponad 40 kg" width="650" height="520" loading="lazy" />
       <div>
-        <span class="eyebrow">Dlaczego prowadzę w ten sposób</span>
-        <h2 id="coach-heading">Wiem, jak to jest zaczynać bez konkretnego systemu.</h2>
-        <p>Zaczynałem z masą około 117 kg i zredukowałem ponad 40 kg, zanim całkowicie przebudowałem swoją sylwetkę. Po drodze przekonałem się też, jak łatwo tracić czas na szybkie rozwiązania, zbyt częste zmiany planu i niepotrzebne komplikowanie treningu.</p>
-        <p>Dlatego KK Coaching opiera się dziś na prostych zasadach: jasny cel, realne wykonanie, regularny feedback i zmiany dopiero wtedy, kiedy wyniki albo Twoja sytuacja faktycznie pokazują, że są potrzebne.</p>
+        <span class="eyebrow">Dlaczego tak pracuję</span>
+        <h2 id="coach-heading">Sam długo uczyłem się, co naprawdę działa.</h2>
+        <p>Zaczynałem od około 117 kg i zredukowałem ponad 40 kg. Po drodze przerobiłem też etap szukania szybkich rozwiązań, zbyt częstych zmian i niepotrzebnego komplikowania treningu.</p>
+        <p>Dziś chcę oszczędzić klientom tego chaosu. Ustalamy cel, robimy plan, realizujemy go wystarczająco długo i wyciągamy wnioski z realnych postępów.</p>
         <div class="mini-stats">
           <div><strong>117 kg</strong><span>punkt startowy</span></div>
           <div><strong>40+ kg</strong><span>zredukowane</span></div>
@@ -213,8 +212,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Efekty podopiecznych</span>
-        <h2 id="results-heading">Plan musi działać również poza idealnym tygodniem.</h2>
-        <p>Te efekty powstały dzięki regularnej pracy, strukturze i planom dopasowanym do konkretnych osób — nie przez próbę bycia perfekcyjnym każdego dnia.</p>
+        <h2 id="results-heading">Efekty robi regularność, nie perfekcja.</h2>
+        <p>Każdy z tych rezultatów powstał w normalnym życiu — z pracą, gorszymi dniami i obowiązkami. Plan ma pomagać robić progres mimo tego, a nie wymagać idealnych warunków.</p>
       </div>
       <div class="results-grid">
         <article class="result-card">
@@ -222,7 +221,7 @@ const structuredData = {
           <div class="result-copy">
             <span>ANETA · 16 TYGODNI</span>
             <h3>-10 kg · -12 cm w talii</h3>
-            <p>Większa pewność siebie, przejście z treningów domowych na komercyjną siłownię i lepsza kontrola nocnego podjadania — a na tym nie kończymy.</p>
+            <p>Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania — a na tym nie kończymy.</p>
           </div>
         </article>
         <article class="result-card">
@@ -230,7 +229,7 @@ const structuredData = {
           <div class="result-copy">
             <span>AGNIESZKA · 16 TYGODNI</span>
             <h3>-3 kg · +8 cm w biodrach</h3>
-            <p>Plan dopasowany do jej stylu życia i regularność zamiast pogoni za perfekcyjnym tygodniem.</p>
+            <p>Plan dopasowany do jej życia i konsekwencja zamiast próby robienia wszystkiego idealnie.</p>
           </div>
         </article>
       </div>
@@ -241,9 +240,9 @@ const structuredData = {
   <section class="location-band on-dark" aria-labelledby="location-heading">
     <div class="container split location-split">
       <div>
-        <span class="eyebrow">Trening lokalny</span>
+        <span class="eyebrow">Treningi w Cwmbran</span>
         <h2 id="location-heading">Trening personalny 1:1 w Cwmbran, Torfaen</h2>
-        <p class="dark-copy">Jeśli mieszkasz albo pracujesz w okolicy Cwmbran i zależy Ci na prowadzeniu na żywo, treningi 1:1 pozwalają szybko poprawić technikę, pewność siebie i jakość całego planu treningowego.</p>
+        <p class="dark-copy">Jeśli mieszkasz albo pracujesz w okolicy Cwmbran i chcesz prowadzenia na żywo, trening 1:1 pozwala od razu pracować nad techniką, pewnością siebie i jakością całego planu.</p>
       </div>
       <div class="location-card">
         <strong>Cwmbran, Torfaen, South Wales</strong>
@@ -272,9 +271,9 @@ const structuredData = {
 
   <section class="final-cta">
     <div class="container">
-      <span class="eyebrow light">Możemy zacząć od rozmowy</span>
-      <h2>Napisz mi, gdzie jesteś teraz. Ustalimy następny krok.</h2>
-      <p>Konsultacja jest bezpłatna. Napisz, jaki masz cel, jakie masz doświadczenie i co do tej pory najbardziej Ci przeszkadzało. Jeśli trening personalny 1:1 będzie najlepszą opcją, dokładnie wyjaśnię Ci, jak możemy zacząć.</p>
+      <span class="eyebrow light">Zacznijmy od rozmowy</span>
+      <h2>Chcesz zacząć? Najpierw pogadajmy.</h2>
+      <p>Powiedz mi, jaki masz cel, gdzie jesteś teraz i co do tej pory najbardziej Ci przeszkadzało. Konsultacja jest bezpłatna i bez zobowiązań.</p>
       <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
     </div>
   </section>
@@ -289,7 +288,6 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
-  .image-note { display: block; color: #90959D; font-size: 0.72rem; margin-top: 8px; }
 
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }

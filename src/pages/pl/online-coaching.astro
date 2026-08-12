@@ -3,74 +3,74 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const outcomes = [
   {
-    title: 'Plan dopasowany do Twojego celu',
-    body: 'Trening dobieram do Twojego doświadczenia, sprzętu, grafiku i tego, czy priorytetem jest redukcja, masa, rekompozycja czy po prostu powrót do regularności.'
+    title: 'Plan, który pasuje do Twojego życia',
+    body: 'Trening dopasowuję do Twojego doświadczenia, sprzętu, grafiku i celu. Masz wiedzieć, co robisz i dlaczego — bez ciągłego zmieniania kierunku.'
   },
   {
-    title: 'Żywienie, które da się utrzymać',
-    body: 'Dostajesz konkretne założenia kaloryczne i makroskładniki oraz praktyczne wskazówki, które można dopasować do pracy, rodziny, wyjść i jedzenia, które faktycznie lubisz.'
+    title: 'Jedzenie bez życia na diecie',
+    body: 'Ustalamy kalorie, makroskładniki i praktyczne zasady, które da się pogodzić z pracą, rodziną, wyjściami i jedzeniem, które naprawdę lubisz.'
   },
   {
-    title: 'Feedback zanim mały problem stanie się dużym',
-    body: 'Regularne check-iny, dane z treningów i nagrania techniki pozwalają reagować wtedy, kiedy naprawdę jest powód do zmiany, zamiast zgadywać.'
+    title: 'Stały kontakt, kiedy coś przestaje działać',
+    body: 'Regularne check-iny, dane z treningów i nagrania techniki pozwalają wyłapać problem wcześniej i wprowadzić konkretną zmianę zamiast zgadywać.'
   }
 ];
 
 const included = [
   'Indywidualny plan treningowy',
-  'Założenia kaloryczne, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja coachingowa z planem i materiałami do ćwiczeń',
-  'Regularne check-iny i uporządkowana analiza progresu',
-  'Monitoring masy ciała, pomiarów, zdjęć i wyników treningowych',
-  'Korekty planu na podstawie progresu i realizacji założeń',
+  'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
+  'Aplikacja z planem treningowym i materiałami do ćwiczeń',
+  'Regularne check-iny i analiza postępów',
+  'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
+  'Zmiany planu wtedy, kiedy postępy pokazują, że są potrzebne',
   'Ocena techniki na podstawie nagrań z treningu',
   'Kontakt przez WhatsApp pomiędzy check-inami',
-  'Edukacja, żebyś rozumiał, dlaczego dany plan działa'
+  'Wyjaśnienie, dlaczego coś robimy — nie tylko lista poleceń'
 ];
 
 const process = [
   {
     num: '01',
-    title: 'Konsultacja i punkt startowy',
-    body: 'Ustalamy Twój cel, obecny trening, nawyki żywieniowe, grafik, dostępny sprzęt i główny powód, przez który wcześniejsze próby się rozpadały.'
+    title: 'Zaczynamy od konkretów',
+    body: 'Ustalamy Twój cel, obecny trening, sposób jedzenia, grafik, dostępny sprzęt i to, przez co wcześniejsze próby najczęściej się rozsypywały.'
   },
   {
     num: '02',
-    title: 'Ustawiamy cały system',
-    body: 'Dostajesz indywidualny plan treningowy, założenia żywieniowe i jasny sposób monitorowania postępów.'
+    title: 'Dostajesz swój plan',
+    body: 'Układam trening i założenia żywieniowe pod Twoją sytuację. Wiesz, co robić od pierwszego tygodnia i jak będziemy oceniać postępy.'
   },
   {
     num: '03',
-    title: 'Trenujesz, logujesz i jesteśmy w kontakcie',
-    body: 'Realizujesz plan, zapisujesz najważniejsze dane i wysyłasz nagrania, jeśli chcesz feedback techniczny. Widzę, co naprawdę dzieje się między check-inami.'
+    title: 'Realizujesz plan i dajesz mi dane',
+    body: 'Trenujesz, zapisujesz najważniejsze informacje i wysyłasz nagrania, jeśli chcesz sprawdzić technikę. Dzięki temu widzę, co naprawdę dzieje się między check-inami.'
   },
   {
     num: '04',
-    title: 'Analizujemy i korygujemy',
-    body: 'Patrzymy na trend, a nie pojedynczy pomiar. Jeśli progres, wyniki treningowe albo realizacja założeń pokazują, że coś trzeba zmienić — zmieniamy.'
+    title: 'Ja analizuję, razem korygujemy',
+    body: 'Patrzymy na trend, wyniki treningowe i realizację planu. Jeśli coś działa — zostaje. Jeśli nie — zmieniamy dokładnie to, co trzeba.'
   }
 ];
 
 const faqs = [
   {
     q: 'Czy muszę mieszkać w UK, żeby korzystać z coachingu online?',
-    a: 'Nie. Coaching online nie jest ograniczony lokalizacją. Jeśli możemy się sprawnie komunikować i masz dostęp do sprzętu potrzebnego do realizacji planu, prowadzenie może odbywać się w pełni zdalnie.'
+    a: 'Nie. Coaching działa w pełni zdalnie, więc możesz mieszkać poza UK. Najważniejsze jest to, żebyśmy mogli sprawnie się komunikować i żebyś miał dostęp do sprzętu potrzebnego do realizacji planu.'
   },
   {
     q: 'Czy coaching online jest tylko dla osób zaawansowanych?',
-    a: 'Nie. Plan jest dopasowany do Twojego poziomu. Jeśli dopiero zaczynasz, możemy zacząć prosto, a nagrania ćwiczeń pozwolą mi dawać Ci feedback techniczny na bieżąco.'
+    a: 'Nie. Jeśli dopiero zaczynasz, plan będzie prostszy, a nagrania ćwiczeń pozwolą mi na bieżąco pomagać Ci z techniką. Jeśli trenujesz dłużej, skupimy się na jakości planu, progresji i tym, co faktycznie ogranicza postępy.'
   },
   {
     q: 'Czy dostanę sztywną dietę rozpisaną posiłek po posiłku?',
-    a: 'Podstawą są kalorie, makroskładniki i praktyczne zasady żywienia, które da się wdrożyć w normalnym życiu. Jeżeli bardziej szczegółowa struktura posiłków będzie pomocna, możemy ją dopracować, ale celem nie jest uzależnienie Cię od jednej sztywnej rozpiski.'
+    a: 'Podstawą są kalorie, makroskładniki i zasady, które da się utrzymać w normalnym życiu. Jeśli bardziej szczegółowa struktura posiłków będzie Ci potrzebna, możemy ją dopracować, ale nie chcę budować systemu, który działa tylko wtedy, gdy jesz codziennie dokładnie to samo.'
   },
   {
     q: 'Jak monitorujemy postępy?',
-    a: 'W zależności od celu możemy używać trendu masy ciała, pomiarów, zdjęć sylwetki, wyników treningowych, kroków lub aktywności i realizacji założeń. Dopiero całość pokazuje, czy plan wymaga zmiany.'
+    a: 'W zależności od celu bierzemy pod uwagę trend masy ciała, pomiary, zdjęcia sylwetki, wyniki treningowe, aktywność i realizację planu. Jeden pomiar nie decyduje o zmianie — patrzymy na całość.'
   },
   {
     q: 'Jaki mam kontakt pomiędzy check-inami?',
-    a: 'Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, które nie powinny czekać do kolejnego formalnego check-inu. W ramach coachingu możesz też wysyłać nagrania ćwiczeń do oceny techniki.'
+    a: 'Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, z którymi nie ma sensu czekać do kolejnego check-inu. Możesz też wysyłać nagrania ćwiczeń do oceny techniki.'
   }
 ];
 
@@ -80,9 +80,9 @@ const structuredData = {
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/online-coaching#service',
-      name: 'Coaching online - trening, żywienie i monitoring progresu',
+      name: 'Coaching online - trening, żywienie i kontrola postępów',
       serviceType: 'Online Fitness Coaching',
-      description: 'Indywidualny coaching online z planem treningowym, założeniami żywieniowymi, regularnymi check-inami, monitoringiem postępów, oceną techniki i stałym wsparciem.',
+      description: 'Indywidualny coaching online z planem treningowym, założeniami żywieniowymi, regularnymi check-inami, kontrolą postępów, oceną techniki i stałym wsparciem.',
       url: 'https://kkcoaching.fit/pl/online-coaching',
       areaServed: [
         { '@type': 'Country', name: 'United Kingdom' },
@@ -106,8 +106,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Coaching Online | Trening, Żywienie i Check-iny | KK Coaching"
-  description="Indywidualny coaching online: plan treningowy, założenia żywieniowe, regularne check-iny, monitoring postępów, feedback techniczny i WhatsApp. Aplikuj do KK Coaching."
+  title="Coaching Online | Trening i Żywienie | KK Coaching"
+  description="Indywidualny coaching online: plan treningowy, założenia żywieniowe, regularne check-iny, kontrola postępów, ocena techniki i kontakt przez WhatsApp."
   lang="pl"
   path="/pl/online-coaching"
   altPath="/online-coaching"
@@ -117,22 +117,21 @@ const structuredData = {
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Pełne prowadzenie online</span>
-        <h1>Coaching online bez zgadywania, co robić dalej</h1>
-        <p class="lead">Indywidualny plan treningowy, praktyczne założenia żywieniowe, regularna kontrola postępów i stałe wsparcie — wszystko dopasowane do Twojego celu i normalnego życia.</p>
+        <h1>Coaching online, w którym naprawdę wiesz, co robić</h1>
+        <p class="lead">Dostajesz plan treningowy, założenia żywieniowe, regularne check-iny i kontakt ze mną pomiędzy nimi. Wszystko jest dopasowane do Twojego celu i tego, jak naprawdę wygląda Twój tydzień.</p>
         <div class="hero-actions">
-          <a href="/pl/contact" class="btn btn-primary">Aplikuj na coaching online</a>
-          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany</a>
+          <a href="/pl/contact" class="btn btn-primary">Zacznij coaching online</a>
+          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany podopiecznych</a>
         </div>
         <div class="trust-row" aria-label="Co obejmuje coaching online">
-          <span>Indywidualny plan</span>
+          <span>Plan pod Ciebie</span>
           <span>Regularne check-iny</span>
+          <span>Technika z nagrań</span>
           <span>WhatsApp</span>
-          <span>Polski / English</span>
         </div>
       </div>
       <div class="hero-media">
-        <img src="/images/online-coaching-placeholder.svg" alt="Coaching online KK Coaching z treningiem, żywieniem i monitoringiem postępów" width="720" height="540" />
-        <span class="image-note">Grafika tymczasowa — później zastąpimy ją prawdziwym zdjęciem coachingu lub aplikacji.</span>
+        <img src="/images/online-coaching-placeholder.svg" alt="Coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów" width="720" height="540" />
       </div>
     </div>
   </section>
@@ -141,8 +140,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Co się zmienia</span>
-        <h2 id="outcomes-heading">Przestajesz kolekcjonować plany. Zaczynasz działać według jednego systemu.</h2>
-        <p>Coaching online to nie kolejny PDF z treningiem. Największa wartość to jeden kierunek działania, dane pozwalające ocenić progres i możliwość korekty planu wtedy, kiedy zmienia się Twoje ciało, wyniki albo sytuacja w życiu.</p>
+        <h2 id="outcomes-heading">Jeden plan. Jasne zasady. Regularne korekty.</h2>
+        <p>Nie dostajesz ode mnie PDF-a i życzenia powodzenia. Masz konkretny kierunek, sposób kontrolowania postępów i kogoś, kto analizuje wyniki razem z Tobą.</p>
       </div>
       <div class="three-grid">
         {outcomes.map(item => (
@@ -159,8 +158,8 @@ const structuredData = {
     <div class="container split">
       <div>
         <span class="eyebrow">Co dostajesz</span>
-        <h2 id="included-heading">Liczy się też to, co dzieje się pomiędzy check-inami.</h2>
-        <p class="dark-copy">Chodzi o to, żeby wiedzieć, co dzieje się z tygodnia na tydzień, a nie po miesiącu odkryć, że plan dawno przestał pasować do Twojego życia. Trening, żywienie, dane i feedback mają działać jako jedna całość.</p>
+        <h2 id="included-heading">Nie znikam po wysłaniu Ci planu.</h2>
+        <p class="dark-copy">Najważniejsze rzeczy często dzieją się pomiędzy check-inami. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem.</p>
       </div>
       <ul class="check-list">
         {included.map(item => <li>{item}</li>)}
@@ -172,8 +171,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Jak to działa</span>
-        <h2 id="process-heading">Prosta pętla: plan, realizacja, analiza, korekta.</h2>
-        <p>Zawsze wiesz, jaki jest aktualny cel i na jakich danych opieramy kolejną decyzję.</p>
+        <h2 id="process-heading">Działasz. Ja analizuję. Kiedy trzeba — zmieniamy.</h2>
+        <p>Nie komplikujemy tego bardziej niż trzeba. Masz jasny plan i wiesz, na podstawie czego podejmujemy kolejne decyzje.</p>
       </div>
       <div class="process-grid">
         {process.map(item => (
@@ -190,9 +189,9 @@ const structuredData = {
   <section class="proof on-white" aria-labelledby="proof-heading">
     <div class="container">
       <div class="section-head centered">
-        <span class="eyebrow">Prawdziwe prowadzenie. Prawdziwy progres.</span>
-        <h2 id="proof-heading">Efekty zbudowane wokół normalnego życia</h2>
-        <p>Nie chodzi o jeden idealny tydzień. Chodzi o wystarczająco dużo dobrych tygodni, kontrolę tego, co ma znaczenie i utrzymanie planu na właściwym torze.</p>
+        <span class="eyebrow">Efekty podopiecznych</span>
+        <h2 id="proof-heading">Forma bez układania całego życia pod fitness.</h2>
+        <p>Nie chodzi o jeden idealny tydzień. Chodzi o plan, który da się realizować wystarczająco długo, żeby efekty naprawdę zaczęły się sumować.</p>
       </div>
       <div class="results-grid">
         <article class="result-card">
@@ -200,7 +199,7 @@ const structuredData = {
           <div class="result-copy">
             <span>ANETA · COACHING ONLINE · 16 TYGODNI</span>
             <h3>-10 kg · -12 cm w talii</h3>
-            <p>Do tego większa pewność siebie, przejście z treningów domowych na komercyjną siłownię i lepsza kontrola nocnego podjadania.</p>
+            <p>Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania.</p>
           </div>
         </article>
         <article class="result-card">
@@ -208,7 +207,7 @@ const structuredData = {
           <div class="result-copy">
             <span>AGNIESZKA · COACHING · 16 TYGODNI</span>
             <h3>-3 kg · +8 cm w biodrach</h3>
-            <p>Efekty z planu dopasowanego do jej stylu życia i regularności zamiast pogoni za perfekcją.</p>
+            <p>Plan dopasowany do jej życia i regularność zamiast próby robienia wszystkiego perfekcyjnie.</p>
           </div>
         </article>
       </div>
@@ -221,10 +220,10 @@ const structuredData = {
       <img src="/images/kacper.png" alt="Kacper Kaszowski, założyciel KK Coaching i Level 3 Personal Trainer" width="500" height="600" loading="lazy" />
       <div>
         <span class="eyebrow">Twój trener</span>
-        <h2 id="coach-heading">Ten proces ma dla mnie znaczenie, bo sam musiałem nauczyć się go od zera.</h2>
-        <p class="dark-copy">Zaczynałem z masą około 117 kg i zredukowałem ponad 40 kg, zanim całkowicie przebudowałem swoją sylwetkę. Po drodze nauczyłem się, jak łatwo pomylić „trudniej” z „lepiej”, szukać szybkich rozwiązań i zmieniać plan zanim zdąży zadziałać.</p>
-        <p class="dark-copy">Dzisiaj te same zasady wykorzystuję w pracy z podopiecznymi: jasny cel, realne wykonanie, konkretny feedback i zmiany na podstawie postępów, a nie emocji.</p>
-        <a href="/pl/about" class="btn btn-secondary">Poznaj swojego trenera</a>
+        <h2 id="coach-heading">Sam przeszedłem przez etap zgadywania. Nie chcę, żeby moi klienci robili to samo.</h2>
+        <p class="dark-copy">Zaczynałem od około 117 kg i zredukowałem ponad 40 kg. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i komplikowanie rzeczy, które powinny być proste.</p>
+        <p class="dark-copy">Dziś pracuję inaczej: ustalamy jasny cel, dobieramy plan do realnego życia i zmieniamy go dopiero wtedy, kiedy postępy pokazują, że faktycznie trzeba coś poprawić.</p>
+        <a href="/pl/about" class="btn btn-secondary">Poznaj moją historię</a>
       </div>
     </div>
   </section>
@@ -249,9 +248,9 @@ const structuredData = {
   <section class="final-cta">
     <div class="container">
       <span class="eyebrow light">Zacznijmy od rozmowy</span>
-      <h2>Jeśli masz dość zgadywania, napisz mi, gdzie jesteś teraz.</h2>
-      <p>Napisz, jaki masz cel, jakie masz doświadczenie, jak wygląda Twój obecny tydzień i co do tej pory najbardziej Cię blokowało. Powiem Ci, czy coaching online będzie odpowiednią formą wsparcia i jak wygląda kolejny krok.</p>
-      <a href="/pl/contact" class="btn btn-secondary">Aplikuj na coaching online</a>
+      <h2>Jeśli chcesz wiedzieć, co robić dalej — napisz.</h2>
+      <p>Powiedz mi, jaki masz cel, jak teraz trenujesz i z czym masz największy problem. Powiem Ci, czy coaching online ma w Twojej sytuacji sens i jak wygląda start współpracy.</p>
+      <a href="/pl/contact" class="btn btn-secondary">Zacznij coaching online</a>
     </div>
   </section>
 </BaseLayout>
@@ -265,7 +264,6 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
-  .image-note { display: block; color: #90959D; font-size: 0.72rem; margin-top: 8px; }
 
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
