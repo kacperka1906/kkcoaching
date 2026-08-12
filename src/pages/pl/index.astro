@@ -28,12 +28,6 @@ const structuredData = {
   telephone: site.meta.whatsappNumber,
   sameAs,
   founder: { '@id': `${siteUrl}/#kacper-kaszowski` },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Cwmbran',
-    addressRegion: 'Torfaen',
-    addressCountry: 'GB'
-  },
   areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
   knowsLanguage: ['Polish', 'English']
 };
@@ -202,7 +196,7 @@ const structuredData = {
     color: var(--red);
     font-size: clamp(1.2rem, 2.3vw, 1.8rem);
     line-height: 1.05;
-    white-space: nowrap;
+    white-space: normal;
   }
   .story .stat-line span {
     display: block;
