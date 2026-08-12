@@ -10,15 +10,45 @@ const checks = [
   ['Sprawdź, czy normalnie się dogadujecie', 'Powinieneś móc zadawać pytania, zgłaszać problemy i rozumieć, czego trener od Ciebie oczekuje. Bezpłatna konsultacja pozwala obu stronom sprawdzić, czy taki sposób współpracy ma sens.']
 ];
 
+const articleUrl = 'https://kkcoaching.fit/pl/resources/jak-wybrac-trenera-personalnego-cwmbran';
+const articleImage = 'https://kkcoaching.fit/images/kacper.jpg';
+const publishedDate = '2026-08-12T11:10:00+01:00';
+const modifiedDate = '2026-08-12T12:00:00+01:00';
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Jak wybrać trenera personalnego w Cwmbran',
-  description: 'Praktyczny poradnik dla osób szukających polskiego trenera personalnego w Cwmbran: sposób pracy, kwalifikacje, lokalizacja, kontrola postępów i poziom wsparcia.',
-  url: 'https://kkcoaching.fit/pl/resources/jak-wybrac-trenera-personalnego-cwmbran',
-  author: { '@id': 'https://kkcoaching.fit/#kacper-kaszowski' },
-  publisher: { '@id': 'https://kkcoaching.fit/#business' },
-  about: ['Polski trener personalny Cwmbran', 'Trener personalny Cwmbran', 'Trening personalny']
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${articleUrl}#article`,
+      headline: 'Jak wybrać trenera personalnego w Cwmbran',
+      description: 'Praktyczny poradnik dla osób szukających polskiego trenera personalnego w Cwmbran: sposób pracy, kwalifikacje, lokalizacja, kontrola postępów i poziom wsparcia.',
+      url: articleUrl,
+      image: articleImage,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+      isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
+      inLanguage: 'pl-PL',
+      datePublished: publishedDate,
+      dateModified: modifiedDate,
+      author: {
+        '@type': 'Person',
+        '@id': 'https://kkcoaching.fit/#kacper-kaszowski',
+        name: 'Kacper Kaszowski',
+        url: 'https://kkcoaching.fit/about'
+      },
+      publisher: { '@id': 'https://kkcoaching.fit/#business' },
+      about: ['Polski trener personalny Cwmbran', 'Trener personalny Cwmbran', 'Trening personalny']
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${articleUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://kkcoaching.fit/pl' },
+        { '@type': 'ListItem', position: 2, name: 'Poradniki', item: 'https://kkcoaching.fit/pl/resources' },
+        { '@type': 'ListItem', position: 3, name: 'Jak wybrać trenera personalnego w Cwmbran' }
+      ]
+    }
+  ]
 };
 ---
 <BaseLayout
@@ -28,6 +58,8 @@ const structuredData = {
   path="/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
   altPath="/resources/choosing-personal-trainer-cwmbran"
   structuredData={structuredData}
+  articlePublishedTime={publishedDate}
+  articleModifiedTime={modifiedDate}
 >
   <article>
     <header class="article-hero on-dark">
@@ -36,6 +68,7 @@ const structuredData = {
         <span class="eyebrow">Trening personalny w Cwmbran</span>
         <h1>Jak wybrać trenera personalnego w Cwmbran</h1>
         <p class="lead">Najlepszy trener dla Ciebie nie musi prowadzić najcięższych treningów ani mieć największego profilu w social media. Ważniejsze jest to, czy jego sposób pracy, komunikacja i lokalizacja pomagają Ci regularnie realizować dobry plan.</p>
+        <p class="article-meta">Autor: <a href="/pl/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · <time datetime={modifiedDate}>Aktualizacja: 12 sierpnia 2026</time></p>
       </div>
     </header>
 
@@ -80,6 +113,8 @@ const structuredData = {
   .article-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.08; margin: 10px 0 18px; }
   .lead { color: #D0D4D9; font-size: 1.08rem; }
   .back { display: inline-block; color: #C5C9CF; margin-bottom: 24px; }
+  .article-meta { margin-top: 18px; color: #AEB4BB; font-size: 0.86rem; }
+  .article-meta a { color: #F0F2F4; font-weight: 700; text-underline-offset: 3px; }
   .article-body > p { font-size: 1.05rem; color: var(--steel); }
   .point { padding: 30px 0; border-bottom: 1px solid #E1E4E7; }
   .point h2 { font-size: 1.35rem; margin-bottom: 10px; }

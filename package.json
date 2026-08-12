@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "build:verified": "npm run build && npm run seo:audit",
     "preview": "astro preview"
   },
   "dependencies": {

@@ -16,13 +16,37 @@ const guides = [
   }
 ];
 
+const pageUrl = 'https://kkcoaching.fit/resources';
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'KK Coaching Fitness & Training Guides',
-  url: 'https://kkcoaching.fit/resources',
-  about: ['Personal training', 'Online fitness coaching', 'Cwmbran', 'Training guidance'],
-  publisher: { '@id': 'https://kkcoaching.fit/#business' }
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${pageUrl}#collection`,
+      name: 'KK Coaching Fitness & Training Guides',
+      url: pageUrl,
+      inLanguage: 'en-GB',
+      about: ['Personal training', 'Online fitness coaching', 'Cwmbran', 'Training guidance'],
+      publisher: { '@id': 'https://kkcoaching.fit/#business' },
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: guides.map((guide, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: guide.title,
+          url: `https://kkcoaching.fit${guide.href}`
+        }))
+      }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kkcoaching.fit/' },
+        { '@type': 'ListItem', position: 2, name: 'Fitness Guides' }
+      ]
+    }
+  ]
 };
 ---
 <BaseLayout

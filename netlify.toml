@@ -18,6 +18,11 @@
     Cache-Control = "no-store"
 
 [[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=604800, must-revalidate"
@@ -50,6 +55,12 @@
   from = "/images/photo-collage.png-1-.png"
   to = "/.netlify/images?url=/images/photo-collage-source.png&w=820&fm=webp&q=82"
   status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/*"
