@@ -17,7 +17,7 @@ const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'Organization',
   '@id': `${siteUrl}/#business`,
   name: 'KK Coaching',
   description: 'Trening personalny w Cwmbran i coaching online z indywidualnym planem treningowym, praktycznym wsparciem żywieniowym i monitoringiem postępów.',
@@ -28,12 +28,6 @@ const structuredData = {
   telephone: site.meta.whatsappNumber,
   sameAs,
   founder: { '@id': `${siteUrl}/#kacper-kaszowski` },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Cwmbran',
-    addressRegion: 'Torfaen',
-    addressCountry: 'GB'
-  },
   areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
   knowsLanguage: ['Polish', 'English']
 };
@@ -110,7 +104,7 @@ const structuredData = {
           <p>{site.story.bodyShort}</p>
           <div class="stat-line" aria-label="Historia Kacpra w liczbach">
             <div class="stat-card"><strong>{site.story.statStart}</strong><span>Punkt startowy</span></div>
-            <div class="stat-card"><strong>{site.story.statLoss}</strong><span>Zredukowane</span></div>
+            <div class="stat-card"><strong>{site.story.statLoss}</strong><span>Własna redukcja</span></div>
             <div class="stat-card"><strong>{site.story.statQualification}</strong><span>Formy współpracy</span></div>
           </div>
           <a href="/pl/about" class="btn btn-outline-dark story-cta">{site.story.cta}</a>
@@ -202,7 +196,7 @@ const structuredData = {
     color: var(--red);
     font-size: clamp(1.2rem, 2.3vw, 1.8rem);
     line-height: 1.05;
-    white-space: nowrap;
+    white-space: normal;
   }
   .story .stat-line span {
     display: block;
