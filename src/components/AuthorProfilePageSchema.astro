@@ -1,0 +1,78 @@
+---
+import siteEn from '../data/site.en.json';
+
+interface Props { lang: 'en' | 'pl' }
+const { lang } = Astro.props;
+const isPl = lang === 'pl';
+const siteUrl = 'https://kkcoaching.fit';
+const personId = `${siteUrl}/#kacper-kaszowski`;
+const aboutUrl = `${siteUrl}${isPl ? '/pl/about' : '/about'}`;
+const sameAs = [siteEn.meta.instagramUrl, siteEn.meta.facebookUrl].filter(Boolean);
+const image = `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`;
+
+const articles = isPl
+  ? [
+      {
+        '@type': 'Article',
+        headline: 'Jak wybrać trenera personalnego w Cwmbran',
+        url: `${siteUrl}/pl/resources/jak-wybrac-trenera-personalnego-cwmbran`,
+        datePublished: '2026-08-12T10:00:00+01:00',
+        author: { '@id': personId }
+      },
+      {
+        '@type': 'Article',
+        headline: 'Jak działa trener personalny online w UK',
+        url: `${siteUrl}/pl/resources/trener-personalny-online-uk-jak-to-dziala`,
+        datePublished: '2026-08-12T10:00:00+01:00',
+        author: { '@id': personId }
+      }
+    ]
+  : [
+      {
+        '@type': 'Article',
+        headline: 'How to Choose a Personal Trainer in Cwmbran',
+        url: `${siteUrl}/resources/choosing-personal-trainer-cwmbran`,
+        datePublished: '2026-08-12T10:00:00+01:00',
+        author: { '@id': personId }
+      },
+      {
+        '@type': 'Article',
+        headline: 'How Online Personal Training Works in the UK',
+        url: `${siteUrl}/resources/online-personal-training-uk`,
+        datePublished: '2026-08-12T10:00:00+01:00',
+        author: { '@id': personId }
+      }
+    ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${aboutUrl}#profile`,
+  url: aboutUrl,
+  dateModified: '2026-08-12T10:00:00+01:00',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': personId,
+    name: 'Kacper Kaszowski',
+    jobTitle: isPl ? 'Trener personalny' : 'Personal Trainer',
+    url: aboutUrl,
+    image,
+    sameAs,
+    knowsLanguage: ['English', 'Polish'],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Level 3 Certificate in Planning and Delivering Personal Training',
+        credentialCategory: 'Professional qualification'
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Level 2 Diploma in Gym Instructing',
+        credentialCategory: 'Professional qualification'
+      }
+    ]
+  },
+  hasPart: articles
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
