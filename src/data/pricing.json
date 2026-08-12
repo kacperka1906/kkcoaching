@@ -1,0 +1,185 @@
+{
+  "currency": "£",
+  "labels": {
+    "bestValue": {
+      "en": "Best value",
+      "pl": "Najlepszy wybór"
+    },
+    "from": {
+      "en": "From",
+      "pl": "Od"
+    },
+    "perSession": {
+      "en": "per session",
+      "pl": "za trening"
+    },
+    "oneOff": {
+      "en": "one-off",
+      "pl": "jednorazowo"
+    }
+  },
+  "personal": {
+    "section": {
+      "eyebrow": {
+        "en": "Pricing",
+        "pl": "Cennik"
+      },
+      "heading": {
+        "en": "Train more consistently. Pay less per session.",
+        "pl": "Im regularniej trenujesz, tym mniej płacisz za pojedynczy trening."
+      },
+      "intro": {
+        "en": "Start with a single session or choose a regular package. The more consistently we train together, the lower the session rate.",
+        "pl": "Możesz zacząć od pojedynczej sesji albo wybrać regularny pakiet. Większa częstotliwość oznacza niższą cenę jednego treningu."
+      },
+      "note": {
+        "en": "All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran.",
+        "pl": "Wszystkie pakiety obejmują ustalone treningi 1:1 w JD Gyms Cwmbran."
+      },
+      "cta": {
+        "en": "Book a Free Consultation",
+        "pl": "Umów bezpłatną konsultację"
+      }
+    },
+    "payg": {
+      "enabled": true,
+      "name": {
+        "en": "Pay as you go",
+        "pl": "Pojedynczy trening"
+      },
+      "price": 35,
+      "sessionMinutes": 60,
+      "featured": false
+    },
+    "packages": [
+      {
+        "id": "weekly1",
+        "enabled": true,
+        "name": {
+          "en": "1× weekly",
+          "pl": "1× w tygodniu"
+        },
+        "price": 130,
+        "weeks": 4,
+        "sessions": 4,
+        "featured": false
+      },
+      {
+        "id": "weekly2",
+        "enabled": true,
+        "name": {
+          "en": "2× weekly",
+          "pl": "2× w tygodniu"
+        },
+        "price": 240,
+        "weeks": 4,
+        "sessions": 8,
+        "featured": false
+      },
+      {
+        "id": "weekly3",
+        "enabled": true,
+        "name": {
+          "en": "3× weekly",
+          "pl": "3× w tygodniu"
+        },
+        "price": 330,
+        "weeks": 4,
+        "sessions": 12,
+        "featured": false
+      }
+    ]
+  },
+  "online": {
+    "section": {
+      "eyebrow": {
+        "en": "Online coaching pricing",
+        "pl": "Cena prowadzenia online"
+      },
+      "heading": {
+        "en": "One complete service. No stripped-back tiers.",
+        "pl": "Jedna pełna usługa. Bez okrojonych pakietów."
+      },
+      "intro": {
+        "en": "You get the full coaching system from day one: training, nutrition guidance, app access, progress tracking, check-ins, technique feedback and support between reviews.",
+        "pl": "Od początku dostajesz pełne prowadzenie: plan treningowy, wskazówki żywieniowe, aplikację, kontrolę postępów, regularne raporty, ocenę techniki i kontakt między raportami."
+      },
+      "note": {
+        "en": "The minimum coaching period is billed in regular instalments rather than as one upfront payment.",
+        "pl": "Minimalny okres współpracy jest rozliczany w regularnych płatnościach zamiast całej kwoty z góry."
+      },
+      "cta": {
+        "en": "Apply for Online Coaching",
+        "pl": "Zacznij prowadzenie online"
+      }
+    },
+    "enabled": true,
+    "name": {
+      "en": "Full Online Coaching",
+      "pl": "Pełne prowadzenie online"
+    },
+    "price": 80,
+    "billingWeeks": 4,
+    "minimumWeeks": 12,
+    "featured": false
+  },
+  "hybrid": {
+    "section": {
+      "eyebrow": {
+        "en": "Hybrid coaching pricing",
+        "pl": "Cena prowadzenia hybrydowego"
+      },
+      "heading": {
+        "en": "Full online coaching plus regular 1:1 sessions.",
+        "pl": "Pełne prowadzenie online i regularne treningi 1:1."
+      },
+      "intro": {
+        "en": "Hybrid gives you the complete online system and face-to-face coaching in Cwmbran at a stronger package rate than buying both services separately.",
+        "pl": "Hybrid łączy cały system prowadzenia online z treningami na żywo w Cwmbran, a pakiet kosztuje mniej niż kupowanie obu usług osobno."
+      },
+      "note": {
+        "en": "Both Hybrid options include the complete Online Coaching service plus scheduled 1:1 sessions at JD Gyms Cwmbran.",
+        "pl": "Oba warianty zawierają pełne prowadzenie online oraz ustalone treningi 1:1 w JD Gyms Cwmbran."
+      },
+      "cta": {
+        "en": "Book a Free Consultation",
+        "pl": "Umów bezpłatną konsultację"
+      }
+    },
+    "homeBadgeEnabled": true,
+    "homeBadge": {
+      "en": "Most complete",
+      "pl": "Najszersze prowadzenie"
+    },
+    "packages": [
+      {
+        "id": "weekly1",
+        "enabled": true,
+        "name": {
+          "en": "Hybrid 1× weekly",
+          "pl": "Hybrid 1× w tygodniu"
+        },
+        "price": 180,
+        "weeks": 4,
+        "sessions": 4,
+        "featured": false
+      },
+      {
+        "id": "weekly2",
+        "enabled": true,
+        "name": {
+          "en": "Hybrid 2× weekly",
+          "pl": "Hybrid 2× w tygodniu"
+        },
+        "price": 280,
+        "weeks": 4,
+        "sessions": 8,
+        "featured": true
+      }
+    ]
+  },
+  "trainingPlan": {
+    "enabled": true,
+    "price": 30
+  }
+}
