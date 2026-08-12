@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const checks = [
+  ['Zacznij od swojego celu, nie od ulubionej metody trenera', 'Trener powinien najpierw zrozumieć, czy zależy Ci na redukcji, budowaniu mięśni, poprawie techniki, pewności siebie czy powrocie do regularnych treningów. Plan powinien wynikać z Twojego celu, a nie odwrotnie.'],
+  ['Sprawdź, co dzieje się poza samą godziną treningu', 'Zapytaj, jak monitorowane są postępy i kiedy plan jest zmieniany. W zależności od celu przydatne mogą być wyniki treningowe, trend masy ciała, pomiary, zdjęcia, realizacja planu i Twój feedback.'],
+  ['Wybierz lokalizację, do której naprawdę będziesz dojeżdżać', 'Wygoda ma znaczenie. Nawet dobry plan jest trudniejszy do realizacji, jeśli każdy trening wymaga skomplikowanej logistyki. Treningi KK Coaching odbywają się w JD Gyms Cwmbran w centrum miasta.'],
+  ['Szukaj jasnego prowadzenia, a nie tylko ciężkich treningów', 'Dobry trener potrafi wytłumaczyć ustawienie, technikę i progresję w sposób, który rozumiesz. Zmęczenie po treningu nie jest samo w sobie dowodem, że plan prowadzi do Twojego celu.'],
+  ['Dobierz poziom wsparcia do tego, czego faktycznie potrzebujesz', 'Jedna osoba potrzebuje treningów 1:1 i pracy nad techniką. Inna dobrze trenuje samodzielnie, ale potrzebuje planu i kontroli online. Coaching hybrydowy łączy obie formy.'],
+  ['Sprawdź, czy normalnie się dogadujecie', 'Powinieneś móc zadawać pytania, zgłaszać problemy i rozumieć, czego trener od Ciebie oczekuje. Bezpłatna konsultacja pozwala obu stronom sprawdzić, czy taki sposób współpracy ma sens.']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Jak wybrać trenera personalnego w Cwmbran',
+  description: 'Praktyczny poradnik dla osób szukających polskiego trenera personalnego w Cwmbran: sposób pracy, kwalifikacje, lokalizacja, kontrola postępów i poziom wsparcia.',
+  url: 'https://kkcoaching.fit/pl/resources/jak-wybrac-trenera-personalnego-cwmbran',
+  author: { '@id': 'https://kkcoaching.fit/#kacper-kaszowski' },
+  publisher: { '@id': 'https://kkcoaching.fit/#business' },
+  about: ['Polski trener personalny Cwmbran', 'Trener personalny Cwmbran', 'Trening personalny']
+};
+---
+<BaseLayout
+  title="Jak wybrać trenera personalnego w Cwmbran | KK Coaching"
+  description="Szukasz trenera personalnego w Cwmbran? Sprawdź sposób pracy, kwalifikacje, lokalizację, kontrolę postępów, komunikację i poziom wsparcia."
+  lang="pl"
+  path="/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
+  altPath="/resources/choosing-personal-trainer-cwmbran"
+  structuredData={structuredData}
+>
+  <article>
+    <header class="article-hero on-dark">
+      <div class="container narrow">
+        <a class="back" href="/pl/resources">← Poradniki</a>
+        <span class="eyebrow">Trening personalny w Cwmbran</span>
+        <h1>Jak wybrać trenera personalnego w Cwmbran</h1>
+        <p class="lead">Najlepszy trener dla Ciebie nie musi prowadzić najcięższych treningów ani mieć największego profilu w social media. Ważniejsze jest to, czy jego sposób pracy, komunikacja i lokalizacja pomagają Ci regularnie realizować dobry plan.</p>
+      </div>
+    </header>
+
+    <section class="on-white">
+      <div class="container narrow article-body">
+        <p>Trening personalny nie jest jedną identyczną usługą. Dwóch trenerów pracujących na tej samej siłowni może zupełnie inaczej podchodzić do planowania, techniki, kontroli postępów i kontaktu z klientem. Przed rozpoczęciem współpracy warto sprawdzić kilka rzeczy.</p>
+
+        {checks.map(([title, body], index) => (
+          <section class="point" aria-labelledby={`point-${index}`}>
+            <h2 id={`point-${index}`}>{index + 1}. {title}</h2>
+            <p>{body}</p>
+          </section>
+        ))}
+
+        <section class="local-box" aria-labelledby="local-heading">
+          <span class="eyebrow">Opcja lokalna</span>
+          <h2 id="local-heading">Polski trener personalny w JD Gyms Cwmbran</h2>
+          <p>Treningi KK Coaching prowadzę po polsku i angielsku w JD Gyms Cwmbran, 17–18 Gwent Square, Cwmbran, NP44 1PW. Współpraca 1:1 obejmuje indywidualny plan, naukę techniki na żywo, jasne zasady progresji i kontrolę postępów.</p>
+          <a href="/pl/personal-training-cwmbran" class="btn btn-outline-dark">Zobacz trening personalny Cwmbran</a>
+        </section>
+
+        <section class="choice-box" aria-labelledby="choice-heading">
+          <h2 id="choice-heading">Trening 1:1, online czy hybrydowo?</h2>
+          <p>Jeśli największym problemem jest technika albo pewność siebie na siłowni, trening 1:1 może dać najwięcej. Jeśli samodzielnie radzisz sobie z ćwiczeniami, ale potrzebujesz planu, kontroli i wsparcia, sprawdź <a href="/pl/online-coaching">trenera personalnego online</a>. Jeśli chcesz obu form, <a href="/pl/hybrid-coaching">coaching hybrydowy</a> łączy je w jeden system.</p>
+        </section>
+      </div>
+    </section>
+  </article>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Nadal nie wiesz, która opcja będzie najlepsza?</h2>
+      <p>Powiedz mi, jaki masz cel, doświadczenie i grafik. Konsultacja jest bezpłatna i nie zobowiązuje do rozpoczęcia współpracy.</p>
+      <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 820px; }
+  .article-hero { padding: 72px 0; }
+  .article-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.08; margin: 10px 0 18px; }
+  .lead { color: #D0D4D9; font-size: 1.08rem; }
+  .back { display: inline-block; color: #C5C9CF; margin-bottom: 24px; }
+  .article-body > p { font-size: 1.05rem; color: var(--steel); }
+  .point { padding: 30px 0; border-bottom: 1px solid #E1E4E7; }
+  .point h2 { font-size: 1.35rem; margin-bottom: 10px; }
+  .point p, .choice-box p, .local-box p { color: var(--steel); }
+  .local-box, .choice-box { margin-top: 36px; padding: 28px; background: #F5F6F7; border-left: 4px solid var(--red); }
+  .local-box .btn { margin-top: 18px; }
+  .choice-box a { color: var(--red); font-weight: 700; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F5DADD; max-width: 58ch; margin: 0 auto 24px; }
+</style>

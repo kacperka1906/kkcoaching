@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const checks = [
+  ['Start with your goal, not the trainer’s favourite method', 'A coach should first understand whether you want fat loss, muscle gain, better technique, more confidence or a return to consistent training. The programme should follow that goal rather than force every client into the same template.'],
+  ['Check what happens outside the session', 'Ask how progress is tracked and how the programme changes. A useful system can include training performance, body-weight trends, measurements, photos, adherence and feedback depending on your goal.'],
+  ['Choose a location you can realistically attend', 'Convenience matters. If a gym is difficult to reach around work and family commitments, even a good programme becomes harder to follow. In-person KK Coaching sessions take place at JD Gyms Cwmbran in the town centre.'],
+  ['Look for clear coaching, not just hard workouts', 'A personal trainer should be able to explain exercise setup, technique and progression in language you understand. Feeling destroyed after every session is not the same thing as having a productive plan.'],
+  ['Ask what support you actually need', 'Some people need 1:1 technique work. Others train confidently alone and need online accountability. Hybrid coaching combines both. Paying for the most expensive option only makes sense if you will use the extra support.'],
+  ['Make sure the working relationship feels right', 'You should be able to ask questions, give honest feedback and understand what is expected from you. A free consultation is useful because it lets both sides decide whether the coaching relationship is a good fit before starting.']
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How to Choose a Personal Trainer in Cwmbran',
+  description: 'A practical guide to choosing a personal trainer in Cwmbran, including qualifications, coaching style, progress tracking, location and the level of support you need.',
+  url: 'https://kkcoaching.fit/resources/choosing-personal-trainer-cwmbran',
+  author: { '@id': 'https://kkcoaching.fit/#kacper-kaszowski' },
+  publisher: { '@id': 'https://kkcoaching.fit/#business' },
+  about: ['Personal trainer Cwmbran', 'Personal training', 'Choosing a personal trainer']
+};
+---
+<BaseLayout
+  title="How to Choose a Personal Trainer in Cwmbran | KK Coaching"
+  description="Choosing a personal trainer in Cwmbran? Check coaching style, qualifications, progress tracking, gym location, communication and the support you actually need."
+  lang="en"
+  path="/resources/choosing-personal-trainer-cwmbran"
+  altPath="/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
+  structuredData={structuredData}
+>
+  <article>
+    <header class="article-hero on-dark">
+      <div class="container narrow">
+        <a class="back" href="/resources">← Fitness guides</a>
+        <span class="eyebrow">Personal training in Cwmbran</span>
+        <h1>How to choose a personal trainer in Cwmbran</h1>
+        <p class="lead">The best trainer for you is not automatically the person with the hardest sessions or the biggest social following. Start by checking whether their service, communication and location make it easier for you to follow a good plan consistently.</p>
+      </div>
+    </header>
+
+    <section class="on-white">
+      <div class="container narrow article-body">
+        <p>Personal training is a service, not one standard product. Two trainers can work in the same gym and offer very different levels of planning, technique coaching, progress tracking and support. Before you commit, these are the questions worth asking.</p>
+
+        {checks.map(([title, body], index) => (
+          <section class="point" aria-labelledby={`point-${index}`}>
+            <h2 id={`point-${index}`}>{index + 1}. {title}</h2>
+            <p>{body}</p>
+          </section>
+        ))}
+
+        <section class="local-box" aria-labelledby="local-heading">
+          <span class="eyebrow">Local option</span>
+          <h2 id="local-heading">Personal training at JD Gyms Cwmbran</h2>
+          <p>KK Coaching offers 1:1 personal training at JD Gyms Cwmbran, 17–18 Gwent Square, Cwmbran, NP44 1PW. The service includes an individual programme, live technique coaching, progression targets and progress reviews.</p>
+          <a href="/personal-training-cwmbran" class="btn btn-outline-dark">Explore Personal Training Cwmbran</a>
+        </section>
+
+        <section class="choice-box" aria-labelledby="choice-heading">
+          <h2 id="choice-heading">1:1, online or hybrid?</h2>
+          <p>If your biggest barrier is exercise technique or gym confidence, face-to-face personal training can be useful. If you already train independently but need programming, nutrition targets, accountability and regular reviews, <a href="/online-coaching">online personal training</a> may fit better. If you want both, <a href="/hybrid-coaching">hybrid personal training in Cwmbran</a> connects them in one coaching system.</p>
+        </section>
+      </div>
+    </section>
+  </article>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Still not sure which option fits?</h2>
+      <p>Tell me your goal, training experience and schedule. The consultation is free and there is no pressure to choose a package.</p>
+      <a href="/contact" class="btn btn-secondary">Book a Free Consultation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 820px; }
+  .article-hero { padding: 72px 0; }
+  .article-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.08; margin: 10px 0 18px; }
+  .lead { color: #D0D4D9; font-size: 1.08rem; }
+  .back { display: inline-block; color: #C5C9CF; margin-bottom: 24px; }
+  .article-body > p { font-size: 1.05rem; color: var(--steel); }
+  .point { padding: 30px 0; border-bottom: 1px solid #E1E4E7; }
+  .point h2 { font-size: 1.35rem; margin-bottom: 10px; }
+  .point p, .choice-box p, .local-box p { color: var(--steel); }
+  .local-box, .choice-box { margin-top: 36px; padding: 28px; background: #F5F6F7; border-left: 4px solid var(--red); }
+  .local-box .btn { margin-top: 18px; }
+  .choice-box a { color: var(--red); font-weight: 700; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F5DADD; max-width: 58ch; margin: 0 auto 24px; }
+</style>

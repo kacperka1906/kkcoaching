@@ -23,13 +23,13 @@ const phoneHref = `tel:${site.meta.whatsappNumber.replace(/\D/g, '')}`;
 
 const labels = lang === 'pl'
   ? {
-      nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
+      nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', resources: 'Poradniki', about: 'O mnie', contact: 'Kontakt',
       legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', cookieSettings: 'Ustawienia cookies', terms: 'Regulamin strony',
       direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
       footerSeo: 'Trener personalny Cwmbran · Coaching online · Coaching hybrydowy', home: 'KK Coaching - strona główna', phone: 'Telefon', trainingAt: 'Treningi 1:1'
     }
   : {
-      nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
+      nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', resources: 'Fitness Guides', about: 'About Me', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', cookieSettings: 'Cookie settings', terms: 'Website Terms',
       direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
       footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home', phone: 'Phone', trainingAt: '1:1 training'
@@ -57,6 +57,7 @@ const labels = lang === 'pl'
           <li><a href={`${prefix}/online-coaching`}>{labels.online}</a></li>
           <li><a href={`${prefix}/hybrid-coaching`}>{labels.hybrid}</a></li>
           <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
+          <li><a href={`${prefix}/resources`}>{labels.resources}</a></li>
           <li><a href={`${prefix}/about`}>{labels.about}</a></li>
           <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
         </ul>

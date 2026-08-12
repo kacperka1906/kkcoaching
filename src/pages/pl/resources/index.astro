@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const guides = [
+  {
+    href: '/pl/resources/jak-wybrac-trenera-personalnego-cwmbran',
+    eyebrow: 'Cwmbran',
+    title: 'Jak wybrać trenera personalnego w Cwmbran',
+    body: 'Na co zwrócić uwagę przed pierwszym treningiem: sposób pracy, kwalifikacje, lokalizacja, kontrola postępów i to, czy forma współpracy pasuje do Twojego celu.'
+  },
+  {
+    href: '/pl/resources/trener-personalny-online-uk-jak-to-dziala',
+    eyebrow: 'Coaching online',
+    title: 'Jak działa trener personalny online w UK',
+    body: 'Co naprawdę powinno obejmować prowadzenie online: plan, raporty, analizę wyników, wsparcie żywieniowe, ocenę techniki i regularne korekty.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Poradniki treningowe KK Coaching',
+  url: 'https://kkcoaching.fit/pl/resources',
+  about: ['Trener personalny', 'Coaching online', 'Cwmbran', 'Trening'],
+  publisher: { '@id': 'https://kkcoaching.fit/#business' }
+};
+---
+<BaseLayout
+  title="Poradniki treningowe i coaching | KK Coaching"
+  description="Praktyczne poradniki KK Coaching o treningach personalnych w Cwmbran, trenerze personalnym online w UK i wyborze odpowiedniej formy współpracy."
+  lang="pl"
+  path="/pl/resources"
+  altPath="/resources"
+  structuredData={structuredData}
+>
+  <section class="page-hero on-dark">
+    <div class="container">
+      <span class="eyebrow">Darmowe materiały</span>
+      <h1>Poradniki o treningu i coachingu</h1>
+      <p class="lead">Konkretne odpowiedzi dla osób, które chcą lepiej zrozumieć trening personalny i prowadzenie online, zanim zdecydują się na współpracę.</p>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container guide-grid">
+      {guides.map(guide => (
+        <article class="guide-card">
+          <span class="eyebrow">{guide.eyebrow}</span>
+          <h2><a href={guide.href}>{guide.title}</a></h2>
+          <p>{guide.body}</p>
+          <a class="text-link" href={guide.href}>Przeczytaj poradnik →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Wiesz już, czego potrzebujesz?</h2>
+      <p>Porównaj trening personalny 1:1 w Cwmbran, coaching online i coaching hybrydowy albo zacznij od bezpłatnej konsultacji.</p>
+      <div class="actions">
+        <a href="/pl/services" class="btn btn-secondary">Porównaj opcje współpracy</a>
+        <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 72px 0; }
+  .page-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.6rem); margin: 10px 0 16px; }
+  .lead { color: #C8CCD1; max-width: 66ch; }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .guide-card { border: 1px solid #E0E3E6; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 30px 28px; }
+  .guide-card h2 { font-size: 1.35rem; margin-bottom: 12px; }
+  .guide-card h2 a { text-decoration: none; }
+  .guide-card p { color: var(--steel); margin-bottom: 18px; }
+  .text-link { color: var(--red); font-weight: 750; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F5DADD; max-width: 60ch; margin: 0 auto 24px; }
+  .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 700px) { .guide-grid { grid-template-columns: 1fr; } .actions { display: grid; } }
+</style>
