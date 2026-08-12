@@ -11,37 +11,43 @@ interface Props {
 }
 const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = false } = Astro.props;
 ---
-<article class:list={['service-card', { minor }]}>
-  <img src={image} alt={imageAlt} width="400" height="250" loading="lazy" />
+<article class:list={["service-card", { minor }] }>
+  <img class="service-image" src={image} alt={imageAlt} width="640" height="420" loading="lazy" />
   <div class="service-body">
     <h3>{title}</h3>
-    <p>{tagline}</p>
+    <p class="tagline">{tagline}</p>
     <ul>
-      {bullets.map(b => <li>{b}</li>)}
+      {bullets.map(item => <li>{item}</li>)}
     </ul>
-    <a href={ctaTarget} class:list={['btn', minor ? 'btn-outline-dark' : 'btn-primary']}>{ctaLabel}</a>
+    <a href={ctaTarget} class="btn btn-primary service-cta">{ctaLabel}</a>
   </div>
 </article>
 
 <style>
   .service-card {
-    background: var(--white);
+    background: #202329;
+    border: 1px solid #333840;
     border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid #E3E5E8;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
-  .service-card img { aspect-ratio: 16/10; object-fit: cover; }
-  .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-  .service-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
-  .service-body p { color: var(--steel); font-size: 0.95rem; }
-  .service-body ul { list-style: none; margin: 14px 0 22px; font-size: 0.9rem; color: var(--steel); }
-  .service-body ul li { padding-left: 18px; position: relative; margin-bottom: 6px; }
-  .service-body ul li::before {
-    content: ""; position: absolute; left: 0; top: 9px;
-    width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+  .service-card.minor { opacity: 0.94; }
+  .service-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #17191D; }
+  .service-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+  .service-body h3 { color: var(--white); font-size: 1.18rem; margin-bottom: 10px; }
+  .tagline { color: #C3C7CD; font-size: 0.94rem; margin-bottom: 18px; }
+  ul { list-style: none; display: grid; gap: 9px; margin-bottom: 24px; }
+  li { color: #E7E9EC; font-size: 0.9rem; padding-left: 19px; position: relative; }
+  li::before { content: '✓'; color: #E25766; font-weight: 800; position: absolute; left: 0; }
+  .service-cta { margin-top: auto; align-self: flex-start; }
+
+  @media (max-width: 620px) {
+    .service-body { padding: 22px 18px; }
+    .service-body h3 { font-size: 1.12rem; }
+    .tagline { font-size: 0.92rem; }
+    li { font-size: 0.88rem; }
+    .service-cta { width: 100%; align-self: stretch; }
   }
-  .service-body .btn { margin-top: auto; align-self: flex-start; }
-  .service-card.minor { opacity: 0.92; }
 </style>
