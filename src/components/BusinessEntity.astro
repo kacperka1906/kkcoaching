@@ -15,6 +15,7 @@ const structuredData = {
       '@id': businessId,
       name: 'KK Coaching',
       alternateName: 'KK Coaching by Kacper Kaszowski',
+      slogan: 'Train. Transform. Thrive.',
       url: `${siteUrl}/`,
       description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and regular progress tracking.',
       image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
@@ -43,6 +44,39 @@ const structuredData = {
         { '@type': 'AdministrativeArea', name: 'South Wales' },
         { '@type': 'Country', name: 'United Kingdom' }
       ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'KK Coaching services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '1:1 Personal Training in Cwmbran',
+              url: `${siteUrl}/personal-training-cwmbran`,
+              serviceType: 'Personal Training'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Online Personal Training and Fitness Coaching',
+              url: `${siteUrl}/online-coaching`,
+              serviceType: 'Online Personal Training'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Hybrid Personal Training in Cwmbran',
+              url: `${siteUrl}/hybrid-coaching`,
+              serviceType: 'Hybrid Personal Training and Online Coaching'
+            }
+          }
+        ]
+      },
       knowsLanguage: ['English', 'Polish'],
       sameAs,
       founder: { '@id': personId }
