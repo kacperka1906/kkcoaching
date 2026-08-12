@@ -4,7 +4,7 @@ import site from '../../data/site.pl.json';
 
 const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
-const aboutImage = '/images/about-kacper-2026.webp';
+const aboutImage = '/images/kacper-kaszowski-personal-trainer-cwmbran.jpg';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -37,9 +37,9 @@ const structuredData = {
       <img
         class="about-photo"
         src={aboutImage}
-        alt={site.story.imageAlt}
-        width="800"
-        height="800"
+        alt="Kacper Kaszowski, trener personalny w Cwmbran i założyciel KK Coaching"
+        width="600"
+        height="600"
         loading="eager"
         decoding="async"
         fetchpriority="high"
