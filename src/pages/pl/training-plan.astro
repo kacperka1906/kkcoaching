@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import pricing from '../../data/pricing.json';
 
 const services = await getCollection('services');
-const service = services.find(item => item.id === 'pl/training-plan');
+const service = services.find(item => item.id.startsWith('pl/') && item.id.includes('training-plan'));
 if (!service) throw new Error('Missing Polish training-plan service content');
 
 const price = pricing.trainingPlan.price;
