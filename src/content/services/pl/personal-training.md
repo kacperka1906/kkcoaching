@@ -5,7 +5,7 @@ order: 1
 minor: false
 ctaLabel: "Zobacz trening personalny 1:1"
 ctaTarget: "/pl/personal-training-cwmbran"
-image: "/images/personal-training-cwmbran-placeholder.svg"
+image: "/images/personal-training-cwmbran.webp"
 imageAlt: "Trening personalny 1:1 i nauka techniki ćwiczeń w JD Gyms Cwmbran z KK Coaching"
 bullets:
   - "Bezpłatna konsultacja i jasne ustalenie celu"
