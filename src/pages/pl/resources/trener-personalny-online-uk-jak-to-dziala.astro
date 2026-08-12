@@ -11,6 +11,7 @@ const sections = [
 ];
 
 const articleUrl = 'https://kkcoaching.fit/pl/resources/trener-personalny-online-uk-jak-to-dziala';
+const articleImage = 'https://kkcoaching.fit/images/kacper.jpg';
 const publishedDate = '2026-08-12T11:10:00+01:00';
 const modifiedDate = '2026-08-12T12:00:00+01:00';
 
@@ -23,6 +24,7 @@ const structuredData = {
       headline: 'Jak działa trener personalny online w UK',
       description: 'Praktyczny poradnik o coachingu online w UK: plan treningowy, raporty, żywienie, analiza postępów, nagrania techniki i kontakt z trenerem.',
       url: articleUrl,
+      image: articleImage,
       mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
       isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
       inLanguage: 'pl-PL',
@@ -56,6 +58,8 @@ const structuredData = {
   path="/pl/resources/trener-personalny-online-uk-jak-to-dziala"
   altPath="/resources/online-personal-training-uk"
   structuredData={structuredData}
+  articlePublishedTime={publishedDate}
+  articleModifiedTime={modifiedDate}
 >
   <article>
     <header class="article-hero on-dark">
@@ -64,7 +68,7 @@ const structuredData = {
         <span class="eyebrow">Coaching online</span>
         <h1>Jak działa trener personalny online w UK</h1>
         <p class="lead">Prowadzenie online to coś więcej niż plan wysłany w PDF-ie. Największa wartość jest w systemie wokół planu: kontroli postępów, feedbacku, regularności i zmianach wprowadzanych na podstawie tego, co naprawdę się dzieje.</p>
-        <p class="article-meta">Autor: <a href="/pl/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · Aktualizacja: 12 sierpnia 2026</p>
+        <p class="article-meta">Autor: <a href="/pl/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · <time datetime={modifiedDate}>Aktualizacja: 12 sierpnia 2026</time></p>
       </div>
     </header>
 
