@@ -12,6 +12,8 @@ interface Props {
   altPath?: string;
   structuredData?: Record<string, unknown>;
   noindex?: boolean;
+  socialImage?: string;
+  socialImageAlt?: string;
 }
 
 const {
@@ -21,12 +23,22 @@ const {
   path = '/',
   altPath,
   structuredData,
-  noindex = false
+  noindex = false,
+  socialImage = '/images/kacper.png',
+  socialImageAlt = 'KK Coaching - Kacper Kaszowski, Personal Trainer in Cwmbran'
 } = Astro.props;
 
 const siteUrl = 'https://kkcoaching.fit';
 const canonical = `${siteUrl}${path}`;
-const socialImage = `${siteUrl}/images/kacper.png`;
+const enPath = lang === 'en' ? path : (altPath ?? '/');
+const plPath = lang === 'pl' ? path : (altPath ?? '/pl');
+const enUrl = `${siteUrl}${enPath}`;
+const plUrl = `${siteUrl}${plPath}`;
+const xDefaultUrl = enUrl;
+const socialImageUrl = socialImage.startsWith('http') ? socialImage : `${siteUrl}${socialImage}`;
+const robotsContent = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -35,25 +47,27 @@ const socialImage = `${siteUrl}/images/kacper.png`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  {noindex && <meta name="robots" content="noindex, follow" />}
+  <meta name="robots" content={robotsContent} />
   <link rel="canonical" href={canonical} />
 
-  <link rel="alternate" hreflang="en" href={lang === 'en' ? canonical : `${siteUrl}${altPath ?? '/'}`} />
-  <link rel="alternate" hreflang="pl" href={lang === 'pl' ? canonical : `${siteUrl}${altPath ?? '/pl'}`} />
-  <link rel="alternate" hreflang="x-default" href={siteUrl} />
+  <link rel="alternate" hreflang="en" href={enUrl} />
+  <link rel="alternate" hreflang="pl" href={plUrl} />
+  <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="KK Coaching" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={socialImage} />
-  <meta property="og:image:alt" content="KK Coaching - Kacper Kaszowski, Personal Trainer in Cwmbran" />
+  <meta property="og:image" content={socialImageUrl} />
+  <meta property="og:image:alt" content={socialImageAlt} />
   <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'pl_PL'} />
+  <meta property="og:locale:alternate" content={lang === 'en' ? 'pl_PL' : 'en_GB'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={socialImage} />
+  <meta name="twitter:image" content={socialImageUrl} />
+  <meta name="twitter:image:alt" content={socialImageAlt} />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
@@ -63,26 +77,13 @@ const socialImage = `${siteUrl}/images/kacper.png`;
 </head>
 <body>
   <a href="#main" class="skip-link">{lang === 'pl' ? 'Przejdź do treści głównej' : 'Skip to main content'}</a>
-  <Header lang={lang} />
+  <Header lang={lang} altPath={altPath} />
   <main id="main">
     <slot />
   </main>
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
   <Analytics />
-
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
-  <script is:inline>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', (user) => {
-        if (!user) {
-          window.netlifyIdentity.on('login', () => {
-            document.location.href = '/admin/';
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>
 
