@@ -29,6 +29,12 @@
   force = true
 
 [[redirects]]
+  from = "/images/kacper-hero.webp"
+  to = "/.netlify/images?url=/images/kacper.jpg&w=960&fm=webp&q=84"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/images/kacper.png"
   to = "/images/kacper.jpg"
   status = 301
