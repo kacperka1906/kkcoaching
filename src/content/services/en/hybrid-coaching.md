@@ -5,7 +5,7 @@ order: 3
 minor: false
 ctaLabel: "Explore Hybrid Coaching"
 ctaTarget: "/hybrid-coaching"
-image: "/images/hybrid-coaching-placeholder.svg"
+image: "/images/hybrid-coaching.webp"
 imageAlt: "Hybrid coaching in Cwmbran combining face-to-face personal training with full online coaching"
 bullets:
   - "Everything included in Online Coaching"
