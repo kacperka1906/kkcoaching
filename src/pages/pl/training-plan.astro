@@ -1,0 +1,262 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import pricing from '../../data/pricing.json';
+
+const services = await getCollection('services');
+const service = services.find(item => item.id === 'pl/training-plan');
+if (!service) throw new Error('Missing Polish training-plan service content');
+
+const price = pricing.trainingPlan.price;
+const money = `${pricing.currency}${Number.isInteger(price) ? price.toFixed(0) : price.toFixed(2)}`;
+
+const bestFor = [
+  {
+    title: 'Chcesz trenować samodzielnie, ale mieć konkretny plan',
+    body: 'Nie potrzebujesz stałego prowadzenia, ale chcesz wiedzieć dokładnie co robić zamiast składać trening z przypadkowych ćwiczeń.'
+  },
+  {
+    title: 'Plan musi pasować do Twojego tygodnia',
+    body: 'Program układam pod liczbę dni, które naprawdę możesz trenować, dostępny sprzęt i Twój aktualny poziom.'
+  },
+  {
+    title: 'Chcesz wiedzieć, jak progresować',
+    body: 'Serie, zakresy powtórzeń i zasady progresji dają Ci jasny punkt odniesienia i pomagają ocenić, czy trening idzie do przodu.'
+  }
+];
+
+const process = [
+  ['01', 'Podajesz mi cel i warunki treningowe', 'Zbieram informacje potrzebne do ułożenia planu: cel, doświadczenie, liczbę dni, dostępny sprzęt oraz rzeczy, które trzeba uwzględnić przy doborze ćwiczeń.'],
+  ['02', 'Układam Twój program', 'Dobieram strukturę tygodnia, ćwiczenia, serie, zakresy powtórzeń, przerwy i zasady progresji pod Twoją sytuację zamiast korzystać z gotowego szablonu.'],
+  ['03', 'Dostajesz plan w czytelnej formie', 'Masz jasny układ treningów i wiesz, co wykonać podczas każdej sesji oraz w jaki sposób śledzić progres.'],
+  ['04', 'Realizujesz plan samodzielnie', 'To usługa jednorazowa. Jeśli później będziesz potrzebować regularnych raportów, żywienia, oceny techniki lub bieżących korekt, możesz przejść na coaching online albo hybrydowy.']
+];
+
+const faqs = [
+  {
+    q: 'Czy to jest to samo co coaching online?',
+    a: 'Nie. Indywidualny plan treningowy jest usługą jednorazową do samodzielnej realizacji. Coaching online obejmuje bieżące raporty, analizę postępów, wskazówki żywieniowe, ocenę techniki i regularne korekty.'
+  },
+  {
+    q: 'Czy plan można ułożyć pod domową siłownię albo ograniczony sprzęt?',
+    a: 'Tak. Ćwiczenia dobieram do sprzętu, którym faktycznie dysponujesz — może to być pełna siłownia komercyjna, domowa siłownia albo bardziej ograniczony zestaw.'
+  },
+  {
+    q: 'Czy taki plan nadaje się dla osoby początkującej?',
+    a: 'Tak, plan może być dopasowany do początkującego poziomu. Jeśli jednak dopiero uczysz się obsługi sprzętu i techniki ćwiczeń, lepszym początkiem mogą być treningi 1:1 w Cwmbran.'
+  },
+  {
+    q: 'Co jeśli później będę chciał zmienić plan?',
+    a: 'Ponieważ jest to usługa jednorazowa, regularne monitorowanie i kolejne korekty nie są wliczone w cenę. Jeśli chcesz takiego wsparcia, lepiej sprawdzi się coaching online lub hybrydowy.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://kkcoaching.fit/pl/training-plan#service',
+      name: 'Indywidualny plan treningowy',
+      serviceType: 'Indywidualny program treningowy',
+      description: 'Jednorazowy indywidualny plan treningowy dopasowany do celu, grafiku, doświadczenia i dostępnego sprzętu.',
+      url: 'https://kkcoaching.fit/pl/training-plan',
+      provider: { '@id': 'https://kkcoaching.fit/#business' },
+      areaServed: { '@type': 'Country', name: 'United Kingdom' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'GBP',
+        price,
+        availability: 'https://schema.org/InStock',
+        url: 'https://kkcoaching.fit/pl/training-plan'
+      }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://kkcoaching.fit/pl' },
+        { '@type': 'ListItem', position: 2, name: 'Opcje współpracy', item: 'https://kkcoaching.fit/pl/services' },
+        { '@type': 'ListItem', position: 3, name: 'Indywidualny plan treningowy' }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Indywidualny plan treningowy | £30 jednorazowo | KK Coaching"
+  description="Indywidualny plan treningowy dopasowany do celu, grafiku, doświadczenia i sprzętu. Jasne serie, powtórzenia i progresja za £30 jednorazowo."
+  lang="pl"
+  path="/pl/training-plan"
+  altPath="/training-plan"
+  structuredData={structuredData}
+  socialImage={service.data.image}
+  socialImageAlt={service.data.imageAlt}
+>
+  <section class="plan-hero on-dark">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Jednorazowy indywidualny program</span>
+        <h1>Indywidualny plan treningowy dopasowany do Ciebie</h1>
+        <p class="lead">Trenuj samodzielnie z konkretnym programem ułożonym pod Twój cel, grafik, doświadczenie i dostępny sprzęt.</p>
+        <div class="price-line"><strong>{money}</strong><span>jednorazowo</span></div>
+        <div class="hero-actions">
+          <a href="/pl/contact" class="btn btn-primary">Zapytaj o plan treningowy</a>
+          <a href="/pl/services" class="btn btn-secondary">Porównaj opcje współpracy</a>
+        </div>
+        <p class="scope-note">Usługa jednorazowa · bez abonamentu · bez regularnych raportów i bieżącego prowadzenia</p>
+      </div>
+      <div class="hero-media">
+        <img src={service.data.image} alt={service.data.imageAlt} width="720" height="540" loading="eager" fetchpriority="high" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="fit-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Dla kogo</span>
+        <h2 id="fit-heading">Konkretny plan bez płacenia za wsparcie, którego nie potrzebujesz.</h2>
+        <p>Jeśli chcesz ćwiczyć samodzielnie, ale zależy Ci na indywidualnym programie zamiast przypadkowych treningów, to najprostsza forma współpracy.</p>
+      </div>
+      <div class="three-grid">
+        {bestFor.map(item => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark" aria-labelledby="included-heading">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Co dostajesz</span>
+        <h2 id="included-heading">Plan, który otwierasz i wiesz dokładnie, co masz zrobić.</h2>
+        <p class="dark-copy">Ta opcja skupia się na samym programie treningowym. Dostajesz jasną strukturę bez udawania, że jednorazowy plan jest okrojoną wersją pełnego coachingu.</p>
+      </div>
+      <ul class="check-list">
+        {service.data.bullets.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Jak to działa</span>
+        <h2 id="process-heading">Od Twojego celu do planu, który da się normalnie realizować.</h2>
+      </div>
+      <div class="process-grid">
+        {process.map(([num, title, body]) => (
+          <article class="process-card">
+            <span class="num">{num}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="compare on-white" aria-labelledby="compare-heading">
+    <div class="container compare-grid">
+      <div>
+        <span class="eyebrow">Plan czy prowadzenie?</span>
+        <h2 id="compare-heading">Wybierz tyle wsparcia, ile naprawdę potrzebujesz.</h2>
+        <p>Jeśli potrzebujesz tylko programu, jednorazowy plan załatwia sprawę. Jeśli chcesz, żebym regularnie analizował progres, oceniał technikę, korygował trening i pomagał z żywieniem, lepszym wyborem będzie stałe prowadzenie.</p>
+      </div>
+      <div class="compare-links">
+        <a href="/pl/online-coaching"><strong>Coaching online</strong><span>Trening, żywienie, raporty i bieżące wsparcie →</span></a>
+        <a href="/pl/hybrid-coaching"><strong>Coaching hybrydowy</strong><span>Pełne prowadzenie online + regularne treningi 1:1 →</span></a>
+        <a href="/pl/personal-training-cwmbran"><strong>Trening personalny 1:1</strong><span>Praca na żywo w JD Gyms Cwmbran →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-heading">
+    <div class="container faq-wrap">
+      <div class="section-head centered">
+        <span class="eyebrow">Pytania</span>
+        <h2 id="faq-heading">Indywidualny plan treningowy — FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow light">Chcesz trenować z konkretnym planem?</span>
+      <h2>Napisz mi, jaki masz cel.</h2>
+      <p>Podaj swój cel, liczbę dni treningowych i warunki, w których ćwiczysz. Potwierdzę, czy jednorazowy plan będzie dla Ciebie odpowiednią opcją.</p>
+      <a href="/pl/contact" class="btn btn-secondary">Zapytaj o plan treningowy</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .plan-hero { padding: 72px 0; }
+  .hero-grid, .split, .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy h1 { color: var(--white); font-size: clamp(2.15rem, 5vw, 4rem); max-width: 13ch; margin-bottom: 18px; }
+  .hero-copy .lead { color: #D3D6DA; font-size: 1.08rem; max-width: 56ch; }
+  .price-line { display: flex; align-items: baseline; gap: 9px; margin-top: 22px; }
+  .price-line strong { color: #F2F3F4; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
+  .price-line span { color: #C8CCD2; font-weight: 700; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 16px; }
+  .scope-note { color: #AEB4BC; font-size: 0.82rem; }
+  .hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); border: 1px solid #363A40; }
+
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
+  .info-card { border-top: 3px solid var(--red); }
+  .info-card h3, .process-card h3 { font-size: 1.06rem; margin-bottom: 10px; }
+  .info-card p, .process-card p { color: var(--steel); font-size: 0.93rem; }
+  .dark-copy { color: #C0C4CA; max-width: 58ch; }
+  .check-list { list-style: none; display: grid; gap: 12px; }
+  .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #D4D7DB; }
+  .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #F18B97; font-weight: 900; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .process-card .num { color: var(--red); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.08em; }
+  .compare-links { display: grid; gap: 12px; }
+  .compare-links a { display: grid; gap: 3px; padding: 18px 20px; border: 1px solid #DDE0E4; background: var(--white); color: var(--graphite); text-decoration: none; border-radius: var(--radius); }
+  .compare-links a:hover { border-color: var(--red); }
+  .compare-links span { color: var(--steel); font-size: 0.88rem; }
+  .faq-wrap { max-width: 900px; }
+  .faq-list { display: grid; gap: 10px; }
+  .faq-item { background: var(--white); border: 1px solid #DFE2E6; border-radius: var(--radius); padding: 0 18px; }
+  .faq-item summary { cursor: pointer; font-weight: 800; padding: 18px 0; }
+  .faq-item p { color: var(--steel); padding: 0 0 18px; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F3D7DA; max-width: 58ch; margin: 0 auto 28px; }
+  .eyebrow.light { color: #FFDCE0; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .split, .compare-grid { grid-template-columns: 1fr; gap: 34px; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) { .three-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 620px) {
+    .plan-hero { padding: 52px 0; }
+    .hero-copy h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .hero-actions .btn, .final-cta .btn { width: 100%; }
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>
