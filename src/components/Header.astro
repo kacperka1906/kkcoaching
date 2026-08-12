@@ -9,6 +9,7 @@ const { lang, altPath } = Astro.props;
 const prefix = lang === 'pl' ? '/pl' : '';
 const languageHref = altPath ?? (lang === 'pl' ? '/' : '/pl');
 const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching - home';
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 
 const nav = lang === 'pl'
   ? [
@@ -39,7 +40,11 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     </a>
     <nav class="main-nav" id="mainNav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
       <ul>
-        {nav.map(item => <li><a href={item.href}>{item.label}</a></li>)}
+        {nav.map(item => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
       </ul>
     </nav>
     <div class="header-right">
@@ -110,7 +115,9 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     font-weight: 500;
     white-space: nowrap;
   }
-  nav.main-nav a:hover { color: var(--red); }
+  nav.main-nav a:hover,
+  nav.main-nav a[aria-current="page"] { color: var(--red); }
+  nav.main-nav a[aria-current="page"] { font-weight: 700; }
 
   .header-right { display: flex; align-items: center; gap: 12px; }
   .header-cta {
