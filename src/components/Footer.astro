@@ -13,20 +13,20 @@ const labels = lang === 'pl'
       nav: 'Na skróty', personal: 'Personal Training Cwmbran', online: 'Online Coaching', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
       legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin strony',
       direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
-      footerSeo: 'Personal Training Cwmbran · Online Coaching'
+      footerSeo: 'Personal Training Cwmbran · Online Coaching', home: 'KK Coaching - strona główna'
     }
   : {
       nav: 'Quick links', personal: 'Personal Training Cwmbran', online: 'Online Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Website Terms',
       direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
-      footerSeo: 'Personal Training Cwmbran · Online Coaching'
+      footerSeo: 'Personal Training Cwmbran · Online Coaching', home: 'KK Coaching - home'
     };
 ---
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href={prefix || '/'} class="logo" aria-label="KK Coaching - home">
+        <a href={prefix || '/'} class="logo" aria-label={labels.home}>
           <Logo height={30} />
         </a>
         <p class="tagline">{site.meta.tagline}</p>
