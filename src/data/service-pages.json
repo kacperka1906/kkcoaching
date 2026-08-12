@@ -1,0 +1,23 @@
+{
+  "personal": {
+    "heroImage": "/images/kacper-hero.webp",
+    "heroAlt": {
+      "en": "Kacper Kaszowski, personal trainer in Cwmbran",
+      "pl": "Kacper Kaszowski, polski trener personalny w Cwmbran"
+    }
+  },
+  "online": {
+    "heroImage": "/images/online-coaching-app.webp",
+    "heroAlt": {
+      "en": "KK Coaching online coaching with training, nutrition and progress tracking",
+      "pl": "Polski coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów"
+    }
+  },
+  "hybrid": {
+    "heroImage": "/images/hybrid-coaching.webp",
+    "heroAlt": {
+      "en": "Hybrid coaching combining online coaching with 1:1 personal training in Cwmbran",
+      "pl": "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran"
+    }
+  }
+}
