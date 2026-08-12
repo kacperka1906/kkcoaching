@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import TrainingLocation from './TrainingLocation.astro';
 import siteEn from '../data/site.en.json';
 import sitePl from '../data/site.pl.json';
 
@@ -7,6 +8,18 @@ interface Props { lang: 'en' | 'pl' }
 const { lang } = Astro.props;
 const site = lang === 'pl' ? sitePl : siteEn;
 const prefix = lang === 'pl' ? '/pl' : '';
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const locationPages = new Set([
+  '/',
+  '/pl',
+  '/services',
+  '/pl/services',
+  '/personal-training-cwmbran',
+  '/pl/personal-training-cwmbran',
+  '/hybrid-coaching',
+  '/pl/hybrid-coaching'
+]);
+const showTrainingLocation = locationPages.has(pathname);
 
 const labels = lang === 'pl'
   ? {
@@ -22,6 +35,8 @@ const labels = lang === 'pl'
       footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home'
     };
 ---
+{showTrainingLocation && <TrainingLocation lang={lang} />}
+
 <footer>
   <div class="container">
     <div class="footer-grid">
