@@ -5,7 +5,7 @@ order: 2
 minor: false
 ctaLabel: "Explore Online Coaching"
 ctaTarget: "/online-coaching"
-image: "/images/online-coaching-placeholder.svg"
+image: "/images/online-coaching-app.webp"
 imageAlt: "KK Coaching online fitness coaching with training, nutrition support and progress check-ins"
 bullets:
   - "Personalised training programme"
