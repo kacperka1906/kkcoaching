@@ -5,7 +5,7 @@ order: 1
 minor: false
 ctaLabel: "Explore 1:1 Personal Training"
 ctaTarget: "/personal-training-cwmbran"
-image: "/images/personal-training-cwmbran-placeholder.svg"
+image: "/images/personal-training-cwmbran.webp"
 imageAlt: "One-to-one personal training and exercise technique coaching at JD Gyms Cwmbran with KK Coaching"
 bullets:
   - "Free consultation and clear goal setting"
