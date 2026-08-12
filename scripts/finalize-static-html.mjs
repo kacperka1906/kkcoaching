@@ -15,6 +15,8 @@ const targets = [
   { route: 'pl/hybrid-coaching', lang: 'pl', key: 'hybrid', heroClass: 'hybrid-hero' }
 ];
 
+const locationRoutes = ['', 'pl', 'services', 'pl/services', 'hybrid-coaching', 'pl/hybrid-coaching'];
+
 function escapeAttr(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -72,6 +74,23 @@ function movePricingAfterHero(html, className) {
   return withoutPricing.slice(0, hero.end) + pricing + withoutPricing.slice(hero.end);
 }
 
+function moveTrainingLocationInsideMain(html) {
+  const locationStart = html.indexOf('<section class="training-location');
+  if (locationStart < 0) return html;
+  const mainClose = html.indexOf('</main>');
+  if (mainClose < 0) throw new Error('Missing </main>');
+  if (locationStart < mainClose) return html;
+
+  const locationClose = html.indexOf('</section>', locationStart);
+  if (locationClose < 0) throw new Error('Unclosed training-location section');
+  const locationEnd = locationClose + '</section>'.length;
+  const location = html.slice(locationStart, locationEnd);
+  const withoutLocation = html.slice(0, locationStart) + html.slice(locationEnd);
+  const updatedMainClose = withoutLocation.indexOf('</main>');
+
+  return withoutLocation.slice(0, updatedMainClose) + location + withoutLocation.slice(updatedMainClose);
+}
+
 function addHeroPreload(html, image) {
   if (html.includes(`rel="preload" as="image" href="${image}"`)) return html;
   const preload = `<link rel="preload" as="image" href="${escapeAttr(image)}">`;
@@ -80,8 +99,12 @@ function addHeroPreload(html, image) {
   return html.slice(0, headClose) + preload + html.slice(headClose);
 }
 
+function outputFile(route) {
+  return route ? join(dist, route, 'index.html') : join(dist, 'index.html');
+}
+
 for (const target of targets) {
-  const file = join(dist, target.route, 'index.html');
+  const file = outputFile(target.route);
   const visual = servicePages[target.key];
   if (!visual?.heroImage) throw new Error(`Missing CMS hero image for ${target.key}`);
   const alt = visual.heroAlt?.[target.lang] || '';
@@ -92,4 +115,15 @@ for (const target of targets) {
   html = addHeroPreload(html, visual.heroImage);
   await writeFile(file, html);
   console.log(`Finalized /${target.route}`);
+}
+
+for (const route of locationRoutes) {
+  const file = outputFile(route);
+  let html = await readFile(file, 'utf8');
+  const before = html;
+  html = moveTrainingLocationInsideMain(html);
+  if (html !== before) {
+    await writeFile(file, html);
+    console.log(`Moved training location into <main> on /${route}`);
+  }
 }
