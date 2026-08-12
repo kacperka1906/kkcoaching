@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResultsContext from '../../components/ResultsContext.astro';
 import site from '../../data/site.pl.json';
 
 const testimonials = (await getCollection('testimonials'))
@@ -12,7 +13,7 @@ const faqs = (await getCollection('faq'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title="Przemiany Podopiecznych | Personal Trainer Cwmbran | KK Coaching"
+  title="Przemiany podopiecznych | Trener personalny Cwmbran | KK Coaching"
   description="Zobacz prawdziwe historie progresu i przemiany KK Coaching z treningów personalnych w Cwmbran oraz coachingu online. Realna praca, konkretny proces i mierzalne efekty."
   lang="pl"
   path="/pl/transformations"
@@ -44,7 +45,7 @@ const faqs = (await getCollection('faq'))
           return (
             <article class="transform-card">
               <div class="transform-image-wrap">
-                <img src={t.data.image} alt={imageAlt} width="400" height="500" loading="lazy" />
+                <img src={t.data.image} alt={imageAlt} width="400" height="500" loading="lazy" decoding="async" />
               </div>
               <div class="transform-body">
                 <div class="meta">
@@ -63,6 +64,8 @@ const faqs = (await getCollection('faq'))
       </div>
     </div>
   </section>
+
+  <ResultsContext lang="pl" />
 
   <section aria-labelledby="faq-heading">
     <div class="container">
