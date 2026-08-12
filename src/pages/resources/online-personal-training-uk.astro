@@ -11,6 +11,7 @@ const sections = [
 ];
 
 const articleUrl = 'https://kkcoaching.fit/resources/online-personal-training-uk';
+const articleImage = 'https://kkcoaching.fit/images/kacper.jpg';
 const publishedDate = '2026-08-12T11:10:00+01:00';
 const modifiedDate = '2026-08-12T12:00:00+01:00';
 
@@ -23,6 +24,7 @@ const structuredData = {
       headline: 'How Online Personal Training Works in the UK',
       description: 'A practical guide to online personal training in the UK, covering individual programming, check-ins, nutrition support, technique feedback and progress tracking.',
       url: articleUrl,
+      image: articleImage,
       mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
       isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
       inLanguage: 'en-GB',
@@ -56,6 +58,8 @@ const structuredData = {
   path="/resources/online-personal-training-uk"
   altPath="/pl/resources/trener-personalny-online-uk-jak-to-dziala"
   structuredData={structuredData}
+  articlePublishedTime={publishedDate}
+  articleModifiedTime={modifiedDate}
 >
   <article>
     <header class="article-hero on-dark">
@@ -64,7 +68,7 @@ const structuredData = {
         <span class="eyebrow">Online coaching guide</span>
         <h1>How online personal training works in the UK</h1>
         <p class="lead">Online personal training is more than receiving a workout by email. The useful part is the ongoing system around the programme: tracking, feedback, accountability and changes made from what is actually happening.</p>
-        <p class="article-meta">By <a href="/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · Updated 12 August 2026</p>
+        <p class="article-meta">By <a href="/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · <time datetime={modifiedDate}>Updated 12 August 2026</time></p>
       </div>
     </header>
 
