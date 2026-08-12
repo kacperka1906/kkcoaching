@@ -6,7 +6,7 @@ order: 4
 minor: true
 ctaLabel: Zapytaj o plan treningowy
 ctaTarget: /pl/contact
-image: /images/20580.png
+image: /images/20592.webp
 imageAlt: Indywidualny plan treningowy KK Coaching pokazany w aplikacji z
   seriami, zakresem powtórzeń, RIR i czasem przerw
 bullets:
