@@ -43,15 +43,26 @@ jobs:
           echo "Production deployment did not expose the expected training-plan page in time."
           exit 1
 
+      - name: Production HTTP smoke test
+        run: |
+          routes=("/" "/personal-training-cwmbran" "/online-coaching" "/hybrid-coaching" "/training-plan")
+          for path in "${routes[@]}"; do
+            code="$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 30 -A 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140.0 Safari/537.36' "https://kkcoaching.fit${path}")"
+            echo "${path} -> ${code}"
+            test "$code" = "200"
+          done
+
       - name: Run Lighthouse mobile and desktop against production
         run: |
           mkdir -p lighthouse-reports
+          UA='Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 Chrome/140.0.0.0 Mobile Safari/537.36'
           routes=("home:/" "personal-training:/personal-training-cwmbran" "online-coaching:/online-coaching" "hybrid-coaching:/hybrid-coaching" "training-plan:/training-plan")
           for entry in "${routes[@]}"; do
             name="${entry%%:*}"
             path="${entry#*:}"
             npx --yes lighthouse@12.6.0 "https://kkcoaching.fit${path}" \
               --quiet \
+              --user-agent="$UA" \
               --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
               --only-categories=performance,accessibility,best-practices,seo \
               --output=json \
@@ -59,6 +70,7 @@ jobs:
             npx --yes lighthouse@12.6.0 "https://kkcoaching.fit${path}" \
               --quiet \
               --preset=desktop \
+              --user-agent="$UA" \
               --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
               --only-categories=performance,accessibility,best-practices,seo \
               --output=json \
