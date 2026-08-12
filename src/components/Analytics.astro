@@ -2,9 +2,14 @@
 const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
 ---
 <script define:vars={{ GA_MEASUREMENT_ID }}>
+  const CONSENT_STORAGE_KEY = 'kk_cookie_consent';
+
   function injectGA() {
     if (window.__gaLoaded) return;
+    if (localStorage.getItem(CONSENT_STORAGE_KEY) !== 'accepted') return;
+
     window.__gaLoaded = true;
+    window[`ga-disable-${GA_MEASUREMENT_ID}`] = false;
 
     const script = document.createElement('script');
     script.async = true;
@@ -63,4 +68,10 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
   }
 
   window.addEventListener('kk-analytics-consent-granted', injectGA);
+
+  // Returning visitors may already have consent saved before the consent component
+  // dispatches its event, so initialise once from the persisted preference too.
+  if (localStorage.getItem(CONSENT_STORAGE_KEY) === 'accepted') {
+    injectGA();
+  }
 </script>
