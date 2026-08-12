@@ -7,6 +7,8 @@ ctaLabel: "Explore 1:1 Personal Training"
 ctaTarget: "/personal-training-cwmbran"
 image: "/images/personal-training-cwmbran.webp"
 imageAlt: "One-to-one personal training and exercise technique coaching at JD Gyms Cwmbran with KK Coaching"
+detailImage: "/images/kacper-hero.webp"
+detailImageAlt: "Kacper Kaszowski, personal trainer in Cwmbran"
 bullets:
   - "Free consultation and clear goal setting"
   - "Scheduled 1:1 sessions at JD Gyms Cwmbran"
