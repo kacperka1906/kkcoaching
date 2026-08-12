@@ -13,7 +13,7 @@ bullets:
   - "Nauka techniki i korekty na żywo"
   - "Indywidualny program na treningi ze mną i samodzielne sesje"
   - "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
-  - "Aplikacja coachingowa: treningi, instrukcje ćwiczeń, logowanie, check-iny i postępy w jednym miejscu"
+  - "Aplikacja coachingowa: treningi, instrukcje ćwiczeń, logowanie i postępy w jednym miejscu"
   - "Regularne check-iny i pełna analiza postępów"
   - "Korekty planu i ocena techniki z nagrań pomiędzy treningami"
   - "Kontakt przez WhatsApp pomiędzy check-inami i sesjami 1:1"

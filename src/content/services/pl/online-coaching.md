@@ -10,7 +10,7 @@ imageAlt: "Coaching online KK Coaching z planem treningowym, wsparciem żywienio
 bullets:
   - "Indywidualny plan treningowy"
   - "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
-  - "Aplikacja coachingowa: treningi, instrukcje ćwiczeń, logowanie, check-iny i postępy w jednym miejscu"
+  - "Aplikacja coachingowa: treningi, instrukcje ćwiczeń, logowanie i postępy w jednym miejscu"
   - "Regularne check-iny z omówieniem postępów i konkretnymi wskazówkami"
   - "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych"
   - "Korekty treningu i żywienia na podstawie postępów"

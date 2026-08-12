@@ -10,7 +10,7 @@ imageAlt: "KK Coaching online fitness coaching with training, nutrition support 
 bullets:
   - "Personalised training programme"
   - "Calorie, macronutrient and practical nutrition guidance"
-  - "Coaching app with workouts, exercise demos, logging, check-ins and progress in one place"
+  - "Coaching app with workouts, exercise demos, logging and progress in one place"
   - "Regular check-ins with direct coach feedback"
   - "Tracking of weight, measurements, progress photos and training performance"
   - "Programme and nutrition adjustments based on your progress"

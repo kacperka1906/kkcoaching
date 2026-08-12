@@ -13,7 +13,7 @@ bullets:
   - "Hands-on technique coaching and live exercise feedback"
   - "Personalised programme for coached and independent sessions"
   - "Calorie, macronutrient and practical nutrition guidance"
-  - "Coaching app with workouts, exercise demos, logging, check-ins and progress in one place"
+  - "Coaching app with workouts, exercise demos, logging and progress in one place"
   - "Regular check-ins and full progress analysis"
   - "Programme adjustments and video technique review between sessions"
   - "WhatsApp support between check-ins and PT sessions"
