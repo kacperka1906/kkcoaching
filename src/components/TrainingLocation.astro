@@ -144,11 +144,19 @@ const structuredData = {
       const src = button.dataset.mapSrc;
       if (!src) return;
 
+      const gtag = (window as any).gtag;
+      if (typeof gtag === 'function') {
+        gtag('event', 'map_load', {
+          page_path: window.location.pathname,
+          location_name: 'JD Gyms Cwmbran'
+        });
+      }
+
       const iframe = document.createElement('iframe');
       iframe.src = src;
       iframe.title = button.dataset.mapTitle || 'Map';
       iframe.loading = 'lazy';
-      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allowFullscreen = true;
 
       shell.replaceChildren(iframe);
