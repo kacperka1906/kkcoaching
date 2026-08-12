@@ -5,8 +5,8 @@ order: 4
 minor: true
 ctaLabel: "Ask About a Training Plan"
 ctaTarget: "/contact"
-image: "/images/personalised-training-plan-placeholder.svg"
-imageAlt: "Personalised gym training plan and structured workout programme from KK Coaching"
+image: "/images/personalised-training-plan.svg"
+imageAlt: "Personalised KK Coaching training plan shown in a structured coaching app interface with sets, rep ranges, RIR and rest times"
 bullets:
   - "Individual programme built around your goal and weekly schedule"
   - "Exercise selection matched to your equipment and experience"
