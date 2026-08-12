@@ -11,6 +11,7 @@ const checks = [
 ];
 
 const articleUrl = 'https://kkcoaching.fit/pl/resources/jak-wybrac-trenera-personalnego-cwmbran';
+const articleImage = 'https://kkcoaching.fit/images/kacper.jpg';
 const publishedDate = '2026-08-12T11:10:00+01:00';
 const modifiedDate = '2026-08-12T12:00:00+01:00';
 
@@ -23,6 +24,7 @@ const structuredData = {
       headline: 'Jak wybrać trenera personalnego w Cwmbran',
       description: 'Praktyczny poradnik dla osób szukających polskiego trenera personalnego w Cwmbran: sposób pracy, kwalifikacje, lokalizacja, kontrola postępów i poziom wsparcia.',
       url: articleUrl,
+      image: articleImage,
       mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
       isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
       inLanguage: 'pl-PL',
@@ -56,6 +58,8 @@ const structuredData = {
   path="/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
   altPath="/resources/choosing-personal-trainer-cwmbran"
   structuredData={structuredData}
+  articlePublishedTime={publishedDate}
+  articleModifiedTime={modifiedDate}
 >
   <article>
     <header class="article-hero on-dark">
@@ -64,7 +68,7 @@ const structuredData = {
         <span class="eyebrow">Trening personalny w Cwmbran</span>
         <h1>Jak wybrać trenera personalnego w Cwmbran</h1>
         <p class="lead">Najlepszy trener dla Ciebie nie musi prowadzić najcięższych treningów ani mieć największego profilu w social media. Ważniejsze jest to, czy jego sposób pracy, komunikacja i lokalizacja pomagają Ci regularnie realizować dobry plan.</p>
-        <p class="article-meta">Autor: <a href="/pl/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · Aktualizacja: 12 sierpnia 2026</p>
+        <p class="article-meta">Autor: <a href="/pl/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · <time datetime={modifiedDate}>Aktualizacja: 12 sierpnia 2026</time></p>
       </div>
     </header>
 
