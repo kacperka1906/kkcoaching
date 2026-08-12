@@ -31,8 +31,18 @@ const structuredData = {
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
-      <img src="/images/about-kacper.webp" alt={site.story.imageAlt} width="480" height="480" />
-      <div>
+      <img
+        class="about-photo"
+        src="/images/about-kacper.webp"
+        alt={site.story.imageAlt}
+        width="480"
+        height="480"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        onerror="this.onerror=null;this.src='/images/kacper-story-dscf1102.webp';"
+      />
+      <div class="about-copy">
         <span class="eyebrow">Meet your coach</span>
         <h1>{site.story.heading}</h1>
         <p class="lead">{site.story.bodyFull}</p>
@@ -63,16 +73,15 @@ const structuredData = {
     </div>
   </section>
 
-  <section aria-labelledby="quals-heading">
+  <section class="qualifications" aria-labelledby="quals-heading">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Qualifications</span>
-        <h2 id="quals-heading">Qualified coaching with practical experience</h2>
-        <p>My own transformation gives me perspective. My qualifications give me the professional foundation to coach safely and effectively within my scope.</p>
+        <h2 id="quals-heading">Professional qualifications</h2>
       </div>
       <ul class="quals-list">
-        <li>Level 2 Gym Instructor &mdash; completed</li>
-        <li>Level 3 Personal Trainer &mdash; completed</li>
+        <li>Level 3 Personal Trainer</li>
+        <li>Level 2 Gym Instructor</li>
       </ul>
     </div>
   </section>
@@ -95,25 +104,49 @@ const structuredData = {
     padding-top: 64px;
     padding-bottom: 64px;
   }
-  .about-hero__grid img { width: min(100%, 480px); aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); }
+  .about-photo {
+    width: min(100%, 480px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: #25282e;
+    box-shadow: 0 14px 34px rgba(0,0,0,.22);
+  }
   .about-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 20px; }
   .about-hero .lead { color: #C7CBD1; max-width: 62ch; }
-  @media (max-width: 820px) { .about-hero__grid { grid-template-columns: 1fr; } }
 
   .lesson-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  @media (max-width: 820px) { .lesson-grid { grid-template-columns: 1fr; } }
   .card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; border: 1px solid #E3E5E8; }
   .card h3 { font-size: 1.1rem; margin-bottom: 10px; }
   .card p { color: var(--steel); font-size: 0.95rem; }
 
-  .quals-list { list-style: none; max-width: 480px; }
+  .qualifications { background: #F6F7F8; }
+  .qualifications .section-head { margin-bottom: 24px; }
+  .quals-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 760px;
+  }
   .quals-list li {
-    padding: 14px 0;
-    border-bottom: 1px solid #E3E5E8;
-    font-weight: 600;
+    padding: 20px 22px;
+    background: var(--white);
+    border: 1px solid #E3E5E8;
+    border-left: 4px solid var(--red);
+    border-radius: var(--radius);
+    font-weight: 750;
   }
 
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
   .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }
+
+  @media (max-width: 820px) {
+    .about-hero__grid { grid-template-columns: 1fr; gap: 28px; padding-top: 42px; padding-bottom: 48px; }
+    .about-copy { order: 1; }
+    .about-photo { order: 2; width: 100%; max-width: 520px; margin: 0 auto; }
+    .lesson-grid { grid-template-columns: 1fr; }
+    .quals-list { grid-template-columns: 1fr; }
+  }
 </style>
