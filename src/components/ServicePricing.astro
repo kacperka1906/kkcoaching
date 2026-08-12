@@ -18,12 +18,6 @@ const currency = pricing.currency;
 const local = (value: { en: string; pl: string }) => value[lang];
 const money = (value: number) => `${currency}${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
 const period = (weeks: number) => isPl ? `/ ${weeks} tygodnie` : `/ ${weeks} weeks`;
-const sessionWord = (count: number) => {
-  if (!isPl) return count === 1 ? 'session' : 'sessions';
-  if (count === 1) return 'trening';
-  if (count >= 2 && count <= 4) return 'treningi';
-  return 'treningów';
-};
 
 const personalPlans = [
   ...(pricing.personal.payg.enabled
@@ -31,9 +25,7 @@ const personalPlans = [
         name: local(pricing.personal.payg.name),
         price: money(pricing.personal.payg.price),
         period: isPl ? '/ trening' : 'per session',
-        detail: isPl
-          ? `1 trening personalny 1:1 · ${pricing.personal.payg.sessionMinutes} minut`
-          : `One ${pricing.personal.payg.sessionMinutes}-minute 1:1 session`,
+        detail: local(pricing.personal.payg.detail),
         featured: pricing.personal.payg.featured
       }]
     : []),
@@ -43,9 +35,7 @@ const personalPlans = [
       name: local(plan.name),
       price: money(plan.price),
       period: period(plan.weeks),
-      detail: isPl
-        ? `${plan.sessions} ${sessionWord(plan.sessions)} · ${money(plan.price / plan.sessions)} ${pricing.labels.perSession.pl}`
-        : `${plan.sessions} ${sessionWord(plan.sessions)} · ${money(plan.price / plan.sessions)} ${pricing.labels.perSession.en}`,
+      detail: local(plan.detail),
       featured: plan.featured
     }))
 ];
@@ -55,32 +45,20 @@ const onlinePlans = pricing.online.enabled
       name: local(pricing.online.name),
       price: money(pricing.online.price),
       period: period(pricing.online.billingWeeks),
-      detail: isPl
-        ? `Pierwsze ${pricing.online.minimumWeeks} tygodni współpracy · płatność ${money(pricing.online.price)} co ${pricing.online.billingWeeks} tygodnie`
-        : `Initial ${pricing.online.minimumWeeks}-week commitment · billed ${money(pricing.online.price)} every ${pricing.online.billingWeeks} weeks`,
+      detail: local(pricing.online.detail),
       featured: pricing.online.featured
     }]
   : [];
 
 const hybridPlans = pricing.hybrid.packages
   .filter(plan => plan.enabled)
-  .map(plan => {
-    const matchingPersonal = pricing.personal.packages.find(personal => personal.enabled && personal.sessions === plan.sessions);
-    const saving = matchingPersonal ? pricing.online.price + matchingPersonal.price - plan.price : 0;
-    const savingText = saving > 0
-      ? (isPl ? ` · oszczędzasz ${money(saving)}` : ` · save ${money(saving)}`)
-      : '';
-
-    return {
-      name: local(plan.name),
-      price: money(plan.price),
-      period: period(plan.weeks),
-      detail: isPl
-        ? `Pełne prowadzenie online + ${plan.sessions} ${sessionWord(plan.sessions)} 1:1${savingText}`
-        : `Full Online Coaching + ${plan.sessions} personal training ${sessionWord(plan.sessions)}${savingText}`,
-      featured: plan.featured
-    };
-  });
+  .map(plan => ({
+    name: local(plan.name),
+    price: money(plan.price),
+    period: period(plan.weeks),
+    detail: local(plan.detail),
+    featured: plan.featured
+  }));
 
 const section = type === 'personal'
   ? pricing.personal.section
@@ -123,7 +101,7 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
       ))}
     </div>
 
-    <p class="pricing-note">{copy.note}</p>
+    {copy.note.trim() && <p class="pricing-note">{copy.note}</p>}
     <div class="pricing-cta">
       <a href={contactHref} class="btn btn-primary">{copy.cta}</a>
     </div>
