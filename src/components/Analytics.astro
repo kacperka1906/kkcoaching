@@ -17,14 +17,48 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
     gtag('js', new Date());
     gtag('config', GA_MEASUREMENT_ID);
 
-    document.querySelectorAll('a[href^="https://wa.me"]').forEach((el) => {
-      el.addEventListener('click', () => gtag('event', 'whatsapp_click'));
-    });
-    document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
-      el.addEventListener('click', () => gtag('event', 'phone_click'));
-    });
-    document.querySelectorAll('a[href^="mailto:"]').forEach((el) => {
-      el.addEventListener('click', () => gtag('event', 'email_click'));
+    const track = (eventName, params = {}) => {
+      gtag('event', eventName, {
+        page_path: window.location.pathname,
+        ...params
+      });
+    };
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest('a[href]');
+      if (!link) return;
+
+      const href = link.getAttribute('href') || '';
+      const absoluteHref = link.href || href;
+      const linkText = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 120);
+      const common = {
+        link_url: absoluteHref,
+        link_text: linkText
+      };
+
+      if (href.startsWith('https://wa.me')) {
+        track('whatsapp_click', common);
+      } else if (href.startsWith('tel:')) {
+        track('phone_click', common);
+      } else if (href.startsWith('mailto:')) {
+        track('email_click', common);
+      } else if (/instagram\.com/i.test(absoluteHref)) {
+        track('instagram_click', common);
+      } else if (/google\.com\/maps\/dir/i.test(absoluteHref)) {
+        track('directions_click', common);
+      }
+
+      if (link.classList.contains('btn')) {
+        track('cta_click', {
+          ...common,
+          cta_destination: href
+        });
+      }
+
+      if (href === '/contact' || href === '/pl/contact') {
+        track('consultation_start', common);
+      }
     });
   }
 
