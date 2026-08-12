@@ -28,22 +28,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2>3. When Google Analytics loads</h2>
       <p>Google Analytics is only loaded after you accept analytics in the cookie banner. Rejecting optional analytics does not prevent you from using the website, enquiry form or other core functions.</p>
 
-      <h2>4. Changing your choice</h2>
-      <p>You can withdraw your previous choice at any time and show the consent banner again. Use the button below to remove the saved choice from localStorage.</p>
-      <button type="button" id="reset-cookie-choice" class="btn btn-outline-dark">Change cookie settings</button>
+      <h2>4. Changing or withdrawing your choice</h2>
+      <p>You can reopen the consent controls at any time using the button below or “Cookie settings” in the website footer. If you reject analytics after previously accepting it, analytics is disabled and the site removes the Google Analytics cookies it can access.</p>
+      <button type="button" class="btn btn-outline-dark" data-cookie-settings>Open cookie settings</button>
 
       <h2>5. Browser controls</h2>
       <p>You can also remove or block cookies using your browser settings. Clearing site data may also remove your saved analytics choice.</p>
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  document.getElementById('reset-cookie-choice')?.addEventListener('click', () => {
-    localStorage.removeItem('kk_cookie_consent');
-    window.location.reload();
-  });
-</script>
 
 <style>
   .legal-page { padding: 72px 0; }
@@ -57,6 +50,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   th { color: var(--graphite); }
   @media (max-width: 620px) {
     table { display: block; overflow-x: auto; }
-    #reset-cookie-choice { width: 100%; }
+    [data-cookie-settings] { width: 100%; }
   }
 </style>
