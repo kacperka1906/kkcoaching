@@ -138,8 +138,8 @@
     "billingWeeks": 4,
     "minimumWeeks": 12,
     "detail": {
-      "en": "Initial 12-week commitment · billed £80 every 4 weeks",
-      "pl": "Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie"
+      "en": "Initial 12-week commitment.",
+      "pl": "Pierwsze 12 tygodni współpracy."
     },
     "featured": false
   },
