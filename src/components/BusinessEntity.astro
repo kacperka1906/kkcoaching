@@ -1,5 +1,6 @@
 ---
 import siteEn from '../data/site.en.json';
+import pricing from '../data/pricing.json';
 
 const siteUrl = 'https://kkcoaching.fit';
 const businessId = `${siteUrl}/#business`;
@@ -11,7 +12,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'LocalBusiness',
+      '@type': 'Organization',
       '@id': businessId,
       name: 'KK Coaching',
       alternateName: 'KK Coaching by Kacper Kaszowski',
@@ -29,15 +30,6 @@ const structuredData = {
         email: siteEn.meta.contactEmail,
         availableLanguage: ['en', 'pl']
       },
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '17-18 Gwent Square',
-        addressLocality: 'Cwmbran',
-        addressRegion: 'Torfaen',
-        postalCode: 'NP44 1PW',
-        addressCountry: 'GB'
-      },
-      location: { '@id': locationId },
       areaServed: [
         { '@type': 'City', name: 'Cwmbran' },
         { '@type': 'AdministrativeArea', name: 'Torfaen' },
@@ -73,6 +65,17 @@ const structuredData = {
               name: 'Hybrid Personal Training in Cwmbran',
               url: `${siteUrl}/hybrid-coaching`,
               serviceType: 'Hybrid Personal Training and Online Coaching'
+            }
+          },
+          {
+            '@type': 'Offer',
+            priceCurrency: 'GBP',
+            price: pricing.trainingPlan.price,
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Personalised Training Plan',
+              url: `${siteUrl}/training-plan`,
+              serviceType: 'Personalised Training Programme'
             }
           }
         ]
