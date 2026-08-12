@@ -19,13 +19,32 @@ const outcomes = [
 const included = [
   'Individual training programme',
   'Calorie, macronutrient and practical nutrition targets',
-  'Coaching app with your training plan and exercise resources',
+  'Coaching app with your programme, exercise guidance, workout logging and progress history',
   'Regular check-ins and structured progress reviews',
   'Weight, measurements, progress photos and performance tracking',
   'Training plan adjustments based on progress and adherence',
   'Exercise technique feedback from your training videos',
   'WhatsApp support between check-ins',
   'Ongoing education so you understand why the plan works'
+];
+
+const appFeatures = [
+  {
+    title: 'Your training plan',
+    body: 'Your current programme is always in one place, so you are not searching through messages, old files or different versions of the plan.'
+  },
+  {
+    title: 'Exercise guidance',
+    body: 'Exercise information and resources sit alongside the programme so you can train with a clear idea of what you are trying to do.'
+  },
+  {
+    title: 'Workout logging',
+    body: 'Log sets, reps and loads as you train so progression is based on real training history rather than memory or guesswork.'
+  },
+  {
+    title: 'Progress data',
+    body: 'The key information from your coaching stays connected, making it easier to see trends and make better decisions over time.'
+  }
 ];
 
 const process = [
@@ -82,7 +101,7 @@ const structuredData = {
       '@id': 'https://kkcoaching.fit/online-coaching#service',
       name: 'Online Fitness Coaching',
       serviceType: 'Online Fitness Coaching',
-      description: 'Individual online fitness coaching with personalised training, nutrition targets, progress tracking, regular check-ins, video technique feedback and ongoing support.',
+      description: 'Individual online fitness coaching with a training plan in the coaching app, nutrition targets, progress tracking, regular check-ins, video technique feedback and ongoing support.',
       url: 'https://kkcoaching.fit/online-coaching',
       areaServed: [
         { '@type': 'Country', name: 'United Kingdom' },
@@ -90,6 +109,7 @@ const structuredData = {
       ],
       provider: {
         '@type': 'Organization',
+        '@id': 'https://kkcoaching.fit/#business',
         name: 'KK Coaching',
         url: 'https://kkcoaching.fit'
       }
@@ -107,7 +127,7 @@ const structuredData = {
 ---
 <BaseLayout
   title="Online Fitness Coach UK | Training & Nutrition | KK Coaching"
-  description="Online fitness coaching with an individual training plan, nutrition targets, regular check-ins, progress tracking, technique feedback and WhatsApp support. Apply for KK Coaching online."
+  description="Online fitness coaching with an individual training plan in the coaching app, nutrition targets, regular check-ins, progress tracking, technique feedback and WhatsApp support."
   lang="en"
   path="/online-coaching"
   altPath="/pl/online-coaching"
@@ -125,14 +145,13 @@ const structuredData = {
         </div>
         <div class="trust-row" aria-label="Online coaching trust points">
           <span>Individual programming</span>
-          <span>Regular check-ins</span>
+          <span>Coaching app</span>
+          <span>Video feedback</span>
           <span>WhatsApp support</span>
-          <span>English / Polski</span>
         </div>
       </div>
       <div class="hero-media">
         <img src="/images/online-coaching-placeholder.svg" alt="KK Coaching online fitness coaching with training, nutrition and progress tracking" width="720" height="540" />
-        <span class="image-note">Temporary coaching image — to be replaced with a real coaching/app photo.</span>
       </div>
     </div>
   </section>
@@ -165,6 +184,24 @@ const structuredData = {
       <ul class="check-list">
         {included.map(item => <li>{item}</li>)}
       </ul>
+    </div>
+  </section>
+
+  <section class="app-section on-white" aria-labelledby="app-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Everything in one coaching app</span>
+        <h2 id="app-heading">Your plan, sessions and progress always at hand.</h2>
+        <p>No hunting through messages or keeping several separate notes. The app is the hub for your online coaching — and it is also included when you choose Hybrid Coaching.</p>
+      </div>
+      <div class="app-grid">
+        {appFeatures.map(item => (
+          <article class="app-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -265,7 +302,6 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
-  .image-note { display: block; color: #90959D; font-size: 0.72rem; margin-top: 8px; }
 
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
@@ -277,6 +313,12 @@ const structuredData = {
   .check-list { list-style: none; display: grid; gap: 12px; }
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
   .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
+
+  .app-section { padding-top: 88px; }
+  .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .app-card { background: #F6F7F8; border: 1px solid #E2E4E7; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 24px 20px; }
+  .app-card h3 { font-size: 1rem; margin-bottom: 9px; }
+  .app-card p { color: var(--steel); font-size: 0.9rem; }
 
   .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
@@ -309,7 +351,7 @@ const structuredData = {
   @media (max-width: 900px) {
     .hero-grid, .split, .coach-grid { grid-template-columns: 1fr; gap: 34px; }
     .three-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .app-grid, .process-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-copy h1 { max-width: none; }
   }
 
@@ -321,6 +363,6 @@ const structuredData = {
     .hero-actions .btn { width: 100%; }
     .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
     .trust-row span { text-align: center; }
-    .process-grid, .results-grid { grid-template-columns: 1fr; }
+    .app-grid, .process-grid, .results-grid { grid-template-columns: 1fr; }
   }
 </style>
