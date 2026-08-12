@@ -10,15 +10,43 @@ const checks = [
   ['Make sure the working relationship feels right', 'You should be able to ask questions, give honest feedback and understand what is expected from you. A free consultation is useful because it lets both sides decide whether the coaching relationship is a good fit before starting.']
 ];
 
+const articleUrl = 'https://kkcoaching.fit/resources/choosing-personal-trainer-cwmbran';
+const publishedDate = '2026-08-12T11:10:00+01:00';
+const modifiedDate = '2026-08-12T12:00:00+01:00';
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'How to Choose a Personal Trainer in Cwmbran',
-  description: 'A practical guide to choosing a personal trainer in Cwmbran, including qualifications, coaching style, progress tracking, location and the level of support you need.',
-  url: 'https://kkcoaching.fit/resources/choosing-personal-trainer-cwmbran',
-  author: { '@id': 'https://kkcoaching.fit/#kacper-kaszowski' },
-  publisher: { '@id': 'https://kkcoaching.fit/#business' },
-  about: ['Personal trainer Cwmbran', 'Personal training', 'Choosing a personal trainer']
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${articleUrl}#article`,
+      headline: 'How to Choose a Personal Trainer in Cwmbran',
+      description: 'A practical guide to choosing a personal trainer in Cwmbran, including qualifications, coaching style, progress tracking, location and the level of support you need.',
+      url: articleUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+      isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
+      inLanguage: 'en-GB',
+      datePublished: publishedDate,
+      dateModified: modifiedDate,
+      author: {
+        '@type': 'Person',
+        '@id': 'https://kkcoaching.fit/#kacper-kaszowski',
+        name: 'Kacper Kaszowski',
+        url: 'https://kkcoaching.fit/about'
+      },
+      publisher: { '@id': 'https://kkcoaching.fit/#business' },
+      about: ['Personal trainer Cwmbran', 'Personal training', 'Choosing a personal trainer']
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${articleUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kkcoaching.fit/' },
+        { '@type': 'ListItem', position: 2, name: 'Fitness Guides', item: 'https://kkcoaching.fit/resources' },
+        { '@type': 'ListItem', position: 3, name: 'Choosing a Personal Trainer in Cwmbran' }
+      ]
+    }
+  ]
 };
 ---
 <BaseLayout
@@ -36,6 +64,7 @@ const structuredData = {
         <span class="eyebrow">Personal training in Cwmbran</span>
         <h1>How to choose a personal trainer in Cwmbran</h1>
         <p class="lead">The best trainer for you is not automatically the person with the hardest sessions or the biggest social following. Start by checking whether their service, communication and location make it easier for you to follow a good plan consistently.</p>
+        <p class="article-meta">By <a href="/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · Updated 12 August 2026</p>
       </div>
     </header>
 
@@ -80,6 +109,8 @@ const structuredData = {
   .article-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.7rem); line-height: 1.08; margin: 10px 0 18px; }
   .lead { color: #D0D4D9; font-size: 1.08rem; }
   .back { display: inline-block; color: #C5C9CF; margin-bottom: 24px; }
+  .article-meta { margin-top: 18px; color: #AEB4BB; font-size: 0.86rem; }
+  .article-meta a { color: #F0F2F4; font-weight: 700; text-underline-offset: 3px; }
   .article-body > p { font-size: 1.05rem; color: var(--steel); }
   .point { padding: 30px 0; border-bottom: 1px solid #E1E4E7; }
   .point h2 { font-size: 1.35rem; margin-bottom: 10px; }
