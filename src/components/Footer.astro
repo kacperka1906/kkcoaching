@@ -33,13 +33,13 @@ const labels = lang === 'pl'
   ? {
       nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', resources: 'Poradniki', about: 'O mnie', contact: 'Kontakt',
       legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', cookieSettings: 'Ustawienia cookies', terms: 'Regulamin strony',
-      direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
+      direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online w UK i poza UK', credentials: 'Level 3 Personal Trainer · Level 2 Gym Instructor · Polski / English',
       footerSeo: 'Trener personalny Cwmbran · Coaching online · Coaching hybrydowy', home: 'KK Coaching - strona główna', phone: 'Telefon', trainingAt: 'Treningi 1:1'
     }
   : {
       nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', resources: 'Fitness Guides', about: 'About Me', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', cookieSettings: 'Cookie settings', terms: 'Website Terms',
-      direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
+      direct: 'Contact', location: '1:1 training in Cwmbran · online coaching across the UK and beyond', credentials: 'Level 3 Personal Trainer · Level 2 Gym Instructor · English / Polish',
       footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home', phone: 'Phone', trainingAt: '1:1 training'
     };
 ---
@@ -57,6 +57,7 @@ const labels = lang === 'pl'
           <span class="logo-anchor-text">KK Coaching</span>
         </a>
         <p class="tagline">{site.meta.tagline}</p>
+        <p class="credentials">{labels.credentials}</p>
         <p class="location">{labels.location}</p>
       </div>
       <div>
@@ -115,7 +116,8 @@ const labels = lang === 'pl'
     border: 0;
   }
   .tagline { margin-top: 12px; max-width: 36ch; color: #C7CBD1; }
-  .location { margin-top: 8px; max-width: 42ch; font-size: 0.82rem; }
+  .credentials { margin-top: 9px; max-width: 44ch; color: #D9DCE0; font-size: 0.8rem; font-weight: 700; line-height: 1.45; }
+  .location { margin-top: 7px; max-width: 44ch; font-size: 0.82rem; }
   .footer-grid { display: grid; grid-template-columns: 1.6fr 1.05fr 1.35fr 0.9fr; gap: 32px; margin-bottom: 40px; }
   @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
