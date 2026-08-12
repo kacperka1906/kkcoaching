@@ -3,11 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import site from '../../data/site.pl.json';
 
-const testimonials = (await getCollection('testimonials')).filter(t => t.data.consentOnFile);
+const testimonials = (await getCollection('testimonials'))
+  .filter(t => t.data.consentOnFile)
+  .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+
 const faqs = (await getCollection('faq'))
   .filter(item => item.data.language === 'pl')
   .sort((a, b) => a.data.order - b.data.order);
-const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła', 'Pewność siebie i technika', 'Coaching online', 'Trening personalny'];
 ---
 <BaseLayout
   title="Przemiany Podopiecznych | Personal Trainer Cwmbran | KK Coaching"
@@ -26,12 +28,6 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
 
   <section class="on-white">
     <div class="container">
-      <div class="filters" role="tablist" aria-label="Filtruj przemiany według kategorii">
-        {filters.map((f, i) => (
-          <button class="filter-btn" class:list={{ active: i === 0 }} data-filter={f}>{f}</button>
-        ))}
-      </div>
-
       {testimonials.length === 0 && (
         <p class="empty-state">Kolejne historie podopiecznych pojawią się tutaj wkrótce.</p>
       )}
@@ -41,7 +37,9 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
           const { Content } = await t.render();
           return (
             <article class="transform-card">
-              <img src={t.data.image} alt={t.data.imageAlt} width="400" height="300" loading="lazy" />
+              <div class="transform-image-wrap">
+                <img src={t.data.image} alt={t.data.imageAlt} width="400" height="500" loading="lazy" />
+              </div>
               <div class="transform-body">
                 <div class="meta">
                   <span>{t.data.name}</span>
@@ -87,40 +85,24 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
   </section>
 </BaseLayout>
 
-<script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.transform-card');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      cards.forEach(card => {
-        const type = card.querySelector('.meta span:nth-child(2)')?.textContent ?? '';
-        const show = filter === 'Wszystkie' || type.toLowerCase().includes((filter ?? '').toLowerCase());
-        (card as HTMLElement).style.display = show ? '' : 'none';
-      });
-    });
-  });
-</script>
-
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
   .page-hero .lead { color: #C7CBD1; max-width: 60ch; }
-  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
-  .filter-btn { background: var(--white); border: 1px solid #D8DBDE; border-radius: 999px; padding: 8px 16px; font-size: 0.85rem; cursor: pointer; color: var(--steel); }
-  .filter-btn.active { background: var(--graphite); color: var(--white); border-color: var(--graphite); }
+
   .empty-state { color: var(--steel); font-style: italic; }
-  .transform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  @media (max-width: 700px) { .transform-grid { grid-template-columns: 1fr; } }
+
+  .transform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  @media (max-width: 700px) { .transform-grid { grid-template-columns: 1fr; gap: 22px; } }
   .transform-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid #E3E5E8; }
-  .transform-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .transform-image-wrap { background: #17191c; display: flex; align-items: center; justify-content: center; }
+  .transform-card img { width: 100%; aspect-ratio: 4/5; object-fit: contain; display: block; }
   .transform-body { padding: 22px; }
   .meta { display: flex; gap: 14px; font-size: 0.8rem; color: var(--steel); margin-bottom: 10px; flex-wrap: wrap; }
   .result-line { font-weight: 700; border-left: 3px solid var(--red); padding-left: 14px; margin: 12px 0 16px; }
   .client-story { color: var(--steel); font-size: 0.92rem; }
   .client-story :global(p) { margin-bottom: 10px; }
+
   .faq-list { max-width: 760px; margin: 0 auto; }
   .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
   .faq-item summary { font-weight: 700; cursor: pointer; list-style: none; }
@@ -128,6 +110,7 @@ const filters = ['Wszystkie', 'Redukcja tkanki tłuszczowej', 'Mięśnie i siła
   .faq-item summary::after { content: '+'; float: right; color: var(--red); }
   .faq-item[open] summary::after { content: '\2212'; }
   .faq-answer { color: var(--steel); margin-top: 10px; font-size: 0.95rem; }
+
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
   .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }

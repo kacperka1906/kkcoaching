@@ -1,0 +1,365 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const benefits = [
+  {
+    title: 'Lose fat with a plan you can actually follow',
+    body: 'Build a realistic calorie deficit, keep your training productive and make adjustments from your progress rather than reacting to one bad week.'
+  },
+  {
+    title: 'Build muscle with clear progression',
+    body: 'Know what you are training, why it is in your programme and what needs to improve from week to week instead of jumping between random workouts.'
+  },
+  {
+    title: 'Train with more confidence',
+    body: 'Learn exercise technique in person, understand your programme and stop second-guessing every set when you walk into the gym.'
+  }
+];
+
+const included = [
+  'Free consultation and clear goal setting',
+  '1:1 face-to-face personal training in Cwmbran',
+  'Individual training programme matched to your ability and schedule',
+  'Live exercise technique coaching and form correction',
+  'Clear progression targets so you know what to improve',
+  'Progress tracking and regular reviews',
+  'Practical guidance around activity, calories and nutrition habits',
+  'A route into online or hybrid support if you want more support outside sessions'
+];
+
+const process = [
+  {
+    num: '01',
+    title: 'Free consultation',
+    body: 'We talk through your goal, training experience, weekly schedule, previous attempts and what is currently holding you back.'
+  },
+  {
+    num: '02',
+    title: 'Build your plan',
+    body: 'Your training is built around your current ability, available days, preferred training frequency and the result you actually want.'
+  },
+  {
+    num: '03',
+    title: 'Train with purpose',
+    body: 'During 1:1 sessions we work on technique, execution, effort and progression so you understand how to get more from your training.'
+  },
+  {
+    num: '04',
+    title: 'Review and adjust',
+    body: 'We use your performance, measurements, adherence and feedback to keep what is working and change what is not.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Do I need gym experience before starting personal training?',
+    a: 'No. Coaching is adjusted to your current level. If you are new to the gym, we can start with exercise technique, equipment confidence and a simple programme you understand before adding more complexity.'
+  },
+  {
+    q: 'Can personal training help with fat loss as well as building muscle?',
+    a: 'Yes. Training is only one part of the process, so we also look at activity, calorie intake and practical nutrition habits. The approach changes depending on whether your main goal is fat loss, muscle gain, recomposition or simply getting back into a consistent routine.'
+  },
+  {
+    q: 'Where is personal training available?',
+    a: '1:1 coaching is available locally in Cwmbran, Torfaen. Exact session times and training arrangements are confirmed during your free consultation.'
+  },
+  {
+    q: 'What if I need support between face-to-face sessions?',
+    a: 'If you want more support outside the gym, we can discuss hybrid or online coaching so your training, nutrition targets, progress tracking and check-ins work as one system.'
+  },
+  {
+    q: 'How do I get started?',
+    a: 'Book a free consultation and tell me where you are now, what you want to achieve and what has been getting in the way. We will work out whether 1:1 personal training is the right fit before you commit to anything.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://kkcoaching.fit/personal-training-cwmbran#service',
+      name: '1:1 Personal Training in Cwmbran',
+      serviceType: 'Personal Training',
+      description: 'One-to-one personal training in Cwmbran with individual programming, exercise technique coaching, progress tracking and practical nutrition support.',
+      url: 'https://kkcoaching.fit/personal-training-cwmbran',
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'Cwmbran, Torfaen, South Wales'
+      },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: 'KK Coaching',
+        url: 'https://kkcoaching.fit',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Cwmbran',
+          addressRegion: 'Torfaen',
+          addressCountry: 'GB'
+        }
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Personal Trainer Cwmbran | 1:1 Personal Training | KK Coaching"
+  description="Personal trainer in Cwmbran for fat loss, muscle building and gym confidence. Get 1:1 coaching, an individual training plan, technique support and progress tracking. Book a free consultation."
+  lang="en"
+  path="/personal-training-cwmbran"
+  altPath="/pl/personal-training-cwmbran"
+  structuredData={structuredData}
+>
+  <section class="local-hero on-dark">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">1:1 coaching in Cwmbran</span>
+        <h1>Personal Trainer in Cwmbran</h1>
+        <p class="lead">Stop guessing your way through training. Get face-to-face coaching, a clear programme and practical support built around your goal, experience and real weekly schedule.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Book a Free Consultation</a>
+          <a href="/transformations" class="btn btn-secondary">See Client Results</a>
+        </div>
+        <div class="trust-row" aria-label="KK Coaching trust points">
+          <span>Level 3 Personal Trainer</span>
+          <span>40+ kg personal transformation</span>
+          <span>English / Polski</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="/images/personal-training-cwmbran-placeholder.svg" alt="Personal training in Cwmbran with KK Coaching" width="720" height="540" />
+        <span class="image-note">Temporary training image — to be replaced with a real Cwmbran coaching photo.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="fit-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Who this is for</span>
+        <h2 id="fit-heading">You do not need a perfect starting point. You need a clear next step.</h2>
+        <p>Personal training works best when the plan matches the person in front of me. Your goal might be changing your body composition, learning how to train properly, rebuilding consistency or simply feeling less lost in the gym.</p>
+      </div>
+      <div class="three-grid">
+        {benefits.map(item => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark" aria-labelledby="included-heading">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">What you get</span>
+        <h2 id="included-heading">More than someone counting your reps.</h2>
+        <p class="dark-copy">A good PT session should teach you how to train better, not make you dependent on a trainer forever. The goal is to give you structure, feedback and a progression system you understand.</p>
+      </div>
+      <ul class="check-list">
+        {included.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">The process</span>
+        <h2 id="process-heading">From first consultation to measurable progress</h2>
+        <p>No random workouts and no changing everything because one week was imperfect. We build, track and adjust.</p>
+      </div>
+      <div class="process-grid">
+        {process.map(item => (
+          <article class="process-card">
+            <span class="num">{item.num}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="coach-proof on-white" aria-labelledby="coach-heading">
+    <div class="container proof-grid">
+      <img src="/images/photo-collage.png-1-.png" alt="Kacper Kaszowski's own body transformation after losing more than 40 kg" width="650" height="520" loading="lazy" />
+      <div>
+        <span class="eyebrow">Why I coach this way</span>
+        <h2 id="coach-heading">I know what it is like to start without a clear system.</h2>
+        <p>I started at around 117 kg and lost more than 40 kg before rebuilding my physique. I also learned how easy it is to waste time chasing quick fixes, changing plans too often and making training more complicated than it needs to be.</p>
+        <p>That experience shapes KK Coaching today: clear targets, realistic execution, regular feedback and changes only when the data or your real-life situation gives us a reason to make them.</p>
+        <div class="mini-stats">
+          <div><strong>117 kg</strong><span>starting point</span></div>
+          <div><strong>40+ kg</strong><span>weight lost</span></div>
+          <div><strong>1:1 + Online</strong><span>coaching options</span></div>
+        </div>
+        <a href="/about" class="text-link">Read my full story →</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="results-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Client results</span>
+        <h2 id="results-heading">The plan has to work outside the perfect week.</h2>
+        <p>These results came from structured coaching, consistency and plans adjusted to the person — not from trying to be perfect every day.</p>
+      </div>
+      <div class="results-grid">
+        <article class="result-card">
+          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="Aneta's 16-week KK Coaching transformation showing 10 kg lost and 12 cm off the waist" width="600" height="750" loading="lazy" />
+          <div class="result-copy">
+            <span>ANETA · 16 WEEKS</span>
+            <h3>10 kg lost · 12 cm off the waist</h3>
+            <p>More confidence, a move from home training into a commercial gym and better control of late-night snacking — with more progress still to come.</p>
+          </div>
+        </article>
+        <article class="result-card">
+          <img src="/images/client-transformation-agnieszka-16-weeks.svg" alt="Agnieszka's 16-week KK Coaching physique transformation" width="600" height="750" loading="lazy" />
+          <div class="result-copy">
+            <span>AGNIESZKA · 16 WEEKS</span>
+            <h3>3 kg down · 8 cm added at the hips</h3>
+            <p>A plan built around her lifestyle and consistency instead of chasing a perfect week.</p>
+          </div>
+        </article>
+      </div>
+      <div class="center-cta"><a href="/transformations" class="btn btn-outline-dark">See All Transformations</a></div>
+    </div>
+  </section>
+
+  <section class="location-band on-dark" aria-labelledby="location-heading">
+    <div class="container split location-split">
+      <div>
+        <span class="eyebrow">Local personal training</span>
+        <h2 id="location-heading">1:1 personal training in Cwmbran, Torfaen</h2>
+        <p class="dark-copy">If you live or work around Cwmbran and want hands-on coaching, 1:1 sessions give us the fastest route to improving technique, building confidence and making your programme more productive.</p>
+      </div>
+      <div class="location-card">
+        <strong>Cwmbran, Torfaen, South Wales</strong>
+        <p>Session availability and exact training arrangements are confirmed during your consultation.</p>
+        <a href="/contact" class="btn btn-primary">Check Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="faq-heading">
+    <div class="container faq-wrap">
+      <div class="section-head centered">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-heading">Personal training in Cwmbran — FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow light">Ready when you are</span>
+      <h2>Tell me where you are now. We will work out the next step.</h2>
+      <p>Your consultation is free. Tell me your goal, your training experience and what has been holding you back. If 1:1 personal training is the right fit, I will explain exactly how we can start.</p>
+      <a href="/contact" class="btn btn-secondary">Book Your Free Consultation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .local-hero { padding: 72px 0; }
+  .hero-grid, .proof-grid, .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 4.1rem); max-width: 12ch; margin-bottom: 18px; }
+  .hero-copy .lead { color: #D3D6DA; font-size: 1.12rem; max-width: 58ch; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 24px; }
+  .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
+  .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
+  .image-note { display: block; color: #90959D; font-size: 0.72rem; margin-top: 8px; }
+
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
+  .info-card { border-top: 3px solid var(--red); }
+  .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
+  .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
+
+  .dark-copy { color: #C0C4CA; max-width: 58ch; }
+  .check-list { list-style: none; display: grid; gap: 12px; }
+  .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
+  .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
+
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+
+  .coach-proof img { width: 100%; border-radius: var(--radius); }
+  .proof-grid p { color: var(--steel); margin-bottom: 14px; }
+  .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0 18px; }
+  .mini-stats div { border-top: 3px solid var(--red); background: #F3F4F6; padding: 14px 10px; text-align: center; }
+  .mini-stats strong { display: block; color: var(--red); font-size: clamp(1rem, 2vw, 1.35rem); white-space: nowrap; line-height: 1.1; }
+  .mini-stats span { display: block; color: var(--steel); text-transform: uppercase; font-size: 0.64rem; margin-top: 7px; letter-spacing: 0.04em; }
+  .text-link { color: var(--red); font-weight: 700; text-decoration: none; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; }
+  .result-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); overflow: hidden; }
+  .result-card img { width: 100%; height: auto; }
+  .result-copy { padding: 22px; }
+  .result-copy > span { color: var(--red); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+  .result-copy h3 { margin: 8px 0; font-size: 1.05rem; }
+  .result-copy p { color: var(--steel); font-size: 0.9rem; }
+  .center-cta { text-align: center; margin-top: 34px; }
+
+  .location-card { background: #202329; border: 1px solid #373C44; padding: 28px; border-radius: var(--radius); }
+  .location-card strong { display: block; color: var(--white); font-size: 1.18rem; margin-bottom: 8px; }
+  .location-card p { color: #BDC1C7; margin-bottom: 20px; }
+
+  .faq-wrap { max-width: 860px; }
+  .faq-list { border-top: 1px solid #D8DBDE; }
+  .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
+  .faq-item summary { font-weight: 700; cursor: pointer; list-style: none; padding-right: 34px; position: relative; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
+
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
+  .final-cta .eyebrow.light { color: #FFDDE1; }
+  .final-cta h2 { color: var(--white); max-width: 720px; margin: 0 auto 14px; }
+  .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .proof-grid, .split { grid-template-columns: 1fr; gap: 34px; }
+    .three-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-copy h1 { max-width: none; }
+  }
+
+  @media (max-width: 620px) {
+    .local-hero { padding: 48px 0 56px; }
+    .hero-copy h1 { font-size: clamp(2.05rem, 10vw, 2.8rem); }
+    .hero-copy .lead { font-size: 1rem; }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .hero-actions .btn { width: 100%; }
+    .trust-row { display: grid; grid-template-columns: 1fr; }
+    .trust-row span { text-align: center; }
+    .process-grid, .results-grid { grid-template-columns: 1fr; }
+    .mini-stats { gap: 6px; }
+    .mini-stats div { padding: 12px 5px; }
+    .mini-stats strong { font-size: 0.96rem; }
+    .mini-stats span { font-size: 0.56rem; }
+    .location-card .btn { width: 100%; }
+  }
+</style>

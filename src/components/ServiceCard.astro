@@ -31,9 +31,10 @@ const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = f
     border: 1px solid #E3E5E8;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
   .service-card img { aspect-ratio: 16/10; object-fit: cover; }
-  .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
   .service-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
   .service-body p { color: var(--steel); font-size: 0.95rem; }
   .service-body ul { list-style: none; margin: 14px 0 22px; font-size: 0.9rem; color: var(--steel); }
@@ -44,4 +45,12 @@ const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = f
   }
   .service-body .btn { margin-top: auto; align-self: flex-start; }
   .service-card.minor { opacity: 0.92; }
+
+  @media (max-width: 620px) {
+    .service-body { padding: 22px 18px; }
+    .service-body h3 { font-size: 1.12rem; }
+    .service-body p { font-size: 0.92rem; }
+    .service-body ul { font-size: 0.88rem; }
+    .service-body .btn { width: 100%; align-self: stretch; }
+  }
 </style>

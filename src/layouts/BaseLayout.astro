@@ -99,20 +99,30 @@ const socialImage = `${siteUrl}/images/kacper.png`;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: var(--graphite);
     background: var(--off-white);
     line-height: 1.6;
+    overflow-wrap: break-word;
+    overflow-x: clip;
   }
+  main { min-width: 0; }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
+  p, li { text-wrap: pretty; }
+  section[id] { scroll-margin-top: 88px; }
 
   .container {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 24px;
+    min-width: 0;
   }
 
   a:focus-visible,
@@ -142,6 +152,7 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
+    line-height: 1.25;
     letter-spacing: 0.02em;
     border: 2px solid transparent;
     cursor: pointer;
@@ -170,19 +181,35 @@ const socialImage = `${siteUrl}/images/kacper.png`;
     margin-bottom: 10px;
     display: block;
   }
-  h1, h2, h3 { line-height: 1.25; }
+  h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
   h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 14px; }
   .section-head p { color: var(--steel); font-size: 1.05rem; }
   section.on-dark .section-head p { color: #B7BBC1; }
 
-  /* Transformation graphics are portrait assets (4:5). Keep the full result visible
-     instead of cropping them to the old 4:3 placeholder ratio. */
   .transform-card img {
     width: 100%;
     height: auto !important;
     aspect-ratio: auto !important;
     object-fit: contain !important;
     background: var(--graphite);
+  }
+
+  /* Internal replacement labels stay out of the public-facing UI. */
+  .image-note { display: none !important; }
+
+  @media (max-width: 620px) {
+    .container { padding-left: 18px; padding-right: 18px; }
+    section { padding: 58px 0; }
+    section.tight { padding: 46px 0; }
+    .section-head { margin-bottom: 30px; }
+    .section-head p { font-size: 0.98rem; }
+    .eyebrow { font-size: 0.74rem; letter-spacing: 0.1em; }
+    h2 { font-size: clamp(1.5rem, 7vw, 1.95rem); }
+    .btn { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+    .center-cta .btn,
+    .final-cta .btn { width: 100%; max-width: 420px; }
+    .center-cta { display: flex; justify-content: center; }
+    .faq-item summary { min-height: 48px; display: flex; align-items: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {

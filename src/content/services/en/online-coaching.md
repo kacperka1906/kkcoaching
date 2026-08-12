@@ -3,8 +3,8 @@ title: "Online Coaching - Training, Nutrition & Accountability"
 tagline: "Complete online coaching for people who want a personalised plan, regular accountability and ongoing support without being limited by location."
 order: 2
 minor: false
-ctaLabel: "Apply for Online Coaching"
-ctaTarget: "/contact"
+ctaLabel: "Explore Online Coaching"
+ctaTarget: "/online-coaching"
 image: "/images/online-coaching-placeholder.svg"
 imageAlt: "KK Coaching online fitness coaching with training, nutrition support and progress check-ins"
 bullets:
