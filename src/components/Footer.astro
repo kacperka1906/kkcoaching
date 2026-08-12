@@ -10,16 +10,16 @@ const prefix = lang === 'pl' ? '/pl' : '';
 
 const labels = lang === 'pl'
   ? {
-      nav: 'Na skróty', personal: 'Trener personalny Cwmbran', online: 'Online Coaching', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
+      nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
       legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin strony',
       direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
-      footerSeo: 'Trener personalny Cwmbran · Coaching online', home: 'KK Coaching - strona główna'
+      footerSeo: 'Trener personalny Cwmbran · Coaching online · Coaching hybrydowy', home: 'KK Coaching - strona główna'
     }
   : {
-      nav: 'Quick links', personal: 'Personal Training Cwmbran', online: 'Online Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
+      nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Website Terms',
       direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
-      footerSeo: 'Personal Training Cwmbran · Online Coaching', home: 'KK Coaching - home'
+      footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home'
     };
 ---
 <footer>
@@ -35,8 +35,10 @@ const labels = lang === 'pl'
       <div>
         <h4>{labels.nav}</h4>
         <ul>
+          <li><a href={`${prefix}/services`}>{labels.services}</a></li>
           <li><a href={`${prefix}/personal-training-cwmbran`}>{labels.personal}</a></li>
           <li><a href={`${prefix}/online-coaching`}>{labels.online}</a></li>
+          <li><a href={`${prefix}/hybrid-coaching`}>{labels.hybrid}</a></li>
           <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
           <li><a href={`${prefix}/about`}>{labels.about}</a></li>
           <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
@@ -74,7 +76,7 @@ const labels = lang === 'pl'
   .location { margin-top: 8px; max-width: 42ch; font-size: 0.82rem; }
   .footer-grid { display: grid; grid-template-columns: 1.6fr 1.05fr 1.35fr 0.9fr; gap: 32px; margin-bottom: 40px; }
   @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
   footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
   footer ul { list-style: none; }
   footer ul li { margin-bottom: 8px; overflow-wrap: anywhere; }
