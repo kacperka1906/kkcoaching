@@ -31,7 +31,7 @@ const structuredData = {
       publisher: { '@id': businessId }
     },
     {
-      '@type': 'LocalBusiness',
+      '@type': 'Organization',
       '@id': businessId,
       name: 'KK Coaching',
       description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and progress tracking.',
@@ -42,12 +42,6 @@ const structuredData = {
       telephone: site.meta.whatsappNumber,
       sameAs,
       founder: { '@id': personId },
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Cwmbran',
-        addressRegion: 'Torfaen',
-        addressCountry: 'GB'
-      },
       areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
       knowsLanguage: ['English', 'Polish']
     },
@@ -228,7 +222,7 @@ const structuredData = {
     color: var(--red);
     font-size: clamp(1.2rem, 2.3vw, 1.8rem);
     line-height: 1.05;
-    white-space: nowrap;
+    white-space: normal;
   }
   .story .stat-line span {
     display: block;
