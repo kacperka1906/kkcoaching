@@ -10,15 +10,15 @@ const prefix = lang === 'pl' ? '/pl' : '';
 
 const labels = lang === 'pl'
   ? {
-      nav: 'Nawigacja', about: 'O mnie', services: 'Coaching', transformations: 'Przemiany', contact: 'Kontakt',
-      legal: 'Prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin',
-      direct: 'Kontakt bezpośredni', location: 'Cwmbran, Torfaen, South Wales · coaching online w całej Wielkiej Brytanii',
-      footerSeo: 'Personal Training Cwmbran · Coaching Online'
+      nav: 'Na skróty', personal: 'Personal Training Cwmbran', online: 'Online Coaching', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
+      legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin strony',
+      direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
+      footerSeo: 'Personal Training Cwmbran · Online Coaching'
     }
   : {
-      nav: 'Navigation', about: 'About', services: 'Coaching', transformations: 'Transformations', contact: 'Contact',
-      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Terms & Conditions',
-      direct: 'Direct contact', location: 'Cwmbran, Torfaen, South Wales · online coaching across the UK',
+      nav: 'Quick links', personal: 'Personal Training Cwmbran', online: 'Online Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
+      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Website Terms',
+      direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
       footerSeo: 'Personal Training Cwmbran · Online Coaching'
     };
 ---
@@ -35,18 +35,19 @@ const labels = lang === 'pl'
       <div>
         <h4>{labels.nav}</h4>
         <ul>
-          <li><a href={`${prefix}/about`}>{labels.about}</a></li>
-          <li><a href={`${prefix}/services`}>{labels.services}</a></li>
+          <li><a href={`${prefix}/personal-training-cwmbran`}>{labels.personal}</a></li>
+          <li><a href={`${prefix}/online-coaching`}>{labels.online}</a></li>
           <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
+          <li><a href={`${prefix}/about`}>{labels.about}</a></li>
           <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
         </ul>
       </div>
       <div>
         <h4>{labels.direct}</h4>
         <ul>
-          <li><a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">WhatsApp · {site.meta.whatsappNumber}</a></li>
           <li><a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a></li>
-          <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram · @kkcoaching.fit</a></li>
           {site.meta.facebookUrl && <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>}
         </ul>
       </div>
@@ -71,12 +72,12 @@ const labels = lang === 'pl'
   .logo { display: inline-flex; align-items: center; }
   .tagline { margin-top: 12px; max-width: 36ch; color: #C7CBD1; }
   .location { margin-top: 8px; max-width: 42ch; font-size: 0.82rem; }
-  .footer-grid { display: grid; grid-template-columns: 1.6fr 0.8fr 1.2fr 0.9fr; gap: 32px; margin-bottom: 40px; }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1.05fr 1.35fr 0.9fr; gap: 32px; margin-bottom: 40px; }
   @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
   footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
   footer ul { list-style: none; }
-  footer ul li { margin-bottom: 8px; }
+  footer ul li { margin-bottom: 8px; overflow-wrap: anywhere; }
   footer a { text-decoration: none; color: inherit; }
   footer a:hover { color: var(--white); }
   .footer-bottom {

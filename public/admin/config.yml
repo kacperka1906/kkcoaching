@@ -9,7 +9,6 @@ backend:
 
 media_folder: "public/images"
 public_folder: "/images"
-
 publish_mode: simple
 
 collections:
@@ -31,7 +30,6 @@ collections:
               - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
               - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
               - { label: "Training location", name: "trainingLocation", widget: "string" }
-
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -43,7 +41,6 @@ collections:
               - { label: "Trust line", name: "trustLine", widget: "string" }
               - { label: "Hero image", name: "image", widget: "image" }
               - { label: "Image alt text", name: "imageAlt", widget: "string" }
-
           - label: "Who this is for"
             name: "whoItsFor"
             widget: "object"
@@ -59,7 +56,6 @@ collections:
                 fields:
                   - { label: "Card title", name: "title", widget: "string" }
                   - { label: "Card text", name: "body", widget: "text" }
-
           - label: "Coaching options intro"
             name: "servicesIntro"
             widget: "object"
@@ -67,7 +63,6 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "body", widget: "text" }
-
           - label: "Coach Story"
             name: "story"
             widget: "object"
@@ -82,7 +77,6 @@ collections:
               - { label: "Button text", name: "cta", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Image alt text", name: "imageAlt", widget: "string" }
-
           - label: "Process"
             name: "process"
             widget: "object"
@@ -98,7 +92,6 @@ collections:
                 fields:
                   - { label: "Step title", name: "title", widget: "string" }
                   - { label: "Step text", name: "body", widget: "text" }
-
           - label: "Transformations intro"
             name: "transformations"
             widget: "object"
@@ -107,7 +100,6 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Intro paragraph", name: "body", widget: "text" }
               - { label: "Button text", name: "cta", widget: "string" }
-
           - label: "Final CTA"
             name: "finalCta"
             widget: "object"
@@ -131,7 +123,6 @@ collections:
               - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
               - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
               - { label: "Lokalizacja treningów", name: "trainingLocation", widget: "string" }
-
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -143,7 +134,6 @@ collections:
               - { label: "Linia zaufania", name: "trustLine", widget: "string" }
               - { label: "Zdjęcie hero", name: "image", widget: "image" }
               - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
-
           - label: "Dla kogo jest coaching"
             name: "whoItsFor"
             widget: "object"
@@ -159,7 +149,6 @@ collections:
                 fields:
                   - { label: "Tytuł karty", name: "title", widget: "string" }
                   - { label: "Treść karty", name: "body", widget: "text" }
-
           - label: "Wprowadzenie do form współpracy"
             name: "servicesIntro"
             widget: "object"
@@ -167,7 +156,6 @@ collections:
               - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
               - { label: "Nagłówek", name: "heading", widget: "string" }
               - { label: "Wprowadzenie", name: "body", widget: "text" }
-
           - label: "Historia trenera"
             name: "story"
             widget: "object"
@@ -178,11 +166,10 @@ collections:
               - { label: "Pełna wersja (O mnie)", name: "bodyFull", widget: "text" }
               - { label: "Masa startowa", name: "statStart", widget: "string" }
               - { label: "Redukcja masy", name: "statLoss", widget: "string" }
-              - { label: "Kwalifikacja", name: "statQualification", widget: "string" }
+              - { label: "Kwalifikacja / oferta", name: "statQualification", widget: "string" }
               - { label: "Tekst przycisku", name: "cta", widget: "string" }
               - { label: "Zdjęcie", name: "image", widget: "image" }
               - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
-
           - label: "Proces"
             name: "process"
             widget: "object"
@@ -198,7 +185,6 @@ collections:
                 fields:
                   - { label: "Tytuł kroku", name: "title", widget: "string" }
                   - { label: "Treść kroku", name: "body", widget: "text" }
-
           - label: "Wprowadzenie do przemian"
             name: "transformations"
             widget: "object"
@@ -207,7 +193,6 @@ collections:
               - { label: "Nagłówek", name: "heading", widget: "string" }
               - { label: "Wprowadzenie", name: "body", widget: "text" }
               - { label: "Tekst przycisku", name: "cta", widget: "string" }
-
           - label: "Końcowe CTA"
             name: "finalCta"
             widget: "object"
@@ -254,22 +239,29 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Client name or initial", name: "name", widget: "string" }
+      - { label: "Client name / initial (EN)", name: "name", widget: "string" }
+      - { label: "Client name / initial (PL)", name: "namePl", widget: "string", required: false }
       - { label: "Age disclosed?", name: "ageDisclosed", widget: "boolean", default: false }
       - { label: "Age", name: "age", widget: "number", required: false }
-      - { label: "Service type", name: "serviceType", widget: "string" }
-      - { label: "Duration of coaching", name: "duration", widget: "string" }
-      - { label: "Starting point", name: "startingPoint", widget: "string" }
-      - { label: "Result", name: "result", widget: "string" }
+      - { label: "Service type (EN)", name: "serviceType", widget: "string" }
+      - { label: "Service type (PL)", name: "serviceTypePl", widget: "string", required: false }
+      - { label: "Duration (EN)", name: "duration", widget: "string" }
+      - { label: "Duration (PL)", name: "durationPl", widget: "string", required: false }
+      - { label: "Starting point (EN)", name: "startingPoint", widget: "string" }
+      - { label: "Starting point (PL)", name: "startingPointPl", widget: "string", required: false }
+      - { label: "Result (EN)", name: "result", widget: "string" }
+      - { label: "Result (PL)", name: "resultPl", widget: "string", required: false }
       - label: "Written consent on file?"
         name: "consentOnFile"
         widget: "boolean"
         default: false
         hint: "Only enable this once you have permission to publish the client's details/photo."
       - { label: "Photo", name: "image", widget: "image" }
-      - { label: "Photo alt text", name: "imageAlt", widget: "string" }
+      - { label: "Photo alt text (EN)", name: "imageAlt", widget: "string" }
+      - { label: "Photo alt text (PL)", name: "imageAltPl", widget: "string", required: false }
       - { label: "Feature on Home page", name: "featured", widget: "boolean", default: false }
-      - { label: "Client story / quote", name: "body", widget: "markdown" }
+      - { label: "Client story / quote (EN)", name: "body", widget: "markdown" }
+      - { label: "Client story / quote (PL)", name: "storyPl", widget: "text", required: false }
 
   - name: "faq"
     label: "FAQ"

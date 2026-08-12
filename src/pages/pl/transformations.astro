@@ -35,19 +35,27 @@ const faqs = (await getCollection('faq'))
       <div class="transform-grid">
         {testimonials.map(async (t) => {
           const { Content } = await t.render();
+          const name = t.data.namePl ?? t.data.name;
+          const serviceType = t.data.serviceTypePl ?? t.data.serviceType;
+          const duration = t.data.durationPl ?? t.data.duration;
+          const startingPoint = t.data.startingPointPl ?? t.data.startingPoint;
+          const result = t.data.resultPl ?? t.data.result;
+          const imageAlt = t.data.imageAltPl ?? t.data.imageAlt;
           return (
             <article class="transform-card">
               <div class="transform-image-wrap">
-                <img src={t.data.image} alt={t.data.imageAlt} width="400" height="500" loading="lazy" />
+                <img src={t.data.image} alt={imageAlt} width="400" height="500" loading="lazy" />
               </div>
               <div class="transform-body">
                 <div class="meta">
-                  <span>{t.data.name}</span>
-                  <span>{t.data.serviceType}</span>
-                  <span>{t.data.duration}</span>
+                  <span>{name}</span>
+                  <span>{serviceType}</span>
+                  <span>{duration}</span>
                 </div>
-                <div class="result-line">{t.data.startingPoint} &rarr; {t.data.result}</div>
-                <div class="client-story"><Content /></div>
+                <div class="result-line">{startingPoint} &rarr; {result}</div>
+                <div class="client-story">
+                  {t.data.storyPl ? <p>{t.data.storyPl}</p> : <Content />}
+                </div>
               </div>
             </article>
           );

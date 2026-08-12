@@ -4,17 +4,17 @@ import ContactMethods from '../../components/ContactMethods.astro';
 import site from '../../data/site.pl.json';
 ---
 <BaseLayout
-  title="Bezpłatna Konsultacja Personal Training Cwmbran | KK Coaching"
-  description="Umów bezpłatną konsultację z KK Coaching w sprawie treningu personalnego w Cwmbran, coachingu online lub prowadzenia hybrydowego. Opisz swój cel i zobaczmy, jak mogę Ci pomóc."
+  title="Bezpłatna konsultacja | KK Coaching Cwmbran"
+  description="Napisz do KK Coaching w sprawie treningu personalnego 1:1 w Cwmbran, coachingu online, coachingu hybrydowego lub indywidualnego planu treningowego."
   lang="pl"
   path="/pl/contact"
   altPath="/contact"
 >
   <section class="page-hero on-dark">
     <div class="container">
-      <span class="eyebrow">Zacznij tutaj</span>
+      <span class="eyebrow">Zacznijmy od rozmowy</span>
       <h1>Umów bezpłatną konsultację</h1>
-      <p class="lead">Napisz, gdzie jesteś teraz, jaki efekt chcesz osiągnąć i co do tej pory najbardziej Ci przeszkadzało. Bez presji i bez sprzedażowego skryptu - sprawdzimy po prostu, czy mogę Ci pomóc i jaka forma współpracy będzie najlepsza.</p>
+      <p class="lead">Opisz krótko swój cel i to, z czym masz teraz największy problem. Odpowiem, zadam kilka konkretnych pytań i podpowiem, która forma współpracy ma w Twojej sytuacji najwięcej sensu.</p>
     </div>
   </section>
 
@@ -26,7 +26,7 @@ import site from '../../data/site.pl.json';
           <input type="text" id="name" name="name" required autocomplete="name" />
         </div>
         <div class="field">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <label for="email">E-mail <span aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email" />
         </div>
         <div class="field">
@@ -34,8 +34,8 @@ import site from '../../data/site.pl.json';
           <input type="tel" id="phone" name="phone" required autocomplete="tel" />
         </div>
         <div class="field">
-          <label for="location">Lokalizacja</label>
-          <input type="text" id="location" name="location" placeholder="np. Cwmbran, Cardiff albo online" />
+          <label for="location">Gdzie mieszkasz?</label>
+          <input type="text" id="location" name="location" placeholder="np. Cwmbran, Cardiff, Londyn albo poza UK" />
         </div>
         <div class="field">
           <label for="language">Preferowany język</label>
@@ -45,22 +45,22 @@ import site from '../../data/site.pl.json';
           </select>
         </div>
         <div class="field">
-          <label for="interest">Interesuje mnie</label>
+          <label for="interest">Jaka forma współpracy Cię interesuje?</label>
           <select id="interest" name="interest">
-            <option>Trening personalny</option>
+            <option>Trening personalny 1:1 w Cwmbran</option>
             <option>Coaching online</option>
             <option>Coaching hybrydowy</option>
-            <option>Plan treningowy</option>
+            <option>Indywidualny plan treningowy</option>
             <option>Jeszcze nie wiem</option>
           </select>
         </div>
         <div class="field">
-          <label for="goal">Co chcesz osiągnąć? <span aria-hidden="true">*</span></label>
-          <textarea id="goal" name="goal" rows="3" required placeholder="Redukcja, budowanie mięśni, siła, większa pewność siebie na siłowni..."></textarea>
+          <label for="goal">Jaki jest Twój główny cel? <span aria-hidden="true">*</span></label>
+          <textarea id="goal" name="goal" rows="3" required placeholder="np. redukcja, budowanie mięśni, powrót do regularnych treningów..."></textarea>
         </div>
         <div class="field">
-          <label for="blocker">Co obecnie najbardziej Ci przeszkadza?</label>
-          <textarea id="blocker" name="blocker" rows="3" placeholder="Brak czasu, regularności, dieta, brak konkretnego planu, wcześniejsze urazy..."></textarea>
+          <label for="blocker">Co najbardziej utrudnia Ci osiągnięcie tego celu?</label>
+          <textarea id="blocker" name="blocker" rows="3" placeholder="np. brak regularności, problem z dietą, brak planu, mało czasu..."></textarea>
         </div>
 
         <div class="field honeypot" aria-hidden="true">
@@ -71,12 +71,12 @@ import site from '../../data/site.pl.json';
         <div class="field checkbox-field">
           <input type="checkbox" id="consent" name="consent" required />
           <label for="consent">
-            Zgadzam się na kontakt i zapoznałem/am się z <a href="/pl/privacy">Polityką prywatności</a>. <span aria-hidden="true">*</span>
+            Zgadzam się na kontakt w sprawie mojego zapytania i zapoznałem/am się z <a href="/pl/privacy">Polityką prywatności</a>. <span aria-hidden="true">*</span>
           </label>
         </div>
 
         <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
-        <p class="form-note">Bez presji i bez sprzedażowego skryptu. Zwykle odpowiadam w ciągu 24 godzin.</p>
+        <p class="form-note">Zwykle odpowiadam w ciągu 24 godzin. Jeśli wolisz, możesz też od razu napisać do mnie na WhatsApp.</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 

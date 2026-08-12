@@ -3,4 +3,4 @@ question: "Czy mogę kupić sam plan treningowy bez stałego prowadzenia?"
 order: 7
 language: "pl"
 ---
-Tak. Jednorazowy indywidualny plan treningowy jest dostępny dla osób, które wolą trenować samodzielnie. Stały coaching obejmuje dodatkowo monitoring, feedback, check-iny i korekty w trakcie współpracy.
+Tak. Jeśli chcesz trenować samodzielnie, możesz wybrać jednorazowy indywidualny plan treningowy. Coaching online i hybrydowy to szersza usługa — obejmują regularne check-iny, monitoring, feedback i korekty w trakcie współpracy.

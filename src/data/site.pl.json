@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteName": "KK Coaching",
-    "tagline": "Trenuj z konkretnym celem. Buduj efekty na dłużej.",
+    "tagline": "Trenuj z planem. Buduj formę, którą da się utrzymać.",
     "contactEmail": "kacperkaszowskipt@gmail.com",
     "whatsappNumber": "+447516327552",
     "instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
@@ -9,85 +9,85 @@
     "trainingLocation": "Cwmbran, Torfaen, South Wales"
   },
   "transformations": {
-    "eyebrow": "Prawdziwe efekty",
-    "heading": "Prawdziwi ludzie. Prawdziwa praca. Prawdziwy progres.",
-    "body": "Efekty nie biorą się z jednego idealnego tygodnia. To rezultat dobrze dobranego planu, regularnego działania, monitorowania postępów i korekt wtedy, kiedy naprawdę są potrzebne.",
-    "cta": "Zobacz efekty podopiecznych"
+    "eyebrow": "Efekty podopiecznych",
+    "heading": "Prawdziwe zmiany. Bez skrótów i bez cudownych metod.",
+    "body": "Każda przemiana wygląda inaczej, ale zasada jest ta sama: plan dopasowany do człowieka, regularna praca, kontrola postępów i korekty wtedy, kiedy są naprawdę potrzebne.",
+    "cta": "Zobacz przemiany podopiecznych"
   },
   "servicesIntro": {
-    "eyebrow": "Formy współpracy",
-    "heading": "Wybierz poziom wsparcia dopasowany do Ciebie",
-    "body": "Treningi 1:1 w Cwmbran, pełne prowadzenie online albo połączenie obu form. Niezależnie od opcji cel jest ten sam: konkretny plan, mierzalny progres i koniec zgadywania."
+    "eyebrow": "Współpraca",
+    "heading": "Wybierz sposób prowadzenia, którego naprawdę potrzebujesz",
+    "body": "Treningi 1:1 w Cwmbran, pełne prowadzenie online, coaching hybrydowy łączący oba albo jednorazowy plan treningowy. Poniżej masz jasno rozpisane, co zawiera każda opcja."
   },
   "process": {
     "eyebrow": "Jak to działa",
-    "heading": "Konkretny proces. Bez zgadywania.",
-    "body": "Zaczynamy od tego, gdzie jesteś teraz, układamy plan pod Twoje realne życie i wprowadzamy zmiany na podstawie postępów, a nie przypadku.",
+    "heading": "Od celu do planu. Od planu do wyniku.",
+    "body": "Najpierw ustalamy, czego chcesz i co realnie możesz zrobić. Potem układam plan, śledzę postępy i zmieniamy tylko to, co faktycznie wymaga zmiany.",
     "steps": [
       {
         "title": "Bezpłatna konsultacja",
-        "body": "Rozmawiamy o Twoim celu, doświadczeniu, grafiku, stylu życia i tym, co do tej pory najbardziej Ci przeszkadzało."
+        "body": "Poznaję Twój cel, grafik, doświadczenie i to, co do tej pory najbardziej utrudniało Ci zrobienie postępów."
       },
       {
-        "title": "Twój indywidualny plan",
-        "body": "Dostajesz program dopasowany do celu, poziomu, dostępnego sprzętu i liczby dni, które realnie możesz przeznaczyć na trening."
+        "title": "Plan dopasowany do Ciebie",
+        "body": "Układam trening pod Twój poziom, możliwości, dostępny sprzęt i liczbę dni, które naprawdę możesz przeznaczyć na trening."
       },
       {
-        "title": "Trenujesz i monitorujemy",
-        "body": "Realizujesz plan, a my śledzimy trening, pomiary, zdjęcia, realizację założeń i wskaźniki istotne dla Twojego celu."
+        "title": "Działasz, a ja śledzę postępy",
+        "body": "Realizujesz plan, a ja sprawdzam treningi, pomiary, zdjęcia i realizację ustalonych założeń — zależnie od wybranej formy współpracy."
       },
       {
-        "title": "Analizujemy i korygujemy",
-        "body": "Zostawiamy to, co działa, a zmiany wprowadzamy wtedy, kiedy progres, wyniki treningowe albo realizacja planu pokazują, że są potrzebne."
+        "title": "Korygujemy wtedy, kiedy trzeba",
+        "body": "Nie zmieniamy planu na chybił trafił. Jeśli wyniki pokazują, że trzeba zareagować, wprowadzamy konkretną zmianę i sprawdzamy, co dzieje się dalej."
       }
     ]
   },
   "story": {
-    "heading": "Wiem, jak to jest zaczynać od początku.",
-    "eyebrow": "Poznaj swojego trenera",
+    "heading": "Sam zaczynałem od zera. Dziś pomagam innym nie błądzić po omacku.",
+    "eyebrow": "Moja historia",
     "imageAlt": "Kacper Kaszowski, Level 3 Personal Trainer w Cwmbran",
     "statStart": "117 kg",
-    "cta": "Poznaj mnie lepiej",
-    "bodyFull": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i Level 3 Personal Trainerem działającym w Cwmbran oraz online. Nie trafiłem do fitnessu dlatego, że dobra forma zawsze przychodziła mi łatwo. Zaczynałem z masą około 117 kg, niską pewnością siebie i dokładnie tymi samymi problemami, z którymi mierzy się wiele osób: przekombinowaną dietą, szukaniem szybkich rezultatów i brakiem pewności, czy wykonywany trening naprawdę prowadzi do celu. Dzięki regularności, edukacji i uporządkowanemu podejściu zredukowałem ponad 40 kg i całkowicie przebudowałem swoją sylwetkę. Ten proces nauczył mnie różnicy między planem, który dobrze wygląda na papierze, a takim, który da się realizować wystarczająco długo, żeby naprawdę przyniósł efekty. Dzisiaj wykorzystuję to doświadczenie, żeby pomagać innym redukować tkankę tłuszczową, budować mięśnie, pewniej trenować i tworzyć rutyny, które da się utrzymać w normalnym życiu.",
+    "cta": "Poznaj moją historię",
+    "bodyFull": "Nazywam się Kacper Kaszowski i prowadzę KK Coaching. Zanim zacząłem pomagać innym, sam musiałem przejść drogę od około 117 kg do formy, którą dziś utrzymuję. Po drodze popełniłem sporo błędów: za bardzo komplikowałem dietę, szukałem szybkich efektów i zmieniałem rzeczy, zanim zdążyły zadziałać. Z czasem zrozumiałem, że wynik robi nie najbardziej ekstremalny plan, tylko taki, który jest dobrze dopasowany i realizowany wystarczająco długo. Zredukowałem ponad 40 kg, później całkowicie przebudowałem sylwetkę i dziś wykorzystuję to doświadczenie w pracy z podopiecznymi — przy redukcji, budowaniu mięśni, powrocie do regularności i nauce sensownego treningu.",
     "statLoss": "40+ kg",
-    "bodyShort": "Nazywam się Kacper Kaszowski. Jestem założycielem KK Coaching i Level 3 Personal Trainerem w Cwmbran. Zaczynałem z masą około 117 kg i zredukowałem ponad 40 kg dzięki regularności, edukacji i uporządkowanemu podejściu. Dzisiaj wykorzystuję własne doświadczenie, żeby pomagać innym przestać działać przypadkowo i budować efekty, które da się utrzymać.",
+    "bodyShort": "Nazywam się Kacper Kaszowski. Prowadzę KK Coaching i pracuję jako Level 3 Personal Trainer w Cwmbran oraz online. Sam zaczynałem od około 117 kg i zredukowałem ponad 40 kg. Dzięki temu dobrze wiem, jak łatwo utknąć między kolejnymi dietami, przypadkowymi treningami i ciągłym zaczynaniem od nowa. Dziś pomagam klientom robić to prościej: mieć plan, rozumieć co robią i wiedzieć, kiedy naprawdę trzeba coś zmienić.",
     "image": "/images/kacper.png",
     "statQualification": "1:1 + Online"
   },
   "finalCta": {
-    "heading": "Chcesz przestać ciągle zaczynać od nowa?",
-    "body": "Napisz, gdzie jesteś teraz, jaki efekt chcesz osiągnąć i co do tej pory najbardziej Ci przeszkadzało. Wspólnie wybierzemy najlepszy sposób działania.",
+    "heading": "Masz cel? Ustalmy, jak najlepiej do niego dojść.",
+    "body": "Napisz mi, gdzie jesteś teraz, co chcesz zmienić i z czym masz największy problem. Powiem Ci, która forma współpracy ma w Twojej sytuacji najwięcej sensu.",
     "cta": "Umów bezpłatną konsultację"
   },
   "hero": {
-    "heading": "Personal Trainer w Cwmbran i coaching online",
-    "lead": "Masz dość diet, przypadkowych treningów i ciągłego zaczynania od nowa? Dostajesz konkretny plan treningowy, praktyczne założenia żywieniowe i regularne wsparcie dopasowane do Twojego celu, grafiku i doświadczenia.",
+    "heading": "Personal Trainer w Cwmbran + coaching online",
+    "lead": "Chcesz schudnąć, zbudować mięśnie albo po prostu wrócić do regularnych treningów? Dostajesz plan dopasowany do Ciebie, konkretne wskazówki i wsparcie, dzięki któremu wiesz, co robić i kiedy coś zmienić.",
     "ctaPrimary": "Umów bezpłatną konsultację",
-    "ctaSecondary": "Zobacz efekty podopiecznych",
-    "trustLine": "Level 3 Personal Trainer • własna przemiana 40+ kg • Cwmbran + online • Polski / English",
+    "ctaSecondary": "Zobacz przemiany podopiecznych",
+    "trustLine": "Level 3 Personal Trainer • sam zredukowałem 40+ kg • treningi 1:1 w Cwmbran • coaching PL / EN",
     "image": "/images/kacper.png",
     "imageAlt": "Kacper Kaszowski, Personal Trainer w Cwmbran i założyciel KK Coaching"
   },
   "whoItsFor": {
-    "eyebrow": "Dla kogo jest coaching",
-    "heading": "Plan dopasowany do Twojego celu - i do Twojego życia.",
-    "body": "Nie potrzebujesz idealnej genetyki, całego dnia wolnego ani wielu lat doświadczenia. Potrzebujesz planu, który rozumiesz, jasnego sposobu oceny postępów i wsparcia, które pomaga trzymać kierunek także wtedy, kiedy tydzień nie jest idealny.",
+    "eyebrow": "Czy to dla Ciebie?",
+    "heading": "Twój cel jest ważny. Plan musi pasować do Twojego życia.",
+    "body": "Nie potrzebujesz perfekcyjnego tygodnia. Potrzebujesz jasnych zasad, planu, który da się realizować, i kogoś, kto pomoże Ci wyciągać wnioski z postępów zamiast co chwilę zaczynać od nowa.",
     "cards": [
       {
-        "title": "Schudnij bez kolejnej głodówki",
-        "body": "Ustalimy deficyt i sposób odżywiania, który da się utrzymać także poza idealnym tygodniem."
+        "title": "Chcesz schudnąć bez ciągłego bycia na diecie",
+        "body": "Ustalimy kalorie i sposób jedzenia, który pozwala robić postępy bez układania całego życia pod dietę."
       },
       {
-        "title": "Buduj mięśnie z konkretnym planem",
-        "body": "Koniec z przypadkowymi treningami. Wiesz co robisz, po co to robisz i jak mierzymy progres."
+        "title": "Chcesz budować mięśnie i widzieć postęp na treningu",
+        "body": "Dostajesz konkretny plan i jasne zasady progresji, żebyś wiedział, co ma poprawiać się z tygodnia na tydzień."
       },
       {
-        "title": "Poczuj się pewniej na siłowni",
-        "body": "Popracujemy nad techniką i zrozumieniem planu, żebyś wiedział, co robisz i dlaczego."
+        "title": "Nie czujesz się pewnie na siłowni",
+        "body": "Popracujemy nad techniką i zrozumieniem planu, żebyś przestał zgadywać, czy robisz wszystko dobrze."
       },
       {
-        "title": "Wróć na właściwe tory i utrzymaj regularność",
-        "body": "Przerwa, wakacje, dużo pracy czy utrata motywacji nie oznaczają zaczynania od zera. Budujemy rutynę, do której da się wrócić."
+        "title": "Wypadłeś z rytmu i chcesz wrócić do regularności",
+        "body": "Nie zaczynamy od zera. Układamy prosty plan powrotu, który da się pogodzić z pracą, rodziną i resztą życia."
       }
     ]
   }

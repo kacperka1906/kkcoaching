@@ -10,7 +10,7 @@ const allServices = (await getCollection('services'))
 ---
 <BaseLayout
   title="Personal Training & Online Coaching Cwmbran | KK Coaching"
-  description="Compare 1:1 personal training in Cwmbran, online coaching, hybrid coaching and personalised training plans with KK Coaching. Find the level of support that fits your goal."
+  description="Compare 1:1 personal training in Cwmbran, full online coaching, hybrid 1:1 + online coaching and personalised training plans with KK Coaching."
   lang="en"
   path="/services"
   altPath="/pl/services"
@@ -20,6 +20,7 @@ const allServices = (await getCollection('services'))
       <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
       <h1>{site.servicesIntro.heading}</h1>
       <p class="lead">{site.servicesIntro.body}</p>
+      <p class="package-key"><strong>Quick guide:</strong> 1:1 is face-to-face coaching in Cwmbran. Online is complete remote coaching. Hybrid includes everything in Online Coaching plus in-person 1:1 sessions. The Personalised Training Plan is a one-off programme without ongoing coaching.</p>
     </div>
   </section>
 
@@ -54,8 +55,10 @@ const allServices = (await getCollection('services'))
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
-  .page-hero .lead { color: #C7CBD1; max-width: 64ch; }
-  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .page-hero .lead { color: #C7CBD1; max-width: 68ch; }
+  .package-key { color: #AEB3BA; max-width: 78ch; margin-top: 22px; font-size: 0.9rem; line-height: 1.65; }
+  .package-key strong { color: var(--white); }
+  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
   @media (max-width: 800px) { .service-grid { grid-template-columns: 1fr; } }
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }

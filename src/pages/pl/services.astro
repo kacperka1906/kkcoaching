@@ -9,8 +9,8 @@ const allServices = (await getCollection('services'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title="Trening Personalny Cwmbran & Coaching Online | KK Coaching"
-  description="Porównaj trening personalny 1:1 w Cwmbran, coaching online, coaching hybrydowy i indywidualne plany treningowe KK Coaching. Wybierz poziom wsparcia dopasowany do Twojego celu."
+  title="Trening Personalny Cwmbran i Coaching Online | KK Coaching"
+  description="Porównaj trening personalny 1:1 w Cwmbran, coaching online, coaching hybrydowy 1:1 + online oraz jednorazowy plan treningowy KK Coaching."
   lang="pl"
   path="/pl/services"
   altPath="/services"
@@ -20,6 +20,7 @@ const allServices = (await getCollection('services'))
       <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
       <h1>{site.servicesIntro.heading}</h1>
       <p class="lead">{site.servicesIntro.body}</p>
+      <p class="package-key"><strong>W skrócie:</strong> trening 1:1 to prowadzenie na żywo w Cwmbran. Online to pełne prowadzenie zdalne. Coaching hybrydowy zawiera wszystko z online i dodatkowo treningi 1:1. Indywidualny plan to jednorazowa opcja bez stałego prowadzenia.</p>
     </div>
   </section>
 
@@ -54,8 +55,10 @@ const allServices = (await getCollection('services'))
 <style>
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
-  .page-hero .lead { color: #C7CBD1; max-width: 64ch; }
-  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .page-hero .lead { color: #C7CBD1; max-width: 68ch; }
+  .package-key { color: #AEB3BA; max-width: 78ch; margin-top: 22px; font-size: 0.9rem; line-height: 1.65; }
+  .package-key strong { color: var(--white); }
+  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
   @media (max-width: 800px) { .service-grid { grid-template-columns: 1fr; } }
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }

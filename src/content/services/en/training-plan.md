@@ -1,6 +1,6 @@
 ---
 title: "Personalised Training Plan"
-tagline: "A one-off training programme for people who are confident training independently but want a structured plan built around their goal, schedule and available equipment."
+tagline: "A one-off programme for people who are happy training independently but want a properly structured plan instead of piecing workouts together themselves."
 order: 4
 minor: true
 ctaLabel: "Ask About a Training Plan"
@@ -8,9 +8,9 @@ ctaTarget: "/contact"
 image: "/images/personalised-training-plan-placeholder.svg"
 imageAlt: "Personalised gym training plan and structured workout programme from KK Coaching"
 bullets:
-  - "Individual programme built around your goal"
+  - "Individual programme built around your goal and weekly schedule"
   - "Exercise selection matched to your equipment and experience"
   - "Clear sets, reps and progression guidance"
   - "Designed for independent training"
-  - "No ongoing check-ins or coaching included"
+  - "One-off service — no ongoing check-ins, monitoring or coaching support"
 ---
