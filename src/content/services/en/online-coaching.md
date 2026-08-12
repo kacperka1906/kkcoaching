@@ -7,6 +7,8 @@ ctaLabel: "Explore Online Coaching"
 ctaTarget: "/online-coaching"
 image: "/images/online-coaching-app.webp"
 imageAlt: "KK Coaching online fitness coaching with training, nutrition support and progress check-ins"
+detailImage: "/images/online-coaching-app.webp"
+detailImageAlt: "KK Coaching online coaching with training, nutrition and progress tracking"
 bullets:
   - "Personalised training programme"
   - "Calorie, macronutrient and practical nutrition guidance"
