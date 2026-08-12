@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">KK Coaching personalised training plan mockup</title>
+  <desc id="desc">Dark gym themed mockup showing a structured personalised training plan inside a coaching app interface.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0f12"/>
+      <stop offset="1" stop-color="#1b1e23"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f3f5"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="30" stdDeviation="28" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#ffffff" stroke-opacity=".025"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+
+  <circle cx="160" cy="850" r="230" fill="#a51f2e" opacity=".09"/>
+  <circle cx="1450" cy="120" r="260" fill="#a51f2e" opacity=".06"/>
+
+  <g opacity=".34" fill="#050607">
+    <circle cx="150" cy="770" r="120"/>
+    <circle cx="150" cy="770" r="58" fill="#17191d"/>
+    <circle cx="1450" cy="760" r="150"/>
+    <circle cx="1450" cy="760" r="72" fill="#17191d"/>
+    <rect x="120" y="740" width="1360" height="58" rx="29"/>
+  </g>
+
+  <g transform="translate(105 96)">
+    <text x="0" y="0" fill="#a51f2e" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="800" letter-spacing="4">INDYWIDUALNY PLAN</text>
+    <text x="0" y="72" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="64" font-weight="900">TWÓJ TRENING.</text>
+    <text x="0" y="142" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="64" font-weight="900">JASNY SYSTEM.</text>
+    <rect x="0" y="182" width="240" height="6" rx="3" fill="#a51f2e"/>
+    <text x="0" y="238" fill="#c7cbd1" font-family="Segoe UI,Arial,sans-serif" font-size="27">Serie, zakres powtórzeń, RIR, przerwy</text>
+    <text x="0" y="278" fill="#c7cbd1" font-family="Segoe UI,Arial,sans-serif" font-size="27">i wskazówki techniczne w jednym miejscu.</text>
+  </g>
+
+  <g transform="translate(520 82) rotate(-2 500 430)" filter="url(#shadow)">
+    <rect x="0" y="0" width="980" height="820" rx="42" fill="#0a0b0d" stroke="#343840" stroke-width="6"/>
+    <rect x="38" y="42" width="904" height="730" rx="18" fill="url(#screen)"/>
+    <circle cx="490" cy="20" r="6" fill="#59606a"/>
+
+    <rect x="38" y="42" width="904" height="76" rx="18" fill="#17191d"/>
+    <rect x="38" y="96" width="904" height="22" fill="#17191d"/>
+    <circle cx="82" cy="79" r="16" fill="#a51f2e"/>
+    <text x="112" y="88" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="800">KK COACHING · TRAINING PLAN</text>
+    <text x="824" y="88" fill="#c8ccd2" font-family="Segoe UI,Arial,sans-serif" font-size="18">WEEK 1</text>
+
+    <g font-family="Segoe UI,Arial,sans-serif">
+      <text x="74" y="158" fill="#1c2026" font-size="20" font-weight="800">45 Degree Leg Press Wide Stance</text>
+      <g transform="translate(74 178)">
+        <rect width="826" height="104" rx="10" fill="#fff" stroke="#d9dde2"/>
+        <text x="18" y="28" fill="#6a7078" font-size="13" font-weight="700">SET</text>
+        <text x="126" y="28" fill="#6a7078" font-size="13" font-weight="700">WEIGHT · KG</text>
+        <text x="332" y="28" fill="#6a7078" font-size="13" font-weight="700">REP RANGE</text>
+        <text x="535" y="28" fill="#6a7078" font-size="13" font-weight="700">RIR</text>
+        <text x="650" y="28" fill="#6a7078" font-size="13" font-weight="700">REST</text>
+        <line x1="18" y1="42" x2="808" y2="42" stroke="#e5e7ea"/>
+        <text x="22" y="70" fill="#292d33" font-size="16">1</text><text x="133" y="70" fill="#292d33" font-size="16">—</text><text x="342" y="70" fill="#292d33" font-size="16">8–10</text><text x="548" y="70" fill="#292d33" font-size="16">0</text><text x="662" y="70" fill="#292d33" font-size="16">2:00</text>
+        <text x="22" y="94" fill="#292d33" font-size="16">2</text><text x="133" y="94" fill="#292d33" font-size="16">—</text><text x="342" y="94" fill="#292d33" font-size="16">8–10</text><text x="548" y="94" fill="#292d33" font-size="16">0</text><text x="662" y="94" fill="#292d33" font-size="16">2:00</text>
+      </g>
+
+      <text x="74" y="330" fill="#1c2026" font-size="20" font-weight="800">Dumbbell Bulgarian Split Squats</text>
+      <g transform="translate(74 350)">
+        <rect width="826" height="84" rx="10" fill="#fff" stroke="#d9dde2"/>
+        <text x="18" y="27" fill="#6a7078" font-size="13" font-weight="700">SET</text><text x="126" y="27" fill="#6a7078" font-size="13" font-weight="700">WEIGHT · KG</text><text x="332" y="27" fill="#6a7078" font-size="13" font-weight="700">REP RANGE</text><text x="535" y="27" fill="#6a7078" font-size="13" font-weight="700">RIR</text><text x="650" y="27" fill="#6a7078" font-size="13" font-weight="700">REST</text>
+        <line x1="18" y1="40" x2="808" y2="40" stroke="#e5e7ea"/>
+        <text x="22" y="67" fill="#292d33" font-size="16">1</text><text x="133" y="67" fill="#292d33" font-size="16">—</text><text x="342" y="67" fill="#292d33" font-size="16">10–12</text><text x="548" y="67" fill="#292d33" font-size="16">0</text><text x="662" y="67" fill="#292d33" font-size="16">2:00</text>
+      </g>
+
+      <text x="74" y="482" fill="#1c2026" font-size="20" font-weight="800">Cable Step Ups</text>
+      <g transform="translate(74 502)">
+        <rect width="826" height="84" rx="10" fill="#fff" stroke="#d9dde2"/>
+        <text x="18" y="27" fill="#6a7078" font-size="13" font-weight="700">SET</text><text x="126" y="27" fill="#6a7078" font-size="13" font-weight="700">WEIGHT · KG</text><text x="332" y="27" fill="#6a7078" font-size="13" font-weight="700">REP RANGE</text><text x="535" y="27" fill="#6a7078" font-size="13" font-weight="700">RIR</text><text x="650" y="27" fill="#6a7078" font-size="13" font-weight="700">REST</text>
+        <line x1="18" y1="40" x2="808" y2="40" stroke="#e5e7ea"/>
+        <text x="22" y="67" fill="#292d33" font-size="16">1</text><text x="133" y="67" fill="#292d33" font-size="16">—</text><text x="342" y="67" fill="#292d33" font-size="16">10–12</text><text x="548" y="67" fill="#292d33" font-size="16">2</text><text x="662" y="67" fill="#292d33" font-size="16">2:00</text>
+      </g>
+
+      <text x="74" y="634" fill="#1c2026" font-size="20" font-weight="800">Seated Leg Curl</text>
+      <g transform="translate(74 654)">
+        <rect width="826" height="82" rx="10" fill="#fff" stroke="#d9dde2"/>
+        <text x="18" y="27" fill="#6a7078" font-size="13" font-weight="700">SET</text><text x="126" y="27" fill="#6a7078" font-size="13" font-weight="700">WEIGHT · KG</text><text x="332" y="27" fill="#6a7078" font-size="13" font-weight="700">REP RANGE</text><text x="535" y="27" fill="#6a7078" font-size="13" font-weight="700">RIR</text><text x="650" y="27" fill="#6a7078" font-size="13" font-weight="700">REST</text>
+        <line x1="18" y1="40" x2="808" y2="40" stroke="#e5e7ea"/>
+        <text x="22" y="66" fill="#292d33" font-size="16">1</text><text x="133" y="66" fill="#292d33" font-size="16">—</text><text x="342" y="66" fill="#292d33" font-size="16">12–15</text><text x="548" y="66" fill="#292d33" font-size="16">1</text><text x="662" y="66" fill="#292d33" font-size="16">1:30</text>
+      </g>
+    </g>
+
+    <rect x="38" y="772" width="904" height="10" rx="5" fill="#a51f2e"/>
+  </g>
+
+  <g transform="translate(106 690)" font-family="Segoe UI,Arial,sans-serif">
+    <circle cx="22" cy="22" r="22" fill="#a51f2e"/>
+    <path d="M12 22l7 7 14-17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="30" fill="#fff" font-size="25" font-weight="700">Plan dopasowany do celu i sprzętu</text>
+    <circle cx="22" cy="92" r="22" fill="#a51f2e"/>
+    <path d="M12 92l7 7 14-17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="100" fill="#fff" font-size="25" font-weight="700">Jasna progresja zamiast przypadkowych ćwiczeń</text>
+    <circle cx="22" cy="162" r="22" fill="#a51f2e"/>
+    <path d="M12 162l7 7 14-17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="170" fill="#fff" font-size="25" font-weight="700">Gotowy do samodzielnego treningu</text>
+  </g>
+
+  <g transform="translate(110 930)">
+    <text fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="900">KK</text>
+    <text x="48" fill="#a51f2e" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="900">COACHING</text>
+  </g>
+</svg>
