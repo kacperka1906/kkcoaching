@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Cookie Policy | KK Coaching"
-  description="Information about cookies, Google Analytics and consent controls on kkcoaching.fit."
+  description="Information about cookies, Google Analytics, the optional Google Maps embed and consent controls on kkcoaching.fit."
   lang="en"
   path="/cookies"
   altPath="/pl/cookies"
@@ -22,14 +22,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <tbody>
           <tr><td>kk_cookie_consent (localStorage)</td><td>Remembers whether you accepted or rejected analytics.</td><td>Necessary site setting</td></tr>
           <tr><td>_ga, _ga_*</td><td>Google Analytics 4 — helps understand how visitors use the website.</td><td>Analytics — optional</td></tr>
+          <tr><td>Google Maps embedded content</td><td>Displays an interactive map of the Cwmbran training location after you choose to load it. Google may use cookies or similar technologies when the map is loaded.</td><td>External feature — user initiated</td></tr>
         </tbody>
       </table>
 
-      <h2>3. When Google Analytics loads</h2>
+      <h2>3. When Google services load</h2>
       <p>Google Analytics is only loaded after you accept analytics in the cookie banner. Rejecting optional analytics does not prevent you from using the website, enquiry form or other core functions.</p>
+      <p>The interactive Google Map is separate from analytics consent. The map is not requested from Google when the page first loads. It is only embedded after you press the “Load interactive map” button in the training-location section. The address and directions link remain available without loading the embedded map.</p>
 
-      <h2>4. Changing or withdrawing your choice</h2>
-      <p>You can reopen the consent controls at any time using the button below or “Cookie settings” in the website footer. If you reject analytics after previously accepting it, analytics is disabled and the site removes the Google Analytics cookies it can access.</p>
+      <h2>4. Changing or withdrawing your analytics choice</h2>
+      <p>You can reopen the analytics consent controls at any time using the button below or “Cookie settings” in the website footer. If you reject analytics after previously accepting it, analytics is disabled and the site removes the Google Analytics cookies it can access.</p>
       <button type="button" class="btn btn-outline-dark" data-cookie-settings>Open cookie settings</button>
 
       <h2>5. Browser controls</h2>

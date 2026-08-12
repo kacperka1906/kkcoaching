@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Polityka cookies | KK Coaching"
-  description="Informacje o plikach cookie, Google Analytics i sposobie zarządzania zgodą na kkcoaching.fit."
+  description="Informacje o plikach cookie, Google Analytics, opcjonalnej mapie Google i sposobie zarządzania zgodą na kkcoaching.fit."
   lang="pl"
   path="/pl/cookies"
   altPath="/cookies"
@@ -22,13 +22,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <tbody>
           <tr><td>kk_cookie_consent (localStorage)</td><td>Zapamiętuje, czy zaakceptowałeś lub odrzuciłeś analitykę.</td><td>Niezbędne ustawienie strony</td></tr>
           <tr><td>_ga, _ga_*</td><td>Google Analytics 4 — pomaga zrozumieć, jak użytkownicy korzystają ze strony.</td><td>Analityczne — opcjonalne</td></tr>
+          <tr><td>Osadzona mapa Google</td><td>Wyświetla interaktywną mapę lokalizacji treningów w Cwmbran dopiero po tym, jak zdecydujesz się ją załadować. Po załadowaniu Google może korzystać z cookies lub podobnych technologii.</td><td>Funkcja zewnętrzna — uruchamiana przez użytkownika</td></tr>
         </tbody>
       </table>
 
-      <h2>3. Kiedy uruchamia się Google Analytics</h2>
+      <h2>3. Kiedy uruchamiają się usługi Google</h2>
       <p>Google Analytics jest ładowane dopiero po kliknięciu zgody w banerze cookies. Odrzucenie opcjonalnej analityki nie blokuje korzystania ze strony, formularza kontaktowego ani pozostałych podstawowych funkcji.</p>
+      <p>Interaktywna mapa Google działa niezależnie od zgody na analitykę. Strona nie pobiera mapy z Google przy pierwszym załadowaniu. Mapa pojawia się dopiero po kliknięciu przycisku „Załaduj mapę” w sekcji lokalizacji treningów. Adres oraz link do wyznaczenia trasy są dostępne bez ładowania osadzonej mapy.</p>
 
-      <h2>4. Jak zmienić lub wycofać decyzję</h2>
+      <h2>4. Jak zmienić lub wycofać zgodę na analitykę</h2>
       <p>Możesz w każdej chwili ponownie otworzyć ustawienia zgody, korzystając z przycisku poniżej albo z opcji „Ustawienia cookies” w stopce. Jeśli po wcześniejszej zgodzie odrzucisz analitykę, Google Analytics zostanie wyłączone, a strona usunie dostępne jej cookies Google Analytics.</p>
       <button type="button" class="btn btn-outline-dark" data-cookie-settings>Otwórz ustawienia cookies</button>
 

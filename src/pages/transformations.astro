@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ResultsContext from '../components/ResultsContext.astro';
 import site from '../data/site.en.json';
 
 const testimonials = (await getCollection('testimonials'))
@@ -38,7 +39,7 @@ const faqs = (await getCollection('faq'))
           return (
             <article class="transform-card">
               <div class="transform-image-wrap">
-                <img src={t.data.image} alt={t.data.imageAlt} width="400" height="500" loading="lazy" />
+                <img src={t.data.image} alt={t.data.imageAlt} width="400" height="500" loading="lazy" decoding="async" />
               </div>
               <div class="transform-body">
                 <div class="meta">
@@ -55,6 +56,8 @@ const faqs = (await getCollection('faq'))
       </div>
     </div>
   </section>
+
+  <ResultsContext lang="en" />
 
   <section aria-labelledby="faq-heading">
     <div class="container">
