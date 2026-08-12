@@ -4,7 +4,6 @@ import TrainingLocation from './TrainingLocation.astro';
 import BusinessEntity from './BusinessEntity.astro';
 import AuthorProfilePageSchema from './AuthorProfilePageSchema.astro';
 import ServicePricing from './ServicePricing.astro';
-import ServicePageOverrides from './ServicePageOverrides.astro';
 import siteEn from '../data/site.en.json';
 import sitePl from '../data/site.pl.json';
 
@@ -36,13 +35,13 @@ const phoneHref = `tel:${site.meta.whatsappNumber.replace(/\D/g, '')}`;
 
 const labels = lang === 'pl'
   ? {
-      nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
+      nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', trainingPlan: 'Indywidualny plan treningowy', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
       legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', cookieSettings: 'Ustawienia cookies', terms: 'Regulamin strony',
       direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online w UK i poza UK', credentials: 'Level 3 Personal Trainer · Level 2 Gym Instructor · Polski / English',
       footerSeo: 'Trener personalny Cwmbran · Coaching online · Coaching hybrydowy', home: 'KK Coaching - strona główna', phone: 'Telefon', trainingAt: 'Treningi 1:1'
     }
   : {
-      nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
+      nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', trainingPlan: 'Personalised Training Plan', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
       legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', cookieSettings: 'Cookie settings', terms: 'Website Terms',
       direct: 'Contact', location: '1:1 training in Cwmbran · online coaching across the UK and beyond', credentials: 'Level 3 Personal Trainer · Level 2 Gym Instructor · English / Polish',
       footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home', phone: 'Phone', trainingAt: '1:1 training'
@@ -50,7 +49,6 @@ const labels = lang === 'pl'
 ---
 <BusinessEntity />
 {showAuthorProfileSchema && <AuthorProfilePageSchema lang={lang} />}
-<ServicePageOverrides lang={lang} pathname={pathname} />
 {showPricing && <ServicePricing lang={lang} pathname={pathname} />}
 {showTrainingLocation && <TrainingLocation lang={lang} />}
 
@@ -73,6 +71,7 @@ const labels = lang === 'pl'
           <li><a href={`${prefix}/personal-training-cwmbran`}>{labels.personal}</a></li>
           <li><a href={`${prefix}/online-coaching`}>{labels.online}</a></li>
           <li><a href={`${prefix}/hybrid-coaching`}>{labels.hybrid}</a></li>
+          <li><a href={`${prefix}/training-plan`}>{labels.trainingPlan}</a></li>
           <li><a href={`${prefix}/transformations`}>{labels.transformations}</a></li>
           <li><a href={`${prefix}/about`}>{labels.about}</a></li>
           <li><a href={`${prefix}/contact`}>{labels.contact}</a></li>
