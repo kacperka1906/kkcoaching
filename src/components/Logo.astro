@@ -4,7 +4,7 @@ interface Props {
 }
 const { height = 34 } = Astro.props;
 const imageWidth = Math.max(128, height * 4);
-const optimizedSrc = `/.netlify/images?url=/images/logo.png&w=${imageWidth}&q=82`;
+const optimizedSrc = `/.netlify/images?url=/images/logo.png&w=${imageWidth}&fm=webp&q=82`;
 ---
 <img
   src={optimizedSrc}
