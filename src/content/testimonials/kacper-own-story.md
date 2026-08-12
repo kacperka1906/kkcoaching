@@ -1,13 +1,20 @@
 ---
-name: Kacper - my own story
+name: "Kacper - my own story"
+namePl: "Kacper — moja historia"
 ageDisclosed: false
-serviceType: My own transformation
-duration: 2022 - present
-startingPoint: ~117 kg
-result: 40+ kg lost and a complete physique transformation
+serviceType: "My own transformation"
+serviceTypePl: "Moja własna przemiana"
+duration: "2022 - present"
+durationPl: "2022 — obecnie"
+startingPoint: "~117 kg"
+startingPointPl: "~117 kg"
+result: "40+ kg lost and a complete physique transformation"
+resultPl: "40+ kg mniej i całkowita przebudowa sylwetki"
 consentOnFile: true
-image: /images/photo-collage.png-1-.png
-imageAlt: Kacper Kaszowski's own 40+ kg body transformation
+image: "/images/photo-collage.png-1-.png"
+imageAlt: "Kacper Kaszowski's own 40+ kg body transformation"
+imageAltPl: "Własna przemiana Kacpra Kaszowskiego po redukcji ponad 40 kg"
+storyPl: "Zaczynałem z masą około 117 kg, bez konkretnej wiedzy o tym, jak trenować i jeść tak, żeby robić postępy przez lata, a nie przez kilka tygodni. Sam popełniłem wiele błędów, szukałem szybkich rozwiązań i niepotrzebnie komplikowałem proces. Z czasem zredukowałem ponad 40 kg, całkowicie przebudowałem sylwetkę i nauczyłem się wykorzystywać trening, żywienie i dane o postępach jako jeden system. To doświadczenie mocno wpływa na sposób, w jaki dziś prowadzę klientów."
 featured: false
 ---
 

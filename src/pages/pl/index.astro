@@ -143,14 +143,14 @@ const structuredData = {
       </div>
       {featured && (
         <div class="transform-card">
-          <img src={featured.data.image} alt={featured.data.imageAlt} width="640" height="480" loading="lazy" />
+          <img src={featured.data.image} alt={featured.data.imageAltPl ?? featured.data.imageAlt} width="640" height="480" loading="lazy" />
           <div class="transform-body">
             <div class="meta">
-              <span>{featured.data.name}</span>
-              <span>{featured.data.serviceType}</span>
-              <span>{featured.data.duration}</span>
+              <span>{featured.data.namePl ?? featured.data.name}</span>
+              <span>{featured.data.serviceTypePl ?? featured.data.serviceType}</span>
+              <span>{featured.data.durationPl ?? featured.data.duration}</span>
             </div>
-            <blockquote>{featured.data.startingPoint} &rarr; {featured.data.result}</blockquote>
+            <blockquote>{featured.data.startingPointPl ?? featured.data.startingPoint} &rarr; {featured.data.resultPl ?? featured.data.result}</blockquote>
           </div>
         </div>
       )}
