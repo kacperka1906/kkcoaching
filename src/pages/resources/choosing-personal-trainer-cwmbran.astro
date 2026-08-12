@@ -11,6 +11,7 @@ const checks = [
 ];
 
 const articleUrl = 'https://kkcoaching.fit/resources/choosing-personal-trainer-cwmbran';
+const articleImage = 'https://kkcoaching.fit/images/kacper.jpg';
 const publishedDate = '2026-08-12T11:10:00+01:00';
 const modifiedDate = '2026-08-12T12:00:00+01:00';
 
@@ -23,6 +24,7 @@ const structuredData = {
       headline: 'How to Choose a Personal Trainer in Cwmbran',
       description: 'A practical guide to choosing a personal trainer in Cwmbran, including qualifications, coaching style, progress tracking, location and the level of support you need.',
       url: articleUrl,
+      image: articleImage,
       mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
       isPartOf: { '@id': 'https://kkcoaching.fit/#website' },
       inLanguage: 'en-GB',
@@ -56,6 +58,8 @@ const structuredData = {
   path="/resources/choosing-personal-trainer-cwmbran"
   altPath="/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
   structuredData={structuredData}
+  articlePublishedTime={publishedDate}
+  articleModifiedTime={modifiedDate}
 >
   <article>
     <header class="article-hero on-dark">
@@ -64,7 +68,7 @@ const structuredData = {
         <span class="eyebrow">Personal training in Cwmbran</span>
         <h1>How to choose a personal trainer in Cwmbran</h1>
         <p class="lead">The best trainer for you is not automatically the person with the hardest sessions or the biggest social following. Start by checking whether their service, communication and location make it easier for you to follow a good plan consistently.</p>
-        <p class="article-meta">By <a href="/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · Updated 12 August 2026</p>
+        <p class="article-meta">By <a href="/about">Kacper Kaszowski</a>, Level 3 Personal Trainer · <time datetime={modifiedDate}>Updated 12 August 2026</time></p>
       </div>
     </header>
 
