@@ -24,18 +24,128 @@ const {
   altPath,
   structuredData,
   noindex = false,
-  socialImage = '/images/kacper.png',
-  socialImageAlt = 'KK Coaching - Kacper Kaszowski, Personal Trainer in Cwmbran'
+  socialImage,
+  socialImageAlt
 } = Astro.props;
 
 const siteUrl = 'https://kkcoaching.fit';
+const normalizedPath = path.replace(/\/+$/, '') || '/';
 const canonical = `${siteUrl}${path}`;
 const enPath = lang === 'en' ? path : (altPath ?? '/');
 const plPath = lang === 'pl' ? path : (altPath ?? '/pl');
 const enUrl = `${siteUrl}${enPath}`;
 const plUrl = `${siteUrl}${plPath}`;
 const xDefaultUrl = enUrl;
-const socialImageUrl = socialImage.startsWith('http') ? socialImage : `${siteUrl}${socialImage}`;
+
+const preferredSocialImages: Record<string, string> = {
+  '/personal-training-cwmbran': '/images/kacper.png',
+  '/pl/personal-training-cwmbran': '/images/kacper.png',
+  '/online-coaching': '/images/kacper.png',
+  '/pl/online-coaching': '/images/kacper.png',
+  '/hybrid-coaching': '/images/kacper.png',
+  '/pl/hybrid-coaching': '/images/kacper.png',
+  '/transformations': '/images/photo-collage-source.png',
+  '/pl/transformations': '/images/photo-collage-source.png',
+  '/about': '/images/kacper.png',
+  '/pl/about': '/images/kacper.png'
+};
+
+const preferredSocialAlts: Record<string, string> = {
+  '/personal-training-cwmbran': 'Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching',
+  '/pl/personal-training-cwmbran': 'Kacper Kaszowski, trener personalny w Cwmbran i założyciel KK Coaching',
+  '/online-coaching': 'Kacper Kaszowski, founder of KK Coaching and online fitness coach',
+  '/pl/online-coaching': 'Kacper Kaszowski, trener personalny online i założyciel KK Coaching',
+  '/hybrid-coaching': 'Kacper Kaszowski, KK Coaching personal trainer in Cwmbran and online coach',
+  '/pl/hybrid-coaching': 'Kacper Kaszowski, treningi 1:1 w Cwmbran i prowadzenie online',
+  '/transformations': 'KK Coaching client transformations and progress',
+  '/pl/transformations': 'Przemiany i efekty podopiecznych KK Coaching',
+  '/about': 'Kacper Kaszowski, founder of KK Coaching',
+  '/pl/about': 'Kacper Kaszowski, założyciel KK Coaching'
+};
+
+const resolvedSocialImage = socialImage ?? preferredSocialImages[normalizedPath] ?? '/images/kacper.png';
+const resolvedSocialImageAlt = socialImageAlt ?? preferredSocialAlts[normalizedPath] ?? 'KK Coaching - Kacper Kaszowski, Personal Trainer in Cwmbran';
+const socialImageUrl = resolvedSocialImage.startsWith('http') ? resolvedSocialImage : `${siteUrl}${resolvedSocialImage}`;
+
+const breadcrumbMap: Record<string, Array<{ name: string; href?: string }>> = {
+  '/services': [
+    { name: 'Home', href: '/' },
+    { name: 'Coaching Options' }
+  ],
+  '/personal-training-cwmbran': [
+    { name: 'Home', href: '/' },
+    { name: 'Coaching Options', href: '/services' },
+    { name: 'Personal Training Cwmbran' }
+  ],
+  '/online-coaching': [
+    { name: 'Home', href: '/' },
+    { name: 'Coaching Options', href: '/services' },
+    { name: 'Online Coaching' }
+  ],
+  '/hybrid-coaching': [
+    { name: 'Home', href: '/' },
+    { name: 'Coaching Options', href: '/services' },
+    { name: 'Hybrid Coaching' }
+  ],
+  '/transformations': [
+    { name: 'Home', href: '/' },
+    { name: 'Client Results' }
+  ],
+  '/about': [
+    { name: 'Home', href: '/' },
+    { name: 'About' }
+  ],
+  '/contact': [
+    { name: 'Home', href: '/' },
+    { name: 'Contact' }
+  ],
+  '/pl/services': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Współpraca' }
+  ],
+  '/pl/personal-training-cwmbran': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Współpraca', href: '/pl/services' },
+    { name: 'Trener personalny Cwmbran' }
+  ],
+  '/pl/online-coaching': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Współpraca', href: '/pl/services' },
+    { name: 'Trener personalny online' }
+  ],
+  '/pl/hybrid-coaching': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Współpraca', href: '/pl/services' },
+    { name: 'Treningi 1:1 + prowadzenie online' }
+  ],
+  '/pl/transformations': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Przemiany' }
+  ],
+  '/pl/about': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'O mnie' }
+  ],
+  '/pl/contact': [
+    { name: 'Strona główna', href: '/pl' },
+    { name: 'Kontakt' }
+  ]
+};
+
+const breadcrumbs = breadcrumbMap[normalizedPath] ?? [];
+const breadcrumbStructuredData = breadcrumbs.length >= 2
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        ...(item.href ? { item: `${siteUrl}${item.href}` } : {})
+      }))
+    }
+  : null;
+
 const robotsContent = noindex
   ? 'noindex, follow'
   : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
@@ -60,25 +170,42 @@ const robotsContent = noindex
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={socialImageUrl} />
-  <meta property="og:image:alt" content={socialImageAlt} />
+  <meta property="og:image:alt" content={resolvedSocialImageAlt} />
   <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'pl_PL'} />
   <meta property="og:locale:alternate" content={lang === 'en' ? 'pl_PL' : 'en_GB'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={socialImageUrl} />
-  <meta name="twitter:image:alt" content={socialImageAlt} />
+  <meta name="twitter:image:alt" content={resolvedSocialImageAlt} />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   {structuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   )}
+  {breadcrumbStructuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)} />
+  )}
 </head>
 <body>
   <a href="#main" class="skip-link">{lang === 'pl' ? 'Przejdź do treści głównej' : 'Skip to main content'}</a>
   <Header lang={lang} altPath={altPath} />
   <main id="main">
+    {breadcrumbs.length >= 2 && (
+      <nav class="breadcrumb-bar" aria-label={lang === 'pl' ? 'Ścieżka nawigacji' : 'Breadcrumb'}>
+        <div class="container breadcrumb-inner">
+          {breadcrumbs.map((item, index) => (
+            <>
+              {index > 0 && <span class="breadcrumb-separator" aria-hidden="true">/</span>}
+              {item.href
+                ? <a href={item.href}>{item.name}</a>
+                : <span aria-current="page">{item.name}</span>}
+            </>
+          ))}
+        </div>
+      </nav>
+    )}
     <slot />
   </main>
   <Footer lang={lang} />
@@ -142,6 +269,29 @@ const robotsContent = noindex
     padding: 0 24px;
     min-width: 0;
   }
+
+  .breadcrumb-bar {
+    background: #111317;
+    color: #AEB3BA;
+    border-top: 1px solid #24282E;
+    border-bottom: 1px solid #24282E;
+  }
+  .breadcrumb-inner {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 0.76rem;
+  }
+  .breadcrumb-inner a {
+    color: #CDD1D6;
+    text-decoration: none;
+  }
+  .breadcrumb-inner a:hover { color: var(--white); }
+  .breadcrumb-inner [aria-current="page"] { color: #8F959D; }
+  .breadcrumb-separator { color: #5C626B; }
 
   a:focus-visible,
   button:focus-visible,
@@ -217,6 +367,7 @@ const robotsContent = noindex
 
   @media (max-width: 620px) {
     .container { padding-left: 18px; padding-right: 18px; }
+    .breadcrumb-inner { min-height: 38px; font-size: 0.7rem; gap: 7px; }
     section { padding: 58px 0; }
     section.tight { padding: 46px 0; }
     .section-head { margin-bottom: 30px; }
