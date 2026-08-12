@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import servicePages from '../data/service-pages.json';
 
 interface Props {
   lang: 'en' | 'pl';
@@ -8,27 +8,24 @@ interface Props {
 
 const { lang, pathname } = Astro.props;
 const type = pathname.includes('hybrid-coaching')
-  ? 'hybrid-coaching'
+  ? 'hybrid'
   : pathname.includes('online-coaching')
-    ? 'online-coaching'
+    ? 'online'
     : pathname.includes('personal-training-cwmbran')
-      ? 'personal-training'
+      ? 'personal'
       : null;
 
 const selectors = {
-  'personal-training': '.local-hero .hero-media img',
-  'online-coaching': '.online-hero .hero-media img',
-  'hybrid-coaching': '.hybrid-hero .hero-media img'
+  personal: '.local-hero .hero-media img',
+  online: '.online-hero .hero-media img',
+  hybrid: '.hybrid-hero .hero-media img'
 };
 
-const services = type ? await getCollection('services') : [];
-const service = type
-  ? services.find(entry => entry.id === `${lang}/${type}`)
-  : undefined;
+const visual = type ? servicePages[type] : null;
 const selector = type ? selectors[type] : '';
-const heroImage = service?.data.detailImage || service?.data.image || '';
-const heroAlt = service?.data.detailImageAlt || service?.data.imageAlt || '';
-const script = service && heroImage
+const heroImage = visual?.heroImage ?? '';
+const heroAlt = visual?.heroAlt?.[lang] ?? '';
+const script = visual && heroImage
   ? `(() => {
       const image = document.querySelector(${JSON.stringify(selector)});
       if (!image) return;
