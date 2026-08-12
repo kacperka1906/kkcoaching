@@ -7,6 +7,8 @@ ctaLabel: "Zobacz coaching online"
 ctaTarget: "/pl/online-coaching"
 image: "/images/online-coaching-app.webp"
 imageAlt: "Trener personalny online KK Coaching z planem treningowym, wsparciem żywieniowym i regularną analizą postępów"
+detailImage: "/images/online-coaching-app.webp"
+detailImageAlt: "Polski coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów"
 bullets:
   - "Indywidualny plan treningowy"
   - "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
