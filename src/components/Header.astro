@@ -9,15 +9,19 @@ const prefix = lang === 'pl' ? '/pl' : '';
 
 const nav = lang === 'pl'
   ? [
-      { href: `${prefix}/about`, label: 'O mnie' },
-      { href: `${prefix}/services`, label: 'Coaching' },
-      { href: `${prefix}/transformations`, label: 'Przemiany' },
-      { href: `${prefix}/contact`, label: 'Kontakt' }
+      { href: '/pl', label: 'Strona główna' },
+      { href: '/pl/personal-training-cwmbran', label: 'Personal Training Cwmbran' },
+      { href: '/pl/online-coaching', label: 'Online Coaching' },
+      { href: '/pl/transformations', label: 'Przemiany' },
+      { href: '/pl/about', label: 'O mnie' },
+      { href: '/pl/contact', label: 'Kontakt' }
     ]
   : [
-      { href: '/about', label: 'About' },
-      { href: '/services', label: 'Coaching' },
+      { href: '/', label: 'Home' },
+      { href: '/personal-training-cwmbran', label: 'Personal Training Cwmbran' },
+      { href: '/online-coaching', label: 'Online Coaching' },
       { href: '/transformations', label: 'Transformations' },
+      { href: '/about', label: 'About Me' },
       { href: '/contact', label: 'Contact' }
     ];
 
@@ -92,12 +96,12 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
   nav.main-nav ul {
     list-style: none;
     display: flex;
-    gap: 26px;
+    gap: 20px;
   }
   nav.main-nav a {
     color: var(--off-white);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
   }
   nav.main-nav a:hover { color: var(--red); }
@@ -142,11 +146,18 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     padding: 4px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1050px) {
     .header-cta { display: none; }
+    nav.main-nav ul { gap: 14px; }
+    nav.main-nav a { font-size: 0.84rem; }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
+    nav.main-nav { display: none; }
+    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  }
+
+  @media (max-width: 900px) {
     :global(body.menu-open) { overflow: hidden; }
     .site-header .container { min-height: 72px; padding-left: 18px; padding-right: 14px; }
     .logo :global(.site-logo) { height: 38px !important; max-width: 92px; object-fit: contain; }
@@ -178,6 +189,5 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
       padding: 13px 16px;
     }
     nav.main-nav li:last-child a:hover { background: var(--red-hover); color: var(--white); }
-    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   }
 </style>
