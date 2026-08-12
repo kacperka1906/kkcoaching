@@ -11,7 +11,7 @@ const structuredData = {
   name: 'Kacper Kaszowski',
   jobTitle: 'Trener personalny',
   url: `${siteUrl}/pl/about`,
-  image: `${siteUrl}/images/kacper.png`,
+  image: `${siteUrl}/images/kacper-gym-physique.webp`,
   sameAs,
   worksFor: {
     '@type': 'Organization',
@@ -23,7 +23,7 @@ const structuredData = {
 ---
 <BaseLayout
   title="Kacper Kaszowski | Trener personalny w Cwmbran | KK Coaching"
-  description="Poznaj Kacpra Kaszowskiego, trenera personalnego w Cwmbran i założyciela KK Coaching. Własna redukcja ponad 40 kg, trening 1:1 i coaching online."
+  description="Poznaj Kacpra Kaszowskiego, trenera personalnego w Cwmbran i założyciela KK Coaching. Własna przemiana 117 → 76 kg, treningi 1:1 i coaching online."
   lang="pl"
   path="/pl/about"
   altPath="/about"
@@ -31,7 +31,7 @@ const structuredData = {
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
-      <img src={site.story.image} alt={site.story.imageAlt} width="480" height="560" />
+      <img src={site.story.image} alt={site.story.imageAlt} width="480" height="480" />
       <div>
         <span class="eyebrow">Moja historia</span>
         <h1>{site.story.heading}</h1>
@@ -88,7 +88,7 @@ const structuredData = {
 
 <style>
   .about-hero__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
-  .about-hero__grid img { border-radius: var(--radius); }
+  .about-hero__grid img { width: min(100%, 480px); aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); }
   .about-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 20px; }
   .about-hero .lead { color: #C7CBD1; max-width: 62ch; }
   @media (max-width: 820px) { .about-hero__grid { grid-template-columns: 1fr; } }

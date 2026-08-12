@@ -31,8 +31,9 @@ const {
 const siteUrl = 'https://kkcoaching.fit';
 const normalizedPath = path.replace(/\/+$/, '') || '/';
 const canonical = `${siteUrl}${path}`;
-const enPath = lang === 'en' ? path : (altPath ?? '/');
-const plPath = lang === 'pl' ? path : (altPath ?? '/pl');
+const hasLocalizedAlternate = Boolean(altPath);
+const enPath = lang === 'en' ? path : (altPath ?? path);
+const plPath = lang === 'pl' ? path : (altPath ?? path);
 const enUrl = `${siteUrl}${enPath}`;
 const plUrl = `${siteUrl}${plPath}`;
 const xDefaultUrl = enUrl;
@@ -46,8 +47,8 @@ const preferredSocialImages: Record<string, string> = {
   '/pl/hybrid-coaching': '/images/kacper.png',
   '/transformations': '/images/photo-collage-source.png',
   '/pl/transformations': '/images/photo-collage-source.png',
-  '/about': '/images/kacper.png',
-  '/pl/about': '/images/kacper.png'
+  '/about': '/images/kacper-gym-physique.webp',
+  '/pl/about': '/images/kacper-gym-physique.webp'
 };
 
 const preferredSocialAlts: Record<string, string> = {
@@ -160,9 +161,13 @@ const robotsContent = noindex
   <meta name="robots" content={robotsContent} />
   <link rel="canonical" href={canonical} />
 
-  <link rel="alternate" hreflang="en" href={enUrl} />
-  <link rel="alternate" hreflang="pl" href={plUrl} />
-  <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+  {hasLocalizedAlternate && (
+    <>
+      <link rel="alternate" hreflang="en" href={enUrl} />
+      <link rel="alternate" hreflang="pl" href={plUrl} />
+      <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+    </>
+  )}
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="KK Coaching" />
