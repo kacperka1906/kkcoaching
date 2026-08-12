@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactMethods from '../components/ContactMethods.astro';
 import site from '../data/site.en.json';
 ---
 <BaseLayout
@@ -79,21 +80,12 @@ import site from '../data/site.en.json';
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 
-      <aside class="contact-side">
-        <h2>Prefer to message directly?</h2>
-        <p>Use whichever option is easiest. WhatsApp is usually the quickest.</p>
-        <ul class="contact-list">
-          <li>
-            <a href={`https://wa.me/${site.meta.whatsappNumber.replace(/\D/g, '')}`} target="_blank" rel="noopener">
-              WhatsApp
-            </a>
-          </li>
-          <li><a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a></li>
-          <li><a href={site.meta.instagramUrl} target="_blank" rel="noopener">Instagram</a></li>
-          {site.meta.facebookUrl && <li><a href={site.meta.facebookUrl} target="_blank" rel="noopener">Facebook</a></li>}
-        </ul>
-        <p class="response-time">Typical response time: within 24 hours.</p>
-      </aside>
+      <ContactMethods
+        lang="en"
+        whatsappNumber={site.meta.whatsappNumber}
+        contactEmail={site.meta.contactEmail}
+        instagramUrl={site.meta.instagramUrl}
+      />
     </div>
   </section>
 </BaseLayout>
@@ -151,7 +143,7 @@ import site from '../data/site.en.json';
   .page-hero .lead { color: #C7CBD1; max-width: 64ch; }
 
   .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
-  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 34px; } }
 
   .field { margin-bottom: 18px; }
   .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.92rem; }
@@ -184,12 +176,8 @@ import site from '../data/site.en.json';
   .form-note { margin-top: 12px; font-size: 0.85rem; color: var(--steel); }
   .form-status { margin-top: 8px; font-size: 0.9rem; color: var(--steel); }
 
-  .contact-side { background: var(--white); border: 1px solid #E3E5E8; border-radius: var(--radius); padding: 28px; }
-  .contact-side h2 { font-size: 1.2rem; margin-bottom: 8px; }
-  .contact-side > p { color: var(--steel); font-size: 0.92rem; margin-bottom: 18px; }
-  .contact-list { list-style: none; }
-  .contact-list li { margin-bottom: 12px; }
-  .contact-list a { color: var(--red); text-decoration: none; font-weight: 600; }
-  .contact-list a:hover { text-decoration: underline; }
-  .response-time { margin-top: 18px; font-size: 0.85rem; color: var(--steel); }
+  @media (max-width: 620px) {
+    .page-hero { padding: 48px 0; }
+    form > .btn { width: 100%; }
+  }
 </style>
