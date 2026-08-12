@@ -2,43 +2,61 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Polityka Cookies | KK Coaching"
-  description="Jak KK Coaching wykorzystuje pliki cookie, w tym cookies analityczne i zgodę."
+  title="Polityka cookies | KK Coaching"
+  description="Informacje o plikach cookie, Google Analytics i sposobie zarządzania zgodą na kkcoaching.fit."
   lang="pl"
   path="/pl/cookies"
   altPath="/cookies"
 >
   <section class="legal-page">
     <div class="container">
-      <h1>Polityka Cookies</h1>
-      <p class="notice"><strong>Treść tymczasowa.</strong> Przed publikacją wymaga weryfikacji.</p>
+      <h1>Polityka cookies</h1>
+      <p class="updated">Ostatnia aktualizacja: 12 sierpnia 2026 r.</p>
 
-      <h2>1. Czym są cookies</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>1. Czym są cookies i podobne technologie</h2>
+      <p>Cookies to małe pliki zapisywane na urządzeniu przez stronę internetową. Strona może też korzystać z podobnych mechanizmów, takich jak localStorage, które pozwalają zapamiętać wybrane ustawienia w przeglądarce.</p>
 
-      <h2>2. Jakich cookies używamy</h2>
+      <h2>2. Czego używa kkcoaching.fit</h2>
       <table>
-        <thead><tr><th>Nazwa</th><th>Cel</th><th>Rodzaj</th></tr></thead>
+        <thead><tr><th>Nazwa / technologia</th><th>Cel</th><th>Rodzaj</th></tr></thead>
         <tbody>
-          <tr><td>kk_cookie_consent</td><td>Zapamiętuje Twój wybór dotyczący cookies</td><td>Niezbędne</td></tr>
-          <tr><td>_ga / _gid</td><td>Google Analytics 4 - pomiar ruchu</td><td>Analityczne (opcjonalne)</td></tr>
+          <tr><td>kk_cookie_consent (localStorage)</td><td>Zapamiętuje, czy zaakceptowałeś lub odrzuciłeś analitykę.</td><td>Niezbędne ustawienie strony</td></tr>
+          <tr><td>_ga, _ga_*</td><td>Google Analytics 4 — pomaga zrozumieć, jak użytkownicy korzystają ze strony.</td><td>Analityczne — opcjonalne</td></tr>
         </tbody>
       </table>
 
-      <h2>3. Zarządzanie zgodą</h2>
-      <p>Cookies analityczne ładują się dopiero po Twojej zgodzie w banerze widocznym przy pierwszej wizycie. Zgodę możesz wycofać w każdej chwili, czyszcząc dane strony w przeglądarce.</p>
+      <h2>3. Kiedy uruchamia się Google Analytics</h2>
+      <p>Google Analytics jest ładowane dopiero po kliknięciu zgody w banerze cookies. Odrzucenie opcjonalnej analityki nie blokuje korzystania ze strony, formularza kontaktowego ani pozostałych podstawowych funkcji.</p>
+
+      <h2>4. Jak zmienić decyzję</h2>
+      <p>Możesz w każdej chwili wycofać wcześniejszą decyzję i ponownie wyświetlić baner zgody. Kliknij przycisk poniżej, a strona usunie zapisany wybór z localStorage.</p>
+      <button type="button" id="reset-cookie-choice" class="btn btn-outline-dark">Zmień ustawienia cookies</button>
+
+      <h2>5. Dodatkowe ustawienia przeglądarki</h2>
+      <p>Możesz również usuwać lub blokować cookies w ustawieniach swojej przeglądarki. Pamiętaj, że usunięcie danych strony może również usunąć zapamiętaną decyzję dotyczącą analityki.</p>
     </div>
   </section>
 </BaseLayout>
 
+<script>
+  document.getElementById('reset-cookie-choice')?.addEventListener('click', () => {
+    localStorage.removeItem('kk_cookie_consent');
+    window.location.reload();
+  });
+</script>
+
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .updated { font-size: 0.88rem; }
   table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #E3E5E8; font-size: 0.9rem; color: var(--steel); }
+  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #E3E5E8; font-size: 0.9rem; color: var(--steel); vertical-align: top; }
   th { color: var(--graphite); }
+  @media (max-width: 620px) {
+    table { display: block; overflow-x: auto; }
+    #reset-cookie-choice { width: 100%; }
+  }
 </style>

@@ -16,29 +16,29 @@
   },
   "servicesIntro": {
     "eyebrow": "Współpraca",
-    "heading": "Wybierz wsparcie, którego naprawdę potrzebujesz",
-    "body": "Treningi 1:1 w Cwmbran, coaching online albo połączenie obu. W każdej opcji dostajesz jasny plan, konkretny kierunek i sposób kontrolowania postępów."
+    "heading": "Wybierz sposób prowadzenia, którego naprawdę potrzebujesz",
+    "body": "Treningi 1:1 w Cwmbran, pełne prowadzenie online, coaching hybrydowy łączący oba albo jednorazowy plan treningowy. Poniżej masz jasno rozpisane, co zawiera każda opcja."
   },
   "process": {
     "eyebrow": "Jak to działa",
     "heading": "Od celu do planu. Od planu do wyniku.",
-    "body": "Najpierw ustalamy, czego chcesz i co realnie możesz zrobić. Potem budujemy plan, śledzimy postępy i zmieniamy tylko to, co faktycznie wymaga zmiany.",
+    "body": "Najpierw ustalamy, czego chcesz i co realnie możesz zrobić. Potem układam plan, śledzę postępy i zmieniamy tylko to, co faktycznie wymaga zmiany.",
     "steps": [
       {
         "title": "Bezpłatna konsultacja",
-        "body": "Poznaję Twój cel, grafik, doświadczenie i to, co do tej pory najbardziej utrudniało Ci progres."
+        "body": "Poznaję Twój cel, grafik, doświadczenie i to, co do tej pory najbardziej utrudniało Ci zrobienie postępów."
       },
       {
         "title": "Plan dopasowany do Ciebie",
         "body": "Układam trening pod Twój poziom, możliwości, dostępny sprzęt i liczbę dni, które naprawdę możesz przeznaczyć na trening."
       },
       {
-        "title": "Działasz, a my śledzimy postępy",
-        "body": "Realizujesz plan, a postępy oceniamy na podstawie treningów, pomiarów, zdjęć i realizacji ustalonych założeń."
+        "title": "Działasz, a ja śledzę postępy",
+        "body": "Realizujesz plan, a ja sprawdzam treningi, pomiary, zdjęcia i realizację ustalonych założeń — zależnie od wybranej formy współpracy."
       },
       {
         "title": "Korygujemy wtedy, kiedy trzeba",
-        "body": "Nie zmieniamy planu na chybił trafił. Jeśli wyniki pokazują, że trzeba zareagować, wprowadzamy konkretną zmianę i dalej obserwujemy efekt."
+        "body": "Nie zmieniamy planu na chybił trafił. Jeśli wyniki pokazują, że trzeba zareagować, wprowadzamy konkretną zmianę i sprawdzamy, co dzieje się dalej."
       }
     ]
   },
@@ -75,10 +75,10 @@
     "cards": [
       {
         "title": "Chcesz schudnąć bez ciągłego bycia na diecie",
-        "body": "Ustalimy kalorie i sposób jedzenia, który pozwala robić progres bez układania całego życia pod dietę."
+        "body": "Ustalimy kalorie i sposób jedzenia, który pozwala robić postępy bez układania całego życia pod dietę."
       },
       {
-        "title": "Chcesz budować mięśnie i widzieć progres na treningu",
+        "title": "Chcesz budować mięśnie i widzieć postęp na treningu",
         "body": "Dostajesz konkretny plan i jasne zasady progresji, żebyś wiedział, co ma poprawiać się z tygodnia na tydzień."
       },
       {
@@ -87,7 +87,7 @@
       },
       {
         "title": "Wypadłeś z rytmu i chcesz wrócić do regularności",
-        "body": "Nie zaczynamy od zera. Układamy prosty plan powrotu, który da się pogodzić z pracą, rodziną i normalnym życiem."
+        "body": "Nie zaczynamy od zera. Układamy prosty plan powrotu, który da się pogodzić z pracą, rodziną i resztą życia."
       }
     ]
   }

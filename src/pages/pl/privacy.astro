@@ -1,51 +1,60 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.pl.json';
 ---
 <BaseLayout
-  title="Polityka Prywatności | KK Coaching"
-  description="Jak KK Coaching zbiera, wykorzystuje i chroni Twoje dane osobowe."
+  title="Polityka prywatności | KK Coaching"
+  description="Jak KK Coaching zbiera, wykorzystuje i chroni dane osobowe osób korzystających ze strony i kontaktujących się w sprawie coachingu."
   lang="pl"
   path="/pl/privacy"
   altPath="/privacy"
 >
   <section class="legal-page">
     <div class="container">
-      <h1>Polityka Prywatności</h1>
-      <p class="notice">
-        <strong>Treść tymczasowa.</strong> To jest wyłącznie szablon strukturalny. Przed publikacją
-        każda sekcja musi zostać zweryfikowana pod kątem RODO / Data Protection Act 2018 (UK).
-        Nie publikować z tekstem lorem ipsum.
-      </p>
+      <h1>Polityka prywatności</h1>
+      <p class="updated">Ostatnia aktualizacja: 12 sierpnia 2026 r.</p>
+      <p>Ta polityka opisuje, jak KK Coaching przetwarza dane osobowe zbierane przez stronę kkcoaching.fit oraz w związku z zapytaniami o usługi.</p>
 
-      <h2>1. Kto administruje danymi</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. KK Coaching, [adres do potwierdzenia], jest administratorem danych na tej stronie.</p>
+      <h2>1. Administrator danych</h2>
+      <p>Administratorem danych jest KK Coaching, prowadzony przez Kacpra Kaszowskiego w Cwmbran, Wales, United Kingdom. W sprawach dotyczących prywatności możesz napisać na <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>.</p>
 
-      <h2>2. Jakie dane zbieramy</h2>
-      <p>Lorem ipsum dolor sit amet: imię, e-mail, numer telefonu, lokalizacja, zainteresowanie usługą oraz cele podane w formularzu kontaktowym.</p>
+      <h2>2. Jakie dane mogą być zbierane</h2>
+      <p>Przez formularz kontaktowy możesz przekazać m.in. imię, adres e-mail, numer telefonu / WhatsApp, lokalizację, preferowany język, interesującą Cię usługę, cel oraz informacje o tym, co obecnie utrudnia Ci jego osiągnięcie.</p>
+      <p>Formularz pierwszego kontaktu nie jest przeznaczony do przesyłania szczegółowej dokumentacji medycznej. Jeśli rozpoczęcie współpracy będzie wymagało dodatkowych informacji dotyczących zdrowia lub gotowości do ćwiczeń, zostaną one zebrane osobno i tylko w zakresie potrzebnym do bezpiecznego świadczenia usługi.</p>
 
-      <h2>3. Dlaczego je zbieramy</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, w celu odpowiedzi na zapytania i świadczenia usług coachingowych.</p>
+      <h2>3. Po co wykorzystujemy dane</h2>
+      <p>Dane z zapytania wykorzystuję przede wszystkim po to, aby odpowiedzieć na wiadomość, ocenić, jaka forma współpracy może być odpowiednia, umówić konsultację i — jeśli zdecydujesz się rozpocząć współpracę — przygotować oraz świadczyć uzgodnioną usługę.</p>
+      <p>Podstawą przetwarzania może być podjęcie działań na Twoją prośbę przed zawarciem umowy, wykonanie umowy, prawnie uzasadniony interes związany z obsługą zapytań i prowadzeniem działalności albo zgoda, gdy jest ona wymagana. Google Analytics uruchamia się wyłącznie po wyrażeniu zgody na analitykę.</p>
 
-      <h2>4. Jak długo je przechowujemy</h2>
-      <p>Lorem ipsum dolor sit amet - okres przechowywania do ustalenia.</p>
+      <h2>4. Z jakich usług zewnętrznych korzystamy</h2>
+      <p>Do działania strony i obsługi usług korzystam z dostawców technologicznych. Mogą oni przetwarzać dane wyłącznie w zakresie potrzebnym do wykonania swojej usługi. Obecnie obejmuje to w szczególności Netlify (hosting i funkcje strony), Resend (wysyłka wiadomości z formularza), Google Analytics (analityka po zgodzie) oraz My PT Hub, jeśli zostaniesz klientem coachingu i korzystasz z aplikacji coachingowej.</p>
+      <p>Nie sprzedaję danych osobowych reklamodawcom.</p>
 
-      <h2>5. Twoje prawa</h2>
-      <p>Lorem ipsum dolor sit amet - dostęp, sprostowanie, usunięcie danych i sposób realizacji tych praw.</p>
+      <h2>5. Jak długo przechowujemy dane</h2>
+      <p>Zapytania, które nie prowadzą do współpracy, są przechowywane tylko tak długo, jak jest to rozsądnie potrzebne do obsługi kontaktu i co do zasady nie dłużej niż 12 miesięcy. Dane klientów mogą być przechowywane przez okres współpracy oraz później, jeśli jest to potrzebne do obsługi dokumentacji, roszczeń albo obowiązków podatkowych i księgowych.</p>
 
-      <h2>6. Cookies</h2>
-      <p>Zobacz naszą <a href="/pl/cookies">Politykę cookies</a>, aby dowiedzieć się więcej o cookies analitycznych i zgodzie.</p>
+      <h2>6. Przekazywanie danych poza UK</h2>
+      <p>Niektórzy dostawcy technologiczni mogą przetwarzać dane poza Wielką Brytanią. Jeżeli przepisy tego wymagają, przekazanie odbywa się z wykorzystaniem odpowiednich mechanizmów ochrony danych stosowanych przez danego dostawcę.</p>
 
-      <h2>7. Kontakt</h2>
-      <p>Pytania dotyczące tej polityki: [adres e-mail do potwierdzenia].</p>
+      <h2>7. Twoje prawa</h2>
+      <p>W zależności od sytuacji możesz mieć prawo do uzyskania dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu oraz przeniesienia danych. Jeżeli przetwarzanie opiera się na zgodzie, możesz ją wycofać bez wpływu na zgodność z prawem wcześniejszego przetwarzania.</p>
+      <p>Aby skorzystać z praw, napisz na <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>. Masz również prawo złożyć skargę do Information Commissioner's Office (ICO), brytyjskiego organu nadzorczego ds. ochrony danych.</p>
+
+      <h2>8. Cookies i analityka</h2>
+      <p>Szczegóły znajdziesz w <a href="/pl/cookies">Polityce cookies</a>. Analityka Google nie jest uruchamiana przed wyrażeniem zgody.</p>
+
+      <h2>9. Zmiany tej polityki</h2>
+      <p>Polityka może być aktualizowana, gdy zmienia się sposób działania strony, wykorzystywane narzędzia albo wymagania prawne. Data ostatniej aktualizacji jest podana na początku strony.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .legal-page a { color: var(--red); }
+  .updated { font-size: 0.88rem; }
 </style>

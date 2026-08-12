@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.en.json';
 ---
 <BaseLayout
   title="Privacy Policy | KK Coaching"
-  description="How KK Coaching collects, uses and protects your personal data."
+  description="How KK Coaching collects, uses and protects personal data from website visitors and coaching enquiries."
   lang="en"
   path="/privacy"
   altPath="/pl/privacy"
@@ -11,47 +12,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="legal-page">
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p class="notice">
-        <strong>Placeholder content.</strong> This page is a structural template only.
-        Replace every section below with wording reviewed against UK GDPR / Data Protection Act 2018
-        before publishing. Do not launch with lorem ipsum legal text.
-      </p>
+      <p class="updated">Last updated: 12 August 2026.</p>
+      <p>This policy explains how KK Coaching processes personal data collected through kkcoaching.fit and through enquiries about coaching services.</p>
 
-      <h2>1. Who we are</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. KK Coaching, [business address to be confirmed], is the data controller for this website.</p>
+      <h2>1. Who controls your data</h2>
+      <p>The data controller is KK Coaching, operated by Kacper Kaszowski in Cwmbran, Wales, United Kingdom. For privacy questions, email <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>.</p>
 
-      <h2>2. What data we collect</h2>
-      <p>Lorem ipsum dolor sit amet: name, email, phone number, location, coaching interest, and any goals or context you share via the contact form.</p>
+      <h2>2. Information we may collect</h2>
+      <p>When you use the enquiry form, you may provide your name, email address, phone / WhatsApp number, location, preferred language, service interest, goal and information about what is currently getting in the way of that goal.</p>
+      <p>The initial enquiry form is not intended for detailed medical records. If starting coaching requires further health or exercise-readiness information, that information will be collected separately and only to the extent needed to provide the service safely.</p>
 
-      <h2>3. Why we collect it</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, to respond to enquiries and provide coaching services you have requested.</p>
+      <h2>3. Why we use your information</h2>
+      <p>Enquiry data is used to respond to you, understand which service may be suitable, arrange a consultation and, if you choose to work with KK Coaching, prepare and provide the agreed service.</p>
+      <p>The lawful basis may include taking steps at your request before entering a contract, performing a contract, legitimate interests in responding to enquiries and operating the business, or consent where required. Google Analytics only runs after you consent to analytics.</p>
 
-      <h2>4. How long we keep it</h2>
-      <p>Lorem ipsum dolor sit amet - retention period to be defined.</p>
+      <h2>4. Service providers</h2>
+      <p>Technology providers are used to operate the website and deliver services. They may process data only as needed to provide their service. Current providers include Netlify for website hosting and functions, Resend for enquiry emails, Google Analytics where analytics consent is given, and My PT Hub where applicable if you become a coaching client and use the coaching app.</p>
+      <p>KK Coaching does not sell personal data to advertisers.</p>
 
-      <h2>5. Your rights</h2>
-      <p>Lorem ipsum dolor sit amet - access, rectification, erasure, and how to exercise these rights.</p>
+      <h2>5. How long we keep information</h2>
+      <p>Enquiries that do not lead to coaching are kept only for as long as reasonably necessary to manage the enquiry and are ordinarily deleted within 12 months. Client information may be retained during the coaching relationship and afterwards where necessary for records, legal claims, tax or accounting obligations.</p>
 
-      <h2>6. Cookies</h2>
-      <p>See our <a href="/cookies">Cookie Policy</a> for details on analytics cookies and consent.</p>
+      <h2>6. International processing</h2>
+      <p>Some technology providers may process information outside the UK. Where data protection law requires it, transfers are made using the safeguards available through the relevant provider.</p>
 
-      <h2>7. Contact</h2>
-      <p>Questions about this policy: [contact email to be confirmed].</p>
+      <h2>7. Your rights</h2>
+      <p>Depending on the circumstances, you may have rights to access, correct, erase, restrict or object to the processing of your personal data, and to data portability. Where processing relies on consent, you can withdraw that consent without affecting processing that was lawful before withdrawal.</p>
+      <p>To exercise a data protection right, email <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>. You also have the right to complain to the Information Commissioner's Office (ICO), the UK's data protection regulator.</p>
+
+      <h2>8. Cookies and analytics</h2>
+      <p>See the <a href="/cookies">Cookie Policy</a> for more information. Google Analytics is not loaded before analytics consent is given.</p>
+
+      <h2>9. Changes to this policy</h2>
+      <p>This policy may be updated when the website, service providers or legal requirements change. The latest update date is shown at the top of this page.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice {
-    background: #FBEAEA;
-    border-left: 3px solid var(--red);
-    padding: 14px 18px;
-    color: var(--graphite);
-    margin-bottom: 12px;
-  }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .legal-page a { color: var(--red); }
+  .updated { font-size: 0.88rem; }
 </style>

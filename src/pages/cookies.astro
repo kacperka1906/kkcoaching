@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Cookie Policy | KK Coaching"
-  description="How KK Coaching uses cookies, including analytics cookies and consent."
+  description="Information about cookies, Google Analytics and consent controls on kkcoaching.fit."
   lang="en"
   path="/cookies"
   altPath="/pl/cookies"
@@ -11,38 +11,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="legal-page">
     <div class="container">
       <h1>Cookie Policy</h1>
-      <p class="notice">
-        <strong>Placeholder content.</strong> Replace with reviewed wording before publishing.
-      </p>
+      <p class="updated">Last updated: 12 August 2026.</p>
 
-      <h2>1. What are cookies</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>1. Cookies and similar technologies</h2>
+      <p>Cookies are small files stored on your device by a website. A site can also use similar browser storage, such as localStorage, to remember settings and choices.</p>
 
-      <h2>2. Cookies we use</h2>
+      <h2>2. What kkcoaching.fit uses</h2>
       <table>
-        <thead>
-          <tr><th>Name</th><th>Purpose</th><th>Type</th></tr>
-        </thead>
+        <thead><tr><th>Name / technology</th><th>Purpose</th><th>Type</th></tr></thead>
         <tbody>
-          <tr><td>kk_cookie_consent</td><td>Remembers your cookie choice</td><td>Necessary</td></tr>
-          <tr><td>_ga / _gid</td><td>Google Analytics 4 - traffic measurement</td><td>Analytics (optional)</td></tr>
+          <tr><td>kk_cookie_consent (localStorage)</td><td>Remembers whether you accepted or rejected analytics.</td><td>Necessary site setting</td></tr>
+          <tr><td>_ga, _ga_*</td><td>Google Analytics 4 — helps understand how visitors use the website.</td><td>Analytics — optional</td></tr>
         </tbody>
       </table>
 
-      <h2>3. Managing consent</h2>
-      <p>Analytics cookies only load after you accept them via the banner shown on your first visit. You can withdraw consent at any time by clearing your browser's site data.</p>
+      <h2>3. When Google Analytics loads</h2>
+      <p>Google Analytics is only loaded after you accept analytics in the cookie banner. Rejecting optional analytics does not prevent you from using the website, enquiry form or other core functions.</p>
+
+      <h2>4. Changing your choice</h2>
+      <p>You can withdraw your previous choice at any time and show the consent banner again. Use the button below to remove the saved choice from localStorage.</p>
+      <button type="button" id="reset-cookie-choice" class="btn btn-outline-dark">Change cookie settings</button>
+
+      <h2>5. Browser controls</h2>
+      <p>You can also remove or block cookies using your browser settings. Clearing site data may also remove your saved analytics choice.</p>
     </div>
   </section>
 </BaseLayout>
 
+<script>
+  document.getElementById('reset-cookie-choice')?.addEventListener('click', () => {
+    localStorage.removeItem('kk_cookie_consent');
+    window.location.reload();
+  });
+</script>
+
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .updated { font-size: 0.88rem; }
   table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #E3E5E8; font-size: 0.9rem; color: var(--steel); }
+  th, td { text-align: left; padding: 10px; border-bottom: 1px solid #E3E5E8; font-size: 0.9rem; color: var(--steel); vertical-align: top; }
   th { color: var(--graphite); }
+  @media (max-width: 620px) {
+    table { display: block; overflow-x: auto; }
+    #reset-cookie-choice { width: 100%; }
+  }
 </style>

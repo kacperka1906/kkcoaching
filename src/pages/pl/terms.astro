@@ -1,41 +1,56 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.pl.json';
 ---
 <BaseLayout
-  title="Regulamin | KK Coaching"
-  description="Regulamin korzystania ze strony i usług KK Coaching."
+  title="Regulamin strony | KK Coaching"
+  description="Zasady korzystania ze strony kkcoaching.fit oraz ważne informacje dotyczące treści i usług KK Coaching."
   lang="pl"
   path="/pl/terms"
   altPath="/terms"
 >
   <section class="legal-page">
     <div class="container">
-      <h1>Regulamin</h1>
-      <p class="notice">
-        <strong>Treść tymczasowa.</strong> Umowy coachingowe (polityka anulowania, warunki płatności,
-        odpowiedzialność) powinny zostać opracowane osobno od tego ogólnego regulaminu strony.
-      </p>
+      <h1>Regulamin strony</h1>
+      <p class="updated">Ostatnia aktualizacja: 12 sierpnia 2026 r.</p>
+      <p>Ten regulamin dotyczy korzystania ze strony kkcoaching.fit. Szczegółowe zasady płatności, anulowania, zakresu coachingu i odpowiedzialności związanej z konkretną usługą mogą być określone osobno przed rozpoczęciem współpracy.</p>
 
-      <h2>1. Korzystanie ze strony</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>1. Informacje na stronie</h2>
+      <p>Dokładam starań, aby informacje na stronie były aktualne i rzetelne. Treści mają charakter ogólny i informacyjny. Mogą być aktualizowane bez wcześniejszego powiadomienia, np. gdy zmienia się oferta, sposób świadczenia usług lub dostępność.</p>
 
-      <h2>2. Brak porady medycznej</h2>
-      <p>Lorem ipsum dolor sit amet - wskazówki dotyczące coachingu i odżywiania nie zastępują porady lekarza ani dietetyka klinicznego.</p>
+      <h2>2. Zdrowie i porady medyczne</h2>
+      <p>Treści dotyczące treningu, aktywności i żywienia nie stanowią diagnozy ani porady medycznej i nie zastępują konsultacji z lekarzem, fizjoterapeutą lub dietetykiem klinicznym, gdy taka pomoc jest potrzebna. Jeśli masz problem zdrowotny lub wątpliwości dotyczące gotowości do ćwiczeń, powinieneś skonsultować się z odpowiednim specjalistą.</p>
 
-      <h2>3. Odpowiedzialność</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>3. Efekty</h2>
+      <p>Zdjęcia przemian i historie klientów pokazują rzeczywiste przykłady pracy, ale nie są gwarancją takiego samego wyniku u każdej osoby. Efekty zależą m.in. od punktu startowego, celu, regularności, stylu życia i realizacji ustaleń.</p>
 
-      <h2>4. Prawo właściwe</h2>
-      <p>Lorem ipsum dolor sit amet - prawo Anglii i Walii.</p>
+      <h2>4. Własność treści</h2>
+      <p>O ile nie zaznaczono inaczej, teksty, grafiki, branding KK Coaching i materiały przygotowane na potrzeby tej strony nie mogą być kopiowane, publikowane ani wykorzystywane komercyjnie bez zgody. Prawa do materiałów należących do osób trzecich pozostają przy ich właścicielach.</p>
+
+      <h2>5. Linki i usługi zewnętrzne</h2>
+      <p>Strona może zawierać odnośniki do zewnętrznych serwisów, np. mediów społecznościowych lub narzędzi wykorzystywanych do świadczenia usług. Nie kontroluję treści ani zasad działania zewnętrznych serwisów.</p>
+
+      <h2>6. Dostępność strony</h2>
+      <p>Nie gwarantuję nieprzerwanego działania strony ani braku wszystkich błędów technicznych. Mogę czasowo zmieniać, zawieszać lub aktualizować część strony, np. podczas prac technicznych.</p>
+
+      <h2>7. Odpowiedzialność</h2>
+      <p>W zakresie dozwolonym przez prawo KK Coaching nie odpowiada za straty wynikające wyłącznie z polegania na ogólnych treściach informacyjnych dostępnych na stronie zamiast na indywidualnej profesjonalnej poradzie. Nic w tym regulaminie nie ogranicza odpowiedzialności, której zgodnie z prawem nie można wyłączyć ani ograniczyć.</p>
+
+      <h2>8. Prawo właściwe</h2>
+      <p>Do korzystania z tej strony stosuje się prawo Anglii i Walii, z uwzględnieniem bezwzględnie obowiązujących praw konsumenta, które mogą mieć zastosowanie w konkretnej sytuacji.</p>
+
+      <h2>9. Kontakt</h2>
+      <p>W sprawie strony lub usług możesz napisać na <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .legal-page a { color: var(--red); }
+  .updated { font-size: 0.88rem; }
 </style>

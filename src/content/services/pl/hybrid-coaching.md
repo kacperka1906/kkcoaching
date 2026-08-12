@@ -1,16 +1,20 @@
 ---
-title: "Coaching hybrydowy - trening personalny + wsparcie online"
-tagline: "Połącz treningi na żywo w Cwmbran z programem online, monitoringiem postępów i wsparciem między sesjami. Dobra opcja, jeśli chcesz nauczyć się trenować poprawnie, ale nie potrzebujesz nadzoru podczas każdego treningu."
+title: "Coaching hybrydowy — treningi 1:1 + pełne prowadzenie online"
+tagline: "Najszersza forma współpracy: wszystko, co dostajesz w coachingu online, plus regularny kontakt na żywo podczas treningów personalnych w Cwmbran."
 order: 3
 minor: false
-ctaLabel: "Sprawdź coaching hybrydowy"
+ctaLabel: "Zapytaj o coaching hybrydowy"
 ctaTarget: "/pl/contact"
 image: "/images/hybrid-coaching-placeholder.svg"
-imageAlt: "Coaching hybrydowy w Cwmbran łączący trening personalny na żywo i wsparcie online"
+imageAlt: "Coaching hybrydowy w Cwmbran łączący trening personalny 1:1 z pełnym prowadzeniem online"
 bullets:
-  - "Nauka techniki i prowadzenie na żywo"
-  - "Samodzielna realizacja pozostałych sesji"
-  - "Indywidualny program online"
-  - "Monitoring postępów i regularna ocena efektów"
-  - "Wsparcie i korekty między sesjami"
+  - "Wszystko, co zawiera coaching online"
+  - "Treningi personalne 1:1 w Cwmbran"
+  - "Nauka techniki i korekty na żywo"
+  - "Indywidualny program na treningi ze mną i samodzielne sesje"
+  - "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
+  - "Aplikacja coachingowa: treningi, instrukcje ćwiczeń, logowanie, check-iny i postępy w jednym miejscu"
+  - "Regularne check-iny i pełna analiza postępów"
+  - "Korekty planu i ocena techniki z nagrań pomiędzy treningami"
+  - "Kontakt przez WhatsApp pomiędzy check-inami i sesjami 1:1"
 ---

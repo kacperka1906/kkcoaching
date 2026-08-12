@@ -1,42 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.en.json';
 ---
 <BaseLayout
-  title="Terms & Conditions | KK Coaching"
-  description="Terms and conditions for using the KK Coaching website and services."
+  title="Website Terms | KK Coaching"
+  description="Terms for using kkcoaching.fit and important information about KK Coaching website content and services."
   lang="en"
   path="/terms"
   altPath="/pl/terms"
 >
   <section class="legal-page">
     <div class="container">
-      <h1>Terms &amp; Conditions</h1>
-      <p class="notice">
-        <strong>Placeholder content.</strong> Replace with reviewed wording before publishing.
-        Coaching agreements (cancellation policy, payment terms, liability) should be reviewed separately
-        from this general website terms page.
-      </p>
+      <h1>Website Terms</h1>
+      <p class="updated">Last updated: 12 August 2026.</p>
+      <p>These terms apply to the use of kkcoaching.fit. Detailed payment, cancellation, coaching scope and service terms may be provided separately before a coaching service begins.</p>
 
-      <h2>1. Use of this website</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>1. Website information</h2>
+      <p>KK Coaching aims to keep website information accurate and up to date. Website content is general information and may be changed without notice, for example when services, delivery methods or availability change.</p>
 
-      <h2>2. No medical advice</h2>
-      <p>Lorem ipsum dolor sit amet - coaching and nutrition guidance provided does not replace medical or clinical dietetic advice.</p>
+      <h2>2. Health and medical advice</h2>
+      <p>Training, activity and nutrition content on this website is not a medical diagnosis or medical advice and does not replace advice from a doctor, physiotherapist or clinical dietitian where that is appropriate. If you have a health condition or concerns about readiness to exercise, seek advice from an appropriate professional.</p>
 
-      <h2>3. Liability</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h2>3. Results</h2>
+      <p>Client transformations and case studies are genuine examples but do not guarantee that every client will achieve the same result. Outcomes vary with starting point, goals, consistency, lifestyle and adherence to the agreed approach.</p>
 
-      <h2>4. Governing law</h2>
-      <p>Lorem ipsum dolor sit amet - laws of England and Wales.</p>
+      <h2>4. Intellectual property</h2>
+      <p>Unless stated otherwise, website copy, KK Coaching branding, graphics and materials created for this website may not be copied, republished or used commercially without permission. Rights in third-party materials remain with their respective owners.</p>
+
+      <h2>5. External links and services</h2>
+      <p>The website may link to external services such as social media platforms or technology used to deliver coaching. KK Coaching does not control the content or operating policies of third-party websites.</p>
+
+      <h2>6. Website availability</h2>
+      <p>Continuous, error-free availability of the website is not guaranteed. Parts of the website may be changed, suspended or updated temporarily for maintenance or other operational reasons.</p>
+
+      <h2>7. Liability</h2>
+      <p>To the extent permitted by law, KK Coaching is not responsible for loss arising solely from relying on general website information instead of obtaining individual professional advice where appropriate. Nothing in these terms excludes or limits liability that cannot legally be excluded or limited.</p>
+
+      <h2>8. Governing law</h2>
+      <p>These website terms are governed by the laws of England and Wales, subject to any mandatory consumer rights that apply in a particular case.</p>
+
+      <h2>9. Contact</h2>
+      <p>For questions about the website or services, email <a href={`mailto:${site.meta.contactEmail}`}>{site.meta.contactEmail}</a>.</p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .legal-page { padding: 72px 0; }
-  .legal-page .container { max-width: 760px; }
-  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+  .legal-page .container { max-width: 780px; }
+  .legal-page h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 8px; }
   .legal-page h2 { font-size: 1.2rem; margin-top: 32px; margin-bottom: 10px; }
-  .legal-page p { color: var(--steel); }
-  .notice { background: #FBEAEA; border-left: 3px solid var(--red); padding: 14px 18px; color: var(--graphite); margin-bottom: 12px; }
+  .legal-page p { color: var(--steel); margin-bottom: 12px; }
+  .legal-page a { color: var(--red); }
+  .updated { font-size: 0.88rem; }
 </style>
