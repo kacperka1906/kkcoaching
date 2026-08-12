@@ -49,6 +49,10 @@
       },
       "price": 35,
       "sessionMinutes": 60,
+      "detail": {
+        "en": "One 60-minute 1:1 session",
+        "pl": "1 trening personalny 1:1 · 60 minut"
+      },
       "featured": false
     },
     "packages": [
@@ -62,6 +66,10 @@
         "price": 130,
         "weeks": 4,
         "sessions": 4,
+        "detail": {
+          "en": "4 sessions · £32.50 per session",
+          "pl": "4 treningi · £32.50 za trening"
+        },
         "featured": false
       },
       {
@@ -74,6 +82,10 @@
         "price": 240,
         "weeks": 4,
         "sessions": 8,
+        "detail": {
+          "en": "8 sessions · £30 per session",
+          "pl": "8 treningów · £30 za trening"
+        },
         "featured": false
       },
       {
@@ -86,6 +98,10 @@
         "price": 330,
         "weeks": 4,
         "sessions": 12,
+        "detail": {
+          "en": "12 sessions · £27.50 per session",
+          "pl": "12 treningów · £27.50 za trening"
+        },
         "featured": false
       }
     ]
@@ -121,6 +137,10 @@
     "price": 80,
     "billingWeeks": 4,
     "minimumWeeks": 12,
+    "detail": {
+      "en": "Initial 12-week commitment · billed £80 every 4 weeks",
+      "pl": "Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie"
+    },
     "featured": false
   },
   "hybrid": {
@@ -162,6 +182,10 @@
         "price": 180,
         "weeks": 4,
         "sessions": 4,
+        "detail": {
+          "en": "Full Online Coaching + 4 personal training sessions · save £30",
+          "pl": "Pełne prowadzenie online + 4 treningi 1:1 · oszczędzasz £30"
+        },
         "featured": false
       },
       {
@@ -174,6 +198,10 @@
         "price": 280,
         "weeks": 4,
         "sessions": 8,
+        "detail": {
+          "en": "Full Online Coaching + 8 personal training sessions · save £40",
+          "pl": "Pełne prowadzenie online + 8 treningów 1:1 · oszczędzasz £40"
+        },
         "featured": true
       }
     ]
