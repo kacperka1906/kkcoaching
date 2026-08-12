@@ -83,8 +83,14 @@ const structuredData = {
         <h2 id="quals-heading">Professional qualifications</h2>
       </div>
       <ul class="quals-list">
-        <li>Level 3 Personal Trainer</li>
-        <li>Level 2 Gym Instructor</li>
+        <li>
+          <strong>Level 3 Personal Trainer</strong>
+          <span>Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026</span>
+        </li>
+        <li>
+          <strong>Level 2 Gym Instructor</strong>
+          <span>Diploma in Gym Instructing · Achieve More Training · 2026</span>
+        </li>
       </ul>
     </div>
   </section>
@@ -130,16 +136,19 @@ const structuredData = {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
-    max-width: 760px;
+    max-width: 860px;
   }
   .quals-list li {
+    display: grid;
+    gap: 6px;
     padding: 20px 22px;
     background: var(--white);
     border: 1px solid #E3E5E8;
     border-left: 4px solid var(--red);
     border-radius: var(--radius);
-    font-weight: 750;
   }
+  .quals-list strong { font-weight: 800; }
+  .quals-list span { color: var(--steel); font-size: 0.86rem; line-height: 1.45; }
 
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
