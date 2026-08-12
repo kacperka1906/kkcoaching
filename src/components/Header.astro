@@ -3,9 +3,12 @@ import Logo from './Logo.astro';
 
 interface Props {
   lang: 'en' | 'pl';
+  altPath?: string;
 }
-const { lang } = Astro.props;
+const { lang, altPath } = Astro.props;
 const prefix = lang === 'pl' ? '/pl' : '';
+const languageHref = altPath ?? (lang === 'pl' ? '/' : '/pl');
+const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching - home';
 
 const nav = lang === 'pl'
   ? [
@@ -29,7 +32,7 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
 ---
 <header class="site-header">
   <div class="container">
-    <a href={lang === 'pl' ? '/pl' : '/'} class="logo" aria-label="KK Coaching - home">
+    <a href={lang === 'pl' ? '/pl' : '/'} class="logo" aria-label={homeLabel}>
       <Logo height={32} />
     </a>
     <nav class="main-nav" id="mainNav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
@@ -39,7 +42,7 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     </nav>
     <div class="header-right">
       <a class="header-cta" href={`${prefix}/contact`}>{ctaLabel}</a>
-      <a class="lang-switch" href={lang === 'pl' ? '/' : '/pl'}>
+      <a class="lang-switch" href={languageHref} aria-label={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}>
         {lang === 'pl' ? 'EN' : 'PL'}
       </a>
       <button class="nav-toggle" aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'} aria-controls="mainNav" aria-expanded="false" id="navToggle">&#9776;</button>
