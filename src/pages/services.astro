@@ -7,6 +7,19 @@ import site from '../data/site.en.json';
 const allServices = (await getCollection('services'))
   .filter(s => s.id.startsWith('en/'))
   .sort((a, b) => a.data.order - b.data.order);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': 'https://kkcoaching.fit/services#coaching-options',
+  name: 'KK Coaching services',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, item: { '@type': 'Service', name: '1:1 Personal Training in Cwmbran', url: 'https://kkcoaching.fit/personal-training-cwmbran', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
+    { '@type': 'ListItem', position: 2, item: { '@type': 'Service', name: 'Online Coaching', url: 'https://kkcoaching.fit/online-coaching', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
+    { '@type': 'ListItem', position: 3, item: { '@type': 'Service', name: 'Hybrid Coaching', url: 'https://kkcoaching.fit/hybrid-coaching', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
+    { '@type': 'ListItem', position: 4, item: { '@type': 'Service', name: 'Personalised Training Plan', url: 'https://kkcoaching.fit/contact', provider: { '@id': 'https://kkcoaching.fit/#business' } } }
+  ]
+};
 ---
 <BaseLayout
   title="Personal Training & Online Coaching Cwmbran | KK Coaching"
@@ -14,13 +27,32 @@ const allServices = (await getCollection('services'))
   lang="en"
   path="/services"
   altPath="/pl/services"
+  structuredData={structuredData}
 >
   <section class="page-hero on-dark">
     <div class="container">
       <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
       <h1>{site.servicesIntro.heading}</h1>
       <p class="lead">{site.servicesIntro.body}</p>
-      <p class="package-key"><strong>Quick guide:</strong> 1:1 is face-to-face coaching in Cwmbran. Online is complete remote coaching. Hybrid includes everything in Online Coaching plus in-person 1:1 sessions. The Personalised Training Plan is a one-off programme without ongoing coaching.</p>
+      <div class="package-guide" aria-label="Quick comparison of coaching options">
+        <a href="/personal-training-cwmbran">
+          <strong>1:1 Personal Training</strong>
+          <span>Face-to-face coaching in Cwmbran</span>
+        </a>
+        <a href="/online-coaching">
+          <strong>Online Coaching</strong>
+          <span>Complete remote coaching and app support</span>
+        </a>
+        <a href="/hybrid-coaching" class="featured">
+          <small>Most complete</small>
+          <strong>Hybrid Coaching</strong>
+          <span>Everything online + regular 1:1 sessions</span>
+        </a>
+        <a href="/contact">
+          <strong>Training Plan</strong>
+          <span>One-off programme without ongoing coaching</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -56,11 +88,23 @@ const allServices = (await getCollection('services'))
   .page-hero { padding: 64px 0; }
   .page-hero h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 12px 0 14px; }
   .page-hero .lead { color: #C7CBD1; max-width: 68ch; }
-  .package-key { color: #AEB3BA; max-width: 78ch; margin-top: 22px; font-size: 0.9rem; line-height: 1.65; }
-  .package-key strong { color: var(--white); }
+  .package-guide { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 28px; }
+  .package-guide a { position: relative; text-decoration: none; border: 1px solid #343941; border-radius: var(--radius); background: #202329; padding: 16px; min-width: 0; transition: border-color .2s ease, transform .2s ease; }
+  .package-guide a:hover { border-color: #747A83; transform: translateY(-2px); }
+  .package-guide a.featured { border: 2px solid var(--red); }
+  .package-guide strong { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 4px; }
+  .package-guide span { display: block; color: #AFB4BB; font-size: 0.78rem; line-height: 1.45; }
+  .package-guide small { display: inline-block; color: #F18B97; font-weight: 800; font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px; }
   .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
-  @media (max-width: 800px) { .service-grid { grid-template-columns: 1fr; } }
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 96px 0; }
   .final-cta h2 { color: var(--white); }
   .final-cta p { color: #F3D7DA; max-width: 52ch; margin: 0 auto 32px; font-size: 1.05rem; }
+
+  @media (max-width: 900px) { .package-guide { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 800px) { .service-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) {
+    .page-hero { padding: 48px 0 52px; }
+    .package-guide { grid-template-columns: 1fr; gap: 8px; }
+    .package-guide a { padding: 15px 16px; }
+  }
 </style>
