@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Page Not Found | KK Coaching"
+  description="The page you requested could not be found. Return to KK Coaching or choose a coaching option."
+  lang="en"
+  path="/404"
+  noindex={true}
+>
+  <section class="not-found on-white">
+    <div class="container not-found__inner">
+      <span class="code" aria-hidden="true">404</span>
+      <span class="eyebrow">Page not found · Nie znaleziono strony</span>
+      <h1>That page isn’t here.</h1>
+      <p class="lead">The link may be old or the address may contain a typo. Wróć na stronę główną albo przejdź od razu do oferty.</p>
+      <div class="actions">
+        <a href="/" class="btn btn-primary">Home</a>
+        <a href="/pl" class="btn btn-outline-dark">Strona główna PL</a>
+        <a href="/services" class="text-link">Coaching options →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { min-height: 62vh; display: flex; align-items: center; }
+  .not-found__inner { max-width: 760px; text-align: center; padding-top: 84px; padding-bottom: 84px; }
+  .code { display: block; color: var(--red); font-size: clamp(4rem, 14vw, 8rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.05em; margin-bottom: 20px; }
+  .not-found h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 14px; }
+  .lead { color: var(--steel); max-width: 56ch; margin: 0 auto 30px; }
+  .actions { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .text-link { font-weight: 700; text-underline-offset: 3px; }
+  .text-link:hover { color: var(--red); }
+
+  @media (max-width: 620px) {
+    .not-found__inner { padding-top: 58px; padding-bottom: 58px; }
+    .actions { display: grid; grid-template-columns: 1fr; }
+    .actions .btn { width: 100%; }
+  }
+</style>

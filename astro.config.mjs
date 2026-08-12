@@ -7,7 +7,10 @@ export default defineConfig({
   site: SITE_URL,
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith('/thank-you') && !page.endsWith('/pl/thank-you')
+      filter: (page) =>
+        !page.endsWith('/thank-you') &&
+        !page.endsWith('/pl/thank-you') &&
+        !page.endsWith('/404')
     })
   ],
   i18n: {
