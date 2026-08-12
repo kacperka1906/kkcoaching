@@ -21,6 +21,13 @@ const structuredData = {
       logo: `${siteUrl}/images/logo.png`,
       email: siteEn.meta.contactEmail,
       telephone: siteEn.meta.whatsappNumber,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer enquiries',
+        telephone: siteEn.meta.whatsappNumber,
+        email: siteEn.meta.contactEmail,
+        availableLanguage: ['en', 'pl']
+      },
       address: {
         '@type': 'PostalAddress',
         streetAddress: '17-18 Gwent Square',
@@ -48,6 +55,27 @@ const structuredData = {
       url: `${siteUrl}/about`,
       image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
       sameAs,
+      knowsLanguage: ['English', 'Polish'],
+      knowsAbout: [
+        'Personal training',
+        'Resistance training',
+        'Exercise technique',
+        'Fat loss coaching',
+        'Muscle building',
+        'Online fitness coaching'
+      ],
+      hasCredential: [
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Level 3 Certificate in Planning and Delivering Personal Training',
+          credentialCategory: 'Professional qualification'
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Level 2 Diploma in Gym Instructing',
+          credentialCategory: 'Professional qualification'
+        }
+      ],
       worksFor: { '@id': businessId }
     },
     {
