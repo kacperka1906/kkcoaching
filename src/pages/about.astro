@@ -4,6 +4,7 @@ import site from '../data/site.en.json';
 
 const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
+const aboutImage = '/images/kacper-about.jpg';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -11,7 +12,7 @@ const structuredData = {
   name: 'Kacper Kaszowski',
   jobTitle: 'Personal Trainer',
   url: `${siteUrl}/about`,
-  image: `${siteUrl}/images/about-kacper.webp`,
+  image: `${siteUrl}${aboutImage}`,
   sameAs,
   worksFor: {
     '@type': 'Organization',
@@ -28,19 +29,20 @@ const structuredData = {
   path="/about"
   altPath="/pl/about"
   structuredData={structuredData}
+  socialImage={aboutImage}
+  socialImageAlt="Kacper Kaszowski, founder of KK Coaching"
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
       <img
         class="about-photo"
-        src="/images/about-kacper.webp"
+        src={aboutImage}
         alt={site.story.imageAlt}
-        width="480"
-        height="480"
+        width="600"
+        height="700"
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.onerror=null;this.src='/images/kacper-story-dscf1102.webp';"
       />
       <div class="about-copy">
         <span class="eyebrow">Meet your coach</span>
@@ -106,7 +108,7 @@ const structuredData = {
   }
   .about-photo {
     width: min(100%, 480px);
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 6 / 7;
     object-fit: cover;
     border-radius: var(--radius);
     background: #25282e;
