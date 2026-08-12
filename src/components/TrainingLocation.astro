@@ -17,6 +17,11 @@ const serviceId = pathname.includes('personal-training-cwmbran')
     ? `https://kkcoaching.fit${isPl ? '/pl' : ''}/hybrid-coaching#service`
     : null;
 
+const onLocalServiceLanding = Boolean(serviceId);
+const nextStepHref = onLocalServiceLanding
+  ? (isPl ? '/pl/contact' : '/contact')
+  : (isPl ? '/pl/personal-training-cwmbran' : '/personal-training-cwmbran');
+
 const copy = isPl
   ? {
       eyebrow: 'Treningi 1:1 w Cwmbran',
@@ -28,7 +33,7 @@ const copy = isPl
       equipment: '250+ maszyn, wolne ciężary i platformy',
       note: 'Siłownia działa 24/7, ale treningi personalne odbywają się w terminach ustalonych bezpośrednio ze mną.',
       directions: 'Wyznacz trasę',
-      service: 'Zobacz trening personalny 1:1 →',
+      service: onLocalServiceLanding ? 'Umów bezpłatną konsultację →' : 'Zobacz trening personalny 1:1 →',
       mapTitle: 'Mapa lokalizacji JD Gyms Cwmbran'
     }
   : {
@@ -41,7 +46,7 @@ const copy = isPl
       equipment: '250+ machines, free weights and lifting platforms',
       note: 'The gym is open 24/7, but personal training sessions are arranged with me at agreed times.',
       directions: 'Get directions',
-      service: 'Explore 1:1 Personal Training →',
+      service: onLocalServiceLanding ? 'Book a free consultation →' : 'Explore 1:1 Personal Training →',
       mapTitle: 'Map showing JD Gyms Cwmbran'
     };
 
@@ -96,7 +101,7 @@ const structuredData = {
 
       <div class="location-actions">
         <a class="btn btn-primary" href={directionsHref} target="_blank" rel="noopener">{copy.directions}</a>
-        <a class="text-link" href={isPl ? '/pl/personal-training-cwmbran' : '/personal-training-cwmbran'}>{copy.service}</a>
+        <a class="text-link" href={nextStepHref}>{copy.service}</a>
       </div>
     </div>
 
