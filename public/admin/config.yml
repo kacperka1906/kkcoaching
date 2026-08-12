@@ -204,7 +204,7 @@ collections:
   - name: "pricing_settings"
     label: "Ceny i pakiety / Pricing"
     files:
-      - label: "Ceny, pakiety i wyróżnienia"
+      - label: "Ceny, pakiety, opisy i wyróżnienia"
         name: "pricing"
         file: "src/data/pricing.json"
         fields:
@@ -268,8 +268,8 @@ collections:
                     name: "note"
                     widget: "object"
                     fields:
-                      - { label: "English", name: "en", widget: "text" }
-                      - { label: "Polski", name: "pl", widget: "text" }
+                      - { label: "English", name: "en", widget: "text", required: false }
+                      - { label: "Polski", name: "pl", widget: "text", required: false }
                   - label: "Przycisk CTA"
                     name: "cta"
                     widget: "object"
@@ -289,6 +289,12 @@ collections:
                       - { label: "Polski", name: "pl", widget: "string" }
                   - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
                   - { label: "Długość treningu (min)", name: "sessionMinutes", widget: "number", value_type: "int", min: 1 }
+                  - label: "Opis pod ceną"
+                    name: "detail"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
                   - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
               - label: "Pakiety 1:1"
                 name: "packages"
@@ -306,6 +312,12 @@ collections:
                   - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
                   - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
                   - { label: "Liczba treningów", name: "sessions", widget: "number", value_type: "int", min: 1 }
+                  - label: "Opis pod ceną"
+                    name: "detail"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
                   - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
 
           - label: "Online Coaching"
@@ -338,8 +350,8 @@ collections:
                     name: "note"
                     widget: "object"
                     fields:
-                      - { label: "English", name: "en", widget: "text" }
-                      - { label: "Polski", name: "pl", widget: "text" }
+                      - { label: "English", name: "en", widget: "text", required: false }
+                      - { label: "Polski", name: "pl", widget: "text", required: false }
                   - label: "Przycisk CTA"
                     name: "cta"
                     widget: "object"
@@ -356,6 +368,12 @@ collections:
               - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
               - { label: "Płatność co ile tygodni", name: "billingWeeks", widget: "number", value_type: "int", min: 1 }
               - { label: "Minimalny okres współpracy (tygodnie)", name: "minimumWeeks", widget: "number", value_type: "int", min: 1 }
+              - label: "Opis pod ceną"
+                name: "detail"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Polski", name: "pl", widget: "text" }
               - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
 
           - label: "Hybrid Coaching"
@@ -388,8 +406,8 @@ collections:
                     name: "note"
                     widget: "object"
                     fields:
-                      - { label: "English", name: "en", widget: "text" }
-                      - { label: "Polski", name: "pl", widget: "text" }
+                      - { label: "English", name: "en", widget: "text", required: false }
+                      - { label: "Polski", name: "pl", widget: "text", required: false }
                   - label: "Przycisk CTA"
                     name: "cta"
                     widget: "object"
@@ -419,6 +437,12 @@ collections:
                   - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
                   - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
                   - { label: "Liczba treningów 1:1", name: "sessions", widget: "number", value_type: "int", min: 1 }
+                  - label: "Opis pod ceną"
+                    name: "detail"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
                   - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
 
           - label: "Indywidualny plan treningowy"
@@ -427,6 +451,47 @@ collections:
             fields:
               - { label: "Aktywny", name: "enabled", widget: "boolean" }
               - { label: "Cena jednorazowa £", name: "price", widget: "number", value_type: "float", min: 0 }
+
+  - name: "service_page_media"
+    label: "Zdjęcia podstron usług / Service page images"
+    files:
+      - label: "Główne zdjęcia na podstronach usług"
+        name: "service_pages"
+        file: "src/data/service-pages.json"
+        fields:
+          - label: "Personal Training 1:1"
+            name: "personal"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
+              - label: "Opis alternatywny zdjęcia"
+                name: "heroAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+          - label: "Online Coaching"
+            name: "online"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
+              - label: "Opis alternatywny zdjęcia"
+                name: "heroAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+          - label: "Hybrid Coaching"
+            name: "hybrid"
+            widget: "object"
+            fields:
+              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
+              - label: "Opis alternatywny zdjęcia"
+                name: "heroAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
 
   - name: "services_en"
     label: "Services (English)"
@@ -440,7 +505,7 @@ collections:
       - { label: "De-emphasise this card", name: "minor", widget: "boolean", default: false }
       - { label: "Button text", name: "ctaLabel", widget: "string" }
       - { label: "Button link", name: "ctaTarget", widget: "string", default: "/contact" }
-      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image on Home/Services card", name: "image", widget: "image" }
       - { label: "Image alt text", name: "imageAlt", widget: "string" }
       - { label: "Bullet points", name: "bullets", widget: "list" }
 
@@ -456,7 +521,7 @@ collections:
       - { label: "Pomniejsz tę kartę", name: "minor", widget: "boolean", default: false }
       - { label: "Tekst przycisku", name: "ctaLabel", widget: "string" }
       - { label: "Link przycisku", name: "ctaTarget", widget: "string", default: "/pl/contact" }
-      - { label: "Zdjęcie", name: "image", widget: "image" }
+      - { label: "Zdjęcie na karcie Home/Usługi", name: "image", widget: "image" }
       - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
       - { label: "Punkty", name: "bullets", widget: "list" }
 
