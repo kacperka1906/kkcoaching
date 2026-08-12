@@ -24,11 +24,12 @@ const {
   imageAlt,
   minor = false,
   serviceKey = '',
-  lang = 'en'
+  lang
 } = Astro.props;
 
-const isPl = lang === 'pl';
 const identity = `${serviceKey} ${ctaTarget} ${image} ${title}`;
+const resolvedLang: 'en' | 'pl' = lang ?? (/\/pl\/|hybryd|trening|trener|prowadzenie|indywidualny/i.test(identity) ? 'pl' : 'en');
+const isPl = resolvedLang === 'pl';
 const fallbackHybrid = /hybrid|hybryd|1:1.*online|online.*1:1/i.test(identity);
 const fallbackOnline = !fallbackHybrid && /online-coaching|online/i.test(identity);
 const fallbackTrainingPlan = !fallbackHybrid && !fallbackOnline && /training-plan|personalised-training-plan|training plan|plan treningowy/i.test(identity);
@@ -56,9 +57,9 @@ const lowestHybrid = activeHybrid.length
   : null;
 
 const badgeEnabled = type === 'hybrid' && pricing.hybrid.homeBadgeEnabled;
-const badgeLabel = badgeEnabled ? pricing.hybrid.homeBadge[lang] : '';
-const fromLabel = pricing.labels.from[lang];
-const oneOffLabel = pricing.labels.oneOff[lang];
+const badgeLabel = badgeEnabled ? pricing.hybrid.homeBadge[resolvedLang] : '';
+const fromLabel = pricing.labels.from[resolvedLang];
+const oneOffLabel = pricing.labels.oneOff[resolvedLang];
 const priceLabel = type === 'hybrid' && lowestHybrid
   ? (isPl ? `${fromLabel} ${money(lowestHybrid.price)} / ${lowestHybrid.weeks} tygodnie` : `${fromLabel} ${money(lowestHybrid.price)} / ${lowestHybrid.weeks} weeks`)
   : type === 'online' && pricing.online.enabled
