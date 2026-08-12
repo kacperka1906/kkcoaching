@@ -44,6 +44,8 @@ await walk(rootPath);
 
 for (const file of pages) {
   const path = pagePath(file);
+  if (path === '/admin' || path.startsWith('/admin/')) continue;
+
   const html = await readFile(file, 'utf8');
 
   const title = matchOne(html, /<title>([\s\S]*?)<\/title>/gi);
@@ -119,7 +121,7 @@ try {
   addError('/sitemap-index.xml', 'missing from build output');
 }
 
-console.log(`SEO audit scanned ${pages.length} generated HTML pages.`);
+console.log(`SEO audit scanned ${pages.length} generated HTML pages (CMS admin excluded).`);
 if (warnings.length) {
   console.log(`\nWarnings (${warnings.length}):`);
   warnings.forEach(item => console.log(`  - ${item}`));
