@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import TrainingLocation from './TrainingLocation.astro';
 import BusinessEntity from './BusinessEntity.astro';
+import AuthorProfilePageSchema from './AuthorProfilePageSchema.astro';
 import siteEn from '../data/site.en.json';
 import sitePl from '../data/site.pl.json';
 
@@ -19,6 +20,7 @@ const locationPages = new Set([
   '/pl/hybrid-coaching'
 ]);
 const showTrainingLocation = locationPages.has(pathname);
+const showAuthorProfileSchema = pathname === '/about' || pathname === '/pl/about';
 const phoneHref = `tel:${site.meta.whatsappNumber.replace(/\D/g, '')}`;
 
 const labels = lang === 'pl'
@@ -36,6 +38,7 @@ const labels = lang === 'pl'
     };
 ---
 <BusinessEntity />
+{showAuthorProfileSchema && <AuthorProfilePageSchema lang={lang} />}
 {showTrainingLocation && <TrainingLocation lang={lang} />}
 
 <footer>
