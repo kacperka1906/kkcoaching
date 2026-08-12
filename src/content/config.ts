@@ -11,6 +11,8 @@ const services = defineCollection({
     ctaTarget: z.string().default('/contact'),
     image: z.string().default('/images/placeholder.png'),
     imageAlt: z.string(),
+    detailImage: z.string().optional(),
+    detailImageAlt: z.string().optional(),
     bullets: z.array(z.string())
   })
 });
