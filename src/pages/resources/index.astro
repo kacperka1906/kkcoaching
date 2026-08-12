@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const guides = [
+  {
+    href: '/resources/choosing-personal-trainer-cwmbran',
+    eyebrow: 'Cwmbran guide',
+    title: 'How to choose a personal trainer in Cwmbran',
+    body: 'What to check before you book: coaching style, qualifications, location, progress tracking, communication and whether the service fits your actual goal.'
+  },
+  {
+    href: '/resources/online-personal-training-uk',
+    eyebrow: 'Online coaching guide',
+    title: 'How online personal training works in the UK',
+    body: 'A practical explanation of plans, check-ins, technique feedback, progress tracking and what separates ongoing coaching from a one-off programme.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'KK Coaching Fitness & Training Guides',
+  url: 'https://kkcoaching.fit/resources',
+  about: ['Personal training', 'Online fitness coaching', 'Cwmbran', 'Training guidance'],
+  publisher: { '@id': 'https://kkcoaching.fit/#business' }
+};
+---
+<BaseLayout
+  title="Fitness & Personal Training Guides | KK Coaching"
+  description="Practical KK Coaching guides about personal training in Cwmbran, online personal training in the UK, training structure and choosing the right coaching support."
+  lang="en"
+  path="/resources"
+  altPath="/pl/resources"
+  structuredData={structuredData}
+>
+  <section class="page-hero on-dark">
+    <div class="container">
+      <span class="eyebrow">Free resources</span>
+      <h1>Fitness and personal training guides</h1>
+      <p class="lead">Clear explanations for people who want to make a better decision before starting 1:1 or online coaching — without pretending there is one perfect method for everyone.</p>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container guide-grid">
+      {guides.map(guide => (
+        <article class="guide-card">
+          <span class="eyebrow">{guide.eyebrow}</span>
+          <h2><a href={guide.href}>{guide.title}</a></h2>
+          <p>{guide.body}</p>
+          <a class="text-link" href={guide.href}>Read the guide →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Know what you need already?</h2>
+      <p>Compare 1:1 personal training in Cwmbran, online coaching and hybrid coaching, or start with a free consultation.</p>
+      <div class="actions">
+        <a href="/services" class="btn btn-secondary">Compare Coaching Options</a>
+        <a href="/contact" class="btn btn-secondary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 72px 0; }
+  .page-hero h1 { color: var(--white); font-size: clamp(2.1rem, 5vw, 3.6rem); margin: 10px 0 16px; }
+  .lead { color: #C8CCD1; max-width: 66ch; }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .guide-card { border: 1px solid #E0E3E6; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 30px 28px; }
+  .guide-card h2 { font-size: 1.35rem; margin-bottom: 12px; }
+  .guide-card h2 a { text-decoration: none; }
+  .guide-card p { color: var(--steel); margin-bottom: 18px; }
+  .text-link { color: var(--red); font-weight: 750; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F5DADD; max-width: 60ch; margin: 0 auto 24px; }
+  .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 700px) { .guide-grid { grid-template-columns: 1fr; } .actions { display: grid; } }
+</style>
