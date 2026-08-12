@@ -1,0 +1,326 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const outcomes = [
+  {
+    title: 'A plan built for your goal',
+    body: 'Training is matched to your experience, equipment, schedule and whether the priority is fat loss, muscle gain, recomposition or getting consistent again.'
+  },
+  {
+    title: 'Nutrition you can use in real life',
+    body: 'You get calorie and macronutrient targets plus practical guidance that can be adjusted around work, family, eating out and the foods you actually like.'
+  },
+  {
+    title: 'Feedback before small problems become big ones',
+    body: 'Regular check-ins, training data and video feedback give us a reason to change the plan when needed instead of guessing.'
+  }
+];
+
+const included = [
+  'Individual training programme',
+  'Calorie, macronutrient and practical nutrition targets',
+  'Coaching app with your training plan and exercise resources',
+  'Regular check-ins and structured progress reviews',
+  'Weight, measurements, progress photos and performance tracking',
+  'Training plan adjustments based on progress and adherence',
+  'Exercise technique feedback from your training videos',
+  'WhatsApp support between check-ins',
+  'Ongoing education so you understand why the plan works'
+];
+
+const process = [
+  {
+    num: '01',
+    title: 'Consultation and starting point',
+    body: 'We establish your goal, current training, food habits, schedule, equipment and the main reason previous attempts have broken down.'
+  },
+  {
+    num: '02',
+    title: 'Your coaching setup',
+    body: 'You receive your individual training plan, nutrition targets and the tracking structure we will use to judge progress.'
+  },
+  {
+    num: '03',
+    title: 'Train, log and communicate',
+    body: 'You follow the plan, log the key information and send videos when you want technique feedback. I can see what is actually happening between check-ins.'
+  },
+  {
+    num: '04',
+    title: 'Review, learn and adjust',
+    body: 'We review the trend rather than one isolated weigh-in. If progress, performance or adherence tells us something needs to change, we change it.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Do I need to live in the UK for online coaching?',
+    a: 'No. Online coaching is not limited by location. As long as we can communicate reliably and you have access to the equipment needed for your programme, coaching can be delivered remotely.'
+  },
+  {
+    q: 'Is online coaching only for experienced gym users?',
+    a: 'No. Your programme is built around your current experience. If you are newer to training, the plan can start simple and you can send exercise videos for technique feedback as you learn.'
+  },
+  {
+    q: 'Do I get a fixed meal plan?',
+    a: 'The focus is on calorie, macronutrient and nutrition targets that can work in your real life. Food choices and meal structure can be made more specific where useful, but the goal is not to make you dependent on a rigid menu forever.'
+  },
+  {
+    q: 'How are results tracked?',
+    a: 'Depending on your goal we can use body weight trends, measurements, progress photos, training performance, step or activity targets and adherence. We look at the overall trend before deciding whether the plan needs changing.'
+  },
+  {
+    q: 'How much contact do I get between check-ins?',
+    a: 'You have WhatsApp support between check-ins for questions, updates and situations that should not wait until the next formal review. Technique videos can also be reviewed as part of coaching.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://kkcoaching.fit/online-coaching#service',
+      name: 'Online Fitness Coaching',
+      serviceType: 'Online Fitness Coaching',
+      description: 'Individual online fitness coaching with personalised training, nutrition targets, progress tracking, regular check-ins, video technique feedback and ongoing support.',
+      url: 'https://kkcoaching.fit/online-coaching',
+      areaServed: [
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'Place', name: 'Online' }
+      ],
+      provider: {
+        '@type': 'Organization',
+        name: 'KK Coaching',
+        url: 'https://kkcoaching.fit'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Online Fitness Coach UK | Training & Nutrition | KK Coaching"
+  description="Online fitness coaching with an individual training plan, nutrition targets, regular check-ins, progress tracking, technique feedback and WhatsApp support. Apply for KK Coaching online."
+  lang="en"
+  path="/online-coaching"
+  altPath="/pl/online-coaching"
+  structuredData={structuredData}
+>
+  <section class="online-hero on-dark">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Complete online coaching</span>
+        <h1>Online fitness coaching without the guesswork</h1>
+        <p class="lead">A personalised training plan, practical nutrition targets, regular accountability and ongoing support — built around your goal and your actual life, not an ideal week on paper.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Apply for Online Coaching</a>
+          <a href="/transformations" class="btn btn-secondary">See Client Results</a>
+        </div>
+        <div class="trust-row" aria-label="Online coaching trust points">
+          <span>Individual programming</span>
+          <span>Regular check-ins</span>
+          <span>WhatsApp support</span>
+          <span>English / Polski</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="/images/online-coaching-placeholder.svg" alt="KK Coaching online fitness coaching with training, nutrition and progress tracking" width="720" height="540" />
+        <span class="image-note">Temporary coaching image — to be replaced with a real coaching/app photo.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="outcomes-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What changes</span>
+        <h2 id="outcomes-heading">You stop collecting plans and start following one system.</h2>
+        <p>Online coaching is not just a PDF workout. The value is having one clear direction, enough data to judge whether it is working and a coach who can adjust the plan as your body, performance and real life change.</p>
+      </div>
+      <div class="three-grid">
+        {outcomes.map(item => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark" aria-labelledby="included-heading">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">What is included</span>
+        <h2 id="included-heading">Coaching between the check-ins matters too.</h2>
+        <p class="dark-copy">The goal is to know what is happening week to week, not find out a month later that the plan stopped fitting your life. Your training, nutrition targets, progress data and feedback stay connected.</p>
+      </div>
+      <ul class="check-list">
+        {included.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">How it works</span>
+        <h2 id="process-heading">A simple loop: plan, execute, review, adjust.</h2>
+        <p>You always know what the current target is and what information we are using to decide the next move.</p>
+      </div>
+      <div class="process-grid">
+        {process.map(item => (
+          <article class="process-card">
+            <span class="num">{item.num}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="proof on-white" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Real coaching. Real progress.</span>
+        <h2 id="proof-heading">Results built around real lives</h2>
+        <p>The point is not to create one impressive week. It is to create enough good weeks, track what matters and keep the plan moving in the right direction.</p>
+      </div>
+      <div class="results-grid">
+        <article class="result-card">
+          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="Aneta's 16-week online coaching transformation showing 10 kg lost and 12 cm off the waist" width="600" height="750" loading="lazy" />
+          <div class="result-copy">
+            <span>ANETA · ONLINE COACHING · 16 WEEKS</span>
+            <h3>10 kg lost · 12 cm off the waist</h3>
+            <p>She also built enough confidence to move from home workouts into a commercial gym and improved her control of late-night snacking.</p>
+          </div>
+        </article>
+        <article class="result-card">
+          <img src="/images/client-transformation-agnieszka-16-weeks.svg" alt="Agnieszka's 16-week KK Coaching physique transformation" width="600" height="750" loading="lazy" />
+          <div class="result-copy">
+            <span>AGNIESZKA · COACHING · 16 WEEKS</span>
+            <h3>3 kg down · 8 cm added at the hips</h3>
+            <p>Progress came from a plan adapted to her lifestyle and consistency rather than chasing perfection.</p>
+          </div>
+        </article>
+      </div>
+      <div class="center-cta"><a href="/transformations" class="btn btn-outline-dark">See All Transformations</a></div>
+    </div>
+  </section>
+
+  <section class="coach-section on-dark" aria-labelledby="coach-heading">
+    <div class="container coach-grid">
+      <img src="/images/kacper.png" alt="Kacper Kaszowski, founder of KK Coaching and Level 3 Personal Trainer" width="500" height="600" loading="lazy" />
+      <div>
+        <span class="eyebrow">Your coach</span>
+        <h2 id="coach-heading">I care about the process because I had to learn it the hard way.</h2>
+        <p class="dark-copy">I started at around 117 kg and lost more than 40 kg before rebuilding my physique. That process taught me how easy it is to mistake harder for better, chase quick fixes and change things before giving a good plan enough time to work.</p>
+        <p class="dark-copy">Today I use the same principles with clients: clear targets, realistic execution, honest feedback and changes based on progress rather than emotion.</p>
+        <a href="/about" class="btn btn-secondary">Meet Your Coach</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="faq-heading">
+    <div class="container faq-wrap">
+      <div class="section-head centered">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-heading">Online coaching — FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow light">Start with a conversation</span>
+      <h2>If you are ready to stop guessing, tell me where you are now.</h2>
+      <p>Send me your goal, training experience, current routine and what has been holding you back. I will tell you whether online coaching is the right level of support and what the next step would look like.</p>
+      <a href="/contact" class="btn btn-secondary">Apply for Online Coaching</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .online-hero { padding: 72px 0; }
+  .hero-grid, .split, .coach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy h1 { color: var(--white); font-size: clamp(2.15rem, 5vw, 4rem); max-width: 14ch; margin-bottom: 18px; }
+  .hero-copy .lead { color: #D3D6DA; font-size: 1.12rem; max-width: 58ch; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 24px; }
+  .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
+  .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
+  .image-note { display: block; color: #90959D; font-size: 0.72rem; margin-top: 8px; }
+
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
+  .info-card { border-top: 3px solid var(--red); }
+  .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
+  .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
+
+  .dark-copy { color: #C0C4CA; max-width: 58ch; margin-bottom: 14px; }
+  .check-list { list-style: none; display: grid; gap: 12px; }
+  .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
+  .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
+
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; }
+  .result-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); overflow: hidden; }
+  .result-card img { width: 100%; height: auto; }
+  .result-copy { padding: 22px; }
+  .result-copy > span { color: var(--red); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+  .result-copy h3 { margin: 8px 0; font-size: 1.05rem; }
+  .result-copy p { color: var(--steel); font-size: 0.9rem; }
+  .center-cta { text-align: center; margin-top: 34px; }
+
+  .coach-grid img { width: 100%; max-height: 620px; object-fit: cover; object-position: center top; border-radius: var(--radius); }
+
+  .faq-wrap { max-width: 860px; }
+  .faq-list { border-top: 1px solid #D8DBDE; }
+  .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
+  .faq-item summary { font-weight: 700; cursor: pointer; list-style: none; padding-right: 34px; position: relative; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
+
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
+  .final-cta .eyebrow.light { color: #FFDDE1; }
+  .final-cta h2 { color: var(--white); max-width: 720px; margin: 0 auto 14px; }
+  .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .split, .coach-grid { grid-template-columns: 1fr; gap: 34px; }
+    .three-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-copy h1 { max-width: none; }
+  }
+
+  @media (max-width: 620px) {
+    .online-hero { padding: 48px 0 56px; }
+    .hero-copy h1 { font-size: clamp(2rem, 9.6vw, 2.75rem); }
+    .hero-copy .lead { font-size: 1rem; }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .hero-actions .btn { width: 100%; }
+    .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
+    .trust-row span { text-align: center; }
+    .process-grid, .results-grid { grid-template-columns: 1fr; }
+  }
+</style>
