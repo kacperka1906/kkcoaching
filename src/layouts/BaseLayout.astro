@@ -154,7 +154,7 @@ const robotsContent = noindex
 <html lang={lang}>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content={robotsContent} />
@@ -243,27 +243,42 @@ const robotsContent = noindex
     --max-width: 1160px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
   body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: var(--graphite);
     background: var(--off-white);
     line-height: 1.6;
     overflow-wrap: break-word;
-    overflow-x: clip;
+    overflow-x: hidden;
   }
-  main { min-width: 0; }
-  img { max-width: 100%; display: block; }
+  main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+  main *, .site-header *, footer * { min-width: 0; }
+  img, svg, video, canvas, iframe { max-width: 100%; display: block; }
+  img { height: auto; }
   a { color: inherit; }
+  h1, h2, h3, p, li, a, button, span, strong { overflow-wrap: anywhere; }
   p, li { text-wrap: pretty; }
   section[id] { scroll-margin-top: 88px; }
 
   .container {
+    width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 24px;
@@ -271,12 +286,14 @@ const robotsContent = noindex
   }
 
   .breadcrumb-bar {
+    max-width: 100%;
     background: #111317;
     color: #AEB3BA;
     border-top: 1px solid #24282E;
     border-bottom: 1px solid #24282E;
   }
   .breadcrumb-inner {
+    max-width: 100%;
     min-height: 42px;
     display: flex;
     align-items: center;
@@ -315,6 +332,7 @@ const robotsContent = noindex
 
   .btn {
     display: inline-block;
+    max-width: 100%;
     padding: 14px 28px;
     border-radius: var(--radius);
     text-decoration: none;
@@ -333,7 +351,7 @@ const robotsContent = noindex
   .btn-outline-dark { background: transparent; color: var(--graphite); border-color: var(--graphite); }
   .btn-outline-dark:hover { background: var(--graphite); color: var(--white); }
 
-  section { padding: 88px 0; }
+  section { width: 100%; max-width: 100%; padding: 88px 0; }
   section.tight { padding: 64px 0; }
   section.on-dark { background: var(--graphite); color: var(--white); }
   section.on-white { background: var(--white); }
