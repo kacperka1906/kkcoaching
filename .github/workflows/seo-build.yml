@@ -1,4 +1,4 @@
-name: Build, SEO and performance audit
+name: Build, SEO and deployed performance audit
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,31 +29,34 @@ jobs:
       - name: Build and run SEO audit
         run: npm run build
 
-      - name: Start production build locally
+      - name: Wait for Netlify production deployment
         run: |
-          npx --yes serve@14.2.4 dist --listen 4173 > /tmp/kk-serve.log 2>&1 &
-          echo $! > /tmp/kk-serve.pid
-          for i in {1..30}; do
-            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
-            sleep 1
+          for i in {1..60}; do
+            body="$(curl -fsSL --max-time 20 https://kkcoaching.fit/training-plan || true)"
+            if printf '%s' "$body" | grep -q "Personalised Training Plan Built Around You"; then
+              echo "Production deployment is ready."
+              exit 0
+            fi
+            echo "Waiting for production deployment ($i/60)..."
+            sleep 5
           done
-          cat /tmp/kk-serve.log
+          echo "Production deployment did not expose the expected training-plan page in time."
           exit 1
 
-      - name: Run Lighthouse mobile and desktop
+      - name: Run Lighthouse mobile and desktop against production
         run: |
           mkdir -p lighthouse-reports
           routes=("home:/" "personal-training:/personal-training-cwmbran" "online-coaching:/online-coaching" "hybrid-coaching:/hybrid-coaching" "training-plan:/training-plan")
           for entry in "${routes[@]}"; do
             name="${entry%%:*}"
             path="${entry#*:}"
-            npx --yes lighthouse@12.6.0 "http://127.0.0.1:4173${path}" \
+            npx --yes lighthouse@12.6.0 "https://kkcoaching.fit${path}" \
               --quiet \
               --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
               --only-categories=performance,accessibility,best-practices,seo \
               --output=json \
               --output-path="lighthouse-reports/${name}-mobile.json"
-            npx --yes lighthouse@12.6.0 "http://127.0.0.1:4173${path}" \
+            npx --yes lighthouse@12.6.0 "https://kkcoaching.fit${path}" \
               --quiet \
               --preset=desktop \
               --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
