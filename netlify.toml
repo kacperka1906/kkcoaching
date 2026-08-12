@@ -48,7 +48,7 @@
 
 [[redirects]]
   from = "/images/photo-collage.png-1-.png"
-  to = "/.netlify/images?url=/images/photo-collage-source.png&w=820&q=82"
+  to = "/.netlify/images?url=/images/photo-collage-source.png&w=820&fm=webp&q=82"
   status = 200
 
 [[redirects]]
