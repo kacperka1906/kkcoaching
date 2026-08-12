@@ -4,8 +4,8 @@ tagline: Jednorazowa opcja dla osób, które chcą trenować samodzielnie, ale w
   dostać konkretny plan zamiast składać trening z przypadkowych ćwiczeń.
 order: 4
 minor: true
-ctaLabel: Zapytaj o plan treningowy
-ctaTarget: /pl/contact
+ctaLabel: Zobacz indywidualny plan treningowy
+ctaTarget: /pl/training-plan
 image: /images/20592.webp
 imageAlt: Indywidualny plan treningowy KK Coaching pokazany w aplikacji z
   seriami, zakresem powtórzeń, RIR i czasem przerw
