@@ -7,7 +7,7 @@ order: 4
 minor: true
 ctaLabel: Ask About a Training Plan
 ctaTarget: /contact
-image: /images/20580.png
+image: /images/20592.webp
 imageAlt: Personalised KK Coaching training plan shown in a structured coaching
   app interface with sets, rep ranges, RIR and rest times
 bullets:
