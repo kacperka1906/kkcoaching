@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const onlineCore = [
+  'Individual training programme for coached and independent sessions',
+  'Calorie, macronutrient and practical nutrition guidance',
+  'Coaching app with your programme, exercise guidance, workout logging and progress history',
+  'Regular check-ins and structured progress reviews',
+  'Weight, measurements, progress photos and performance tracking',
+  'Programme and nutrition adjustments based on progress',
+  'Video technique feedback between face-to-face sessions',
+  'WhatsApp support between check-ins and PT sessions'
+];
+
+const inPerson = [
+  'Scheduled 1:1 personal training sessions in Cwmbran',
+  'Hands-on exercise setup and technique coaching',
+  'Live feedback on execution, effort and progression',
+  'A programme that connects your coached sessions with the training you complete independently'
+];
+
+const faqs = [
+  {
+    q: 'What is the difference between Hybrid Coaching and Online Coaching?',
+    a: 'Hybrid Coaching includes the full Online Coaching service and adds scheduled face-to-face 1:1 personal training sessions in Cwmbran. Your app, programme, nutrition guidance, check-ins, progress tracking, video feedback and WhatsApp support all remain part of the service.'
+  },
+  {
+    q: 'Do I still use the coaching app with Hybrid Coaching?',
+    a: 'Yes. The coaching app remains the central place for your programme, exercise guidance, workout logging and progress data. Face-to-face sessions are added on top rather than replacing the online system.'
+  },
+  {
+    q: 'Is Hybrid Coaching only for beginners?',
+    a: 'No. It can work well if you are new to the gym and want more hands-on help, but it is also useful for experienced trainees who want detailed technique work, accountability and a tighter link between their independent training and coaching.'
+  },
+  {
+    q: 'Where do the face-to-face sessions take place?',
+    a: 'The 1:1 sessions are delivered in Cwmbran, Torfaen. Exact availability and training arrangements are confirmed during your consultation.'
+  },
+  {
+    q: 'How do I know whether Hybrid, Online or 1:1 is right for me?',
+    a: 'Start with a free consultation. Tell me your goal, current training, location and how much support you want. I will explain which option gives you the right level of support without paying for more than you need.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://kkcoaching.fit/hybrid-coaching#service',
+      name: 'Hybrid Coaching in Cwmbran',
+      serviceType: 'Hybrid Personal Training and Online Fitness Coaching',
+      description: 'Hybrid coaching combining full online coaching, a coaching app, training and nutrition guidance, progress tracking and scheduled 1:1 personal training sessions in Cwmbran.',
+      url: 'https://kkcoaching.fit/hybrid-coaching',
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'Cwmbran, Torfaen, South Wales'
+      },
+      provider: {
+        '@type': 'Organization',
+        '@id': 'https://kkcoaching.fit/#business',
+        name: 'KK Coaching',
+        url: 'https://kkcoaching.fit/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Hybrid Coaching Cwmbran | Online Coaching + 1:1 PT | KK Coaching"
+  description="Hybrid coaching in Cwmbran: full online coaching, coaching app, training and nutrition guidance, check-ins, progress tracking and regular 1:1 personal training sessions."
+  lang="en"
+  path="/hybrid-coaching"
+  altPath="/pl/hybrid-coaching"
+  structuredData={structuredData}
+>
+  <section class="hybrid-hero on-dark">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Most complete coaching option</span>
+        <h1>Hybrid Coaching: full online support + 1:1 Personal Training</h1>
+        <p class="lead">You keep everything included in Online Coaching and add regular face-to-face sessions in Cwmbran. One system connects your training, nutrition, progress data and the work we do together in the gym.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Book a Free Consultation</a>
+          <a href="/services" class="btn btn-secondary">Compare Coaching Options</a>
+        </div>
+        <div class="trust-row" aria-label="Hybrid Coaching key features">
+          <span>Full Online Coaching</span>
+          <span>Coaching app</span>
+          <span>1:1 sessions</span>
+          <span>WhatsApp support</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="/images/hybrid-coaching-placeholder.svg" alt="Hybrid coaching combining online coaching with 1:1 personal training in Cwmbran" width="720" height="540" />
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Why hybrid</span>
+        <h2>You do not choose between online support and hands-on coaching. You get both.</h2>
+        <p>Hybrid Coaching is for people who want the structure and accountability of ongoing online coaching while still having regular sessions where we can work together on technique, execution and progression in person.</p>
+      </div>
+      <div class="compare-grid">
+        <article class="scope-card">
+          <span class="scope-label">Full online system</span>
+          <h3>Everything included in Online Coaching</h3>
+          <ul>{onlineCore.map(item => <li>{item}</li>)}</ul>
+        </article>
+        <article class="scope-card featured">
+          <span class="scope-label">Added face-to-face</span>
+          <h3>Plus regular 1:1 Personal Training</h3>
+          <ul>{inPerson.map(item => <li>{item}</li>)}</ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-band on-dark">
+    <div class="container app-grid">
+      <div>
+        <span class="eyebrow">One coaching app</span>
+        <h2>Your programme and progress stay connected between sessions.</h2>
+        <p>The app keeps your current training plan, exercise guidance, workout logging and progress history in one place. Your 1:1 sessions fit into the same coaching system instead of becoming a separate programme.</p>
+      </div>
+      <div class="app-points" aria-label="Coaching app features">
+        <span>Training plan</span>
+        <span>Exercise guidance</span>
+        <span>Workout logging</span>
+        <span>Progress history</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Choose the right level of support</span>
+        <h2>Not everyone needs Hybrid Coaching.</h2>
+        <p>If you mainly want hands-on gym coaching, 1:1 Personal Training may be enough. If you train confidently on your own, Online Coaching may give you everything you need. Hybrid is for people who genuinely benefit from both.</p>
+      </div>
+      <div class="related-grid">
+        <a href="/personal-training-cwmbran" class="related-card">
+          <strong>1:1 Personal Training in Cwmbran</strong>
+          <span>Face-to-face coaching focused on training, technique and progression →</span>
+        </a>
+        <a href="/online-coaching" class="related-card">
+          <strong>Online Coaching</strong>
+          <span>Full remote coaching without regular in-person sessions →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white faq-section" aria-labelledby="faq-heading">
+    <div class="container faq-wrap">
+      <div class="section-head centered">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-heading">Hybrid Coaching — FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow light">Start with a conversation</span>
+      <h2>Want the most complete level of support? Let’s see if Hybrid fits.</h2>
+      <p>Tell me your goal, current training and what you want help with. I will explain whether Hybrid Coaching is worth it for you or whether a simpler option makes more sense.</p>
+      <a href="/contact" class="btn btn-secondary">Book a Free Consultation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hybrid-hero { padding: 72px 0; }
+  .hero-grid, .app-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; }
+  .hybrid-hero h1 { color: var(--white); font-size: clamp(2.15rem, 4.8vw, 3.9rem); max-width: 16ch; margin-bottom: 18px; }
+  .lead { color: #D3D6DA; font-size: 1.1rem; max-width: 60ch; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 24px; }
+  .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
+  .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1040px; margin: 0 auto; }
+  .scope-card { background: #F6F7F8; border: 1px solid #E0E3E6; border-radius: var(--radius); padding: 30px; }
+  .scope-card.featured { border: 2px solid var(--red); background: var(--white); }
+  .scope-label { display: inline-block; color: var(--red); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+  .scope-card h3 { margin-bottom: 18px; }
+  .scope-card ul { list-style: none; display: grid; gap: 10px; color: var(--steel); }
+  .scope-card li { position: relative; padding-left: 24px; }
+  .scope-card li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 800; }
+
+  .app-band h2 { color: var(--white); }
+  .app-band p { color: #C0C4CA; max-width: 60ch; }
+  .app-points { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .app-points span { background: #202329; border: 1px solid #353A42; color: var(--white); padding: 18px; border-radius: var(--radius); font-weight: 700; text-align: center; }
+
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 900px; margin: 0 auto; }
+  .related-card { display: block; text-decoration: none; background: #F6F7F8; border: 1px solid #E0E3E6; border-radius: var(--radius); padding: 24px; transition: border-color .2s ease, transform .2s ease; }
+  .related-card:hover { border-color: var(--red); transform: translateY(-2px); }
+  .related-card strong { display: block; margin-bottom: 6px; }
+  .related-card span { color: var(--steel); font-size: 0.92rem; }
+
+  .faq-section { padding-top: 36px; }
+  .faq-wrap { max-width: 860px; }
+  .faq-list { border-top: 1px solid #D8DBDE; }
+  .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
+  .faq-item summary { font-weight: 700; cursor: pointer; list-style: none; padding-right: 34px; position: relative; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
+
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
+  .final-cta .eyebrow.light { color: #FFDDE1; }
+  .final-cta h2 { color: var(--white); max-width: 760px; margin: 0 auto 14px; }
+  .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .app-grid, .compare-grid { grid-template-columns: 1fr; gap: 34px; }
+    .hybrid-hero h1 { max-width: none; }
+  }
+  @media (max-width: 620px) {
+    .hybrid-hero { padding: 48px 0 56px; }
+    .hybrid-hero h1 { font-size: clamp(2rem, 9.5vw, 2.72rem); }
+    .lead { font-size: 1rem; }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .hero-actions .btn { width: 100%; }
+    .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
+    .trust-row span { text-align: center; }
+    .scope-card { padding: 24px 20px; }
+    .app-points, .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
