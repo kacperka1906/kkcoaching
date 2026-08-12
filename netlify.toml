@@ -23,6 +23,12 @@
     Cache-Control = "public, max-age=604800, must-revalidate"
 
 [[redirects]]
+  from = "/images/about-kacper-edge.jpg"
+  to = "/.netlify/images?url=/images/about-kacper.webp&w=800&h=800&fit=cover&fm=jpg&q=88"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/images/kacper.png"
   to = "/images/kacper.jpg"
   status = 301
