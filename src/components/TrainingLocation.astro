@@ -5,10 +5,46 @@ interface Props {
 
 const { lang } = Astro.props;
 const isPl = lang === 'pl';
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const mapQuery = encodeURIComponent('JD Gyms Cwmbran, 17-18 Gwent Square, Cwmbran NP44 1PW');
 const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
+const locationId = 'https://kkcoaching.fit/#jd-gyms-cwmbran-training-location';
+
+const serviceId = pathname.includes('personal-training-cwmbran')
+  ? `https://kkcoaching.fit${isPl ? '/pl' : ''}/personal-training-cwmbran#service`
+  : pathname.includes('hybrid-coaching')
+    ? `https://kkcoaching.fit${isPl ? '/pl' : ''}/hybrid-coaching#service`
+    : null;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Place',
+      '@id': locationId,
+      name: 'JD Gyms Cwmbran',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '17-18 Gwent Square',
+        addressLocality: 'Cwmbran',
+        postalCode: 'NP44 1PW',
+        addressCountry: 'GB'
+      }
+    },
+    ...(serviceId ? [{
+      '@type': 'Service',
+      '@id': serviceId,
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceLocation: { '@id': locationId }
+      }
+    }] : [])
+  ]
+};
 ---
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
 <section class="training-location on-white" aria-labelledby={`training-location-heading-${lang}`}>
   <div class="container location-grid">
     <div class="location-copy">
