@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build:astro": "astro build",
+    "finalize:html": "node scripts/finalize-static-html.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
-    "build:verified": "npm run build && npm run seo:audit",
+    "build": "npm run build:astro && npm run finalize:html && npm run seo:audit",
+    "build:verified": "npm run build",
     "preview": "astro preview"
   },
   "dependencies": {
