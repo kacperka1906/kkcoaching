@@ -1,0 +1,262 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import pricing from '../data/pricing.json';
+
+const services = await getCollection('services');
+const service = services.find(item => item.id === 'en/training-plan');
+if (!service) throw new Error('Missing English training-plan service content');
+
+const price = pricing.trainingPlan.price;
+const money = `${pricing.currency}${Number.isInteger(price) ? price.toFixed(0) : price.toFixed(2)}`;
+
+const bestFor = [
+  {
+    title: 'You want structure without ongoing coaching',
+    body: 'You are comfortable training independently but want a programme built around a clear goal instead of assembling workouts from random exercises.'
+  },
+  {
+    title: 'You need a plan that fits your real week',
+    body: 'Your programme is built around the number of days you can actually train, the equipment you have access to and your current experience.'
+  },
+  {
+    title: 'You want clear progression',
+    body: 'Sets, rep ranges and progression guidance give you a clear way to judge whether your training is moving forward.'
+  }
+];
+
+const process = [
+  ['01', 'Tell me your goal and training setup', 'I collect the information needed to build the plan: your goal, training experience, available days, equipment and any exercises or movements that need to be considered.'],
+  ['02', 'I build your programme', 'Exercise selection, weekly structure, sets, rep ranges, rest times and progression are organised around your situation rather than a generic template.'],
+  ['03', 'You receive the plan in a clear format', 'The programme is laid out so you know exactly what to do when you train, including the structure you need to log and progress your sessions.'],
+  ['04', 'You train independently', 'This is a one-off service. If you later want regular check-ins, nutrition support, technique feedback or ongoing adjustments, you can move into Online or Hybrid Coaching.']
+];
+
+const faqs = [
+  {
+    q: 'Is this the same as Online Coaching?',
+    a: 'No. The personalised training plan is a one-off programme for independent training. Online Coaching includes ongoing check-ins, progress analysis, nutrition guidance, technique feedback and continued support.'
+  },
+  {
+    q: 'Can the plan be built for a home gym or limited equipment?',
+    a: 'Yes. Exercise selection is matched to the equipment you actually have available, whether that is a commercial gym, home gym or a more limited setup.'
+  },
+  {
+    q: 'Is the plan suitable for beginners?',
+    a: 'It can be. The programme is matched to your current experience, but if you are completely new to the gym and need hands-on technique coaching, 1:1 Personal Training may be a better starting point.'
+  },
+  {
+    q: 'What happens if I later want the plan adjusted?',
+    a: 'Because this is a one-off service, ongoing monitoring and repeated adjustments are not included. If you want that level of support, Online Coaching or Hybrid Coaching is the better option.'
+  }
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://kkcoaching.fit/training-plan#service',
+      name: 'Personalised Training Plan',
+      serviceType: 'Personalised Training Programme',
+      description: 'A one-off personalised gym training programme built around the client’s goal, schedule, training experience and available equipment.',
+      url: 'https://kkcoaching.fit/training-plan',
+      provider: { '@id': 'https://kkcoaching.fit/#business' },
+      areaServed: { '@type': 'Country', name: 'United Kingdom' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'GBP',
+        price,
+        availability: 'https://schema.org/InStock',
+        url: 'https://kkcoaching.fit/training-plan'
+      }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kkcoaching.fit/' },
+        { '@type': 'ListItem', position: 2, name: 'Coaching Options', item: 'https://kkcoaching.fit/services' },
+        { '@type': 'ListItem', position: 3, name: 'Personalised Training Plan' }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Personalised Training Plan UK | £30 One-Off | KK Coaching"
+  description="Get a personalised training plan built around your goal, schedule, experience and equipment. Clear sets, reps and progression guidance for a £30 one-off fee."
+  lang="en"
+  path="/training-plan"
+  altPath="/pl/training-plan"
+  structuredData={structuredData}
+  socialImage={service.data.image}
+  socialImageAlt={service.data.imageAlt}
+>
+  <section class="plan-hero on-dark">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">One-off personalised programme</span>
+        <h1>Personalised Training Plan Built Around You</h1>
+        <p class="lead">Train independently with a structured programme built around your goal, weekly schedule, experience and available equipment.</p>
+        <div class="price-line"><strong>{money}</strong><span>one-off</span></div>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Ask About a Training Plan</a>
+          <a href="/services" class="btn btn-secondary">Compare Coaching Options</a>
+        </div>
+        <p class="scope-note">One-off service · no subscription · no ongoing check-ins or coaching support</p>
+      </div>
+      <div class="hero-media">
+        <img src={service.data.image} alt={service.data.imageAlt} width="720" height="540" loading="eager" fetchpriority="high" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white" aria-labelledby="fit-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Who it is for</span>
+        <h2 id="fit-heading">A clear programme without paying for support you do not need.</h2>
+        <p>If you are happy to train on your own but want the structure of an individual programme, this sits between random workouts and full ongoing coaching.</p>
+      </div>
+      <div class="three-grid">
+        {bestFor.map(item => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark" aria-labelledby="included-heading">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">What you get</span>
+        <h2 id="included-heading">A programme you can open and follow without guessing.</h2>
+        <p class="dark-copy">The plan focuses on the training structure itself. It gives you a clear framework for your sessions without turning a one-off programme into a stripped-down coaching subscription.</p>
+      </div>
+      <ul class="check-list">
+        {service.data.bullets.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">How it works</span>
+        <h2 id="process-heading">From your goal to a plan you can actually use.</h2>
+      </div>
+      <div class="process-grid">
+        {process.map(([num, title, body]) => (
+          <article class="process-card">
+            <span class="num">{num}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="compare on-white" aria-labelledby="compare-heading">
+    <div class="container compare-grid">
+      <div>
+        <span class="eyebrow">Plan or coaching?</span>
+        <h2 id="compare-heading">Choose the level of support you actually need.</h2>
+        <p>If all you need is a structured programme, the one-off plan keeps things simple. If you want somebody to monitor progress, review technique, adjust training and support nutrition over time, ongoing coaching is designed for that.</p>
+      </div>
+      <div class="compare-links">
+        <a href="/online-coaching"><strong>Online Coaching</strong><span>Ongoing training, nutrition, check-ins and support →</span></a>
+        <a href="/hybrid-coaching"><strong>Hybrid Coaching</strong><span>Full online support plus regular 1:1 sessions →</span></a>
+        <a href="/personal-training-cwmbran"><strong>1:1 Personal Training</strong><span>Face-to-face coaching at JD Gyms Cwmbran →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-heading">
+    <div class="container faq-wrap">
+      <div class="section-head centered">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-heading">Personalised training plan — FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <span class="eyebrow light">Ready to train with a plan?</span>
+      <h2>Tell me what you are training for.</h2>
+      <p>Send me your goal, weekly schedule and training setup. I will confirm whether the one-off plan is the right option before we start.</p>
+      <a href="/contact" class="btn btn-secondary">Ask About a Training Plan</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .plan-hero { padding: 72px 0; }
+  .hero-grid, .split, .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy h1 { color: var(--white); font-size: clamp(2.15rem, 5vw, 4rem); max-width: 13ch; margin-bottom: 18px; }
+  .hero-copy .lead { color: #D3D6DA; font-size: 1.08rem; max-width: 56ch; }
+  .price-line { display: flex; align-items: baseline; gap: 9px; margin-top: 22px; }
+  .price-line strong { color: #F2F3F4; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
+  .price-line span { color: #C8CCD2; font-weight: 700; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 16px; }
+  .scope-note { color: #AEB4BC; font-size: 0.82rem; }
+  .hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); border: 1px solid #363A40; }
+
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
+  .info-card { border-top: 3px solid var(--red); }
+  .info-card h3, .process-card h3 { font-size: 1.06rem; margin-bottom: 10px; }
+  .info-card p, .process-card p { color: var(--steel); font-size: 0.93rem; }
+  .dark-copy { color: #C0C4CA; max-width: 58ch; }
+  .check-list { list-style: none; display: grid; gap: 12px; }
+  .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #D4D7DB; }
+  .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #F18B97; font-weight: 900; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .process-card .num { color: var(--red); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.08em; }
+  .compare-links { display: grid; gap: 12px; }
+  .compare-links a { display: grid; gap: 3px; padding: 18px 20px; border: 1px solid #DDE0E4; background: var(--white); color: var(--graphite); text-decoration: none; border-radius: var(--radius); }
+  .compare-links a:hover { border-color: var(--red); }
+  .compare-links span { color: var(--steel); font-size: 0.88rem; }
+  .faq-wrap { max-width: 900px; }
+  .faq-list { display: grid; gap: 10px; }
+  .faq-item { background: var(--white); border: 1px solid #DFE2E6; border-radius: var(--radius); padding: 0 18px; }
+  .faq-item summary { cursor: pointer; font-weight: 800; padding: 18px 0; }
+  .faq-item p { color: var(--steel); padding: 0 0 18px; }
+  .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
+  .final-cta h2 { color: var(--white); }
+  .final-cta p { color: #F3D7DA; max-width: 58ch; margin: 0 auto 28px; }
+  .eyebrow.light { color: #FFDCE0; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .split, .compare-grid { grid-template-columns: 1fr; gap: 34px; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) { .three-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 620px) {
+    .plan-hero { padding: 52px 0; }
+    .hero-copy h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .hero-actions .btn, .final-cta .btn { width: 100%; }
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>
