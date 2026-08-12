@@ -25,15 +25,13 @@ const visual = type ? servicePages[type] : null;
 const selector = type ? selectors[type] : '';
 const heroImage = visual?.heroImage ?? '';
 const heroAlt = visual?.heroAlt?.[lang] ?? '';
----
-{visual && (
-  <script
-    is:inline
-    set:html={`(() => {
+const script = visual
+  ? `(() => {
       const image = document.querySelector(${JSON.stringify(selector)});
       if (!image) return;
       image.src = ${JSON.stringify(heroImage)};
       image.alt = ${JSON.stringify(heroAlt)};
-    })();`}
-  />
-)}
+    })();`
+  : '';
+---
+{visual && <script is:inline set:html={script}></script>}
