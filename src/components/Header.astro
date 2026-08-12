@@ -28,7 +28,7 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     <a href={lang === 'pl' ? '/pl' : '/'} class="logo" aria-label="KK Coaching - home">
       <Logo height={32} />
     </a>
-    <nav class="main-nav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
+    <nav class="main-nav" id="mainNav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
       <ul>
         {nav.map(item => <li><a href={item.href}>{item.label}</a></li>)}
       </ul>
@@ -38,17 +38,32 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
       <a class="lang-switch" href={lang === 'pl' ? '/' : '/pl'}>
         {lang === 'pl' ? 'EN' : 'PL'}
       </a>
-      <button class="nav-toggle" aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'} aria-expanded="false" id="navToggle">&#9776;</button>
+      <button class="nav-toggle" aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'} aria-controls="mainNav" aria-expanded="false" id="navToggle">&#9776;</button>
     </div>
   </div>
 </header>
 
 <script>
   const toggle = document.getElementById('navToggle');
-  const nav = document.querySelector('.main-nav');
+  const nav = document.getElementById('mainNav');
+
+  const closeMenu = () => {
+    nav?.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    if (toggle) toggle.innerHTML = '&#9776;';
+  };
+
   toggle?.addEventListener('click', () => {
-    const isOpen = nav?.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(!!isOpen));
+    const isOpen = nav?.classList.toggle('is-open') ?? false;
+    document.body.classList.toggle('menu-open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+  });
+
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
 </script>
 
@@ -132,6 +147,7 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
   }
 
   @media (max-width: 760px) {
+    :global(body.menu-open) { overflow: hidden; }
     .site-header .container { min-height: 72px; padding-left: 18px; padding-right: 14px; }
     .logo :global(.site-logo) { height: 38px !important; max-width: 92px; object-fit: contain; }
     .header-right { gap: 8px; }
@@ -141,16 +157,27 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
       top: 100%;
       left: 0;
       right: 0;
+      max-height: calc(100dvh - 72px);
+      overflow-y: auto;
       background: var(--graphite);
       padding: 10px 20px 22px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
       border-top: 1px solid #2A2E34;
     }
     nav.main-nav.is-open { display: block; }
     nav.main-nav ul { flex-direction: column; gap: 0; }
     nav.main-nav li { border-bottom: 1px solid #2A2E34; }
-    nav.main-nav li:last-child { border-bottom: 0; }
-    nav.main-nav a { display: block; padding: 13px 4px; font-size: 1rem; }
+    nav.main-nav li:last-child { border-bottom: 0; padding-top: 10px; }
+    nav.main-nav a { display: block; padding: 14px 4px; font-size: 1rem; }
+    nav.main-nav li:last-child a {
+      background: var(--red);
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+      border-radius: var(--radius);
+      padding: 13px 16px;
+    }
+    nav.main-nav li:last-child a:hover { background: var(--red-hover); color: var(--white); }
     .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   }
 </style>
