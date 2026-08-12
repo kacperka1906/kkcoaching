@@ -13,7 +13,7 @@ interface Props {
 const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustLine, image, imageAlt } = Astro.props;
 ---
 <section class="hero" aria-labelledby="hero-heading">
-  <img class="hero-photo" src={image} alt={imageAlt} width="768" height="1024" />
+  <img class="hero-photo" src={image} alt={imageAlt} width="768" height="1024" loading="eager" fetchpriority="high" decoding="async" />
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="container hero-inner">
     <div class="hero-copy">
