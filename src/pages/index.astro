@@ -13,25 +13,55 @@ const testimonials = await getCollection('testimonials');
 const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile);
 const featured = consentedTestimonials.find(t => t.data.featured) ?? consentedTestimonials[0];
 
+const siteUrl = String(Astro.site).replace(/\/$/, '');
+const businessId = `${siteUrl}/#business`;
+const personId = `${siteUrl}/#kacper-kaszowski`;
+const websiteId = `${siteUrl}/#website`;
 const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'KK Coaching',
-  description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and progress tracking.',
-  image: `${Astro.site}images/kacper.png`,
-  url: String(Astro.site),
-  email: site.meta.contactEmail,
-  telephone: site.meta.whatsappNumber,
-  sameAs,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Cwmbran',
-    addressRegion: 'Torfaen',
-    addressCountry: 'GB'
-  },
-  areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
-  knowsLanguage: ['English', 'Polish']
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: `${siteUrl}/`,
+      name: 'KK Coaching',
+      alternateName: 'KK Coaching by Kacper Kaszowski',
+      publisher: { '@id': businessId }
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': businessId,
+      name: 'KK Coaching',
+      description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and progress tracking.',
+      image: `${siteUrl}/images/kacper.png`,
+      logo: `${siteUrl}/images/logo.png`,
+      url: `${siteUrl}/`,
+      email: site.meta.contactEmail,
+      telephone: site.meta.whatsappNumber,
+      sameAs,
+      founder: { '@id': personId },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cwmbran',
+        addressRegion: 'Torfaen',
+        addressCountry: 'GB'
+      },
+      areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
+      knowsLanguage: ['English', 'Polish']
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Kacper Kaszowski',
+      jobTitle: 'Personal Trainer',
+      url: `${siteUrl}/about`,
+      image: `${siteUrl}/images/kacper.png`,
+      sameAs,
+      worksFor: { '@id': businessId }
+    }
+  ]
 };
 ---
 <BaseLayout
