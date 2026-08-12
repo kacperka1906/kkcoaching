@@ -21,7 +21,7 @@ const content = {
       plans: [
         { name: 'Pay as you go', price: '£35', period: 'per session', detail: 'One 60-minute 1:1 session' },
         { name: '1× weekly', price: '£130', period: '/ 4 weeks', detail: '4 sessions · £32.50 per session' },
-        { name: '2× weekly', price: '£240', period: '/ 4 weeks', detail: '8 sessions · £30 per session', featured: true },
+        { name: '2× weekly', price: '£240', period: '/ 4 weeks', detail: '8 sessions · £30 per session' },
         { name: '3× weekly', price: '£330', period: '/ 4 weeks', detail: '12 sessions · £27.50 per session' }
       ],
       note: 'All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran.',
@@ -32,7 +32,7 @@ const content = {
       heading: 'One complete service. No stripped-back tiers.',
       intro: 'You get the full coaching system from day one: training, nutrition guidance, app access, progress tracking, check-ins, technique feedback and support between reviews.',
       plans: [
-        { name: 'Full Online Coaching', price: '£80', period: '/ 4 weeks', detail: 'Initial 12-week commitment · billed £80 every 4 weeks', featured: true }
+        { name: 'Full Online Coaching', price: '£80', period: '/ 4 weeks', detail: 'Initial 12-week commitment · billed £80 every 4 weeks' }
       ],
       note: 'The first 12 weeks are the minimum coaching period, but you do not need to pay £240 upfront.',
       cta: 'Apply for Online Coaching'
@@ -57,7 +57,7 @@ const content = {
       plans: [
         { name: 'Pojedynczy trening', price: '£35', period: '/ trening', detail: '1 trening personalny 1:1 · 60 minut' },
         { name: '1× w tygodniu', price: '£130', period: '/ 4 tygodnie', detail: '4 treningi · £32.50 za trening' },
-        { name: '2× w tygodniu', price: '£240', period: '/ 4 tygodnie', detail: '8 treningów · £30 za trening', featured: true },
+        { name: '2× w tygodniu', price: '£240', period: '/ 4 tygodnie', detail: '8 treningów · £30 za trening' },
         { name: '3× w tygodniu', price: '£330', period: '/ 4 tygodnie', detail: '12 treningów · £27.50 za trening' }
       ],
       note: 'Wszystkie pakiety obejmują ustalone treningi 1:1 w JD Gyms Cwmbran.',
@@ -68,7 +68,7 @@ const content = {
       heading: 'Jedna pełna usługa. Bez okrojonych pakietów.',
       intro: 'Od początku dostajesz pełne prowadzenie: plan treningowy, wskazówki żywieniowe, aplikację, kontrolę postępów, regularne raporty, ocenę techniki i kontakt między raportami.',
       plans: [
-        { name: 'Pełne prowadzenie online', price: '£80', period: '/ 4 tygodnie', detail: 'Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie', featured: true }
+        { name: 'Pełne prowadzenie online', price: '£80', period: '/ 4 tygodnie', detail: 'Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie' }
       ],
       note: 'Pierwsze 12 tygodni to minimalny okres współpracy, ale nie musisz płacić całych £240 z góry.',
       cta: 'Zacznij prowadzenie online'
@@ -116,8 +116,19 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
   </div>
 </section>
 
+<script is:inline>
+  (() => {
+    const pricing = document.querySelector('.service-pricing');
+    const main = document.querySelector('main');
+    const hero = main?.querySelector(':scope > section');
+    if (pricing && main && hero && pricing.parentElement !== main) {
+      hero.insertAdjacentElement('afterend', pricing);
+    }
+  })();
+</script>
+
 <style>
-  .service-pricing { background: #F3F4F6; padding: 88px 0; border-top: 1px solid #E0E3E7; }
+  .service-pricing { background: #F3F4F6; padding: 72px 0; border-top: 1px solid #E0E3E7; border-bottom: 1px solid #E0E3E7; }
   .pricing-head { max-width: 760px; margin: 0 auto 34px; text-align: center; }
   .pricing-head h2 { margin-bottom: 12px; }
   .pricing-head p { color: var(--steel); }
@@ -160,14 +171,9 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
     .pricing-personal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 620px) {
-    .service-pricing { padding: 62px 0; }
+    .service-pricing { padding: 56px 0; }
     .pricing-grid, .pricing-personal, .pricing-hybrid { grid-template-columns: 1fr; }
     .pricing-card { padding: 24px 20px; }
     .pricing-cta .btn { width: 100%; }
   }
-</style>
-
-<style is:global>
-  /* Service pages now finish with transparent pricing rather than repeating a second generic CTA block. */
-  main .final-cta { display: none; }
 </style>
