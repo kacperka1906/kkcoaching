@@ -4,6 +4,7 @@ import TrainingLocation from './TrainingLocation.astro';
 import BusinessEntity from './BusinessEntity.astro';
 import AuthorProfilePageSchema from './AuthorProfilePageSchema.astro';
 import ServicePricing from './ServicePricing.astro';
+import ServicePageOverrides from './ServicePageOverrides.astro';
 import siteEn from '../data/site.en.json';
 import sitePl from '../data/site.pl.json';
 
@@ -49,6 +50,7 @@ const labels = lang === 'pl'
 ---
 <BusinessEntity />
 {showAuthorProfileSchema && <AuthorProfilePageSchema lang={lang} />}
+<ServicePageOverrides lang={lang} pathname={pathname} />
 {showPricing && <ServicePricing lang={lang} pathname={pathname} />}
 {showTrainingLocation && <TrainingLocation lang={lang} />}
 
