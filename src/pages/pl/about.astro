@@ -4,7 +4,7 @@ import site from '../../data/site.pl.json';
 
 const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
-const aboutImage = '/images/kacper-about.jpg';
+const aboutImage = '/images/about-kacper-edge.jpg';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -38,11 +38,12 @@ const structuredData = {
         class="about-photo"
         src={aboutImage}
         alt={site.story.imageAlt}
-        width="600"
-        height="700"
+        width="800"
+        height="800"
         loading="eager"
         decoding="async"
         fetchpriority="high"
+        onerror="this.onerror=null;this.src='/images/kacper.jpg';"
       />
       <div class="about-copy">
         <span class="eyebrow">Moja historia</span>
@@ -108,7 +109,7 @@ const structuredData = {
   }
   .about-photo {
     width: min(100%, 480px);
-    aspect-ratio: 6 / 7;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: var(--radius);
     background: #25282e;
