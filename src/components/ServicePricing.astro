@@ -1,4 +1,6 @@
 ---
+import pricing from '../data/pricing.json';
+
 interface Props {
   lang: 'en' | 'pl';
   pathname: string;
@@ -12,82 +14,94 @@ const type = pathname.includes('hybrid-coaching')
     ? 'online'
     : 'personal';
 
-const content = {
-  en: {
-    personal: {
-      eyebrow: 'Pricing',
-      heading: 'Train more consistently. Pay less per session.',
-      intro: 'Start with a single session or choose a regular 4-week block. The more consistently we train together, the lower the session rate.',
-      plans: [
-        { name: 'Pay as you go', price: '£35', period: 'per session', detail: 'One 60-minute 1:1 session' },
-        { name: '1× weekly', price: '£130', period: '/ 4 weeks', detail: '4 sessions · £32.50 per session' },
-        { name: '2× weekly', price: '£240', period: '/ 4 weeks', detail: '8 sessions · £30 per session' },
-        { name: '3× weekly', price: '£330', period: '/ 4 weeks', detail: '12 sessions · £27.50 per session' }
-      ],
-      note: 'All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran.',
-      cta: 'Book a Free Consultation'
-    },
-    online: {
-      eyebrow: 'Online coaching pricing',
-      heading: 'One complete service. No stripped-back tiers.',
-      intro: 'You get the full coaching system from day one: training, nutrition guidance, app access, progress tracking, check-ins, technique feedback and support between reviews.',
-      plans: [
-        { name: 'Full Online Coaching', price: '£80', period: '/ 4 weeks', detail: 'Initial 12-week commitment · billed £80 every 4 weeks' }
-      ],
-      note: 'The first 12 weeks are the minimum coaching period, but you do not need to pay £240 upfront.',
-      cta: 'Apply for Online Coaching'
-    },
-    hybrid: {
-      eyebrow: 'Hybrid coaching pricing',
-      heading: 'Full online coaching plus regular 1:1 sessions.',
-      intro: 'Hybrid gives you the complete online system and face-to-face coaching in Cwmbran at a stronger package rate than buying both services separately.',
-      plans: [
-        { name: 'Hybrid 1× weekly', price: '£180', period: '/ 4 weeks', detail: 'Full Online Coaching + 4 personal training sessions · save £30' },
-        { name: 'Hybrid 2× weekly', price: '£280', period: '/ 4 weeks', detail: 'Full Online Coaching + 8 personal training sessions · save £40', featured: true }
-      ],
-      note: 'Both Hybrid options include the complete £80 Online Coaching service plus scheduled 1:1 sessions at JD Gyms Cwmbran.',
-      cta: 'Book a Free Consultation'
-    }
-  },
-  pl: {
-    personal: {
-      eyebrow: 'Cennik',
-      heading: 'Im regularniej trenujesz, tym mniej płacisz za pojedynczy trening.',
-      intro: 'Możesz zacząć od pojedynczej sesji albo wybrać regularny pakiet na 4 tygodnie. Większa częstotliwość oznacza niższą cenę jednego treningu.',
-      plans: [
-        { name: 'Pojedynczy trening', price: '£35', period: '/ trening', detail: '1 trening personalny 1:1 · 60 minut' },
-        { name: '1× w tygodniu', price: '£130', period: '/ 4 tygodnie', detail: '4 treningi · £32.50 za trening' },
-        { name: '2× w tygodniu', price: '£240', period: '/ 4 tygodnie', detail: '8 treningów · £30 za trening' },
-        { name: '3× w tygodniu', price: '£330', period: '/ 4 tygodnie', detail: '12 treningów · £27.50 za trening' }
-      ],
-      note: 'Wszystkie pakiety obejmują ustalone treningi 1:1 w JD Gyms Cwmbran.',
-      cta: 'Umów bezpłatną konsultację'
-    },
-    online: {
-      eyebrow: 'Cena prowadzenia online',
-      heading: 'Jedna pełna usługa. Bez okrojonych pakietów.',
-      intro: 'Od początku dostajesz pełne prowadzenie: plan treningowy, wskazówki żywieniowe, aplikację, kontrolę postępów, regularne raporty, ocenę techniki i kontakt między raportami.',
-      plans: [
-        { name: 'Pełne prowadzenie online', price: '£80', period: '/ 4 tygodnie', detail: 'Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie' }
-      ],
-      note: 'Pierwsze 12 tygodni to minimalny okres współpracy, ale nie musisz płacić całych £240 z góry.',
-      cta: 'Zacznij prowadzenie online'
-    },
-    hybrid: {
-      eyebrow: 'Cena prowadzenia hybrydowego',
-      heading: 'Pełne prowadzenie online i regularne treningi 1:1.',
-      intro: 'Hybrid łączy cały system prowadzenia online z treningami na żywo w Cwmbran, a pakiet kosztuje mniej niż kupowanie obu usług osobno.',
-      plans: [
-        { name: 'Hybrid 1× w tygodniu', price: '£180', period: '/ 4 tygodnie', detail: 'Pełne prowadzenie online + 4 treningi 1:1 · oszczędzasz £30' },
-        { name: 'Hybrid 2× w tygodniu', price: '£280', period: '/ 4 tygodnie', detail: 'Pełne prowadzenie online + 8 treningów 1:1 · oszczędzasz £40', featured: true }
-      ],
-      note: 'Oba warianty zawierają pełne prowadzenie online za £80 oraz ustalone treningi 1:1 w JD Gyms Cwmbran.',
-      cta: 'Umów bezpłatną konsultację'
-    }
-  }
+const currency = pricing.currency;
+const local = (value: { en: string; pl: string }) => value[lang];
+const money = (value: number) => `${currency}${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
+const period = (weeks: number) => isPl ? `/ ${weeks} tygodnie` : `/ ${weeks} weeks`;
+const sessionWord = (count: number) => {
+  if (!isPl) return count === 1 ? 'session' : 'sessions';
+  if (count === 1) return 'trening';
+  if (count >= 2 && count <= 4) return 'treningi';
+  return 'treningów';
 };
 
-const copy = content[lang][type];
+const personalPlans = [
+  ...(pricing.personal.payg.enabled
+    ? [{
+        name: local(pricing.personal.payg.name),
+        price: money(pricing.personal.payg.price),
+        period: isPl ? '/ trening' : 'per session',
+        detail: isPl
+          ? `1 trening personalny 1:1 · ${pricing.personal.payg.sessionMinutes} minut`
+          : `One ${pricing.personal.payg.sessionMinutes}-minute 1:1 session`,
+        featured: pricing.personal.payg.featured
+      }]
+    : []),
+  ...pricing.personal.packages
+    .filter(plan => plan.enabled)
+    .map(plan => ({
+      name: local(plan.name),
+      price: money(plan.price),
+      period: period(plan.weeks),
+      detail: isPl
+        ? `${plan.sessions} ${sessionWord(plan.sessions)} · ${money(plan.price / plan.sessions)} ${pricing.labels.perSession.pl}`
+        : `${plan.sessions} ${sessionWord(plan.sessions)} · ${money(plan.price / plan.sessions)} ${pricing.labels.perSession.en}`,
+      featured: plan.featured
+    }))
+];
+
+const onlinePlans = pricing.online.enabled
+  ? [{
+      name: local(pricing.online.name),
+      price: money(pricing.online.price),
+      period: period(pricing.online.billingWeeks),
+      detail: isPl
+        ? `Pierwsze ${pricing.online.minimumWeeks} tygodni współpracy · płatność ${money(pricing.online.price)} co ${pricing.online.billingWeeks} tygodnie`
+        : `Initial ${pricing.online.minimumWeeks}-week commitment · billed ${money(pricing.online.price)} every ${pricing.online.billingWeeks} weeks`,
+      featured: pricing.online.featured
+    }]
+  : [];
+
+const hybridPlans = pricing.hybrid.packages
+  .filter(plan => plan.enabled)
+  .map(plan => {
+    const matchingPersonal = pricing.personal.packages.find(personal => personal.enabled && personal.sessions === plan.sessions);
+    const saving = matchingPersonal ? pricing.online.price + matchingPersonal.price - plan.price : 0;
+    const savingText = saving > 0
+      ? (isPl ? ` · oszczędzasz ${money(saving)}` : ` · save ${money(saving)}`)
+      : '';
+
+    return {
+      name: local(plan.name),
+      price: money(plan.price),
+      period: period(plan.weeks),
+      detail: isPl
+        ? `Pełne prowadzenie online + ${plan.sessions} ${sessionWord(plan.sessions)} 1:1${savingText}`
+        : `Full Online Coaching + ${plan.sessions} personal training ${sessionWord(plan.sessions)}${savingText}`,
+      featured: plan.featured
+    };
+  });
+
+const section = type === 'personal'
+  ? pricing.personal.section
+  : type === 'online'
+    ? pricing.online.section
+    : pricing.hybrid.section;
+
+const plans = type === 'personal'
+  ? personalPlans
+  : type === 'online'
+    ? onlinePlans
+    : hybridPlans;
+
+const copy = {
+  eyebrow: local(section.eyebrow),
+  heading: local(section.heading),
+  intro: local(section.intro),
+  note: local(section.note),
+  cta: local(section.cta)
+};
+
 const contactHref = isPl ? '/pl/contact' : '/contact';
 ---
 <section class="service-pricing" aria-labelledby="service-pricing-heading">
@@ -99,9 +113,9 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
     </div>
 
     <div class:list={['pricing-grid', `pricing-${type}`]}>
-      {copy.plans.map(plan => (
+      {plans.map(plan => (
         <article class:list={['pricing-card', { featured: plan.featured }]}>
-          {plan.featured && <span class="popular">{isPl ? 'Najlepszy wybór' : 'Best value'}</span>}
+          {plan.featured && <span class="popular">{local(pricing.labels.bestValue)}</span>}
           <h3>{plan.name}</h3>
           <p class="price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
           <p class="detail">{plan.detail}</p>
