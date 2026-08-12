@@ -10,8 +10,8 @@
       "pl": "Od"
     },
     "perSession": {
-      "en": "per session",
-      "pl": "za trening"
+      "en": "/session",
+      "pl": "/trening"
     },
     "oneOff": {
       "en": "one-off",
@@ -26,11 +26,11 @@
       },
       "heading": {
         "en": "Train more consistently. Pay less per session.",
-        "pl": "Im regularniej trenujesz, tym mniej płacisz za pojedynczy trening."
+        "pl": "Trenuj częściej, płac mniej."
       },
       "intro": {
         "en": "Start with a single session or choose a regular package. The more consistently we train together, the lower the session rate.",
-        "pl": "Możesz zacząć od pojedynczej sesji albo wybrać regularny pakiet. Większa częstotliwość oznacza niższą cenę jednego treningu."
+        "pl": "Możesz zacząć od pojedynczej sesji albo wybrać regularny pakiet. Większy pakiet oznacza niższą cenę jednego treningu."
       },
       "note": {
         "en": "All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran.",
@@ -105,8 +105,8 @@
         "pl": "Od początku dostajesz pełne prowadzenie: plan treningowy, wskazówki żywieniowe, aplikację, kontrolę postępów, regularne raporty, ocenę techniki i kontakt między raportami."
       },
       "note": {
-        "en": "The minimum coaching period is billed in regular instalments rather than as one upfront payment.",
-        "pl": "Minimalny okres współpracy jest rozliczany w regularnych płatnościach zamiast całej kwoty z góry."
+        "en": " ",
+        "pl": " "
       },
       "cta": {
         "en": "Apply for Online Coaching",
