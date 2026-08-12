@@ -6,6 +6,10 @@ const businessId = `${siteUrl}/#business`;
 const personId = `${siteUrl}/#kacper-kaszowski`;
 const locationId = `${siteUrl}/#jd-gyms-cwmbran-training-location`;
 const sameAs = [siteEn.meta.instagramUrl, siteEn.meta.facebookUrl].filter(Boolean);
+const trainingProvider = {
+  '@type': 'Organization',
+  name: 'Achieve More Training'
+};
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -102,12 +106,16 @@ const structuredData = {
         {
           '@type': 'EducationalOccupationalCredential',
           name: 'Level 3 Certificate in Planning and Delivering Personal Training',
-          credentialCategory: 'Professional qualification'
+          credentialCategory: 'Professional qualification',
+          educationalLevel: 'Level 3',
+          recognizedBy: trainingProvider
         },
         {
           '@type': 'EducationalOccupationalCredential',
           name: 'Level 2 Diploma in Gym Instructing',
-          credentialCategory: 'Professional qualification'
+          credentialCategory: 'Professional qualification',
+          educationalLevel: 'Level 2',
+          recognizedBy: trainingProvider
         }
       ],
       worksFor: { '@id': businessId }
