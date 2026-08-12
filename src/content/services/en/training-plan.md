@@ -5,8 +5,8 @@ tagline: A one-off programme for people who are happy training independently but
   themselves.
 order: 4
 minor: true
-ctaLabel: Ask About a Training Plan
-ctaTarget: /contact
+ctaLabel: Explore the Training Plan
+ctaTarget: /training-plan
 image: /images/20592.webp
 imageAlt: Personalised KK Coaching training plan shown in a structured coaching
   app interface with sets, rep ranges, RIR and rest times
