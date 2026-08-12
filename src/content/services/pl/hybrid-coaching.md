@@ -7,6 +7,8 @@ ctaLabel: "Zobacz coaching hybrydowy"
 ctaTarget: "/pl/hybrid-coaching"
 image: "/images/hybrid-coaching.webp"
 imageAlt: "Coaching hybrydowy w Cwmbran łączący trening personalny 1:1 z pełnym prowadzeniem online"
+detailImage: "/images/hybrid-coaching.webp"
+detailImageAlt: "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran"
 bullets:
   - "Pełne prowadzenie online"
   - "Treningi personalne 1:1 w Cwmbran"
