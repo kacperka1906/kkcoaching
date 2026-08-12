@@ -11,9 +11,19 @@ interface Props {
 }
 const { title, tagline, bullets, ctaLabel, ctaTarget, image, imageAlt, minor = false } = Astro.props;
 const isHybrid = /hybrid|hybryd/i.test(title);
+const isOnline = !isHybrid && /online/i.test(title);
+const isPersonal = !isHybrid && !isOnline && /personal|trening personalny/i.test(title);
+const isPl = /hybryd|trening|trener personalny/i.test(title);
 const badgeLabel = isHybrid
-  ? (/hybryd/i.test(title) ? 'Najszersze prowadzenie' : 'Most complete')
+  ? (isPl ? 'Najszersze prowadzenie' : 'Most complete')
   : '';
+const priceLabel = isHybrid
+  ? (isPl ? 'Od £180 / 4 tygodnie' : 'From £180 / 4 weeks')
+  : isOnline
+    ? (isPl ? '£80 / 4 tygodnie' : '£80 / 4 weeks')
+    : isPersonal
+      ? (isPl ? 'Od £27.50 / trening' : 'From £27.50 / session')
+      : '';
 ---
 <article class:list={['service-card', { minor, featured: isHybrid }]}>
   <div class="media-wrap">
@@ -22,6 +32,7 @@ const badgeLabel = isHybrid
   </div>
   <div class="service-body">
     <h3>{title}</h3>
+    {priceLabel && <p class="service-price">{priceLabel}</p>}
     <p>{tagline}</p>
     <ul>
       {bullets.map(b => <li>{b}</li>)}
@@ -45,7 +56,7 @@ const badgeLabel = isHybrid
     border: 2px solid var(--red);
     box-shadow: 0 12px 30px rgba(23, 25, 29, 0.1);
   }
-  .media-wrap { position: relative; }
+  .media-wrap { position: relative; overflow: hidden; background: #111317; }
   .service-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
   .service-badge {
     position: absolute;
@@ -63,8 +74,15 @@ const badgeLabel = isHybrid
     box-shadow: 0 4px 14px rgba(0,0,0,0.22);
   }
   .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
-  .service-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .service-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
   .featured .service-body h3 { color: var(--red); }
+  .service-price {
+    color: var(--red) !important;
+    font-size: 1.04rem !important;
+    line-height: 1.25;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
   .service-body p { color: var(--steel); font-size: 0.95rem; }
   .service-body ul { list-style: none; margin: 14px 0 22px; font-size: 0.9rem; color: var(--steel); }
   .service-body ul li { padding-left: 18px; position: relative; margin-bottom: 6px; }
@@ -78,6 +96,7 @@ const badgeLabel = isHybrid
   @media (max-width: 620px) {
     .service-body { padding: 22px 18px; }
     .service-body h3 { font-size: 1.12rem; }
+    .service-price { font-size: 1rem !important; }
     .service-body p { font-size: 0.92rem; }
     .service-body ul { font-size: 0.88rem; }
     .service-body .btn { width: 100%; align-self: stretch; }
@@ -87,7 +106,6 @@ const badgeLabel = isHybrid
 </style>
 
 <style is:global>
-  /* Four offer cards compare more cleanly as a balanced 2x2 set than a 3+1 orphan row. */
   main .service-grid.service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

@@ -10,22 +10,12 @@ const aboutUrl = `${siteUrl}${isPl ? '/pl/about' : '/about'}`;
 const sameAs = [siteEn.meta.instagramUrl, siteEn.meta.facebookUrl].filter(Boolean);
 const image = `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`;
 
-const articles = isPl
-  ? [
-      { '@id': `${siteUrl}/pl/resources/jak-wybrac-trenera-personalnego-cwmbran#article` },
-      { '@id': `${siteUrl}/pl/resources/trener-personalny-online-uk-jak-to-dziala#article` }
-    ]
-  : [
-      { '@id': `${siteUrl}/resources/choosing-personal-trainer-cwmbran#article` },
-      { '@id': `${siteUrl}/resources/online-personal-training-uk#article` }
-    ];
-
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
   '@id': `${aboutUrl}#profile`,
   url: aboutUrl,
-  dateModified: '2026-08-12T12:00:00+01:00',
+  dateModified: '2026-08-12T15:30:00+01:00',
   mainEntity: {
     '@type': 'Person',
     '@id': personId,
@@ -49,8 +39,7 @@ const structuredData = {
         educationalLevel: 'Level 2'
       }
     ]
-  },
-  hasPart: articles
+  }
 };
 ---
 <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
