@@ -1,4 +1,4 @@
-name: Build and SEO audit
+name: Build, SEO and performance audit
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,3 +28,39 @@ jobs:
 
       - name: Build and run SEO audit
         run: npm run build
+
+      - name: Start production build locally
+        run: |
+          npx --yes serve@14.2.4 dist --listen 4173 > /tmp/kk-serve.log 2>&1 &
+          echo $! > /tmp/kk-serve.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/kk-serve.log
+          exit 1
+
+      - name: Run Lighthouse mobile and desktop
+        run: |
+          mkdir -p lighthouse-reports
+          routes=("home:/" "personal-training:/personal-training-cwmbran" "online-coaching:/online-coaching" "hybrid-coaching:/hybrid-coaching" "training-plan:/training-plan")
+          for entry in "${routes[@]}"; do
+            name="${entry%%:*}"
+            path="${entry#*:}"
+            npx --yes lighthouse@12.6.0 "http://127.0.0.1:4173${path}" \
+              --quiet \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json \
+              --output-path="lighthouse-reports/${name}-mobile.json"
+            npx --yes lighthouse@12.6.0 "http://127.0.0.1:4173${path}" \
+              --quiet \
+              --preset=desktop \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json \
+              --output-path="lighthouse-reports/${name}-desktop.json"
+          done
+
+      - name: Summarize Lighthouse results
+        run: node scripts/lighthouse-summary.mjs
