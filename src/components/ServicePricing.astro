@@ -1,0 +1,173 @@
+---
+interface Props {
+  lang: 'en' | 'pl';
+  pathname: string;
+}
+
+const { lang, pathname } = Astro.props;
+const isPl = lang === 'pl';
+const type = pathname.includes('hybrid-coaching')
+  ? 'hybrid'
+  : pathname.includes('online-coaching')
+    ? 'online'
+    : 'personal';
+
+const content = {
+  en: {
+    personal: {
+      eyebrow: 'Pricing',
+      heading: 'Train more consistently. Pay less per session.',
+      intro: 'Start with a single session or choose a regular 4-week block. The more consistently we train together, the lower the session rate.',
+      plans: [
+        { name: 'Pay as you go', price: '£35', period: 'per session', detail: 'One 60-minute 1:1 session' },
+        { name: '1× weekly', price: '£130', period: '/ 4 weeks', detail: '4 sessions · £32.50 per session' },
+        { name: '2× weekly', price: '£240', period: '/ 4 weeks', detail: '8 sessions · £30 per session', featured: true },
+        { name: '3× weekly', price: '£330', period: '/ 4 weeks', detail: '12 sessions · £27.50 per session' }
+      ],
+      note: 'All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran.',
+      cta: 'Book a Free Consultation'
+    },
+    online: {
+      eyebrow: 'Online coaching pricing',
+      heading: 'One complete service. No stripped-back tiers.',
+      intro: 'You get the full coaching system from day one: training, nutrition guidance, app access, progress tracking, check-ins, technique feedback and support between reviews.',
+      plans: [
+        { name: 'Full Online Coaching', price: '£80', period: '/ 4 weeks', detail: 'Initial 12-week commitment · billed £80 every 4 weeks', featured: true }
+      ],
+      note: 'The first 12 weeks are the minimum coaching period, but you do not need to pay £240 upfront.',
+      cta: 'Apply for Online Coaching'
+    },
+    hybrid: {
+      eyebrow: 'Hybrid coaching pricing',
+      heading: 'Full online coaching plus regular 1:1 sessions.',
+      intro: 'Hybrid gives you the complete online system and face-to-face coaching in Cwmbran at a stronger package rate than buying both services separately.',
+      plans: [
+        { name: 'Hybrid 1× weekly', price: '£180', period: '/ 4 weeks', detail: 'Full Online Coaching + 4 personal training sessions · save £30' },
+        { name: 'Hybrid 2× weekly', price: '£280', period: '/ 4 weeks', detail: 'Full Online Coaching + 8 personal training sessions · save £40', featured: true }
+      ],
+      note: 'Both Hybrid options include the complete £80 Online Coaching service plus scheduled 1:1 sessions at JD Gyms Cwmbran.',
+      cta: 'Book a Free Consultation'
+    }
+  },
+  pl: {
+    personal: {
+      eyebrow: 'Cennik',
+      heading: 'Im regularniej trenujesz, tym mniej płacisz za pojedynczy trening.',
+      intro: 'Możesz zacząć od pojedynczej sesji albo wybrać regularny pakiet na 4 tygodnie. Większa częstotliwość oznacza niższą cenę jednego treningu.',
+      plans: [
+        { name: 'Pojedynczy trening', price: '£35', period: '/ trening', detail: '1 trening personalny 1:1 · 60 minut' },
+        { name: '1× w tygodniu', price: '£130', period: '/ 4 tygodnie', detail: '4 treningi · £32.50 za trening' },
+        { name: '2× w tygodniu', price: '£240', period: '/ 4 tygodnie', detail: '8 treningów · £30 za trening', featured: true },
+        { name: '3× w tygodniu', price: '£330', period: '/ 4 tygodnie', detail: '12 treningów · £27.50 za trening' }
+      ],
+      note: 'Wszystkie pakiety obejmują ustalone treningi 1:1 w JD Gyms Cwmbran.',
+      cta: 'Umów bezpłatną konsultację'
+    },
+    online: {
+      eyebrow: 'Cena prowadzenia online',
+      heading: 'Jedna pełna usługa. Bez okrojonych pakietów.',
+      intro: 'Od początku dostajesz pełne prowadzenie: plan treningowy, wskazówki żywieniowe, aplikację, kontrolę postępów, regularne raporty, ocenę techniki i kontakt między raportami.',
+      plans: [
+        { name: 'Pełne prowadzenie online', price: '£80', period: '/ 4 tygodnie', detail: 'Pierwsze 12 tygodni współpracy · płatność £80 co 4 tygodnie', featured: true }
+      ],
+      note: 'Pierwsze 12 tygodni to minimalny okres współpracy, ale nie musisz płacić całych £240 z góry.',
+      cta: 'Zacznij prowadzenie online'
+    },
+    hybrid: {
+      eyebrow: 'Cena prowadzenia hybrydowego',
+      heading: 'Pełne prowadzenie online i regularne treningi 1:1.',
+      intro: 'Hybrid łączy cały system prowadzenia online z treningami na żywo w Cwmbran, a pakiet kosztuje mniej niż kupowanie obu usług osobno.',
+      plans: [
+        { name: 'Hybrid 1× w tygodniu', price: '£180', period: '/ 4 tygodnie', detail: 'Pełne prowadzenie online + 4 treningi 1:1 · oszczędzasz £30' },
+        { name: 'Hybrid 2× w tygodniu', price: '£280', period: '/ 4 tygodnie', detail: 'Pełne prowadzenie online + 8 treningów 1:1 · oszczędzasz £40', featured: true }
+      ],
+      note: 'Oba warianty zawierają pełne prowadzenie online za £80 oraz ustalone treningi 1:1 w JD Gyms Cwmbran.',
+      cta: 'Umów bezpłatną konsultację'
+    }
+  }
+};
+
+const copy = content[lang][type];
+const contactHref = isPl ? '/pl/contact' : '/contact';
+---
+<section class="service-pricing" aria-labelledby="service-pricing-heading">
+  <div class="container">
+    <div class="pricing-head">
+      <span class="eyebrow">{copy.eyebrow}</span>
+      <h2 id="service-pricing-heading">{copy.heading}</h2>
+      <p>{copy.intro}</p>
+    </div>
+
+    <div class:list={['pricing-grid', `pricing-${type}`]}>
+      {copy.plans.map(plan => (
+        <article class:list={['pricing-card', { featured: plan.featured }]}>
+          {plan.featured && <span class="popular">{isPl ? 'Najlepszy wybór' : 'Best value'}</span>}
+          <h3>{plan.name}</h3>
+          <p class="price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
+          <p class="detail">{plan.detail}</p>
+        </article>
+      ))}
+    </div>
+
+    <p class="pricing-note">{copy.note}</p>
+    <div class="pricing-cta">
+      <a href={contactHref} class="btn btn-primary">{copy.cta}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-pricing { background: #F3F4F6; padding: 88px 0; border-top: 1px solid #E0E3E7; }
+  .pricing-head { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+  .pricing-head h2 { margin-bottom: 12px; }
+  .pricing-head p { color: var(--steel); }
+  .pricing-grid { display: grid; gap: 18px; max-width: 1100px; margin: 0 auto; }
+  .pricing-personal { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pricing-online { grid-template-columns: minmax(0, 520px); justify-content: center; }
+  .pricing-hybrid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+  .pricing-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid #DDE0E4;
+    border-top: 4px solid #C8CCD1;
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    box-shadow: 0 8px 24px rgba(23,25,29,0.05);
+  }
+  .pricing-card.featured { border: 2px solid var(--red); border-top-width: 4px; }
+  .popular {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.67rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 9px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+  }
+  .pricing-card h3 { font-size: 1.05rem; margin-bottom: 12px; }
+  .price { display: flex; align-items: baseline; gap: 7px; margin-bottom: 12px; }
+  .price strong { color: var(--red); font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1; }
+  .price span { color: var(--steel); font-size: 0.8rem; font-weight: 700; }
+  .detail { color: var(--steel); font-size: 0.9rem; }
+  .pricing-note { max-width: 760px; text-align: center; margin: 26px auto 0; color: var(--steel); font-size: 0.9rem; }
+  .pricing-cta { text-align: center; margin-top: 26px; }
+
+  @media (max-width: 900px) {
+    .pricing-personal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 620px) {
+    .service-pricing { padding: 62px 0; }
+    .pricing-grid, .pricing-personal, .pricing-hybrid { grid-template-columns: 1fr; }
+    .pricing-card { padding: 24px 20px; }
+    .pricing-cta .btn { width: 100%; }
+  }
+</style>
+
+<style is:global>
+  /* Service pages now finish with transparent pricing rather than repeating a second generic CTA block. */
+  main .final-cta { display: none; }
+</style>

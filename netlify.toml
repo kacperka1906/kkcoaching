@@ -45,9 +45,28 @@
   status = 200
   force = true
 
+# Legacy service visuals now resolve to the approved production artwork.
 [[redirects]]
   from = "/images/kacper.png"
-  to = "/images/kacper.jpg"
+  to = "/images/personal-training-cwmbran.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/images/personal-training-cwmbran-placeholder.svg"
+  to = "/images/personal-training-cwmbran.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/images/online-coaching-placeholder.svg"
+  to = "/images/online-coaching-app.webp"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/images/hybrid-coaching-placeholder.svg"
+  to = "/images/hybrid-coaching.webp"
   status = 301
   force = true
 
@@ -59,6 +78,44 @@
 [[redirects]]
   from = "/sitemap.xml"
   to = "/sitemap-index.xml"
+  status = 301
+  force = true
+
+# Fitness Guides / Poradniki were deliberately retired. Preserve any old links
+# by sending visitors to the closest commercial page instead of leaving dead URLs.
+[[redirects]]
+  from = "/resources/choosing-personal-trainer-cwmbran"
+  to = "/personal-training-cwmbran"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/online-personal-training-uk"
+  to = "/online-coaching"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
+  to = "/pl/personal-training-cwmbran"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pl/resources/trener-personalny-online-uk-jak-to-dziala"
+  to = "/pl/online-coaching"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pl/resources"
+  to = "/pl"
   status = 301
   force = true
 
