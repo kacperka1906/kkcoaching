@@ -84,6 +84,23 @@ const robotsContent = noindex
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
   <Analytics />
+
+  <script is:inline>
+    const identityHash = window.location.hash;
+    const needsIdentityWidget = /(?:invite|recovery|confirmation)_token=/.test(identityHash);
+    if (needsIdentityWidget) {
+      const identityScript = document.createElement('script');
+      identityScript.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      identityScript.onload = () => {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('login', () => {
+            window.location.href = '/admin/';
+          });
+        }
+      };
+      document.head.appendChild(identityScript);
+    }
+  </script>
 </body>
 </html>
 
