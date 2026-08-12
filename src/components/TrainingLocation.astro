@@ -26,7 +26,7 @@ const copy = isPl
   ? {
       eyebrow: 'Treningi 1:1 w Cwmbran',
       heading: 'Trening personalny 1:1 w JD Gyms Cwmbran',
-      body: 'Sesje prowadzę w JD Gyms Cwmbran przy Gwent Square, w samym centrum Cwmbran. Masz do dyspozycji pełne zaplecze komercyjnej siłowni do treningu siłowego, pracy nad techniką i prowadzenia progresji bez ograniczania planu do kilku podstawowych maszyn.',
+      body: 'Sesje prowadzę w JD Gyms Cwmbran przy Gwent Square, w samym centrum Cwmbran. Masz do dyspozycji pełne zaplecze komercyjnej siłowni do treningu siłowego, pracy nad techniką i progresji z tygodnia na tydzień.',
       parking: 'Darmowy parking na miejscu',
       bus: 'Mniej niż 5 min od dworca autobusowego',
       train: 'Około 10 min pieszo od stacji kolejowej Cwmbran',
@@ -34,12 +34,15 @@ const copy = isPl
       note: 'Siłownia działa 24/7, ale treningi personalne odbywają się w terminach ustalonych bezpośrednio ze mną.',
       directions: 'Wyznacz trasę',
       service: onLocalServiceLanding ? 'Umów bezpłatną konsultację →' : 'Zobacz trening personalny 1:1 →',
-      mapTitle: 'Mapa lokalizacji JD Gyms Cwmbran'
+      mapTitle: 'Mapa lokalizacji JD Gyms Cwmbran',
+      mapHeading: 'Interaktywna mapa Google',
+      mapInfo: 'Mapa zostanie załadowana z Google dopiero po kliknięciu. Adres i przycisk do wyznaczenia trasy działają bez jej ładowania.',
+      mapLoad: 'Załaduj mapę'
     }
   : {
       eyebrow: '1:1 training in Cwmbran',
       heading: '1:1 Personal Training at JD Gyms Cwmbran',
-      body: 'Sessions take place at JD Gyms Cwmbran on Gwent Square, right in Cwmbran town centre. You have a full commercial-gym setup for strength training, technique work and progressive programming rather than being limited to a small selection of equipment.',
+      body: 'Sessions take place at JD Gyms Cwmbran on Gwent Square, right in Cwmbran town centre. You have a full commercial-gym setup for strength training, technique work and progressive training from week to week.',
       parking: 'Free parking on site',
       bus: 'Less than 5 min from Cwmbran bus station',
       train: 'Around a 10 min walk from Cwmbran train station',
@@ -47,7 +50,10 @@ const copy = isPl
       note: 'The gym is open 24/7, but personal training sessions are arranged with me at agreed times.',
       directions: 'Get directions',
       service: onLocalServiceLanding ? 'Book a free consultation →' : 'Explore 1:1 Personal Training →',
-      mapTitle: 'Map showing JD Gyms Cwmbran'
+      mapTitle: 'Map showing JD Gyms Cwmbran',
+      mapHeading: 'Interactive Google Map',
+      mapInfo: 'The Google map only loads after you choose to open it. The address and directions link work without loading the embedded map.',
+      mapLoad: 'Load interactive map'
     };
 
 const venueFacts = [copy.parking, copy.bus, copy.train, copy.equipment];
@@ -106,16 +112,49 @@ const structuredData = {
     </div>
 
     <div class="map-wrap">
-      <iframe
-        src={mapSrc}
-        title={copy.mapTitle}
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-      ></iframe>
+      <div class="map-placeholder">
+        <span class="map-pin" aria-hidden="true">⌖</span>
+        <strong>{copy.mapHeading}</strong>
+        <p>{copy.mapInfo}</p>
+        <button
+          type="button"
+          class="btn btn-outline-dark map-load-button"
+          data-map-src={mapSrc}
+          data-map-title={copy.mapTitle}
+        >
+          {copy.mapLoad}
+        </button>
+      </div>
+      <noscript>
+        <p class="map-noscript">
+          <a href={directionsHref} target="_blank" rel="noopener">{copy.directions}</a>
+        </p>
+      </noscript>
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.map-load-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const shell = button.closest('.map-wrap');
+      if (!shell) return;
+
+      const src = button.dataset.mapSrc;
+      if (!src) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = button.dataset.mapTitle || 'Map';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.allowFullscreen = true;
+
+      shell.replaceChildren(iframe);
+    }, { once: true });
+  });
+</script>
 
 <style>
   .training-location { padding: 76px 0; border-top: 1px solid #E3E5E8; }
@@ -162,13 +201,38 @@ const structuredData = {
   .location-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .text-link { color: var(--graphite); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
   .text-link:hover { color: var(--red); }
-  .map-wrap { min-width: 0; border: 1px solid #D9DCE0; border-radius: var(--radius); overflow: hidden; background: #E9EBEE; box-shadow: 0 12px 28px rgba(20, 22, 26, 0.08); }
-  .map-wrap iframe { display: block; width: 100%; height: 430px; border: 0; }
+
+  .map-wrap {
+    min-width: 0;
+    min-height: 430px;
+    border: 1px solid #D9DCE0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #ECEEF1;
+    box-shadow: 0 12px 28px rgba(20, 22, 26, 0.08);
+  }
+  .map-wrap :global(iframe) { display: block; width: 100%; height: 430px; border: 0; }
+  .map-placeholder {
+    min-height: 430px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+      linear-gradient(rgba(236,238,241,.86), rgba(236,238,241,.86)),
+      repeating-linear-gradient(45deg, #D9DDE2 0 1px, transparent 1px 18px);
+  }
+  .map-pin { display: grid; place-items: center; width: 54px; height: 54px; margin-bottom: 14px; border-radius: 50%; background: var(--red); color: var(--white); font-size: 1.65rem; font-weight: 800; }
+  .map-placeholder strong { font-size: 1.15rem; }
+  .map-placeholder p { color: var(--steel); max-width: 42ch; margin: 9px auto 20px; font-size: 0.88rem; }
+  .map-noscript { padding: 14px; text-align: center; }
 
   @media (max-width: 820px) {
     .location-grid { grid-template-columns: 1fr; gap: 30px; }
-    .map-wrap { order: 2; }
-    .map-wrap iframe { height: 350px; }
+    .map-wrap { order: 2; min-height: 350px; }
+    .map-wrap :global(iframe), .map-placeholder { height: 350px; min-height: 350px; }
   }
 
   @media (max-width: 620px) {
@@ -177,6 +241,9 @@ const structuredData = {
     .location-actions { display: grid; grid-template-columns: 1fr; gap: 14px; }
     .location-actions .btn { width: 100%; }
     .text-link { text-align: center; }
-    .map-wrap iframe { height: 310px; }
+    .map-wrap { min-height: 310px; }
+    .map-wrap :global(iframe), .map-placeholder { height: 310px; min-height: 310px; }
+    .map-placeholder { padding: 24px 18px; }
+    .map-load-button { width: 100%; }
   }
 </style>
