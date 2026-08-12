@@ -1,6 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.en.json';
+
+const siteUrl = String(Astro.site).replace(/\/$/, '');
+const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${siteUrl}/#kacper-kaszowski`,
+  name: 'Kacper Kaszowski',
+  jobTitle: 'Personal Trainer',
+  url: `${siteUrl}/about`,
+  image: `${siteUrl}/images/kacper.png`,
+  sameAs,
+  worksFor: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#business`,
+    name: 'KK Coaching',
+    url: `${siteUrl}/`
+  }
+};
 ---
 <BaseLayout
   title="Kacper Kaszowski | Personal Trainer in Cwmbran | KK Coaching"
@@ -8,6 +27,7 @@ import site from '../data/site.en.json';
   lang="en"
   path="/about"
   altPath="/pl/about"
+  structuredData={structuredData}
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
