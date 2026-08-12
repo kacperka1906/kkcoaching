@@ -24,13 +24,13 @@ const showTrainingLocation = locationPages.has(pathname);
 const labels = lang === 'pl'
   ? {
       nav: 'Na skróty', services: 'Opcje współpracy', personal: 'Trener personalny Cwmbran', online: 'Coaching online', hybrid: 'Coaching hybrydowy', transformations: 'Przemiany', about: 'O mnie', contact: 'Kontakt',
-      legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin strony',
+      legal: 'Informacje prawne', privacy: 'Polityka prywatności', cookies: 'Polityka cookies', cookieSettings: 'Ustawienia cookies', terms: 'Regulamin strony',
       direct: 'Kontakt', location: 'Treningi 1:1 w Cwmbran · coaching online bez ograniczeń lokalizacji',
       footerSeo: 'Trener personalny Cwmbran · Coaching online · Coaching hybrydowy', home: 'KK Coaching - strona główna'
     }
   : {
       nav: 'Quick links', services: 'Coaching options', personal: 'Personal Training Cwmbran', online: 'Online Coaching', hybrid: 'Hybrid Coaching', transformations: 'Transformations', about: 'About Me', contact: 'Contact',
-      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', terms: 'Website Terms',
+      legal: 'Legal', privacy: 'Privacy Policy', cookies: 'Cookie Policy', cookieSettings: 'Cookie settings', terms: 'Website Terms',
       direct: 'Contact', location: '1:1 training in Cwmbran · online coaching worldwide',
       footerSeo: 'Personal Training Cwmbran · Online Coaching · Hybrid Coaching', home: 'KK Coaching - home'
     };
@@ -73,6 +73,7 @@ const labels = lang === 'pl'
         <ul>
           <li><a href={`${prefix}/privacy`}>{labels.privacy}</a></li>
           <li><a href={`${prefix}/cookies`}>{labels.cookies}</a></li>
+          <li><button type="button" class="footer-link-button" data-cookie-settings>{labels.cookieSettings}</button></li>
           <li><a href={`${prefix}/terms`}>{labels.terms}</a></li>
         </ul>
       </div>
@@ -95,8 +96,19 @@ const labels = lang === 'pl'
   footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
   footer ul { list-style: none; }
   footer ul li { margin-bottom: 8px; overflow-wrap: anywhere; }
-  footer a { text-decoration: none; color: inherit; }
-  footer a:hover { color: var(--white); }
+  footer a,
+  .footer-link-button { text-decoration: none; color: inherit; }
+  footer a:hover,
+  .footer-link-button:hover { color: var(--white); }
+  .footer-link-button {
+    appearance: none;
+    border: 0;
+    background: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
   .footer-bottom {
     border-top: 1px solid #2A2D33;
     padding-top: 20px;
