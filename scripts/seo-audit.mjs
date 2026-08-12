@@ -180,6 +180,12 @@ for (const file of pages) {
     }
   }
 
+  const trainingLocationAt = html.indexOf('<section class="training-location');
+  const mainCloseAt = html.indexOf('</main>');
+  if (trainingLocationAt >= 0 && (mainCloseAt < 0 || trainingLocationAt > mainCloseAt)) {
+    addError(path, 'training location section sits outside <main>');
+  }
+
   pageRecords.push({ path, html, noindex });
 }
 
