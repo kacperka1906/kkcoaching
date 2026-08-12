@@ -69,10 +69,26 @@ const priceLabel = type === 'hybrid' && lowestHybrid
       : type === 'trainingPlan' && pricing.trainingPlan.enabled
         ? `${money(pricing.trainingPlan.price)} · ${oneOffLabel}`
         : '';
+
+// Decap CMS stores uploaded media in public/images. Normally Netlify serves the
+// local path directly. If a fresh CMS upload is temporarily missing from the
+// deployed asset bundle, fall back to the exact same committed file on GitHub
+// instead of showing a broken image.
+const githubFallback = image.startsWith('/images/')
+  ? `https://raw.githubusercontent.com/kacperka1906/kkcoaching/main/public${image}`
+  : '';
 ---
 <article class:list={['service-card', { minor, featured: badgeEnabled }]}>
   <div class="media-wrap">
-    <img src={image} alt={imageAlt} width="400" height="250" loading="lazy" decoding="async" />
+    <img
+      src={image}
+      alt={imageAlt}
+      width="400"
+      height="250"
+      loading="lazy"
+      decoding="async"
+      data-github-fallback={githubFallback || undefined}
+    />
     {badgeEnabled && <span class="service-badge">{badgeLabel}</span>}
   </div>
   <div class="service-body">
@@ -85,6 +101,21 @@ const priceLabel = type === 'hybrid' && lowestHybrid
     <a href={ctaTarget} class:list={['btn', minor ? 'btn-outline-dark' : 'btn-primary']}>{ctaLabel}</a>
   </div>
 </article>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('img[data-github-fallback]').forEach((img) => {
+      if (img.dataset.fallbackBound === '1') return;
+      img.dataset.fallbackBound = '1';
+      img.addEventListener('error', () => {
+        const fallback = img.dataset.githubFallback;
+        if (!fallback || img.dataset.fallbackTried === '1') return;
+        img.dataset.fallbackTried = '1';
+        img.src = fallback;
+      });
+    });
+  })();
+</script>
 
 <style>
   .service-card {
