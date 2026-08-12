@@ -19,13 +19,32 @@ const outcomes = [
 const included = [
   'Indywidualny plan treningowy',
   'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja z planem treningowym i materiałami do ćwiczeń',
+  'Aplikacja coachingowa z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
   'Regularne check-iny i analiza postępów',
   'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
   'Zmiany planu wtedy, kiedy postępy pokazują, że są potrzebne',
   'Ocena techniki na podstawie nagrań z treningu',
   'Kontakt przez WhatsApp pomiędzy check-inami',
   'Wyjaśnienie, dlaczego coś robimy — nie tylko lista poleceń'
+];
+
+const appFeatures = [
+  {
+    title: 'Plan treningowy',
+    body: 'Aktualny plan masz zawsze pod ręką — bez szukania plików, starych wiadomości i kilku wersji tej samej rozpiski.'
+  },
+  {
+    title: 'Instrukcje ćwiczeń',
+    body: 'Przy ćwiczeniach masz potrzebne informacje i materiały, dzięki którym łatwiej wykonać trening zgodnie z planem.'
+  },
+  {
+    title: 'Log treningów',
+    body: 'Zapisujesz ciężary, powtórzenia i wykonane serie, więc progres nie opiera się na pamięci ani zgadywaniu.'
+  },
+  {
+    title: 'Postępy i dane',
+    body: 'Najważniejsze informacje ze współpracy są w jednym miejscu, dzięki czemu łatwiej zobaczyć trend i podejmować kolejne decyzje.'
+  }
 ];
 
 const process = [
@@ -82,7 +101,7 @@ const structuredData = {
       '@id': 'https://kkcoaching.fit/pl/online-coaching#service',
       name: 'Coaching online - trening, żywienie i kontrola postępów',
       serviceType: 'Online Fitness Coaching',
-      description: 'Indywidualny coaching online z planem treningowym, założeniami żywieniowymi, regularnymi check-inami, kontrolą postępów, oceną techniki i stałym wsparciem.',
+      description: 'Indywidualny coaching online z planem treningowym w aplikacji, założeniami żywieniowymi, regularnymi check-inami, kontrolą postępów, oceną techniki i stałym wsparciem.',
       url: 'https://kkcoaching.fit/pl/online-coaching',
       areaServed: [
         { '@type': 'Country', name: 'United Kingdom' },
@@ -90,6 +109,7 @@ const structuredData = {
       ],
       provider: {
         '@type': 'Organization',
+        '@id': 'https://kkcoaching.fit/#business',
         name: 'KK Coaching',
         url: 'https://kkcoaching.fit'
       }
@@ -106,8 +126,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Coaching Online | Trening i Żywienie | KK Coaching"
-  description="Indywidualny coaching online: plan treningowy, założenia żywieniowe, regularne check-iny, kontrola postępów, ocena techniki i kontakt przez WhatsApp."
+  title="Coaching online | Trening i żywienie | KK Coaching"
+  description="Indywidualny coaching online: plan treningowy w aplikacji, założenia żywieniowe, regularne check-iny, kontrola postępów, ocena techniki i kontakt przez WhatsApp."
   lang="pl"
   path="/pl/online-coaching"
   altPath="/online-coaching"
@@ -125,7 +145,7 @@ const structuredData = {
         </div>
         <div class="trust-row" aria-label="Co obejmuje coaching online">
           <span>Plan pod Ciebie</span>
-          <span>Regularne check-iny</span>
+          <span>Aplikacja coachingowa</span>
           <span>Technika z nagrań</span>
           <span>WhatsApp</span>
         </div>
@@ -164,6 +184,24 @@ const structuredData = {
       <ul class="check-list">
         {included.map(item => <li>{item}</li>)}
       </ul>
+    </div>
+  </section>
+
+  <section class="app-section on-white" aria-labelledby="app-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Wszystko w jednej aplikacji</span>
+        <h2 id="app-heading">Plan, treningi i postępy zawsze pod ręką.</h2>
+        <p>Nie musisz szukać rozpiski po wiadomościach ani prowadzić kilku osobnych notatek. Aplikacja jest centrum Twojego prowadzenia online — i jest również częścią coachingu hybrydowego.</p>
+      </div>
+      <div class="app-grid">
+        {appFeatures.map(item => (
+          <article class="app-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -276,6 +314,12 @@ const structuredData = {
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
   .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
 
+  .app-section { padding-top: 88px; }
+  .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .app-card { background: #F6F7F8; border: 1px solid #E2E4E7; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 24px 20px; }
+  .app-card h3 { font-size: 1rem; margin-bottom: 9px; }
+  .app-card p { color: var(--steel); font-size: 0.9rem; }
+
   .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
 
@@ -307,7 +351,7 @@ const structuredData = {
   @media (max-width: 900px) {
     .hero-grid, .split, .coach-grid { grid-template-columns: 1fr; gap: 34px; }
     .three-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .app-grid, .process-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-copy h1 { max-width: none; }
   }
 
@@ -319,6 +363,6 @@ const structuredData = {
     .hero-actions .btn { width: 100%; }
     .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
     .trust-row span { text-align: center; }
-    .process-grid, .results-grid { grid-template-columns: 1fr; }
+    .app-grid, .process-grid, .results-grid { grid-template-columns: 1fr; }
   }
 </style>
