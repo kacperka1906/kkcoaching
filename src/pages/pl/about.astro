@@ -1,13 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import site from '../../data/site.pl.json';
+
+const siteUrl = String(Astro.site).replace(/\/$/, '');
+const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${siteUrl}/#kacper-kaszowski`,
+  name: 'Kacper Kaszowski',
+  jobTitle: 'Trener personalny',
+  url: `${siteUrl}/pl/about`,
+  image: `${siteUrl}/images/kacper.png`,
+  sameAs,
+  worksFor: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#business`,
+    name: 'KK Coaching',
+    url: `${siteUrl}/`
+  }
+};
 ---
 <BaseLayout
-  title="Kacper Kaszowski | Personal Trainer w Cwmbran | KK Coaching"
-  description="Poznaj Kacpra Kaszowskiego, Level 3 Personal Trainera w Cwmbran i założyciela KK Coaching. Własna redukcja ponad 40 kg, trening 1:1 i coaching online."
+  title="Kacper Kaszowski | Trener personalny w Cwmbran | KK Coaching"
+  description="Poznaj Kacpra Kaszowskiego, trenera personalnego w Cwmbran i założyciela KK Coaching. Własna redukcja ponad 40 kg, trening 1:1 i coaching online."
   lang="pl"
   path="/pl/about"
   altPath="/about"
+  structuredData={structuredData}
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
