@@ -1,10 +1,10 @@
 ---
-title: "Hybrid Coaching — 1:1 Personal Training + Full Online Coaching"
-tagline: "The most complete coaching option: full online coaching plus scheduled face-to-face 1:1 sessions in Cwmbran for hands-on technique work, extra accountability and support."
+title: "Hybrid Coaching — Full Online Coaching + 1:1 Personal Training"
+tagline: "The most complete coaching option: everything included in Online Coaching plus regular face-to-face 1:1 sessions in Cwmbran for hands-on technique work and extra accountability."
 order: 3
 minor: false
-ctaLabel: "Ask About Hybrid Coaching"
-ctaTarget: "/contact"
+ctaLabel: "Explore Hybrid Coaching"
+ctaTarget: "/hybrid-coaching"
 image: "/images/hybrid-coaching-placeholder.svg"
 imageAlt: "Hybrid coaching in Cwmbran combining face-to-face personal training with full online coaching"
 bullets:
