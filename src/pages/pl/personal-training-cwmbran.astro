@@ -1,78 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrainingLocation from '../../components/TrainingLocation.astro';
+import details from '../../data/service-details-v2.json';
+import admin from '../../data/admin-v2.json';
 
-const benefits = [
-  {
-    title: 'Chcesz schudnąć i nie wracać ciągle do punktu wyjścia',
-    body: 'Ustalamy realny deficyt, pilnujemy jakości treningu i patrzymy na trend, a nie jeden gorszy tydzień. Plan ma działać również wtedy, kiedy życie nie jest idealne.'
-  },
-  {
-    title: 'Chcesz budować mięśnie zamiast tylko „robić trening”',
-    body: 'Wiesz, po co wykonujesz dane ćwiczenie, co ma się poprawiać i jak wygląda progres. Koniec z przypadkowym dobieraniem ćwiczeń z treningu na trening.'
-  },
-  {
-    title: 'Chcesz w końcu czuć się pewnie na siłowni',
-    body: 'Na żywo poprawiamy technikę, ustawienie i wykonanie. Z czasem przestajesz zastanawiać się przy każdej serii, czy robisz wszystko dobrze.'
-  }
-];
-
-const included = [
-  'Bezpłatna konsultacja i ustalenie konkretnego celu',
-  'Trening personalny 1:1 w JD Gyms Cwmbran',
-  'Plan treningowy dopasowany do Twojego poziomu i grafiku',
-  'Nauka techniki i korekta ćwiczeń na żywo',
-  'Jasne zasady progresji — wiesz, czego oczekujemy od kolejnych tygodni',
-  'Regularna kontrola postępów',
-  'Praktyczne wskazówki dotyczące aktywności, kalorii i żywienia',
-  'Możliwość rozszerzenia współpracy o coaching online lub hybrydowy'
-];
-
-const process = [
-  {
-    num: '01',
-    title: 'Najpierw poznaję Twój punkt startowy',
-    body: 'Rozmawiamy o celu, doświadczeniu, grafiku, wcześniejszych próbach i o tym, co dziś najbardziej utrudnia Ci osiągnięcie efektu.'
-  },
-  {
-    num: '02',
-    title: 'Układam plan pod Ciebie',
-    body: 'Dobieram trening do Twojego poziomu, możliwości, dostępnych dni i celu. Nie dostajesz gotowca skopiowanego od kogoś innego.'
-  },
-  {
-    num: '03',
-    title: 'Trenujemy z konkretnym celem',
-    body: 'Na sesjach 1:1 pracujemy nad techniką, intensywnością i progresją. Każdy element planu ma swoje zadanie.'
-  },
-  {
-    num: '04',
-    title: 'Sprawdzamy efekty i reagujemy',
-    body: 'Patrzymy na wyniki treningowe, pomiary i realizację planu. Jeśli coś działa — nie ruszamy tego. Jeśli nie działa — wiemy, co zmienić.'
-  }
-];
-
-const faqs = [
-  {
-    q: 'Czy muszę mieć doświadczenie na siłowni, żeby zacząć?',
-    a: 'Nie. Jeśli dopiero zaczynasz, zaczniemy od podstaw: techniki, obsługi sprzętu i prostego planu, który rozumiesz. Jeśli już trenujesz, skupimy się na tym, co można poprawić, żeby Twój trening dawał więcej.'
-  },
-  {
-    q: 'Czy trening personalny pomoże mi schudnąć albo zbudować mięśnie?',
-    a: 'Tak, ale sam trening to tylko część układanki. W zależności od celu bierzemy też pod uwagę aktywność, kalorie i sposób odżywiania. Inaczej podejdziemy do redukcji, inaczej do budowania mięśni czy rekompozycji.'
-  },
-  {
-    q: 'Gdzie odbywają się treningi?',
-    a: 'Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dokładne godziny ustalamy podczas bezpłatnej konsultacji.'
-  },
-  {
-    q: 'Co jeśli potrzebuję wsparcia również pomiędzy treningami?',
-    a: 'Możemy rozszerzyć współpracę o coaching hybrydowy lub online. Wtedy poza treningami 1:1 dochodzą m.in. regularne raporty, dokładniejsza analiza postępów, wsparcie żywieniowe i kontakt pomiędzy sesjami.'
-  },
-  {
-    q: 'Jak zacząć?',
-    a: 'Umów bezpłatną konsultację. Powiedz mi, jaki masz cel, gdzie jesteś teraz i z czym masz największy problem. Na tej podstawie powiem Ci, czy trening 1:1 będzie dla Ciebie najlepszą opcją.'
-  }
-];
+const lang = 'pl';
+const copy = details.personalTraining;
+const faqs = copy.faq.items.map(item => ({ q: item.q[lang], a: item.a[lang] }));
+const trustPoints = copy.hero.trustPoints.map(item => item[lang]).filter(Boolean);
+const location = admin.location;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -80,202 +16,55 @@ const structuredData = {
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/personal-training-cwmbran#service',
-      name: 'Polski trener personalny w Cwmbran — trening 1:1',
+      name: copy.hero.heading[lang],
       serviceType: 'Personal Training',
-      description: 'Polski trener personalny w Cwmbran. Trening 1:1 w JD Gyms Cwmbran z indywidualnym planem, nauką techniki, kontrolą postępów i praktycznym wsparciem żywieniowym.',
+      description: copy.seo.description[lang],
       url: 'https://kkcoaching.fit/pl/personal-training-cwmbran',
-      areaServed: {
-        '@type': 'AdministrativeArea',
-        name: 'Cwmbran, Torfaen, South Wales'
-      },
-      provider: {
-        '@type': 'Organization',
-        '@id': 'https://kkcoaching.fit/#business',
-        name: 'KK Coaching',
-        url: 'https://kkcoaching.fit'
-      },
+      areaServed: { '@type': 'AdministrativeArea', name: `${location.city}, Torfaen, South Wales` },
+      provider: { '@type': 'Organization', '@id': 'https://kkcoaching.fit/#business', name: admin.brand.siteName, url: 'https://kkcoaching.fit' },
       availableChannel: {
         '@type': 'ServiceChannel',
         serviceLocation: {
           '@type': 'Place',
           '@id': 'https://kkcoaching.fit/#jd-gyms-cwmbran-training-location',
-          name: 'JD Gyms Cwmbran',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: '17-18 Gwent Square',
-            addressLocality: 'Cwmbran',
-            postalCode: 'NP44 1PW',
-            addressCountry: 'GB'
-          }
+          name: location.venueName,
+          address: { '@type': 'PostalAddress', streetAddress: location.addressLine1, addressLocality: location.city, postalCode: location.postcode, addressCountry: location.country }
         }
       }
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqs.map(item => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a }
-      }))
-    }
+    { '@type': 'FAQPage', mainEntity: faqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) }
   ]
 };
 ---
-<BaseLayout
-  title="Polski trener personalny w Cwmbran | KK Coaching"
-  description="Polski trener personalny w Cwmbran. Trening 1:1 w JD Gyms, indywidualny plan, technika, redukcja, budowanie mięśni i kontrola postępów."
-  lang="pl"
-  path="/pl/personal-training-cwmbran"
-  altPath="/personal-training-cwmbran"
-  structuredData={structuredData}
->
+<BaseLayout title={copy.seo.title[lang]} description={copy.seo.description[lang]} lang="pl" path="/pl/personal-training-cwmbran" altPath="/personal-training-cwmbran" structuredData={structuredData}>
   <section class="local-hero on-dark">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Trening 1:1 w JD Gyms Cwmbran</span>
-        <h1>Polski trener personalny w Cwmbran</h1>
-        <p class="lead">Prowadzę treningi po polsku i angielsku. Dostajesz plan dopasowany do Ciebie, korektę techniki na żywo i jasny kierunek, dzięki któremu wiesz, co robić na każdym treningu.</p>
-        <div class="hero-actions">
-          <a href="/pl/contact" class="btn btn-primary">Umów bezpłatną konsultację</a>
-          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany podopiecznych</a>
-        </div>
-        <div class="trust-row" aria-label="Dlaczego KK Coaching">
-          <span>JD Gyms Cwmbran</span>
-          <span>Polski + English</span>
-          <span>Własna metamorfoza: 117 → 76 kg</span>
-          <span>Indywidualne prowadzenie — bez gotowców</span>
-        </div>
+        <span class="eyebrow">{copy.hero.eyebrow[lang]}</span>
+        <h1>{copy.hero.heading[lang]}</h1>
+        <p class="lead">{copy.hero.lead[lang]}</p>
+        <div class="hero-actions"><a href={copy.hero.primaryHref[lang]} class="btn btn-primary">{copy.hero.primaryCta[lang]}</a><a href={copy.hero.secondaryHref[lang]} class="btn btn-secondary">{copy.hero.secondaryCta[lang]}</a></div>
+        <div class="trust-row" aria-label={copy.hero.trustAria[lang]}>{trustPoints.map(item => <span>{item}</span>)}</div>
       </div>
-      <div class="hero-media">
-        <img src="/images/kacper-hero.webp" alt="Kacper Kaszowski, polski trener personalny w Cwmbran" width="720" height="540" />
-      </div>
+      <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
   </section>
 
-  <section class="on-white" aria-labelledby="fit-heading">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Dla kogo</span>
-        <h2 id="fit-heading">Nie musisz najpierw „ogarnąć się”, żeby zacząć.</h2>
-        <p>Możesz dopiero zaczynać, wracać po przerwie albo trenować od lat i nadal nie widzieć efektów, których oczekujesz. Zaczynamy od Twojej sytuacji i budujemy plan, który ma sens właśnie dla Ciebie.</p>
-      </div>
-      <div class="three-grid">
-        {benefits.map(item => (
-          <article class="info-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <section class="on-white" aria-labelledby="fit-heading"><div class="container"><div class="section-head"><span class="eyebrow">{copy.fit.eyebrow[lang]}</span><h2 id="fit-heading">{copy.fit.heading[lang]}</h2><p>{copy.fit.body[lang]}</p></div><div class="three-grid">{copy.fit.cards.map(item => <article class="info-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
 
-  <section class="on-dark" aria-labelledby="included-heading">
-    <div class="container split">
-      <div>
-        <span class="eyebrow">Co dostajesz</span>
-        <h2 id="included-heading">Nie stoję obok tylko po to, żeby liczyć powtórzenia.</h2>
-        <p class="dark-copy">Chcę, żebyś z czasem rozumiał swój trening, wiedział jak progresować i potrafił ocenić, czy plan działa. Moim zadaniem jest prowadzić Cię, poprawiać błędy i dać Ci system, który ma sens.</p>
-      </div>
-      <ul class="check-list">
-        {included.map(item => <li>{item}</li>)}
-      </ul>
-    </div>
-  </section>
+  <section class="on-dark" aria-labelledby="included-heading"><div class="container split"><div><span class="eyebrow">{copy.included.eyebrow[lang]}</span><h2 id="included-heading">{copy.included.heading[lang]}</h2><p class="dark-copy">{copy.included.body[lang]}</p></div><ul class="check-list">{copy.included.items.map(item => <li>{item[lang]}</li>)}</ul></div></section>
 
-  <section aria-labelledby="process-heading">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Jak to działa</span>
-        <h2 id="process-heading">Wiesz, co robisz od pierwszego treningu.</h2>
-        <p>Bez losowych ćwiczeń i bez zmieniania wszystkiego po jednym gorszym tygodniu. Mamy plan, kontrolujemy efekt i reagujemy wtedy, kiedy jest ku temu powód.</p>
-      </div>
-      <div class="process-grid">
-        {process.map(item => (
-          <article class="process-card">
-            <span class="num">{item.num}</span>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <section aria-labelledby="process-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.process.eyebrow[lang]}</span><h2 id="process-heading">{copy.process.heading[lang]}</h2><p>{copy.process.body[lang]}</p></div><div class="process-grid">{copy.process.steps.map(item => <article class="process-card"><span class="num">{item.num}</span><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
 
-  <section class="coach-proof on-white" aria-labelledby="coach-heading">
-    <div class="container proof-grid">
-      <img src="/images/photo-collage.png-1-.png" alt="Własna przemiana Kacpra Kaszowskiego od około 117 kg do 76 kg" width="650" height="520" loading="lazy" />
-      <div>
-        <span class="eyebrow">Dlaczego tak pracuję</span>
-        <h2 id="coach-heading">Wiem, jak łatwo pogubić się w sprzecznych poradach i ciągłych zmianach.</h2>
-        <p>Sam przeszedłem drogę od około 117 kg do 76 kg, a później krok po kroku przebudowałem sylwetkę. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i niepotrzebne komplikowanie rzeczy, które powinny być proste.</p>
-        <p>Dziś chcę oszczędzić klientom tego chaosu. Ustalamy cel, robimy plan, realizujemy go wystarczająco długo i wyciągamy wnioski z realnych postępów.</p>
-        <div class="mini-stats">
-          <div><strong>117 kg</strong><span>punkt startowy</span></div>
-          <div><strong>76 kg</strong><span>punkt przemiany</span></div>
-          <div><strong>1:1 + online</strong><span>formy współpracy</span></div>
-        </div>
-        <a href="/pl/about" class="text-link">Poznaj moją historię →</a>
-      </div>
-    </div>
-  </section>
+  <section class="coach-proof on-white" aria-labelledby="coach-heading"><div class="container proof-grid"><img src={copy.coachProof.image} alt={copy.coachProof.imageAlt[lang]} width="650" height="520" loading="lazy" /><div><span class="eyebrow">{copy.coachProof.eyebrow[lang]}</span><h2 id="coach-heading">{copy.coachProof.heading[lang]}</h2>{copy.coachProof.paragraphs.map(item => <p>{item[lang]}</p>)}<div class="mini-stats">{copy.coachProof.stats.map(item => <div><strong>{item.value}</strong><span>{item.label[lang]}</span></div>)}</div><a href={copy.coachProof.href[lang]} class="text-link">{copy.coachProof.cta[lang]}</a></div></div></section>
 
-  <section aria-labelledby="results-heading">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Efekty podopiecznych</span>
-        <h2 id="results-heading">Efekty robi regularność, nie perfekcja.</h2>
-        <p>Każdy z tych rezultatów powstał w normalnym życiu — z pracą, gorszymi dniami i obowiązkami. Plan ma pomagać robić progres mimo tego, a nie wymagać idealnych warunków.</p>
-      </div>
-      <div class="results-grid">
-        <article class="result-card">
-          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="16-tygodniowa przemiana Anety w KK Coaching — 10 kg mniej i 12 cm mniej w talii" width="600" height="750" loading="lazy" />
-          <div class="result-copy">
-            <span>ANETA · 16 TYGODNI</span>
-            <h3>-10 kg · -12 cm w talii</h3>
-            <p>Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania — a na tym nie kończymy.</p>
-          </div>
-        </article>
-        <article class="result-card">
-          <img src="/images/client-transformation-agnieszka-16-weeks.svg" alt="16-tygodniowa przemiana sylwetki Agnieszki w KK Coaching" width="600" height="750" loading="lazy" />
-          <div class="result-copy">
-            <span>AGNIESZKA · 16 TYGODNI</span>
-            <h3>-3 kg · +8 cm w biodrach</h3>
-            <p>Plan dopasowany do jej życia i konsekwencja zamiast próby robienia wszystkiego idealnie.</p>
-          </div>
-        </article>
-      </div>
-      <div class="center-cta"><a href="/pl/transformations" class="btn btn-outline-dark">Zobacz wszystkie przemiany</a></div>
-    </div>
-  </section>
+  <section aria-labelledby="results-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.results.eyebrow[lang]}</span><h2 id="results-heading">{copy.results.heading[lang]}</h2><p>{copy.results.body[lang]}</p></div><div class="results-grid">{copy.results.items.map(item => <article class="result-card"><img src={item.image} alt={item.imageAlt[lang]} width="600" height="750" loading="lazy" /><div class="result-copy"><span>{item.meta[lang]}</span><h3>{item.heading[lang]}</h3><p>{item.body[lang]}</p></div></article>)}</div><div class="center-cta"><a href={copy.results.href[lang]} class="btn btn-outline-dark">{copy.results.cta[lang]}</a></div></div></section>
 
   <TrainingLocation lang="pl" />
 
-  <section class="on-white" aria-labelledby="faq-heading">
-    <div class="container faq-wrap">
-      <div class="section-head centered">
-        <span class="eyebrow">Pytania</span>
-        <h2 id="faq-heading">Polski trener personalny w Cwmbran — FAQ</h2>
-      </div>
-      <div class="faq-list">
-        {faqs.map(item => (
-          <details class="faq-item">
-            <summary>{item.q}</summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <section class="on-white" aria-labelledby="faq-heading"><div class="container faq-wrap"><div class="section-head centered"><span class="eyebrow">{copy.faq.eyebrow[lang]}</span><h2 id="faq-heading">{copy.faq.heading[lang]}</h2></div><div class="faq-list">{faqs.map(item => <details class="faq-item"><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
 
-  <section class="final-cta">
-    <div class="container">
-      <span class="eyebrow light">Zacznijmy od rozmowy</span>
-      <h2>Chcesz zacząć? Najpierw pogadajmy.</h2>
-      <p>Powiedz mi, jaki masz cel, gdzie jesteś teraz i co do tej pory najbardziej Ci przeszkadzało. Konsultacja jest bezpłatna i bez zobowiązań.</p>
-      <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
-    </div>
-  </section>
+  <section class="final-cta"><div class="container"><span class="eyebrow light">{copy.finalCta.eyebrow[lang]}</span><h2>{copy.finalCta.heading[lang]}</h2><p>{copy.finalCta.body[lang]}</p><a href={copy.finalCta.href[lang]} class="btn btn-secondary">{copy.finalCta.cta[lang]}</a></div></section>
 </BaseLayout>
 
 <style>
@@ -287,21 +76,17 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; max-height: 620px; object-fit: cover; object-position: center top; border-radius: var(--radius); border: 1px solid #363A40; }
-
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
   .info-card { border-top: 3px solid var(--red); }
   .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
   .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
-
   .dark-copy { color: #C0C4CA; max-width: 58ch; }
   .check-list { list-style: none; display: grid; gap: 12px; }
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
   .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
-
   .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
-
   .coach-proof img { width: 100%; border-radius: var(--radius); }
   .proof-grid p { color: var(--steel); margin-bottom: 14px; }
   .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0 18px; }
@@ -309,7 +94,6 @@ const structuredData = {
   .mini-stats strong { display: block; color: var(--red); font-size: clamp(1rem, 2vw, 1.35rem); white-space: normal; line-height: 1.1; }
   .mini-stats span { display: block; color: var(--steel); text-transform: uppercase; font-size: 0.64rem; margin-top: 7px; letter-spacing: 0.04em; }
   .text-link { color: var(--red); font-weight: 700; text-decoration: none; }
-
   .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; }
   .result-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); overflow: hidden; }
   .result-card img { width: 100%; height: auto; }
@@ -318,7 +102,6 @@ const structuredData = {
   .result-copy h3 { margin: 8px 0; font-size: 1.05rem; }
   .result-copy p { color: var(--steel); font-size: 0.9rem; }
   .center-cta { text-align: center; margin-top: 34px; }
-
   .faq-wrap { max-width: 860px; }
   .faq-list { border-top: 1px solid #D8DBDE; }
   .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
@@ -327,31 +110,10 @@ const structuredData = {
   .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
   .faq-item[open] summary::after { content: '−'; }
   .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
-
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
   .final-cta .eyebrow.light { color: #FFDDE1; }
   .final-cta h2 { color: var(--white); max-width: 720px; margin: 0 auto 14px; }
   .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
-
-  @media (max-width: 900px) {
-    .hero-grid, .proof-grid, .split { grid-template-columns: 1fr; gap: 34px; }
-    .three-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-copy h1 { max-width: none; }
-  }
-
-  @media (max-width: 620px) {
-    .local-hero { padding: 48px 0 56px; }
-    .hero-copy h1 { font-size: clamp(2.05rem, 10vw, 2.8rem); }
-    .hero-copy .lead { font-size: 1rem; }
-    .hero-actions { display: grid; grid-template-columns: 1fr; }
-    .hero-actions .btn { width: 100%; }
-    .trust-row { display: grid; grid-template-columns: 1fr; }
-    .trust-row span { text-align: center; }
-    .process-grid, .results-grid { grid-template-columns: 1fr; }
-    .mini-stats { gap: 6px; }
-    .mini-stats div { padding: 12px 5px; }
-    .mini-stats strong { font-size: 0.96rem; }
-    .mini-stats span { font-size: 0.56rem; }
-  }
+  @media (max-width: 900px) { .hero-grid, .proof-grid, .split { grid-template-columns: 1fr; gap: 34px; } .three-grid { grid-template-columns: 1fr; } .process-grid { grid-template-columns: repeat(2, 1fr); } .hero-copy h1 { max-width: none; } }
+  @media (max-width: 620px) { .local-hero { padding: 48px 0 56px; } .hero-copy h1 { font-size: clamp(2.05rem, 10vw, 2.8rem); } .hero-copy .lead { font-size: 1rem; } .hero-actions { display: grid; grid-template-columns: 1fr; } .hero-actions .btn { width: 100%; } .trust-row { display: grid; grid-template-columns: 1fr; } .trust-row span { text-align: center; } .process-grid, .results-grid { grid-template-columns: 1fr; } .mini-stats { gap: 6px; } .mini-stats div { padding: 12px 5px; } .mini-stats strong { font-size: 0.96rem; } .mini-stats span { font-size: 0.56rem; } }
 </style>
