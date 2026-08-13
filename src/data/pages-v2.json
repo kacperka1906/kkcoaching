@@ -1,0 +1,161 @@
+{
+  "services": {
+    "seo": {
+      "title": { "en": "Personal Training & Online Coaching Options | KK Coaching", "pl": "Trening personalny i coaching online | Opcje współpracy | KK Coaching" },
+      "description": {
+        "en": "Compare 1:1 personal training in Cwmbran, full online coaching, hybrid 1:1 + online coaching and personalised training plans with KK Coaching.",
+        "pl": "Porównaj trening personalny 1:1 w Cwmbran, coaching online, coaching hybrydowy 1:1 + online oraz jednorazowy plan treningowy KK Coaching."
+      }
+    },
+    "heroHeading": { "en": "Personal Training, Online Coaching & Training Plans", "pl": "Trening personalny, coaching online i plany treningowe" },
+    "guideAria": { "en": "Quick comparison of coaching options", "pl": "Szybkie porównanie opcji współpracy" },
+    "guideItems": [
+      {
+        "enabled": true,
+        "featured": false,
+        "badge": { "en": "", "pl": "" },
+        "title": { "en": "1:1 Personal Training", "pl": "Trening personalny 1:1" },
+        "description": { "en": "Face-to-face coaching in Cwmbran", "pl": "Prowadzenie na żywo w Cwmbran" },
+        "href": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" }
+      },
+      {
+        "enabled": true,
+        "featured": false,
+        "badge": { "en": "", "pl": "" },
+        "title": { "en": "Online Coaching", "pl": "Coaching online" },
+        "description": { "en": "Complete remote coaching and app support", "pl": "Pełne prowadzenie zdalne i aplikacja" },
+        "href": { "en": "/online-coaching", "pl": "/pl/online-coaching" }
+      },
+      {
+        "enabled": true,
+        "featured": true,
+        "badge": { "en": "Most complete", "pl": "Najszersze prowadzenie" },
+        "title": { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
+        "description": { "en": "Everything online + regular 1:1 sessions", "pl": "Wszystko z online + regularne treningi 1:1" },
+        "href": { "en": "/hybrid-coaching", "pl": "/pl/hybrid-coaching" }
+      },
+      {
+        "enabled": true,
+        "featured": false,
+        "badge": { "en": "", "pl": "" },
+        "title": { "en": "Training Plan", "pl": "Plan treningowy" },
+        "description": { "en": "One-off personalised programme without ongoing coaching", "pl": "Jednorazowy indywidualny plan bez stałego prowadzenia" },
+        "href": { "en": "/training-plan", "pl": "/pl/training-plan" }
+      }
+    ]
+  },
+  "about": {
+    "seo": {
+      "title": { "en": "Kacper Kaszowski | Personal Trainer in Cwmbran | KK Coaching", "pl": "Kacper Kaszowski | Trener personalny w Cwmbran | KK Coaching" },
+      "description": {
+        "en": "Meet Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching. From a 117 to 76 kg transformation to structured 1:1 and online coaching.",
+        "pl": "Poznaj Kacpra Kaszowskiego, trenera personalnego w Cwmbran i założyciela KK Coaching. Własna przemiana 117 → 76 kg, treningi 1:1 i coaching online."
+      },
+      "socialAlt": { "en": "Kacper Kaszowski, founder of KK Coaching", "pl": "Kacper Kaszowski, założyciel KK Coaching" }
+    },
+    "image": "/images/kacper-kaszowski-personal-trainer-cwmbran.jpg",
+    "imageAlt": { "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching", "pl": "Kacper Kaszowski, trener personalny w Cwmbran i założyciel KK Coaching" },
+    "heroEyebrow": { "en": "Meet your coach", "pl": "Moja historia" },
+    "lessons": {
+      "eyebrow": { "en": "Lessons from the process", "pl": "Co wyniosłem z własnej przemiany" },
+      "heading": { "en": "What losing 40+ kg actually taught me", "pl": "40+ kg mniej nauczyło mnie znacznie więcej niż samej redukcji" },
+      "cards": [
+        {
+          "title": { "en": "Consistency beats intensity", "pl": "Nie potrzebujesz idealnego tygodnia" },
+          "body": {
+            "en": "The hardest part is not completing one perfect workout or following one perfect week of dieting. It is building a routine you can repeat for months. That is why my coaching prioritises consistent execution before unnecessary extremes.",
+            "pl": "Jeden świetny tydzień nie zmienia sylwetki. Liczy się to, czy potrafisz wrócić do planu po gorszym dniu, wyjeździe albo cięższym okresie w pracy. Dlatego wolę plan, który jesteś w stanie realizować długo, niż perfekcję przez kilka dni."
+          }
+        },
+        {
+          "title": { "en": "A plan has to fit real life", "pl": "Plan ma być do zrobienia, nie do podziwiania" },
+          "body": {
+            "en": "The best programme on paper is useless if your schedule, experience or lifestyle make it impossible to follow. Training and nutrition have to work around your life, not the other way around.",
+            "pl": "Można rozpisać trening i dietę, które wyglądają świetnie na papierze, ale jeśli nie pasują do Twojego grafiku i możliwości, szybko lądują w szufladzie. Najpierw patrzę na człowieka, dopiero potem układam szczegóły."
+          }
+        },
+        {
+          "title": { "en": "Progress needs to be measured", "pl": "Bez danych łatwo zacząć zgadywać" },
+          "body": {
+            "en": "Body weight is only one piece of information. Training performance, measurements, photos and adherence help show whether the plan is working and when something genuinely needs to change.",
+            "pl": "Waga to tylko jedna część obrazu. Wyniki treningowe, pomiary, zdjęcia i regularność pokazują znacznie więcej. Dzięki temu nie zmieniamy planu tylko dlatego, że jeden pomiar albo jeden dzień wygląda gorzej."
+          }
+        }
+      ]
+    },
+    "qualifications": {
+      "eyebrow": { "en": "Qualifications", "pl": "Kwalifikacje" },
+      "heading": { "en": "Professional qualifications", "pl": "Kwalifikacje zawodowe" },
+      "items": [
+        {
+          "title": "Level 3 Personal Trainer",
+          "description": { "en": "Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026", "pl": "Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026" }
+        },
+        {
+          "title": "Level 2 Gym Instructor",
+          "description": { "en": "Diploma in Gym Instructing · Achieve More Training · 2026", "pl": "Diploma in Gym Instructing · Achieve More Training · 2026" }
+        }
+      ]
+    }
+  },
+  "contact": {
+    "seo": {
+      "title": { "en": "Free Personal Training Consultation Cwmbran | KK Coaching", "pl": "Bezpłatna konsultacja | KK Coaching Cwmbran" },
+      "description": {
+        "en": "Book a free KK Coaching consultation for personal training in Cwmbran, online coaching or hybrid coaching. Tell me your goal and what is holding you back.",
+        "pl": "Napisz do KK Coaching w sprawie treningu personalnego 1:1 w Cwmbran, coachingu online, coachingu hybrydowego lub indywidualnego planu treningowego."
+      }
+    },
+    "hero": {
+      "eyebrow": { "en": "Start here", "pl": "Zacznijmy od rozmowy" },
+      "heading": { "en": "Book Your Free Consultation", "pl": "Umów bezpłatną konsultację" },
+      "body": {
+        "en": "Tell me where you are now, what you want to achieve and what has been getting in the way. There is no pressure to commit - we will simply work out whether I can help and which option fits best.",
+        "pl": "Opisz krótko swój cel i to, z czym masz teraz największy problem. Odpowiem, zadam kilka konkretnych pytań i podpowiem, która forma współpracy ma w Twojej sytuacji najwięcej sensu."
+      }
+    },
+    "form": {
+      "name": { "en": "Name", "pl": "Imię" },
+      "email": { "en": "Email", "pl": "E-mail" },
+      "phone": { "en": "Phone / WhatsApp", "pl": "Telefon / WhatsApp" },
+      "location": { "en": "Location", "pl": "Gdzie mieszkasz?" },
+      "locationPlaceholder": { "en": "e.g. Cwmbran, Cardiff, or online", "pl": "np. Cwmbran, Cardiff, Londyn albo poza UK" },
+      "language": { "en": "Preferred language", "pl": "Preferowany język" },
+      "languageOptions": [
+        { "value": "English", "label": { "en": "English", "pl": "English" } },
+        { "value": "Polish", "label": { "en": "Polish", "pl": "Polski" } }
+      ],
+      "interest": { "en": "Interested in", "pl": "Jaka forma współpracy Cię interesuje?" },
+      "interestOptions": [
+        { "en": "Personal Training", "pl": "Trening personalny 1:1 w Cwmbran" },
+        { "en": "Online Coaching", "pl": "Coaching online" },
+        { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
+        { "en": "Training Plan", "pl": "Indywidualny plan treningowy" },
+        { "en": "Not sure yet", "pl": "Jeszcze nie wiem" }
+      ],
+      "goal": { "en": "What would you like to achieve?", "pl": "Jaki jest Twój główny cel?" },
+      "goalPlaceholder": { "en": "Fat loss, muscle gain, getting stronger, feeling more confident in the gym...", "pl": "np. redukcja, budowanie mięśni, powrót do regularnych treningów..." },
+      "blocker": { "en": "What is currently holding you back?", "pl": "Co najbardziej utrudnia Ci osiągnięcie tego celu?" },
+      "blockerPlaceholder": { "en": "Time, consistency, nutrition, not knowing what to do, or not having a clear plan...", "pl": "np. brak regularności, problem z dietą, brak planu, mało czasu..." },
+      "consentBefore": { "en": "I agree to be contacted and I have read the", "pl": "Zgadzam się na kontakt w sprawie mojego zapytania i zapoznałem/am się z" },
+      "privacyLabel": { "en": "Privacy Policy", "pl": "Polityką prywatności" },
+      "privacyHref": { "en": "/privacy", "pl": "/pl/privacy" },
+      "submit": { "en": "Send My Enquiry", "pl": "Wyślij zgłoszenie" },
+      "note": { "en": "No pressure, no sales script. I usually reply within 24 hours.", "pl": "Zwykle odpowiadam w ciągu 24 godzin. Jeśli wolisz, możesz też od razu napisać do mnie na WhatsApp." },
+      "sending": { "en": "Sending...", "pl": "Wysyłanie..." },
+      "error": { "en": "Something went wrong sending your message. Please try WhatsApp or email instead.", "pl": "Coś poszło nie tak podczas wysyłania. Spróbuj przez WhatsApp lub e-mail." }
+    }
+  },
+  "transformations": {
+    "seo": {
+      "title": { "en": "Client Transformations | Personal Trainer Cwmbran | KK Coaching", "pl": "Przemiany podopiecznych | Trener personalny Cwmbran | KK Coaching" },
+      "description": {
+        "en": "See real KK Coaching client transformations from personal training in Cwmbran and online coaching. Real people, structured coaching and measurable progress.",
+        "pl": "Zobacz prawdziwe przemiany podopiecznych KK Coaching z treningów personalnych w Cwmbran i coachingu online. Realna praca, proces i mierzalne efekty."
+      }
+    },
+    "emptyState": { "en": "More client stories are coming soon.", "pl": "Kolejne historie podopiecznych pojawią się tutaj wkrótce." },
+    "faqEyebrow": { "en": "Questions", "pl": "Pytania" },
+    "faqHeading": { "en": "Frequently asked questions", "pl": "Najczęściej zadawane pytania" }
+  }
+}

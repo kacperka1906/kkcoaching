@@ -1,193 +1,43 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import copy from '../../data/hybrid-v2.json';
+import admin from '../../data/admin-v2.json';
 
-const onlineCore = [
-  'Indywidualny plan treningowy na sesje ze mną i treningi wykonywane samodzielnie',
-  'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
-  'Regularne raporty i dokładna analiza postępów',
-  'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
-  'Korekty treningu i żywienia na podstawie postępów',
-  'Ocena techniki z nagrań między treningami 1:1',
-  'Kontakt przez WhatsApp między raportami i sesjami'
-];
-
-const inPerson = [
-  'Regularne treningi personalne 1:1 w JD Gyms Cwmbran',
-  'Nauka ustawienia i techniki ćwiczeń na żywo',
-  'Bieżące wskazówki dotyczące wykonania, intensywności i progresji',
-  'Jeden program łączący treningi ze mną z sesjami, które wykonujesz samodzielnie'
-];
-
-const faqs = [
-  {
-    q: 'Czym coaching hybrydowy różni się od coachingu online?',
-    a: 'Coaching hybrydowy łączy pełne prowadzenie online z regularnymi treningami personalnymi 1:1 w Cwmbran. Aplikacja, plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp nadal pozostają częścią współpracy.'
-  },
-  {
-    q: 'Czy w coachingu hybrydowym nadal korzystam z aplikacji?',
-    a: 'Tak. Aplikacja pozostaje głównym miejscem na plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Treningi 1:1 są częścią tego samego planu, a nie osobną usługą działającą obok.'
-  },
-  {
-    q: 'Czy coaching hybrydowy jest tylko dla początkujących?',
-    a: 'Nie. Początkującym daje więcej pracy nad techniką i pewnością na siłowni, ale dobrze sprawdza się też u osób bardziej zaawansowanych, które chcą dokładnej kontroli wykonania i połączenia samodzielnych treningów z regularnymi sesjami 1:1.'
-  },
-  {
-    q: 'Gdzie odbywają się treningi 1:1?',
-    a: 'Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dostępne godziny ustalamy podczas bezpłatnej konsultacji.'
-  },
-  {
-    q: 'Skąd mam wiedzieć, czy potrzebuję coachingu hybrydowego, online czy samych treningów 1:1?',
-    a: 'Zaczynamy od bezpłatnej konsultacji. Mówisz mi, jaki masz cel, jak teraz trenujesz, gdzie mieszkasz i jakiego wsparcia potrzebujesz. Na tej podstawie powiem Ci, która opcja ma najwięcej sensu — bez wciskania najdroższego pakietu.'
-  }
-];
-
+const lang = 'pl';
+const faqs = copy.faq.items.map(item => ({ q: item.q[lang], a: item.a[lang] }));
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/hybrid-coaching#service',
-      name: 'Trening personalny w Cwmbran i coaching online',
+      name: copy.hero.heading[lang],
       serviceType: 'Coaching hybrydowy — trening personalny i coaching online',
-      description: 'Pełne prowadzenie online z planem treningowym, wsparciem żywieniowym, regularnymi raportami i kontrolą postępów połączone z treningami personalnymi 1:1 w Cwmbran.',
+      description: copy.seo.description[lang],
       url: 'https://kkcoaching.fit/pl/hybrid-coaching',
-      areaServed: {
-        '@type': 'AdministrativeArea',
-        name: 'Cwmbran, Torfaen, South Wales'
-      },
-      provider: {
-        '@type': 'Organization',
-        '@id': 'https://kkcoaching.fit/#business',
-        name: 'KK Coaching',
-        url: 'https://kkcoaching.fit/'
-      }
+      areaServed: { '@type': 'AdministrativeArea', name: 'Cwmbran, Torfaen, South Wales' },
+      provider: { '@type': 'Organization', '@id': 'https://kkcoaching.fit/#business', name: admin.brand.siteName, url: 'https://kkcoaching.fit/' }
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqs.map(item => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a }
-      }))
-    }
+    { '@type': 'FAQPage', mainEntity: faqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) }
   ]
 };
 ---
-<BaseLayout
-  title="Trener personalny Cwmbran i coaching online | KK Coaching"
-  description="Treningi personalne 1:1 w Cwmbran połączone z pełnym prowadzeniem online: plan treningowy, żywienie, regularne raporty, aplikacja i kontrola postępów."
-  lang="pl"
-  path="/pl/hybrid-coaching"
-  altPath="/hybrid-coaching"
-  structuredData={structuredData}
->
+<BaseLayout title={copy.seo.title[lang]} description={copy.seo.description[lang]} lang="pl" path="/pl/hybrid-coaching" altPath="/hybrid-coaching" structuredData={structuredData}>
   <section class="hybrid-hero on-dark">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Coaching hybrydowy</span>
-        <h1>Treningi 1:1 w Cwmbran i pełne prowadzenie online</h1>
-        <p class="lead">Masz indywidualny plan, wsparcie żywieniowe, regularną analizę postępów i kontakt ze mną przez cały tydzień, a do tego treningi 1:1 w Cwmbran, podczas których pracujemy nad techniką i progresją na żywo.</p>
-        <div class="hero-actions">
-          <a href="/pl/contact" class="btn btn-primary">Umów bezpłatną konsultację</a>
-          <a href="/pl/services" class="btn btn-secondary">Porównaj opcje współpracy</a>
-        </div>
-        <div class="trust-row" aria-label="Najważniejsze elementy coachingu hybrydowego">
-          <span>JD Gyms Cwmbran</span>
-          <span>Pełne prowadzenie online</span>
-          <span>Regularne raporty</span>
-          <span>Kontakt na WhatsApp</span>
-        </div>
+        <span class="eyebrow">{copy.hero.eyebrow[lang]}</span><h1>{copy.hero.heading[lang]}</h1><p class="lead">{copy.hero.lead[lang]}</p>
+        <div class="hero-actions"><a href={copy.hero.primaryHref[lang]} class="btn btn-primary">{copy.hero.primaryCta[lang]}</a><a href={copy.hero.secondaryHref[lang]} class="btn btn-secondary">{copy.hero.secondaryCta[lang]}</a></div>
+        <div class="trust-row" aria-label={copy.hero.trustAria[lang]}>{copy.hero.trustPoints.map(item => <span>{item[lang]}</span>)}</div>
       </div>
-      <div class="hero-media">
-        <img src="/images/hybrid-coaching-placeholder.svg" alt="Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran" width="720" height="540" />
-      </div>
+      <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
   </section>
-
-  <section class="on-white">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Dlaczego hybrydowo</span>
-        <h2>Nie wybierasz między prowadzeniem online a treningiem na żywo. Łączysz oba.</h2>
-        <p>Ta opcja ma sens, jeśli chcesz mieć plan i wsparcie przez cały tydzień, ale jednocześnie zależy Ci na regularnych sesjach, podczas których możemy na bieżąco pracować nad techniką, wykonaniem i progresją.</p>
-      </div>
-      <div class="compare-grid">
-        <article class="scope-card">
-          <span class="scope-label">Pełne prowadzenie online</span>
-          <h3>Plan, żywienie, raporty i kontakt</h3>
-          <ul>{onlineCore.map(item => <li>{item}</li>)}</ul>
-        </article>
-        <article class="scope-card featured">
-          <span class="scope-label">Dodatkowo na żywo</span>
-          <h3>Regularne treningi personalne 1:1</h3>
-          <ul>{inPerson.map(item => <li>{item}</li>)}</ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="app-band on-dark">
-    <div class="container app-grid">
-      <div>
-        <span class="eyebrow">Wszystko w jednej aplikacji</span>
-        <h2>Treningi ze mną i te wykonywane samodzielnie są częścią jednego planu.</h2>
-        <p>W aplikacji masz aktualny plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Dzięki temu widzę nie tylko to, co robimy razem na siłowni, ale też jak wygląda cały tydzień treningowy.</p>
-      </div>
-      <div class="app-points" aria-label="Funkcje aplikacji">
-        <span>Plan treningowy</span>
-        <span>Instrukcje ćwiczeń</span>
-        <span>Logowanie treningów</span>
-        <span>Historia postępów</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="on-white">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Wybierz tyle wsparcia, ile potrzebujesz</span>
-        <h2>Nie każdy potrzebuje coachingu hybrydowego.</h2>
-        <p>Jeśli zależy Ci głównie na prowadzeniu na siłowni, trening personalny 1:1 może wystarczyć. Jeśli samodzielnie dobrze radzisz sobie z techniką, pełne prowadzenie online może dać Ci wszystko, czego potrzebujesz. Hybryda ma sens wtedy, kiedy realnie skorzystasz z obu form.</p>
-      </div>
-      <div class="related-grid">
-        <a href="/pl/personal-training-cwmbran" class="related-card">
-          <strong>Trening personalny 1:1 w Cwmbran</strong>
-          <span>Prowadzenie na żywo skupione na treningu, technice i progresji →</span>
-        </a>
-        <a href="/pl/online-coaching" class="related-card">
-          <strong>Trener personalny online</strong>
-          <span>Pełne prowadzenie zdalne bez regularnych sesji 1:1 →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="on-white faq-section" aria-labelledby="faq-heading">
-    <div class="container faq-wrap">
-      <div class="section-head centered">
-        <span class="eyebrow">Pytania</span>
-        <h2 id="faq-heading">Coaching hybrydowy — FAQ</h2>
-      </div>
-      <div class="faq-list">
-        {faqs.map(item => (
-          <details class="faq-item">
-            <summary>{item.q}</summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="final-cta">
-    <div class="container">
-      <span class="eyebrow light">Zacznijmy od rozmowy</span>
-      <h2>Chcesz połączyć treningi 1:1 z pełnym prowadzeniem? Sprawdźmy, czy ma to u Ciebie sens.</h2>
-      <p>Napisz mi, jaki masz cel, jak teraz trenujesz i jakiego wsparcia potrzebujesz. Powiem Ci, czy coaching hybrydowy będzie najlepszym wyborem, czy wystarczy prostsza opcja.</p>
-      <a href="/pl/contact" class="btn btn-secondary">Umów bezpłatną konsultację</a>
-    </div>
-  </section>
+  <section class="on-white"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.why.eyebrow[lang]}</span><h2>{copy.why.heading[lang]}</h2><p>{copy.why.body[lang]}</p></div><div class="compare-grid"><article class="scope-card"><span class="scope-label">{copy.onlineCore.label[lang]}</span><h3>{copy.onlineCore.heading[lang]}</h3><ul>{copy.onlineCore.items.map(item => <li>{item[lang]}</li>)}</ul></article><article class="scope-card featured"><span class="scope-label">{copy.inPerson.label[lang]}</span><h3>{copy.inPerson.heading[lang]}</h3><ul>{copy.inPerson.items.map(item => <li>{item[lang]}</li>)}</ul></article></div></div></section>
+  <section class="app-band on-dark"><div class="container app-grid"><div><span class="eyebrow">{copy.app.eyebrow[lang]}</span><h2>{copy.app.heading[lang]}</h2><p>{copy.app.body[lang]}</p></div><div class="app-points" aria-label={copy.app.aria[lang]}>{copy.app.points.map(item => <span>{item[lang]}</span>)}</div></div></section>
+  <section class="on-white"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.choice.eyebrow[lang]}</span><h2>{copy.choice.heading[lang]}</h2><p>{copy.choice.body[lang]}</p></div><div class="related-grid">{copy.choice.cards.map(item => <a href={item.href[lang]} class="related-card"><strong>{item.title[lang]}</strong><span>{item.body[lang]}</span></a>)}</div></div></section>
+  <section class="on-white faq-section" aria-labelledby="faq-heading"><div class="container faq-wrap"><div class="section-head centered"><span class="eyebrow">{copy.faq.eyebrow[lang]}</span><h2 id="faq-heading">{copy.faq.heading[lang]}</h2></div><div class="faq-list">{faqs.map(item => <details class="faq-item"><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
+  <section class="final-cta"><div class="container"><span class="eyebrow light">{copy.finalCta.eyebrow[lang]}</span><h2>{copy.finalCta.heading[lang]}</h2><p>{copy.finalCta.body[lang]}</p><a href={copy.finalCta.href[lang]} class="btn btn-secondary">{copy.finalCta.cta[lang]}</a></div></section>
 </BaseLayout>
 
 <style>
@@ -199,7 +49,6 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
-
   .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1040px; margin: 0 auto; }
   .scope-card { background: #F6F7F8; border: 1px solid #E0E3E6; border-radius: var(--radius); padding: 30px; }
   .scope-card.featured { border: 2px solid var(--red); background: var(--white); }
@@ -208,18 +57,15 @@ const structuredData = {
   .scope-card ul { list-style: none; display: grid; gap: 10px; color: var(--steel); }
   .scope-card li { position: relative; padding-left: 24px; }
   .scope-card li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 800; }
-
   .app-band h2 { color: var(--white); }
   .app-band p { color: #C0C4CA; max-width: 60ch; }
   .app-points { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .app-points span { background: #202329; border: 1px solid #353A42; color: var(--white); padding: 18px; border-radius: var(--radius); font-weight: 700; text-align: center; }
-
   .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 900px; margin: 0 auto; }
   .related-card { display: block; text-decoration: none; background: #F6F7F8; border: 1px solid #E0E3E6; border-radius: var(--radius); padding: 24px; transition: border-color .2s ease, transform .2s ease; }
   .related-card:hover { border-color: var(--red); transform: translateY(-2px); }
   .related-card strong { display: block; margin-bottom: 6px; }
   .related-card span { color: var(--steel); font-size: 0.92rem; }
-
   .faq-section { padding-top: 36px; }
   .faq-wrap { max-width: 860px; }
   .faq-list { border-top: 1px solid #D8DBDE; }
@@ -229,25 +75,10 @@ const structuredData = {
   .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
   .faq-item[open] summary::after { content: '−'; }
   .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
-
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
   .final-cta .eyebrow.light { color: #FFDDE1; }
   .final-cta h2 { color: var(--white); max-width: 760px; margin: 0 auto 14px; }
   .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
-
-  @media (max-width: 900px) {
-    .hero-grid, .app-grid, .compare-grid { grid-template-columns: 1fr; gap: 34px; }
-    .hybrid-hero h1 { max-width: none; }
-  }
-  @media (max-width: 620px) {
-    .hybrid-hero { padding: 48px 0 56px; }
-    .hybrid-hero h1 { font-size: clamp(2rem, 9.5vw, 2.72rem); }
-    .lead { font-size: 1rem; }
-    .hero-actions { display: grid; grid-template-columns: 1fr; }
-    .hero-actions .btn { width: 100%; }
-    .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
-    .trust-row span { text-align: center; }
-    .scope-card { padding: 24px 20px; }
-    .app-points, .related-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px) { .hero-grid, .app-grid, .compare-grid { grid-template-columns: 1fr; gap: 34px; } .hybrid-hero h1 { max-width: none; } }
+  @media (max-width: 620px) { .hybrid-hero { padding: 48px 0 56px; } .hybrid-hero h1 { font-size: clamp(2rem, 9.5vw, 2.72rem); } .lead { font-size: 1rem; } .hero-actions { display: grid; grid-template-columns: 1fr; } .hero-actions .btn { width: 100%; } .trust-row { display: grid; grid-template-columns: 1fr 1fr; } .trust-row span { text-align: center; } .scope-card { padding: 24px 20px; } .app-points, .related-grid { grid-template-columns: 1fr; } }
 </style>

@@ -1,54 +1,51 @@
 ---
 import Logo from './Logo.astro';
+import admin from '../data/admin-v2.json';
 
 interface Props {
   lang: 'en' | 'pl';
   altPath?: string;
 }
+
 const { lang, altPath } = Astro.props;
-const prefix = lang === 'pl' ? '/pl' : '';
 const languageHref = altPath ?? (lang === 'pl' ? '/' : '/pl');
 const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching - home';
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
-
-const nav = lang === 'pl'
-  ? [
-      { href: '/pl', label: 'Strona główna' },
-      { href: '/pl/personal-training-cwmbran', label: 'Trener personalny Cwmbran' },
-      { href: '/pl/online-coaching', label: 'Coaching online' },
-      { href: '/pl/hybrid-coaching', label: 'Coaching hybrydowy' },
-      { href: '/pl/transformations', label: 'Przemiany' },
-      { href: '/pl/about', label: 'O mnie' },
-      { href: '/pl/contact', label: 'Kontakt' }
-    ]
-  : [
-      { href: '/', label: 'Home' },
-      { href: '/personal-training-cwmbran', label: 'Personal Training Cwmbran' },
-      { href: '/online-coaching', label: 'Online Coaching' },
-      { href: '/hybrid-coaching', label: 'Hybrid Coaching' },
-      { href: '/transformations', label: 'Transformations' },
-      { href: '/about', label: 'About Me' },
-      { href: '/contact', label: 'Contact' }
-    ];
-
-const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
+const nav = admin.header.items
+  .filter(item => item.enabled)
+  .map(item => ({
+    ...item,
+    label: item.label[lang],
+    href: item.href[lang]
+  }));
+const ctaLabel = admin.header.headerCta.label[lang];
+const ctaHref = admin.header.headerCta.href[lang];
+const stickyMobile = admin.header.stickyMobile;
+const compactOnScroll = admin.header.compactOnScroll;
 ---
-<header class="site-header">
+<header
+  class:list={['site-header', { 'sticky-mobile': stickyMobile }]}
+  data-sticky-mobile={String(stickyMobile)}
+  data-compact-on-scroll={String(compactOnScroll)}
+  id="siteHeader"
+>
   <div class="container">
     <a href={lang === 'pl' ? '/pl' : '/'} class="logo" aria-label={homeLabel}>
       <Logo height={32} />
     </a>
+
     <nav class="main-nav" id="mainNav" aria-label={lang === 'pl' ? 'Główna nawigacja' : 'Main navigation'}>
       <ul>
         {nav.map(item => (
-          <li>
+          <li class:list={{ 'nav-item-cta': item.style === 'cta' }}>
             <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
           </li>
         ))}
       </ul>
     </nav>
+
     <div class="header-right">
-      <a class="header-cta" href={`${prefix}/contact`}>{ctaLabel}</a>
+      {admin.header.showHeaderCta && <a class="header-cta" href={ctaHref}>{ctaLabel}</a>}
       <a class="lang-switch" href={languageHref} aria-label={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}>
         {lang === 'pl' ? 'EN' : 'PL'}
       </a>
@@ -58,8 +55,13 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
 </header>
 
 <script>
+  const header = document.getElementById('siteHeader');
   const toggle = document.getElementById('navToggle');
   const nav = document.getElementById('mainNav');
+
+  if (header?.dataset.stickyMobile === 'true') {
+    document.body.classList.add('has-fixed-mobile-header');
+  }
 
   const closeMenu = () => {
     nav?.classList.remove('is-open');
@@ -79,6 +81,12 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+
+  if (header?.dataset.compactOnScroll === 'true') {
+    const updateScrolledState = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    updateScrolledState();
+    window.addEventListener('scroll', updateScrolledState, { passive: true });
+  }
 </script>
 
 <style>
@@ -87,7 +95,9 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     position: sticky;
     top: 0;
     z-index: 50;
+    transition: box-shadow .2s ease, background-color .2s ease;
   }
+  .site-header.is-scrolled { box-shadow: 0 8px 24px rgba(0,0,0,.22); }
   .site-header .container {
     display: flex;
     align-items: center;
@@ -166,15 +176,22 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
   }
 
   @media (max-width: 940px) {
-    nav.main-nav { display: none; }
-    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-  }
-
-  @media (max-width: 940px) {
     :global(body.menu-open) { overflow: hidden; }
+    :global(body.has-fixed-mobile-header) { padding-top: 72px; }
+    .site-header.sticky-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 100;
+    }
     .site-header .container { min-height: 72px; padding-left: 18px; padding-right: 14px; }
-    .logo :global(.site-logo) { height: 38px !important; max-width: 92px; object-fit: contain; }
+    .site-header.is-scrolled .container { background: rgba(23,25,29,.98); }
+    .site-header.is-scrolled .logo :global(.site-logo) { transform: scale(.92); transform-origin: left center; }
+    .logo :global(.site-logo) { height: 38px !important; max-width: 92px; object-fit: contain; transition: transform .2s ease; }
     .header-right { gap: 8px; }
+    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
     nav.main-nav {
       display: none;
       position: absolute;
@@ -191,9 +208,10 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
     nav.main-nav.is-open { display: block; }
     nav.main-nav ul { flex-direction: column; gap: 0; }
     nav.main-nav li { border-bottom: 1px solid #2A2E34; }
-    nav.main-nav li:last-child { border-bottom: 0; padding-top: 10px; }
+    nav.main-nav li:last-child { border-bottom: 0; }
     nav.main-nav a { display: block; padding: 14px 4px; font-size: 1rem; white-space: normal; }
-    nav.main-nav li:last-child a {
+    nav.main-nav li.nav-item-cta { border-bottom: 0; padding-top: 10px; }
+    nav.main-nav li.nav-item-cta a {
       background: var(--red);
       color: var(--white);
       font-weight: 700;
@@ -201,6 +219,6 @@ const ctaLabel = lang === 'pl' ? 'Bezpłatna konsultacja' : 'Free Consultation';
       border-radius: var(--radius);
       padding: 13px 16px;
     }
-    nav.main-nav li:last-child a:hover { background: var(--red-hover); color: var(--white); }
+    nav.main-nav li.nav-item-cta a:hover { background: var(--red-hover); color: var(--white); }
   }
 </style>

@@ -1,5 +1,5 @@
-# Decap CMS configuration for KK Coaching.
-# Content changes made here are committed to GitHub through Netlify Git Gateway.
+# KK Coaching Admin Panel 2.0
+# Content changes are committed to GitHub through Netlify Git Gateway.
 
 local_backend: true
 
@@ -12,194 +12,741 @@ public_folder: "/images"
 publish_mode: simple
 
 collections:
-  - name: "site_settings"
-    label: "Site Settings"
+  - name: "admin_v2"
+    label: "Admin 2.0 — Strona"
     files:
-      - label: "Site Copy (English)"
-        name: "site_en"
-        file: "src/data/site.en.json"
+      - label: "Treści globalne, Home, menu, stopka, mapa i opinie"
+        name: "website"
+        file: "src/data/admin-v2.json"
         fields:
-          - label: "Contact & Brand"
-            name: "meta"
+          - label: "Marka / Brand"
+            name: "brand"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Site name", name: "siteName", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Contact email", name: "contactEmail", widget: "string" }
-              - { label: "WhatsApp number", name: "whatsappNumber", widget: "string", hint: "Use international format, e.g. +447..." }
-              - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
-              - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
-              - { label: "Training location", name: "trainingLocation", widget: "string" }
-          - label: "Hero"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Lead paragraph", name: "lead", widget: "text" }
-              - { label: "Primary button text", name: "ctaPrimary", widget: "string" }
-              - { label: "Secondary button text", name: "ctaSecondary", widget: "string" }
-              - { label: "Trust line", name: "trustLine", widget: "string" }
-              - { label: "Hero image", name: "image", widget: "image" }
-              - { label: "Image alt text", name: "imageAlt", widget: "string" }
-          - label: "Who this is for"
-            name: "whoItsFor"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro paragraph", name: "body", widget: "text" }
-              - label: "Cards"
-                name: "cards"
-                widget: "list"
-                min: 4
-                max: 4
+              - { label: "Nazwa firmy", name: "siteName", widget: "string" }
+              - { label: "Imię i nazwisko właściciela", name: "ownerName", widget: "string" }
+              - { label: "Logo główne", name: "logo", widget: "image" }
+              - { label: "Logo w stopce", name: "footerLogo", widget: "image" }
+              - label: "Slogan"
+                name: "tagline"
+                widget: "object"
                 fields:
-                  - { label: "Card title", name: "title", widget: "string" }
-                  - { label: "Card text", name: "body", widget: "text" }
-          - label: "Coaching options intro"
-            name: "servicesIntro"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro paragraph", name: "body", widget: "text" }
-          - label: "Coach Story"
-            name: "story"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Short version (Home page)", name: "bodyShort", widget: "text" }
-              - { label: "Full version (About page)", name: "bodyFull", widget: "text" }
-              - { label: "Starting weight stat", name: "statStart", widget: "string" }
-              - { label: "Weight loss stat", name: "statLoss", widget: "string" }
-              - { label: "Qualification stat", name: "statQualification", widget: "string" }
-              - { label: "Button text", name: "cta", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Image alt text", name: "imageAlt", widget: "string" }
-          - label: "Process"
-            name: "process"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro paragraph", name: "body", widget: "text" }
-              - label: "Steps"
-                name: "steps"
-                widget: "list"
-                min: 4
-                max: 4
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Kwalifikacje / linia w stopce"
+                name: "credentials"
+                widget: "object"
                 fields:
-                  - { label: "Step title", name: "title", widget: "string" }
-                  - { label: "Step text", name: "body", widget: "text" }
-          - label: "Transformations intro"
-            name: "transformations"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro paragraph", name: "body", widget: "text" }
-              - { label: "Button text", name: "cta", widget: "string" }
-          - label: "Final CTA"
-            name: "finalCta"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Text", name: "body", widget: "text" }
-              - { label: "Button text", name: "cta", widget: "string" }
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Opis zasięgu / lokalizacji"
+                name: "locationSummary"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
 
-      - label: "Site Copy (Polish)"
-        name: "site_pl"
-        file: "src/data/site.pl.json"
-        fields:
-          - label: "Kontakt i marka"
-            name: "meta"
+          - label: "Kontakt i social media"
+            name: "contact"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Nazwa strony", name: "siteName", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Email kontaktowy", name: "contactEmail", widget: "string" }
-              - { label: "Numer WhatsApp", name: "whatsappNumber", widget: "string", hint: "Format międzynarodowy, np. +447..." }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string", hint: "Najlepiej format międzynarodowy, np. +447..." }
+              - { label: "WhatsApp", name: "whatsapp", widget: "string", hint: "Najlepiej format międzynarodowy, np. +447..." }
               - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+              - { label: "Instagram — wyświetlana nazwa", name: "instagramLabel", widget: "string" }
               - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
-              - { label: "Lokalizacja treningów", name: "trainingLocation", widget: "string" }
-          - label: "Hero"
-            name: "hero"
+
+          - label: "Menu i nagłówek"
+            name: "header"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Wprowadzenie", name: "lead", widget: "text" }
-              - { label: "Tekst głównego przycisku", name: "ctaPrimary", widget: "string" }
-              - { label: "Tekst drugiego przycisku", name: "ctaSecondary", widget: "string" }
-              - { label: "Linia zaufania", name: "trustLine", widget: "string" }
-              - { label: "Zdjęcie hero", name: "image", widget: "image" }
-              - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
-          - label: "Dla kogo jest coaching"
-            name: "whoItsFor"
-            widget: "object"
-            fields:
-              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Wprowadzenie", name: "body", widget: "text" }
-              - label: "Karty"
-                name: "cards"
-                widget: "list"
-                min: 4
-                max: 4
+              - { label: "Sticky menu na telefonie", name: "stickyMobile", widget: "boolean", default: true }
+              - { label: "Kompaktowy nagłówek po scrollu", name: "compactOnScroll", widget: "boolean", default: true }
+              - { label: "Pokaż CTA w nagłówku desktop", name: "showHeaderCta", widget: "boolean", default: true }
+              - label: "CTA nagłówka"
+                name: "headerCta"
+                widget: "object"
                 fields:
-                  - { label: "Tytuł karty", name: "title", widget: "string" }
-                  - { label: "Treść karty", name: "body", widget: "text" }
-          - label: "Wprowadzenie do form współpracy"
-            name: "servicesIntro"
-            widget: "object"
-            fields:
-              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Wprowadzenie", name: "body", widget: "text" }
-          - label: "Historia trenera"
-            name: "story"
-            widget: "object"
-            fields:
-              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Krótka wersja (strona główna)", name: "bodyShort", widget: "text" }
-              - { label: "Pełna wersja (O mnie)", name: "bodyFull", widget: "text" }
-              - { label: "Masa startowa", name: "statStart", widget: "string" }
-              - { label: "Redukcja masy", name: "statLoss", widget: "string" }
-              - { label: "Kwalifikacja / oferta", name: "statQualification", widget: "string" }
-              - { label: "Tekst przycisku", name: "cta", widget: "string" }
-              - { label: "Zdjęcie", name: "image", widget: "image" }
-              - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
-          - label: "Proces"
-            name: "process"
-            widget: "object"
-            fields:
-              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Wprowadzenie", name: "body", widget: "text" }
-              - label: "Kroki"
-                name: "steps"
+                  - label: "Tekst"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link"
+                    name: "href"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Pozycje menu"
+                name: "items"
                 widget: "list"
-                min: 4
-                max: 4
+                collapsed: true
+                summary: "{{fields.label.en}} / {{fields.label.pl}}"
+                hint: "Możesz dodawać, usuwać i przeciągać pozycje, aby zmienić kolejność."
                 fields:
-                  - { label: "Tytuł kroku", name: "title", widget: "string" }
-                  - { label: "Treść kroku", name: "body", widget: "text" }
-          - label: "Wprowadzenie do przemian"
-            name: "transformations"
+                  - { label: "ID techniczne", name: "id", widget: "string", hint: "Krótka unikalna nazwa bez spacji." }
+                  - { label: "Widoczna", name: "enabled", widget: "boolean", default: true }
+                  - label: "Wygląd"
+                    name: "style"
+                    widget: "select"
+                    options:
+                      - { label: "Zwykły link", value: "link" }
+                      - { label: "Przycisk CTA", value: "cta" }
+                    default: "link"
+                  - label: "Nazwa"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link"
+                    name: "href"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+
+          - label: "Stopka"
+            name: "footer"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Mały nagłówek", name: "eyebrow", widget: "string" }
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Wprowadzenie", name: "body", widget: "text" }
-              - { label: "Tekst przycisku", name: "cta", widget: "string" }
-          - label: "Końcowe CTA"
-            name: "finalCta"
+              - label: "Nagłówki sekcji"
+                name: "sectionLabels"
+                widget: "object"
+                fields:
+                  - label: "Quick links"
+                    name: "quickLinks"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Contact"
+                    name: "contact"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Legal"
+                    name: "legal"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Phone"
+                    name: "phone"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "1:1 training"
+                    name: "trainingAt"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Cookie settings"
+                    name: "cookieSettings"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Linki na skróty"
+                name: "quickLinks"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.label.en}} / {{fields.label.pl}}"
+                fields:
+                  - { label: "Widoczny", name: "enabled", widget: "boolean", default: true }
+                  - label: "Nazwa"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link"
+                    name: "href"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Linki prawne"
+                name: "legalLinks"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.label.en}} / {{fields.label.pl}}"
+                fields:
+                  - { label: "Widoczny", name: "enabled", widget: "boolean", default: true }
+                  - label: "Nazwa"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link"
+                    name: "href"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Copyright"
+                name: "copyright"
+                widget: "object"
+                hint: "Możesz użyć {year}, aby rok aktualizował się automatycznie."
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Dolna linia SEO"
+                name: "seoLine"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+
+          - label: "Lokalizacja i mapa"
+            name: "location"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Nagłówek", name: "heading", widget: "string" }
-              - { label: "Treść", name: "body", widget: "text" }
-              - { label: "Tekst przycisku", name: "cta", widget: "string" }
+              - { label: "Pokaż sekcję lokalizacji", name: "enabled", widget: "boolean", default: true }
+              - { label: "Pokaż interaktywną mapę", name: "showInteractiveMap", widget: "boolean", default: true }
+              - { label: "Nazwa miejsca", name: "venueName", widget: "string" }
+              - { label: "Adres", name: "addressLine1", widget: "string" }
+              - { label: "Miasto", name: "city", widget: "string" }
+              - { label: "Kod pocztowy", name: "postcode", widget: "string" }
+              - { label: "Kod kraju", name: "country", widget: "string", default: "GB" }
+              - { label: "Google Maps — zapytanie/lokalizacja", name: "mapQuery", widget: "string" }
+              - { label: "Link Wyznacz trasę (opcjonalny)", name: "directionsUrl", widget: "string", required: false, hint: "Puste = link zostanie zbudowany automatycznie z lokalizacji." }
+              - label: "Teksty sekcji"
+                name: "copy"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Notatka o godzinach"
+                    name: "note"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Przycisk wyznaczania trasy"
+                    name: "directions"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link do PT — zwykłe strony"
+                    name: "serviceDefault"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link CTA — strony usług lokalnych"
+                    name: "serviceLanding"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Tytuł iframe mapy"
+                    name: "mapTitle"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek placeholdera mapy"
+                    name: "mapHeading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis mapy"
+                    name: "mapInfo"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Przycisk ładowania mapy"
+                    name: "mapLoad"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Atuty lokalizacji"
+                name: "facts"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.text.en}} / {{fields.text.pl}}"
+                fields:
+                  - { label: "Widoczny", name: "enabled", widget: "boolean", default: true }
+                  - label: "Tekst"
+                    name: "text"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+
+          - label: "Opinie klientów"
+            name: "reviews"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Pokaż sekcję opinii", name: "enabled", widget: "boolean", default: false, hint: "Włącz, kiedy dodasz pierwsze opinie." }
+              - { label: "Ile opinii na Home", name: "homeLimit", widget: "number", value_type: "int", min: 1, max: 12, default: 4 }
+              - label: "Mały nagłówek"
+                name: "eyebrow"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Nagłówek"
+                name: "heading"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Opis"
+                name: "body"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Tekst: pokaż screenshot"
+                name: "screenshotLabel"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Tekst: zobacz wszystkie opinie"
+                name: "seeAllLabel"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Tekst: dodaj opinię w Google"
+                name: "leaveReviewLabel"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Google — przygotowane pod przyszłe połączenie"
+                name: "googleReviewsUrl"
+                widget: "string"
+                required: false
+                hint: "Link do wszystkich opinii Google. Możesz zostawić pusty do czasu aktywacji GBP."
+              - { label: "Google — link Dodaj opinię", name: "leaveGoogleReviewUrl", widget: "string", required: false }
+              - { label: "Google Place ID (na przyszłość)", name: "googlePlaceId", widget: "string", required: false }
+              - label: "Opinie"
+                name: "items"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.client}} — {{fields.source}}"
+                hint: "Minimum pól: imię, treść i źródło. Screenshot i gwiazdki są opcjonalne."
+                fields:
+                  - { label: "Widoczna", name: "enabled", widget: "boolean", default: true }
+                  - { label: "Imię klienta", name: "client", widget: "string" }
+                  - { label: "Treść opinii", name: "quote", widget: "text" }
+                  - label: "Źródło"
+                    name: "source"
+                    widget: "select"
+                    options:
+                      - { label: "Google", value: "google" }
+                      - { label: "WhatsApp", value: "whatsapp" }
+                      - { label: "Messenger", value: "messenger" }
+                      - { label: "MyPTHub", value: "mypthub" }
+                      - { label: "Instagram", value: "instagram" }
+                      - { label: "Facebook", value: "facebook" }
+                      - { label: "Email", value: "email" }
+                      - { label: "Inne", value: "other" }
+                  - { label: "Screenshot oryginalnej wiadomości", name: "screenshot", widget: "image", required: false, hint: "Przed publikacją usuń lub zasłoń prywatne dane, jeśli klient nie zgodził się na ich pokazanie." }
+                  - { label: "Ocena 1–5", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, required: false }
+                  - { label: "Pokaż na stronie głównej", name: "featured", widget: "boolean", default: true }
+
+          - label: "Strona główna / Home"
+            name: "home"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "SEO Home"
+                name: "seo"
+                widget: "object"
+                fields:
+                  - label: "SEO title"
+                    name: "title"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Meta description"
+                    name: "description"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "lead"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Główne CTA"
+                    name: "ctaPrimary"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link głównego CTA"
+                    name: "ctaPrimaryHref"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Drugie CTA"
+                    name: "ctaSecondary"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link drugiego CTA"
+                    name: "ctaSecondaryHref"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Linia zaufania"
+                    name: "trustLine"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - { label: "Zdjęcie", name: "image", widget: "image" }
+                  - label: "Alt zdjęcia"
+                    name: "imageAlt"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Dla kogo jest coaching"
+                name: "whoItsFor"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Karty"
+                    name: "cards"
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.title.en}} / {{fields.title.pl}}"
+                    fields:
+                      - label: "Tytuł"
+                        name: "title"
+                        widget: "object"
+                        fields:
+                          - { label: "English", name: "en", widget: "string" }
+                          - { label: "Polski", name: "pl", widget: "string" }
+                      - label: "Opis"
+                        name: "body"
+                        widget: "object"
+                        fields:
+                          - { label: "English", name: "en", widget: "text" }
+                          - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Wprowadzenie do usług"
+                name: "servicesIntro"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Historia trenera"
+                name: "story"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Krótki opis"
+                    name: "bodyShort"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Pełny opis"
+                    name: "bodyFull"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - { label: "Zdjęcie", name: "image", widget: "image" }
+                  - label: "Alt zdjęcia"
+                    name: "imageAlt"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Statystyki"
+                    name: "stats"
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.value}}"
+                    fields:
+                      - { label: "Wartość", name: "value", widget: "string" }
+                      - label: "Podpis"
+                        name: "label"
+                        widget: "object"
+                        fields:
+                          - { label: "English", name: "en", widget: "string" }
+                          - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link CTA"
+                    name: "ctaHref"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Proces"
+                name: "process"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "Kroki"
+                    name: "steps"
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.title.en}} / {{fields.title.pl}}"
+                    fields:
+                      - label: "Tytuł"
+                        name: "title"
+                        widget: "object"
+                        fields:
+                          - { label: "English", name: "en", widget: "string" }
+                          - { label: "Polski", name: "pl", widget: "string" }
+                      - label: "Opis"
+                        name: "body"
+                        widget: "object"
+                        fields:
+                          - { label: "English", name: "en", widget: "text" }
+                          - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Przemiany — wprowadzenie"
+                name: "transformations"
+                widget: "object"
+                fields:
+                  - label: "Mały nagłówek"
+                    name: "eyebrow"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link CTA"
+                    name: "ctaHref"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Końcowe CTA"
+                name: "finalCta"
+                widget: "object"
+                fields:
+                  - label: "Nagłówek"
+                    name: "heading"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Opis"
+                    name: "body"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Polski", name: "pl", widget: "text" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+                  - label: "Link CTA"
+                    name: "ctaHref"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Polski", name: "pl", widget: "string" }
+
+  - name: "services_v2"
+    label: "Usługi / Services 2.0"
+    files:
+      - label: "Karty usług EN + PL"
+        name: "services"
+        file: "src/data/services-v2.json"
+        fields:
+          - label: "Usługi"
+            name: "items"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.title.en}} / {{fields.title.pl}}"
+            hint: "Dodawaj, usuwaj i przeciągaj elementy. EN i PL są zawsze obok siebie."
+            fields:
+              - { label: "ID techniczne", name: "id", widget: "string" }
+              - { label: "Aktywna", name: "enabled", widget: "boolean", default: true }
+              - { label: "Kolejność", name: "order", widget: "number", value_type: "int", min: 1 }
+              - { label: "Pomniejszona karta", name: "minor", widget: "boolean", default: false }
+              - label: "Tytuł"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Opis"
+                name: "tagline"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Polski", name: "pl", widget: "text" }
+              - label: "Tekst przycisku"
+                name: "ctaLabel"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - label: "Link przycisku"
+                name: "ctaTarget"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - { label: "Zdjęcie karty", name: "image", widget: "image" }
+              - label: "Alt zdjęcia"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
+              - { label: "Zdjęcie szczegółowe (opcjonalne)", name: "detailImage", widget: "image", required: false }
+              - label: "Alt zdjęcia szczegółowego"
+                name: "detailImageAlt"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "English", name: "en", widget: "string", required: false }
+                  - { label: "Polski", name: "pl", widget: "string", required: false }
+              - label: "Punkty / bullets"
+                name: "bullets"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.en}} / {{fields.pl}}"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Polski", name: "pl", widget: "string" }
 
   - name: "pricing_settings"
     label: "Ceny i pakiety / Pricing"
@@ -209,7 +756,7 @@ collections:
         file: "src/data/pricing.json"
         fields:
           - { label: "Symbol waluty", name: "currency", widget: "string", default: "£" }
-          - label: "Etykiety / Labels"
+          - label: "Etykiety"
             name: "labels"
             widget: "object"
             fields:
@@ -237,12 +784,11 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Polski", name: "pl", widget: "string" }
-
           - label: "Personal Training 1:1"
             name: "personal"
             widget: "object"
             fields:
-              - label: "Teksty sekcji cennika"
+              - label: "Teksty sekcji"
                 name: "section"
                 widget: "object"
                 fields:
@@ -264,19 +810,19 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - label: "Notatka pod cennikiem"
+                  - label: "Notatka"
                     name: "note"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text", required: false }
                       - { label: "Polski", name: "pl", widget: "text", required: false }
-                  - label: "Przycisk CTA"
+                  - label: "CTA"
                     name: "cta"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Polski", name: "pl", widget: "string" }
-              - label: "Pojedynczy trening / Pay as you go"
+              - label: "Pojedynczy trening"
                 name: "payg"
                 widget: "object"
                 fields:
@@ -288,20 +834,21 @@ collections:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Polski", name: "pl", widget: "string" }
                   - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
-                  - { label: "Długość treningu (min)", name: "sessionMinutes", widget: "number", value_type: "int", min: 1 }
-                  - label: "Opis pod ceną"
+                  - { label: "Długość sesji min", name: "sessionMinutes", widget: "number", value_type: "int", min: 1 }
+                  - label: "Opis"
                     name: "detail"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
+                  - { label: "Wyróżnij", name: "featured", widget: "boolean", default: false }
               - label: "Pakiety 1:1"
                 name: "packages"
                 widget: "list"
-                summary: "{{fields.id}} — £{{fields.price}}"
+                collapsed: true
+                summary: "{{fields.name.en}} — £{{fields.price}}"
                 fields:
-                  - { label: "ID", name: "id", widget: "string", hint: "Techniczny identyfikator, np. weekly1" }
+                  - { label: "ID", name: "id", widget: "string" }
                   - { label: "Aktywny", name: "enabled", widget: "boolean" }
                   - label: "Nazwa"
                     name: "name"
@@ -309,22 +856,21 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Polski", name: "pl", widget: "string" }
-                  - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
-                  - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
+                  - { label: "Tygodnie", name: "weeks", widget: "number", value_type: "int", min: 1 }
                   - { label: "Liczba treningów", name: "sessions", widget: "number", value_type: "int", min: 1 }
-                  - label: "Opis pod ceną"
+                  - label: "Opis"
                     name: "detail"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
-
+                  - { label: "Wyróżnij", name: "featured", widget: "boolean", default: false }
           - label: "Online Coaching"
             name: "online"
             widget: "object"
             fields:
-              - label: "Teksty sekcji cennika"
+              - label: "Teksty sekcji"
                 name: "section"
                 widget: "object"
                 fields:
@@ -346,13 +892,13 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - label: "Notatka pod cennikiem"
+                  - label: "Notatka"
                     name: "note"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text", required: false }
                       - { label: "Polski", name: "pl", widget: "text", required: false }
-                  - label: "Przycisk CTA"
+                  - label: "CTA"
                     name: "cta"
                     widget: "object"
                     fields:
@@ -367,20 +913,19 @@ collections:
                   - { label: "Polski", name: "pl", widget: "string" }
               - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
               - { label: "Płatność co ile tygodni", name: "billingWeeks", widget: "number", value_type: "int", min: 1 }
-              - { label: "Minimalny okres współpracy (tygodnie)", name: "minimumWeeks", widget: "number", value_type: "int", min: 1 }
-              - label: "Opis pod ceną"
+              - { label: "Minimalny okres — tygodnie", name: "minimumWeeks", widget: "number", value_type: "int", min: 1 }
+              - label: "Opis"
                 name: "detail"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Polski", name: "pl", widget: "text" }
-              - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
-
+              - { label: "Wyróżnij", name: "featured", widget: "boolean", default: false }
           - label: "Hybrid Coaching"
             name: "hybrid"
             widget: "object"
             fields:
-              - label: "Teksty sekcji cennika"
+              - label: "Teksty sekcji"
                 name: "section"
                 widget: "object"
                 fields:
@@ -402,20 +947,20 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - label: "Notatka pod cennikiem"
+                  - label: "Notatka"
                     name: "note"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text", required: false }
                       - { label: "Polski", name: "pl", widget: "text", required: false }
-                  - label: "Przycisk CTA"
+                  - label: "CTA"
                     name: "cta"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Polski", name: "pl", widget: "string" }
-              - { label: "Wyróżnij Hybrid na kartach usług", name: "homeBadgeEnabled", widget: "boolean" }
-              - label: "Etykieta wyróżnienia Hybrid"
+              - { label: "Wyróżnienie na kartach usług", name: "homeBadgeEnabled", widget: "boolean" }
+              - label: "Etykieta wyróżnienia"
                 name: "homeBadge"
                 widget: "object"
                 fields:
@@ -424,9 +969,10 @@ collections:
               - label: "Pakiety Hybrid"
                 name: "packages"
                 widget: "list"
-                summary: "{{fields.id}} — £{{fields.price}}"
+                collapsed: true
+                summary: "{{fields.name.en}} — £{{fields.price}}"
                 fields:
-                  - { label: "ID", name: "id", widget: "string", hint: "Techniczny identyfikator, np. weekly1" }
+                  - { label: "ID", name: "id", widget: "string" }
                   - { label: "Aktywny", name: "enabled", widget: "boolean" }
                   - label: "Nazwa"
                     name: "name"
@@ -434,17 +980,16 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Polski", name: "pl", widget: "string" }
-                  - { label: "Cena pakietu £", name: "price", widget: "number", value_type: "float", min: 0 }
-                  - { label: "Liczba tygodni", name: "weeks", widget: "number", value_type: "int", min: 1 }
+                  - { label: "Cena £", name: "price", widget: "number", value_type: "float", min: 0 }
+                  - { label: "Tygodnie", name: "weeks", widget: "number", value_type: "int", min: 1 }
                   - { label: "Liczba treningów 1:1", name: "sessions", widget: "number", value_type: "int", min: 1 }
-                  - label: "Opis pod ceną"
+                  - label: "Opis"
                     name: "detail"
                     widget: "object"
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Polski", name: "pl", widget: "text" }
-                  - { label: "Pokaż jako Najlepszy wybór", name: "featured", widget: "boolean", default: false }
-
+                  - { label: "Wyróżnij", name: "featured", widget: "boolean", default: false }
           - label: "Indywidualny plan treningowy"
             name: "trainingPlan"
             widget: "object"
@@ -453,9 +998,9 @@ collections:
               - { label: "Cena jednorazowa £", name: "price", widget: "number", value_type: "float", min: 0 }
 
   - name: "service_page_media"
-    label: "Zdjęcia podstron usług / Service page images"
+    label: "Zdjęcia podstron usług"
     files:
-      - label: "Główne zdjęcia na podstronach usług"
+      - label: "Główne zdjęcia podstron usług"
         name: "service_pages"
         file: "src/data/service-pages.json"
         fields:
@@ -463,8 +1008,8 @@ collections:
             name: "personal"
             widget: "object"
             fields:
-              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
-              - label: "Opis alternatywny zdjęcia"
+              - { label: "Zdjęcie", name: "heroImage", widget: "image" }
+              - label: "Alt"
                 name: "heroAlt"
                 widget: "object"
                 fields:
@@ -474,8 +1019,8 @@ collections:
             name: "online"
             widget: "object"
             fields:
-              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
-              - label: "Opis alternatywny zdjęcia"
+              - { label: "Zdjęcie", name: "heroImage", widget: "image" }
+              - label: "Alt"
                 name: "heroAlt"
                 widget: "object"
                 fields:
@@ -485,89 +1030,53 @@ collections:
             name: "hybrid"
             widget: "object"
             fields:
-              - { label: "Zdjęcie na podstronie / Detail page image", name: "heroImage", widget: "image" }
-              - label: "Opis alternatywny zdjęcia"
+              - { label: "Zdjęcie", name: "heroImage", widget: "image" }
+              - label: "Alt"
                 name: "heroAlt"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Polski", name: "pl", widget: "string" }
 
-  - name: "services_en"
-    label: "Services (English)"
-    folder: "src/content/services/en"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Tagline", name: "tagline", widget: "text" }
-      - { label: "Display order", name: "order", widget: "number" }
-      - { label: "De-emphasise this card", name: "minor", widget: "boolean", default: false }
-      - { label: "Button text", name: "ctaLabel", widget: "string" }
-      - { label: "Button link", name: "ctaTarget", widget: "string", default: "/contact" }
-      - { label: "Image on Home/Services card", name: "image", widget: "image" }
-      - { label: "Image alt text", name: "imageAlt", widget: "string" }
-      - { label: "Bullet points", name: "bullets", widget: "list" }
-
-  - name: "services_pl"
-    label: "Usługi (Polski)"
-    folder: "src/content/services/pl"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Tytuł", name: "title", widget: "string" }
-      - { label: "Opis", name: "tagline", widget: "text" }
-      - { label: "Kolejność wyświetlania", name: "order", widget: "number" }
-      - { label: "Pomniejsz tę kartę", name: "minor", widget: "boolean", default: false }
-      - { label: "Tekst przycisku", name: "ctaLabel", widget: "string" }
-      - { label: "Link przycisku", name: "ctaTarget", widget: "string", default: "/pl/contact" }
-      - { label: "Zdjęcie na karcie Home/Usługi", name: "image", widget: "image" }
-      - { label: "Tekst alternatywny", name: "imageAlt", widget: "string" }
-      - { label: "Punkty", name: "bullets", widget: "list" }
-
   - name: "testimonials"
-    label: "Transformations"
+    label: "Przemiany / Transformations"
     folder: "src/content/testimonials"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Client name / initial (EN)", name: "name", widget: "string" }
-      - { label: "Client name / initial (PL)", name: "namePl", widget: "string", required: false }
-      - { label: "Age disclosed?", name: "ageDisclosed", widget: "boolean", default: false }
-      - { label: "Age", name: "age", widget: "number", required: false }
-      - { label: "Service type (EN)", name: "serviceType", widget: "string" }
-      - { label: "Service type (PL)", name: "serviceTypePl", widget: "string", required: false }
-      - { label: "Duration (EN)", name: "duration", widget: "string" }
-      - { label: "Duration (PL)", name: "durationPl", widget: "string", required: false }
-      - { label: "Starting point (EN)", name: "startingPoint", widget: "string" }
-      - { label: "Starting point (PL)", name: "startingPointPl", widget: "string", required: false }
-      - { label: "Result (EN)", name: "result", widget: "string" }
-      - { label: "Result (PL)", name: "resultPl", widget: "string", required: false }
-      - label: "Written consent on file?"
-        name: "consentOnFile"
-        widget: "boolean"
-        default: false
-        hint: "Only enable this once you have permission to publish the client's details/photo."
-      - { label: "Photo", name: "image", widget: "image" }
-      - { label: "Photo alt text (EN)", name: "imageAlt", widget: "string" }
-      - { label: "Photo alt text (PL)", name: "imageAltPl", widget: "string", required: false }
-      - { label: "Feature on Home page", name: "featured", widget: "boolean", default: false }
-      - { label: "Client story / quote (EN)", name: "body", widget: "markdown" }
-      - { label: "Client story / quote (PL)", name: "storyPl", widget: "text", required: false }
+      - { label: "Imię / inicjał — EN", name: "name", widget: "string" }
+      - { label: "Imię / inicjał — PL", name: "namePl", widget: "string", required: false }
+      - { label: "Wiek ujawniony?", name: "ageDisclosed", widget: "boolean", default: false }
+      - { label: "Wiek", name: "age", widget: "number", required: false }
+      - { label: "Rodzaj współpracy — EN", name: "serviceType", widget: "string" }
+      - { label: "Rodzaj współpracy — PL", name: "serviceTypePl", widget: "string", required: false }
+      - { label: "Czas — EN", name: "duration", widget: "string" }
+      - { label: "Czas — PL", name: "durationPl", widget: "string", required: false }
+      - { label: "Punkt startowy — EN", name: "startingPoint", widget: "string" }
+      - { label: "Punkt startowy — PL", name: "startingPointPl", widget: "string", required: false }
+      - { label: "Wynik — EN", name: "result", widget: "string" }
+      - { label: "Wynik — PL", name: "resultPl", widget: "string", required: false }
+      - { label: "Zgoda na publikację", name: "consentOnFile", widget: "boolean", default: false, hint: "Włącz dopiero, gdy masz zgodę klienta na publikację danych/zdjęcia." }
+      - { label: "Zdjęcie", name: "image", widget: "image" }
+      - { label: "Alt zdjęcia — EN", name: "imageAlt", widget: "string" }
+      - { label: "Alt zdjęcia — PL", name: "imageAltPl", widget: "string", required: false }
+      - { label: "Wyróżnij na Home", name: "featured", widget: "boolean", default: false }
+      - { label: "Historia / cytat — EN", name: "body", widget: "markdown" }
+      - { label: "Historia / cytat — PL", name: "storyPl", widget: "text", required: false }
 
   - name: "faq"
-    label: "FAQ"
+    label: "FAQ — istniejące"
     folder: "src/content/faq"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Question", name: "question", widget: "string" }
-      - { label: "Display order", name: "order", widget: "number" }
-      - label: "Language"
+      - { label: "Pytanie", name: "question", widget: "string" }
+      - { label: "Kolejność", name: "order", widget: "number" }
+      - label: "Język"
         name: "language"
         widget: "select"
         options:
           - { label: "English", value: "en" }
           - { label: "Polski", value: "pl" }
         default: "en"
-      - { label: "Answer", name: "body", widget: "markdown" }
+      - { label: "Odpowiedź", name: "body", widget: "markdown" }

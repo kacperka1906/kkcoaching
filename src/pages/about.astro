@@ -1,15 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.en.json';
+import pages from '../data/pages-v2.json';
+import admin from '../data/admin-v2.json';
 
+const lang = 'en';
+const copy = pages.about;
 const siteUrl = String(Astro.site).replace(/\/$/, '');
-const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
-const aboutImage = '/images/kacper-kaszowski-personal-trainer-cwmbran.jpg';
+const sameAs = [admin.contact.instagramUrl, admin.contact.facebookUrl].filter(Boolean);
+const aboutImage = copy.image;
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${siteUrl}/#kacper-kaszowski`,
-  name: 'Kacper Kaszowski',
+  name: admin.brand.ownerName,
   jobTitle: 'Personal Trainer',
   url: `${siteUrl}/about`,
   image: `${siteUrl}${aboutImage}`,
@@ -17,27 +21,27 @@ const structuredData = {
   worksFor: {
     '@type': 'Organization',
     '@id': `${siteUrl}/#business`,
-    name: 'KK Coaching',
+    name: admin.brand.siteName,
     url: `${siteUrl}/`
   }
 };
 ---
 <BaseLayout
-  title="Kacper Kaszowski | Personal Trainer in Cwmbran | KK Coaching"
-  description="Meet Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching. From a 117 to 76 kg transformation to structured 1:1 and online coaching."
+  title={copy.seo.title[lang]}
+  description={copy.seo.description[lang]}
   lang="en"
   path="/about"
   altPath="/pl/about"
   structuredData={structuredData}
   socialImage={aboutImage}
-  socialImageAlt="Kacper Kaszowski, founder of KK Coaching"
+  socialImageAlt={copy.seo.socialAlt[lang]}
 >
   <section class="about-hero on-dark">
     <div class="container about-hero__grid">
       <img
         class="about-photo"
         src={aboutImage}
-        alt="Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching"
+        alt={copy.imageAlt[lang]}
         width="600"
         height="600"
         loading="eager"
@@ -46,7 +50,7 @@ const structuredData = {
         onerror="this.onerror=null;this.src='/images/kacper.jpg';"
       />
       <div class="about-copy">
-        <span class="eyebrow">Meet your coach</span>
+        <span class="eyebrow">{copy.heroEyebrow[lang]}</span>
         <h1>{site.story.heading}</h1>
         <p class="lead">{site.story.bodyFull}</p>
       </div>
@@ -56,22 +60,16 @@ const structuredData = {
   <section class="on-white">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Lessons from the process</span>
-        <h2>What losing 40+ kg actually taught me</h2>
+        <span class="eyebrow">{copy.lessons.eyebrow[lang]}</span>
+        <h2>{copy.lessons.heading[lang]}</h2>
       </div>
       <div class="lesson-grid">
-        <article class="card">
-          <h3>Consistency beats intensity</h3>
-          <p>The hardest part is not completing one perfect workout or following one perfect week of dieting. It is building a routine you can repeat for months. That is why my coaching prioritises consistent execution before unnecessary extremes.</p>
-        </article>
-        <article class="card">
-          <h3>A plan has to fit real life</h3>
-          <p>The best programme on paper is useless if your schedule, experience or lifestyle make it impossible to follow. Training and nutrition have to work around your life, not the other way around.</p>
-        </article>
-        <article class="card">
-          <h3>Progress needs to be measured</h3>
-          <p>Body weight is only one piece of information. Training performance, measurements, photos and adherence help show whether the plan is working and when something genuinely needs to change.</p>
-        </article>
+        {copy.lessons.cards.map(card => (
+          <article class="card">
+            <h3>{card.title[lang]}</h3>
+            <p>{card.body[lang]}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -79,18 +77,16 @@ const structuredData = {
   <section class="qualifications" aria-labelledby="quals-heading">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Qualifications</span>
-        <h2 id="quals-heading">Professional qualifications</h2>
+        <span class="eyebrow">{copy.qualifications.eyebrow[lang]}</span>
+        <h2 id="quals-heading">{copy.qualifications.heading[lang]}</h2>
       </div>
       <ul class="quals-list">
-        <li>
-          <strong>Level 3 Personal Trainer</strong>
-          <span>Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026</span>
-        </li>
-        <li>
-          <strong>Level 2 Gym Instructor</strong>
-          <span>Diploma in Gym Instructing · Achieve More Training · 2026</span>
-        </li>
+        {copy.qualifications.items.map(item => (
+          <li>
+            <strong>{item.title}</strong>
+            <span>{item.description[lang]}</span>
+          </li>
+        ))}
       </ul>
     </div>
   </section>

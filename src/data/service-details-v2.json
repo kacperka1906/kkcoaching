@@ -1,0 +1,141 @@
+{
+  "personalTraining": {
+    "seo": {
+      "title": { "en": "Personal Trainer in Cwmbran | 1:1 at JD Gyms | KK Coaching", "pl": "Polski trener personalny w Cwmbran | KK Coaching" },
+      "description": {
+        "en": "1:1 personal training at JD Gyms Cwmbran for fat loss, muscle building, technique and gym confidence. Individual programming, progress tracking and practical nutrition support.",
+        "pl": "Polski trener personalny w Cwmbran. Trening 1:1 w JD Gyms, indywidualny plan, technika, redukcja, budowanie mięśni i kontrola postępów."
+      }
+    },
+    "hero": {
+      "eyebrow": { "en": "1:1 coaching at JD Gyms Cwmbran", "pl": "Trening 1:1 w JD Gyms Cwmbran" },
+      "heading": { "en": "Personal Trainer in Cwmbran", "pl": "Polski trener personalny w Cwmbran" },
+      "lead": {
+        "en": "Stop guessing your way through training. Get face-to-face coaching, a clear programme and practical support built around your goal, experience and real weekly schedule.",
+        "pl": "Prowadzę treningi po polsku i angielsku. Dostajesz plan dopasowany do Ciebie, korektę techniki na żywo i jasny kierunek, dzięki któremu wiesz, co robić na każdym treningu."
+      },
+      "primaryCta": { "en": "Book a Free Consultation", "pl": "Umów bezpłatną konsultację" },
+      "primaryHref": { "en": "/contact", "pl": "/pl/contact" },
+      "secondaryCta": { "en": "See Client Results", "pl": "Zobacz przemiany podopiecznych" },
+      "secondaryHref": { "en": "/transformations", "pl": "/pl/transformations" },
+      "trustAria": { "en": "KK Coaching trust points", "pl": "Dlaczego KK Coaching" },
+      "trustPoints": [
+        { "en": "1:1 at JD Gyms Cwmbran", "pl": "JD Gyms Cwmbran" },
+        { "en": "My own 117 → 76 kg transformation", "pl": "Polski + English" },
+        { "en": "Individual coaching, no generic plans", "pl": "Własna metamorfoza: 117 → 76 kg" },
+        { "en": "", "pl": "Indywidualne prowadzenie — bez gotowców" }
+      ],
+      "fallbackImage": "/images/kacper-hero.webp",
+      "imageAlt": { "en": "Kacper Kaszowski, personal trainer in Cwmbran", "pl": "Kacper Kaszowski, polski trener personalny w Cwmbran" }
+    },
+    "fit": {
+      "eyebrow": { "en": "Who this is for", "pl": "Dla kogo" },
+      "heading": { "en": "You do not need a perfect starting point. You need a clear next step.", "pl": "Nie musisz najpierw „ogarnąć się”, żeby zacząć." },
+      "body": {
+        "en": "Personal training works best when the plan matches the person in front of me. Your goal might be changing your body composition, learning how to train properly, rebuilding consistency or simply feeling less lost in the gym.",
+        "pl": "Możesz dopiero zaczynać, wracać po przerwie albo trenować od lat i nadal nie widzieć efektów, których oczekujesz. Zaczynamy od Twojej sytuacji i budujemy plan, który ma sens właśnie dla Ciebie."
+      },
+      "cards": [
+        {
+          "title": { "en": "Lose fat with a plan you can actually follow", "pl": "Chcesz schudnąć i nie wracać ciągle do punktu wyjścia" },
+          "body": { "en": "Build a realistic calorie deficit, keep your training productive and make adjustments from your progress rather than reacting to one bad week.", "pl": "Ustalamy realny deficyt, pilnujemy jakości treningu i patrzymy na trend, a nie jeden gorszy tydzień. Plan ma działać również wtedy, kiedy życie nie jest idealne." }
+        },
+        {
+          "title": { "en": "Build muscle with clear progression", "pl": "Chcesz budować mięśnie zamiast tylko „robić trening”" },
+          "body": { "en": "Know what you are training, why it is in your programme and what needs to improve from week to week instead of jumping between random workouts.", "pl": "Wiesz, po co wykonujesz dane ćwiczenie, co ma się poprawiać i jak wygląda progres. Koniec z przypadkowym dobieraniem ćwiczeń z treningu na trening." }
+        },
+        {
+          "title": { "en": "Train with more confidence", "pl": "Chcesz w końcu czuć się pewnie na siłowni" },
+          "body": { "en": "Learn exercise technique in person, understand your programme and stop second-guessing every set when you walk into the gym.", "pl": "Na żywo poprawiamy technikę, ustawienie i wykonanie. Z czasem przestajesz zastanawiać się przy każdej serii, czy robisz wszystko dobrze." }
+        }
+      ]
+    },
+    "included": {
+      "eyebrow": { "en": "What you get", "pl": "Co dostajesz" },
+      "heading": { "en": "More than someone counting your reps.", "pl": "Nie stoję obok tylko po to, żeby liczyć powtórzenia." },
+      "body": {
+        "en": "A good PT session should teach you how to train better, not make you dependent on a trainer forever. The goal is to give you structure, feedback and a progression system you understand.",
+        "pl": "Chcę, żebyś z czasem rozumiał swój trening, wiedział jak progresować i potrafił ocenić, czy plan działa. Moim zadaniem jest prowadzić Cię, poprawiać błędy i dać Ci system, który ma sens."
+      },
+      "items": [
+        { "en": "Free consultation and clear goal setting", "pl": "Bezpłatna konsultacja i ustalenie konkretnego celu" },
+        { "en": "1:1 face-to-face personal training at JD Gyms Cwmbran", "pl": "Trening personalny 1:1 w JD Gyms Cwmbran" },
+        { "en": "Individual training programme matched to your ability and schedule", "pl": "Plan treningowy dopasowany do Twojego poziomu i grafiku" },
+        { "en": "Live exercise technique coaching and form correction", "pl": "Nauka techniki i korekta ćwiczeń na żywo" },
+        { "en": "Clear progression targets so you know what to improve", "pl": "Jasne zasady progresji — wiesz, czego oczekujemy od kolejnych tygodni" },
+        { "en": "Progress tracking and regular reviews", "pl": "Regularna kontrola postępów" },
+        { "en": "Practical guidance around activity, calories and nutrition habits", "pl": "Praktyczne wskazówki dotyczące aktywności, kalorii i żywienia" },
+        { "en": "A route into online or hybrid support if you want more support outside sessions", "pl": "Możliwość rozszerzenia współpracy o coaching online lub hybrydowy" }
+      ]
+    },
+    "process": {
+      "eyebrow": { "en": "The process", "pl": "Jak to działa" },
+      "heading": { "en": "From first consultation to measurable progress", "pl": "Wiesz, co robisz od pierwszego treningu." },
+      "body": { "en": "No random workouts and no changing everything because one week was imperfect. We build, track and adjust.", "pl": "Bez losowych ćwiczeń i bez zmieniania wszystkiego po jednym gorszym tygodniu. Mamy plan, kontrolujemy efekt i reagujemy wtedy, kiedy jest ku temu powód." },
+      "steps": [
+        { "num": "01", "title": { "en": "Free consultation", "pl": "Najpierw poznaję Twój punkt startowy" }, "body": { "en": "We talk through your goal, training experience, weekly schedule, previous attempts and what is currently holding you back.", "pl": "Rozmawiamy o celu, doświadczeniu, grafiku, wcześniejszych próbach i o tym, co dziś najbardziej utrudnia Ci osiągnięcie efektu." } },
+        { "num": "02", "title": { "en": "Build your plan", "pl": "Układam plan pod Ciebie" }, "body": { "en": "Your training is built around your current ability, available days, preferred training frequency and the result you actually want.", "pl": "Dobieram trening do Twojego poziomu, możliwości, dostępnych dni i celu. Nie dostajesz gotowca skopiowanego od kogoś innego." } },
+        { "num": "03", "title": { "en": "Train with purpose", "pl": "Trenujemy z konkretnym celem" }, "body": { "en": "During 1:1 sessions we work on technique, execution, effort and progression so you understand how to get more from your training.", "pl": "Na sesjach 1:1 pracujemy nad techniką, intensywnością i progresją. Każdy element planu ma swoje zadanie." } },
+        { "num": "04", "title": { "en": "Review and adjust", "pl": "Sprawdzamy efekty i reagujemy" }, "body": { "en": "We use your performance, measurements, adherence and feedback to keep what is working and change what is not.", "pl": "Patrzymy na wyniki treningowe, pomiary i realizację planu. Jeśli coś działa — nie ruszamy tego. Jeśli nie działa — wiemy, co zmienić." } }
+      ]
+    },
+    "coachProof": {
+      "image": "/images/photo-collage.png-1-.png",
+      "imageAlt": { "en": "Kacper Kaszowski's transformation from 117 kg to 76 kg before rebuilding his physique", "pl": "Własna przemiana Kacpra Kaszowskiego od około 117 kg do 76 kg" },
+      "eyebrow": { "en": "Why I coach this way", "pl": "Dlaczego tak pracuję" },
+      "heading": { "en": "I know what it is like to start without a clear system.", "pl": "Wiem, jak łatwo pogubić się w sprzecznych poradach i ciągłych zmianach." },
+      "paragraphs": [
+        { "en": "My own transformation took me from around 117 kg to 76 kg before I rebuilt my physique. I also learned how easy it is to waste time chasing quick fixes, changing plans too often and making training more complicated than it needs to be.", "pl": "Sam przeszedłem drogę od około 117 kg do 76 kg, a później krok po kroku przebudowałem sylwetkę. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i niepotrzebne komplikowanie rzeczy, które powinny być proste." },
+        { "en": "That experience shapes KK Coaching today: clear targets, realistic execution, regular feedback and changes only when the data or your real-life situation gives us a reason to make them.", "pl": "Dziś chcę oszczędzić klientom tego chaosu. Ustalamy cel, robimy plan, realizujemy go wystarczająco długo i wyciągamy wnioski z realnych postępów." }
+      ],
+      "stats": [
+        { "value": "117 kg", "label": { "en": "starting point", "pl": "punkt startowy" } },
+        { "value": "76 kg", "label": { "en": "leanest point", "pl": "punkt przemiany" } },
+        { "value": "1:1 + Online", "label": { "en": "coaching options", "pl": "formy współpracy" } }
+      ],
+      "cta": { "en": "Read my full story →", "pl": "Poznaj moją historię →" },
+      "href": { "en": "/about", "pl": "/pl/about" }
+    },
+    "results": {
+      "eyebrow": { "en": "Client results", "pl": "Efekty podopiecznych" },
+      "heading": { "en": "The plan has to work outside the perfect week.", "pl": "Efekty robi regularność, nie perfekcja." },
+      "body": { "en": "These results came from structured coaching, consistency and plans adjusted to the person — not from trying to be perfect every day.", "pl": "Każdy z tych rezultatów powstał w normalnym życiu — z pracą, gorszymi dniami i obowiązkami. Plan ma pomagać robić progres mimo tego, a nie wymagać idealnych warunków." },
+      "items": [
+        {
+          "image": "/images/client-transformation-aneta-10kg-16-weeks.svg",
+          "imageAlt": { "en": "Aneta's 16-week KK Coaching transformation showing 10 kg lost and 12 cm off the waist", "pl": "16-tygodniowa przemiana Anety w KK Coaching — 10 kg mniej i 12 cm mniej w talii" },
+          "meta": { "en": "ANETA · 16 WEEKS", "pl": "ANETA · 16 TYGODNI" },
+          "heading": { "en": "10 kg lost · 12 cm off the waist", "pl": "-10 kg · -12 cm w talii" },
+          "body": { "en": "More confidence, a move from home training into a commercial gym and better control of late-night snacking — with more progress still to come.", "pl": "Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania — a na tym nie kończymy." }
+        },
+        {
+          "image": "/images/client-transformation-agnieszka-16-weeks.svg",
+          "imageAlt": { "en": "Agnieszka's 16-week KK Coaching physique transformation", "pl": "16-tygodniowa przemiana sylwetki Agnieszki w KK Coaching" },
+          "meta": { "en": "AGNIESZKA · 16 WEEKS", "pl": "AGNIESZKA · 16 TYGODNI" },
+          "heading": { "en": "3 kg down · 8 cm added at the hips", "pl": "-3 kg · +8 cm w biodrach" },
+          "body": { "en": "A plan built around her lifestyle and consistency instead of chasing a perfect week.", "pl": "Plan dopasowany do jej życia i konsekwencja zamiast próby robienia wszystkiego idealnie." }
+        }
+      ],
+      "cta": { "en": "See All Transformations", "pl": "Zobacz wszystkie przemiany" },
+      "href": { "en": "/transformations", "pl": "/pl/transformations" }
+    },
+    "faq": {
+      "eyebrow": { "en": "Questions", "pl": "Pytania" },
+      "heading": { "en": "Personal training in Cwmbran — FAQ", "pl": "Polski trener personalny w Cwmbran — FAQ" },
+      "items": [
+        { "q": { "en": "Do I need gym experience before starting personal training?", "pl": "Czy muszę mieć doświadczenie na siłowni, żeby zacząć?" }, "a": { "en": "No. Coaching is adjusted to your current level. If you are new to the gym, we can start with exercise technique, equipment confidence and a simple programme you understand before adding more complexity.", "pl": "Nie. Jeśli dopiero zaczynasz, zaczniemy od podstaw: techniki, obsługi sprzętu i prostego planu, który rozumiesz. Jeśli już trenujesz, skupimy się na tym, co można poprawić, żeby Twój trening dawał więcej." } },
+        { "q": { "en": "Can personal training help with fat loss as well as building muscle?", "pl": "Czy trening personalny pomoże mi schudnąć albo zbudować mięśnie?" }, "a": { "en": "Yes. Training is only one part of the process, so we also look at activity, calorie intake and practical nutrition habits. The approach changes depending on whether your main goal is fat loss, muscle gain, recomposition or simply getting back into a consistent routine.", "pl": "Tak, ale sam trening to tylko część układanki. W zależności od celu bierzemy też pod uwagę aktywność, kalorie i sposób odżywiania. Inaczej podejdziemy do redukcji, inaczej do budowania mięśni czy rekompozycji." } },
+        { "q": { "en": "Where do the 1:1 sessions take place?", "pl": "Gdzie odbywają się treningi?" }, "a": { "en": "Sessions take place at JD Gyms Cwmbran, 17-18 Gwent Square, Cwmbran, NP44 1PW. The gym is in Cwmbran town centre, less than five minutes from the bus station and around a ten-minute walk from Cwmbran train station.", "pl": "Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dokładne godziny ustalamy podczas bezpłatnej konsultacji." } },
+        { "q": { "en": "What if I need support between face-to-face sessions?", "pl": "Co jeśli potrzebuję wsparcia również pomiędzy treningami?" }, "a": { "en": "If you want more support outside the gym, we can discuss hybrid or online coaching so your training, nutrition targets, progress tracking and regular reviews work as one system.", "pl": "Możemy rozszerzyć współpracę o coaching hybrydowy lub online. Wtedy poza treningami 1:1 dochodzą m.in. regularne raporty, dokładniejsza analiza postępów, wsparcie żywieniowe i kontakt pomiędzy sesjami." } },
+        { "q": { "en": "How do I get started?", "pl": "Jak zacząć?" }, "a": { "en": "Book a free consultation and tell me where you are now, what you want to achieve and what has been getting in the way. We will work out whether 1:1 personal training is the right fit before you commit to anything.", "pl": "Umów bezpłatną konsultację. Powiedz mi, jaki masz cel, gdzie jesteś teraz i z czym masz największy problem. Na tej podstawie powiem Ci, czy trening 1:1 będzie dla Ciebie najlepszą opcją." } }
+      ]
+    },
+    "finalCta": {
+      "eyebrow": { "en": "Ready when you are", "pl": "Zacznijmy od rozmowy" },
+      "heading": { "en": "Tell me where you are now. We will work out the next step.", "pl": "Chcesz zacząć? Najpierw pogadajmy." },
+      "body": { "en": "Your consultation is free. Tell me your goal, your training experience and what has been holding you back. If 1:1 personal training is the right fit, I will explain exactly how we can start.", "pl": "Powiedz mi, jaki masz cel, gdzie jesteś teraz i co do tej pory najbardziej Ci przeszkadzało. Konsultacja jest bezpłatna i bez zobowiązań." },
+      "cta": { "en": "Book Your Free Consultation", "pl": "Umów bezpłatną konsultację" },
+      "href": { "en": "/contact", "pl": "/pl/contact" }
+    }
+  }
+}
