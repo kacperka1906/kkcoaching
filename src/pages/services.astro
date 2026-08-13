@@ -3,27 +3,35 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import site from '../data/site.en.json';
+import pages from '../data/pages-v2.json';
 
+const lang = 'en';
+const copy = pages.services;
 const allServices = (await getCollection('services'))
   .filter(s => s.id.startsWith('en/'))
   .sort((a, b) => a.data.order - b.data.order);
+const guideItems = copy.guideItems.filter(item => item.enabled);
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   '@id': 'https://kkcoaching.fit/services#coaching-options',
   name: 'KK Coaching services',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, item: { '@type': 'Service', name: '1:1 Personal Training in Cwmbran', url: 'https://kkcoaching.fit/personal-training-cwmbran', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
-    { '@type': 'ListItem', position: 2, item: { '@type': 'Service', name: 'Online Coaching', url: 'https://kkcoaching.fit/online-coaching', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
-    { '@type': 'ListItem', position: 3, item: { '@type': 'Service', name: 'Hybrid Coaching', url: 'https://kkcoaching.fit/hybrid-coaching', provider: { '@id': 'https://kkcoaching.fit/#business' } } },
-    { '@type': 'ListItem', position: 4, item: { '@type': 'Service', name: 'Personalised Training Plan', url: 'https://kkcoaching.fit/training-plan', provider: { '@id': 'https://kkcoaching.fit/#business' } } }
-  ]
+  itemListElement: allServices.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: service.data.title,
+      url: `https://kkcoaching.fit${service.data.ctaTarget}`,
+      provider: { '@id': 'https://kkcoaching.fit/#business' }
+    }
+  }))
 };
 ---
 <BaseLayout
-  title="Personal Training & Online Coaching Options | KK Coaching"
-  description="Compare 1:1 personal training in Cwmbran, full online coaching, hybrid 1:1 + online coaching and personalised training plans with KK Coaching."
+  title={copy.seo.title[lang]}
+  description={copy.seo.description[lang]}
   lang="en"
   path="/services"
   altPath="/pl/services"
@@ -32,26 +40,16 @@ const structuredData = {
   <section class="page-hero on-dark">
     <div class="container">
       <span class="eyebrow">{site.servicesIntro.eyebrow}</span>
-      <h1>Personal Training, Online Coaching & Training Plans</h1>
+      <h1>{copy.heroHeading[lang]}</h1>
       <p class="lead">{site.servicesIntro.body}</p>
-      <div class="package-guide" aria-label="Quick comparison of coaching options">
-        <a href="/personal-training-cwmbran">
-          <strong>1:1 Personal Training</strong>
-          <span>Face-to-face coaching in Cwmbran</span>
-        </a>
-        <a href="/online-coaching">
-          <strong>Online Coaching</strong>
-          <span>Complete remote coaching and app support</span>
-        </a>
-        <a href="/hybrid-coaching" class="featured">
-          <small>Most complete</small>
-          <strong>Hybrid Coaching</strong>
-          <span>Everything online + regular 1:1 sessions</span>
-        </a>
-        <a href="/training-plan">
-          <strong>Training Plan</strong>
-          <span>One-off personalised programme without ongoing coaching</span>
-        </a>
+      <div class="package-guide" aria-label={copy.guideAria[lang]}>
+        {guideItems.map(item => (
+          <a href={item.href[lang]} class:list={{ featured: item.featured }}>
+            {item.badge[lang] && <small>{item.badge[lang]}</small>}
+            <strong>{item.title[lang]}</strong>
+            <span>{item.description[lang]}</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
