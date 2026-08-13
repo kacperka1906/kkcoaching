@@ -1,296 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import copy from '../../data/online-v2.json';
+import admin from '../../data/admin-v2.json';
 
-const outcomes = [
-  {
-    title: 'Plan, który pasuje do Twojego życia',
-    body: 'Trening dopasowuję do Twojego doświadczenia, sprzętu, grafiku i celu. Masz wiedzieć, co robisz i dlaczego — bez ciągłego zmieniania kierunku.'
-  },
-  {
-    title: 'Jedzenie bez życia na diecie',
-    body: 'Ustalamy kalorie, makroskładniki i praktyczne zasady, które da się pogodzić z pracą, rodziną, wyjściami i jedzeniem, które naprawdę lubisz.'
-  },
-  {
-    title: 'Kontakt i szybka reakcja, kiedy pojawia się problem',
-    body: 'Regularne raporty, dane z treningów i nagrania techniki pozwalają wcześniej wyłapać problem i wprowadzić konkretną zmianę zamiast zgadywać.'
-  }
-];
-
-const included = [
-  'Indywidualny plan treningowy',
-  'Kalorie, makroskładniki i praktyczne wskazówki żywieniowe',
-  'Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów',
-  'Regularne raporty i analiza postępów',
-  'Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych',
-  'Zmiany planu wtedy, kiedy postępy pokazują, że są potrzebne',
-  'Ocena techniki na podstawie nagrań z treningu',
-  'Kontakt przez WhatsApp między raportami',
-  'Wyjaśnienie, dlaczego coś robimy — nie tylko lista poleceń'
-];
-
-const appFeatures = [
-  {
-    title: 'Plan treningowy',
-    body: 'Aktualny plan masz zawsze pod ręką — bez szukania plików, starych wiadomości i kilku wersji tej samej rozpiski.'
-  },
-  {
-    title: 'Instrukcje ćwiczeń',
-    body: 'Przy ćwiczeniach masz potrzebne informacje i materiały, dzięki którym łatwiej wykonać trening zgodnie z planem.'
-  },
-  {
-    title: 'Log treningów',
-    body: 'Zapisujesz ciężary, powtórzenia i wykonane serie, więc progres nie opiera się na pamięci ani zgadywaniu.'
-  },
-  {
-    title: 'Postępy i dane',
-    body: 'Najważniejsze informacje ze współpracy są w jednym miejscu, dzięki czemu łatwiej zobaczyć trend i podejmować kolejne decyzje.'
-  }
-];
-
-const process = [
-  {
-    num: '01',
-    title: 'Zaczynamy od konkretów',
-    body: 'Ustalamy Twój cel, obecny trening, sposób jedzenia, grafik, dostępny sprzęt i to, przez co wcześniejsze próby najczęściej się rozsypywały.'
-  },
-  {
-    num: '02',
-    title: 'Dostajesz swój plan',
-    body: 'Układam trening i założenia żywieniowe pod Twoją sytuację. Wiesz, co robić od pierwszego tygodnia i jak będziemy oceniać postępy.'
-  },
-  {
-    num: '03',
-    title: 'Realizujesz plan i dajesz mi dane',
-    body: 'Trenujesz, zapisujesz najważniejsze informacje i wysyłasz nagrania, jeśli chcesz sprawdzić technikę. Dzięki temu widzę, co naprawdę dzieje się między raportami.'
-  },
-  {
-    num: '04',
-    title: 'Ja analizuję, razem korygujemy',
-    body: 'Patrzymy na trend, wyniki treningowe i realizację planu. Jeśli coś działa — zostaje. Jeśli nie — zmieniamy dokładnie to, co trzeba.'
-  }
-];
-
-const faqs = [
-  {
-    q: 'Czy muszę mieszkać w UK, żeby korzystać z coachingu online?',
-    a: 'Nie. Współpraca odbywa się zdalnie, więc możesz mieszkać poza UK. Najważniejsze jest to, żebyśmy mogli sprawnie się komunikować i żebyś miał dostęp do sprzętu potrzebnego do realizacji planu.'
-  },
-  {
-    q: 'Czy trener personalny online jest tylko dla osób zaawansowanych?',
-    a: 'Nie. Jeśli dopiero zaczynasz, plan będzie prostszy, a nagrania ćwiczeń pozwolą mi na bieżąco pomagać Ci z techniką. Jeśli trenujesz dłużej, skupimy się na jakości planu, progresji i tym, co faktycznie ogranicza postępy.'
-  },
-  {
-    q: 'Czy dostanę sztywną dietę rozpisaną posiłek po posiłku?',
-    a: 'Podstawą są kalorie, makroskładniki i zasady, które da się utrzymać w normalnym życiu. Jeśli bardziej szczegółowa struktura posiłków będzie Ci potrzebna, możemy ją dopracować, ale nie chcę budować systemu, który działa tylko wtedy, gdy jesz codziennie dokładnie to samo.'
-  },
-  {
-    q: 'Jak monitorujemy postępy?',
-    a: 'W zależności od celu bierzemy pod uwagę trend masy ciała, pomiary, zdjęcia sylwetki, wyniki treningowe, aktywność i realizację planu. Jeden pomiar nie decyduje o zmianie — patrzymy na całość.'
-  },
-  {
-    q: 'Czy mogę pisać do Ciebie między raportami?',
-    a: 'Tak. Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, z którymi nie ma sensu czekać do kolejnego raportu. Możesz też wysyłać nagrania ćwiczeń do oceny techniki.'
-  }
-];
-
+const lang = 'pl';
+const faqs = copy.faq.items.map(item => ({ q: item.q[lang], a: item.a[lang] }));
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Service',
       '@id': 'https://kkcoaching.fit/pl/online-coaching#service',
-      name: 'Trener personalny online UK — coaching po polsku',
+      name: copy.hero.heading[lang],
       serviceType: 'Online Personal Training',
-      description: 'Polski trener personalny online dla klientów w UK i poza UK. Indywidualne prowadzenie z planem treningowym, wsparciem żywieniowym, raportami, analizą postępów i oceną techniki.',
+      description: copy.seo.description[lang],
       url: 'https://kkcoaching.fit/pl/online-coaching',
-      areaServed: [
-        { '@type': 'Country', name: 'United Kingdom' },
-        { '@type': 'Place', name: 'Online' }
-      ],
-      provider: {
-        '@type': 'Organization',
-        '@id': 'https://kkcoaching.fit/#business',
-        name: 'KK Coaching',
-        url: 'https://kkcoaching.fit'
-      }
+      areaServed: [{ '@type': 'Country', name: 'United Kingdom' }, { '@type': 'Place', name: 'Online' }],
+      provider: { '@type': 'Organization', '@id': 'https://kkcoaching.fit/#business', name: admin.brand.siteName, url: 'https://kkcoaching.fit' }
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqs.map(item => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a }
-      }))
-    }
+    { '@type': 'FAQPage', mainEntity: faqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) }
   ]
 };
 ---
-<BaseLayout
-  title="Trener personalny online UK | Polski trener | KK Coaching"
-  description="Polski trener personalny online w UK. Indywidualny plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp."
-  lang="pl"
-  path="/pl/online-coaching"
-  altPath="/online-coaching"
-  structuredData={structuredData}
->
+<BaseLayout title={copy.seo.title[lang]} description={copy.seo.description[lang]} lang="pl" path="/pl/online-coaching" altPath="/online-coaching" structuredData={structuredData}>
   <section class="online-hero on-dark">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Polski coaching online w UK i poza UK</span>
-        <h1>Trener personalny online UK — coaching po polsku</h1>
-        <p class="lead">Dostajesz indywidualny plan treningowy, jasne zasady żywieniowe, regularne raporty i kontakt ze mną między nimi. Wszystko dopasowujemy do Twojego celu i tego, jak naprawdę wygląda Twój tydzień.</p>
-        <div class="hero-actions">
-          <a href="/pl/contact" class="btn btn-primary">Zacznij współpracę online</a>
-          <a href="/pl/transformations" class="btn btn-secondary">Zobacz przemiany podopiecznych</a>
-        </div>
-        <div class="trust-row" aria-label="Co obejmuje współpraca online">
-          <span>Indywidualny plan</span>
-          <span>Aplikacja</span>
-          <span>Ocena techniki</span>
-          <span>Kontakt na WhatsApp</span>
-        </div>
+        <span class="eyebrow">{copy.hero.eyebrow[lang]}</span><h1>{copy.hero.heading[lang]}</h1><p class="lead">{copy.hero.lead[lang]}</p>
+        <div class="hero-actions"><a href={copy.hero.primaryHref[lang]} class="btn btn-primary">{copy.hero.primaryCta[lang]}</a><a href={copy.hero.secondaryHref[lang]} class="btn btn-secondary">{copy.hero.secondaryCta[lang]}</a></div>
+        <div class="trust-row" aria-label={copy.hero.trustAria[lang]}>{copy.hero.trustPoints.map(item => <span>{item[lang]}</span>)}</div>
       </div>
-      <div class="hero-media">
-        <img src="/images/online-coaching-placeholder.svg" alt="Polski trener personalny online UK — KK Coaching z treningiem, żywieniem i kontrolą postępów" width="720" height="540" />
-      </div>
+      <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
   </section>
-
-  <section class="on-white" aria-labelledby="outcomes-heading">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Co się zmienia</span>
-        <h2 id="outcomes-heading">Jeden plan. Jasne zasady. Regularne korekty.</h2>
-        <p>Nie dostajesz ode mnie PDF-a i życzenia powodzenia. Masz konkretny kierunek, sposób kontrolowania postępów i kogoś, kto analizuje wyniki razem z Tobą.</p>
-      </div>
-      <div class="three-grid">
-        {outcomes.map(item => (
-          <article class="info-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="on-dark" aria-labelledby="included-heading">
-    <div class="container split">
-      <div>
-        <span class="eyebrow">Co dostajesz</span>
-        <h2 id="included-heading">Nie znikam po wysłaniu Ci planu.</h2>
-        <p class="dark-copy">Problemy zwykle nie czekają do dnia raportu. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem.</p>
-      </div>
-      <ul class="check-list">
-        {included.map(item => <li>{item}</li>)}
-      </ul>
-    </div>
-  </section>
-
-  <section class="app-section on-white" aria-labelledby="app-heading">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Wszystko w jednej aplikacji</span>
-        <h2 id="app-heading">Plan, treningi i postępy zawsze pod ręką.</h2>
-        <p>Nie musisz szukać rozpiski po wiadomościach ani prowadzić kilku osobnych notatek. Aplikacja jest centrum Twojej współpracy online — i jest również częścią coachingu hybrydowego.</p>
-      </div>
-      <div class="app-grid">
-        {appFeatures.map(item => (
-          <article class="app-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="process-heading">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Jak to działa</span>
-        <h2 id="process-heading">Działasz. Ja analizuję. Kiedy trzeba — zmieniamy.</h2>
-        <p>Nie komplikujemy tego bardziej niż trzeba. Masz jasny plan i wiesz, na podstawie czego podejmujemy kolejne decyzje.</p>
-      </div>
-      <div class="process-grid">
-        {process.map(item => (
-          <article class="process-card">
-            <span class="num">{item.num}</span>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="proof on-white" aria-labelledby="proof-heading">
-    <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">Efekty podopiecznych</span>
-        <h2 id="proof-heading">Forma bez układania całego życia pod fitness.</h2>
-        <p>Nie chodzi o jeden idealny tydzień. Chodzi o plan, który da się realizować wystarczająco długo, żeby efekty naprawdę zaczęły się sumować.</p>
-      </div>
-      <div class="results-grid">
-        <article class="result-card">
-          <img src="/images/client-transformation-aneta-10kg-16-weeks.svg" alt="16-tygodniowa przemiana Anety we współpracy online z KK Coaching — 10 kg mniej i 12 cm mniej w talii" width="600" height="750" loading="lazy" />
-          <div class="result-copy">
-            <span>ANETA · ONLINE · 16 TYGODNI</span>
-            <h3>-10 kg · -12 cm w talii</h3>
-            <p>Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania.</p>
-          </div>
-        </article>
-        <article class="result-card">
-          <img src="/images/client-transformation-agnieszka-16-weeks.svg" alt="16-tygodniowa przemiana sylwetki Agnieszki w KK Coaching" width="600" height="750" loading="lazy" />
-          <div class="result-copy">
-            <span>AGNIESZKA · ONLINE · 16 TYGODNI</span>
-            <h3>-3 kg · +8 cm w biodrach</h3>
-            <p>Plan dopasowany do jej życia i regularność zamiast próby robienia wszystkiego perfekcyjnie.</p>
-          </div>
-        </article>
-      </div>
-      <div class="center-cta"><a href="/pl/transformations" class="btn btn-outline-dark">Zobacz wszystkie przemiany</a></div>
-    </div>
-  </section>
-
-  <section class="coach-section on-dark" aria-labelledby="coach-heading">
-    <div class="container coach-grid">
-      <img src="/images/kacper-hero.webp" alt="Kacper Kaszowski, polski trener personalny online i założyciel KK Coaching" width="500" height="600" loading="lazy" />
-      <div>
-        <span class="eyebrow">Twój trener</span>
-        <h2 id="coach-heading">Wiem, jak wygląda chaos od środka. Dlatego nie prowadzę klientów metodą prób i błędów.</h2>
-        <p class="dark-copy">Sam przeszedłem drogę od około 117 kg do 76 kg, a później przebudowałem sylwetkę. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i komplikowanie rzeczy, które powinny być proste.</p>
-        <p class="dark-copy">Dziś pracuję inaczej: ustalamy jasny cel, dobieramy plan do realnego życia i zmieniamy go dopiero wtedy, kiedy postępy pokazują, że faktycznie trzeba coś poprawić.</p>
-        <a href="/pl/about" class="btn btn-secondary">Poznaj moją historię</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="on-white" aria-labelledby="faq-heading">
-    <div class="container faq-wrap">
-      <div class="section-head centered">
-        <span class="eyebrow">Pytania</span>
-        <h2 id="faq-heading">Trener personalny online UK — FAQ</h2>
-      </div>
-      <div class="faq-list">
-        {faqs.map(item => (
-          <details class="faq-item">
-            <summary>{item.q}</summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="final-cta">
-    <div class="container">
-      <span class="eyebrow light">Zacznijmy od rozmowy</span>
-      <h2>Jeśli chcesz wiedzieć, co robić dalej — napisz.</h2>
-      <p>Powiedz mi, jaki masz cel, jak teraz trenujesz i z czym masz największy problem. Powiem Ci, czy współpraca online ma w Twojej sytuacji sens i jak wygląda start.</p>
-      <a href="/pl/contact" class="btn btn-secondary">Zacznij współpracę online</a>
-    </div>
-  </section>
+  <section class="on-white" aria-labelledby="outcomes-heading"><div class="container"><div class="section-head"><span class="eyebrow">{copy.outcomes.eyebrow[lang]}</span><h2 id="outcomes-heading">{copy.outcomes.heading[lang]}</h2><p>{copy.outcomes.body[lang]}</p></div><div class="three-grid">{copy.outcomes.cards.map(item => <article class="info-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
+  <section class="on-dark" aria-labelledby="included-heading"><div class="container split"><div><span class="eyebrow">{copy.included.eyebrow[lang]}</span><h2 id="included-heading">{copy.included.heading[lang]}</h2><p class="dark-copy">{copy.included.body[lang]}</p></div><ul class="check-list">{copy.included.items.map(item => <li>{item[lang]}</li>)}</ul></div></section>
+  <section class="app-section on-white" aria-labelledby="app-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.app.eyebrow[lang]}</span><h2 id="app-heading">{copy.app.heading[lang]}</h2><p>{copy.app.body[lang]}</p></div><div class="app-grid">{copy.app.cards.map(item => <article class="app-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
+  <section aria-labelledby="process-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.process.eyebrow[lang]}</span><h2 id="process-heading">{copy.process.heading[lang]}</h2><p>{copy.process.body[lang]}</p></div><div class="process-grid">{copy.process.steps.map(item => <article class="process-card"><span class="num">{item.num}</span><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
+  <section class="proof on-white" aria-labelledby="proof-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.results.eyebrow[lang]}</span><h2 id="proof-heading">{copy.results.heading[lang]}</h2><p>{copy.results.body[lang]}</p></div><div class="results-grid">{copy.results.items.map(item => <article class="result-card"><img src={item.image} alt={item.imageAlt[lang]} width="600" height="750" loading="lazy" /><div class="result-copy"><span>{item.meta[lang]}</span><h3>{item.heading[lang]}</h3><p>{item.body[lang]}</p></div></article>)}</div><div class="center-cta"><a href={copy.results.href[lang]} class="btn btn-outline-dark">{copy.results.cta[lang]}</a></div></div></section>
+  <section class="coach-section on-dark" aria-labelledby="coach-heading"><div class="container coach-grid"><img src={copy.coach.image} alt={copy.coach.imageAlt[lang]} width="500" height="600" loading="lazy" /><div><span class="eyebrow">{copy.coach.eyebrow[lang]}</span><h2 id="coach-heading">{copy.coach.heading[lang]}</h2>{copy.coach.paragraphs.map(item => <p class="dark-copy">{item[lang]}</p>)}<a href={copy.coach.href[lang]} class="btn btn-secondary">{copy.coach.cta[lang]}</a></div></div></section>
+  <section class="on-white" aria-labelledby="faq-heading"><div class="container faq-wrap"><div class="section-head centered"><span class="eyebrow">{copy.faq.eyebrow[lang]}</span><h2 id="faq-heading">{copy.faq.heading[lang]}</h2></div><div class="faq-list">{faqs.map(item => <details class="faq-item"><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
+  <section class="final-cta"><div class="container"><span class="eyebrow light">{copy.finalCta.eyebrow[lang]}</span><h2>{copy.finalCta.heading[lang]}</h2><p>{copy.finalCta.body[lang]}</p><a href={copy.finalCta.href[lang]} class="btn btn-secondary">{copy.finalCta.cta[lang]}</a></div></section>
 </BaseLayout>
 
 <style>
@@ -302,27 +52,22 @@ const structuredData = {
   .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .trust-row span { border: 1px solid #3B4048; border-radius: 999px; padding: 7px 11px; color: #D9DCE0; font-size: 0.78rem; }
   .hero-media img { width: 100%; border-radius: var(--radius); border: 1px solid #363A40; }
-
   .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .info-card, .process-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); padding: 28px 24px; }
   .info-card { border-top: 3px solid var(--red); }
   .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
   .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
-
   .dark-copy { color: #C0C4CA; max-width: 58ch; margin-bottom: 14px; }
   .check-list { list-style: none; display: grid; gap: 12px; }
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
   .check-list li::before { content: '✓'; position: absolute; left: 16px; color: #E25766; font-weight: 800; }
-
   .app-section { padding-top: 88px; }
   .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .app-card { background: #F6F7F8; border: 1px solid #E2E4E7; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 24px 20px; }
   .app-card h3 { font-size: 1rem; margin-bottom: 9px; }
   .app-card p { color: var(--steel); font-size: 0.9rem; }
-
   .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
-
   .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; }
   .result-card { background: var(--white); border: 1px solid #E2E4E7; border-radius: var(--radius); overflow: hidden; }
   .result-card img { width: 100%; height: auto; }
@@ -331,9 +76,7 @@ const structuredData = {
   .result-copy h3 { margin: 8px 0; font-size: 1.05rem; }
   .result-copy p { color: var(--steel); font-size: 0.9rem; }
   .center-cta { text-align: center; margin-top: 34px; }
-
   .coach-grid img { width: 100%; max-height: 620px; object-fit: cover; object-position: center top; border-radius: var(--radius); }
-
   .faq-wrap { max-width: 860px; }
   .faq-list { border-top: 1px solid #D8DBDE; }
   .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
@@ -342,27 +85,10 @@ const structuredData = {
   .faq-item summary::after { content: '+'; position: absolute; right: 4px; color: var(--red); font-size: 1.25rem; }
   .faq-item[open] summary::after { content: '−'; }
   .faq-item p { color: var(--steel); margin-top: 10px; padding-right: 34px; }
-
   .final-cta { background: var(--red); color: var(--white); text-align: center; padding: 88px 0; }
   .final-cta .eyebrow.light { color: #FFDDE1; }
   .final-cta h2 { color: var(--white); max-width: 720px; margin: 0 auto 14px; }
   .final-cta p { color: #F5DADD; max-width: 62ch; margin: 0 auto 28px; }
-
-  @media (max-width: 900px) {
-    .hero-grid, .split, .coach-grid { grid-template-columns: 1fr; gap: 34px; }
-    .three-grid { grid-template-columns: 1fr; }
-    .app-grid, .process-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-copy h1 { max-width: none; }
-  }
-
-  @media (max-width: 620px) {
-    .online-hero { padding: 48px 0 56px; }
-    .hero-copy h1 { font-size: clamp(2rem, 9.6vw, 2.75rem); }
-    .hero-copy .lead { font-size: 1rem; }
-    .hero-actions { display: grid; grid-template-columns: 1fr; }
-    .hero-actions .btn { width: 100%; }
-    .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
-    .trust-row span { text-align: center; }
-    .app-grid, .process-grid, .results-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px) { .hero-grid, .split, .coach-grid { grid-template-columns: 1fr; gap: 34px; } .three-grid { grid-template-columns: 1fr; } .app-grid, .process-grid { grid-template-columns: repeat(2, 1fr); } .hero-copy h1 { max-width: none; } }
+  @media (max-width: 620px) { .online-hero { padding: 48px 0 56px; } .hero-copy h1 { font-size: clamp(2rem, 9.6vw, 2.75rem); } .hero-copy .lead { font-size: 1rem; } .hero-actions { display: grid; grid-template-columns: 1fr; } .hero-actions .btn { width: 100%; } .trust-row { display: grid; grid-template-columns: 1fr 1fr; } .trust-row span { text-align: center; } .app-grid, .process-grid, .results-grid { grid-template-columns: 1fr; } }
 </style>
