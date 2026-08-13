@@ -16,6 +16,7 @@ const targets = [
 ];
 
 const locationRoutes = ['', 'pl', 'services', 'pl/services', 'hybrid-coaching', 'pl/hybrid-coaching'];
+const reviewRoutes = ['', 'pl'];
 
 function escapeAttr(value) {
   return String(value)
@@ -74,21 +75,21 @@ function movePricingAfterHero(html, className) {
   return withoutPricing.slice(0, hero.end) + pricing + withoutPricing.slice(hero.end);
 }
 
-function moveTrainingLocationInsideMain(html) {
-  const locationStart = html.indexOf('<section class="training-location');
-  if (locationStart < 0) return html;
+function moveSectionInsideMain(html, className) {
+  const sectionStart = html.indexOf(`<section class="${className}`);
+  if (sectionStart < 0) return html;
   const mainClose = html.indexOf('</main>');
   if (mainClose < 0) throw new Error('Missing </main>');
-  if (locationStart < mainClose) return html;
+  if (sectionStart < mainClose) return html;
 
-  const locationClose = html.indexOf('</section>', locationStart);
-  if (locationClose < 0) throw new Error('Unclosed training-location section');
-  const locationEnd = locationClose + '</section>'.length;
-  const location = html.slice(locationStart, locationEnd);
-  const withoutLocation = html.slice(0, locationStart) + html.slice(locationEnd);
-  const updatedMainClose = withoutLocation.indexOf('</main>');
+  const sectionClose = html.indexOf('</section>', sectionStart);
+  if (sectionClose < 0) throw new Error(`Unclosed ${className} section`);
+  const sectionEnd = sectionClose + '</section>'.length;
+  const section = html.slice(sectionStart, sectionEnd);
+  const withoutSection = html.slice(0, sectionStart) + html.slice(sectionEnd);
+  const updatedMainClose = withoutSection.indexOf('</main>');
 
-  return withoutLocation.slice(0, updatedMainClose) + location + withoutLocation.slice(updatedMainClose);
+  return withoutSection.slice(0, updatedMainClose) + section + withoutSection.slice(updatedMainClose);
 }
 
 function addHeroPreload(html, image) {
@@ -121,9 +122,20 @@ for (const route of locationRoutes) {
   const file = outputFile(route);
   let html = await readFile(file, 'utf8');
   const before = html;
-  html = moveTrainingLocationInsideMain(html);
+  html = moveSectionInsideMain(html, 'training-location');
   if (html !== before) {
     await writeFile(file, html);
     console.log(`Moved training location into <main> on /${route}`);
+  }
+}
+
+for (const route of reviewRoutes) {
+  const file = outputFile(route);
+  let html = await readFile(file, 'utf8');
+  const before = html;
+  html = moveSectionInsideMain(html, 'reviews-section');
+  if (html !== before) {
+    await writeFile(file, html);
+    console.log(`Moved reviews into <main> on /${route}`);
   }
 }
