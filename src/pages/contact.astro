@@ -1,66 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactMethods from '../components/ContactMethods.astro';
-import site from '../data/site.en.json';
+import pages from '../data/pages-v2.json';
+import admin from '../data/admin-v2.json';
+
+const lang = 'en';
+const copy = pages.contact;
+const form = copy.form;
+const languageOptions = form.languageOptions;
 ---
 <BaseLayout
-  title="Free Personal Training Consultation Cwmbran | KK Coaching"
-  description="Book a free KK Coaching consultation for personal training in Cwmbran, online coaching or hybrid coaching. Tell me your goal and what is holding you back."
+  title={copy.seo.title[lang]}
+  description={copy.seo.description[lang]}
   lang="en"
   path="/contact"
   altPath="/pl/contact"
 >
   <section class="page-hero on-dark">
     <div class="container">
-      <span class="eyebrow">Start here</span>
-      <h1>Book Your Free Consultation</h1>
-      <p class="lead">Tell me where you are now, what you want to achieve and what has been getting in the way. There is no pressure to commit - we will simply work out whether I can help and which option fits best.</p>
+      <span class="eyebrow">{copy.hero.eyebrow[lang]}</span>
+      <h1>{copy.hero.heading[lang]}</h1>
+      <p class="lead">{copy.hero.body[lang]}</p>
     </div>
   </section>
 
   <section class="on-white">
     <div class="container contact-grid">
-      <form id="contact-form" data-track-as="contact_enquiry" novalidate>
+      <form
+        id="contact-form"
+        data-track-as="contact_enquiry"
+        data-sending={form.sending[lang]}
+        data-error={form.error[lang]}
+        data-thank-you="/thank-you"
+        data-lead-language="en"
+        novalidate
+      >
         <div class="field">
-          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <label for="name">{form.name[lang]} <span aria-hidden="true">*</span></label>
           <input type="text" id="name" name="name" required autocomplete="name" />
         </div>
         <div class="field">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <label for="email">{form.email[lang]} <span aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email" />
         </div>
         <div class="field">
-          <label for="phone">Phone / WhatsApp <span aria-hidden="true">*</span></label>
+          <label for="phone">{form.phone[lang]} <span aria-hidden="true">*</span></label>
           <input type="tel" id="phone" name="phone" required autocomplete="tel" />
         </div>
         <div class="field">
-          <label for="location">Location</label>
-          <input type="text" id="location" name="location" placeholder="e.g. Cwmbran, Cardiff, or online" />
+          <label for="location">{form.location[lang]}</label>
+          <input type="text" id="location" name="location" placeholder={form.locationPlaceholder[lang]} />
         </div>
         <div class="field">
-          <label for="language">Preferred language</label>
+          <label for="language">{form.language[lang]}</label>
           <select id="language" name="language">
-            <option value="English">English</option>
-            <option value="Polish">Polish</option>
+            {languageOptions.map(option => <option value={option.value}>{option.label[lang]}</option>)}
           </select>
         </div>
         <div class="field">
-          <label for="interest">Interested in</label>
+          <label for="interest">{form.interest[lang]}</label>
           <select id="interest" name="interest">
-            <option>Personal Training</option>
-            <option>Online Coaching</option>
-            <option>Hybrid Coaching</option>
-            <option>Training Plan</option>
-            <option>Not sure yet</option>
+            {form.interestOptions.map(option => <option>{option[lang]}</option>)}
           </select>
         </div>
         <div class="field">
-          <label for="goal">What would you like to achieve? <span aria-hidden="true">*</span></label>
-          <textarea id="goal" name="goal" rows="3" required placeholder="Fat loss, muscle gain, getting stronger, feeling more confident in the gym..."></textarea>
+          <label for="goal">{form.goal[lang]} <span aria-hidden="true">*</span></label>
+          <textarea id="goal" name="goal" rows="3" required placeholder={form.goalPlaceholder[lang]}></textarea>
         </div>
         <div class="field">
-          <label for="blocker">What is currently holding you back?</label>
-          <textarea id="blocker" name="blocker" rows="3" placeholder="Time, consistency, nutrition, not knowing what to do, or not having a clear plan..."></textarea>
+          <label for="blocker">{form.blocker[lang]}</label>
+          <textarea id="blocker" name="blocker" rows="3" placeholder={form.blockerPlaceholder[lang]}></textarea>
         </div>
 
         <div class="field honeypot" aria-hidden="true">
@@ -71,20 +80,20 @@ import site from '../data/site.en.json';
         <div class="field checkbox-field">
           <input type="checkbox" id="consent" name="consent" required />
           <label for="consent">
-            I agree to be contacted and I have read the <a href="/privacy">Privacy Policy</a>. <span aria-hidden="true">*</span>
+            {form.consentBefore[lang]} <a href={form.privacyHref[lang]}>{form.privacyLabel[lang]}</a>. <span aria-hidden="true">*</span>
           </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Send My Enquiry</button>
-        <p class="form-note">No pressure, no sales script. I usually reply within 24 hours.</p>
+        <button type="submit" class="btn btn-primary">{form.submit[lang]}</button>
+        <p class="form-note">{form.note[lang]}</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 
       <ContactMethods
         lang="en"
-        whatsappNumber={site.meta.whatsappNumber}
-        contactEmail={site.meta.contactEmail}
-        instagramUrl={site.meta.instagramUrl}
+        whatsappNumber={admin.contact.whatsapp}
+        contactEmail={admin.contact.email}
+        instagramUrl={admin.contact.instagramUrl}
       />
     </div>
   </section>
@@ -104,13 +113,14 @@ import site from '../data/site.en.json';
     }
 
     const formData = new FormData(form);
+    const thankYou = form.dataset.thankYou || '/thank-you';
 
     if (formData.get('company')) {
-      window.location.href = '/thank-you';
+      window.location.href = thankYou;
       return;
     }
 
-    status.textContent = 'Sending...';
+    status.textContent = form.dataset.sending || 'Sending...';
 
     try {
       const res = await fetch('/.netlify/functions/contact', {
@@ -125,14 +135,14 @@ import site from '../data/site.en.json';
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', {
           form_name: 'contact_enquiry',
-          lead_language: 'en',
+          lead_language: form.dataset.leadLanguage || 'en',
           interest: String(formData.get('interest') ?? '')
         });
       }
 
-      window.location.href = '/thank-you';
+      window.location.href = thankYou;
     } catch (err) {
-      status.textContent = "Something went wrong sending your message. Please try WhatsApp or email instead.";
+      status.textContent = form.dataset.error || 'Something went wrong. Please try WhatsApp or email instead.';
     }
   });
 </script>
