@@ -1,0 +1,72 @@
+{
+  "seo": {
+    "title": { "en": "Personalised Training Plan UK | £30 One-Off | KK Coaching", "pl": "Indywidualny plan treningowy | £30 jednorazowo | KK Coaching" },
+    "description": {
+      "en": "Get a personalised training plan built around your goal, schedule, experience and equipment. Clear sets, reps and progression guidance for a £30 one-off fee.",
+      "pl": "Indywidualny plan treningowy dopasowany do celu, grafiku, doświadczenia i sprzętu. Jasne serie, powtórzenia i progresja za £30 jednorazowo."
+    }
+  },
+  "hero": {
+    "eyebrow": { "en": "One-off personalised programme", "pl": "Jednorazowy indywidualny program" },
+    "heading": { "en": "Personalised Training Plan Built Around You", "pl": "Indywidualny plan treningowy dopasowany do Ciebie" },
+    "lead": { "en": "Train independently with a structured programme built around your goal, weekly schedule, experience and available equipment.", "pl": "Trenuj samodzielnie z konkretnym programem ułożonym pod Twój cel, grafik, doświadczenie i dostępny sprzęt." },
+    "oneOffLabel": { "en": "one-off", "pl": "jednorazowo" },
+    "primaryCta": { "en": "Ask About a Training Plan", "pl": "Zapytaj o plan treningowy" },
+    "primaryHref": { "en": "/contact", "pl": "/pl/contact" },
+    "secondaryCta": { "en": "Compare Coaching Options", "pl": "Porównaj opcje współpracy" },
+    "secondaryHref": { "en": "/services", "pl": "/pl/services" },
+    "scopeNote": { "en": "One-off service · no subscription · no ongoing check-ins or coaching support", "pl": "Usługa jednorazowa · bez abonamentu · bez regularnych raportów i bieżącego prowadzenia" }
+  },
+  "fit": {
+    "eyebrow": { "en": "Who it is for", "pl": "Dla kogo" },
+    "heading": { "en": "A clear programme without paying for support you do not need.", "pl": "Konkretny plan bez płacenia za wsparcie, którego nie potrzebujesz." },
+    "body": { "en": "If you are happy to train on your own but want the structure of an individual programme, this sits between random workouts and full ongoing coaching.", "pl": "Jeśli chcesz ćwiczyć samodzielnie, ale zależy Ci na indywidualnym programie zamiast przypadkowych treningów, to najprostsza forma współpracy." },
+    "cards": [
+      { "title": { "en": "You want structure without ongoing coaching", "pl": "Chcesz trenować samodzielnie, ale mieć konkretny plan" }, "body": { "en": "You are comfortable training independently but want a programme built around a clear goal instead of assembling workouts from random exercises.", "pl": "Nie potrzebujesz stałego prowadzenia, ale chcesz wiedzieć dokładnie co robić zamiast składać trening z przypadkowych ćwiczeń." } },
+      { "title": { "en": "You need a plan that fits your real week", "pl": "Plan musi pasować do Twojego tygodnia" }, "body": { "en": "Your programme is built around the number of days you can actually train, the equipment you have access to and your current experience.", "pl": "Program układam pod liczbę dni, które naprawdę możesz trenować, dostępny sprzęt i Twój aktualny poziom." } },
+      { "title": { "en": "You want clear progression", "pl": "Chcesz wiedzieć, jak progresować" }, "body": { "en": "Sets, rep ranges and progression guidance give you a clear way to judge whether your training is moving forward.", "pl": "Serie, zakresy powtórzeń i zasady progresji dają Ci jasny punkt odniesienia i pomagają ocenić, czy trening idzie do przodu." } }
+    ]
+  },
+  "included": {
+    "eyebrow": { "en": "What you get", "pl": "Co dostajesz" },
+    "heading": { "en": "A programme you can open and follow without guessing.", "pl": "Plan, który otwierasz i wiesz dokładnie, co masz zrobić." },
+    "body": { "en": "The plan focuses on the training structure itself. It gives you a clear framework for your sessions without turning a one-off programme into a stripped-down coaching subscription.", "pl": "Ta opcja skupia się na samym programie treningowym. Dostajesz jasną strukturę bez udawania, że jednorazowy plan jest okrojoną wersją pełnego coachingu." }
+  },
+  "process": {
+    "eyebrow": { "en": "How it works", "pl": "Jak to działa" },
+    "heading": { "en": "From your goal to a plan you can actually use.", "pl": "Od Twojego celu do planu, który da się normalnie realizować." },
+    "steps": [
+      { "num": "01", "title": { "en": "Tell me your goal and training setup", "pl": "Podajesz mi cel i warunki treningowe" }, "body": { "en": "I collect the information needed to build the plan: your goal, training experience, available days, equipment and any exercises or movements that need to be considered.", "pl": "Zbieram informacje potrzebne do ułożenia planu: cel, doświadczenie, liczbę dni, dostępny sprzęt oraz rzeczy, które trzeba uwzględnić przy doborze ćwiczeń." } },
+      { "num": "02", "title": { "en": "I build your programme", "pl": "Układam Twój program" }, "body": { "en": "Exercise selection, weekly structure, sets, rep ranges, rest times and progression are organised around your situation rather than a generic template.", "pl": "Dobieram strukturę tygodnia, ćwiczenia, serie, zakresy powtórzeń, przerwy i zasady progresji pod Twoją sytuację zamiast korzystać z gotowego szablonu." } },
+      { "num": "03", "title": { "en": "You receive the plan in a clear format", "pl": "Dostajesz plan w czytelnej formie" }, "body": { "en": "The programme is laid out so you know exactly what to do when you train, including the structure you need to log and progress your sessions.", "pl": "Masz jasny układ treningów i wiesz, co wykonać podczas każdej sesji oraz w jaki sposób śledzić progres." } },
+      { "num": "04", "title": { "en": "You train independently", "pl": "Realizujesz plan samodzielnie" }, "body": { "en": "This is a one-off service. If you later want regular check-ins, nutrition support, technique feedback or ongoing adjustments, you can move into Online or Hybrid Coaching.", "pl": "To usługa jednorazowa. Jeśli później będziesz potrzebować regularnych raportów, żywienia, oceny techniki lub bieżących korekt, możesz przejść na coaching online albo hybrydowy." } }
+    ]
+  },
+  "compare": {
+    "eyebrow": { "en": "Plan or coaching?", "pl": "Plan czy prowadzenie?" },
+    "heading": { "en": "Choose the level of support you actually need.", "pl": "Wybierz tyle wsparcia, ile naprawdę potrzebujesz." },
+    "body": { "en": "If all you need is a structured programme, the one-off plan keeps things simple. If you want somebody to monitor progress, review technique, adjust training and support nutrition over time, ongoing coaching is designed for that.", "pl": "Jeśli potrzebujesz tylko programu, jednorazowy plan załatwia sprawę. Jeśli chcesz, żebym regularnie analizował progres, oceniał technikę, korygował trening i pomagał z żywieniem, lepszym wyborem będzie stałe prowadzenie." },
+    "links": [
+      { "title": { "en": "Online Coaching", "pl": "Coaching online" }, "body": { "en": "Ongoing training, nutrition, check-ins and support →", "pl": "Trening, żywienie, raporty i bieżące wsparcie →" }, "href": { "en": "/online-coaching", "pl": "/pl/online-coaching" } },
+      { "title": { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" }, "body": { "en": "Full online support plus regular 1:1 sessions →", "pl": "Pełne prowadzenie online + regularne treningi 1:1 →" }, "href": { "en": "/hybrid-coaching", "pl": "/pl/hybrid-coaching" } },
+      { "title": { "en": "1:1 Personal Training", "pl": "Trening personalny 1:1" }, "body": { "en": "Face-to-face coaching at JD Gyms Cwmbran →", "pl": "Praca na żywo w JD Gyms Cwmbran →" }, "href": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" } }
+    ]
+  },
+  "faq": {
+    "eyebrow": { "en": "Questions", "pl": "Pytania" },
+    "heading": { "en": "Personalised training plan — FAQ", "pl": "Indywidualny plan treningowy — FAQ" },
+    "items": [
+      { "q": { "en": "Is this the same as Online Coaching?", "pl": "Czy to jest to samo co coaching online?" }, "a": { "en": "No. The personalised training plan is a one-off programme for independent training. Online Coaching includes ongoing check-ins, progress analysis, nutrition guidance, technique feedback and continued support.", "pl": "Nie. Indywidualny plan treningowy jest usługą jednorazową do samodzielnej realizacji. Coaching online obejmuje bieżące raporty, analizę postępów, wskazówki żywieniowe, ocenę techniki i regularne korekty." } },
+      { "q": { "en": "Can the plan be built for a home gym or limited equipment?", "pl": "Czy plan można ułożyć pod domową siłownię albo ograniczony sprzęt?" }, "a": { "en": "Yes. Exercise selection is matched to the equipment you actually have available, whether that is a commercial gym, home gym or a more limited setup.", "pl": "Tak. Ćwiczenia dobieram do sprzętu, którym faktycznie dysponujesz — może to być pełna siłownia komercyjna, domowa siłownia albo bardziej ograniczony zestaw." } },
+      { "q": { "en": "Is the plan suitable for beginners?", "pl": "Czy taki plan nadaje się dla osoby początkującej?" }, "a": { "en": "It can be. The programme is matched to your current experience, but if you are completely new to the gym and need hands-on technique coaching, 1:1 Personal Training may be a better starting point.", "pl": "Tak, plan może być dopasowany do początkującego poziomu. Jeśli jednak dopiero uczysz się obsługi sprzętu i techniki ćwiczeń, lepszym początkiem mogą być treningi 1:1 w Cwmbran." } },
+      { "q": { "en": "What happens if I later want the plan adjusted?", "pl": "Co jeśli później będę chciał zmienić plan?" }, "a": { "en": "Because this is a one-off service, ongoing monitoring and repeated adjustments are not included. If you want that level of support, Online Coaching or Hybrid Coaching is the better option.", "pl": "Ponieważ jest to usługa jednorazowa, regularne monitorowanie i kolejne korekty nie są wliczone w cenę. Jeśli chcesz takiego wsparcia, lepiej sprawdzi się coaching online lub hybrydowy." } }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": { "en": "Ready to train with a plan?", "pl": "Chcesz trenować z konkretnym planem?" },
+    "heading": { "en": "Tell me what you are training for.", "pl": "Napisz mi, jaki masz cel." },
+    "body": { "en": "Send me your goal, weekly schedule and training setup. I will confirm whether the one-off plan is the right option before we start.", "pl": "Podaj swój cel, liczbę dni treningowych i warunki, w których ćwiczysz. Potwierdzę, czy jednorazowy plan będzie dla Ciebie odpowiednią opcją." },
+    "cta": { "en": "Ask About a Training Plan", "pl": "Zapytaj o plan treningowy" },
+    "href": { "en": "/contact", "pl": "/pl/contact" }
+  }
+}
