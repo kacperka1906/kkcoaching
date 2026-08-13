@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "admin:sync": "node scripts/sync-admin-v2.mjs",
+    "admin:sync": "node scripts/sync-admin-v2.mjs && node scripts/sync-services-v2.mjs",
     "dev": "npm run admin:sync && astro dev",
     "build:astro": "npm run admin:sync && astro build",
     "finalize:html": "node scripts/finalize-static-html.mjs",
