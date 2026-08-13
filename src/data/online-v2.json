@@ -1,0 +1,149 @@
+{
+  "seo": {
+    "title": { "en": "Online Personal Trainer UK | Fitness Coach | KK Coaching", "pl": "Trener personalny online UK | Polski trener | KK Coaching" },
+    "description": {
+      "en": "Online personal trainer and fitness coach across the UK. Individual training plan, nutrition targets, check-ins, progress tracking and video feedback.",
+      "pl": "Polski trener personalny online w UK. Indywidualny plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp."
+    }
+  },
+  "hero": {
+    "eyebrow": { "en": "Online personal training across the UK", "pl": "Polski coaching online w UK i poza UK" },
+    "heading": { "en": "Online Personal Trainer & Fitness Coach UK", "pl": "Trener personalny online UK — coaching po polsku" },
+    "lead": {
+      "en": "Get a personalised training plan, practical nutrition targets, regular accountability and ongoing support from an online coach — built around your goal and your actual life, not an ideal week on paper.",
+      "pl": "Dostajesz indywidualny plan treningowy, jasne zasady żywieniowe, regularne raporty i kontakt ze mną między nimi. Wszystko dopasowujemy do Twojego celu i tego, jak naprawdę wygląda Twój tydzień."
+    },
+    "primaryCta": { "en": "Apply for Online Coaching", "pl": "Zacznij współpracę online" },
+    "primaryHref": { "en": "/contact", "pl": "/pl/contact" },
+    "secondaryCta": { "en": "See Client Results", "pl": "Zobacz przemiany podopiecznych" },
+    "secondaryHref": { "en": "/transformations", "pl": "/pl/transformations" },
+    "trustAria": { "en": "Online coaching trust points", "pl": "Co obejmuje współpraca online" },
+    "trustPoints": [
+      { "en": "Individual programming", "pl": "Indywidualny plan" },
+      { "en": "Coaching app", "pl": "Aplikacja" },
+      { "en": "Video feedback", "pl": "Ocena techniki" },
+      { "en": "WhatsApp support", "pl": "Kontakt na WhatsApp" }
+    ],
+    "fallbackImage": "/images/online-coaching-placeholder.svg",
+    "imageAlt": {
+      "en": "KK Coaching online personal trainer and fitness coach with training, nutrition and progress tracking",
+      "pl": "Polski trener personalny online UK — KK Coaching z treningiem, żywieniem i kontrolą postępów"
+    }
+  },
+  "outcomes": {
+    "eyebrow": { "en": "What changes", "pl": "Co się zmienia" },
+    "heading": { "en": "You stop collecting plans and start following one system.", "pl": "Jeden plan. Jasne zasady. Regularne korekty." },
+    "body": {
+      "en": "Online coaching is not just a PDF workout. The value is having one clear direction, enough data to judge whether it is working and a coach who can adjust the plan as your body, performance and real life change.",
+      "pl": "Nie dostajesz ode mnie PDF-a i życzenia powodzenia. Masz konkretny kierunek, sposób kontrolowania postępów i kogoś, kto analizuje wyniki razem z Tobą."
+    },
+    "cards": [
+      {
+        "title": { "en": "A plan built for your goal", "pl": "Plan, który pasuje do Twojego życia" },
+        "body": {
+          "en": "Training is matched to your experience, equipment, schedule and whether the priority is fat loss, muscle gain, recomposition or getting consistent again.",
+          "pl": "Trening dopasowuję do Twojego doświadczenia, sprzętu, grafiku i celu. Masz wiedzieć, co robisz i dlaczego — bez ciągłego zmieniania kierunku."
+        }
+      },
+      {
+        "title": { "en": "Nutrition you can use in real life", "pl": "Jedzenie bez życia na diecie" },
+        "body": {
+          "en": "You get calorie and macronutrient targets plus practical guidance that can be adjusted around work, family, eating out and the foods you actually like.",
+          "pl": "Ustalamy kalorie, makroskładniki i praktyczne zasady, które da się pogodzić z pracą, rodziną, wyjściami i jedzeniem, które naprawdę lubisz."
+        }
+      },
+      {
+        "title": { "en": "Feedback before small problems become big ones", "pl": "Kontakt i szybka reakcja, kiedy pojawia się problem" },
+        "body": {
+          "en": "Regular check-ins, training data and video feedback give us a reason to change the plan when needed instead of guessing.",
+          "pl": "Regularne raporty, dane z treningów i nagrania techniki pozwalają wcześniej wyłapać problem i wprowadzić konkretną zmianę zamiast zgadywać."
+        }
+      }
+    ]
+  },
+  "included": {
+    "eyebrow": { "en": "What is included", "pl": "Co dostajesz" },
+    "heading": { "en": "Coaching between the check-ins matters too.", "pl": "Nie znikam po wysłaniu Ci planu." },
+    "body": {
+      "en": "The goal is to know what is happening week to week, not find out a month later that the plan stopped fitting your life. Your training, nutrition targets, progress data and feedback stay connected.",
+      "pl": "Problemy zwykle nie czekają do dnia raportu. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem."
+    },
+    "items": [
+      { "en": "Individual training programme", "pl": "Indywidualny plan treningowy" },
+      { "en": "Calorie, macronutrient and practical nutrition targets", "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe" },
+      { "en": "Coaching app with your programme, exercise guidance, workout logging and progress history", "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów" },
+      { "en": "Regular check-ins and structured progress reviews", "pl": "Regularne raporty i analiza postępów" },
+      { "en": "Weight, measurements, progress photos and performance tracking", "pl": "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych" },
+      { "en": "Training plan adjustments based on progress and adherence", "pl": "Zmiany planu wtedy, kiedy postępy pokazują, że są potrzebne" },
+      { "en": "Exercise technique feedback from your training videos", "pl": "Ocena techniki na podstawie nagrań z treningu" },
+      { "en": "WhatsApp support between check-ins", "pl": "Kontakt przez WhatsApp między raportami" },
+      { "en": "Ongoing education so you understand why the plan works", "pl": "Wyjaśnienie, dlaczego coś robimy — nie tylko lista poleceń" }
+    ]
+  },
+  "app": {
+    "eyebrow": { "en": "Everything in one coaching app", "pl": "Wszystko w jednej aplikacji" },
+    "heading": { "en": "Your plan, sessions and progress always at hand.", "pl": "Plan, treningi i postępy zawsze pod ręką." },
+    "body": {
+      "en": "No hunting through messages or keeping several separate notes. The app is the hub for your online coaching — and it is also included when you choose Hybrid Coaching.",
+      "pl": "Nie musisz szukać rozpiski po wiadomościach ani prowadzić kilku osobnych notatek. Aplikacja jest centrum Twojej współpracy online — i jest również częścią coachingu hybrydowego."
+    },
+    "cards": [
+      { "title": { "en": "Your training plan", "pl": "Plan treningowy" }, "body": { "en": "Your current programme is always in one place, so you are not searching through messages, old files or different versions of the plan.", "pl": "Aktualny plan masz zawsze pod ręką — bez szukania plików, starych wiadomości i kilku wersji tej samej rozpiski." } },
+      { "title": { "en": "Exercise guidance", "pl": "Instrukcje ćwiczeń" }, "body": { "en": "Exercise information and resources sit alongside the programme so you can train with a clear idea of what you are trying to do.", "pl": "Przy ćwiczeniach masz potrzebne informacje i materiały, dzięki którym łatwiej wykonać trening zgodnie z planem." } },
+      { "title": { "en": "Workout logging", "pl": "Log treningów" }, "body": { "en": "Log sets, reps and loads as you train so progression is based on real training history rather than memory or guesswork.", "pl": "Zapisujesz ciężary, powtórzenia i wykonane serie, więc progres nie opiera się na pamięci ani zgadywaniu." } },
+      { "title": { "en": "Progress data", "pl": "Postępy i dane" }, "body": { "en": "The key information from your coaching stays connected, making it easier to see trends and make better decisions over time.", "pl": "Najważniejsze informacje ze współpracy są w jednym miejscu, dzięki czemu łatwiej zobaczyć trend i podejmować kolejne decyzje." } }
+    ]
+  },
+  "process": {
+    "eyebrow": { "en": "How it works", "pl": "Jak to działa" },
+    "heading": { "en": "A simple loop: plan, execute, review, adjust.", "pl": "Działasz. Ja analizuję. Kiedy trzeba — zmieniamy." },
+    "body": { "en": "You always know what the current target is and what information we are using to decide the next move.", "pl": "Nie komplikujemy tego bardziej niż trzeba. Masz jasny plan i wiesz, na podstawie czego podejmujemy kolejne decyzje." },
+    "steps": [
+      { "num": "01", "title": { "en": "Consultation and starting point", "pl": "Zaczynamy od konkretów" }, "body": { "en": "We establish your goal, current training, food habits, schedule, equipment and the main reason previous attempts have broken down.", "pl": "Ustalamy Twój cel, obecny trening, sposób jedzenia, grafik, dostępny sprzęt i to, przez co wcześniejsze próby najczęściej się rozsypywały." } },
+      { "num": "02", "title": { "en": "Your coaching setup", "pl": "Dostajesz swój plan" }, "body": { "en": "You receive your individual training plan, nutrition targets and the tracking structure we will use to judge progress.", "pl": "Układam trening i założenia żywieniowe pod Twoją sytuację. Wiesz, co robić od pierwszego tygodnia i jak będziemy oceniać postępy." } },
+      { "num": "03", "title": { "en": "Train, log and communicate", "pl": "Realizujesz plan i dajesz mi dane" }, "body": { "en": "You follow the plan, log the key information and send videos when you want technique feedback. I can see what is actually happening between check-ins.", "pl": "Trenujesz, zapisujesz najważniejsze informacje i wysyłasz nagrania, jeśli chcesz sprawdzić technikę. Dzięki temu widzę, co naprawdę dzieje się między raportami." } },
+      { "num": "04", "title": { "en": "Review, learn and adjust", "pl": "Ja analizuję, razem korygujemy" }, "body": { "en": "We review the trend rather than one isolated weigh-in. If progress, performance or adherence tells us something needs to change, we change it.", "pl": "Patrzymy na trend, wyniki treningowe i realizację planu. Jeśli coś działa — zostaje. Jeśli nie — zmieniamy dokładnie to, co trzeba." } }
+    ]
+  },
+  "results": {
+    "eyebrow": { "en": "Real coaching. Real progress.", "pl": "Efekty podopiecznych" },
+    "heading": { "en": "Results built around real lives", "pl": "Forma bez układania całego życia pod fitness." },
+    "body": { "en": "The point is not to create one impressive week. It is to create enough good weeks, track what matters and keep the plan moving in the right direction.", "pl": "Nie chodzi o jeden idealny tydzień. Chodzi o plan, który da się realizować wystarczająco długo, żeby efekty naprawdę zaczęły się sumować." },
+    "items": [
+      { "image": "/images/client-transformation-aneta-10kg-16-weeks.svg", "imageAlt": { "en": "Aneta's 16-week online coaching transformation showing 10 kg lost and 12 cm off the waist", "pl": "16-tygodniowa przemiana Anety we współpracy online z KK Coaching — 10 kg mniej i 12 cm mniej w talii" }, "meta": { "en": "ANETA · ONLINE COACHING · 16 WEEKS", "pl": "ANETA · ONLINE · 16 TYGODNI" }, "heading": { "en": "10 kg lost · 12 cm off the waist", "pl": "-10 kg · -12 cm w talii" }, "body": { "en": "She also built enough confidence to move from home workouts into a commercial gym and improved her control of late-night snacking.", "pl": "Większa pewność siebie, przejście z treningów domowych na siłownię i lepsza kontrola nocnego podjadania." } },
+      { "image": "/images/client-transformation-agnieszka-16-weeks.svg", "imageAlt": { "en": "Agnieszka's 16-week KK Coaching physique transformation", "pl": "16-tygodniowa przemiana sylwetki Agnieszki w KK Coaching" }, "meta": { "en": "AGNIESZKA · COACHING · 16 WEEKS", "pl": "AGNIESZKA · ONLINE · 16 TYGODNI" }, "heading": { "en": "3 kg down · 8 cm added at the hips", "pl": "-3 kg · +8 cm w biodrach" }, "body": { "en": "Progress came from a plan adapted to her lifestyle and consistency rather than chasing perfection.", "pl": "Plan dopasowany do jej życia i regularność zamiast próby robienia wszystkiego perfekcyjnie." } }
+    ],
+    "cta": { "en": "See All Transformations", "pl": "Zobacz wszystkie przemiany" },
+    "href": { "en": "/transformations", "pl": "/pl/transformations" }
+  },
+  "coach": {
+    "image": "/images/kacper-hero.webp",
+    "imageAlt": { "en": "Kacper Kaszowski, founder of KK Coaching and Level 3 Personal Trainer", "pl": "Kacper Kaszowski, polski trener personalny online i założyciel KK Coaching" },
+    "eyebrow": { "en": "Your coach", "pl": "Twój trener" },
+    "heading": { "en": "I care about the process because I had to learn it the hard way.", "pl": "Wiem, jak wygląda chaos od środka. Dlatego nie prowadzę klientów metodą prób i błędów." },
+    "paragraphs": [
+      { "en": "I started at around 117 kg and lost more than 40 kg before rebuilding my physique. That process taught me how easy it is to mistake harder for better, chase quick fixes and change things before giving a good plan enough time to work.", "pl": "Sam przeszedłem drogę od około 117 kg do 76 kg, a później przebudowałem sylwetkę. Po drodze przerobiłem szybkie rozwiązania, zbyt częste zmiany i komplikowanie rzeczy, które powinny być proste." },
+      { "en": "Today I use the same principles with clients: clear targets, realistic execution, honest feedback and changes based on progress rather than emotion.", "pl": "Dziś pracuję inaczej: ustalamy jasny cel, dobieramy plan do realnego życia i zmieniamy go dopiero wtedy, kiedy postępy pokazują, że faktycznie trzeba coś poprawić." }
+    ],
+    "cta": { "en": "Meet Your Coach", "pl": "Poznaj moją historię" },
+    "href": { "en": "/about", "pl": "/pl/about" }
+  },
+  "faq": {
+    "eyebrow": { "en": "Questions", "pl": "Pytania" },
+    "heading": { "en": "Online personal training — FAQ", "pl": "Trener personalny online UK — FAQ" },
+    "items": [
+      { "q": { "en": "Do I need to live in the UK for online coaching?", "pl": "Czy muszę mieszkać w UK, żeby korzystać z coachingu online?" }, "a": { "en": "No. Online coaching is not limited by location. As long as we can communicate reliably and you have access to the equipment needed for your programme, coaching can be delivered remotely.", "pl": "Nie. Współpraca odbywa się zdalnie, więc możesz mieszkać poza UK. Najważniejsze jest to, żebyśmy mogli sprawnie się komunikować i żebyś miał dostęp do sprzętu potrzebnego do realizacji planu." } },
+      { "q": { "en": "Is online coaching only for experienced gym users?", "pl": "Czy trener personalny online jest tylko dla osób zaawansowanych?" }, "a": { "en": "No. Your programme is built around your current experience. If you are newer to training, the plan can start simple and you can send exercise videos for technique feedback as you learn.", "pl": "Nie. Jeśli dopiero zaczynasz, plan będzie prostszy, a nagrania ćwiczeń pozwolą mi na bieżąco pomagać Ci z techniką. Jeśli trenujesz dłużej, skupimy się na jakości planu, progresji i tym, co faktycznie ogranicza postępy." } },
+      { "q": { "en": "Do I get a fixed meal plan?", "pl": "Czy dostanę sztywną dietę rozpisaną posiłek po posiłku?" }, "a": { "en": "The focus is on calorie, macronutrient and nutrition targets that can work in your real life. Food choices and meal structure can be made more specific where useful, but the goal is not to make you dependent on a rigid menu forever.", "pl": "Podstawą są kalorie, makroskładniki i zasady, które da się utrzymać w normalnym życiu. Jeśli bardziej szczegółowa struktura posiłków będzie Ci potrzebna, możemy ją dopracować, ale nie chcę budować systemu, który działa tylko wtedy, gdy jesz codziennie dokładnie to samo." } },
+      { "q": { "en": "How are results tracked?", "pl": "Jak monitorujemy postępy?" }, "a": { "en": "Depending on your goal we can use body weight trends, measurements, progress photos, training performance, step or activity targets and adherence. We look at the overall trend before deciding whether the plan needs changing.", "pl": "W zależności od celu bierzemy pod uwagę trend masy ciała, pomiary, zdjęcia sylwetki, wyniki treningowe, aktywność i realizację planu. Jeden pomiar nie decyduje o zmianie — patrzymy na całość." } },
+      { "q": { "en": "How much contact do I get between check-ins?", "pl": "Czy mogę pisać do Ciebie między raportami?" }, "a": { "en": "You have WhatsApp support between check-ins for questions, updates and situations that should not wait until the next formal review. Technique videos can also be reviewed as part of coaching.", "pl": "Tak. Masz kontakt przez WhatsApp na pytania, aktualizacje i sytuacje, z którymi nie ma sensu czekać do kolejnego raportu. Możesz też wysyłać nagrania ćwiczeń do oceny techniki." } }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": { "en": "Start with a conversation", "pl": "Zacznijmy od rozmowy" },
+    "heading": { "en": "If you are ready to stop guessing, tell me where you are now.", "pl": "Jeśli chcesz wiedzieć, co robić dalej — napisz." },
+    "body": { "en": "Send me your goal, training experience, current routine and what has been holding you back. I will tell you whether online coaching is the right level of support and what the next step would look like.", "pl": "Powiedz mi, jaki masz cel, jak teraz trenujesz i z czym masz największy problem. Powiem Ci, czy współpraca online ma w Twojej sytuacji sens i jak wygląda start." },
+    "cta": { "en": "Apply for Online Coaching", "pl": "Zacznij współpracę online" },
+    "href": { "en": "/contact", "pl": "/pl/contact" }
+  }
+}
