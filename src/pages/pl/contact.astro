@@ -1,91 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactMethods from '../../components/ContactMethods.astro';
-import site from '../../data/site.pl.json';
+import pages from '../../data/pages-v2.json';
+import admin from '../../data/admin-v2.json';
+
+const lang = 'pl';
+const copy = pages.contact;
+const formCopy = copy.form;
+const languageOptions = [...formCopy.languageOptions].reverse();
 ---
-<BaseLayout
-  title="Bezpłatna konsultacja | KK Coaching Cwmbran"
-  description="Napisz do KK Coaching w sprawie treningu personalnego 1:1 w Cwmbran, coachingu online, coachingu hybrydowego lub indywidualnego planu treningowego."
-  lang="pl"
-  path="/pl/contact"
-  altPath="/contact"
->
+<BaseLayout title={copy.seo.title[lang]} description={copy.seo.description[lang]} lang="pl" path="/pl/contact" altPath="/contact">
   <section class="page-hero on-dark">
     <div class="container">
-      <span class="eyebrow">Zacznijmy od rozmowy</span>
-      <h1>Umów bezpłatną konsultację</h1>
-      <p class="lead">Opisz krótko swój cel i to, z czym masz teraz największy problem. Odpowiem, zadam kilka konkretnych pytań i podpowiem, która forma współpracy ma w Twojej sytuacji najwięcej sensu.</p>
+      <span class="eyebrow">{copy.hero.eyebrow[lang]}</span>
+      <h1>{copy.hero.heading[lang]}</h1>
+      <p class="lead">{copy.hero.body[lang]}</p>
     </div>
   </section>
 
   <section class="on-white">
     <div class="container contact-grid">
-      <form id="contact-form" data-track-as="contact_enquiry" novalidate>
+      <form id="contact-form" data-track-as="contact_enquiry" data-sending={formCopy.sending[lang]} data-error={formCopy.error[lang]} data-thank-you="/pl/thank-you" data-lead-language="pl" novalidate>
+        <div class="field"><label for="name">{formCopy.name[lang]} <span aria-hidden="true">*</span></label><input type="text" id="name" name="name" required autocomplete="name" /></div>
+        <div class="field"><label for="email">{formCopy.email[lang]} <span aria-hidden="true">*</span></label><input type="email" id="email" name="email" required autocomplete="email" /></div>
+        <div class="field"><label for="phone">{formCopy.phone[lang]} <span aria-hidden="true">*</span></label><input type="tel" id="phone" name="phone" required autocomplete="tel" /></div>
+        <div class="field"><label for="location">{formCopy.location[lang]}</label><input type="text" id="location" name="location" placeholder={formCopy.locationPlaceholder[lang]} /></div>
         <div class="field">
-          <label for="name">Imię <span aria-hidden="true">*</span></label>
-          <input type="text" id="name" name="name" required autocomplete="name" />
-        </div>
-        <div class="field">
-          <label for="email">E-mail <span aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
-        </div>
-        <div class="field">
-          <label for="phone">Telefon / WhatsApp <span aria-hidden="true">*</span></label>
-          <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+          <label for="language">{formCopy.language[lang]}</label>
+          <select id="language" name="language">{languageOptions.map(option => <option value={option.value}>{option.label[lang]}</option>)}</select>
         </div>
         <div class="field">
-          <label for="location">Gdzie mieszkasz?</label>
-          <input type="text" id="location" name="location" placeholder="np. Cwmbran, Cardiff, Londyn albo poza UK" />
+          <label for="interest">{formCopy.interest[lang]}</label>
+          <select id="interest" name="interest">{formCopy.interestOptions.map(option => <option>{option[lang]}</option>)}</select>
         </div>
-        <div class="field">
-          <label for="language">Preferowany język</label>
-          <select id="language" name="language">
-            <option value="Polish">Polski</option>
-            <option value="English">English</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="interest">Jaka forma współpracy Cię interesuje?</label>
-          <select id="interest" name="interest">
-            <option>Trening personalny 1:1 w Cwmbran</option>
-            <option>Coaching online</option>
-            <option>Coaching hybrydowy</option>
-            <option>Indywidualny plan treningowy</option>
-            <option>Jeszcze nie wiem</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="goal">Jaki jest Twój główny cel? <span aria-hidden="true">*</span></label>
-          <textarea id="goal" name="goal" rows="3" required placeholder="np. redukcja, budowanie mięśni, powrót do regularnych treningów..."></textarea>
-        </div>
-        <div class="field">
-          <label for="blocker">Co najbardziej utrudnia Ci osiągnięcie tego celu?</label>
-          <textarea id="blocker" name="blocker" rows="3" placeholder="np. brak regularności, problem z dietą, brak planu, mało czasu..."></textarea>
-        </div>
-
-        <div class="field honeypot" aria-hidden="true">
-          <label for="company">Firma</label>
-          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
-        </div>
-
+        <div class="field"><label for="goal">{formCopy.goal[lang]} <span aria-hidden="true">*</span></label><textarea id="goal" name="goal" rows="3" required placeholder={formCopy.goalPlaceholder[lang]}></textarea></div>
+        <div class="field"><label for="blocker">{formCopy.blocker[lang]}</label><textarea id="blocker" name="blocker" rows="3" placeholder={formCopy.blockerPlaceholder[lang]}></textarea></div>
+        <div class="field honeypot" aria-hidden="true"><label for="company">Firma</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off" /></div>
         <div class="field checkbox-field">
           <input type="checkbox" id="consent" name="consent" required />
-          <label for="consent">
-            Zgadzam się na kontakt w sprawie mojego zapytania i zapoznałem/am się z <a href="/pl/privacy">Polityką prywatności</a>. <span aria-hidden="true">*</span>
-          </label>
+          <label for="consent">{formCopy.consentBefore[lang]} <a href={formCopy.privacyHref[lang]}>{formCopy.privacyLabel[lang]}</a>. <span aria-hidden="true">*</span></label>
         </div>
-
-        <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
-        <p class="form-note">Zwykle odpowiadam w ciągu 24 godzin. Jeśli wolisz, możesz też od razu napisać do mnie na WhatsApp.</p>
+        <button type="submit" class="btn btn-primary">{formCopy.submit[lang]}</button>
+        <p class="form-note">{formCopy.note[lang]}</p>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
 
-      <ContactMethods
-        lang="pl"
-        whatsappNumber={site.meta.whatsappNumber}
-        contactEmail={site.meta.contactEmail}
-        instagramUrl={site.meta.instagramUrl}
-      />
+      <ContactMethods lang="pl" whatsappNumber={admin.contact.whatsapp} contactEmail={admin.contact.email} instagramUrl={admin.contact.instagramUrl} />
     </div>
   </section>
 </BaseLayout>
@@ -93,45 +53,22 @@ import site from '../../data/site.pl.json';
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
-
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!status) return;
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
+    if (!form.checkValidity()) { form.reportValidity(); return; }
     const formData = new FormData(form);
-    if (formData.get('company')) {
-      window.location.href = '/pl/thank-you';
-      return;
-    }
-
-    status.textContent = 'Wysyłanie...';
-
+    const thankYou = form.dataset.thankYou || '/pl/thank-you';
+    if (formData.get('company')) { window.location.href = thankYou; return; }
+    status.textContent = form.dataset.sending || 'Wysyłanie...';
     try {
-      const res = await fetch('/.netlify/functions/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(formData))
-      });
-
+      const res = await fetch('/.netlify/functions/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(formData)) });
       if (!res.ok) throw new Error('Request failed');
-
       const gtag = (window as any).gtag;
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          form_name: 'contact_enquiry',
-          lead_language: 'pl',
-          interest: String(formData.get('interest') ?? '')
-        });
-      }
-
-      window.location.href = '/pl/thank-you';
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: String(formData.get('interest') ?? '') });
+      window.location.href = thankYou;
     } catch (err) {
-      status.textContent = 'Coś poszło nie tak podczas wysyłania. Spróbuj przez WhatsApp lub e-mail.';
+      status.textContent = form.dataset.error || 'Coś poszło nie tak podczas wysyłania.';
     }
   });
 </script>
@@ -144,10 +81,7 @@ import site from '../../data/site.pl.json';
   @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 34px; } }
   .field { margin-bottom: 18px; }
   .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.92rem; }
-  .field input, .field select, .field textarea {
-    width: 100%; border: 1px solid #D8DBDE; border-radius: var(--radius);
-    padding: 12px 14px; font-size: 1rem; font-family: inherit; background: var(--white);
-  }
+  .field input, .field select, .field textarea { width: 100%; border: 1px solid #D8DBDE; border-radius: var(--radius); padding: 12px 14px; font-size: 1rem; font-family: inherit; background: var(--white); }
   .field textarea { resize: vertical; }
   .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .checkbox-field { display: flex; align-items: flex-start; gap: 10px; }
@@ -156,9 +90,5 @@ import site from '../../data/site.pl.json';
   .checkbox-field a { color: var(--red); }
   .form-note { margin-top: 12px; font-size: 0.85rem; color: var(--steel); }
   .form-status { margin-top: 8px; font-size: 0.9rem; color: var(--steel); }
-
-  @media (max-width: 620px) {
-    .page-hero { padding: 48px 0; }
-    form > .btn { width: 100%; }
-  }
+  @media (max-width: 620px) { .page-hero { padding: 48px 0; } form > .btn { width: 100%; } }
 </style>
