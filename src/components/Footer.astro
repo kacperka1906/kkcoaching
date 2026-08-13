@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import TrainingLocation from './TrainingLocation.astro';
+import Reviews from './Reviews.astro';
 import BusinessEntity from './BusinessEntity.astro';
 import AuthorProfilePageSchema from './AuthorProfilePageSchema.astro';
 import ServicePricing from './ServicePricing.astro';
@@ -12,6 +13,7 @@ const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const locationPages = new Set(['/', '/pl', '/services', '/pl/services', '/hybrid-coaching', '/pl/hybrid-coaching']);
 const pricingPages = new Set(['/personal-training-cwmbran', '/online-coaching', '/hybrid-coaching', '/pl/personal-training-cwmbran', '/pl/online-coaching', '/pl/hybrid-coaching']);
 const showTrainingLocation = locationPages.has(pathname) && admin.location.enabled;
+const showReviews = pathname === '/' || pathname === '/pl';
 const showPricing = pricingPages.has(pathname);
 const showAuthorProfileSchema = pathname === '/about' || pathname === '/pl/about';
 const phoneHref = `tel:${admin.contact.phone.replace(/\D/g, '')}`;
@@ -26,6 +28,7 @@ const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching
 {showAuthorProfileSchema && <AuthorProfilePageSchema lang={lang} />}
 {showPricing && <ServicePricing lang={lang} pathname={pathname} />}
 {showTrainingLocation && <TrainingLocation lang={lang} />}
+{showReviews && <Reviews lang={lang} />}
 
 <footer>
   <div class="container">
