@@ -1,14 +1,18 @@
 ---
+import admin from '../data/admin-v2.json';
+
 interface Props {
   height?: number;
+  footer?: boolean;
 }
-const { height = 34 } = Astro.props;
+const { height = 34, footer = false } = Astro.props;
 const imageWidth = Math.max(128, height * 4);
-const optimizedSrc = `/.netlify/images?url=/images/logo.png&w=${imageWidth}&fm=webp&q=82`;
+const source = footer ? admin.brand.footerLogo : admin.brand.logo;
+const optimizedSrc = `/.netlify/images?url=${source}&w=${imageWidth}&fm=webp&q=82`;
 ---
 <img
   src={optimizedSrc}
-  alt="KK Coaching"
+  alt={admin.brand.siteName}
   width={imageWidth}
   height={height}
   decoding="async"
