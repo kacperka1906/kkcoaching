@@ -1,0 +1,60 @@
+---
+import resources from '../data/resources-v1.json';
+
+interface Props { lang: 'en' | 'pl' }
+const { lang } = Astro.props;
+const hub = resources.hub;
+const articles = resources.articles.filter(article => article.enabled);
+const root = lang === 'pl' ? '/pl/resources' : '/resources';
+const servicesHref = lang === 'pl' ? '/pl/services' : '/services';
+const readLabel = lang === 'pl' ? 'Czytaj poradnik' : 'Read guide';
+---
+<section class="resources-hero on-dark">
+  <div class="container narrow">
+    <span class="eyebrow">{hub.eyebrow[lang]}</span>
+    <h1>{hub.heading[lang]}</h1>
+    <p>{hub.lead[lang]}</p>
+  </div>
+</section>
+
+<section class="resources-list on-white" aria-label={lang === 'pl' ? 'Poradniki KK Coaching' : 'KK Coaching guides'}>
+  <div class="container">
+    <div class="resource-grid">
+      {articles.map(article => (
+        <article class="resource-card">
+          <img src={article.image} alt={article.imageAlt[lang]} width="640" height="420" loading="lazy" />
+          <div class="resource-copy">
+            <span class="resource-date">{article.updated}</span>
+            <h2><a href={`${root}/${article.slug[lang]}`}>{article.title[lang]}</a></h2>
+            <p>{article.intro[lang]}</p>
+            <a class="resource-link" href={`${root}/${article.slug[lang]}`}>{readLabel} →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="hub-cta">
+      <a href={servicesHref} class="btn btn-outline-dark">{hub.backToCoaching[lang]}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .resources-hero { padding: 78px 0; }
+  .narrow { max-width: 900px; }
+  .resources-hero h1 { color: var(--white); max-width: 17ch; font-size: clamp(2.2rem, 5.5vw, 4.2rem); margin-bottom: 18px; }
+  .resources-hero p { color: #D3D6DA; max-width: 68ch; font-size: 1.08rem; }
+  .resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .resource-card { background: var(--white); border: 1px solid #E1E4E8; border-radius: var(--radius); overflow: hidden; }
+  .resource-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center top; }
+  .resource-copy { padding: 24px; }
+  .resource-date { display: block; color: var(--red); font-size: .72rem; font-weight: 800; letter-spacing: .08em; margin-bottom: 9px; }
+  .resource-copy h2 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); margin-bottom: 11px; }
+  .resource-copy h2 a { color: inherit; text-decoration: none; }
+  .resource-copy p { color: var(--steel); line-height: 1.65; }
+  .resource-link { display: inline-block; margin-top: 18px; color: var(--red); font-weight: 800; text-decoration: none; }
+  .hub-cta { text-align: center; margin-top: 36px; }
+  @media (max-width: 760px) {
+    .resources-hero { padding: 54px 0; }
+    .resource-grid { grid-template-columns: 1fr; }
+  }
+</style>
