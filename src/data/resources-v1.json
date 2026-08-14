@@ -1,0 +1,347 @@
+{
+  "enabled": true,
+  "hub": {
+    "seo": {
+      "title": {
+        "en": "Fitness & Coaching Guides | KK Coaching",
+        "pl": "Poradniki treningowe i coachingowe | KK Coaching"
+      },
+      "description": {
+        "en": "Practical guides on personal training, online coaching, fat loss, muscle building and choosing the right support for your goals.",
+        "pl": "Praktyczne poradniki o treningu personalnym, coachingu online, redukcji, budowaniu mięśni i wyborze odpowiedniej formy współpracy."
+      }
+    },
+    "eyebrow": {
+      "en": "KK Coaching guides",
+      "pl": "Poradniki KK Coaching"
+    },
+    "heading": {
+      "en": "Clear answers before you choose a coach or a plan.",
+      "pl": "Konkretne odpowiedzi, zanim wybierzesz trenera albo plan."
+    },
+    "lead": {
+      "en": "No filler and no fitness-industry jargon for the sake of it. These guides explain how coaching works, what to look for and how to make better decisions about your training.",
+      "pl": "Bez lania wody i komplikowania prostych rzeczy. Te materiały wyjaśniają, jak działa coaching, na co zwracać uwagę i jak podejmować lepsze decyzje dotyczące treningu."
+    },
+    "backToCoaching": {
+      "en": "Explore coaching options",
+      "pl": "Zobacz opcje współpracy"
+    }
+  },
+  "articles": [
+    {
+      "id": "choose-personal-trainer-cwmbran",
+      "enabled": true,
+      "published": "2026-08-14",
+      "updated": "2026-08-14",
+      "slug": {
+        "en": "choosing-personal-trainer-cwmbran",
+        "pl": "jak-wybrac-trenera-personalnego-cwmbran"
+      },
+      "seoTitle": {
+        "en": "How to Choose a Personal Trainer in Cwmbran | KK Coaching",
+        "pl": "Jak wybrać trenera personalnego w Cwmbran | KK Coaching"
+      },
+      "seoDescription": {
+        "en": "A practical guide to choosing a personal trainer in Cwmbran: qualifications, coaching style, location, progress tracking, communication and the questions to ask.",
+        "pl": "Jak wybrać trenera personalnego w Cwmbran: kwalifikacje, styl pracy, lokalizacja, kontrola postępów, kontakt i pytania przed rozpoczęciem współpracy."
+      },
+      "title": {
+        "en": "How to Choose a Personal Trainer in Cwmbran",
+        "pl": "Jak wybrać trenera personalnego w Cwmbran"
+      },
+      "intro": {
+        "en": "A good personal trainer should make your training clearer, safer and easier to progress — not simply make every session exhausting. If you are comparing trainers in Cwmbran, the best choice is the person whose coaching system, communication and availability fit what you actually need.",
+        "pl": "Dobry personal trainer powinien sprawić, że Twój trening będzie bardziej zrozumiały, bezpieczny i łatwiejszy do progresowania — a nie po prostu maksymalnie męczący. Jeśli porównujesz trenerów w Cwmbran, liczy się nie tylko cena czy wygląd Instagrama, ale cały sposób prowadzenia i to, czy pasuje do Twojej sytuacji."
+      },
+      "image": "/images/kacper.jpg",
+      "imageAlt": {
+        "en": "Kacper Kaszowski, personal trainer in Cwmbran",
+        "pl": "Kacper Kaszowski, trener personalny w Cwmbran"
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "Start with the result you actually want",
+            "pl": "Najpierw ustal, czego naprawdę potrzebujesz"
+          },
+          "paragraphs": [
+            {
+              "en": "Different clients need different things from a trainer. A complete beginner may need confidence, exercise technique and a simple routine. Someone who already trains may need better programming, progression and accountability. Fat loss, muscle gain and returning after a long break can all require a different emphasis.",
+              "pl": "Różne osoby potrzebują od trenera czegoś innego. Początkujący może przede wszystkim potrzebować pewności siebie, nauki techniki i prostego systemu. Osoba trenująca od lat może potrzebować lepszego planowania, progresji i kontroli. Redukcja, budowanie mięśni czy powrót po długiej przerwie również wymagają innego akcentu."
+            },
+            {
+              "en": "Before comparing trainers, write down the one or two outcomes that matter most to you. It makes it much easier to judge whether a coach is offering a service that matches your goal rather than a generic package.",
+              "pl": "Zanim zaczniesz porównywać trenerów, zapisz jeden lub dwa najważniejsze cele. Dzięki temu łatwiej ocenisz, czy dana oferta rzeczywiście odpowiada Twojej potrzebie, czy jest po prostu tym samym pakietem sprzedawanym każdemu."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Check qualifications — then look beyond the certificate",
+            "pl": "Sprawdź kwalifikacje, ale nie kończ na samym certyfikacie"
+          },
+          "paragraphs": [
+            {
+              "en": "A trainer should have appropriate personal-training qualifications and work within their professional scope. That is the baseline. The next question is how they apply that knowledge: can they explain why an exercise is in your programme, adapt it when something does not suit you and teach you to train with more independence over time?",
+              "pl": "Trener powinien mieć odpowiednie kwalifikacje personal-training i działać w zakresie swoich kompetencji. To podstawa. Później liczy się sposób wykorzystania wiedzy: czy potrafi wyjaśnić, po co dane ćwiczenie jest w planie, zmienić je, kiedy Ci nie służy, i z czasem nauczyć Cię większej samodzielności."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Ask how progress is measured",
+            "pl": "Zapytaj, jak będziecie mierzyć postępy"
+          },
+          "paragraphs": [
+            {
+              "en": "Good coaching needs more than a hard workout. Depending on your goal, useful measures can include training performance, body weight trends, measurements, photos, consistency, step counts or how well you are executing key movements. The important part is having a repeatable way to decide whether the plan is working.",
+              "pl": "Dobre prowadzenie to coś więcej niż ciężki trening. W zależności od celu można obserwować wyniki siłowe, trend masy ciała, obwody, zdjęcia, regularność, kroki albo jakość wykonania kluczowych ćwiczeń. Najważniejsze jest to, żeby mieć powtarzalny sposób oceny, czy plan działa."
+            },
+            {
+              "en": "If every week is completely different and nothing is recorded, it becomes difficult to separate real progress from the feeling that a session was productive.",
+              "pl": "Jeśli każdy tydzień wygląda zupełnie inaczej i nic nie jest zapisywane, trudno odróżnić realny progres od samego poczucia, że trening był mocny."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Make sure the location and schedule are realistic",
+            "pl": "Lokalizacja i godziny muszą pasować do Twojego życia"
+          },
+          "paragraphs": [
+            {
+              "en": "The best programme on paper is not useful if getting to the sessions becomes a weekly problem. Consider travel time, parking, public transport and whether the trainer can offer times that work around your job and family commitments.",
+              "pl": "Najlepszy plan na papierze niewiele daje, jeśli dotarcie na trening staje się co tydzień problemem. Weź pod uwagę dojazd, parking, transport publiczny i to, czy trener ma godziny możliwe do pogodzenia z pracą oraz obowiązkami."
+            },
+            {
+              "en": "For local 1:1 coaching, I work from JD Gyms Cwmbran in the town centre. If regular face-to-face sessions do not fit your week, online or hybrid coaching can sometimes be a better structure than forcing 1:1 sessions into an unrealistic schedule.",
+              "pl": "Treningi 1:1 prowadzę w JD Gyms Cwmbran w centrum miasta. Jeśli regularne sesje stacjonarne nie pasują do Twojego tygodnia, coaching online albo hybrydowy może być rozsądniejszym rozwiązaniem niż wciskanie treningów 1:1 w nierealny grafik."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Pay attention to communication and coaching style",
+            "pl": "Zwróć uwagę na kontakt i styl prowadzenia"
+          },
+          "paragraphs": [
+            {
+              "en": "You should be able to ask questions without feeling that you are wasting the trainer's time. At the same time, good coaching is not agreeing with everything a client wants to hear. A useful coach should be able to explain decisions, set realistic expectations and give clear feedback when something needs to change.",
+              "pl": "Powinieneś móc zadawać pytania bez poczucia, że przeszkadzasz trenerowi. Jednocześnie dobre prowadzenie nie polega na przytakiwaniu klientowi. Trener powinien umieć wyjaśnić decyzję, ustawić realne oczekiwania i jasno powiedzieć, kiedy coś trzeba zmienić."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Questions worth asking before you start",
+            "pl": "Pytania, które warto zadać przed startem"
+          },
+          "paragraphs": [
+            {
+              "en": "A short consultation should give you enough information to understand how the service works. You do not need to interrogate a trainer, but a few direct questions can save a lot of frustration later.",
+              "pl": "Krótka konsultacja powinna wystarczyć, żeby zrozumieć, jak wygląda współpraca. Nie trzeba robić trenerowi przesłuchania, ale kilka konkretnych pytań może oszczędzić sporo frustracji później."
+            }
+          ],
+          "bullets": [
+            {
+              "en": "How will my programme be built around my experience and schedule?",
+              "pl": "Jak plan będzie dopasowany do mojego doświadczenia i grafiku?"
+            },
+            {
+              "en": "How do you track progress and decide when to change the plan?",
+              "pl": "Jak kontrolujesz postępy i kiedy decydujesz o zmianach w planie?"
+            },
+            {
+              "en": "What support is included outside the session?",
+              "pl": "Jakie wsparcie dostaję poza samą sesją?"
+            },
+            {
+              "en": "What happens if I miss a week, travel or my schedule changes?",
+              "pl": "Co robimy, jeśli wypadnie mi tydzień, wyjazd albo zmieni się grafik?"
+            },
+            {
+              "en": "What do you expect from me as a client?",
+              "pl": "Czego oczekujesz ode mnie jako klienta?"
+            }
+          ]
+        }
+      ],
+      "cta": {
+        "heading": {
+          "en": "Want to see whether 1:1 coaching is a good fit?",
+          "pl": "Chcesz sprawdzić, czy trening 1:1 będzie dla Ciebie dobrym wyborem?"
+        },
+        "body": {
+          "en": "Book a free consultation and we can talk through your goal, schedule and current training before you make a decision.",
+          "pl": "Umów bezpłatną konsultację. Najpierw omówimy Twój cel, grafik i obecną sytuację treningową, a dopiero później zdecydujesz, czy chcesz zaczynać."
+        },
+        "label": {
+          "en": "Explore Personal Training Cwmbran",
+          "pl": "Zobacz trening personalny w Cwmbran"
+        },
+        "href": {
+          "en": "/personal-training-cwmbran",
+          "pl": "/pl/personal-training-cwmbran"
+        }
+      }
+    },
+    {
+      "id": "online-personal-training-uk",
+      "enabled": true,
+      "published": "2026-08-14",
+      "updated": "2026-08-14",
+      "slug": {
+        "en": "online-personal-training-uk",
+        "pl": "trener-personalny-online-uk-jak-to-dziala"
+      },
+      "seoTitle": {
+        "en": "Online Personal Training UK: How It Works | KK Coaching",
+        "pl": "Trener personalny online UK: jak to działa | KK Coaching"
+      },
+      "seoDescription": {
+        "en": "How online personal training works in the UK: programming, nutrition support, check-ins, video feedback, progress tracking and who online coaching suits best.",
+        "pl": "Jak działa trener personalny online w UK: plan treningowy, żywienie, raporty, analiza nagrań, kontrola postępów i dla kogo coaching online ma sens."
+      },
+      "title": {
+        "en": "Online Personal Training in the UK: How It Actually Works",
+        "pl": "Trener personalny online w UK — jak naprawdę wygląda współpraca"
+      },
+      "intro": {
+        "en": "Online coaching should be more than receiving a workout PDF. Done properly, it is an ongoing system: your training is planned, your progress is reviewed, your nutrition targets can be adjusted and you have a clear way to get feedback between check-ins.",
+        "pl": "Coaching online powinien być czymś więcej niż wysłaniem PDF-a z treningiem. Dobrze prowadzona współpraca to stały system: masz plan, raportujesz postępy, dostajesz korekty, możesz przesyłać nagrania techniki, a żywienie i trening są zmieniane wtedy, kiedy są ku temu konkretne powody."
+      },
+      "image": "/images/kacper.jpg",
+      "imageAlt": {
+        "en": "Kacper Kaszowski, KK Coaching online personal trainer in the UK",
+        "pl": "Kacper Kaszowski, polski trener personalny online w UK"
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "What an online coach actually does",
+            "pl": "Co właściwie robi trener online"
+          },
+          "paragraphs": [
+            {
+              "en": "The useful part of online coaching is not access to exercises you could find on the internet. It is having those exercises organised into a programme that matches your goal, available equipment, training history and weekly schedule — then having someone review whether it is producing the result you expected.",
+              "pl": "Wartością coachingu online nie jest dostęp do ćwiczeń, które można znaleźć w internecie. Chodzi o ułożenie ich w plan dopasowany do Twojego celu, sprzętu, doświadczenia i grafiku, a później o regularne sprawdzanie, czy ten plan rzeczywiście daje oczekiwany efekt."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Your training programme should change for a reason",
+            "pl": "Plan treningowy powinien zmieniać się z konkretnego powodu"
+          },
+          "paragraphs": [
+            {
+              "en": "A personalised programme gives you exercises, sets, rep targets and a progression structure. More importantly, it creates something measurable. If performance improves and the programme still fits your goal, there is no need to replace it every few weeks simply to make training feel new.",
+              "pl": "Indywidualny plan określa ćwiczenia, serie, zakresy powtórzeń i sposób progresji. Co ważniejsze, tworzy coś, co można mierzyć. Jeśli wyniki idą do przodu i plan dalej pasuje do celu, nie trzeba wymieniać ćwiczeń co kilka tygodni tylko po to, żeby było inaczej."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Video feedback closes part of the distance",
+            "pl": "Nagrania techniki częściowo zastępują obecność trenera obok"
+          },
+          "paragraphs": [
+            {
+              "en": "Online coaching cannot reproduce every advantage of standing next to a client in the gym, but video feedback is extremely useful. Short clips of working sets allow a coach to assess setup, range of motion, control and whether the exercise looks appropriate for the person performing it.",
+              "pl": "Coaching online nie odtworzy każdej zalety pracy trenera stojącego obok na siłowni, ale analiza nagrań daje bardzo dużo. Krótkie filmy z serii roboczych pozwalają ocenić ustawienie, zakres ruchu, kontrolę i to, czy dane ćwiczenie rzeczywiście pasuje do osoby, która je wykonuje."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Nutrition support should fit normal life",
+            "pl": "Żywienie musi działać również w normalnym życiu"
+          },
+          "paragraphs": [
+            {
+              "en": "For body-composition goals, training is only part of the picture. Online coaching can include calorie and macronutrient targets, meal-structure guidance and adjustments based on progress. The goal should be a system that works around work, family, eating out and foods you actually enjoy rather than an unnecessarily restrictive menu.",
+              "pl": "Przy celach sylwetkowych trening jest tylko częścią układanki. Coaching online może obejmować kalorie, makroskładniki, strukturę posiłków i korekty na podstawie postępów. System powinien działać przy pracy, rodzinie, wyjściach i produktach, które naprawdę lubisz, zamiast opierać się na niepotrzebnie restrykcyjnym jadłospisie."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Check-ins turn data into decisions",
+            "pl": "Raporty zamieniają dane w konkretne decyzje"
+          },
+          "paragraphs": [
+            {
+              "en": "Regular check-ins give context to the numbers. Body weight may be flat for a few days while measurements, performance or adherence are improving. A coach can look at the bigger picture before changing calories or training volume too quickly.",
+              "pl": "Regularne raporty nadają liczbom kontekst. Masa ciała może stać przez kilka dni, podczas gdy obwody, wyniki treningowe albo realizacja planu idą w dobrą stronę. Dzięki temu nie trzeba nerwowo zmieniać kalorii czy objętości treningowej po jednym gorszym pomiarze."
+            },
+            {
+              "en": "This is one of the main differences between ongoing coaching and buying a one-off training plan: the programme can evolve with your progress and your real-life situation.",
+              "pl": "To jedna z głównych różnic między stałym coachingiem a zakupem jednorazowego planu: prowadzenie może zmieniać się razem z Twoimi postępami i sytuacją w życiu."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "Who online coaching suits best",
+            "pl": "Dla kogo coaching online sprawdza się najlepiej"
+          },
+          "paragraphs": [
+            {
+              "en": "Online coaching usually works best for someone who can train independently enough to complete sessions, is willing to log the information needed for feedback and wants structure between workouts rather than a coach physically present for every set.",
+              "pl": "Coaching online zazwyczaj najlepiej działa u osoby, która potrafi na tyle samodzielnie trenować, żeby wykonać sesję, jest gotowa regularnie wpisywać potrzebne dane i chce mieć system oraz wsparcie między treningami, zamiast trenera stojącego przy każdej serii."
+            }
+          ],
+          "bullets": [
+            {
+              "en": "You want a personalised programme instead of random workouts.",
+              "pl": "Chcesz indywidualnego planu zamiast przypadkowych treningów."
+            },
+            {
+              "en": "Your work or family schedule makes fixed PT sessions difficult.",
+              "pl": "Praca albo obowiązki utrudniają regularne sesje PT o stałych godzinach."
+            },
+            {
+              "en": "You want nutrition and progress support as well as training programming.",
+              "pl": "Potrzebujesz wsparcia żywieniowego i kontroli postępów, nie tylko planu treningowego."
+            },
+            {
+              "en": "You are happy to send training data, check-ins and occasional exercise videos.",
+              "pl": "Jesteś gotowy/a wysyłać wyniki treningów, raporty i od czasu do czasu nagrania ćwiczeń."
+            }
+          ]
+        },
+        {
+          "heading": {
+            "en": "When hybrid coaching may be better",
+            "pl": "Kiedy lepszą opcją może być coaching hybrydowy"
+          },
+          "paragraphs": [
+            {
+              "en": "If you like the structure of online coaching but still want regular hands-on technique work, hybrid coaching combines both. You keep the ongoing plan, nutrition support and check-ins while adding face-to-face sessions in Cwmbran.",
+              "pl": "Jeśli podoba Ci się system coachingu online, ale nadal chcesz regularnie pracować nad techniką na żywo, coaching hybrydowy łączy oba rozwiązania. Zachowujesz plan, wsparcie żywieniowe i raporty, a dodatkowo masz sesje 1:1 w Cwmbran."
+            }
+          ]
+        }
+      ],
+      "cta": {
+        "heading": {
+          "en": "Want ongoing coaching rather than another plan sitting in your phone?",
+          "pl": "Chcesz stałego prowadzenia zamiast kolejnego planu zapisanego w telefonie?"
+        },
+        "body": {
+          "en": "See exactly what is included in KK Coaching online support and decide whether it matches the way you want to train.",
+          "pl": "Sprawdź dokładnie, co obejmuje prowadzenie online w KK Coaching i oceń, czy taka forma współpracy pasuje do Ciebie."
+        },
+        "label": {
+          "en": "Explore Online Coaching",
+          "pl": "Zobacz coaching online"
+        },
+        "href": {
+          "en": "/online-coaching",
+          "pl": "/pl/online-coaching"
+        }
+      }
+    }
+  ]
+}
