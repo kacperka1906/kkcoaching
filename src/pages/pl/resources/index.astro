@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ResourceHub from '../../../components/ResourceHub.astro';
+import resources from '../../../data/resources-v1.json';
+
+const lang = 'pl';
+const hub = resources.hub;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://kkcoaching.fit/pl/resources#collection',
+      url: 'https://kkcoaching.fit/pl/resources',
+      name: hub.seo.title.pl,
+      description: hub.seo.description.pl,
+      isPartOf: { '@id': 'https://kkcoaching.fit/#website' }
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://kkcoaching.fit/pl' },
+        { '@type': 'ListItem', position: 2, name: 'Poradniki' }
+      ]
+    }
+  ]
+};
+---
+<BaseLayout
+  title={hub.seo.title[lang]}
+  description={hub.seo.description[lang]}
+  lang="pl"
+  path="/pl/resources"
+  altPath="/resources"
+  structuredData={structuredData}
+>
+  <ResourceHub lang="pl" />
+</BaseLayout>
