@@ -7,7 +7,7 @@
     "admin:sync": "node scripts/sync-admin-v2.mjs && node scripts/sync-services-v2.mjs",
     "dev": "npm run admin:sync && astro dev",
     "build:astro": "npm run admin:sync && astro build",
-    "finalize:html": "node scripts/finalize-static-html.mjs",
+    "finalize:html": "node scripts/finalize-static-html.mjs && node scripts/finalize-home-seo.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "build": "npm run build:astro && npm run finalize:html && npm run seo:audit",
     "build:verified": "npm run build",
