@@ -41,6 +41,28 @@ const bulletList = {
   ]
 };
 
+const publicationCollection = {
+  name: 'resources_publish',
+  label: 'Publikacja poradników / Resources ON-OFF',
+  files: [
+    {
+      label: 'Publikacja poradników / Resources ON-OFF',
+      name: 'resources_publish',
+      file: 'src/data/resources-publish.json',
+      format: 'json',
+      fields: [
+        {
+          label: 'Pokaż poradniki publicznie',
+          name: 'enabled',
+          widget: 'boolean',
+          default: false,
+          hint: 'OFF = poradniki i artykuły nie są publiczne, nie mają linków i nie trafiają do sitemap. ON = publikacja przy następnym deployu.'
+        }
+      ]
+    }
+  ]
+};
+
 const resourcesCollection = {
   name: 'resources_v1',
   label: 'Poradniki SEO / Resources — EN + PL',
@@ -51,7 +73,6 @@ const resourcesCollection = {
       file: 'src/data/resources-v1.json',
       format: 'json',
       fields: [
-        { label: 'Włącz sekcję poradników', name: 'enabled', widget: 'boolean', default: true },
         {
           label: 'Strona główna poradników / Hub',
           name: 'hub',
@@ -117,8 +138,9 @@ const resourcesCollection = {
   ]
 };
 
-config.collections = (config.collections ?? []).filter(collection => collection.name !== resourcesCollection.name);
-config.collections.splice(Math.min(9, config.collections.length), 0, resourcesCollection);
+config.collections = (config.collections ?? []).filter(collection => ![publicationCollection.name, resourcesCollection.name].includes(collection.name));
+const insertAt = Math.min(9, config.collections.length);
+config.collections.splice(insertAt, 0, publicationCollection, resourcesCollection);
 
 fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`, 'utf8');
-console.log('Admin 2.0 resources collection added.');
+console.log('Admin 2.0 Resources publication switch and editor added.');
