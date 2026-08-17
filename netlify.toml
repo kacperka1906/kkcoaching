@@ -81,43 +81,9 @@
   status = 301
   force = true
 
-# Fitness Guides / Poradniki were deliberately retired. Preserve any old links
-# by sending visitors to the closest commercial page instead of leaving dead URLs.
-[[redirects]]
-  from = "/resources/choosing-personal-trainer-cwmbran"
-  to = "/personal-training-cwmbran"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources/online-personal-training-uk"
-  to = "/online-coaching"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/resources"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pl/resources/jak-wybrac-trenera-personalnego-cwmbran"
-  to = "/pl/personal-training-cwmbran"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pl/resources/trener-personalny-online-uk-jak-to-dziala"
-  to = "/pl/online-coaching"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/pl/resources"
-  to = "/pl"
-  status = 301
-  force = true
+# Resources visibility is controlled by Admin 2.0 at build time.
+# Do not add permanent redirects for /resources here: when OFF, the build
+# removes those routes; when ON, the same URLs must be publishable again.
 
 [[redirects]]
   from = "/*"
