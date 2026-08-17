@@ -5,6 +5,7 @@ const SITE_URL = 'https://kkcoaching.fit';
 
 export default defineConfig({
   site: SITE_URL,
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       filter: (page) => {

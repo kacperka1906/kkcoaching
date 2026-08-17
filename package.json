@@ -9,8 +9,9 @@
     "build:astro": "npm run admin:sync && astro build",
     "finalize:html": "node scripts/finalize-static-html.mjs && node scripts/finalize-home-seo.mjs",
     "resources:visibility": "node scripts/apply-resources-visibility.mjs",
+    "urls:normalize": "node scripts/normalize-public-urls.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
-    "build": "npm run build:astro && npm run finalize:html && npm run resources:visibility && npm run seo:audit",
+    "build": "npm run build:astro && npm run finalize:html && npm run resources:visibility && npm run urls:normalize && npm run seo:audit",
     "build:verified": "npm run build",
     "preview": "astro preview"
   },
