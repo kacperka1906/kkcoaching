@@ -18,6 +18,11 @@
     Cache-Control = "no-store"
 
 [[headers]]
+  for = "/jd/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
@@ -81,14 +86,9 @@
   status = 301
   force = true
 
-# Single canonical vanity URL for the QR code printed on JD Gyms Cwmbran materials.
-# Only /jd/ is published/used. It is intentionally excluded from the sitemap and
-# internal navigation; the destination can change later without replacing the QR.
-[[redirects]]
-  from = "/jd/"
-  to = "/personal-training-cwmbran/?utm_source=jd_gyms_cwmbran&utm_medium=qr&utm_campaign=jd_banner"
-  status = 302
-  force = true
+# /jd/ is a real noindex landing page for the QR code printed at JD Gyms Cwmbran.
+# It must return 200 rather than redirect, so GSC does not treat the campaign URL
+# as another redirecting page.
 
 # Resources visibility is controlled by Admin 2.0 at build time.
 # Do not add permanent redirects for /resources here: when OFF, the build

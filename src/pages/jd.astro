@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const whatsappUrl = 'https://wa.me/447516327552?text=Hi%20Kacper%2C%20I%20scanned%20your%20JD%20Gyms%20banner%20and%20I%27d%20like%20to%20know%20more%20about%20coaching.';
+
+const options = [
+  {
+    badge: 'Best fit from JD Gyms',
+    title: '1:1 Personal Training',
+    text: 'Train with me here at JD Gyms Cwmbran. Get hands-on coaching, technique feedback and a clear programme built around your goal.',
+    href: '/personal-training-cwmbran/',
+    cta: 'Explore 1:1 Personal Training',
+    featured: true
+  },
+  {
+    badge: 'Most complete support',
+    title: 'Hybrid Coaching',
+    text: 'Combine regular 1:1 sessions at JD Gyms with online programming, nutrition guidance, check-ins and support between sessions.',
+    href: '/hybrid-coaching/',
+    cta: 'Explore Hybrid Coaching',
+    featured: false
+  },
+  {
+    badge: 'Train anywhere',
+    title: 'Online Coaching',
+    text: 'A personalised programme, practical nutrition guidance, progress reviews and ongoing support without needing regular face-to-face sessions.',
+    href: '/online-coaching/',
+    cta: 'Explore Online Coaching',
+    featured: false
+  }
+];
+---
+<BaseLayout
+  title="Coaching at JD Gyms Cwmbran | KK Coaching"
+  description="Choose 1:1 Personal Training at JD Gyms Cwmbran, Hybrid Coaching or Online Coaching with KK Coaching."
+  lang="en"
+  path="/jd/"
+  noindex={true}
+>
+  <section class="jd-hero on-dark">
+    <div class="container hero-inner">
+      <span class="eyebrow">JD GYMS CWMBRAN</span>
+      <h1>Choose the coaching that fits you</h1>
+      <p class="lead">You scanned my banner at JD Gyms. Pick the level of support you want — face-to-face here in Cwmbran, a hybrid setup, or fully online coaching.</p>
+      <div class="trust-row" aria-label="Coaching highlights">
+        <span>Level 3 Personal Trainer</span>
+        <span>English / Polish</span>
+        <span>Personalised coaching</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="choice-section" aria-labelledby="choice-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">YOUR OPTIONS</span>
+        <h2 id="choice-heading">How do you want to work together?</h2>
+        <p>Start with the option that matches how much hands-on support you want. You can always switch later if your needs change.</p>
+      </div>
+
+      <div class="option-grid">
+        {options.map(option => (
+          <article class:list={['option-card', { featured: option.featured }]}>
+            <span class="option-badge">{option.badge}</span>
+            <h3>{option.title}</h3>
+            <p>{option.text}</p>
+            <a href={option.href} class:list={['btn', option.featured ? 'btn-primary' : 'btn-outline-dark']}>{option.cta}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="consult-section on-white" aria-labelledby="consult-heading">
+    <div class="container consult-inner">
+      <span class="eyebrow">NOT SURE WHICH ONE?</span>
+      <h2 id="consult-heading">Start with a free consultation</h2>
+      <p>Tell me what you want to achieve, what you have tried before and what kind of support would suit you. I’ll point you toward the best option — no pressure.</p>
+      <div class="actions">
+        <a href="/contact/" class="btn btn-primary">Book a Free Consultation</a>
+        <a href={whatsappUrl} class="btn btn-outline-dark" rel="noopener">Message me on WhatsApp</a>
+      </div>
+      <p class="microcopy">1:1 sessions take place at JD Gyms Cwmbran · Online and Hybrid coaching available in English and Polish.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .jd-hero { padding: 76px 0 72px; }
+  .hero-inner { max-width: 820px; text-align: center; }
+  .jd-hero h1 { color: var(--white); font-size: clamp(2.35rem, 6vw, 4.6rem); line-height: 1.02; margin: 10px auto 20px; max-width: 13ch; }
+  .lead { color: #D5D8DC; font-size: clamp(1rem, 2.3vw, 1.2rem); max-width: 66ch; margin: 0 auto; }
+  .trust-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .trust-row span { color: #F2F3F4; border: 1px solid #3B4048; border-radius: 999px; padding: 8px 12px; font-size: 0.8rem; }
+  .choice-section { padding: 82px 0; }
+  .option-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 38px; }
+  .option-card { background: var(--white); border: 1px solid #DDE0E3; border-radius: var(--radius); padding: 30px 26px 26px; display: flex; flex-direction: column; min-height: 100%; }
+  .option-card.featured { border-top: 4px solid var(--red); box-shadow: 0 14px 36px rgba(23,25,29,.09); }
+  .option-badge { color: var(--red); font-size: 0.72rem; line-height: 1.2; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
+  .option-card h3 { font-size: 1.35rem; margin-bottom: 12px; }
+  .option-card p { color: var(--steel); margin-bottom: 24px; flex: 1; }
+  .option-card .btn { width: 100%; text-align: center; }
+  .consult-section { padding: 82px 0 90px; }
+  .consult-inner { max-width: 760px; text-align: center; }
+  .consult-inner h2 { margin: 8px 0 14px; }
+  .consult-inner > p { color: var(--steel); }
+  .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 28px 0 20px; }
+  .microcopy { font-size: .84rem; }
+  @media (max-width: 900px) {
+    .option-grid { grid-template-columns: 1fr; max-width: 680px; margin-left: auto; margin-right: auto; }
+  }
+  @media (max-width: 620px) {
+    .jd-hero { padding: 54px 0 56px; }
+    .choice-section, .consult-section { padding: 58px 0; }
+    .actions { display: grid; grid-template-columns: 1fr; }
+    .actions .btn { width: 100%; }
+    .option-card { padding: 24px 20px 22px; }
+  }
+</style>
