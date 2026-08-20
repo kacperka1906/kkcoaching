@@ -81,15 +81,9 @@
   status = 301
   force = true
 
-# Stable vanity URL for the QR code printed on JD Gyms Cwmbran materials.
-# Keep this URL unchanged; the 302 destination can be changed later without
-# replacing the physical QR code.
-[[redirects]]
-  from = "/jd"
-  to = "/personal-training-cwmbran/?utm_source=jd_gyms_cwmbran&utm_medium=qr&utm_campaign=jd_banner"
-  status = 302
-  force = true
-
+# Single canonical vanity URL for the QR code printed on JD Gyms Cwmbran materials.
+# Only /jd/ is published/used. It is intentionally excluded from the sitemap and
+# internal navigation; the destination can change later without replacing the QR.
 [[redirects]]
   from = "/jd/"
   to = "/personal-training-cwmbran/?utm_source=jd_gyms_cwmbran&utm_medium=qr&utm_campaign=jd_banner"
