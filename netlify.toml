@@ -81,6 +81,21 @@
   status = 301
   force = true
 
+# Stable vanity URL for the QR code printed on JD Gyms Cwmbran materials.
+# Keep this URL unchanged; the 302 destination can be changed later without
+# replacing the physical QR code.
+[[redirects]]
+  from = "/jd"
+  to = "/personal-training-cwmbran/?utm_source=jd_gyms_cwmbran&utm_medium=qr&utm_campaign=jd_banner"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/jd/"
+  to = "/personal-training-cwmbran/?utm_source=jd_gyms_cwmbran&utm_medium=qr&utm_campaign=jd_banner"
+  status = 302
+  force = true
+
 # Resources visibility is controlled by Admin 2.0 at build time.
 # Do not add permanent redirects for /resources here: when OFF, the build
 # removes those routes; when ON, the same URLs must be publishable again.
