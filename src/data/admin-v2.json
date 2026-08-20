@@ -23,7 +23,7 @@
     "whatsapp": "+447516327552",
     "instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
     "instagramLabel": "@kkcoaching.fit",
-    "facebookUrl": ""
+    "facebookUrl": "https://www.facebook.com/kkcoaching.fit/"
   },
   "header": {
     "stickyMobile": true,
@@ -44,76 +44,246 @@
         "id": "home",
         "enabled": true,
         "style": "link",
-        "label": { "en": "Home", "pl": "Strona główna" },
-        "href": { "en": "/", "pl": "/pl" }
+        "label": {
+          "en": "Home",
+          "pl": "Strona główna"
+        },
+        "href": {
+          "en": "/",
+          "pl": "/pl"
+        }
       },
       {
         "id": "personal-training",
         "enabled": true,
         "style": "link",
-        "label": { "en": "Personal Training Cwmbran", "pl": "Trener personalny Cwmbran" },
-        "href": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" }
+        "label": {
+          "en": "Personal Training Cwmbran",
+          "pl": "Trener personalny Cwmbran"
+        },
+        "href": {
+          "en": "/personal-training-cwmbran",
+          "pl": "/pl/personal-training-cwmbran"
+        }
       },
       {
         "id": "online-coaching",
         "enabled": true,
         "style": "link",
-        "label": { "en": "Online Coaching", "pl": "Coaching online" },
-        "href": { "en": "/online-coaching", "pl": "/pl/online-coaching" }
+        "label": {
+          "en": "Online Coaching",
+          "pl": "Coaching online"
+        },
+        "href": {
+          "en": "/online-coaching",
+          "pl": "/pl/online-coaching"
+        }
       },
       {
         "id": "hybrid-coaching",
         "enabled": true,
         "style": "link",
-        "label": { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
-        "href": { "en": "/hybrid-coaching", "pl": "/pl/hybrid-coaching" }
+        "label": {
+          "en": "Hybrid Coaching",
+          "pl": "Coaching hybrydowy"
+        },
+        "href": {
+          "en": "/hybrid-coaching",
+          "pl": "/pl/hybrid-coaching"
+        }
       },
       {
         "id": "transformations",
         "enabled": true,
         "style": "link",
-        "label": { "en": "Transformations", "pl": "Przemiany" },
-        "href": { "en": "/transformations", "pl": "/pl/transformations" }
+        "label": {
+          "en": "Transformations",
+          "pl": "Przemiany"
+        },
+        "href": {
+          "en": "/transformations",
+          "pl": "/pl/transformations"
+        }
       },
       {
         "id": "about",
         "enabled": true,
         "style": "link",
-        "label": { "en": "About Me", "pl": "O mnie" },
-        "href": { "en": "/about", "pl": "/pl/about" }
+        "label": {
+          "en": "About Me",
+          "pl": "O mnie"
+        },
+        "href": {
+          "en": "/about",
+          "pl": "/pl/about"
+        }
       },
       {
         "id": "contact",
         "enabled": true,
         "style": "cta",
-        "label": { "en": "Contact", "pl": "Kontakt" },
-        "href": { "en": "/contact", "pl": "/pl/contact" }
+        "label": {
+          "en": "Contact",
+          "pl": "Kontakt"
+        },
+        "href": {
+          "en": "/contact",
+          "pl": "/pl/contact"
+        }
       }
     ]
   },
   "footer": {
     "sectionLabels": {
-      "quickLinks": { "en": "Quick links", "pl": "Na skróty" },
-      "contact": { "en": "Contact", "pl": "Kontakt" },
-      "legal": { "en": "Legal", "pl": "Informacje prawne" },
-      "phone": { "en": "Phone", "pl": "Telefon" },
-      "trainingAt": { "en": "1:1 training", "pl": "Treningi 1:1" },
-      "cookieSettings": { "en": "Cookie settings", "pl": "Ustawienia cookies" }
+      "quickLinks": {
+        "en": "Quick links",
+        "pl": "Na skróty"
+      },
+      "contact": {
+        "en": "Contact",
+        "pl": "Kontakt"
+      },
+      "legal": {
+        "en": "Legal",
+        "pl": "Informacje prawne"
+      },
+      "phone": {
+        "en": "Phone",
+        "pl": "Telefon"
+      },
+      "trainingAt": {
+        "en": "1:1 training",
+        "pl": "Treningi 1:1"
+      },
+      "cookieSettings": {
+        "en": "Cookie settings",
+        "pl": "Ustawienia cookies"
+      }
     },
     "quickLinks": [
-      { "enabled": true, "label": { "en": "Coaching options", "pl": "Opcje współpracy" }, "href": { "en": "/services", "pl": "/pl/services" } },
-      { "enabled": true, "label": { "en": "Personal Training Cwmbran", "pl": "Trener personalny Cwmbran" }, "href": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" } },
-      { "enabled": true, "label": { "en": "Online Coaching", "pl": "Coaching online" }, "href": { "en": "/online-coaching", "pl": "/pl/online-coaching" } },
-      { "enabled": true, "label": { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" }, "href": { "en": "/hybrid-coaching", "pl": "/pl/hybrid-coaching" } },
-      { "enabled": true, "label": { "en": "Personalised Training Plan", "pl": "Indywidualny plan treningowy" }, "href": { "en": "/training-plan", "pl": "/pl/training-plan" } },
-      { "enabled": true, "label": { "en": "Transformations", "pl": "Przemiany" }, "href": { "en": "/transformations", "pl": "/pl/transformations" } },
-      { "enabled": true, "label": { "en": "About Me", "pl": "O mnie" }, "href": { "en": "/about", "pl": "/pl/about" } },
-      { "enabled": true, "label": { "en": "Contact", "pl": "Kontakt" }, "href": { "en": "/contact", "pl": "/pl/contact" } }
+      {
+        "enabled": true,
+        "label": {
+          "en": "Coaching options",
+          "pl": "Opcje współpracy"
+        },
+        "href": {
+          "en": "/services",
+          "pl": "/pl/services"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Personal Training Cwmbran",
+          "pl": "Trener personalny Cwmbran"
+        },
+        "href": {
+          "en": "/personal-training-cwmbran",
+          "pl": "/pl/personal-training-cwmbran"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Online Coaching",
+          "pl": "Coaching online"
+        },
+        "href": {
+          "en": "/online-coaching",
+          "pl": "/pl/online-coaching"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Hybrid Coaching",
+          "pl": "Coaching hybrydowy"
+        },
+        "href": {
+          "en": "/hybrid-coaching",
+          "pl": "/pl/hybrid-coaching"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Personalised Training Plan",
+          "pl": "Indywidualny plan treningowy"
+        },
+        "href": {
+          "en": "/training-plan",
+          "pl": "/pl/training-plan"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Transformations",
+          "pl": "Przemiany"
+        },
+        "href": {
+          "en": "/transformations",
+          "pl": "/pl/transformations"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "About Me",
+          "pl": "O mnie"
+        },
+        "href": {
+          "en": "/about",
+          "pl": "/pl/about"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Contact",
+          "pl": "Kontakt"
+        },
+        "href": {
+          "en": "/contact",
+          "pl": "/pl/contact"
+        }
+      }
     ],
     "legalLinks": [
-      { "enabled": true, "label": { "en": "Privacy Policy", "pl": "Polityka prywatności" }, "href": { "en": "/privacy", "pl": "/pl/privacy" } },
-      { "enabled": true, "label": { "en": "Cookie Policy", "pl": "Polityka cookies" }, "href": { "en": "/cookies", "pl": "/pl/cookies" } },
-      { "enabled": true, "label": { "en": "Website Terms", "pl": "Regulamin strony" }, "href": { "en": "/terms", "pl": "/pl/terms" } }
+      {
+        "enabled": true,
+        "label": {
+          "en": "Privacy Policy",
+          "pl": "Polityka prywatności"
+        },
+        "href": {
+          "en": "/privacy",
+          "pl": "/pl/privacy"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Cookie Policy",
+          "pl": "Polityka cookies"
+        },
+        "href": {
+          "en": "/cookies",
+          "pl": "/pl/cookies"
+        }
+      },
+      {
+        "enabled": true,
+        "label": {
+          "en": "Website Terms",
+          "pl": "Regulamin strony"
+        },
+        "href": {
+          "en": "/terms",
+          "pl": "/pl/terms"
+        }
+      }
     ],
     "copyright": {
       "en": "© {year} KK Coaching — Kacper Kaszowski",
@@ -126,59 +296,122 @@
   },
   "location": {
     "enabled": true,
-    "showInteractiveMap": true,
-    "venueName": "JD Gyms Cwmbran",
+    "facts": [
+      {
+        "enabled": true,
+        "text": {
+          "en": "Free parking on site",
+          "pl": "Darmowy parking na miejscu"
+        }
+      },
+      {
+        "enabled": true,
+        "text": {
+          "en": "Less than 5 min from Cwmbran bus station",
+          "pl": "Mniej niż 5 min od dworca autobusowego"
+        }
+      },
+      {
+        "enabled": true,
+        "text": {
+          "en": "Around a 10 min walk from Cwmbran train station",
+          "pl": "Około 10 min pieszo od stacji kolejowej Cwmbran"
+        }
+      },
+      {
+        "enabled": true,
+        "text": {
+          "en": "250+ machines, free weights and lifting platforms",
+          "pl": "Ponad 250 maszyn, wolne ciężary i platformy"
+        }
+      }
+    ],
     "addressLine1": "17–18 Gwent Square",
     "city": "Cwmbran",
-    "postcode": "NP44 1PW",
-    "country": "GB",
     "mapQuery": "JD Gyms Cwmbran, 17-18 Gwent Square, Cwmbran NP44 1PW",
-    "directionsUrl": "",
+    "postcode": "NP44 1PW",
     "copy": {
-      "eyebrow": { "en": "1:1 training in Cwmbran", "pl": "Treningi 1:1 w Cwmbran" },
-      "heading": { "en": "1:1 Personal Training at JD Gyms Cwmbran", "pl": "Trening personalny 1:1 w JD Gyms Cwmbran" },
+      "mapLoad": {
+        "en": "Load interactive map",
+        "pl": "Załaduj mapę"
+      },
+      "serviceLanding": {
+        "en": "Book a free consultation →",
+        "pl": "Umów bezpłatną konsultację →"
+      },
       "body": {
         "en": "Sessions take place at JD Gyms Cwmbran on Gwent Square, right in Cwmbran town centre. You have a full commercial-gym setup for strength training, technique work and progressive training from week to week.",
         "pl": "Sesje prowadzę w JD Gyms Cwmbran przy Gwent Square, w samym centrum Cwmbran. Masz do dyspozycji pełne zaplecze komercyjnej siłowni do treningu siłowego, pracy nad techniką i progresji z tygodnia na tydzień."
+      },
+      "heading": {
+        "en": "1:1 Personal Training at JD Gyms Cwmbran",
+        "pl": "Trening personalny 1:1 w JD Gyms Cwmbran"
+      },
+      "mapHeading": {
+        "en": "Interactive Google Map",
+        "pl": "Interaktywna mapa Google"
+      },
+      "eyebrow": {
+        "en": "1:1 training in Cwmbran",
+        "pl": "Treningi 1:1 w Cwmbran"
+      },
+      "mapInfo": {
+        "en": "The Google map only loads after you choose to open it. The address and directions link work without loading the embedded map.",
+        "pl": "Mapa zostanie załadowana z Google dopiero po kliknięciu. Adres i przycisk do wyznaczenia trasy działają bez jej ładowania."
+      },
+      "serviceDefault": {
+        "en": "Explore 1:1 Personal Training →",
+        "pl": "Zobacz trening personalny 1:1 →"
       },
       "note": {
         "en": "The gym is open 24/7, but personal training sessions are arranged with me at agreed times.",
         "pl": "Siłownia działa 24/7, ale treningi personalne odbywają się w terminach ustalonych bezpośrednio ze mną."
       },
-      "directions": { "en": "Get directions", "pl": "Wyznacz trasę" },
-      "serviceDefault": { "en": "Explore 1:1 Personal Training →", "pl": "Zobacz trening personalny 1:1 →" },
-      "serviceLanding": { "en": "Book a free consultation →", "pl": "Umów bezpłatną konsultację →" },
-      "mapTitle": { "en": "Map showing JD Gyms Cwmbran", "pl": "Mapa lokalizacji JD Gyms Cwmbran" },
-      "mapHeading": { "en": "Interactive Google Map", "pl": "Interaktywna mapa Google" },
-      "mapInfo": {
-        "en": "The Google map only loads after you choose to open it. The address and directions link work without loading the embedded map.",
-        "pl": "Mapa zostanie załadowana z Google dopiero po kliknięciu. Adres i przycisk do wyznaczenia trasy działają bez jej ładowania."
+      "directions": {
+        "en": "Get directions",
+        "pl": "Wyznacz trasę"
       },
-      "mapLoad": { "en": "Load interactive map", "pl": "Załaduj mapę" }
+      "mapTitle": {
+        "en": "Map showing JD Gyms Cwmbran",
+        "pl": "Mapa lokalizacji JD Gyms Cwmbran"
+      }
     },
-    "facts": [
-      { "enabled": true, "text": { "en": "Free parking on site", "pl": "Darmowy parking na miejscu" } },
-      { "enabled": true, "text": { "en": "Less than 5 min from Cwmbran bus station", "pl": "Mniej niż 5 min od dworca autobusowego" } },
-      { "enabled": true, "text": { "en": "Around a 10 min walk from Cwmbran train station", "pl": "Około 10 min pieszo od stacji kolejowej Cwmbran" } },
-      { "enabled": true, "text": { "en": "250+ machines, free weights and lifting platforms", "pl": "Ponad 250 maszyn, wolne ciężary i platformy" } }
-    ]
+    "country": "GB",
+    "showInteractiveMap": true,
+    "venueName": "JD Gyms Cwmbran",
+    "directionsUrl": ""
   },
   "reviews": {
+    "items": [],
     "enabled": false,
-    "homeLimit": 4,
-    "eyebrow": { "en": "Client feedback", "pl": "Opinie podopiecznych" },
-    "heading": { "en": "What clients say about KK Coaching", "pl": "Co mówią podopieczni KK Coaching" },
     "body": {
       "en": "Real feedback from people I coach in person and online.",
       "pl": "Prawdziwe opinie osób, które prowadzę stacjonarnie i online."
     },
-    "screenshotLabel": { "en": "View original message", "pl": "Zobacz oryginalną wiadomość" },
-    "seeAllLabel": { "en": "See all reviews", "pl": "Zobacz wszystkie opinie" },
-    "leaveReviewLabel": { "en": "Leave a Google review", "pl": "Dodaj opinię w Google" },
-    "googleReviewsUrl": "",
+    "heading": {
+      "en": "What clients say about KK Coaching",
+      "pl": "Co mówią podopieczni KK Coaching"
+    },
+    "leaveReviewLabel": {
+      "en": "Leave a Google review",
+      "pl": "Dodaj opinię w Google"
+    },
+    "seeAllLabel": {
+      "en": "See all reviews",
+      "pl": "Zobacz wszystkie opinie"
+    },
     "leaveGoogleReviewUrl": "",
     "googlePlaceId": "",
-    "items": []
+    "eyebrow": {
+      "en": "Client feedback",
+      "pl": "Opinie podopiecznych"
+    },
+    "googleReviewsUrl": "",
+    "screenshotLabel": {
+      "en": "View original message",
+      "pl": "Zobacz oryginalną wiadomość"
+    },
+    "homeLimit": 4
   },
   "home": {
     "seo": {
@@ -192,121 +425,259 @@
       }
     },
     "hero": {
-      "heading": { "en": "1:1 Personal Training & Online Coaching Built Around You", "pl": "Treningi 1:1 i coaching online dopasowane do Ciebie" },
-      "lead": {
-        "en": "Tired of random workouts, diets you can't stick to or starting over every few weeks? Get a clear training plan, practical nutrition targets and ongoing support built around your goal, schedule and experience.",
-        "pl": "Chcesz schudnąć, zbudować mięśnie albo po prostu wrócić do regularnych treningów? Dostajesz plan dopasowany do Ciebie, konkretne wskazówki i wsparcie, dzięki któremu wiesz, co robić i kiedy coś zmienić."
+      "heading": {
+        "en": "1:1 Personal Training & Online Coaching Built Around You",
+        "pl": "Treningi 1:1 i coaching online dopasowane do Ciebie"
       },
-      "ctaPrimary": { "en": "Book a Free Consultation", "pl": "Umów bezpłatną konsultację" },
-      "ctaPrimaryHref": { "en": "/contact", "pl": "/pl/contact" },
-      "ctaSecondary": { "en": "See Client Results", "pl": "Zobacz przemiany podopiecznych" },
-      "ctaSecondaryHref": { "en": "/transformations", "pl": "/pl/transformations" },
+      "ctaSecondary": {
+        "en": "See Client Results",
+        "pl": "Zobacz przemiany podopiecznych"
+      },
       "trustLine": {
         "en": "1:1 at JD Gyms Cwmbran • My own 117 → 76 kg transformation • Individual coaching, no generic plans",
         "pl": "Treningi 1:1 w JD Gyms Cwmbran • własna metamorfoza 117 → 76 kg • coaching online i hybrydowy"
       },
+      "imageAlt": {
+        "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching",
+        "pl": "Kacper Kaszowski, trener personalny w Cwmbran i założyciel KK Coaching"
+      },
+      "ctaSecondaryHref": {
+        "en": "/transformations",
+        "pl": "/pl/transformations"
+      },
+      "ctaPrimary": {
+        "en": "Book a Free Consultation",
+        "pl": "Umów bezpłatną konsultację"
+      },
       "image": "/images/kacper-hero.webp",
-      "imageAlt": { "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching", "pl": "Kacper Kaszowski, trener personalny w Cwmbran i założyciel KK Coaching" }
+      "lead": {
+        "en": "Tired of random workouts, diets you can't stick to or starting over every few weeks? Get a clear training plan, practical nutrition targets and ongoing support built around your goal, schedule and experience.",
+        "pl": "Chcesz schudnąć, zbudować mięśnie albo po prostu wrócić do regularnych treningów? Dostajesz plan dopasowany do Ciebie, konkretne wskazówki i wsparcie, dzięki któremu wiesz, co robić i kiedy coś zmienić."
+      },
+      "ctaPrimaryHref": {
+        "en": "/contact",
+        "pl": "/pl/contact"
+      }
     },
     "whoItsFor": {
-      "eyebrow": { "en": "Who this is for", "pl": "Czy to dla Ciebie?" },
-      "heading": { "en": "A plan built around your goal - and your real life.", "pl": "Twój cel jest ważny. Plan musi pasować do Twojego życia." },
+      "eyebrow": {
+        "en": "Who this is for",
+        "pl": "Czy to dla Ciebie?"
+      },
+      "heading": {
+        "en": "A plan built around your goal - and your real life.",
+        "pl": "Twój cel jest ważny. Plan musi pasować do Twojego życia."
+      },
       "body": {
         "en": "You do not need perfect genetics, endless free time or years of gym experience. You need a plan you understand, a way to measure progress and support that helps you stay consistent when life is not perfect.",
         "pl": "Nie potrzebujesz perfekcyjnego tygodnia. Potrzebujesz jasnych zasad, planu, który da się realizować, i kogoś, kto pomoże Ci wyciągać wnioski z postępów zamiast co chwilę zaczynać od nowa."
       },
       "cards": [
         {
-          "title": { "en": "Lose fat without another crash diet", "pl": "Chcesz schudnąć bez ciągłego bycia na diecie" },
-          "body": { "en": "Build a calorie deficit you can actually stick to and adjust it as your progress changes.", "pl": "Ustalimy kalorie i sposób jedzenia, który pozwala robić postępy bez układania całego życia pod dietę." }
+          "title": {
+            "en": "Lose fat without another crash diet",
+            "pl": "Chcesz schudnąć bez ciągłego bycia na diecie"
+          },
+          "body": {
+            "en": "Build a calorie deficit you can actually stick to and adjust it as your progress changes.",
+            "pl": "Ustalimy kalorie i sposób jedzenia, który pozwala robić postępy bez układania całego życia pod dietę."
+          }
         },
         {
-          "title": { "en": "Build muscle with a structured plan", "pl": "Chcesz budować mięśnie i widzieć postęp na treningu" },
-          "body": { "en": "Stop jumping between random workouts and know exactly how your training is progressing.", "pl": "Dostajesz konkretny plan i jasne zasady progresji, żebyś wiedział, co ma poprawiać się z tygodnia na tydzień." }
+          "title": {
+            "en": "Build muscle with a structured plan",
+            "pl": "Chcesz budować mięśnie i widzieć postęp na treningu"
+          },
+          "body": {
+            "en": "Stop jumping between random workouts and know exactly how your training is progressing.",
+            "pl": "Dostajesz konkretny plan i jasne zasady progresji, żebyś wiedział, co ma poprawiać się z tygodnia na tydzień."
+          }
         },
         {
-          "title": { "en": "Feel confident in the gym", "pl": "Nie czujesz się pewnie na siłowni" },
-          "body": { "en": "Learn technique, understand your programme and stop wondering if you are doing everything wrong.", "pl": "Popracujemy nad techniką i zrozumieniem planu, żebyś przestał zgadywać, czy robisz wszystko dobrze." }
+          "title": {
+            "en": "Feel confident in the gym",
+            "pl": "Nie czujesz się pewnie na siłowni"
+          },
+          "body": {
+            "en": "Learn technique, understand your programme and stop wondering if you are doing everything wrong.",
+            "pl": "Popracujemy nad techniką i zrozumieniem planu, żebyś przestał zgadywać, czy robisz wszystko dobrze."
+          }
         },
         {
-          "title": { "en": "Get back on track and stay consistent", "pl": "Wypadłeś z rytmu i chcesz wrócić do regularności" },
-          "body": { "en": "Whether you have had a break, a busy few months or simply lost momentum, we will build a routine you can maintain.", "pl": "Nie zaczynamy od zera. Układamy prosty plan powrotu, który da się pogodzić z pracą, rodziną i resztą życia." }
+          "title": {
+            "en": "Get back on track and stay consistent",
+            "pl": "Wypadłeś z rytmu i chcesz wrócić do regularności"
+          },
+          "body": {
+            "en": "Whether you have had a break, a busy few months or simply lost momentum, we will build a routine you can maintain.",
+            "pl": "Nie zaczynamy od zera. Układamy prosty plan powrotu, który da się pogodzić z pracą, rodziną i resztą życia."
+          }
         }
       ]
     },
     "servicesIntro": {
-      "eyebrow": { "en": "Coaching options", "pl": "Współpraca" },
-      "heading": { "en": "Choose the level of support that fits you", "pl": "Wybierz tyle wsparcia, ile naprawdę potrzebujesz" },
+      "eyebrow": {
+        "en": "Coaching options",
+        "pl": "Współpraca"
+      },
+      "heading": {
+        "en": "Choose the level of support that fits you",
+        "pl": "Wybierz tyle wsparcia, ile naprawdę potrzebujesz"
+      },
       "body": {
         "en": "Whether you want face-to-face coaching in Cwmbran, complete online support or a combination of both, the goal is the same: a clear plan, measurable progress and no more guesswork.",
         "pl": "Treningi 1:1 w Cwmbran, pełne prowadzenie online, połączenie obu albo sam plan treningowy. Wybierz opcję, która pasuje do Twojego celu i tego, jak chcesz pracować."
       }
     },
     "story": {
-      "eyebrow": { "en": "Meet your coach", "pl": "Moja historia" },
-      "heading": { "en": "I know what it feels like to start from the beginning.", "pl": "Sam przeszedłem tę drogę. Dziś pomagam innym nie tracić czasu na te same błędy." },
-      "bodyShort": {
-        "en": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. My own journey took me from around 117 kg to 76 kg before I rebuilt my physique. Now I use that experience to help other people stop guessing, train with purpose and build results they can maintain.",
-        "pl": "Nazywam się Kacper Kaszowski. Prowadzę KK Coaching i pracuję jako trener personalny w Cwmbran oraz online. Sam przeszedłem drogę od około 117 kg do 76 kg, więc dobrze wiem, jak łatwo utknąć między kolejnymi dietami, przypadkowymi treningami i ciągłym zaczynaniem od nowa. Dziś pomagam klientom robić to prościej: mieć plan, rozumieć co robią i wiedzieć, kiedy naprawdę trzeba coś zmienić."
+      "heading": {
+        "en": "I know what it feels like to start from the beginning.",
+        "pl": "Sam przeszedłem tę drogę. Dziś pomagam innym nie tracić czasu na te same błędy."
+      },
+      "eyebrow": {
+        "en": "Meet your coach",
+        "pl": "Moja historia"
+      },
+      "imageAlt": {
+        "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching",
+        "pl": "Kacper Kaszowski, trener personalny w Cwmbran"
+      },
+      "cta": {
+        "en": "Meet Your Coach",
+        "pl": "Poznaj moją historię"
       },
       "bodyFull": {
         "en": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. I did not get into fitness because staying in shape had always been easy for me. I started at around 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I reached 76 kg and later completely rebuilt my physique. That process taught me the difference between a plan that looks impressive on paper and one a real person can follow for long enough to produce results. Today I use that experience to help people lose fat, build muscle, train with confidence and create routines they can maintain in real life.",
         "pl": "Nazywam się Kacper Kaszowski i prowadzę KK Coaching. Zanim zacząłem pomagać innym, sam przeszedłem drogę od około 117 kg do 76 kg, a później krok po kroku przebudowałem sylwetkę. Po drodze popełniłem sporo błędów: za bardzo komplikowałem dietę, szukałem szybkich efektów i zmieniałem rzeczy, zanim zdążyły zadziałać. Z czasem zrozumiałem, że wynik robi nie najbardziej ekstremalny plan, tylko taki, który jest dobrze dopasowany i realizowany wystarczająco długo. Dziś wykorzystuję to doświadczenie w pracy z podopiecznymi — przy redukcji, budowaniu mięśni, powrocie do regularności i nauce sensownego treningu."
       },
+      "bodyShort": {
+        "en": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. My own journey took me from around 117 kg to 76 kg before I rebuilt my physique. Now I use that experience to help other people stop guessing, train with purpose and build results they can maintain.",
+        "pl": "Nazywam się Kacper Kaszowski. Prowadzę KK Coaching i pracuję jako trener personalny w Cwmbran oraz online. Sam przeszedłem drogę od około 117 kg do 76 kg, więc dobrze wiem, jak łatwo utknąć między kolejnymi dietami, przypadkowymi treningami i ciągłym zaczynaniem od nowa. Dziś pomagam klientom robić to prościej: mieć plan, rozumieć co robią i wiedzieć, kiedy naprawdę trzeba coś zmienić."
+      },
       "image": "/images/kacper-story.webp",
-      "imageAlt": { "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching", "pl": "Kacper Kaszowski, trener personalny w Cwmbran" },
+      "ctaHref": {
+        "en": "/about",
+        "pl": "/pl/about"
+      },
       "stats": [
-        { "value": "117 kg", "label": { "en": "Starting point", "pl": "Punkt startowy" } },
-        { "value": "40+ kg", "label": { "en": "Weight lost", "pl": "Zrzucone kilogramy" } },
-        { "value": "1:1 + Online", "label": { "en": "Coaching options", "pl": "Formy współpracy" } }
-      ],
-      "cta": { "en": "Meet Your Coach", "pl": "Poznaj moją historię" },
-      "ctaHref": { "en": "/about", "pl": "/pl/about" }
+        {
+          "value": "117 kg",
+          "label": {
+            "en": "Starting point",
+            "pl": "Punkt startowy"
+          }
+        },
+        {
+          "value": "40+ kg",
+          "label": {
+            "en": "Weight lost",
+            "pl": "Zrzucone kilogramy"
+          }
+        },
+        {
+          "value": "1:1 + Online",
+          "label": {
+            "en": "Coaching options",
+            "pl": "Formy współpracy"
+          }
+        }
+      ]
     },
     "process": {
-      "eyebrow": { "en": "The process", "pl": "Jak to działa" },
-      "heading": { "en": "A clear process. No guesswork.", "pl": "Od celu do planu. Od planu do wyniku." },
+      "eyebrow": {
+        "en": "The process",
+        "pl": "Jak to działa"
+      },
+      "heading": {
+        "en": "A clear process. No guesswork.",
+        "pl": "Od celu do planu. Od planu do wyniku."
+      },
       "body": {
         "en": "We start with where you are now, build around your real life and adjust the plan using your progress - not guesswork.",
         "pl": "Najpierw ustalamy, czego chcesz i co realnie możesz zrobić. Potem układam plan, śledzę postępy i zmieniamy tylko to, co faktycznie wymaga zmiany."
       },
       "steps": [
         {
-          "title": { "en": "Free consultation", "pl": "Bezpłatna konsultacja" },
-          "body": { "en": "We talk through your goal, training experience, schedule, lifestyle and what has been holding you back.", "pl": "Poznaję Twój cel, grafik, doświadczenie i to, co do tej pory najbardziej utrudniało Ci zrobienie postępów." }
+          "title": {
+            "en": "Free consultation",
+            "pl": "Bezpłatna konsultacja"
+          },
+          "body": {
+            "en": "We talk through your goal, training experience, schedule, lifestyle and what has been holding you back.",
+            "pl": "Poznaję Twój cel, grafik, doświadczenie i to, co do tej pory najbardziej utrudniało Ci zrobienie postępów."
+          }
         },
         {
-          "title": { "en": "Your individual plan", "pl": "Plan dopasowany do Ciebie" },
-          "body": { "en": "You get a programme matched to your goal, ability, available equipment and weekly schedule.", "pl": "Układam trening pod Twój poziom, możliwości, dostępny sprzęt i liczbę dni, które naprawdę możesz przeznaczyć na trening." }
+          "title": {
+            "en": "Your individual plan",
+            "pl": "Plan dopasowany do Ciebie"
+          },
+          "body": {
+            "en": "You get a programme matched to your goal, ability, available equipment and weekly schedule.",
+            "pl": "Układam trening pod Twój poziom, możliwości, dostępny sprzęt i liczbę dni, które naprawdę możesz przeznaczyć na trening."
+          }
         },
         {
-          "title": { "en": "Train and track", "pl": "Działasz, a ja śledzę postępy" },
-          "body": { "en": "You follow the plan while we track training, body data, adherence and the markers that matter for your goal.", "pl": "Realizujesz plan, a ja sprawdzam treningi, pomiary, zdjęcia i realizację ustalonych założeń — zależnie od wybranej formy współpracy." }
+          "title": {
+            "en": "Train and track",
+            "pl": "Działasz, a ja śledzę postępy"
+          },
+          "body": {
+            "en": "You follow the plan while we track training, body data, adherence and the markers that matter for your goal.",
+            "pl": "Realizujesz plan, a ja sprawdzam treningi, pomiary, zdjęcia i realizację ustalonych założeń — zależnie od wybranej formy współpracy."
+          }
         },
         {
-          "title": { "en": "Review and adjust", "pl": "Korygujemy wtedy, kiedy trzeba" },
-          "body": { "en": "We keep what is working and make changes when your progress, performance or adherence shows they are needed.", "pl": "Nie zmieniamy planu na chybił trafił. Jeśli wyniki pokazują, że trzeba zareagować, wprowadzamy konkretną zmianę i sprawdzamy, co dzieje się dalej." }
+          "title": {
+            "en": "Review and adjust",
+            "pl": "Korygujemy wtedy, kiedy trzeba"
+          },
+          "body": {
+            "en": "We keep what is working and make changes when your progress, performance or adherence shows they are needed.",
+            "pl": "Nie zmieniamy planu na chybił trafił. Jeśli wyniki pokazują, że trzeba zareagować, wprowadzamy konkretną zmianę i sprawdzamy, co dzieje się dalej."
+          }
         }
       ]
     },
     "transformations": {
-      "eyebrow": { "en": "Real results", "pl": "Efekty podopiecznych" },
-      "heading": { "en": "Client transformations. Real work. Measurable progress.", "pl": "Przemiany podopiecznych. Realna praca i mierzalne efekty." },
+      "eyebrow": {
+        "en": "Real results",
+        "pl": "Efekty podopiecznych"
+      },
+      "heading": {
+        "en": "Client transformations. Real work. Measurable progress.",
+        "pl": "Przemiany podopiecznych. Realna praca i mierzalne efekty."
+      },
       "body": {
         "en": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
         "pl": "Każda przemiana wygląda inaczej, ale zasada jest ta sama: plan dopasowany do człowieka, regularna praca, kontrola postępów i korekty wtedy, kiedy są naprawdę potrzebne."
       },
-      "cta": { "en": "See Client Results", "pl": "Zobacz przemiany podopiecznych" },
-      "ctaHref": { "en": "/transformations", "pl": "/pl/transformations" }
+      "cta": {
+        "en": "See Client Results",
+        "pl": "Zobacz przemiany podopiecznych"
+      },
+      "ctaHref": {
+        "en": "/transformations",
+        "pl": "/pl/transformations"
+      }
     },
     "finalCta": {
-      "heading": { "en": "Ready to stop starting over?", "pl": "Masz cel? Ustalmy, jak najlepiej do niego dojść." },
+      "heading": {
+        "en": "Ready to stop starting over?",
+        "pl": "Masz cel? Ustalmy, jak najlepiej do niego dojść."
+      },
       "body": {
         "en": "Tell me where you are now, what you want to achieve and what has been getting in the way. We will work out the most suitable way to move forward.",
         "pl": "Napisz mi, gdzie jesteś teraz, co chcesz zmienić i z czym masz największy problem. Powiem Ci, która forma współpracy ma w Twojej sytuacji najwięcej sensu."
       },
-      "cta": { "en": "Book Your Free Consultation", "pl": "Umów bezpłatną konsultację" },
-      "ctaHref": { "en": "/contact", "pl": "/pl/contact" }
+      "cta": {
+        "en": "Book Your Free Consultation",
+        "pl": "Umów bezpłatną konsultację"
+      },
+      "ctaHref": {
+        "en": "/contact",
+        "pl": "/pl/contact"
+      }
     }
   }
 }
