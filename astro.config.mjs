@@ -10,7 +10,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const pathname = new URL(page).pathname.replace(/\/+$/, '') || '/';
-        return !['/thank-you', '/pl/thank-you', '/404'].includes(pathname);
+        return !['/thank-you', '/pl/thank-you', '/404', '/jd'].includes(pathname);
       }
     })
   ],
