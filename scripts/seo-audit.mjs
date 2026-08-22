@@ -186,6 +186,20 @@ for (const file of pages) {
     addError(path, 'training location section sits outside <main>');
   }
 
+  const relatedCoachingAt = html.indexOf('<aside class="related-coaching');
+  if (relatedCoachingAt >= 0 && (mainCloseAt < 0 || relatedCoachingAt > mainCloseAt)) {
+    addError(path, 'related coaching section sits outside <main>');
+  }
+
+  const finalCtaAt = html.lastIndexOf('<section class="final-cta');
+  if (finalCtaAt >= 0 && mainCloseAt > finalCtaAt) {
+    const finalCtaEnd = html.indexOf('</section>', finalCtaAt);
+    if (finalCtaEnd >= 0) {
+      const trailingMain = html.slice(finalCtaEnd + '</section>'.length, mainCloseAt);
+      if (/<(?:section|aside)\b/i.test(trailingMain)) addError(path, 'content appears after the final CTA inside <main>');
+    }
+  }
+
   pageRecords.push({ path, html, noindex });
 }
 

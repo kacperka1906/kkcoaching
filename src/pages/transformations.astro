@@ -7,7 +7,7 @@ import pages from '../data/pages-v2.json';
 
 const lang = 'en';
 const copy = pages.transformations;
-const testimonials = (await getCollection('testimonials')).filter(t => t.data.consentOnFile).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+const testimonials = (await getCollection('testimonials')).filter(t => t.data.consentOnFile && !t.id.includes('kacper-own-story')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
 const faqs = (await getCollection('faq')).filter(item => item.data.language === 'en').sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title={copy.seo.title[lang]} description={copy.seo.description[lang]} lang="en" path="/transformations" altPath="/pl/transformations">

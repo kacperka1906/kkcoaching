@@ -50,6 +50,8 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
         track('email_click', common);
       } else if (/instagram\.com/i.test(absoluteHref)) {
         track('instagram_click', common);
+      } else if (/facebook\.com/i.test(absoluteHref)) {
+        track('facebook_click', common);
       } else if (/google\.com\/maps\/dir/i.test(absoluteHref)) {
         track('directions_click', common);
       }

@@ -1,6 +1,6 @@
 ---
 title: "Treningi 1:1 w Cwmbran + pełne prowadzenie online"
-tagline: "Najbardziej rozbudowana forma współpracy: pełne prowadzenie online połączone z regularnymi treningami personalnymi 1:1 w Cwmbran i pracą nad techniką na żywo."
+tagline: "Najszersza forma współpracy: pełne prowadzenie online — razem z indywidualnym jadłospisem — połączone z regularnymi treningami personalnymi 1:1 w Cwmbran i pracą nad techniką na żywo."
 order: 3
 minor: false
 ctaLabel: "Zobacz coaching hybrydowy"
@@ -14,9 +14,10 @@ bullets:
   - "Treningi personalne 1:1 w Cwmbran"
   - "Nauka techniki i korekty na żywo"
   - "Jeden plan obejmujący treningi ze mną i sesje wykonywane samodzielnie"
-  - "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
+  - "Indywidualny jadłospis z konkretnymi posiłkami i porcjami, dopasowany do kalorii, makro i w miarę możliwości do produktów, które lubisz"
   - "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów"
   - "Regularne raporty i dokładna analiza postępów"
   - "Korekty planu i ocena techniki z nagrań między treningami"
   - "Kontakt przez WhatsApp między raportami i sesjami 1:1"
 ---
+
