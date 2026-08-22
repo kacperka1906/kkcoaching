@@ -1,3 +1,4 @@
+# One-time branch-only workflow for the approved 11/10 audit pass.
 name: Apply approved site audit
 
 on:
