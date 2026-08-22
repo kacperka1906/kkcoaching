@@ -1,0 +1,46 @@
+name: Apply approved site audit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/apply-approved-site-audit.mjs'
+      - '.github/workflows/apply-approved-site-audit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply approved audit pass
+        run: node scripts/apply-approved-site-audit.mjs
+
+      - name: Build and run SEO audit
+        run: npm run build
+
+      - name: Commit verified source changes and remove one-time tooling
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm scripts/apply-approved-site-audit.mjs .github/workflows/apply-approved-site-audit.yml
+          git add -A
+          git commit -m "Apply approved 11/10 site audit improvements"
+          git push origin main
