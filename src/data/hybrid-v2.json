@@ -1,115 +1,319 @@
 {
   "seo": {
-    "title": { "en": "Hybrid Personal Training Cwmbran | Online + 1:1 | KK Coaching", "pl": "Trener personalny Cwmbran i coaching online | KK Coaching" },
+    "title": {
+      "en": "Hybrid Personal Training Cwmbran | Online + 1:1 | KK Coaching",
+      "pl": "Trener personalny Cwmbran i coaching online | KK Coaching"
+    },
     "description": {
       "en": "Hybrid personal training in Cwmbran combining 1:1 sessions with full online coaching, an individual plan, check-ins, progress tracking and support.",
       "pl": "Treningi personalne 1:1 w Cwmbran połączone z pełnym prowadzeniem online: plan treningowy, żywienie, regularne raporty, aplikacja i kontrola postępów."
     }
   },
   "hero": {
-    "eyebrow": { "en": "Hybrid personal training in Cwmbran", "pl": "Coaching hybrydowy" },
-    "heading": { "en": "Hybrid Personal Training in Cwmbran: Online Coaching + 1:1", "pl": "Treningi 1:1 w Cwmbran i pełne prowadzenie online" },
+    "eyebrow": {
+      "en": "Hybrid personal training in Cwmbran",
+      "pl": "Coaching hybrydowy"
+    },
+    "heading": {
+      "en": "Hybrid Personal Training in Cwmbran: Online Coaching + 1:1",
+      "pl": "Treningi 1:1 w Cwmbran i pełne prowadzenie online"
+    },
     "lead": {
       "en": "You keep everything included in Online Coaching and add regular face-to-face personal training sessions in Cwmbran. One system connects your training, nutrition, progress data and the work we do together in the gym.",
       "pl": "Masz indywidualny plan, wsparcie żywieniowe, regularną analizę postępów i kontakt ze mną przez cały tydzień, a do tego treningi 1:1 w Cwmbran, podczas których pracujemy nad techniką i progresją na żywo."
     },
-    "primaryCta": { "en": "Book a Free Consultation", "pl": "Umów bezpłatną konsultację" },
-    "primaryHref": { "en": "/contact", "pl": "/pl/contact" },
-    "secondaryCta": { "en": "Compare Coaching Options", "pl": "Porównaj opcje współpracy" },
-    "secondaryHref": { "en": "/services", "pl": "/pl/services" },
-    "trustAria": { "en": "Hybrid Coaching key features", "pl": "Najważniejsze elementy coachingu hybrydowego" },
+    "primaryCta": {
+      "en": "Book a Free Consultation",
+      "pl": "Umów bezpłatną konsultację"
+    },
+    "primaryHref": {
+      "en": "/contact",
+      "pl": "/pl/contact"
+    },
+    "secondaryCta": {
+      "en": "Compare Coaching Options",
+      "pl": "Porównaj opcje współpracy"
+    },
+    "secondaryHref": {
+      "en": "/services",
+      "pl": "/pl/services"
+    },
+    "trustAria": {
+      "en": "What Hybrid Coaching includes",
+      "pl": "Najważniejsze elementy coachingu hybrydowego"
+    },
     "trustPoints": [
-      { "en": "Full Online Coaching", "pl": "JD Gyms Cwmbran" },
-      { "en": "Coaching app", "pl": "Pełne prowadzenie online" },
-      { "en": "1:1 sessions", "pl": "Regularne raporty" },
-      { "en": "WhatsApp support", "pl": "Kontakt na WhatsApp" }
+      {
+        "en": "Full Online Coaching",
+        "pl": "Pełne prowadzenie online"
+      },
+      {
+        "en": "1:1 at JD Gyms Cwmbran",
+        "pl": "Treningi 1:1 w JD Gyms"
+      },
+      {
+        "en": "Coaching app",
+        "pl": "Aplikacja coachingowa"
+      },
+      {
+        "en": "Regular check-ins",
+        "pl": "Regularne raporty"
+      }
     ],
     "fallbackImage": "/images/hybrid-coaching-placeholder.svg",
-    "imageAlt": { "en": "Hybrid personal training in Cwmbran combining online coaching with 1:1 sessions", "pl": "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran" }
+    "imageAlt": {
+      "en": "Hybrid personal training in Cwmbran combining online coaching with 1:1 sessions",
+      "pl": "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran"
+    }
   },
   "why": {
-    "eyebrow": { "en": "Why hybrid", "pl": "Dlaczego hybrydowo" },
-    "heading": { "en": "You do not choose between online support and hands-on coaching. You get both.", "pl": "Nie wybierasz między prowadzeniem online a treningiem na żywo. Łączysz oba." },
+    "eyebrow": {
+      "en": "Why hybrid",
+      "pl": "Dlaczego hybrydowo"
+    },
+    "heading": {
+      "en": "You do not choose between online support and hands-on coaching. You get both.",
+      "pl": "Nie wybierasz między prowadzeniem online a treningiem na żywo. Łączysz oba."
+    },
     "body": {
       "en": "Hybrid Coaching is for people who want the structure and accountability of ongoing online coaching while still having regular sessions where we can work together on technique, execution and progression in person.",
       "pl": "Ta opcja ma sens, jeśli chcesz mieć plan i wsparcie przez cały tydzień, ale jednocześnie zależy Ci na regularnych sesjach, podczas których możemy na bieżąco pracować nad techniką, wykonaniem i progresją."
     }
   },
   "onlineCore": {
-    "label": { "en": "Full online system", "pl": "Pełne prowadzenie online" },
-    "heading": { "en": "Everything included in Online Coaching", "pl": "Plan, żywienie, raporty i kontakt" },
+    "label": {
+      "en": "Full online system",
+      "pl": "Pełne prowadzenie online"
+    },
+    "heading": {
+      "en": "Everything included in Online Coaching",
+      "pl": "Plan, żywienie, raporty i kontakt"
+    },
     "items": [
-      { "en": "Individual training programme for coached and independent sessions", "pl": "Indywidualny plan treningowy na sesje ze mną i treningi wykonywane samodzielnie" },
-      { "en": "Calorie, macronutrient and practical nutrition guidance", "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe" },
-      { "en": "Coaching app with your programme, exercise guidance, workout logging and progress history", "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów" },
-      { "en": "Regular check-ins and structured progress reviews", "pl": "Regularne raporty i dokładna analiza postępów" },
-      { "en": "Weight, measurements, progress photos and performance tracking", "pl": "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych" },
-      { "en": "Programme and nutrition adjustments based on progress", "pl": "Korekty treningu i żywienia na podstawie postępów" },
-      { "en": "Video technique feedback between face-to-face sessions", "pl": "Ocena techniki z nagrań między treningami 1:1" },
-      { "en": "WhatsApp support between check-ins and PT sessions", "pl": "Kontakt przez WhatsApp między raportami i sesjami" }
+      {
+        "en": "Individual training programme for coached and independent sessions",
+        "pl": "Indywidualny plan treningowy na sesje ze mną i treningi wykonywane samodzielnie"
+      },
+      {
+        "en": "Calorie, macronutrient and practical nutrition guidance",
+        "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
+      },
+      {
+        "en": "Coaching app with your programme, exercise guidance, workout logging and progress history",
+        "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów"
+      },
+      {
+        "en": "Regular check-ins and structured progress reviews",
+        "pl": "Regularne raporty i dokładna analiza postępów"
+      },
+      {
+        "en": "Weight, measurements, progress photos and performance tracking",
+        "pl": "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych"
+      },
+      {
+        "en": "Programme and nutrition adjustments based on progress",
+        "pl": "Korekty treningu i żywienia na podstawie postępów"
+      },
+      {
+        "en": "Video technique feedback between face-to-face sessions",
+        "pl": "Ocena techniki z nagrań między treningami 1:1"
+      },
+      {
+        "en": "WhatsApp support between check-ins and PT sessions",
+        "pl": "Kontakt przez WhatsApp między raportami i sesjami"
+      }
     ]
   },
   "inPerson": {
-    "label": { "en": "Added face-to-face", "pl": "Dodatkowo na żywo" },
-    "heading": { "en": "Plus regular 1:1 Personal Training", "pl": "Regularne treningi personalne 1:1" },
+    "label": {
+      "en": "Added face-to-face",
+      "pl": "Dodatkowo na żywo"
+    },
+    "heading": {
+      "en": "Plus regular 1:1 Personal Training",
+      "pl": "Regularne treningi personalne 1:1"
+    },
     "items": [
-      { "en": "Scheduled 1:1 personal training sessions in Cwmbran", "pl": "Regularne treningi personalne 1:1 w JD Gyms Cwmbran" },
-      { "en": "Hands-on exercise setup and technique coaching", "pl": "Nauka ustawienia i techniki ćwiczeń na żywo" },
-      { "en": "Live feedback on execution, effort and progression", "pl": "Bieżące wskazówki dotyczące wykonania, intensywności i progresji" },
-      { "en": "A programme that connects your coached sessions with the training you complete independently", "pl": "Jeden program łączący treningi ze mną z sesjami, które wykonujesz samodzielnie" }
+      {
+        "en": "Scheduled 1:1 personal training sessions in Cwmbran",
+        "pl": "Regularne treningi personalne 1:1 w JD Gyms Cwmbran"
+      },
+      {
+        "en": "Hands-on exercise setup and technique coaching",
+        "pl": "Nauka ustawienia i techniki ćwiczeń na żywo"
+      },
+      {
+        "en": "Live feedback on execution, effort and progression",
+        "pl": "Bieżące wskazówki dotyczące wykonania, intensywności i progresji"
+      },
+      {
+        "en": "A programme that connects your coached sessions with the training you complete independently",
+        "pl": "Jeden program łączący treningi ze mną z sesjami, które wykonujesz samodzielnie"
+      }
     ]
   },
   "app": {
-    "eyebrow": { "en": "One coaching app", "pl": "Wszystko w jednej aplikacji" },
-    "heading": { "en": "Your programme and progress stay connected between sessions.", "pl": "Treningi ze mną i te wykonywane samodzielnie są częścią jednego planu." },
+    "eyebrow": {
+      "en": "One coaching app",
+      "pl": "Wszystko w jednej aplikacji"
+    },
+    "heading": {
+      "en": "Your programme and progress stay connected between sessions.",
+      "pl": "Treningi ze mną i te wykonywane samodzielnie są częścią jednego planu."
+    },
     "body": {
       "en": "The app keeps your current training plan, exercise guidance, workout logging and progress history in one place. Your 1:1 sessions fit into the same coaching system instead of becoming a separate programme.",
       "pl": "W aplikacji masz aktualny plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Dzięki temu widzę nie tylko to, co robimy razem na siłowni, ale też jak wygląda cały tydzień treningowy."
     },
-    "aria": { "en": "Coaching app features", "pl": "Funkcje aplikacji" },
+    "aria": {
+      "en": "Coaching app features",
+      "pl": "Funkcje aplikacji"
+    },
     "points": [
-      { "en": "Training plan", "pl": "Plan treningowy" },
-      { "en": "Exercise guidance", "pl": "Instrukcje ćwiczeń" },
-      { "en": "Workout logging", "pl": "Logowanie treningów" },
-      { "en": "Progress history", "pl": "Historia postępów" }
+      {
+        "en": "Training plan",
+        "pl": "Plan treningowy"
+      },
+      {
+        "en": "Exercise guidance",
+        "pl": "Instrukcje ćwiczeń"
+      },
+      {
+        "en": "Workout logging",
+        "pl": "Logowanie treningów"
+      },
+      {
+        "en": "Progress history",
+        "pl": "Historia postępów"
+      }
     ]
   },
   "choice": {
-    "eyebrow": { "en": "Choose the right level of support", "pl": "Wybierz tyle wsparcia, ile potrzebujesz" },
-    "heading": { "en": "Not everyone needs Hybrid Coaching.", "pl": "Nie każdy potrzebuje coachingu hybrydowego." },
+    "eyebrow": {
+      "en": "Choose the right level of support",
+      "pl": "Wybierz tyle wsparcia, ile potrzebujesz"
+    },
+    "heading": {
+      "en": "Not everyone needs Hybrid Coaching.",
+      "pl": "Nie każdy potrzebuje coachingu hybrydowego."
+    },
     "body": {
       "en": "If you mainly want hands-on gym coaching, 1:1 Personal Training may be enough. If you train confidently on your own, Online Coaching may give you everything you need. Hybrid is for people who genuinely benefit from both.",
       "pl": "Jeśli zależy Ci głównie na prowadzeniu na siłowni, trening personalny 1:1 może wystarczyć. Jeśli samodzielnie dobrze radzisz sobie z techniką, pełne prowadzenie online może dać Ci wszystko, czego potrzebujesz. Hybryda ma sens wtedy, kiedy realnie skorzystasz z obu form."
     },
     "cards": [
       {
-        "title": { "en": "1:1 Personal Training in Cwmbran", "pl": "Trening personalny 1:1 w Cwmbran" },
-        "body": { "en": "Face-to-face coaching focused on training, technique and progression →", "pl": "Prowadzenie na żywo skupione na treningu, technice i progresji →" },
-        "href": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" }
+        "title": {
+          "en": "1:1 Personal Training in Cwmbran",
+          "pl": "Trening personalny 1:1 w Cwmbran"
+        },
+        "body": {
+          "en": "Face-to-face coaching focused on training, technique and progression →",
+          "pl": "Prowadzenie na żywo skupione na treningu, technice i progresji →"
+        },
+        "href": {
+          "en": "/personal-training-cwmbran",
+          "pl": "/pl/personal-training-cwmbran"
+        }
       },
       {
-        "title": { "en": "Online Coaching", "pl": "Trener personalny online" },
-        "body": { "en": "Full remote coaching without regular in-person sessions →", "pl": "Pełne prowadzenie zdalne bez regularnych sesji 1:1 →" },
-        "href": { "en": "/online-coaching", "pl": "/pl/online-coaching" }
+        "title": {
+          "en": "Online Coaching",
+          "pl": "Trener personalny online"
+        },
+        "body": {
+          "en": "Full remote coaching without regular in-person sessions →",
+          "pl": "Pełne prowadzenie zdalne bez regularnych sesji 1:1 →"
+        },
+        "href": {
+          "en": "/online-coaching",
+          "pl": "/pl/online-coaching"
+        }
       }
     ]
   },
   "faq": {
-    "eyebrow": { "en": "Questions", "pl": "Pytania" },
-    "heading": { "en": "Hybrid personal training — FAQ", "pl": "Coaching hybrydowy — FAQ" },
+    "eyebrow": {
+      "en": "Questions",
+      "pl": "Pytania"
+    },
+    "heading": {
+      "en": "Hybrid personal training — FAQ",
+      "pl": "Coaching hybrydowy — FAQ"
+    },
     "items": [
-      { "q": { "en": "What is the difference between Hybrid Coaching and Online Coaching?", "pl": "Czym coaching hybrydowy różni się od coachingu online?" }, "a": { "en": "Hybrid Coaching includes the full Online Coaching service and adds scheduled face-to-face 1:1 personal training sessions in Cwmbran. Your app, programme, nutrition guidance, check-ins, progress tracking, video feedback and WhatsApp support all remain part of the service.", "pl": "Coaching hybrydowy łączy pełne prowadzenie online z regularnymi treningami personalnymi 1:1 w Cwmbran. Aplikacja, plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp nadal pozostają częścią współpracy." } },
-      { "q": { "en": "Do I still use the coaching app with Hybrid Coaching?", "pl": "Czy w coachingu hybrydowym nadal korzystam z aplikacji?" }, "a": { "en": "Yes. The coaching app remains the central place for your programme, exercise guidance, workout logging and progress data. Face-to-face sessions are added on top rather than replacing the online system.", "pl": "Tak. Aplikacja pozostaje głównym miejscem na plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Treningi 1:1 są częścią tego samego planu, a nie osobną usługą działającą obok." } },
-      { "q": { "en": "Is Hybrid Coaching only for beginners?", "pl": "Czy coaching hybrydowy jest tylko dla początkujących?" }, "a": { "en": "No. It can work well if you are new to the gym and want more hands-on help, but it is also useful for experienced trainees who want detailed technique work, accountability and a tighter link between their independent training and coaching.", "pl": "Nie. Początkującym daje więcej pracy nad techniką i pewnością na siłowni, ale dobrze sprawdza się też u osób bardziej zaawansowanych, które chcą dokładnej kontroli wykonania i połączenia samodzielnych treningów z regularnymi sesjami 1:1." } },
-      { "q": { "en": "Where do the face-to-face sessions take place?", "pl": "Gdzie odbywają się treningi 1:1?" }, "a": { "en": "The 1:1 sessions are delivered at JD Gyms Cwmbran, 17–18 Gwent Square, Cwmbran, NP44 1PW. Exact availability is confirmed during your consultation.", "pl": "Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dostępne godziny ustalamy podczas bezpłatnej konsultacji." } },
-      { "q": { "en": "How do I know whether Hybrid, Online or 1:1 is right for me?", "pl": "Skąd mam wiedzieć, czy potrzebuję coachingu hybrydowego, online czy samych treningów 1:1?" }, "a": { "en": "Start with a free consultation. Tell me your goal, current training, location and how much support you want. I will explain which option gives you the right level of support without paying for more than you need.", "pl": "Zaczynamy od bezpłatnej konsultacji. Mówisz mi, jaki masz cel, jak teraz trenujesz, gdzie mieszkasz i jakiego wsparcia potrzebujesz. Na tej podstawie powiem Ci, która opcja ma najwięcej sensu — bez wciskania najdroższego pakietu." } }
+      {
+        "q": {
+          "en": "What is the difference between Hybrid Coaching and Online Coaching?",
+          "pl": "Czym coaching hybrydowy różni się od coachingu online?"
+        },
+        "a": {
+          "en": "Hybrid Coaching includes the full Online Coaching service and adds scheduled face-to-face 1:1 personal training sessions in Cwmbran. Your app, programme, nutrition guidance, check-ins, progress tracking, video feedback and WhatsApp support all remain part of the service.",
+          "pl": "Coaching hybrydowy łączy pełne prowadzenie online z regularnymi treningami personalnymi 1:1 w Cwmbran. Aplikacja, plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp nadal pozostają częścią współpracy."
+        }
+      },
+      {
+        "q": {
+          "en": "Do I still use the coaching app with Hybrid Coaching?",
+          "pl": "Czy w coachingu hybrydowym nadal korzystam z aplikacji?"
+        },
+        "a": {
+          "en": "Yes. The coaching app remains the central place for your programme, exercise guidance, workout logging and progress data. Face-to-face sessions are added on top rather than replacing the online system.",
+          "pl": "Tak. Aplikacja pozostaje głównym miejscem na plan treningowy, instrukcje ćwiczeń, logowanie treningów i historię postępów. Treningi 1:1 są częścią tego samego planu, a nie osobną usługą działającą obok."
+        }
+      },
+      {
+        "q": {
+          "en": "Is Hybrid Coaching only for beginners?",
+          "pl": "Czy coaching hybrydowy jest tylko dla początkujących?"
+        },
+        "a": {
+          "en": "No. It can work well if you are new to the gym and want more hands-on help, but it is also useful for experienced trainees who want detailed technique work, accountability and a tighter link between their independent training and coaching.",
+          "pl": "Nie. Początkującym daje więcej pracy nad techniką i pewnością na siłowni, ale dobrze sprawdza się też u osób bardziej zaawansowanych, które chcą dokładnej kontroli wykonania i połączenia samodzielnych treningów z regularnymi sesjami 1:1."
+        }
+      },
+      {
+        "q": {
+          "en": "Where do the face-to-face sessions take place?",
+          "pl": "Gdzie odbywają się treningi 1:1?"
+        },
+        "a": {
+          "en": "The 1:1 sessions are delivered at JD Gyms Cwmbran, 17–18 Gwent Square, Cwmbran, NP44 1PW. Exact availability is confirmed during your consultation.",
+          "pl": "Treningi 1:1 prowadzę w JD Gyms Cwmbran przy 17–18 Gwent Square, NP44 1PW. Dostępne godziny ustalamy podczas bezpłatnej konsultacji."
+        }
+      },
+      {
+        "q": {
+          "en": "How do I know whether Hybrid, Online or 1:1 is right for me?",
+          "pl": "Skąd mam wiedzieć, czy potrzebuję coachingu hybrydowego, online czy samych treningów 1:1?"
+        },
+        "a": {
+          "en": "Start with a free consultation. Tell me your goal, current training, location and how much support you want. I will explain which option gives you the right level of support without paying for more than you need.",
+          "pl": "Zaczynamy od bezpłatnej konsultacji. Mówisz mi, jaki masz cel, jak teraz trenujesz, gdzie mieszkasz i jakiego wsparcia potrzebujesz. Na tej podstawie powiem Ci, która opcja ma najwięcej sensu — bez wciskania najdroższego pakietu."
+        }
+      }
     ]
   },
   "finalCta": {
-    "eyebrow": { "en": "Start with a conversation", "pl": "Zacznijmy od rozmowy" },
-    "heading": { "en": "Want the most complete level of support? Let’s see if Hybrid fits.", "pl": "Chcesz połączyć treningi 1:1 z pełnym prowadzeniem? Sprawdźmy, czy ma to u Ciebie sens." },
-    "body": { "en": "Tell me your goal, current training and what you want help with. I will explain whether Hybrid Coaching is worth it for you or whether a simpler option makes more sense.", "pl": "Napisz mi, jaki masz cel, jak teraz trenujesz i jakiego wsparcia potrzebujesz. Powiem Ci, czy coaching hybrydowy będzie najlepszym wyborem, czy wystarczy prostsza opcja." },
-    "cta": { "en": "Book a Free Consultation", "pl": "Umów bezpłatną konsultację" },
-    "href": { "en": "/contact", "pl": "/pl/contact" }
+    "eyebrow": {
+      "en": "Start with a conversation",
+      "pl": "Zacznijmy od rozmowy"
+    },
+    "heading": {
+      "en": "Want the most complete level of support? Let’s see if Hybrid fits.",
+      "pl": "Chcesz połączyć treningi 1:1 z pełnym prowadzeniem? Sprawdźmy, czy ma to u Ciebie sens."
+    },
+    "body": {
+      "en": "Tell me your goal, current training and what you want help with. I will explain whether Hybrid Coaching is worth it for you or whether a simpler option makes more sense.",
+      "pl": "Napisz mi, jaki masz cel, jak teraz trenujesz i jakiego wsparcia potrzebujesz. Powiem Ci, czy coaching hybrydowy będzie najlepszym wyborem, czy wystarczy prostsza opcja."
+    },
+    "cta": {
+      "en": "Book a Free Consultation",
+      "pl": "Umów bezpłatną konsultację"
+    },
+    "href": {
+      "en": "/contact",
+      "pl": "/pl/contact"
+    }
   }
 }
