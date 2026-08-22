@@ -17,4 +17,3 @@ bullets:
   - "Jasne zasady progresji i regularna ocena postępów"
   - "Praktyczne wskazówki dotyczące aktywności, kalorii i odżywiania"
 ---
-

@@ -1,17 +1,17 @@
 ---
 title: "Online Coaching — Training, Nutrition & Ongoing Support"
-tagline: "Complete remote coaching with an individual training programme, a personalised meal plan built around your goals and food preferences where practical, regular check-ins and ongoing support wherever you train."
+tagline: "Complete remote coaching if you want a personalised training and nutrition approach, regular check-ins and ongoing support wherever you train."
 order: 2
 minor: false
 ctaLabel: "Explore Online Coaching"
 ctaTarget: "/online-coaching"
 image: "/images/online-coaching-app.webp"
-imageAlt: "KK Coaching online coaching with an individual training programme, personalised meal plan and regular progress check-ins"
+imageAlt: "KK Coaching online fitness coaching with training, nutrition support and progress check-ins"
 detailImage: "/images/online-coaching-app.webp"
-detailImageAlt: "KK Coaching online coaching app with training, personalised meal planning and progress tracking"
+detailImageAlt: "KK Coaching online coaching with training, nutrition and progress tracking"
 bullets:
   - "Personalised training programme"
-  - "Personalised meal plan with meals and portions matched to your calorie and macronutrient targets and food preferences where practical"
+  - "Calorie, macronutrient and practical nutrition guidance"
   - "Coaching app with workouts, exercise demos, logging and progress in one place"
   - "Regular check-ins with direct coach feedback"
   - "Tracking of weight, measurements, progress photos and training performance"
@@ -19,4 +19,3 @@ bullets:
   - "Technique review from training videos"
   - "WhatsApp support between check-ins"
 ---
-

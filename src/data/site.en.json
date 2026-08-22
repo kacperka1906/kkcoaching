@@ -5,24 +5,24 @@
     "contactEmail": "kacperkaszowskipt@gmail.com",
     "whatsappNumber": "+447516327552",
     "instagramUrl": "https://www.instagram.com/kkcoaching.fit/",
-    "facebookUrl": "https://www.facebook.com/kkcoachingfit/",
-    "trainingLocation": "Cwmbran, South Wales"
+    "facebookUrl": "",
+    "trainingLocation": "Cwmbran, Torfaen, South Wales"
   },
   "transformations": {
     "eyebrow": "Real results",
     "heading": "Client transformations. Real work. Measurable progress.",
-    "body": "See what clients have achieved with 1:1 and online coaching. Different starting points and different goals, with one focus: measurable progress.",
+    "body": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
     "cta": "See Client Results"
   },
   "servicesIntro": {
     "eyebrow": "Coaching options",
     "heading": "Choose the level of support that fits you",
-    "body": "Choose the way you want to work with me. Open any option to see the full details, current pricing and exactly what is included."
+    "body": "Whether you want face-to-face coaching in Cwmbran, complete online support or a combination of both, the goal is the same: a clear plan, measurable progress and no more guesswork."
   },
   "process": {
     "eyebrow": "The process",
     "heading": "A clear process. No guesswork.",
-    "body": "Four simple steps: understand your starting point, choose the right setup, track what matters and adjust when your results give us a reason.",
+    "body": "We start with where you are now, build around your real life and adjust the plan using your progress - not guesswork.",
     "steps": [
       {
         "title": "Free consultation",
@@ -50,9 +50,9 @@
     "cta": "Meet Your Coach",
     "bodyFull": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. I did not get into fitness because staying in shape had always been easy for me. I started at around 117 kg, struggled with my confidence and made many of the same mistakes that hold people back: overcomplicating nutrition, chasing quick results and not knowing whether my training was actually working. Through consistency, education and a more structured approach, I reached 76 kg and later completely rebuilt my physique. That process taught me the difference between a plan that looks impressive on paper and one a real person can follow for long enough to produce results. Today I use that experience to help people lose fat, build muscle, train with confidence and create routines they can maintain in real life.",
     "statLoss": "40+ kg",
-    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer in Cwmbran. I started at around 117 kg and reached 76 kg before rebuilding my physique, so I know the difference between another short-term fix and a plan you can actually keep following.",
+    "bodyShort": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. My own journey took me from around 117 kg to 76 kg before I rebuilt my physique. Now I use that experience to help other people stop guessing, train with purpose and build results they can maintain.",
     "image": "/images/kacper-story.webp",
-    "statQualification": "EN + PL"
+    "statQualification": "1:1 + Online"
   },
   "finalCta": {
     "heading": "Ready to stop starting over?",
@@ -61,10 +61,10 @@
   },
   "hero": {
     "heading": "1:1 Personal Training & Online Coaching Built Around You",
-    "lead": "Choose 1:1 personal training in Cwmbran, full online coaching, or a combination of both. We start with your goal and build the level of support around what you actually need.",
+    "lead": "Tired of random workouts, diets you can't stick to or starting over every few weeks? Get a clear training plan, practical nutrition targets and ongoing support built around your goal, schedule and experience.",
     "ctaPrimary": "Book a Free Consultation",
     "ctaSecondary": "See Client Results",
-    "trustLine": "1:1 at JD Gyms Cwmbran • Online coaching across the UK • English & Polish",
+    "trustLine": "1:1 at JD Gyms Cwmbran • My own 117 → 76 kg transformation • Individual coaching, no generic plans",
     "image": "/images/kacper-hero.webp",
     "imageAlt": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching"
   },
