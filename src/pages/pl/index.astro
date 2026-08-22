@@ -10,7 +10,7 @@ const allServices = (await getCollection('services'))
   .sort((a, b) => a.data.order - b.data.order);
 
 const testimonials = await getCollection('testimonials');
-const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile);
+const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile && !t.id.includes('kacper-own-story'));
 const featured = consentedTestimonials.find(t => t.data.featured) ?? consentedTestimonials[0];
 
 const siteUrl = String(Astro.site).replace(/\/$/, '');
@@ -33,7 +33,7 @@ const structuredData = {
       '@type': 'Organization',
       '@id': businessId,
       name: 'KK Coaching',
-      description: 'Trening personalny w Cwmbran i coaching online z indywidualnym planem treningowym, praktycznym wsparciem żywieniowym i monitoringiem postępów.',
+      description: 'Trening personalny w Cwmbran i coaching online z indywidualnym planem treningowym, pełnym jadłospisem w prowadzeniu online i hybrydowym oraz kontrolą postępów.',
       image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
       logo: `${siteUrl}/images/logo.png`,
       url: `${siteUrl}/`,
@@ -58,8 +58,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Trener personalny w Cwmbran | Coaching online | KK Coaching"
-  description="Trener personalny w Cwmbran i coaching online w UK. Indywidualny trening, wsparcie żywieniowe i kontrola postępów. Umów bezpłatną konsultację."
+  title="Trener Personalny Cwmbran i Online | KK Coaching"
+  description="Trener personalny w Cwmbran i coaching online w UK. Indywidualny trening, rozpisane jadłospisy, kontrola postępów i bieżące wsparcie."
   lang="pl"
   path="/pl"
   altPath="/"

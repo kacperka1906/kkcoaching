@@ -381,12 +381,32 @@
         },
         {
           "q": {
+            "en": "Do I need to be a member of JD Gyms Cwmbran?",
+            "pl": "Czy muszę mieć karnet do JD Gyms Cwmbran?"
+          },
+          "a": {
+            "en": "Yes. Personal training sessions take place inside JD Gyms Cwmbran, so you need an active JD Gyms membership that gives you access to the club. My coaching fee covers the personal training service; your gym membership is paid separately.",
+            "pl": "Tak. Treningi 1:1 odbywają się na terenie JD Gyms Cwmbran, dlatego potrzebujesz aktywnego członkostwa JD Gyms umożliwiającego wejście do klubu. Opłata za moje treningi obejmuje usługę trenerską; karnet na siłownię opłacasz osobno."
+          }
+        },
+        {
+          "q": {
             "en": "What if I need support between face-to-face sessions?",
             "pl": "Co jeśli potrzebuję wsparcia również pomiędzy treningami?"
           },
           "a": {
-            "en": "If you want more support outside the gym, we can discuss hybrid or online coaching so your training, nutrition targets, progress tracking and regular reviews work as one system.",
-            "pl": "Możemy rozszerzyć współpracę o coaching hybrydowy lub online. Wtedy poza treningami 1:1 dochodzą m.in. regularne raporty, dokładniejsza analiza postępów, wsparcie żywieniowe i kontakt pomiędzy sesjami."
+            "en": "If you want structured support outside the gym, Hybrid or Online Coaching adds regular check-ins, a personalised meal plan with specific meals and portions, progress analysis, technique feedback and WhatsApp support between reviews.",
+            "pl": "Jeśli chcesz mieć pełne wsparcie również poza siłownią, coaching hybrydowy lub online dodaje regularne raporty, indywidualny jadłospis z konkretnymi posiłkami i porcjami, analizę postępów, ocenę techniki i kontakt przez WhatsApp między raportami."
+          }
+        },
+        {
+          "q": {
+            "en": "How much does personal training in Cwmbran cost?",
+            "pl": "Ile kosztuje trening personalny w Cwmbran?"
+          },
+          "a": {
+            "en": "The price depends on how often you want to train. You can book a single session or choose a 4-week package, with a lower rate per session at higher training frequencies. The current prices are shown in the pricing section on this page.",
+            "pl": "Cena zależy od tego, jak często chcesz trenować. Możesz wybrać pojedynczy trening albo pakiet na 4 tygodnie, a przy większej częstotliwości cena jednej sesji jest niższa. Aktualny cennik znajdziesz wyżej na tej stronie."
           }
         },
         {

@@ -17,6 +17,7 @@ const targets = [
 
 const locationRoutes = ['', 'pl', 'services', 'pl/services', 'hybrid-coaching', 'pl/hybrid-coaching'];
 const reviewRoutes = ['', 'pl'];
+const relatedRoutes = ['personal-training-cwmbran', 'online-coaching', 'hybrid-coaching', 'training-plan', 'pl/personal-training-cwmbran', 'pl/online-coaching', 'pl/hybrid-coaching', 'pl/training-plan'];
 
 function escapeAttr(value) {
   return String(value)
@@ -75,21 +76,20 @@ function movePricingAfterHero(html, className) {
   return withoutPricing.slice(0, hero.end) + pricing + withoutPricing.slice(hero.end);
 }
 
-function moveSectionInsideMain(html, className) {
-  const sectionStart = html.indexOf(`<section class="${className}`);
-  if (sectionStart < 0) return html;
-  const mainClose = html.indexOf('</main>');
+function moveBlockBeforeFinalCta(html, className, tagName = 'section') {
+  const blockStart = html.indexOf(`<${tagName} class="${className}`);
+  if (blockStart < 0) return html;
+  const closeTag = `</${tagName}>`;
+  const blockClose = html.indexOf(closeTag, blockStart);
+  if (blockClose < 0) throw new Error(`Unclosed ${className} ${tagName}`);
+  const blockEnd = blockClose + closeTag.length;
+  const block = html.slice(blockStart, blockEnd);
+  const withoutBlock = html.slice(0, blockStart) + html.slice(blockEnd);
+  const mainClose = withoutBlock.indexOf('</main>');
   if (mainClose < 0) throw new Error('Missing </main>');
-  if (sectionStart < mainClose) return html;
-
-  const sectionClose = html.indexOf('</section>', sectionStart);
-  if (sectionClose < 0) throw new Error(`Unclosed ${className} section`);
-  const sectionEnd = sectionClose + '</section>'.length;
-  const section = html.slice(sectionStart, sectionEnd);
-  const withoutSection = html.slice(0, sectionStart) + html.slice(sectionEnd);
-  const updatedMainClose = withoutSection.indexOf('</main>');
-
-  return withoutSection.slice(0, updatedMainClose) + section + withoutSection.slice(updatedMainClose);
+  const finalCtaAt = withoutBlock.lastIndexOf('<section class="final-cta', mainClose);
+  const insertAt = finalCtaAt >= 0 ? finalCtaAt : mainClose;
+  return withoutBlock.slice(0, insertAt) + block + withoutBlock.slice(insertAt);
 }
 
 function addHeroPreload(html, image) {
@@ -118,14 +118,25 @@ for (const target of targets) {
   console.log(`Finalized /${target.route}`);
 }
 
+for (const route of relatedRoutes) {
+  const file = outputFile(route);
+  let html = await readFile(file, 'utf8');
+  const before = html;
+  html = moveBlockBeforeFinalCta(html, 'related-coaching', 'aside');
+  if (html !== before) {
+    await writeFile(file, html);
+    console.log(`Moved related coaching before final CTA on /${route}`);
+  }
+}
+
 for (const route of locationRoutes) {
   const file = outputFile(route);
   let html = await readFile(file, 'utf8');
   const before = html;
-  html = moveSectionInsideMain(html, 'training-location');
+  html = moveBlockBeforeFinalCta(html, 'training-location');
   if (html !== before) {
     await writeFile(file, html);
-    console.log(`Moved training location into <main> on /${route}`);
+    console.log(`Moved training location before final CTA on /${route}`);
   }
 }
 
@@ -133,9 +144,9 @@ for (const route of reviewRoutes) {
   const file = outputFile(route);
   let html = await readFile(file, 'utf8');
   const before = html;
-  html = moveSectionInsideMain(html, 'reviews-section');
+  html = moveBlockBeforeFinalCta(html, 'reviews-section');
   if (html !== before) {
     await writeFile(file, html);
-    console.log(`Moved reviews into <main> on /${route}`);
+    console.log(`Moved reviews before final CTA on /${route}`);
   }
 }

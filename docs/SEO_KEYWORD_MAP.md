@@ -6,7 +6,7 @@ This map defines one primary search intent for each commercial URL so pages supp
 |---|---|---|---|
 | `/` | KK Coaching brand + overview of personal training and online coaching | Cwmbran, 1:1, online coaching, hybrid coaching | Brand / service hub |
 | `/personal-training-cwmbran` | personal trainer Cwmbran | 1:1 personal training, JD Gyms Cwmbran, fat loss, muscle building, gym confidence | Primary local commercial landing page |
-| `/online-coaching` | online personal trainer UK / online fitness coaching | personalised training, nutrition guidance, check-ins, app, video feedback | National online commercial landing page |
+| `/online-coaching` | online personal trainer UK / online fitness coaching | personalised training, personalised meal plan, check-ins, app, video feedback | National online commercial landing page |
 | `/hybrid-coaching` | hybrid personal training Cwmbran | online coaching + 1:1, JD Gyms Cwmbran | Local hybrid commercial landing page |
 | `/training-plan` | personalised training plan UK | custom gym programme, one-off workout plan, training programme | One-off plan commercial landing page |
 | `/services` | compare personal training and coaching options | 1:1 vs online vs hybrid vs training plan | Comparison / service hub |

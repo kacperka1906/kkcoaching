@@ -10,7 +10,7 @@ const allServices = (await getCollection('services'))
   .sort((a, b) => a.data.order - b.data.order);
 
 const testimonials = await getCollection('testimonials');
-const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile);
+const consentedTestimonials = testimonials.filter(t => t.data.consentOnFile && !t.id.includes('kacper-own-story'));
 const featured = consentedTestimonials.find(t => t.data.featured) ?? consentedTestimonials[0];
 
 const siteUrl = String(Astro.site).replace(/\/$/, '');
@@ -34,7 +34,7 @@ const structuredData = {
       '@type': 'Organization',
       '@id': businessId,
       name: 'KK Coaching',
-      description: 'Personal training in Cwmbran and online fitness coaching with individual training, practical nutrition support and progress tracking.',
+      description: 'Personal training in Cwmbran and online fitness coaching with individual training programmes, personalised meal plans for online and hybrid clients, and progress tracking.',
       image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
       logo: `${siteUrl}/images/logo.png`,
       url: `${siteUrl}/`,
@@ -60,7 +60,7 @@ const structuredData = {
 ---
 <BaseLayout
   title="Personal Trainer Cwmbran & Online Coach | KK Coaching"
-  description="Personal trainer in Cwmbran and online fitness coach across the UK. Individual training, nutrition support and progress tracking. Book a free consultation."
+  description="Personal trainer in Cwmbran and online fitness coach across the UK. Individual training, personalised meal plans, progress tracking and ongoing support."
   lang="en"
   path="/"
   altPath="/pl"

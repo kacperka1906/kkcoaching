@@ -13,6 +13,7 @@ const homeLabel = lang === 'pl' ? 'Strona główna' : 'Home';
 const guidesLabel = lang === 'pl' ? 'Poradniki' : 'Guides';
 const updatedLabel = lang === 'pl' ? 'Aktualizacja' : 'Updated';
 const authorLabel = lang === 'pl' ? 'Kacper Kaszowski · Personal Trainer' : 'Kacper Kaszowski · Personal Trainer';
+const authorHref = lang === 'pl' ? '/pl/about' : '/about';
 const otherArticles = resources.articles.filter(item => item.enabled && item.id !== article.id);
 const continueLabel = lang === 'pl' ? 'Czytaj również' : 'Read next';
 ---
@@ -24,7 +25,7 @@ const continueLabel = lang === 'pl' ? 'Czytaj również' : 'Read next';
       </nav>
       <h1>{article.title[lang]}</h1>
       <p class="article-intro">{article.intro[lang]}</p>
-      <div class="article-meta"><span>{authorLabel}</span><span>{updatedLabel}: {article.updated}</span></div>
+      <div class="article-meta"><a class="article-author" href={authorHref}>{authorLabel}</a><span>{updatedLabel}: {article.updated}</span></div>
     </div>
   </header>
 
@@ -80,6 +81,8 @@ const continueLabel = lang === 'pl' ? 'Czytaj również' : 'Read next';
   .article-hero h1 { color: var(--white); max-width: 19ch; font-size: clamp(2.1rem, 5vw, 3.9rem); margin-bottom: 20px; }
   .article-intro { color: #D3D6DA; max-width: 72ch; font-size: 1.08rem; line-height: 1.75; }
   .article-meta { display: flex; gap: 12px 24px; flex-wrap: wrap; margin-top: 24px; color: #AEB4BC; font-size: .78rem; font-weight: 700; }
+  .article-author { color: inherit; text-decoration: none; text-underline-offset: 3px; }
+  .article-author:hover { color: var(--white); text-decoration: underline; }
   .article-media-wrap { margin-top: -74px; position: relative; z-index: 1; }
   .article-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center top; border-radius: var(--radius); border: 1px solid #DADDE1; background: #ECEEF0; }
   .article-content { padding-top: 54px; padding-bottom: 34px; }

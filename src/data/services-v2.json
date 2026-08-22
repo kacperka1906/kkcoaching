@@ -81,13 +81,13 @@
       },
       "image": "/images/online-coaching-app.webp",
       "imageAlt": {
-        "en": "KK Coaching online fitness coaching with training, nutrition support and progress check-ins",
-        "pl": "Trener personalny online KK Coaching z planem treningowym, wsparciem żywieniowym i regularną analizą postępów"
+        "en": "KK Coaching online coaching with an individual training programme, personalised meal plan and regular progress check-ins",
+        "pl": "Coaching online KK Coaching z indywidualnym planem treningowym, rozpisanym jadłospisem i regularną analizą postępów"
       },
       "detailImage": "/images/online-coaching-app.webp",
       "detailImageAlt": {
-        "en": "KK Coaching online coaching with training, nutrition and progress tracking",
-        "pl": "Polski coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów"
+        "en": "KK Coaching online coaching app with training, personalised meal planning and progress tracking",
+        "pl": "Aplikacja KK Coaching do prowadzenia online z treningiem, indywidualnym jadłospisem i kontrolą postępów"
       },
       "bullets": [
         {
@@ -134,8 +134,8 @@
         "pl": "Treningi 1:1 w Cwmbran + pełne prowadzenie online"
       },
       "tagline": {
-        "en": "The most complete coaching option: everything included in Online Coaching plus regular face-to-face 1:1 sessions in Cwmbran for hands-on technique work and extra accountability.",
-        "pl": "Najbardziej rozbudowana forma współpracy: pełne prowadzenie online połączone z regularnymi treningami personalnymi 1:1 w Cwmbran i pracą nad techniką na żywo."
+        "en": "The most complete coaching option: the full Online Coaching service — including your personalised meal plan — plus regular face-to-face 1:1 sessions in Cwmbran for hands-on technique work and extra accountability.",
+        "pl": "Najszersza forma współpracy: pełne prowadzenie online — razem z indywidualnym jadłospisem — połączone z regularnymi treningami personalnymi 1:1 w Cwmbran i pracą nad techniką na żywo."
       },
       "ctaLabel": {
         "en": "Explore Hybrid Coaching",
