@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - 'scripts/apply-approved-site-audit.mjs'
+      - 'scripts/apply-approved-site-audit-v2.mjs'
       - '.github/workflows/apply-approved-site-audit.yml'
 
 permissions:
@@ -32,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Apply approved audit pass
-        run: node scripts/apply-approved-site-audit.mjs
+        run: node scripts/apply-approved-site-audit-v2.mjs
 
       - name: Build and run SEO audit
         run: npm run build
@@ -41,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm scripts/apply-approved-site-audit.mjs .github/workflows/apply-approved-site-audit.yml
+          git rm scripts/apply-approved-site-audit.mjs scripts/apply-approved-site-audit-v2.mjs .github/workflows/apply-approved-site-audit.yml
           git add -A
           git commit -m "Apply approved 11/10 site audit improvements"
           git push origin apply-approved-audit-pr
