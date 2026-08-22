@@ -2,7 +2,7 @@
 name: Apply approved site audit
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
@@ -16,11 +16,11 @@ jobs:
   apply-and-verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout audit branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
+          ref: apply-approved-audit-pr
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -44,4 +44,4 @@ jobs:
           git rm scripts/apply-approved-site-audit.mjs .github/workflows/apply-approved-site-audit.yml
           git add -A
           git commit -m "Apply approved 11/10 site audit improvements"
-          git push origin main
+          git push origin apply-approved-audit-pr
