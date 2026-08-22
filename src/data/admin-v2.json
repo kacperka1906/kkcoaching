@@ -434,8 +434,8 @@
         "pl": "Zobacz przemiany podopiecznych"
       },
       "trustLine": {
-        "en": "1:1 at JD Gyms Cwmbran • My own 117 → 76 kg transformation • Individual coaching, no generic plans",
-        "pl": "Treningi 1:1 w JD Gyms Cwmbran • własna metamorfoza 117 → 76 kg • coaching online i hybrydowy"
+        "en": "1:1 at JD Gyms Cwmbran • Online coaching across the UK • English & Polish",
+        "pl": "Treningi 1:1 w JD Gyms Cwmbran • coaching online w UK i poza UK • po polsku i angielsku"
       },
       "imageAlt": {
         "en": "Kacper Kaszowski, personal trainer in Cwmbran and founder of KK Coaching",
@@ -451,8 +451,8 @@
       },
       "image": "/images/kacper-hero.webp",
       "lead": {
-        "en": "Tired of random workouts, diets you can't stick to or starting over every few weeks? Get a clear training plan, practical nutrition targets and ongoing support built around your goal, schedule and experience.",
-        "pl": "Chcesz schudnąć, zbudować mięśnie albo po prostu wrócić do regularnych treningów? Dostajesz plan dopasowany do Ciebie, konkretne wskazówki i wsparcie, dzięki któremu wiesz, co robić i kiedy coś zmienić."
+        "en": "Choose 1:1 personal training in Cwmbran, full online coaching, or a combination of both. We start with your goal and build the level of support around what you actually need.",
+        "pl": "Wybierz treningi 1:1 w Cwmbran, pełne prowadzenie online albo połączenie obu. Zaczynamy od Twojego celu i dobieramy taki poziom wsparcia, jakiego naprawdę potrzebujesz."
       },
       "ctaPrimaryHref": {
         "en": "/contact",
@@ -525,8 +525,8 @@
         "pl": "Wybierz tyle wsparcia, ile naprawdę potrzebujesz"
       },
       "body": {
-        "en": "Whether you want face-to-face coaching in Cwmbran, complete online support or a combination of both, the goal is the same: a clear plan, measurable progress and no more guesswork.",
-        "pl": "Treningi 1:1 w Cwmbran, pełne prowadzenie online, połączenie obu albo sam plan treningowy. Wybierz opcję, która pasuje do Twojego celu i tego, jak chcesz pracować."
+        "en": "Choose the way you want to work with me. Open any option to see the full details, current pricing and exactly what is included.",
+        "pl": "Wybierz formę współpracy, która pasuje do Ciebie. W każdej opcji znajdziesz osobno zakres, aktualną cenę i wszystkie szczegóły."
       }
     },
     "story": {
@@ -551,8 +551,8 @@
         "pl": "Nazywam się Kacper Kaszowski i prowadzę KK Coaching. Zanim zacząłem pomagać innym, sam przeszedłem drogę od około 117 kg do 76 kg, a później krok po kroku przebudowałem sylwetkę. Po drodze popełniłem sporo błędów: za bardzo komplikowałem dietę, szukałem szybkich efektów i zmieniałem rzeczy, zanim zdążyły zadziałać. Z czasem zrozumiałem, że wynik robi nie najbardziej ekstremalny plan, tylko taki, który jest dobrze dopasowany i realizowany wystarczająco długo. Dziś wykorzystuję to doświadczenie w pracy z podopiecznymi — przy redukcji, budowaniu mięśni, powrocie do regularności i nauce sensownego treningu."
       },
       "bodyShort": {
-        "en": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer based in Cwmbran. My own journey took me from around 117 kg to 76 kg before I rebuilt my physique. Now I use that experience to help other people stop guessing, train with purpose and build results they can maintain.",
-        "pl": "Nazywam się Kacper Kaszowski. Prowadzę KK Coaching i pracuję jako trener personalny w Cwmbran oraz online. Sam przeszedłem drogę od około 117 kg do 76 kg, więc dobrze wiem, jak łatwo utknąć między kolejnymi dietami, przypadkowymi treningami i ciągłym zaczynaniem od nowa. Dziś pomagam klientom robić to prościej: mieć plan, rozumieć co robią i wiedzieć, kiedy naprawdę trzeba coś zmienić."
+        "en": "I'm Kacper Kaszowski, founder of KK Coaching and a personal trainer in Cwmbran. I started at around 117 kg and reached 76 kg before rebuilding my physique, so I know the difference between another short-term fix and a plan you can actually keep following.",
+        "pl": "Nazywam się Kacper Kaszowski i prowadzę KK Coaching. Sam zszedłem z około 117 kg do 76 kg, a później przebudowałem sylwetkę, więc z własnego doświadczenia wiem, jaka jest różnica między kolejnym krótkim zrywem a planem, który da się naprawdę realizować."
       },
       "image": "/images/kacper-story.webp",
       "ctaHref": {
@@ -575,7 +575,7 @@
           }
         },
         {
-          "value": "1:1 + Online",
+          "value": "EN + PL",
           "label": {
             "en": "Coaching options",
             "pl": "Formy współpracy"
@@ -593,8 +593,8 @@
         "pl": "Od celu do planu. Od planu do wyniku."
       },
       "body": {
-        "en": "We start with where you are now, build around your real life and adjust the plan using your progress - not guesswork.",
-        "pl": "Najpierw ustalamy, czego chcesz i co realnie możesz zrobić. Potem układam plan, śledzę postępy i zmieniamy tylko to, co faktycznie wymaga zmiany."
+        "en": "Four simple steps: understand your starting point, choose the right setup, track what matters and adjust when your results give us a reason.",
+        "pl": "Cztery proste kroki: poznajemy punkt startowy, ustalamy sposób działania, śledzimy to, co ma znaczenie, i zmieniamy plan wtedy, kiedy wyniki dają ku temu powód."
       },
       "steps": [
         {
@@ -649,8 +649,8 @@
         "pl": "Przemiany podopiecznych. Realna praca i mierzalne efekty."
       },
       "body": {
-        "en": "Progress is not created by one perfect week. It comes from following the right plan, measuring what matters and making consistent adjustments over time.",
-        "pl": "Każda przemiana wygląda inaczej, ale zasada jest ta sama: plan dopasowany do człowieka, regularna praca, kontrola postępów i korekty wtedy, kiedy są naprawdę potrzebne."
+        "en": "See what clients have achieved with 1:1 and online coaching. Different starting points and different goals, with one focus: measurable progress.",
+        "pl": "Zobacz efekty osób prowadzonych stacjonarnie i online. Różne punkty startowe i różne cele, ale ten sam priorytet: postęp, który da się zmierzyć."
       },
       "cta": {
         "en": "See Client Results",

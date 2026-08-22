@@ -4,9 +4,10 @@ interface Props {
   whatsappNumber: string;
   contactEmail: string;
   instagramUrl: string;
+  facebookUrl?: string;
 }
 
-const { lang, whatsappNumber, contactEmail, instagramUrl } = Astro.props;
+const { lang, whatsappNumber, contactEmail, instagramUrl, facebookUrl = '' } = Astro.props;
 const whatsappDigits = whatsappNumber.replace(/\D/g, '');
 const whatsappDisplay = whatsappNumber.startsWith('+44')
   ? whatsappNumber.replace('+44', '+44 ').replace(/(\+44 )(\d{4})(\d{6})/, '$1$2 $3').replace(/(\d{3})(\d{3})$/, '$1 $2')
@@ -22,7 +23,9 @@ const copy = lang === 'pl'
       email: 'E-mail',
       emailHint: 'Wyślij e-mail',
       instagram: 'Instagram',
-      instagramHint: 'Otwórz profil'
+      instagramHint: 'Otwórz profil',
+      facebook: 'Facebook',
+      facebookHint: 'Otwórz stronę KK Coaching'
     }
   : {
       heading: 'Prefer to message directly?',
@@ -32,7 +35,9 @@ const copy = lang === 'pl'
       email: 'Email',
       emailHint: 'Send an email',
       instagram: 'Instagram',
-      instagramHint: 'View profile'
+      instagramHint: 'View profile',
+      facebook: 'Facebook',
+      facebookHint: 'View KK Coaching page'
     };
 ---
 
@@ -86,6 +91,22 @@ const copy = lang === 'pl'
       </span>
       <span class="contact-arrow" aria-hidden="true">→</span>
     </a>
+
+    {facebookUrl && (
+      <a class="contact-method" href={facebookUrl} target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5H17V4a24 24 0 0 0-2.4-.1c-2.4 0-4.1 1.5-4.1 4.2V10H8v3h2.5v8h3z" />
+          </svg>
+        </span>
+        <span class="contact-copy">
+          <strong>{copy.facebook}</strong>
+          <span class="contact-value">KK Coaching</span>
+          <small>{copy.facebookHint}</small>
+        </span>
+        <span class="contact-arrow" aria-hidden="true">→</span>
+      </a>
+    )}
   </div>
 </aside>
 

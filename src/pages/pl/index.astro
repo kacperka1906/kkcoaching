@@ -77,23 +77,6 @@ const structuredData = {
     imageAlt={site.hero.imageAlt}
   />
 
-  <section aria-labelledby="who-heading">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">{site.whoItsFor.eyebrow}</span>
-        <h2 id="who-heading">{site.whoItsFor.heading}</h2>
-        <p>{site.whoItsFor.body}</p>
-      </div>
-      <div class="card-grid">
-        {site.whoItsFor.cards.map(card => (
-          <article class="card">
-            <h3>{card.title}</h3>
-            <p>{card.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section id="services" class="on-dark" aria-labelledby="services-heading">
     <div class="container">
@@ -107,7 +90,7 @@ const structuredData = {
           <ServiceCard
             title={service.data.title}
             tagline={service.data.tagline}
-            bullets={service.data.bullets}
+            bullets={service.data.bullets.slice(0, 3)}
             ctaLabel={service.data.ctaLabel}
             ctaTarget={service.data.ctaTarget}
             image={service.data.image}
@@ -130,7 +113,7 @@ const structuredData = {
           <div class="stat-line" aria-label="Historia Kacpra w liczbach">
             <div class="stat-card"><strong>{site.story.statStart}</strong><span>Punkt startowy</span></div>
             <div class="stat-card"><strong>{site.story.statLoss}</strong><span>Własna redukcja</span></div>
-            <div class="stat-card"><strong>{site.story.statQualification}</strong><span>Formy współpracy</span></div>
+            <div class="stat-card"><strong>{site.story.statQualification}</strong><span>Języki</span></div>
           </div>
           <a href="/pl/about" class="btn btn-outline-dark story-cta">{site.story.cta}</a>
         </div>
