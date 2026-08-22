@@ -5,27 +5,57 @@
       "enabled": true,
       "order": 1,
       "minor": false,
-      "title": { "en": "1:1 Personal Training at JD Gyms Cwmbran", "pl": "Trening personalny 1:1 w Cwmbran" },
+      "title": {
+        "en": "1:1 Personal Training at JD Gyms Cwmbran",
+        "pl": "Trening personalny 1:1 w Cwmbran"
+      },
       "tagline": {
         "en": "Face-to-face coaching at JD Gyms Cwmbran if you want hands-on technique help, clear progression and a programme built around your goal rather than a generic workout.",
         "pl": "Treningi na żywo w JD Gyms Cwmbran, jeśli chcesz poprawić technikę, trenować pewniej i mieć obok siebie trenera, który na bieżąco pilnuje jakości wykonania i progresji."
       },
-      "ctaLabel": { "en": "Explore 1:1 Personal Training", "pl": "Zobacz trening personalny 1:1" },
-      "ctaTarget": { "en": "/personal-training-cwmbran", "pl": "/pl/personal-training-cwmbran" },
+      "ctaLabel": {
+        "en": "Explore 1:1 Personal Training",
+        "pl": "Zobacz trening personalny 1:1"
+      },
+      "ctaTarget": {
+        "en": "/personal-training-cwmbran",
+        "pl": "/pl/personal-training-cwmbran"
+      },
       "image": "/images/personal-training-cwmbran.webp",
       "imageAlt": {
         "en": "One-to-one personal training and exercise technique coaching at JD Gyms Cwmbran with KK Coaching",
         "pl": "Trening personalny 1:1 i nauka techniki ćwiczeń w JD Gyms Cwmbran z KK Coaching"
       },
       "detailImage": "/images/kacper-hero.webp",
-      "detailImageAlt": { "en": "Kacper Kaszowski, personal trainer in Cwmbran", "pl": "Kacper Kaszowski, polski trener personalny w Cwmbran" },
+      "detailImageAlt": {
+        "en": "Kacper Kaszowski, personal trainer in Cwmbran",
+        "pl": "Kacper Kaszowski, polski trener personalny w Cwmbran"
+      },
       "bullets": [
-        { "en": "Free consultation and clear goal setting", "pl": "Bezpłatna konsultacja i jasne ustalenie celu" },
-        { "en": "Scheduled 1:1 sessions at JD Gyms Cwmbran", "pl": "Treningi personalne 1:1 w JD Gyms Cwmbran" },
-        { "en": "Hands-on technique coaching and live feedback", "pl": "Nauka techniki i korekty na żywo" },
-        { "en": "Individual training programme built around your goal and schedule", "pl": "Indywidualny program dopasowany do celu i grafiku" },
-        { "en": "Clear progression targets and regular progress reviews", "pl": "Jasne zasady progresji i regularna ocena postępów" },
-        { "en": "Practical guidance on activity, calories and nutrition", "pl": "Praktyczne wskazówki dotyczące aktywności, kalorii i odżywiania" }
+        {
+          "en": "Free consultation and clear goal setting",
+          "pl": "Bezpłatna konsultacja i jasne ustalenie celu"
+        },
+        {
+          "en": "Scheduled 1:1 sessions at JD Gyms Cwmbran",
+          "pl": "Treningi personalne 1:1 w JD Gyms Cwmbran"
+        },
+        {
+          "en": "Hands-on technique coaching and live feedback",
+          "pl": "Nauka techniki i korekty na żywo"
+        },
+        {
+          "en": "Individual training programme built around your goal and schedule",
+          "pl": "Indywidualny program dopasowany do celu i grafiku"
+        },
+        {
+          "en": "Clear progression targets and regular progress reviews",
+          "pl": "Jasne zasady progresji i regularna ocena postępów"
+        },
+        {
+          "en": "Practical guidance on activity, calories and nutrition",
+          "pl": "Praktyczne wskazówki dotyczące aktywności, kalorii i odżywiania"
+        }
       ]
     },
     {
@@ -33,29 +63,65 @@
       "enabled": true,
       "order": 2,
       "minor": false,
-      "title": { "en": "Online Coaching — Training, Nutrition & Ongoing Support", "pl": "Trener personalny online — pełne prowadzenie zdalne" },
-      "tagline": {
-        "en": "Complete remote coaching if you want a personalised training and nutrition approach, regular check-ins and ongoing support wherever you train.",
-        "pl": "Indywidualny plan, jasne zasady żywieniowe, regularne raporty i kontakt ze mną niezależnie od tego, gdzie mieszkasz."
+      "title": {
+        "en": "Online Coaching — Training, Nutrition & Ongoing Support",
+        "pl": "Trener personalny online — pełne prowadzenie zdalne"
       },
-      "ctaLabel": { "en": "Explore Online Coaching", "pl": "Zobacz coaching online" },
-      "ctaTarget": { "en": "/online-coaching", "pl": "/pl/online-coaching" },
+      "tagline": {
+        "en": "Complete remote coaching with an individual training programme, a personalised meal plan built around your goals and food preferences where practical, regular check-ins and ongoing support wherever you train.",
+        "pl": "Pełne prowadzenie zdalne: indywidualny plan treningowy, rozpisany jadłospis z konkretnymi posiłkami i porcjami, regularne raporty i kontakt ze mną niezależnie od tego, gdzie mieszkasz."
+      },
+      "ctaLabel": {
+        "en": "Explore Online Coaching",
+        "pl": "Zobacz coaching online"
+      },
+      "ctaTarget": {
+        "en": "/online-coaching",
+        "pl": "/pl/online-coaching"
+      },
       "image": "/images/online-coaching-app.webp",
       "imageAlt": {
         "en": "KK Coaching online fitness coaching with training, nutrition support and progress check-ins",
         "pl": "Trener personalny online KK Coaching z planem treningowym, wsparciem żywieniowym i regularną analizą postępów"
       },
       "detailImage": "/images/online-coaching-app.webp",
-      "detailImageAlt": { "en": "KK Coaching online coaching with training, nutrition and progress tracking", "pl": "Polski coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów" },
+      "detailImageAlt": {
+        "en": "KK Coaching online coaching with training, nutrition and progress tracking",
+        "pl": "Polski coaching online KK Coaching z treningiem, żywieniem i kontrolą postępów"
+      },
       "bullets": [
-        { "en": "Personalised training programme", "pl": "Indywidualny plan treningowy" },
-        { "en": "Calorie, macronutrient and practical nutrition guidance", "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe" },
-        { "en": "Coaching app with workouts, exercise demos, logging and progress in one place", "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów" },
-        { "en": "Regular check-ins with direct coach feedback", "pl": "Regularne raporty z analizą postępów i konkretnymi wskazówkami" },
-        { "en": "Tracking of weight, measurements, progress photos and training performance", "pl": "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych" },
-        { "en": "Programme and nutrition adjustments based on your progress", "pl": "Korekty treningu i żywienia na podstawie postępów" },
-        { "en": "Technique review from training videos", "pl": "Ocena techniki z nagrań treningowych" },
-        { "en": "WhatsApp support between check-ins", "pl": "Kontakt przez WhatsApp między raportami" }
+        {
+          "en": "Personalised training programme",
+          "pl": "Indywidualny plan treningowy"
+        },
+        {
+          "en": "Personalised meal plan with meals and portions matched to your calorie and macronutrient targets and food preferences where practical",
+          "pl": "Indywidualny jadłospis z konkretnymi posiłkami i porcjami, dopasowany do kalorii, makro i w miarę możliwości do produktów, które lubisz"
+        },
+        {
+          "en": "Coaching app with workouts, exercise demos, logging and progress in one place",
+          "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów"
+        },
+        {
+          "en": "Regular check-ins with direct coach feedback",
+          "pl": "Regularne raporty z analizą postępów i konkretnymi wskazówkami"
+        },
+        {
+          "en": "Tracking of weight, measurements, progress photos and training performance",
+          "pl": "Kontrola masy ciała, pomiarów, zdjęć i wyników treningowych"
+        },
+        {
+          "en": "Programme and nutrition adjustments based on your progress",
+          "pl": "Korekty treningu i żywienia na podstawie postępów"
+        },
+        {
+          "en": "Technique review from training videos",
+          "pl": "Ocena techniki z nagrań treningowych"
+        },
+        {
+          "en": "WhatsApp support between check-ins",
+          "pl": "Kontakt przez WhatsApp między raportami"
+        }
       ]
     },
     {
@@ -63,30 +129,69 @@
       "enabled": true,
       "order": 3,
       "minor": false,
-      "title": { "en": "Hybrid Coaching — Full Online Coaching + 1:1 Personal Training", "pl": "Treningi 1:1 w Cwmbran + pełne prowadzenie online" },
+      "title": {
+        "en": "Hybrid Coaching — Full Online Coaching + 1:1 Personal Training",
+        "pl": "Treningi 1:1 w Cwmbran + pełne prowadzenie online"
+      },
       "tagline": {
         "en": "The most complete coaching option: everything included in Online Coaching plus regular face-to-face 1:1 sessions in Cwmbran for hands-on technique work and extra accountability.",
         "pl": "Najbardziej rozbudowana forma współpracy: pełne prowadzenie online połączone z regularnymi treningami personalnymi 1:1 w Cwmbran i pracą nad techniką na żywo."
       },
-      "ctaLabel": { "en": "Explore Hybrid Coaching", "pl": "Zobacz coaching hybrydowy" },
-      "ctaTarget": { "en": "/hybrid-coaching", "pl": "/pl/hybrid-coaching" },
+      "ctaLabel": {
+        "en": "Explore Hybrid Coaching",
+        "pl": "Zobacz coaching hybrydowy"
+      },
+      "ctaTarget": {
+        "en": "/hybrid-coaching",
+        "pl": "/pl/hybrid-coaching"
+      },
       "image": "/images/hybrid-coaching.webp",
       "imageAlt": {
         "en": "Hybrid coaching in Cwmbran combining face-to-face personal training with full online coaching",
         "pl": "Coaching hybrydowy w Cwmbran łączący trening personalny 1:1 z pełnym prowadzeniem online"
       },
       "detailImage": "/images/hybrid-coaching.webp",
-      "detailImageAlt": { "en": "Hybrid coaching combining online coaching with 1:1 personal training in Cwmbran", "pl": "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran" },
+      "detailImageAlt": {
+        "en": "Hybrid coaching combining online coaching with 1:1 personal training in Cwmbran",
+        "pl": "Coaching hybrydowy łączący prowadzenie online z treningiem personalnym 1:1 w Cwmbran"
+      },
       "bullets": [
-        { "en": "Everything included in Online Coaching", "pl": "Pełne prowadzenie online" },
-        { "en": "Scheduled face-to-face 1:1 personal training sessions in Cwmbran", "pl": "Treningi personalne 1:1 w Cwmbran" },
-        { "en": "Hands-on technique coaching and live exercise feedback", "pl": "Nauka techniki i korekty na żywo" },
-        { "en": "Personalised programme for coached and independent sessions", "pl": "Jeden plan obejmujący treningi ze mną i sesje wykonywane samodzielnie" },
-        { "en": "Calorie, macronutrient and practical nutrition guidance", "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe" },
-        { "en": "Coaching app with workouts, exercise demos, logging and progress in one place", "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów" },
-        { "en": "Regular check-ins and full progress analysis", "pl": "Regularne raporty i dokładna analiza postępów" },
-        { "en": "Programme adjustments and video technique review between sessions", "pl": "Korekty planu i ocena techniki z nagrań między treningami" },
-        { "en": "WhatsApp support between check-ins and PT sessions", "pl": "Kontakt przez WhatsApp między raportami i sesjami 1:1" }
+        {
+          "en": "Everything included in Online Coaching",
+          "pl": "Pełne prowadzenie online"
+        },
+        {
+          "en": "Scheduled face-to-face 1:1 personal training sessions in Cwmbran",
+          "pl": "Treningi personalne 1:1 w Cwmbran"
+        },
+        {
+          "en": "Hands-on technique coaching and live exercise feedback",
+          "pl": "Nauka techniki i korekty na żywo"
+        },
+        {
+          "en": "Personalised programme for coached and independent sessions",
+          "pl": "Jeden plan obejmujący treningi ze mną i sesje wykonywane samodzielnie"
+        },
+        {
+          "en": "Personalised meal plan with meals and portions matched to your calorie and macronutrient targets and food preferences where practical",
+          "pl": "Indywidualny jadłospis z konkretnymi posiłkami i porcjami, dopasowany do kalorii, makro i w miarę możliwości do produktów, które lubisz"
+        },
+        {
+          "en": "Coaching app with workouts, exercise demos, logging and progress in one place",
+          "pl": "Aplikacja z planem, instrukcjami ćwiczeń, logowaniem treningów i historią postępów"
+        },
+        {
+          "en": "Regular check-ins and full progress analysis",
+          "pl": "Regularne raporty i dokładna analiza postępów"
+        },
+        {
+          "en": "Programme adjustments and video technique review between sessions",
+          "pl": "Korekty planu i ocena techniki z nagrań między treningami"
+        },
+        {
+          "en": "WhatsApp support between check-ins and PT sessions",
+          "pl": "Kontakt przez WhatsApp między raportami i sesjami 1:1"
+        }
       ]
     },
     {
@@ -94,26 +199,53 @@
       "enabled": true,
       "order": 4,
       "minor": true,
-      "title": { "en": "Personalised Training Plan", "pl": "Indywidualny plan treningowy" },
+      "title": {
+        "en": "Personalised Training Plan",
+        "pl": "Indywidualny plan treningowy"
+      },
       "tagline": {
         "en": "A one-off programme for people who are happy training independently but want a properly structured plan instead of piecing workouts together themselves.",
         "pl": "Jednorazowa opcja dla osób, które chcą trenować samodzielnie, ale wolą dostać konkretny plan zamiast składać trening z przypadkowych ćwiczeń."
       },
-      "ctaLabel": { "en": "Explore the Training Plan", "pl": "Zobacz indywidualny plan treningowy" },
-      "ctaTarget": { "en": "/training-plan", "pl": "/pl/training-plan" },
+      "ctaLabel": {
+        "en": "Explore the Training Plan",
+        "pl": "Zobacz indywidualny plan treningowy"
+      },
+      "ctaTarget": {
+        "en": "/training-plan",
+        "pl": "/pl/training-plan"
+      },
       "image": "/images/20592.webp",
       "imageAlt": {
         "en": "Personalised KK Coaching training plan shown in a structured coaching app interface with sets, rep ranges, RIR and rest times",
         "pl": "Indywidualny plan treningowy KK Coaching pokazany w aplikacji z seriami, zakresem powtórzeń, RIR i czasem przerw"
       },
       "detailImage": "",
-      "detailImageAlt": { "en": "", "pl": "" },
+      "detailImageAlt": {
+        "en": "",
+        "pl": ""
+      },
       "bullets": [
-        { "en": "Individual programme built around your goal and weekly schedule", "pl": "Program zbudowany pod Twój cel i tygodniowy grafik" },
-        { "en": "Exercise selection matched to your equipment and experience", "pl": "Ćwiczenia dopasowane do sprzętu i doświadczenia" },
-        { "en": "Clear sets, reps and progression guidance", "pl": "Jasne serie, powtórzenia i sposób progresji" },
-        { "en": "Designed for independent training", "pl": "Plan przygotowany do samodzielnej realizacji" },
-        { "en": "One-off service — no ongoing check-ins, monitoring or coaching support", "pl": "Usługa jednorazowa — bez regularnych raportów, monitoringu i bieżącego prowadzenia" }
+        {
+          "en": "Individual programme built around your goal and weekly schedule",
+          "pl": "Program zbudowany pod Twój cel i tygodniowy grafik"
+        },
+        {
+          "en": "Exercise selection matched to your equipment and experience",
+          "pl": "Ćwiczenia dopasowane do sprzętu i doświadczenia"
+        },
+        {
+          "en": "Clear sets, reps and progression guidance",
+          "pl": "Jasne serie, powtórzenia i sposób progresji"
+        },
+        {
+          "en": "Designed for independent training",
+          "pl": "Plan przygotowany do samodzielnej realizacji"
+        },
+        {
+          "en": "One-off service — no ongoing check-ins, monitoring or coaching support",
+          "pl": "Usługa jednorazowa — bez regularnych raportów, monitoringu i bieżącego prowadzenia"
+        }
       ]
     }
   ]

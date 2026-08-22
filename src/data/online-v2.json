@@ -5,8 +5,8 @@
       "pl": "Trener personalny online UK | Polski trener | KK Coaching"
     },
     "description": {
-      "en": "Online personal trainer and fitness coach across the UK. Individual training plan, nutrition targets, check-ins, progress tracking and video feedback.",
-      "pl": "Polski trener personalny online w UK. Indywidualny plan, wsparcie żywieniowe, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp."
+      "en": "Online personal trainer and fitness coach across the UK. Individual training plan, personalised meal plan, check-ins, progress tracking and video feedback.",
+      "pl": "Polski trener personalny online w UK. Indywidualny plan treningowy, rozpisany jadłospis, raporty, analiza postępów, ocena techniki i kontakt przez WhatsApp."
     }
   },
   "hero": {
@@ -19,8 +19,8 @@
       "pl": "Trener personalny online UK — coaching po polsku"
     },
     "lead": {
-      "en": "Get a personalised training plan, practical nutrition targets, regular accountability and ongoing support from an online coach — built around your goal and your actual life, not an ideal week on paper.",
-      "pl": "Dostajesz indywidualny plan treningowy, jasne zasady żywieniowe, regularne raporty i kontakt ze mną między nimi. Wszystko dopasowujemy do Twojego celu i tego, jak naprawdę wygląda Twój tydzień."
+      "en": "Get a personalised training plan, a full meal plan built around your calorie and macronutrient targets and food preferences where practical, regular accountability and ongoing support from an online coach.",
+      "pl": "Dostajesz indywidualny plan treningowy oraz pełny jadłospis z konkretnymi posiłkami i porcjami, dopasowany do Twojego celu i w miarę możliwości do tego, co lubisz jeść. Do tego regularne raporty i kontakt ze mną między nimi."
     },
     "primaryCta": {
       "en": "Apply for Online Coaching",
@@ -92,12 +92,12 @@
       },
       {
         "title": {
-          "en": "Nutrition you can use in real life",
-          "pl": "Jedzenie bez życia na diecie"
+          "en": "A full meal plan, not just macro targets",
+          "pl": "Pełny jadłospis, nie tylko kalorie i makro"
         },
         "body": {
-          "en": "You get calorie and macronutrient targets plus practical guidance that can be adjusted around work, family, eating out and the foods you actually like.",
-          "pl": "Ustalamy kalorie, makroskładniki i praktyczne zasady, które da się pogodzić z pracą, rodziną, wyjściami i jedzeniem, które naprawdę lubisz."
+          "en": "You receive a complete meal plan with specific meals and portions from breakfast through to your final meal of the day. I build it around your calorie and macronutrient targets and, where practical, the foods and meals you actually enjoy.",
+          "pl": "Nie dostajesz samej tabelki z kaloriami i makro. Rozpisuję Ci cały jadłospis — konkretne posiłki i porcje od śniadania do ostatniego posiłku dnia. W miarę możliwości opieram go na produktach i daniach, które naprawdę lubisz."
         }
       },
       {
@@ -122,8 +122,8 @@
       "pl": "Nie znikam po wysłaniu Ci planu."
     },
     "body": {
-      "en": "The goal is to know what is happening week to week, not find out a month later that the plan stopped fitting your life. Your training, nutrition targets, progress data and feedback stay connected.",
-      "pl": "Problemy zwykle nie czekają do dnia raportu. Dlatego patrzę nie tylko na efekt końcowy, ale też na to, jak idą treningi, jak wygląda realizacja założeń i gdzie zaczyna pojawiać się problem."
+      "en": "The goal is to know what is happening week to week, not find out a month later that the plan stopped fitting your life. Your training, meal plan, progress data and feedback stay connected.",
+      "pl": "Trening, jadłospis, raporty i dane o postępach są częścią jednego systemu. Dzięki temu możemy na bieżąco oceniać, co działa, a co wymaga korekty."
     },
     "items": [
       {
@@ -131,8 +131,8 @@
         "pl": "Indywidualny plan treningowy"
       },
       {
-        "en": "Calorie, macronutrient and practical nutrition targets",
-        "pl": "Kalorie, makroskładniki i praktyczne wskazówki żywieniowe"
+        "en": "Personalised meal plan with specific meals and portions, matched to your calorie/macronutrient targets and food preferences where practical",
+        "pl": "Indywidualny jadłospis z konkretnymi posiłkami i porcjami, dopasowany do kalorii, makro i Twoich preferencji żywieniowych"
       },
       {
         "en": "Coaching app with your programme, exercise guidance, workout logging and progress history",
@@ -252,8 +252,8 @@
           "pl": "Dostajesz swój plan"
         },
         "body": {
-          "en": "You receive your individual training plan, nutrition targets and the tracking structure we will use to judge progress.",
-          "pl": "Układam trening i założenia żywieniowe pod Twoją sytuację. Wiesz, co robić od pierwszego tygodnia i jak będziemy oceniać postępy."
+          "en": "You receive your individual training plan, personalised meal plan and the tracking structure we will use to judge progress.",
+          "pl": "Dostajesz indywidualny plan treningowy i rozpisany jadłospis z konkretnymi posiłkami oraz porcjami. Do tego ustalamy, co będziemy śledzić, żeby rzetelnie oceniać postępy."
         }
       },
       {
