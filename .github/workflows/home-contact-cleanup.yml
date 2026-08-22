@@ -1,0 +1,39 @@
+name: Homepage and contact cleanup
+
+on:
+  push:
+    paths:
+      - 'scripts/home-contact-cleanup.mjs'
+      - '.github/workflows/home-contact-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Apply homepage and contact cleanup
+        run: node scripts/home-contact-cleanup.mjs
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "4189826+github-actions[bot]@users.noreply.github.com"
+          git add src/data/admin-v2.json src/pages/index.astro src/pages/pl/index.astro src/components/ContactMethods.astro src/pages/contact.astro src/pages/pl/contact.astro
+          git commit -m "Tighten homepage copy and add Facebook contact option"
+          git push
