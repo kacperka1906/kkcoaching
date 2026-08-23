@@ -28,3 +28,23 @@ jobs:
 
       - name: Build and run SEO audit
         run: npm run build
+
+  indexnow:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Wait for Netlify production deploy
+        run: sleep 120
+
+      - name: Notify IndexNow from live sitemap
+        run: node scripts/submit-indexnow.mjs
