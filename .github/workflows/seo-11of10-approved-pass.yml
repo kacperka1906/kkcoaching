@@ -1,0 +1,71 @@
+name: Approved 11 of 10 SEO/CRO pass
+
+on:
+  push:
+    branches:
+      - seo-audit-11of10-20260822
+    paths:
+      - 'scripts/seo-11of10-approved-pass.mjs'
+      - '.github/workflows/seo-11of10-approved-pass.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: seo-audit-11of10-20260822
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply approved pass
+        run: node scripts/seo-11of10-approved-pass.mjs
+
+      - name: Build
+        run: npm run build
+
+      - name: Run SEO audit
+        run: npm run seo:audit
+
+      - name: Commit approved changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/data/service-details-v2.json \
+            src/data/online-v2.json \
+            src/data/hybrid-v2.json \
+            src/components/RelatedCoaching.astro \
+            src/components/BusinessEntity.astro \
+            src/pages/index.astro \
+            src/pages/pl/index.astro \
+            src/pages/personal-training-cwmbran.astro \
+            src/pages/pl/personal-training-cwmbran.astro \
+            src/pages/training-plan.astro \
+            src/pages/pl/training-plan.astro \
+            src/pages/transformations.astro \
+            src/pages/pl/transformations.astro \
+            src/components/ResultsContext.astro \
+            src/components/ResourceArticleBody.astro \
+            src/components/Analytics.astro \
+            src/layouts/BaseLayout.astro \
+            src/components/Footer.astro \
+            scripts/finalize-static-html.mjs
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git commit -m "Apply approved 11/10 SEO and CRO consistency pass"
+          git push origin seo-audit-11of10-20260822
