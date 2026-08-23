@@ -69,3 +69,5 @@ jobs:
           fi
           git commit -m "Apply approved 11/10 SEO and CRO consistency pass"
           git push origin seo-audit-11of10-20260822
+
+# Triggered after workflow creation so the push event is picked up on this branch.
