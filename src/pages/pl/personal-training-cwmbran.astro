@@ -62,6 +62,30 @@ const structuredData = {
 
   <TrainingLocation lang="pl" />
 
+  <section class="on-white" aria-labelledby="local-search-heading">
+    <div class="container">
+      <div class="section-head centered local-search-copy">
+        <span class="eyebrow">Polski trener w Cwmbran</span>
+        <h2 id="local-search-heading">Trening personalny w Cwmbran: redukcja, siła i pewność na siłowni</h2>
+        <p>Jeśli szukasz polskiego trenera personalnego w Cwmbran albo treningów personalnych w Cwmbran, prowadzę sesje 1:1 w JD Gyms Cwmbran. Trening dopasowuję do Twojego poziomu i celu — od redukcji i utraty tkanki tłuszczowej, przez budowanie mięśni, po naukę techniki i pewniejszy powrót na siłownię.</p>
+      </div>
+      <div class="three-grid">
+        <article class="info-card">
+          <h3>Trener personalny na redukcję w Cwmbran</h3>
+          <p>Łączymy realny deficyt kaloryczny, skuteczny trening siłowy i regularną kontrolę postępów zamiast kolejnych szybkich diet i ciągłego zmieniania planu.</p>
+        </article>
+        <article class="info-card">
+          <h3>Plan treningowy na siłownię z jasną progresją</h3>
+          <p>Treningi mają konkretną strukturę, dobrane ćwiczenia, zakresy powtórzeń i zasady progresji dopasowane do Twojego doświadczenia, celu i tygodniowego grafiku.</p>
+        </article>
+        <article class="info-card">
+          <h3>Więcej wsparcia, jeśli go potrzebujesz</h3>
+          <p>Jeśli chcesz prowadzenia także między treningami 1:1, <a href="/pl/hybrid-coaching">coaching hybrydowy</a> dodaje raporty i stałe wsparcie online. Wolisz trenować samodzielnie? Zobacz <a href="/pl/training-plan">indywidualny plan treningowy</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="on-white" aria-labelledby="faq-heading"><div class="container faq-wrap"><div class="section-head centered"><span class="eyebrow">{copy.faq.eyebrow[lang]}</span><h2 id="faq-heading">{copy.faq.heading[lang]}</h2></div><div class="faq-list">{faqs.map(item => <details class="faq-item"><summary>{item.q}</summary><p>{item.a}</p></details>)}</div></div></section>
 
   <section class="final-cta"><div class="container"><span class="eyebrow light">{copy.finalCta.eyebrow[lang]}</span><h2>{copy.finalCta.heading[lang]}</h2><p>{copy.finalCta.body[lang]}</p><a href={copy.finalCta.href[lang]} class="btn btn-secondary">{copy.finalCta.cta[lang]}</a></div></section>
@@ -81,6 +105,7 @@ const structuredData = {
   .info-card { border-top: 3px solid var(--red); }
   .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
   .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
+  .info-card a { color: var(--red); font-weight: 700; }
   .dark-copy { color: #C0C4CA; max-width: 58ch; }
   .check-list { list-style: none; display: grid; gap: 12px; }
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
@@ -102,6 +127,7 @@ const structuredData = {
   .result-copy h3 { margin: 8px 0; font-size: 1.05rem; }
   .result-copy p { color: var(--steel); font-size: 0.9rem; }
   .center-cta { text-align: center; margin-top: 34px; }
+  .local-search-copy { max-width: 860px; margin-left: auto; margin-right: auto; }
   .faq-wrap { max-width: 860px; }
   .faq-list { border-top: 1px solid #D8DBDE; }
   .faq-item { border-bottom: 1px solid #D8DBDE; padding: 18px 0; }
