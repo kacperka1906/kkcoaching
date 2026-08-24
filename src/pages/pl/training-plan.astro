@@ -13,11 +13,11 @@ const money = `${pricing.currency}${Number.isInteger(price) ? price.toFixed(0) :
 const bestFor = [
   {
     title: 'Chcesz trenować samodzielnie, ale mieć konkretny plan',
-    body: 'Nie potrzebujesz stałego prowadzenia, ale chcesz wiedzieć dokładnie co robić zamiast składać trening z przypadkowych ćwiczeń.'
+    body: 'Nie potrzebujesz stałego prowadzenia, ale chcesz mieć plan treningowy ułożony pod konkretny cel zamiast składać trening z przypadkowych ćwiczeń.'
   },
   {
     title: 'Plan musi pasować do Twojego tygodnia',
-    body: 'Program układam pod liczbę dni, które naprawdę możesz trenować, dostępny sprzęt i Twój aktualny poziom.'
+    body: 'Twój plan treningowy na siłownię układam pod liczbę dni, które naprawdę możesz trenować, dostępny sprzęt i Twój aktualny poziom.'
   },
   {
     title: 'Chcesz wiedzieć, jak progresować',
@@ -42,6 +42,10 @@ const faqs = [
     a: 'Tak. Ćwiczenia dobieram do sprzętu, którym faktycznie dysponujesz — może to być pełna siłownia komercyjna, domowa siłownia albo bardziej ograniczony zestaw.'
   },
   {
+    q: 'Czy to jest gotowy plan treningowy z internetu?',
+    a: 'Nie. Plan treningowy układam na podstawie Twojego celu, doświadczenia, tygodniowego grafiku i dostępnego sprzętu. Dobór ćwiczeń, serie, zakresy powtórzeń i zasady progresji wynikają z Twojej sytuacji, a nie z gotowego szablonu.'
+  },
+  {
     q: 'Czy taki plan nadaje się dla osoby początkującej?',
     a: 'Tak, plan może być dopasowany do początkującego poziomu. Jeśli jednak dopiero uczysz się obsługi sprzętu i techniki ćwiczeń, lepszym początkiem mogą być treningi 1:1 w Cwmbran.'
   },
@@ -59,7 +63,7 @@ const structuredData = {
       '@id': 'https://kkcoaching.fit/pl/training-plan#service',
       name: 'Indywidualny plan treningowy',
       serviceType: 'Indywidualny program treningowy',
-      description: 'Jednorazowy indywidualny plan treningowy dopasowany do celu, grafiku, doświadczenia i dostępnego sprzętu.',
+      description: 'Jednorazowy indywidualny plan treningowy na siłownię dopasowany do celu, grafiku, doświadczenia i dostępnego sprzętu.',
       url: 'https://kkcoaching.fit/pl/training-plan',
       provider: { '@id': 'https://kkcoaching.fit/#business' },
       areaServed: { '@type': 'Country', name: 'United Kingdom' },
@@ -91,8 +95,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Indywidualny plan treningowy | £30 jednorazowo | KK Coaching"
-  description="Indywidualny plan treningowy dopasowany do celu, grafiku, doświadczenia i sprzętu. Jasne serie, powtórzenia i progresja za £30 jednorazowo."
+  title="Indywidualny plan treningowy na siłownię | £30 | KK Coaching"
+  description="Indywidualny plan treningowy i plan na siłownię dopasowany do celu, grafiku, doświadczenia i sprzętu. Serie, powtórzenia i progresja za £30 jednorazowo."
   lang="pl"
   path="/pl/training-plan"
   altPath="/training-plan"
@@ -104,8 +108,8 @@ const structuredData = {
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Jednorazowy indywidualny program</span>
-        <h1>Indywidualny plan treningowy dopasowany do Ciebie</h1>
-        <p class="lead">Trenuj samodzielnie z konkretnym programem ułożonym pod Twój cel, grafik, doświadczenie i dostępny sprzęt.</p>
+        <h1>Indywidualny plan treningowy na siłownię</h1>
+        <p class="lead">Trenuj samodzielnie z planem treningowym dopasowanym do Twojego celu, tygodniowego grafiku, doświadczenia i dostępnego sprzętu.</p>
         <div class="price-line"><strong>{money}</strong><span>jednorazowo</span></div>
         <div class="hero-actions">
           <a href="/pl/contact" class="btn btn-primary">Zapytaj o plan treningowy</a>
@@ -123,8 +127,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Dla kogo</span>
-        <h2 id="fit-heading">Konkretny plan bez płacenia za wsparcie, którego nie potrzebujesz.</h2>
-        <p>Jeśli chcesz ćwiczyć samodzielnie, ale zależy Ci na indywidualnym programie zamiast przypadkowych treningów, to najprostsza forma współpracy.</p>
+        <h2 id="fit-heading">Indywidualny plan treningowy — nie kolejny przypadkowy zestaw ćwiczeń.</h2>
+        <p>Jeśli szukasz planu na siłownię, który możesz normalnie realizować, dostajesz konkretną strukturę dopasowaną do Ciebie bez płacenia za stałe prowadzenie, którego nie potrzebujesz.</p>
       </div>
       <div class="three-grid">
         {bestFor.map(item => (
@@ -141,8 +145,8 @@ const structuredData = {
     <div class="container split">
       <div>
         <span class="eyebrow">Co dostajesz</span>
-        <h2 id="included-heading">Plan, który otwierasz i wiesz dokładnie, co masz zrobić.</h2>
-        <p class="dark-copy">Ta opcja skupia się na samym programie treningowym. Dostajesz jasną strukturę bez udawania, że jednorazowy plan jest okrojoną wersją pełnego coachingu.</p>
+        <h2 id="included-heading">Twój plan na siłownię, ułożony od początku do końca.</h2>
+        <p class="dark-copy">Plan treningowy obejmuje strukturę tygodnia, dobór ćwiczeń, serie, zakresy powtórzeń, przerwy i zasady progresji. Dostajesz jasny schemat do realizacji bez udawania, że jednorazowy plan jest okrojoną wersją pełnego coachingu.</p>
       </div>
       <ul class="check-list">
         {service.data.bullets.map(item => <li>{item}</li>)}
@@ -167,7 +171,6 @@ const structuredData = {
       </div>
     </div>
   </section>
-
   <section class="compare on-white" aria-labelledby="compare-heading">
     <div class="container compare-grid">
       <div>
