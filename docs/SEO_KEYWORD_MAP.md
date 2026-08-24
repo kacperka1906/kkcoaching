@@ -49,17 +49,32 @@ Several more specific phrases returned “Bing doesn’t have enough data to sho
 - Do not create separate exact-match pages like `/weight-loss-cwmbran`, `/fitness-coach-cwmbran` or `/lose-weight-cwmbran` unless future Search Console data shows enough real demand and each page can contain genuinely unique content.
 - Internal links should reinforce intent: local PT pages link to Hybrid and Training Plan where useful; Online Coaching links to the one-off Training Plan for users who do not need ongoing support.
 
+## Polish public SERP validation — 24 Aug 2026
+
+Public Polish-language search results were checked for commercial and informational variants relevant to the Polish version of the site. These checks do not provide reliable exact monthly search volumes, but they are useful for validating which phrases Google/Bing consistently associate with real trainer services and which wording competitors use in titles, H1s and service copy.
+
+Main findings:
+
+- **trener personalny online** is the clearest primary commercial phrase. It appears repeatedly in titles, H1s and directory/service pages and should stay the main intent for `/pl/online-coaching`.
+- **trening personalny online** is a real supporting variant, but it can also imply live video sessions. Use it in body copy, not as the only primary phrase for KK Coaching's ongoing remote service.
+- **prowadzenie online** is common native Polish fitness-industry wording for ongoing remote coaching. It is a stronger supporting phrase than forcing English-style **coaching online** everywhere.
+- **coaching online po polsku** is still useful for Polish users in the UK, but should be a supporting phrase rather than the sole primary keyword.
+- **indywidualny plan treningowy** and **plan treningowy na siłownię** are strong, natural commercial phrases for `/pl/training-plan`.
+- **plan treningowy** on its own is broader and highly informational, so the commercial page should qualify it with personalised / gym / one-off context.
+- For outcome language, Polish service pages naturally use **redukcja**, **redukcja tkanki tłuszczowej**, **odchudzanie** and **schudnąć**. These should support service copy but not replace the service-intent keywords in titles/H1s.
+- For the local page, **polski trener personalny Cwmbran** and **trening personalny w Cwmbran** remain the right local long-tail phrases. Public tools do not expose enough volume to justify creating extra Polish city landing pages.
+
 ## Polish intent map
 
 | URL | Primary intent | Supporting intent / entities | Role |
 |---|---|---|---|
-| `/pl` | KK Coaching + treningi 1:1 i coaching online | Cwmbran, polski trener, online, hybrid | Strona marki / hub usług |
-| `/pl/personal-training-cwmbran` | polski trener personalny Cwmbran | trening personalny 1:1, JD Gyms Cwmbran, redukcja, budowanie mięśni | Główny lokalny landing PL |
-| `/pl/online-coaching` | trener personalny online UK / coaching online po polsku | plan, żywienie, raporty, aplikacja, WhatsApp | Landing online PL |
+| `/pl` | KK Coaching + treningi 1:1 i prowadzenie online | Cwmbran, polski trener, coaching online, hybrid | Strona marki / hub usług |
+| `/pl/personal-training-cwmbran` | polski trener personalny Cwmbran | trening personalny w Cwmbran, JD Gyms Cwmbran, redukcja, budowanie mięśni | Główny lokalny landing PL |
+| `/pl/online-coaching` | trener personalny online UK | prowadzenie online, trening personalny online, coaching online po polsku, plan treningowy, żywienie, raporty, aplikacja, WhatsApp | Landing online PL |
 | `/pl/hybrid-coaching` | coaching hybrydowy Cwmbran | prowadzenie online + treningi 1:1 | Landing hybrid PL |
-| `/pl/training-plan` | indywidualny plan treningowy | plan treningowy online, plan na siłownię, jednorazowa usługa | Landing planu PL |
+| `/pl/training-plan` | indywidualny plan treningowy | plan treningowy na siłownię, plan na siłownię, plan treningowy online, jednorazowa usługa | Landing planu PL |
 | `/pl/services` | porównanie form współpracy | 1:1 vs online vs hybrid vs plan | Hub usług PL |
-| `/pl/transformations` | przemiany podopiecznych | efekty treningów, coaching online, Cwmbran | Dowód / zaufanie |
+| `/pl/transformations` | przemiany podopiecznych | efekty treningów, prowadzenie online, Cwmbran | Dowód / zaufanie |
 | `/pl/about` | Kacper Kaszowski trener personalny | kwalifikacje, historia, KK Coaching | Strona osoby / E-E-A-T |
 | `/pl/contact` | bezpłatna konsultacja trenerska | kontakt, zapytanie | Konwersja |
 
