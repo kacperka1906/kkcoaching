@@ -13,11 +13,11 @@ const money = `${pricing.currency}${Number.isInteger(price) ? price.toFixed(0) :
 const bestFor = [
   {
     title: 'You want structure without ongoing coaching',
-    body: 'You are comfortable training independently but want a programme built around a clear goal instead of assembling workouts from random exercises.'
+    body: 'You are comfortable training independently but want a programme built around a clear goal instead of assembling a workout plan from random exercises.'
   },
   {
     title: 'You need a plan that fits your real week',
-    body: 'Your programme is built around the number of days you can actually train, the equipment you have access to and your current experience.'
+    body: 'Your gym training plan is built around the number of days you can actually train, the equipment you have access to and your current experience.'
   },
   {
     title: 'You want clear progression',
@@ -42,6 +42,10 @@ const faqs = [
     a: 'Yes. Exercise selection is matched to the equipment you actually have available, whether that is a commercial gym, home gym or a more limited setup.'
   },
   {
+    q: 'Is this a generic workout plan?',
+    a: 'No. Your workout plan is built from your goal, experience, weekly schedule and available equipment. The exercise selection, sets, rep ranges and progression guidance are organised around your situation rather than copied from a generic template.'
+  },
+  {
     q: 'Is the plan suitable for beginners?',
     a: 'It can be. The programme is matched to your current experience, but if you are completely new to the gym and need hands-on technique coaching, 1:1 Personal Training may be a better starting point.'
   },
@@ -59,7 +63,7 @@ const structuredData = {
       '@id': 'https://kkcoaching.fit/training-plan#service',
       name: 'Personalised Training Plan',
       serviceType: 'Personalised Training Programme',
-      description: 'A one-off personalised gym training programme built around the client’s goal, schedule, training experience and available equipment.',
+      description: 'A one-off personalised training plan and gym workout plan built around the client’s goal, schedule, training experience and available equipment.',
       url: 'https://kkcoaching.fit/training-plan',
       provider: { '@id': 'https://kkcoaching.fit/#business' },
       areaServed: { '@type': 'Country', name: 'United Kingdom' },
@@ -91,8 +95,8 @@ const structuredData = {
 };
 ---
 <BaseLayout
-  title="Personalised Training Plan UK | £30 One-Off | KK Coaching"
-  description="Get a personalised training plan built around your goal, schedule, experience and equipment. Clear sets, reps and progression guidance for a £30 one-off fee."
+  title="Personalised Training Plan & Workout Plan UK | £30 | KK Coaching"
+  description="Get a personalised training plan and gym workout plan built around your goal, schedule, experience and equipment. Clear sets, reps and progression for £30 one-off."
   lang="en"
   path="/training-plan"
   altPath="/pl/training-plan"
@@ -104,8 +108,8 @@ const structuredData = {
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">One-off personalised programme</span>
-        <h1>Personalised Training Plan Built Around You</h1>
-        <p class="lead">Train independently with a structured programme built around your goal, weekly schedule, experience and available equipment.</p>
+        <h1>Personalised Gym Training Plan Built Around You</h1>
+        <p class="lead">Train independently with a personalised workout plan built around your goal, weekly schedule, experience and available equipment.</p>
         <div class="price-line"><strong>{money}</strong><span>one-off</span></div>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-primary">Ask About a Training Plan</a>
@@ -123,8 +127,8 @@ const structuredData = {
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">Who it is for</span>
-        <h2 id="fit-heading">A clear programme without paying for support you do not need.</h2>
-        <p>If you are happy to train on your own but want the structure of an individual programme, this sits between random workouts and full ongoing coaching.</p>
+        <h2 id="fit-heading">A personalised training plan — not another random workout plan.</h2>
+        <p>If you are looking for a gym training plan or fitness plan you can actually follow, this gives you a structured programme without paying for ongoing coaching you do not need.</p>
       </div>
       <div class="three-grid">
         {bestFor.map(item => (
@@ -141,8 +145,8 @@ const structuredData = {
     <div class="container split">
       <div>
         <span class="eyebrow">What you get</span>
-        <h2 id="included-heading">A programme you can open and follow without guessing.</h2>
-        <p class="dark-copy">The plan focuses on the training structure itself. It gives you a clear framework for your sessions without turning a one-off programme into a stripped-down coaching subscription.</p>
+        <h2 id="included-heading">Your gym workout plan, structured from start to finish.</h2>
+        <p class="dark-copy">The fitness plan focuses on the training structure itself: exercise selection, weekly layout, sets, rep ranges, rest times and progression. It gives you a clear framework for your sessions without turning a one-off programme into a stripped-down coaching subscription.</p>
       </div>
       <ul class="check-list">
         {service.data.bullets.map(item => <li>{item}</li>)}
