@@ -42,6 +42,30 @@ const structuredData = {
 
   <section class="app-section on-white" aria-labelledby="app-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.app.eyebrow[lang]}</span><h2 id="app-heading">{copy.app.heading[lang]}</h2><p>{copy.app.body[lang]}</p></div><div class="app-grid">{copy.app.cards.map(item => <article class="app-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
 
+  <section class="on-white" aria-labelledby="online-search-heading">
+    <div class="container">
+      <div class="section-head centered online-search-copy">
+        <span class="eyebrow">Online coaching, not a generic template</span>
+        <h2 id="online-search-heading">Online coaching with a personalised training plan and real accountability</h2>
+        <p>If you are comparing online coaching, an online personal trainer or an online fitness coach, the main difference is what happens after the plan is written. Your training, nutrition, check-ins and progress data stay connected so changes are based on what is actually happening.</p>
+      </div>
+      <div class="three-grid">
+        <article class="info-card">
+          <h3>Online coaching for weight loss or fat loss</h3>
+          <p>Use a realistic calorie target, structured strength training and regular progress reviews to lose weight without relying on short-term fixes or constant plan changes.</p>
+        </article>
+        <article class="info-card">
+          <h3>A workout plan that changes with your progress</h3>
+          <p>Your programme starts from your goal, equipment and schedule, then changes only when your training data, adherence or progress gives us a reason to adjust it.</p>
+        </article>
+        <article class="info-card">
+          <h3>Need only a one-off training plan?</h3>
+          <p>If you do not need ongoing check-ins, nutrition support or accountability, the <a href="/training-plan">personalised training plan</a> gives you a structured gym workout plan without a coaching subscription.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section aria-labelledby="process-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.process.eyebrow[lang]}</span><h2 id="process-heading">{copy.process.heading[lang]}</h2><p>{copy.process.body[lang]}</p></div><div class="process-grid">{copy.process.steps.map(item => <article class="process-card"><span class="num">{item.num}</span><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
 
   <section class="proof on-white" aria-labelledby="proof-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.results.eyebrow[lang]}</span><h2 id="proof-heading">{copy.results.heading[lang]}</h2><p>{copy.results.body[lang]}</p></div><div class="results-grid">{copy.results.items.map(item => <article class="result-card"><img src={item.image} alt={item.imageAlt[lang]} width="600" height="750" loading="lazy" /><div class="result-copy"><span>{item.meta[lang]}</span><h3>{item.heading[lang]}</h3><p>{item.body[lang]}</p></div></article>)}</div><div class="center-cta"><a href={copy.results.href[lang]} class="btn btn-outline-dark">{copy.results.cta[lang]}</a></div></div></section>
@@ -67,6 +91,7 @@ const structuredData = {
   .info-card { border-top: 3px solid var(--red); }
   .info-card h3, .process-card h3 { font-size: 1.08rem; margin-bottom: 10px; }
   .info-card p, .process-card p { color: var(--steel); font-size: 0.94rem; }
+  .info-card a { color: var(--red); font-weight: 700; }
   .dark-copy { color: #C0C4CA; max-width: 58ch; margin-bottom: 14px; }
   .check-list { list-style: none; display: grid; gap: 12px; }
   .check-list li { position: relative; padding: 13px 16px 13px 44px; background: #202329; border: 1px solid #333840; border-radius: var(--radius); color: #F1F2F4; }
@@ -76,6 +101,7 @@ const structuredData = {
   .app-card { background: #F6F7F8; border: 1px solid #E2E4E7; border-top: 3px solid var(--red); border-radius: var(--radius); padding: 24px 20px; }
   .app-card h3 { font-size: 1rem; margin-bottom: 9px; }
   .app-card p { color: var(--steel); font-size: 0.9rem; }
+  .online-search-copy { max-width: 900px; margin-left: auto; margin-right: auto; }
   .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .process-card .num { display: block; color: var(--red); font-weight: 800; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.08em; }
   .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 920px; margin: 0 auto; }
