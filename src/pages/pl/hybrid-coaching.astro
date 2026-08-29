@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Promotions from '../../components/Promotions.astro';
 import copy from '../../data/hybrid-v2.json';
 import admin from '../../data/admin-v2.json';
 
@@ -33,6 +34,9 @@ const structuredData = {
       <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
   </section>
+
+  <Promotions lang="pl" placement="service" service="hybrid" />
+
   <section class="on-white"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.why.eyebrow[lang]}</span><h2>{copy.why.heading[lang]}</h2><p>{copy.why.body[lang]}</p></div><div class="compare-grid"><article class="scope-card"><span class="scope-label">{copy.onlineCore.label[lang]}</span><h3>{copy.onlineCore.heading[lang]}</h3><ul>{copy.onlineCore.items.map(item => <li>{item[lang]}</li>)}</ul></article><article class="scope-card featured"><span class="scope-label">{copy.inPerson.label[lang]}</span><h3>{copy.inPerson.heading[lang]}</h3><ul>{copy.inPerson.items.map(item => <li>{item[lang]}</li>)}</ul></article></div></div></section>
   <section class="app-band on-dark"><div class="container app-grid"><div><span class="eyebrow">{copy.app.eyebrow[lang]}</span><h2>{copy.app.heading[lang]}</h2><p>{copy.app.body[lang]}</p></div><div class="app-points" aria-label={copy.app.aria[lang]}>{copy.app.points.map(item => <span>{item[lang]}</span>)}</div></div></section>
   <section class="on-white"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.choice.eyebrow[lang]}</span><h2>{copy.choice.heading[lang]}</h2><p>{copy.choice.body[lang]}</p></div><div class="related-grid">{copy.choice.cards.map(item => <a href={item.href[lang]} class="related-card"><strong>{item.title[lang]}</strong><span>{item.body[lang]}</span></a>)}</div></div></section>
