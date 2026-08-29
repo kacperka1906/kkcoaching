@@ -37,9 +37,21 @@ function setAttr(tag, name, value) {
 function sectionBounds(html, className) {
   const start = html.indexOf(`<section class="${className}`);
   if (start < 0) throw new Error(`Missing .${className} section`);
-  const close = html.indexOf('</section>', start);
-  if (close < 0) throw new Error(`Unclosed .${className} section`);
-  return { start, end: close + '</section>'.length };
+
+  const tagPattern = /<\/?section\b[^>]*>/gi;
+  tagPattern.lastIndex = start;
+  let depth = 0;
+  let match;
+
+  while ((match = tagPattern.exec(html))) {
+    const tag = match[0];
+    if (/^<section\b/i.test(tag)) depth += 1;
+    else depth -= 1;
+
+    if (depth === 0) return { start, end: tagPattern.lastIndex };
+  }
+
+  throw new Error(`Unclosed .${className} section`);
 }
 
 function replaceHeroImage(html, className, image, alt) {
