@@ -8,6 +8,7 @@ const dataFiles = [
   { label: 'Core pages — Services, About, Contact, Transformations', name: 'pages_v2', file: 'src/data/pages-v2.json' },
   { label: 'Personal Training page — EN + PL', name: 'personal_training_v2', file: 'src/data/service-details-v2.json' },
   { label: 'Online Coaching page — EN + PL', name: 'online_v2', file: 'src/data/online-v2.json' },
+  { label: 'Online Coaching Promotion — campaign settings', name: 'online_promotion', file: 'src/data/online-promotion.json' },
   { label: 'Hybrid Coaching page — EN + PL', name: 'hybrid_v2', file: 'src/data/hybrid-v2.json' },
   { label: 'Training Plan page — EN + PL', name: 'training_plan_v2', file: 'src/data/training-plan-v2.json' },
   { label: 'Service cards — EN + PL', name: 'services_v2', file: 'src/data/services-v2.json' },
@@ -98,7 +99,18 @@ const labelMap = {
   copyright: 'Copyright',
   seoLine: 'Dolna linia SEO',
   credentials: 'Kwalifikacje',
-  locationSummary: 'Opis lokalizacji / zasięgu'
+  locationSummary: 'Opis lokalizacji / zasięgu',
+  promotionalPrice: 'Promotional price / Cena promocyjna',
+  standardPrice: 'Standard price / Cena standardowa',
+  promotionalPeriod: 'Promotional period / Okres promocyjny',
+  totalSpaces: 'Total promotional spaces / Łączna liczba miejsc',
+  remainingSpaces: 'Remaining spaces / Pozostałe miejsca',
+  ctaText: 'CTA text / Tekst CTA',
+  ctaDestination: 'CTA destination / Link CTA',
+  startDate: 'Start date / Data rozpoczęcia',
+  endDate: 'End date / Data zakończenia',
+  autoDisableAfterEndDate: 'Automatically disable after end date',
+  smallPrint: 'Small print / Warunki promocji'
 };
 
 const prettify = (name) => labelMap[name] || name
@@ -116,6 +128,7 @@ const isUrlName = (name) => /url|href|target/i.test(name);
 function scalarField(name, value, required = true) {
   const field = { label: prettify(name), name };
   if (typeof value === 'boolean') return { ...field, widget: 'boolean', default: value };
+  if (name === 'startDate' || name === 'endDate') return { ...field, widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' };
   if (typeof value === 'number') return { ...field, widget: 'number', value_type: Number.isInteger(value) ? 'int' : 'float' };
   if (isImageName(name)) return { ...field, widget: 'image', required };
   if (name === 'source') {
