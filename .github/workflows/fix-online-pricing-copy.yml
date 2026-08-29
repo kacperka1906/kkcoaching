@@ -1,0 +1,49 @@
+name: Fix online pricing contrast and PL copy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/fix-online-pricing-copy.mjs'
+      - '.github/workflows/fix-online-pricing-copy.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply fixes
+        run: node scripts/fix-online-pricing-copy.mjs
+
+      - name: Build
+        run: npm run build
+
+      - name: Run SEO audit
+        run: npm run seo:audit
+
+      - name: Commit verified fixes and remove one-time tooling
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm scripts/fix-online-pricing-copy.mjs .github/workflows/fix-online-pricing-copy.yml
+          git add src/pages/pl/online-coaching.astro src/components/ServicePricing.astro scripts/finalize-static-html.mjs
+          git commit -m "Fix online pricing contrast and Polish copy"
+          git push origin main
