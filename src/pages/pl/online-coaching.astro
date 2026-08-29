@@ -33,8 +33,8 @@ const structuredData = {
       </div>
       <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
-    <OnlinePromotion lang="pl" />
 </section>
+  <OnlinePromotion lang="pl" />
   <section class="on-white" aria-labelledby="outcomes-heading"><div class="container"><div class="section-head"><span class="eyebrow">{copy.outcomes.eyebrow[lang]}</span><h2 id="outcomes-heading">{copy.outcomes.heading[lang]}</h2><p>{copy.outcomes.body[lang]}</p></div><div class="three-grid">{copy.outcomes.cards.map(item => <article class="info-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
   <section class="on-dark" aria-labelledby="included-heading"><div class="container split"><div><span class="eyebrow">{copy.included.eyebrow[lang]}</span><h2 id="included-heading">{copy.included.heading[lang]}</h2><p class="dark-copy">{copy.included.body[lang]}</p></div><ul class="check-list">{copy.included.items.map(item => <li>{item[lang]}</li>)}</ul></div></section>
   <section class="app-section on-white" aria-labelledby="app-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.app.eyebrow[lang]}</span><h2 id="app-heading">{copy.app.heading[lang]}</h2><p>{copy.app.body[lang]}</p></div><div class="app-grid">{copy.app.cards.map(item => <article class="app-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>

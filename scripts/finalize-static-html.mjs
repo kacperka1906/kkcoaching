@@ -73,7 +73,16 @@ function movePricingAfterHero(html, className) {
   const withoutPricing = html.slice(0, pricingStart) + html.slice(pricingEnd);
 
   const hero = sectionBounds(withoutPricing, className);
-  return withoutPricing.slice(0, hero.end) + pricing + withoutPricing.slice(hero.end);
+  let insertAt = hero.end;
+  if (className === 'online-hero') {
+    const promotionStart = withoutPricing.indexOf('<section class="online-promotion', hero.end);
+    if (promotionStart >= 0) {
+      const promotionClose = withoutPricing.indexOf('</section>', promotionStart);
+      if (promotionClose < 0) throw new Error('Unclosed online-promotion section');
+      insertAt = promotionClose + '</section>'.length;
+    }
+  }
+  return withoutPricing.slice(0, insertAt) + pricing + withoutPricing.slice(insertAt);
 }
 
 function moveBlockBeforeFinalCta(html, className, tagName = 'section') {
