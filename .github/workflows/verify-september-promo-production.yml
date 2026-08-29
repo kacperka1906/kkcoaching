@@ -1,0 +1,75 @@
+name: Verify September Promotion Production
+
+on:
+  push:
+    branches:
+      - verify/september-promo-production
+    paths:
+      - '.github/workflows/verify-september-promo-production.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Wait for Netlify production deploy and verify EN/PL/Admin
+        run: |
+          set -euo pipefail
+          mkdir -p production-qa
+          ok=0
+          for attempt in $(seq 1 30); do
+            echo "Production verification attempt ${attempt}/30"
+            curl -fsSL --retry 2 --retry-delay 1 --connect-timeout 15 'https://kkcoaching.fit/online-coaching/?qa=september-promo' -o production-qa/en.html || true
+            curl -fsSL --retry 2 --retry-delay 1 --connect-timeout 15 'https://kkcoaching.fit/pl/online-coaching/?qa=september-promo' -o production-qa/pl.html || true
+            curl -fsSL --retry 2 --retry-delay 1 --connect-timeout 15 'https://kkcoaching.fit/admin/config.yml?qa=september-promo' -o production-qa/admin-config.yml || true
+
+            if grep -q 'September Special Offer' production-qa/en.html 2>/dev/null \
+              && grep -q '10 NEW CLIENT SPACES' production-qa/en.html 2>/dev/null \
+              && grep -q '£65' production-qa/en.html 2>/dev/null \
+              && grep -q '£80' production-qa/en.html 2>/dev/null \
+              && grep -q 'initial 12-week coaching phase' production-qa/en.html 2>/dev/null \
+              && grep -q 'Wrześniowa Oferta Specjalna' production-qa/pl.html 2>/dev/null \
+              && grep -q '10 MIEJSC DLA NOWYCH KLIENTÓW' production-qa/pl.html 2>/dev/null \
+              && grep -q '12-tygodniowego etapu' production-qa/pl.html 2>/dev/null \
+              && grep -q 'Online Coaching Promotion — campaign settings' production-qa/admin-config.yml 2>/dev/null \
+              && grep -q 'remainingSpaces' production-qa/admin-config.yml 2>/dev/null \
+              && grep -q 'autoDisableAfterEndDate' production-qa/admin-config.yml 2>/dev/null; then
+              ok=1
+              break
+            fi
+            sleep 10
+          done
+
+          if [ "$ok" -ne 1 ]; then
+            echo 'Production promotion was not fully visible within the verification window.'
+            echo '--- EN promo matches ---'
+            grep -E 'September Special Offer|NEW CLIENT SPACES|£65|12-week' production-qa/en.html || true
+            echo '--- PL promo matches ---'
+            grep -E 'Wrześniowa Oferta Specjalna|MIEJSC DLA NOWYCH KLIENTÓW|£65|12-tygodniowego' production-qa/pl.html || true
+            exit 1
+          fi
+
+          echo 'Production EN, PL and Admin promotion configuration verified.'
+
+      - name: Capture production EN/PL screenshots
+        run: |
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1900 --screenshot=production-qa/en-production-desktop.png 'https://kkcoaching.fit/online-coaching/?qa=september-promo'
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,2400 --force-device-scale-factor=1 --screenshot=production-qa/en-production-mobile.png 'https://kkcoaching.fit/online-coaching/?qa=september-promo'
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1900 --screenshot=production-qa/pl-production-desktop.png 'https://kkcoaching.fit/pl/online-coaching/?qa=september-promo'
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,2400 --force-device-scale-factor=1 --screenshot=production-qa/pl-production-mobile.png 'https://kkcoaching.fit/pl/online-coaching/?qa=september-promo'
+
+      - name: Upload production QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: september-promo-production-qa
+          path: |
+            production-qa/en-production-desktop.png
+            production-qa/en-production-mobile.png
+            production-qa/pl-production-desktop.png
+            production-qa/pl-production-mobile.png
+          retention-days: 7
