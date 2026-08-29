@@ -1,0 +1,57 @@
+{
+  "offers": [
+    {
+      "id": "september-2026-online",
+      "internalName": "September 2026 — Online Coaching",
+      "enabled": true,
+      "service": "online",
+      "display": {
+        "homepage": true,
+        "servicePage": true
+      },
+      "priority": 100,
+      "featured": true,
+      "headline": {
+        "en": "September Special Offer",
+        "pl": "Wrześniowa Oferta Specjalna"
+      },
+      "title": {
+        "en": "10 new client spaces",
+        "pl": "10 miejsc dla nowych klientów"
+      },
+      "offerText": {
+        "en": "Start Online Coaching for £65 for your first 4 weeks.",
+        "pl": "Zacznij współpracę online za £65 za pierwsze 4 tygodnie."
+      },
+      "showPrice": true,
+      "promotionalPrice": 65,
+      "standardPrice": 80,
+      "promotionalPeriod": {
+        "en": "First 4 weeks",
+        "pl": "Pierwsze 4 tygodnie"
+      },
+      "standardPriceText": {
+        "en": "Then £80 every 4 weeks",
+        "pl": "Następnie £80 co 4 tygodnie"
+      },
+      "showSpaces": true,
+      "totalSpaces": 10,
+      "remainingSpaces": 10,
+      "ctaText": {
+        "en": "Book your free consultation",
+        "pl": "Umów bezpłatną konsultację"
+      },
+      "ctaDestination": {
+        "en": "/contact",
+        "pl": "/pl/contact"
+      },
+      "startDate": "2026-08-29",
+      "endDate": "2026-09-30",
+      "autoDisableAfterEndDate": true,
+      "smallPrint": {
+        "en": "Available to new clients joining in September. Limited to the first 10 new clients. £65 applies to the first 4 weeks only; following 4-week periods are £80. No 12-week commitment is required for this campaign.",
+        "pl": "Oferta dla nowych klientów rozpoczynających współpracę we wrześniu. Liczba miejsc ograniczona do pierwszych 10 osób. £65 dotyczy pierwszych 4 tygodni; kolejne okresy 4-tygodniowe kosztują £80. Ta kampania nie wymaga 12-tygodniowego zobowiązania."
+      }
+    }
+  ]
+}
