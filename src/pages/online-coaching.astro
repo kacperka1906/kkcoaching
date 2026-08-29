@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OnlinePromotion from '../components/OnlinePromotion.astro';
 import copy from '../data/online-v2.json';
 import admin from '../data/admin-v2.json';
 
@@ -34,7 +35,8 @@ const structuredData = {
       </div>
       <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
-  </section>
+    <OnlinePromotion lang="en" />
+</section>
 
   <section class="on-white" aria-labelledby="outcomes-heading"><div class="container"><div class="section-head"><span class="eyebrow">{copy.outcomes.eyebrow[lang]}</span><h2 id="outcomes-heading">{copy.outcomes.heading[lang]}</h2><p>{copy.outcomes.body[lang]}</p></div><div class="three-grid">{copy.outcomes.cards.map(item => <article class="info-card"><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></article>)}</div></div></section>
 
