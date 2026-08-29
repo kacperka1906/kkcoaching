@@ -31,7 +31,7 @@ const polishSpaces = (count: number) => {
 const spacesLabel = (offer: (typeof promotions.offers)[number]) => {
   const total = Math.max(0, Math.trunc(offer.totalSpaces));
   const remaining = Math.min(total, Math.max(0, Math.trunc(offer.remainingSpaces)));
-  if (remaining >= total) return isPl ? `${total} MIEJSC DLA NOWYCH KLIENTÓW` : `${total} NEW CLIENT SPACES`;
+  if (remaining >= total) return isPl ? `OFERTA DLA ${total} NOWYCH KLIENTÓW` : `LIMITED TO ${total} NEW CLIENTS`;
   return isPl ? polishSpaces(remaining) : `${remaining} ${remaining === 1 ? 'SPACE' : 'SPACES'} REMAINING`;
 };
 
@@ -91,12 +91,8 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
                 <span class="service-badge">{serviceLabels[offer.service][lang]}</span>
                 <span class="promotion-eyebrow">{offer.headline[lang]}</span>
               </div>
-              <h2>{offer.title[lang]}</h2>
-              <p class="offer-text">{offer.offerText[lang]}</p>
 
-              {offer.showSpaces && <div class="spaces-badge">{spacesLabel(offer)}</div>}
-
-              {offer.showPrice && (
+              {offer.showPrice ? (
                 <div class="price-wrap">
                   <div class="promotion-price" aria-label={`${money(offer.promotionalPrice)} ${offer.promotionalPeriod[lang]}`}>
                     <strong>{money(offer.promotionalPrice)}</strong>
@@ -104,7 +100,14 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
                   </div>
                   <p class="standard-price">{offer.standardPriceText[lang]}</p>
                 </div>
+              ) : (
+                <>
+                  <h2>{offer.title[lang]}</h2>
+                  <p class="offer-text">{offer.offerText[lang]}</p>
+                </>
               )}
+
+              {offer.showSpaces && <div class="spaces-badge">{spacesLabel(offer)}</div>}
             </div>
 
             <div class="promotion-action">
@@ -121,8 +124,8 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 {candidateOffers.length > 0 && (
   <script is:inline>
     (() => {
-      const section = document.querySelector('[data-promotions-section]');
-      if (!section) return;
+      const sections = [...document.querySelectorAll('[data-promotions-section]')];
+      if (!sections.length) return;
 
       const londonDateKey = (date) => {
         const parts = new Intl.DateTimeFormat('en-GB', {
@@ -136,21 +139,24 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
       };
 
       const today = londonDateKey(new Date());
-      const cards = [...section.querySelectorAll('[data-promotion-card]')];
-      let visibleCount = 0;
 
-      cards.forEach((card) => {
-        const start = card.dataset.startDate || '';
-        const end = card.dataset.endDate || '';
-        const autoDisable = card.dataset.autoDisable === 'true';
-        const afterStart = !start || today >= start;
-        const beforeEnd = !autoDisable || !end || today <= end;
-        const visible = afterStart && beforeEnd;
-        card.hidden = !visible;
-        if (visible) visibleCount += 1;
+      sections.forEach((section) => {
+        const cards = [...section.querySelectorAll('[data-promotion-card]')];
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const start = card.dataset.startDate || '';
+          const end = card.dataset.endDate || '';
+          const autoDisable = card.dataset.autoDisable === 'true';
+          const afterStart = !start || today >= start;
+          const beforeEnd = !autoDisable || !end || today <= end;
+          const visible = afterStart && beforeEnd;
+          card.hidden = !visible;
+          if (visible) visibleCount += 1;
+        });
+
+        section.hidden = visibleCount === 0;
       });
-
-      section.hidden = visibleCount === 0;
     })();
   </script>
 )}
@@ -158,16 +164,16 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 <style>
   .promotion-section {
     background: var(--graphite);
-    padding: 38px 0 64px;
+    padding: 34px 0 58px;
   }
 
-  .promotion-home { padding-top: 28px; }
-  .promotion-service { padding-top: 18px; }
+  .promotion-home { padding-top: 26px; }
+  .promotion-service { padding-top: 14px; }
 
   .promotion-section-label {
     display: block;
     color: #F4B5BC;
-    font-size: .76rem;
+    font-size: .74rem;
     line-height: 1.2;
     font-weight: 900;
     letter-spacing: .12em;
@@ -178,31 +184,31 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
   .promotion-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-    gap: 22px;
+    gap: 20px;
   }
 
   .promotion-card {
     min-width: 0;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(250px, .92fr);
     gap: 28px;
     align-items: center;
     background: #202329;
     border: 1px solid #3B4048;
-    border-left: 5px solid #555B64;
+    border-left: 4px solid #555B64;
     border-radius: var(--radius);
-    padding: 28px 30px;
-    box-shadow: 0 18px 46px rgba(0, 0, 0, .18);
+    padding: 26px 28px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .16);
   }
 
   .promotion-card.is-featured { border-left-color: var(--red); }
 
   .promotion-meta {
     display: flex;
-    gap: 9px;
+    gap: 8px;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
   }
 
   .service-badge,
@@ -210,57 +216,126 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
   .spaces-badge {
     display: inline-flex;
     align-items: center;
-    min-height: 31px;
+    min-height: 30px;
     border-radius: 999px;
     padding: 7px 11px;
-    font-size: .7rem;
+    font-size: .69rem;
     line-height: 1.1;
     font-weight: 900;
-    letter-spacing: .07em;
+    letter-spacing: .065em;
     text-transform: uppercase;
   }
 
-  .service-badge { background: #30343B; color: #F1F2F4; border: 1px solid #444A53; }
-  .promotion-eyebrow { color: #F4B5BC; border: 1px solid #5B3C42; background: #2A2225; }
-  .spaces-badge { background: var(--red); color: var(--white); margin-top: 17px; }
+  .service-badge {
+    background: #30343B;
+    color: #F1F2F4;
+    border: 1px solid #444A53;
+  }
+
+  .promotion-eyebrow {
+    color: #F4B5BC;
+    border: 1px solid #5B3C42;
+    background: #2A2225;
+  }
+
+  .spaces-badge {
+    color: #F1C1C6;
+    border: 1px solid #6A3A41;
+    background: transparent;
+    margin-top: 17px;
+  }
 
   .promotion-card h2 {
     color: var(--white);
-    font-size: clamp(1.55rem, 3vw, 2.35rem);
+    font-size: clamp(1.55rem, 3vw, 2.25rem);
     line-height: 1.08;
     margin: 0 0 10px;
   }
 
-  .offer-text { color: #D3D6DA; max-width: 58ch; }
-  .price-wrap { margin-top: 21px; }
-  .promotion-price { display: flex; align-items: flex-end; gap: 11px; flex-wrap: wrap; }
-  .promotion-price strong { color: var(--white); font-size: clamp(3rem, 6vw, 4.8rem); line-height: .86; letter-spacing: -.055em; }
-  .promotion-price span { color: #F4F5F6; font-size: 1rem; font-weight: 900; line-height: 1.05; text-transform: uppercase; padding-bottom: 5px; }
-  .standard-price { color: #BFC4CA; font-size: .9rem; font-weight: 700; margin-top: 12px; }
+  .offer-text {
+    color: #D3D6DA;
+    max-width: 58ch;
+  }
+
+  .price-wrap { margin-top: 2px; }
+
+  .promotion-price {
+    display: flex;
+    align-items: flex-end;
+    gap: 11px;
+    flex-wrap: wrap;
+  }
+
+  .promotion-price strong {
+    color: var(--white);
+    font-size: clamp(3rem, 5.4vw, 4.35rem);
+    line-height: .88;
+    letter-spacing: -.05em;
+  }
+
+  .promotion-price span {
+    color: #F4F5F6;
+    font-size: .96rem;
+    font-weight: 900;
+    line-height: 1.08;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    max-width: 13ch;
+  }
+
+  .standard-price {
+    color: #C7CBD0;
+    font-size: .92rem;
+    font-weight: 700;
+    margin-top: 13px;
+  }
 
   .promotion-action {
     border-left: 1px solid #3A3E45;
     padding-left: 28px;
   }
 
-  .promotion-action .btn { width: 100%; text-align: center; justify-content: center; }
-  .small-print { color: #BFC4CA; font-size: .78rem; line-height: 1.52; margin-top: 14px; }
+  .promotion-action .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .small-print {
+    color: #AEB3BA;
+    font-size: .76rem;
+    line-height: 1.5;
+    margin-top: 13px;
+  }
+
   [hidden] { display: none !important; }
 
   @media (max-width: 980px) {
-    .promotion-card { grid-template-columns: 1fr; gap: 22px; }
-    .promotion-action { border-left: 0; border-top: 1px solid #3A3E45; padding-left: 0; padding-top: 22px; }
+    .promotion-card {
+      grid-template-columns: 1fr;
+      gap: 21px;
+    }
+
+    .promotion-action {
+      border-left: 0;
+      border-top: 1px solid #3A3E45;
+      padding-left: 0;
+      padding-top: 21px;
+    }
   }
 
   @media (max-width: 620px) {
-    .promotion-section { padding: 24px 0 46px; }
-    .promotion-card { padding: 22px 18px; gap: 19px; }
-    .promotion-meta { align-items: stretch; }
-    .service-badge, .promotion-eyebrow { justify-content: center; text-align: center; }
-    .promotion-card h2 { font-size: clamp(1.45rem, 8vw, 2rem); }
-    .spaces-badge { width: 100%; justify-content: center; text-align: center; }
-    .promotion-price strong { font-size: clamp(3.15rem, 18vw, 4.6rem); }
-    .promotion-price span { font-size: .9rem; max-width: 11ch; }
-    .small-print { font-size: .75rem; }
+    .promotion-section { padding: 20px 0 40px; }
+    .promotion-service { padding-top: 10px; }
+    .promotion-card { padding: 20px 17px; gap: 18px; }
+    .promotion-meta { margin-bottom: 18px; }
+    .service-badge,
+    .promotion-eyebrow { justify-content: center; text-align: center; }
+    .promotion-price strong { font-size: clamp(3rem, 15vw, 3.9rem); }
+    .promotion-price span { font-size: .82rem; max-width: 10ch; }
+    .standard-price { font-size: .88rem; margin-top: 11px; }
+    .spaces-badge { width: auto; max-width: 100%; justify-content: center; text-align: center; margin-top: 15px; }
+    .promotion-action { padding-top: 18px; }
+    .small-print { font-size: .73rem; }
   }
 </style>

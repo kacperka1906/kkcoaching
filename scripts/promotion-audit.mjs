@@ -33,16 +33,23 @@ if (!Array.isArray(offers)) {
     }
     if (typeof offer.priority !== 'number' || !Number.isFinite(offer.priority)) errors.push(`${prefix}.priority must be a finite number`);
 
-    for (const name of ['headline', 'title', 'offerText', 'promotionalPeriod', 'standardPriceText', 'ctaText', 'ctaDestination', 'smallPrint']) {
+    for (const name of ['headline', 'ctaText', 'ctaDestination', 'smallPrint']) {
       if (!pairIsValid(offer[name])) errors.push(`${prefix}.${name} must contain non-empty en/pl values`);
     }
 
     if (typeof offer.showPrice !== 'boolean') errors.push(`${prefix}.showPrice must be boolean`);
     if (offer.showPrice) {
+      for (const name of ['promotionalPeriod', 'standardPriceText']) {
+        if (!pairIsValid(offer[name])) errors.push(`${prefix}.${name} must contain non-empty en/pl values when showPrice is enabled`);
+      }
       for (const name of ['promotionalPrice', 'standardPrice']) {
         if (typeof offer[name] !== 'number' || !Number.isFinite(offer[name]) || offer[name] < 0) {
           errors.push(`${prefix}.${name} must be a non-negative number`);
         }
+      }
+    } else {
+      for (const name of ['title', 'offerText']) {
+        if (!pairIsValid(offer[name])) errors.push(`${prefix}.${name} must contain non-empty en/pl values when showPrice is disabled`);
       }
     }
 
@@ -100,7 +107,11 @@ for (const page of pages) {
     if (!expected && rendered) errors.push(`${page.label} renders promotion ${offer.id} in the wrong placement`);
 
     if (expected) {
-      for (const text of [offer.headline[page.lang], offer.title[page.lang], offer.offerText[page.lang], offer.ctaText[page.lang], offer.smallPrint[page.lang]]) {
+      const expectedText = [offer.headline[page.lang], offer.ctaText[page.lang], offer.smallPrint[page.lang]];
+      if (offer.showPrice) expectedText.push(offer.promotionalPeriod[page.lang], offer.standardPriceText[page.lang]);
+      else expectedText.push(offer.title[page.lang], offer.offerText[page.lang]);
+
+      for (const text of expectedText) {
         if (!html.includes(text)) errors.push(`${page.label} promotion ${offer.id} is missing text: ${text}`);
       }
       if (offer.showPrice && !html.includes(`£${offer.promotionalPrice}`)) errors.push(`${page.label} promotion ${offer.id} is missing the promotional price`);
