@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrainingLocation from '../components/TrainingLocation.astro';
+import Promotions from '../components/Promotions.astro';
 import details from '../data/service-details-v2.json';
 import admin from '../data/admin-v2.json';
 
@@ -55,6 +56,8 @@ const structuredData = {
       <div class="hero-media"><img src={copy.hero.fallbackImage} alt={copy.hero.imageAlt[lang]} width="720" height="540" /></div>
     </div>
   </section>
+
+  <Promotions lang="en" placement="service" service="personal-training" />
 
   <section class="on-white" aria-labelledby="fit-heading">
     <div class="container">
