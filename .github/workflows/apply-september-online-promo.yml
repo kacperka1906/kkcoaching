@@ -118,8 +118,8 @@ jobs:
         run: |
           cp /tmp/online-promotion-live.json src/data/online-promotion.json
           npm run build
-          grep -q 'SEPTEMBER SPECIAL OFFER' dist/online-coaching/index.html
-          grep -q 'WRZEŚNIOWA OFERTA SPECJALNA' dist/pl/online-coaching/index.html
+          grep -q 'September Special Offer' dist/online-coaching/index.html
+          grep -q 'Wrześniowa Oferta Specjalna' dist/pl/online-coaching/index.html
           grep -q '£65' dist/online-coaching/index.html
           grep -q '10 NEW CLIENT SPACES' dist/online-coaching/index.html
 
