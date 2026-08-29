@@ -1,0 +1,132 @@
+name: Apply September Online Promotion
+
+on:
+  push:
+    branches:
+      - feature/september-online-promo
+    paths:
+      - 'scripts/apply-september-promo.mjs'
+      - '.github/workflows/apply-september-online-promo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-test-and-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/september-online-promo
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply promotion integration
+        run: node scripts/apply-september-promo.mjs
+
+      - name: Build enabled production configuration
+        run: npm run build
+
+      - name: Verify generated Admin 2.0 promotion controls
+        run: |
+          grep -q 'Online Coaching Promotion — campaign settings' public/admin/config.yml
+          for field in enabled headline promotionalPrice standardPrice promotionalPeriod totalSpaces remainingSpaces ctaText ctaDestination startDate endDate autoDisableAfterEndDate smallPrint; do
+            grep -q "name: $field" public/admin/config.yml
+          done
+
+      - name: Capture EN and PL desktop/mobile promotion screenshots
+        run: |
+          mkdir -p promotion-screenshots
+          npm run preview -- --host 127.0.0.1 > /tmp/kk-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          sleep 5
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            echo 'No Chrome/Chromium found on runner.'
+            cat /tmp/kk-preview.log
+            kill $PREVIEW_PID || true
+            exit 1
+          fi
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1200 --screenshot=promotion-screenshots/en-desktop.png http://127.0.0.1:4321/online-coaching/
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1200 --force-device-scale-factor=1 --screenshot=promotion-screenshots/en-mobile.png http://127.0.0.1:4321/online-coaching/
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1200 --screenshot=promotion-screenshots/pl-desktop.png http://127.0.0.1:4321/pl/online-coaching/
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1200 --force-device-scale-factor=1 --screenshot=promotion-screenshots/pl-mobile.png http://127.0.0.1:4321/pl/online-coaching/
+          kill $PREVIEW_PID || true
+
+      - name: Upload visual QA screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: september-online-promotion-visual-qa
+          path: promotion-screenshots/*.png
+          retention-days: 7
+
+      - name: Test Promotion enabled OFF removes the banner cleanly
+        run: |
+          cp src/data/online-promotion.json /tmp/online-promotion-live.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const file = 'src/data/online-promotion.json';
+          const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+          data.enabled = false;
+          fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+          NODE
+          npm run build
+          ! grep -q 'data-online-promotion' dist/online-coaching/index.html
+          ! grep -q 'data-online-promotion' dist/pl/online-coaching/index.html
+
+      - name: Test manual remaining-spaces editing
+        run: |
+          cp /tmp/online-promotion-live.json src/data/online-promotion.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const file = 'src/data/online-promotion.json';
+          const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+          data.remainingSpaces = 4;
+          fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+          NODE
+          npm run build
+          grep -q '4 SPACES REMAINING' dist/online-coaching/index.html
+          grep -q 'ZOSTAŁY 4 MIEJSCA' dist/pl/online-coaching/index.html
+
+      - name: Test automatic end-date hiding
+        run: |
+          cp /tmp/online-promotion-live.json src/data/online-promotion.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const file = 'src/data/online-promotion.json';
+          const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+          data.endDate = '2026-08-28';
+          data.autoDisableAfterEndDate = true;
+          fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+          NODE
+          npm run build
+          grep -E -q 'data-online-promotion[^>]*hidden|hidden[^>]*data-online-promotion' dist/online-coaching/index.html
+          grep -E -q 'data-online-promotion[^>]*hidden|hidden[^>]*data-online-promotion' dist/pl/online-coaching/index.html
+
+      - name: Restore live configuration and run final build
+        run: |
+          cp /tmp/online-promotion-live.json src/data/online-promotion.json
+          npm run build
+          grep -q 'SEPTEMBER SPECIAL OFFER' dist/online-coaching/index.html
+          grep -q 'WRZEŚNIOWA OFERTA SPECJALNA' dist/pl/online-coaching/index.html
+          grep -q '£65' dist/online-coaching/index.html
+          grep -q '10 NEW CLIENT SPACES' dist/online-coaching/index.html
+
+      - name: Commit verified integration and remove one-time tooling
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/pages/online-coaching.astro src/pages/pl/online-coaching.astro scripts/generate-admin-config.mjs public/admin/config.yml
+          git rm scripts/apply-september-promo.mjs .github/workflows/apply-september-online-promo.yml
+          git commit -m "Integrate configurable September Online Coaching promotion"
+          git push origin feature/september-online-promo
