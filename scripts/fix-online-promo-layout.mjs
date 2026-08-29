@@ -26,4 +26,12 @@ if (!finalize.includes(oldFn)) throw new Error('Expected movePricingAfterHero im
 finalize = finalize.replace(oldFn, newFn);
 fs.writeFileSync(finalizeFile, finalize, 'utf8');
 
-console.log('Online promotion is now a sibling of the hero; pricing follows the promotion when enabled.');
+const auditFile = 'scripts/seo-audit.mjs';
+let audit = fs.readFileSync(auditFile, 'utf8');
+const oldAudit = `      const nextSection = html.indexOf('<section', heroEnd + '</section>'.length);\n      if (nextSection !== pricingAt) addError(path, 'pricing is not the first section immediately after the hero');`;
+const newAudit = `      const nextSection = html.indexOf('<section', heroEnd + '</section>'.length);\n      const isOnlineRoute = path === '/online-coaching' || path === '/pl/online-coaching';\n      if (isOnlineRoute) {\n        const promotionAt = html.indexOf('<section class="online-promotion', heroEnd + '</section>'.length);\n        if (promotionAt >= 0) {\n          if (nextSection !== promotionAt) addError(path, 'promotion is not the first section immediately after the hero');\n          const promotionEnd = html.indexOf('</section>', promotionAt);\n          if (promotionEnd < 0) addError(path, 'online promotion section is not closed');\n          else {\n            const sectionAfterPromotion = html.indexOf('<section', promotionEnd + '</section>'.length);\n            if (sectionAfterPromotion !== pricingAt) addError(path, 'pricing is not immediately after the online promotion');\n          }\n        } else if (nextSection !== pricingAt) {\n          addError(path, 'pricing is not the first section immediately after the hero when promotion is hidden');\n        }\n      } else if (nextSection !== pricingAt) {\n        addError(path, 'pricing is not the first section immediately after the hero');\n      }`;
+if (!audit.includes(oldAudit)) throw new Error('Expected service pricing SEO-audit assertion not found');
+audit = audit.replace(oldAudit, newAudit);
+fs.writeFileSync(auditFile, audit, 'utf8');
+
+console.log('Online promotion is now a sibling of the hero; pricing follows it when enabled, and the SEO audit validates both ON/OFF layouts.');
