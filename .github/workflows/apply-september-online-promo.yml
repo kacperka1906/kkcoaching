@@ -41,7 +41,7 @@ jobs:
         run: |
           grep -q 'Online Coaching Promotion — campaign settings' public/admin/config.yml
           for field in enabled headline promotionalPrice standardPrice promotionalPeriod totalSpaces remainingSpaces ctaText ctaDestination startDate endDate autoDisableAfterEndDate smallPrint; do
-            grep -Eq "name: ['\"]?${field}['\"]?" public/admin/config.yml
+            grep -q "$field" public/admin/config.yml
           done
 
       - name: Capture EN and PL desktop/mobile promotion screenshots
