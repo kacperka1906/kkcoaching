@@ -8,7 +8,7 @@ const dataFiles = [
   { label: 'Core pages — Services, About, Contact, Transformations', name: 'pages_v2', file: 'src/data/pages-v2.json' },
   { label: 'Personal Training page — EN + PL', name: 'personal_training_v2', file: 'src/data/service-details-v2.json' },
   { label: 'Online Coaching page — EN + PL', name: 'online_v2', file: 'src/data/online-v2.json' },
-  { label: 'Online Coaching Promotion — campaign settings', name: 'online_promotion', file: 'src/data/online-promotion.json' },
+  { label: 'Promotions & Offers — campaigns', name: 'promotions', file: 'src/data/promotions.json' },
   { label: 'Hybrid Coaching page — EN + PL', name: 'hybrid_v2', file: 'src/data/hybrid-v2.json' },
   { label: 'Training Plan page — EN + PL', name: 'training_plan_v2', file: 'src/data/training-plan-v2.json' },
   { label: 'Service cards — EN + PL', name: 'services_v2', file: 'src/data/services-v2.json' },
@@ -41,6 +41,7 @@ const labelMap = {
   enabled: 'Widoczne / aktywne',
   featured: 'Wyróżnij',
   order: 'Kolejność',
+  priority: 'Priorytet wyświetlania',
   items: 'Elementy',
   cards: 'Karty',
   facts: 'Atuty / punkty',
@@ -100,9 +101,20 @@ const labelMap = {
   seoLine: 'Dolna linia SEO',
   credentials: 'Kwalifikacje',
   locationSummary: 'Opis lokalizacji / zasięgu',
+  offers: 'Promocje / kampanie',
+  id: 'ID kampanii',
+  internalName: 'Nazwa wewnętrzna',
+  service: 'Usługa',
+  display: 'Gdzie wyświetlać',
+  homepage: 'Strona główna',
+  servicePage: 'Podstrona usługi',
+  offerText: 'Główny tekst oferty',
+  showPrice: 'Pokaż cenę promocyjną',
   promotionalPrice: 'Promotional price / Cena promocyjna',
   standardPrice: 'Standard price / Cena standardowa',
   promotionalPeriod: 'Promotional period / Okres promocyjny',
+  standardPriceText: 'Tekst ceny standardowej',
+  showSpaces: 'Pokaż liczbę miejsc',
   totalSpaces: 'Total promotional spaces / Łączna liczba miejsc',
   remainingSpaces: 'Remaining spaces / Pozostałe miejsca',
   ctaText: 'CTA text / Tekst CTA',
@@ -122,7 +134,7 @@ const isPair = (value) => value && typeof value === 'object' && !Array.isArray(v
   && Object.keys(value).length === 2 && Object.hasOwn(value, 'en') && Object.hasOwn(value, 'pl');
 
 const isImageName = (name) => /(^|)(image|logo|screenshot|photo)$/i.test(name) || /(Image|Logo|Screenshot|Photo)$/.test(name);
-const isLongTextName = (name) => /body|description|lead|tagline|intro|note|answer|quote|story|copy|info/i.test(name);
+const isLongTextName = (name) => /body|description|lead|tagline|intro|note|answer|quote|story|copy|info|offerText|smallPrint/i.test(name);
 const isUrlName = (name) => /url|href|target/i.test(name);
 
 function scalarField(name, value, required = true) {
@@ -131,6 +143,19 @@ function scalarField(name, value, required = true) {
   if (name === 'startDate' || name === 'endDate') return { ...field, widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' };
   if (typeof value === 'number') return { ...field, widget: 'number', value_type: Number.isInteger(value) ? 'int' : 'float' };
   if (isImageName(name)) return { ...field, widget: 'image', required };
+  if (name === 'service') {
+    return {
+      ...field,
+      widget: 'select',
+      options: [
+        { label: 'Online Coaching', value: 'online' },
+        { label: 'Hybrid Coaching', value: 'hybrid' },
+        { label: 'Personal Training 1:1', value: 'personal-training' },
+        { label: 'General / Homepage only', value: 'general' },
+        { label: 'All service pages', value: 'all' }
+      ]
+    };
+  }
   if (name === 'source') {
     return {
       ...field,
@@ -207,7 +232,8 @@ function fieldFromValue(name, value, parents = []) {
       }
       const fields = Object.entries(first).map(([childName, childValue]) => fieldFromValue(childName, childValue, [...parents, name]));
       let summary = '{{fields.title.en}} / {{fields.title.pl}}';
-      if (Object.hasOwn(first, 'client')) summary = '{{fields.client}} — {{fields.source}}';
+      if (Object.hasOwn(first, 'internalName')) summary = '{{fields.internalName}} — {{fields.service}}';
+      else if (Object.hasOwn(first, 'client')) summary = '{{fields.client}} — {{fields.source}}';
       else if (Object.hasOwn(first, 'name') && isPair(first.name)) summary = '{{fields.name.en}} / {{fields.name.pl}}';
       else if (Object.hasOwn(first, 'label') && isPair(first.label)) summary = '{{fields.label.en}} / {{fields.label.pl}}';
       else if (Object.hasOwn(first, 'value')) summary = '{{fields.value}}';
