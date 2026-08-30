@@ -1,42 +1,49 @@
 {
   "offers": [
     {
-      "id": "september-2026-online",
-      "internalName": "September 2026 — Online Coaching",
       "enabled": true,
-      "service": "online",
       "display": {
         "homepage": true,
         "servicePage": true
       },
+      "remainingSpaces": 10,
       "priority": 100,
-      "featured": true,
-      "headline": {
-        "en": "September Special Offer",
-        "pl": "Wrześniowa Oferta Specjalna"
+      "smallPrint": {
+        "en": "For new clients joining in September.",
+        "pl": "Dla nowych klientów rozpoczynających współpracę we wrześniu."
       },
-      "title": {
-        "en": "10 new client spaces",
-        "pl": "10 miejsc dla nowych klientów"
-      },
+      "autoDisableAfterEndDate": true,
+      "internalName": "September 2026 — Online Coaching",
       "offerText": {
         "en": "Start Online Coaching for £65 for your first 4 weeks.",
         "pl": "Zacznij współpracę online za £65 za pierwsze 4 tygodnie."
       },
+      "endDate": "2026-09-30",
+      "showSpaces": true,
       "showPrice": true,
-      "promotionalPrice": 65,
       "standardPrice": 80,
+      "featured": true,
       "promotionalPeriod": {
         "en": "First 4 weeks",
         "pl": "Pierwsze 4 tygodnie"
+      },
+      "startDate": "2026-08-29",
+      "totalSpaces": 10,
+      "headline": {
+        "en": "September Special Offer",
+        "pl": "Wrześniowa Oferta Specjalna"
+      },
+      "service": "online",
+      "title": {
+        "en": "10 new client spaces",
+        "pl": "10 miejsc dla nowych klientów"
       },
       "standardPriceText": {
         "en": "Then £80 every 4 weeks",
         "pl": "Następnie £80 co 4 tygodnie"
       },
-      "showSpaces": true,
-      "totalSpaces": 10,
-      "remainingSpaces": 10,
+      "id": "september-2026-online",
+      "promotionalPrice": 65,
       "ctaText": {
         "en": "Book your free consultation",
         "pl": "Umów bezpłatną konsultację"
@@ -44,13 +51,6 @@
       "ctaDestination": {
         "en": "/contact",
         "pl": "/pl/contact"
-      },
-      "startDate": "2026-08-29",
-      "endDate": "2026-09-30",
-      "autoDisableAfterEndDate": true,
-      "smallPrint": {
-        "en": "For new clients joining in September. No 12-week commitment required.",
-        "pl": "Dla nowych klientów rozpoczynających współpracę we wrześniu. Bez 12-tygodniowego zobowiązania."
       }
     }
   ]
