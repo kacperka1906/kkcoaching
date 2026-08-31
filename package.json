@@ -7,7 +7,7 @@
     "admin:sync": "node scripts/sync-admin-v2.mjs && node scripts/sync-services-v2.mjs && node scripts/generate-admin-config.mjs && node scripts/extend-admin-resources.mjs && node scripts/extend-admin-promotions.mjs",
     "dev": "npm run admin:sync && astro dev",
     "build:astro": "npm run admin:sync && astro build",
-    "finalize:html": "node scripts/finalize-static-html.mjs && node scripts/finalize-home-seo.mjs",
+    "finalize:html": "node scripts/finalize-static-html.mjs && node scripts/finalize-home-seo.mjs && node scripts/set-personal-training-meta-description.mjs",
     "resources:visibility": "node scripts/apply-resources-visibility.mjs",
     "urls:normalize": "node scripts/normalize-public-urls.mjs",
     "seo:audit": "node scripts/seo-audit.mjs && node scripts/promotion-audit.mjs",
