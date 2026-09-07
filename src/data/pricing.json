@@ -47,7 +47,7 @@
         "en": "Pay as you go",
         "pl": "Pojedynczy trening"
       },
-      "price": 35,
+      "price": 30,
       "sessionMinutes": 60,
       "detail": {
         "en": "One 60-minute 1:1 session",
