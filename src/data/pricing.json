@@ -179,12 +179,12 @@
           "en": "Hybrid 1× weekly",
           "pl": "Hybrid 1× w tygodniu"
         },
-        "price": 180,
+        "price": 160,
         "weeks": 4,
         "sessions": 4,
         "detail": {
-          "en": "Full Online Coaching + 4 personal training sessions · save £30",
-          "pl": "Pełne prowadzenie online + 4 treningi 1:1 · oszczędzasz £30"
+          "en": "Full Online Coaching + 4 personal training sessions · save £34",
+          "pl": "Pełne prowadzenie online + 4 treningi 1:1 · oszczędzasz £34"
         },
         "featured": false
       },
@@ -195,12 +195,12 @@
           "en": "Hybrid 2× weekly",
           "pl": "Hybrid 2× w tygodniu"
         },
-        "price": 280,
+        "price": 240,
         "weeks": 4,
         "sessions": 8,
         "detail": {
-          "en": "Full Online Coaching + 8 personal training sessions · save £40",
-          "pl": "Pełne prowadzenie online + 8 treningów 1:1 · oszczędzasz £40"
+          "en": "Full Online Coaching + 8 personal training sessions · save £56",
+          "pl": "Pełne prowadzenie online + 8 treningów 1:1 · oszczędzasz £56"
         },
         "featured": true
       }
