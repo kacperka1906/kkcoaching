@@ -9,8 +9,8 @@
       "remainingSpaces": 10,
       "priority": 160,
       "smallPrint": {
-        "en": "New clients starting by 30 September 2026.",
-        "pl": "Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
+        "en": "Available until 30 September 2026.",
+        "pl": "Oferta dostępna do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "September 2026 — Online Coaching",
@@ -39,8 +39,8 @@
         "pl": "Coaching online"
       },
       "standardPriceText": {
-        "en": "Then £80 / 4 weeks",
-        "pl": "Następnie £80 / 4 tygodnie"
+        "en": "Full Online Coaching",
+        "pl": "Pełne prowadzenie online"
       },
       "id": "september-2026-online",
       "promotionalPrice": 65,
@@ -62,8 +62,8 @@
       "remainingSpaces": 0,
       "priority": 200,
       "smallPrint": {
-        "en": "4 sessions · New clients starting by 30 September 2026.",
-        "pl": "4 treningi · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
+        "en": "Available until 30 September 2026.",
+        "pl": "Oferta dostępna do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — PT 1x weekly",
@@ -92,8 +92,8 @@
         "pl": "Trening 1:1 — 1× w tygodniu"
       },
       "standardPriceText": {
-        "en": "Then £114 / 4 weeks",
-        "pl": "Następnie £114 / 4 tygodnie"
+        "en": "4 sessions",
+        "pl": "4 treningi"
       },
       "id": "autumn-reset-2026-pt-1x",
       "promotionalPrice": 90,
@@ -115,8 +115,8 @@
       "remainingSpaces": 0,
       "priority": 190,
       "smallPrint": {
-        "en": "8 sessions · New clients starting by 30 September 2026.",
-        "pl": "8 treningów · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
+        "en": "Available until 30 September 2026.",
+        "pl": "Oferta dostępna do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — PT 2x weekly",
@@ -145,8 +145,8 @@
         "pl": "Trening 1:1 — 2× w tygodniu"
       },
       "standardPriceText": {
-        "en": "Then £216 / 4 weeks",
-        "pl": "Następnie £216 / 4 tygodnie"
+        "en": "8 sessions",
+        "pl": "8 treningów"
       },
       "id": "autumn-reset-2026-pt-2x",
       "promotionalPrice": 160,
@@ -168,8 +168,8 @@
       "remainingSpaces": 0,
       "priority": 180,
       "smallPrint": {
-        "en": "Full coaching + 4 personal training sessions · New clients starting by 30 September 2026.",
-        "pl": "Pełne prowadzenie + 4 treningi 1:1 · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
+        "en": "Available until 30 September 2026.",
+        "pl": "Oferta dostępna do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — Hybrid 1x weekly",
@@ -198,8 +198,8 @@
         "pl": "Hybrid — 1× w tygodniu"
       },
       "standardPriceText": {
-        "en": "Then £160 / 4 weeks",
-        "pl": "Następnie £160 / 4 tygodnie"
+        "en": "Full coaching + 4 PT sessions",
+        "pl": "Pełne prowadzenie + 4 treningi 1:1"
       },
       "id": "autumn-reset-2026-hybrid-1x",
       "promotionalPrice": 120,
@@ -221,8 +221,8 @@
       "remainingSpaces": 0,
       "priority": 170,
       "smallPrint": {
-        "en": "Full coaching + 8 personal training sessions · New clients starting by 30 September 2026.",
-        "pl": "Pełne prowadzenie + 8 treningów 1:1 · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
+        "en": "Available until 30 September 2026.",
+        "pl": "Oferta dostępna do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — Hybrid 2x weekly",
@@ -251,8 +251,8 @@
         "pl": "Hybrid — 2× w tygodniu"
       },
       "standardPriceText": {
-        "en": "Then £240 / 4 weeks",
-        "pl": "Następnie £240 / 4 tygodnie"
+        "en": "Full coaching + 8 PT sessions",
+        "pl": "Pełne prowadzenie + 8 treningów 1:1"
       },
       "id": "autumn-reset-2026-hybrid-2x",
       "promotionalPrice": 190,
