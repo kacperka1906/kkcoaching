@@ -7,10 +7,10 @@
         "servicePage": true
       },
       "remainingSpaces": 10,
-      "priority": 150,
+      "priority": 160,
       "smallPrint": {
-        "en": "For new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Dla nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
+        "en": "New clients starting by 30 September 2026.",
+        "pl": "Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "September 2026 — Online Coaching",
@@ -30,13 +30,13 @@
       "startDate": "2026-08-29",
       "totalSpaces": 10,
       "headline": {
-        "en": "September Offer",
-        "pl": "Wrześniowa oferta"
+        "en": "Ends 30 September",
+        "pl": "Do 30 września"
       },
       "service": "online",
       "title": {
-        "en": "Online Coaching — September Offer",
-        "pl": "Coaching online — wrześniowa oferta"
+        "en": "Online Coaching",
+        "pl": "Coaching online"
       },
       "standardPriceText": {
         "en": "Then £80 / 4 weeks",
@@ -57,66 +57,13 @@
       "enabled": true,
       "display": {
         "homepage": true,
-        "servicePage": false
+        "servicePage": true
       },
       "remainingSpaces": 0,
       "priority": 200,
       "smallPrint": {
-        "en": "Offer applies to new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Oferta dotyczy nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
-      },
-      "autoDisableAfterEndDate": true,
-      "internalName": "Autumn Reset 2026 — Homepage summary",
-      "offerText": {
-        "en": "First 4 weeks · Ends 30 September",
-        "pl": "Pierwsze 4 tygodnie · Do 30 września"
-      },
-      "endDate": "2026-09-30",
-      "showSpaces": false,
-      "showPrice": false,
-      "standardPrice": 0,
-      "featured": true,
-      "promotionalPeriod": {
-        "en": "First 4 weeks",
-        "pl": "Pierwsze 4 tygodnie"
-      },
-      "startDate": "2026-09-15",
-      "totalSpaces": 0,
-      "headline": {
-        "en": "AUTUMN RESET — 1:1 + HYBRID",
-        "pl": "AUTUMN RESET — 1:1 + HYBRID"
-      },
-      "service": "general",
-      "title": {
-        "en": "1:1 PT from £90 · Hybrid from £120",
-        "pl": "Trening 1:1 od £90 · Hybrid od £120"
-      },
-      "standardPriceText": {
-        "en": "",
-        "pl": ""
-      },
-      "id": "autumn-reset-2026-home",
-      "promotionalPrice": 0,
-      "ctaText": {
-        "en": "Book your free consultation",
-        "pl": "Umów bezpłatną konsultację"
-      },
-      "ctaDestination": {
-        "en": "/contact",
-        "pl": "/pl/contact"
-      }
-    },
-    {
-      "enabled": true,
-      "display": {
-        "homepage": false,
-        "servicePage": true
-      },
-      "remainingSpaces": 0,
-      "priority": 120,
-      "smallPrint": {
-        "en": "Includes 4 sessions. Offer applies to new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Obejmuje 4 treningi. Oferta dotyczy nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
+        "en": "4 sessions · New clients starting by 30 September 2026.",
+        "pl": "4 treningi · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — PT 1x weekly",
@@ -128,7 +75,7 @@
       "showSpaces": false,
       "showPrice": true,
       "standardPrice": 114,
-      "featured": false,
+      "featured": true,
       "promotionalPeriod": {
         "en": "First 4 weeks",
         "pl": "Pierwsze 4 tygodnie"
@@ -136,8 +83,8 @@
       "startDate": "2026-09-15",
       "totalSpaces": 0,
       "headline": {
-        "en": "AUTUMN RESET · 1× WEEKLY",
-        "pl": "AUTUMN RESET · 1× W TYGODNIU"
+        "en": "1× weekly",
+        "pl": "1× w tygodniu"
       },
       "service": "personal-training",
       "title": {
@@ -162,14 +109,14 @@
     {
       "enabled": true,
       "display": {
-        "homepage": false,
+        "homepage": true,
         "servicePage": true
       },
       "remainingSpaces": 0,
-      "priority": 110,
+      "priority": 190,
       "smallPrint": {
-        "en": "Includes 8 sessions. Offer applies to new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Obejmuje 8 treningów. Oferta dotyczy nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
+        "en": "8 sessions · New clients starting by 30 September 2026.",
+        "pl": "8 treningów · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — PT 2x weekly",
@@ -181,7 +128,7 @@
       "showSpaces": false,
       "showPrice": true,
       "standardPrice": 216,
-      "featured": false,
+      "featured": true,
       "promotionalPeriod": {
         "en": "First 4 weeks",
         "pl": "Pierwsze 4 tygodnie"
@@ -189,8 +136,8 @@
       "startDate": "2026-09-15",
       "totalSpaces": 0,
       "headline": {
-        "en": "AUTUMN RESET · 2× WEEKLY",
-        "pl": "AUTUMN RESET · 2× W TYGODNIU"
+        "en": "2× weekly",
+        "pl": "2× w tygodniu"
       },
       "service": "personal-training",
       "title": {
@@ -215,14 +162,14 @@
     {
       "enabled": true,
       "display": {
-        "homepage": false,
+        "homepage": true,
         "servicePage": true
       },
       "remainingSpaces": 0,
-      "priority": 120,
+      "priority": 180,
       "smallPrint": {
-        "en": "Includes Full Online Coaching + 4 personal training sessions. Offer applies to new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Obejmuje pełne prowadzenie online + 4 treningi 1:1. Oferta dotyczy nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
+        "en": "Full coaching + 4 personal training sessions · New clients starting by 30 September 2026.",
+        "pl": "Pełne prowadzenie + 4 treningi 1:1 · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — Hybrid 1x weekly",
@@ -234,7 +181,7 @@
       "showSpaces": false,
       "showPrice": true,
       "standardPrice": 160,
-      "featured": false,
+      "featured": true,
       "promotionalPeriod": {
         "en": "First 4 weeks",
         "pl": "Pierwsze 4 tygodnie"
@@ -242,8 +189,8 @@
       "startDate": "2026-09-15",
       "totalSpaces": 0,
       "headline": {
-        "en": "AUTUMN RESET · 1× WEEKLY",
-        "pl": "AUTUMN RESET · 1× W TYGODNIU"
+        "en": "1× weekly",
+        "pl": "1× w tygodniu"
       },
       "service": "hybrid",
       "title": {
@@ -268,14 +215,14 @@
     {
       "enabled": true,
       "display": {
-        "homepage": false,
+        "homepage": true,
         "servicePage": true
       },
       "remainingSpaces": 0,
-      "priority": 110,
+      "priority": 170,
       "smallPrint": {
-        "en": "Includes Full Online Coaching + 8 personal training sessions. Offer applies to new clients starting by 30 September 2026. Standard prices apply after the first 4 weeks.",
-        "pl": "Obejmuje pełne prowadzenie online + 8 treningów 1:1. Oferta dotyczy nowych klientów rozpoczynających współpracę do 30 września 2026. Po pierwszych 4 tygodniach obowiązują ceny standardowe."
+        "en": "Full coaching + 8 personal training sessions · New clients starting by 30 September 2026.",
+        "pl": "Pełne prowadzenie + 8 treningów 1:1 · Dla nowych klientów rozpoczynających współpracę do 30 września 2026."
       },
       "autoDisableAfterEndDate": true,
       "internalName": "Autumn Reset 2026 — Hybrid 2x weekly",
@@ -287,7 +234,7 @@
       "showSpaces": false,
       "showPrice": true,
       "standardPrice": 240,
-      "featured": false,
+      "featured": true,
       "promotionalPeriod": {
         "en": "First 4 weeks",
         "pl": "Pierwsze 4 tygodnie"
@@ -295,8 +242,8 @@
       "startDate": "2026-09-15",
       "totalSpaces": 0,
       "headline": {
-        "en": "AUTUMN RESET · 2× WEEKLY",
-        "pl": "AUTUMN RESET · 2× W TYGODNIU"
+        "en": "2× weekly",
+        "pl": "2× w tygodniu"
       },
       "service": "hybrid",
       "title": {
