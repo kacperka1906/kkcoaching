@@ -203,6 +203,29 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 
   .promotion-card.is-featured { border-left-color: var(--red); }
 
+  .promotion-home .promotion-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 16px;
+  }
+
+  .promotion-home .promotion-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px;
+    align-content: start;
+  }
+
+  .promotion-home .promotion-action {
+    border-left: 0;
+    border-top: 1px solid #3A3E45;
+    padding-left: 0;
+    padding-top: 18px;
+  }
+
+  .promotion-home .promotion-price strong {
+    font-size: clamp(2.8rem, 4.7vw, 3.7rem);
+  }
+
   .promotion-meta {
     display: flex;
     gap: 8px;
