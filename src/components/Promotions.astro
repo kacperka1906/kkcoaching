@@ -1,5 +1,6 @@
 ---
 import promotions from '../data/promotions.json';
+import pricing from '../data/pricing.json';
 
 interface Props {
   lang: 'en' | 'pl';
@@ -19,6 +20,40 @@ const serviceLabels = {
 };
 
 const money = (value: number) => `£${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
+const octoberDiscount = 0.20;
+const discounted = (value: number) => value * (1 - octoberDiscount);
+const activePersonal = pricing.personal.packages.filter(plan => plan.enabled && plan.sessions > 0);
+const lowestPersonalRate = activePersonal.length
+  ? Math.min(...activePersonal.map(plan => plan.price / plan.sessions))
+  : null;
+const activeHybrid = pricing.hybrid.packages.filter(plan => plan.enabled);
+const lowestHybridPrice = activeHybrid.length
+  ? Math.min(...activeHybrid.map(plan => plan.price))
+  : null;
+const fromLabel = pricing.labels.from[lang];
+
+const octoberPriceRows = [
+  ...(lowestPersonalRate !== null ? [{
+    label: isPl ? 'Trening personalny 1:1' : '1:1 Personal Training',
+    standard: `${fromLabel} ${money(lowestPersonalRate)} ${isPl ? '/ trening' : '/ session'}`,
+    october: `${fromLabel} ${money(discounted(lowestPersonalRate))} ${isPl ? '/ trening' : '/ session'}`
+  }] : []),
+  ...(pricing.online.enabled ? [{
+    label: isPl ? 'Coaching online' : 'Online Coaching',
+    standard: `${money(pricing.online.price)} / ${pricing.online.billingWeeks} ${isPl ? 'tygodnie' : 'weeks'}`,
+    october: `${money(discounted(pricing.online.price))} / ${pricing.online.billingWeeks} ${isPl ? 'tygodnie' : 'weeks'}`
+  }] : []),
+  ...(lowestHybridPrice !== null ? [{
+    label: isPl ? 'Coaching hybrydowy' : 'Hybrid Coaching',
+    standard: `${fromLabel} ${money(lowestHybridPrice)} / 4 ${isPl ? 'tygodnie' : 'weeks'}`,
+    october: `${fromLabel} ${money(discounted(lowestHybridPrice))} / 4 ${isPl ? 'tygodnie' : 'weeks'}`
+  }] : []),
+  ...(pricing.trainingPlan.enabled ? [{
+    label: isPl ? 'Indywidualny plan treningowy' : 'Training Plan',
+    standard: `${money(pricing.trainingPlan.price)} · ${pricing.labels.oneOff[lang]}`,
+    october: `${money(discounted(pricing.trainingPlan.price))} · ${pricing.labels.oneOff[lang]}`
+  }] : [])
+];
 
 const polishSpaces = (count: number) => {
   if (count === 1) return `ZOSTAŁO ${count} MIEJSCE`;
@@ -99,6 +134,25 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
                     <span>{offer.promotionalPeriod[lang]}</span>
                   </div>
                   <p class="standard-price">{offer.standardPriceText[lang]}</p>
+                </div>
+              ) : offer.id === 'october-2026-20-off-everything' ? (
+                <div class="october-offer">
+                  <h2>{offer.title[lang]}</h2>
+                  <p class="offer-text">{offer.offerText[lang]}</p>
+                  <div class="october-price-table" role="table" aria-label={isPl ? 'Ceny standardowe i październikowe' : 'Standard and October prices'}>
+                    <div class="october-price-row october-price-head" role="row">
+                      <span role="columnheader"></span>
+                      <span role="columnheader">{isPl ? 'Standard' : 'Standard'}</span>
+                      <span role="columnheader">{isPl ? 'Październik' : 'October'}</span>
+                    </div>
+                    {octoberPriceRows.map(row => (
+                      <div class="october-price-row" role="row">
+                        <strong role="rowheader">{row.label}</strong>
+                        <span class="october-standard" role="cell"><span class="mobile-price-label">{isPl ? 'Standard:' : 'Standard:'}</span>{row.standard}</span>
+                        <span class="october-now" role="cell"><span class="mobile-price-label">{isPl ? 'Październik:' : 'October:'}</span>{row.october}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <>
@@ -280,6 +334,58 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
     max-width: 58ch;
   }
 
+  .october-offer .offer-text { margin-bottom: 18px; }
+
+  .october-price-table {
+    display: grid;
+    gap: 0;
+    border: 1px solid #3B4048;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1B1E23;
+  }
+
+  .october-price-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 1.15fr) minmax(120px, .85fr) minmax(120px, .85fr);
+    align-items: center;
+    gap: 12px;
+    padding: 11px 13px;
+    border-top: 1px solid #343942;
+  }
+
+  .october-price-row:first-child { border-top: 0; }
+
+  .october-price-head {
+    background: #262A30;
+    color: #AEB3BA;
+    font-size: .67rem;
+    font-weight: 900;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+
+  .october-price-row strong {
+    color: #F2F3F4;
+    font-size: .82rem;
+    line-height: 1.25;
+  }
+
+  .october-standard {
+    color: #AEB3BA;
+    font-size: .79rem;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+
+  .october-now {
+    color: #FFD6DA;
+    font-size: .84rem;
+    font-weight: 900;
+  }
+
+  .mobile-price-label { display: none; }
+
   .price-wrap { margin-top: 2px; }
 
   .promotion-price {
@@ -360,5 +466,17 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
     .spaces-badge { width: auto; max-width: 100%; justify-content: center; text-align: center; margin-top: 15px; }
     .promotion-action { padding-top: 18px; }
     .small-print { font-size: .73rem; }
+    .october-price-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 12px 13px;
+    }
+    .october-price-head { display: none; }
+    .mobile-price-label {
+      display: inline;
+      margin-right: 5px;
+      font-weight: 800;
+      text-decoration: none;
+    }
   }
 </style>

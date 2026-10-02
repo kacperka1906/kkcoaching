@@ -1,5 +1,6 @@
 ---
 import pricing from '../data/pricing.json';
+import promotions from '../data/promotions.json';
 
 interface Props {
   lang: 'en' | 'pl';
@@ -18,14 +19,39 @@ const currency = pricing.currency;
 const local = (value: { en: string; pl: string }) => value[lang];
 const money = (value: number) => `${currency}${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
 const period = (weeks: number) => isPl ? `/ ${weeks} tygodnie` : `/ ${weeks} weeks`;
+const octoberOffer = promotions.offers.find(offer => offer.id === 'october-2026-20-off-everything');
+const octoberDiscount = 0.20;
+const discounted = (value: number) => value * (1 - octoberDiscount);
+const dateKeyInLondon = (date: Date) => {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(date);
+  const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  return `${map.year}-${map.month}-${map.day}`;
+};
+const today = dateKeyInLondon(new Date());
+const octoberOfferActive = Boolean(
+  octoberOffer?.enabled
+  && (!octoberOffer.startDate || today >= octoberOffer.startDate)
+  && (!octoberOffer.autoDisableAfterEndDate || !octoberOffer.endDate || today <= octoberOffer.endDate)
+);
+const octoberBadge = isPl ? 'PAŹDZIERNIK · NOWI KLIENCI −20%' : 'OCTOBER · NEW CLIENTS −20%';
+const sessionLabel = (sessions: number) => isPl
+  ? `${sessions} ${sessions === 4 ? 'treningi' : 'treningów'}`
+  : `${sessions} sessions`;
 
 const personalPlans = [
   ...(pricing.personal.payg.enabled
     ? [{
         name: local(pricing.personal.payg.name),
         price: money(pricing.personal.payg.price),
+        promoPrice: money(discounted(pricing.personal.payg.price)),
         period: isPl ? '/ trening' : 'per session',
         detail: local(pricing.personal.payg.detail),
+        promoDetail: isPl ? 'Jeden 60-minutowy trening 1:1' : 'One 60-minute 1:1 session',
         featured: pricing.personal.payg.featured
       }]
     : []),
@@ -34,8 +60,12 @@ const personalPlans = [
     .map(plan => ({
       name: local(plan.name),
       price: money(plan.price),
+      promoPrice: money(discounted(plan.price)),
       period: period(plan.weeks),
       detail: local(plan.detail),
+      promoDetail: isPl
+        ? `${sessionLabel(plan.sessions)} · ${money(discounted(plan.price) / plan.sessions)} za trening w październiku`
+        : `${sessionLabel(plan.sessions)} · ${money(discounted(plan.price) / plan.sessions)} per session in October`,
       featured: plan.featured
     }))
 ];
@@ -44,8 +74,10 @@ const onlinePlans = pricing.online.enabled
   ? [{
       name: local(pricing.online.name),
       price: money(pricing.online.price),
+      promoPrice: money(discounted(pricing.online.price)),
       period: period(pricing.online.billingWeeks),
       detail: local(pricing.online.detail),
+      promoDetail: local(pricing.online.detail),
       featured: pricing.online.featured
     }]
   : [];
@@ -55,8 +87,12 @@ const hybridPlans = pricing.hybrid.packages
   .map(plan => ({
     name: local(plan.name),
     price: money(plan.price),
+    promoPrice: money(discounted(plan.price)),
     period: period(plan.weeks),
     detail: local(plan.detail),
+    promoDetail: isPl
+      ? `Pełne prowadzenie online + ${plan.sessions} treningów 1:1`
+      : `Full Online Coaching + ${plan.sessions} personal training sessions`,
     featured: plan.featured
   }));
 
@@ -95,12 +131,43 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
         <article class:list={['pricing-card', { featured: plan.featured }]}>
           {plan.featured && <span class="popular">{local(pricing.labels.bestValue)}</span>}
           <h3>{plan.name}</h3>
-          <p class="price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
-          <p class="detail">{plan.detail}</p>
+          <div
+            data-october-pricing
+            data-enabled={octoberOffer?.enabled ? 'true' : 'false'}
+        data-start-date={octoberOffer?.startDate || ''}
+            data-end-date={octoberOffer?.endDate || ''}
+            data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
+          >
+            <div data-standard-only hidden={octoberOfferActive}>
+              <p class="price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
+              <p class="detail">{plan.detail}</p>
+            </div>
+            <div class="october-pricing" data-october-only hidden={!octoberOfferActive}>
+              <span class="october-badge">{octoberBadge}</span>
+              <p class="standard-price-line">{isPl ? 'Cena standardowa' : 'Standard price'} <s>{plan.price}</s></p>
+              <p class="price october-price"><strong>{plan.promoPrice}</strong><span>{plan.period}</span></p>
+              <p class="detail">{plan.promoDetail}</p>
+            </div>
+          </div>
         </article>
       ))}
     </div>
 
+    <p
+      class="october-offer-note"
+      data-october-pricing
+      data-enabled={octoberOffer?.enabled ? 'true' : 'false'}
+        data-start-date={octoberOffer?.startDate || ''}
+      data-end-date={octoberOffer?.endDate || ''}
+      data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
+      data-october-only
+      hidden={!octoberOfferActive}
+    >
+      <strong>{isPl ? 'Oferta październikowa:' : 'October offer:'}</strong>
+      {isPl
+        ? ' 20% rabatu dla nowych klientów na pierwszy zakup lub pierwsze 4 tygodnie prowadzenia.'
+        : ' 20% off for new clients on the first purchase or first 4-week coaching period.'}
+    </p>
     {copy.note.trim() && <p class="pricing-note">{copy.note}</p>}
     <div class="pricing-cta">
       <a href={contactHref} class="btn btn-primary">{copy.cta}</a>
@@ -145,6 +212,42 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
   .price strong { color: var(--red); font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1; }
   .price span { color: var(--steel); font-size: 0.8rem; font-weight: 700; }
   .detail { color: var(--steel); font-size: 0.9rem; }
+  .october-pricing { display: grid; justify-items: start; }
+  .october-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 25px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: #FCEDEF;
+    border: 1px solid #F2C5CA;
+    color: #9D2835;
+    font-size: .62rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: .05em;
+    margin-bottom: 9px;
+  }
+  .standard-price-line {
+    color: #777E87;
+    font-size: .79rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .standard-price-line s { text-decoration-thickness: 1px; }
+  .october-price { margin-bottom: 10px; }
+  .october-offer-note {
+    max-width: 760px;
+    margin: 24px auto 0;
+    padding: 12px 14px;
+    text-align: center;
+    border: 1px solid #F0C9CE;
+    border-radius: 10px;
+    background: #FFF7F8;
+    color: #6E343B;
+    font-size: .84rem;
+    line-height: 1.45;
+  }
   .pricing-note { max-width: 760px; text-align: center; margin: 26px auto 0; color: var(--steel); font-size: 0.9rem; }
   .pricing-cta { text-align: center; margin-top: 26px; }
 
@@ -158,3 +261,41 @@ const contactHref = isPl ? '/pl/contact' : '/contact';
     .pricing-cta .btn { width: 100%; }
   }
 </style>
+
+<script is:inline>
+  (() => {
+    if (window.__kkOctoberPricingBound) return;
+    window.__kkOctoberPricingBound = true;
+
+    const applyOctoberPricing = () => {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(new Date());
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      const today = `${map.year}-${map.month}-${map.day}`;
+
+      document.querySelectorAll('[data-october-pricing]').forEach((block) => {
+        const enabled = block.dataset.enabled === 'true';
+        const start = block.dataset.startDate || '';
+        const end = block.dataset.endDate || '';
+        const autoDisable = block.dataset.autoDisable === 'true';
+        const active = enabled && (!start || today >= start) && (!autoDisable || !end || today <= end);
+        if (block.hasAttribute('data-october-only')) {
+          block.hidden = !active;
+          return;
+        }
+        block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
+        block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyOctoberPricing, { once: true });
+    } else {
+      applyOctoberPricing();
+    }
+  })();
+</script>

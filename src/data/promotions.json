@@ -310,8 +310,8 @@
       "id": "october-2026-20-off-everything",
       "promotionalPrice": 0,
       "ctaText": {
-        "en": "View coaching options",
-        "pl": "Zobacz opcje współpracy"
+        "en": "See all October prices",
+        "pl": "Zobacz wszystkie ceny październikowe"
       },
       "ctaDestination": {
         "en": "/services",
@@ -333,8 +333,8 @@
       "autoDisableAfterEndDate": true,
       "internalName": "October 2026 — Free 1:1 Taster Session",
       "offerText": {
-        "en": "Book one free 60-minute personal training taster session at JD Gyms Cwmbran.",
-        "pl": "Umów jeden darmowy 60-minutowy trening próbny 1:1 w JD Gyms Cwmbran."
+        "en": "Try a 60-minute 1:1 session free, then get 20% off if you decide to continue in October.",
+        "pl": "Wypróbuj 60-minutowy trening 1:1 za darmo, a jeśli zdecydujesz się kontynuować w październiku, otrzymasz 20% rabatu."
       },
       "endDate": "2026-10-31",
       "showSpaces": false,
