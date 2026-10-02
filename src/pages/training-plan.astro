@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import pricing from '../data/pricing.json';
+import promotions from '../data/promotions.json';
 
 const services = await getCollection('services');
 const service = services.find(item => item.id.startsWith('en/') && item.id.includes('training-plan'));
@@ -9,6 +10,25 @@ if (!service) throw new Error('Missing English training-plan service content');
 
 const price = pricing.trainingPlan.price;
 const money = `${pricing.currency}${Number.isInteger(price) ? price.toFixed(0) : price.toFixed(2)}`;
+const octoberOffer = promotions.offers.find(offer => offer.id === 'october-2026-20-off-everything');
+const octoberPriceValue = price * 0.8;
+const octoberMoney = `${pricing.currency}${Number.isInteger(octoberPriceValue) ? octoberPriceValue.toFixed(0) : octoberPriceValue.toFixed(2)}`;
+const dateKeyInLondon = (date: Date) => {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(date);
+  const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  return `${map.year}-${map.month}-${map.day}`;
+};
+const today = dateKeyInLondon(new Date());
+const octoberOfferActive = Boolean(
+  octoberOffer?.enabled
+  && (!octoberOffer.startDate || today >= octoberOffer.startDate)
+  && (!octoberOffer.autoDisableAfterEndDate || !octoberOffer.endDate || today <= octoberOffer.endDate)
+);
 
 const bestFor = [
   {
@@ -110,7 +130,22 @@ const structuredData = {
         <span class="eyebrow">One-off personalised programme</span>
         <h1>Personalised Gym Training Plan Built Around You</h1>
         <p class="lead">Train independently with a personalised workout plan built around your goal, weekly schedule, experience and available equipment.</p>
-        <div class="price-line"><strong>{money}</strong><span>one-off</span></div>
+        <div
+          class="plan-price-wrap"
+          data-october-pricing
+          data-start-date={octoberOffer?.startDate || ''}
+          data-end-date={octoberOffer?.endDate || ''}
+          data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
+        >
+          <div class="price-line" data-standard-only hidden={octoberOfferActive}>
+            <strong>{money}</strong><span>one-off</span>
+          </div>
+          <div class="plan-october-price" data-october-only hidden={!octoberOfferActive}>
+            <span class="october-price-badge">OCTOBER · NEW CLIENTS −20%</span>
+            <span class="standard-price-line">Standard price <s>{money}</s></span>
+            <div class="price-line october-price"><strong>{octoberMoney}</strong><span>one-off</span></div>
+          </div>
+        </div>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-primary">Ask About a Training Plan</a>
           <a href="/services" class="btn btn-secondary">Compare Coaching Options</a>
@@ -219,9 +254,28 @@ const structuredData = {
   .hero-grid, .split, .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .hero-copy h1 { color: var(--white); font-size: clamp(2.15rem, 5vw, 4rem); max-width: 13ch; margin-bottom: 18px; }
   .hero-copy .lead { color: #D3D6DA; font-size: 1.08rem; max-width: 56ch; }
-  .price-line { display: flex; align-items: baseline; gap: 9px; margin-top: 22px; }
+  .plan-price-wrap { margin-top: 22px; }
+  .price-line { display: flex; align-items: baseline; gap: 9px; margin-top: 0; }
   .price-line strong { color: #F2F3F4; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
   .price-line span { color: #C8CCD2; font-weight: 700; }
+  .plan-october-price { display: grid; justify-items: start; gap: 7px; }
+  .october-price-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 25px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: #3A2226;
+    border: 1px solid #6A3A41;
+    color: #F8C9CE;
+    font-size: .63rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: .055em;
+  }
+  .standard-price-line { color: #AEB4BC; font-size: .82rem; font-weight: 700; }
+  .standard-price-line s { text-decoration-thickness: 1px; }
+  .october-price strong { color: #FFFFFF; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 16px; }
   .scope-note { color: #AEB4BC; font-size: 0.82rem; }
   .hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); border: 1px solid #363A40; }
@@ -264,3 +318,40 @@ const structuredData = {
     .process-grid { grid-template-columns: 1fr; }
   }
 </style>
+<script is:inline>
+  (() => {
+    if (window.__kkOctoberPricingBound) return;
+    window.__kkOctoberPricingBound = true;
+
+    const applyOctoberPricing = () => {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(new Date());
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      const today = `${map.year}-${map.month}-${map.day}`;
+
+      document.querySelectorAll('[data-october-pricing]').forEach((block) => {
+        const start = block.dataset.startDate || '';
+        const end = block.dataset.endDate || '';
+        const autoDisable = block.dataset.autoDisable === 'true';
+        const active = (!start || today >= start) && (!autoDisable || !end || today <= end);
+        if (block.hasAttribute('data-october-only')) {
+          block.hidden = !active;
+          return;
+        }
+        block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
+        block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyOctoberPricing, { once: true });
+    } else {
+      applyOctoberPricing();
+    }
+  })();
+</script>
+
