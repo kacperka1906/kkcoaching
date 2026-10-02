@@ -1,5 +1,6 @@
 ---
 import pricing from '../data/pricing.json';
+import promotions from '../data/promotions.json';
 
 interface Props {
   title: string;
@@ -47,6 +48,25 @@ const type = serviceKey === 'hybrid-coaching' || fallbackHybrid
 
 const currency = pricing.currency;
 const money = (value: number) => `${currency}${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
+const octoberOffer = promotions.offers.find(offer => offer.id === 'october-2026-20-off-everything');
+const octoberDiscount = 0.20;
+const discounted = (value: number) => value * (1 - octoberDiscount);
+const dateKeyInLondon = (date: Date) => {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(date);
+  const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  return `${map.year}-${map.month}-${map.day}`;
+};
+const today = dateKeyInLondon(new Date());
+const octoberOfferActive = Boolean(
+  octoberOffer?.enabled
+  && (!octoberOffer.startDate || today >= octoberOffer.startDate)
+  && (!octoberOffer.autoDisableAfterEndDate || !octoberOffer.endDate || today <= octoberOffer.endDate)
+);
 const activePersonal = pricing.personal.packages.filter(plan => plan.enabled && plan.sessions > 0);
 const activeHybrid = pricing.hybrid.packages.filter(plan => plan.enabled);
 const lowestPersonalRate = activePersonal.length
@@ -68,6 +88,16 @@ const priceLabel = type === 'hybrid' && lowestHybrid
       ? (isPl ? `${fromLabel} ${money(lowestPersonalRate)} / trening` : `${fromLabel} ${money(lowestPersonalRate)} / session`)
       : type === 'trainingPlan' && pricing.trainingPlan.enabled
         ? `${money(pricing.trainingPlan.price)} · ${oneOffLabel}`
+        : '';
+
+const octoberPriceLabel = type === 'hybrid' && lowestHybrid
+  ? (isPl ? `${fromLabel} ${money(discounted(lowestHybrid.price))} / ${lowestHybrid.weeks} tygodnie` : `${fromLabel} ${money(discounted(lowestHybrid.price))} / ${lowestHybrid.weeks} weeks`)
+  : type === 'online' && pricing.online.enabled
+    ? (isPl ? `${money(discounted(pricing.online.price))} / ${pricing.online.billingWeeks} tygodnie` : `${money(discounted(pricing.online.price))} / ${pricing.online.billingWeeks} weeks`)
+    : type === 'personal' && lowestPersonalRate !== null
+      ? (isPl ? `${fromLabel} ${money(discounted(lowestPersonalRate))} / trening` : `${fromLabel} ${money(discounted(lowestPersonalRate))} / session`)
+      : type === 'trainingPlan' && pricing.trainingPlan.enabled
+        ? `${money(discounted(pricing.trainingPlan.price))} · ${oneOffLabel}`
         : '';
 
 // Decap CMS stores uploaded media in public/images. Normally Netlify serves the
@@ -93,7 +123,22 @@ const githubFallback = image.startsWith('/images/')
   </div>
   <div class="service-body">
     <h3>{title}</h3>
-    {priceLabel && <p class="service-price">{priceLabel}</p>}
+    {priceLabel && (
+      <div
+        class="service-price-wrap"
+        data-october-pricing
+        data-start-date={octoberOffer?.startDate || ''}
+        data-end-date={octoberOffer?.endDate || ''}
+        data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
+      >
+        <p class="service-price" data-standard-only hidden={octoberOfferActive}>{priceLabel}</p>
+        <div class="service-october-price" data-october-only hidden={!octoberOfferActive}>
+          <span class="october-price-badge">{isPl ? 'PAŹDZIERNIK · NOWI KLIENCI −20%' : 'OCTOBER · NEW CLIENTS −20%'}</span>
+          <span class="service-standard-line">{isPl ? 'Standard' : 'Standard'} <s>{priceLabel}</s></span>
+          <strong>{octoberPriceLabel}</strong>
+        </div>
+      </div>
+    )}
     <p>{tagline}</p>
     <ul>
       {bullets.map(b => <li>{b}</li>)}
@@ -113,6 +158,34 @@ const githubFallback = image.startsWith('/images/')
         img.dataset.fallbackTried = '1';
         img.src = fallback;
       });
+    });
+  })();
+</script>
+
+<script is:inline>
+  (() => {
+    if (window.__kkOctoberPricingBound) return;
+    window.__kkOctoberPricingBound = true;
+
+    const londonDateKey = (date) => {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(date);
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      return `${map.year}-${map.month}-${map.day}`;
+    };
+
+    const today = londonDateKey(new Date());
+    document.querySelectorAll('[data-october-pricing]').forEach((block) => {
+      const start = block.dataset.startDate || '';
+      const end = block.dataset.endDate || '';
+      const autoDisable = block.dataset.autoDisable === 'true';
+      const active = (!start || today >= start) && (!autoDisable || !end || today <= end);
+      block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
+      block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
     });
   })();
 </script>
@@ -152,12 +225,43 @@ const githubFallback = image.startsWith('/images/')
   .service-body { padding: 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
   .service-body h3 { color: var(--graphite); font-size: 1.2rem; margin-bottom: 8px; }
   .featured .service-body h3 { color: var(--red); }
+  .service-price-wrap { margin-bottom: 10px; }
   .service-price {
     color: var(--red) !important;
     font-size: 1.04rem !important;
     line-height: 1.25;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+  }
+  .service-october-price {
+    display: grid;
+    justify-items: start;
+    gap: 5px;
+  }
+  .october-price-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #FCEDEF;
+    border: 1px solid #F2C5CA;
+    color: #9D2835;
+    font-size: .61rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: .05em;
+  }
+  .service-standard-line {
+    color: #777E87;
+    font-size: .76rem;
+    font-weight: 700;
+  }
+  .service-standard-line s { text-decoration-thickness: 1px; }
+  .service-october-price strong {
+    color: var(--red);
+    font-size: 1.08rem;
+    line-height: 1.2;
   }
   .service-body p { color: var(--steel); font-size: 0.95rem; }
   .service-body ul { list-style: none; margin: 14px 0 22px; font-size: 0.9rem; color: var(--steel); }
@@ -173,6 +277,8 @@ const githubFallback = image.startsWith('/images/')
     .service-body { padding: 22px 18px; }
     .service-body h3 { font-size: 1.12rem; }
     .service-price { font-size: 1rem !important; }
+    .service-october-price strong { font-size: 1.03rem; }
+    .october-price-badge { font-size: .58rem; }
     .service-body p { font-size: 0.92rem; }
     .service-body ul { font-size: 0.88rem; }
     .service-body .btn { width: 100%; align-self: stretch; }
