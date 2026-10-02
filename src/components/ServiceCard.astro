@@ -127,6 +127,7 @@ const githubFallback = image.startsWith('/images/')
       <div
         class="service-price-wrap"
         data-october-pricing
+        data-enabled={octoberOffer?.enabled ? 'true' : 'false'}
         data-start-date={octoberOffer?.startDate || ''}
         data-end-date={octoberOffer?.endDate || ''}
         data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
@@ -178,10 +179,11 @@ const githubFallback = image.startsWith('/images/')
       const today = `${map.year}-${map.month}-${map.day}`;
 
       document.querySelectorAll('[data-october-pricing]').forEach((block) => {
+        const enabled = block.dataset.enabled === 'true';
         const start = block.dataset.startDate || '';
         const end = block.dataset.endDate || '';
         const autoDisable = block.dataset.autoDisable === 'true';
-        const active = (!start || today >= start) && (!autoDisable || !end || today <= end);
+        const active = enabled && (!start || today >= start) && (!autoDisable || !end || today <= end);
         if (block.hasAttribute('data-october-only')) {
           block.hidden = !active;
           return;
