@@ -264,6 +264,112 @@
         "en": "/contact",
         "pl": "/pl/contact"
       }
+    },
+    {
+      "enabled": true,
+      "display": {
+        "homepage": true,
+        "servicePage": false
+      },
+      "remainingSpaces": 0,
+      "priority": 300,
+      "smallPrint": {
+        "en": "New clients only. Join between 1–31 October 2026. The discount applies to your first purchase or first 4-week coaching period.",
+        "pl": "Tylko dla nowych klientów rozpoczynających współpracę między 1 a 31 października 2026. Rabat dotyczy pierwszego zakupu lub pierwszych 4 tygodni prowadzenia."
+      },
+      "autoDisableAfterEndDate": true,
+      "internalName": "October 2026 — 20% Off Everything",
+      "offerText": {
+        "en": "New clients get 20% off all coaching services and personalised training plans when joining in October.",
+        "pl": "Nowi klienci otrzymują 20% rabatu na wszystkie formy prowadzenia oraz indywidualne plany treningowe przy rozpoczęciu współpracy w październiku."
+      },
+      "endDate": "2026-10-31",
+      "showSpaces": false,
+      "showPrice": false,
+      "standardPrice": 0,
+      "featured": true,
+      "promotionalPeriod": {
+        "en": "October",
+        "pl": "Październik"
+      },
+      "startDate": "2026-10-01",
+      "totalSpaces": 0,
+      "headline": {
+        "en": "October Offer",
+        "pl": "Oferta październikowa"
+      },
+      "service": "general",
+      "title": {
+        "en": "20% OFF EVERYTHING",
+        "pl": "20% TANIEJ NA WSZYSTKO"
+      },
+      "standardPriceText": {
+        "en": "For new clients",
+        "pl": "Dla nowych klientów"
+      },
+      "id": "october-2026-20-off-everything",
+      "promotionalPrice": 0,
+      "ctaText": {
+        "en": "View coaching options",
+        "pl": "Zobacz opcje współpracy"
+      },
+      "ctaDestination": {
+        "en": "/services",
+        "pl": "/pl/services"
+      }
+    },
+    {
+      "enabled": true,
+      "display": {
+        "homepage": true,
+        "servicePage": true
+      },
+      "remainingSpaces": 0,
+      "priority": 290,
+      "smallPrint": {
+        "en": "New clients only. One free taster session per person. Available during October 2026, subject to availability.",
+        "pl": "Tylko dla nowych klientów. Jeden darmowy trening próbny na osobę. Oferta dostępna w październiku 2026, w zależności od dostępności terminów."
+      },
+      "autoDisableAfterEndDate": true,
+      "internalName": "October 2026 — Free 1:1 Taster Session",
+      "offerText": {
+        "en": "Book one free 60-minute personal training taster session at JD Gyms Cwmbran.",
+        "pl": "Umów jeden darmowy 60-minutowy trening próbny 1:1 w JD Gyms Cwmbran."
+      },
+      "endDate": "2026-10-31",
+      "showSpaces": false,
+      "showPrice": false,
+      "standardPrice": 30,
+      "featured": false,
+      "promotionalPeriod": {
+        "en": "One taster session",
+        "pl": "Jeden trening próbny"
+      },
+      "startDate": "2026-10-01",
+      "totalSpaces": 0,
+      "headline": {
+        "en": "Try 1:1 for free",
+        "pl": "Wypróbuj 1:1 za darmo"
+      },
+      "service": "personal-training",
+      "title": {
+        "en": "Free 1:1 Taster Session",
+        "pl": "Darmowy trening próbny 1:1"
+      },
+      "standardPriceText": {
+        "en": "60-minute 1:1 session",
+        "pl": "60-minutowy trening 1:1"
+      },
+      "id": "october-2026-free-pt-taster",
+      "promotionalPrice": 0,
+      "ctaText": {
+        "en": "Book your free taster session",
+        "pl": "Umów darmowy trening próbny"
+      },
+      "ctaDestination": {
+        "en": "/contact",
+        "pl": "/pl/contact"
+      }
     }
   ]
 }
