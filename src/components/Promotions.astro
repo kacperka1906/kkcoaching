@@ -148,8 +148,8 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
                     {octoberPriceRows.map(row => (
                       <div class="october-price-row" role="row">
                         <strong role="rowheader">{row.label}</strong>
-                        <span class="october-standard" role="cell">{row.standard}</span>
-                        <span class="october-now" role="cell">{row.october}</span>
+                        <span class="october-standard" role="cell"><span class="mobile-price-label">{isPl ? 'Standard:' : 'Standard:'}</span>{row.standard}</span>
+                        <span class="october-now" role="cell"><span class="mobile-price-label">{isPl ? 'Październik:' : 'October:'}</span>{row.october}</span>
                       </div>
                     ))}
                   </div>
@@ -384,6 +384,8 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
     font-weight: 900;
   }
 
+  .mobile-price-label { display: none; }
+
   .price-wrap { margin-top: 2px; }
 
   .promotion-price {
@@ -470,11 +472,11 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
       padding: 12px 13px;
     }
     .october-price-head { display: none; }
-    .october-standard::before {
-      content: '${isPl ? "Standard: " : "Standard: "}';
-    }
-    .october-now::before {
-      content: '${isPl ? "Październik: " : "October: "}';
+    .mobile-price-label {
+      display: inline;
+      margin-right: 5px;
+      font-weight: 800;
+      text-decoration: none;
     }
   }
 </style>
