@@ -167,26 +167,35 @@ const githubFallback = image.startsWith('/images/')
     if (window.__kkOctoberPricingBound) return;
     window.__kkOctoberPricingBound = true;
 
-    const londonDateKey = (date) => {
+    const applyOctoberPricing = () => {
       const parts = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Europe/London',
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
-      }).formatToParts(date);
+      }).formatToParts(new Date());
       const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-      return `${map.year}-${map.month}-${map.day}`;
+      const today = `${map.year}-${map.month}-${map.day}`;
+
+      document.querySelectorAll('[data-october-pricing]').forEach((block) => {
+        const start = block.dataset.startDate || '';
+        const end = block.dataset.endDate || '';
+        const autoDisable = block.dataset.autoDisable === 'true';
+        const active = (!start || today >= start) && (!autoDisable || !end || today <= end);
+        if (block.hasAttribute('data-october-only')) {
+          block.hidden = !active;
+          return;
+        }
+        block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
+        block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
+      });
     };
 
-    const today = londonDateKey(new Date());
-    document.querySelectorAll('[data-october-pricing]').forEach((block) => {
-      const start = block.dataset.startDate || '';
-      const end = block.dataset.endDate || '';
-      const autoDisable = block.dataset.autoDisable === 'true';
-      const active = (!start || today >= start) && (!autoDisable || !end || today <= end);
-      block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
-      block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
-    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyOctoberPricing, { once: true });
+    } else {
+      applyOctoberPricing();
+    }
   })();
 </script>
 
