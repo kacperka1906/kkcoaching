@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Promotions from '../components/Promotions.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import Reviews from '../components/Reviews.astro';
 import site from '../data/site.en.json';
 
 const allServices = (await getCollection('services'))
@@ -169,8 +168,6 @@ const structuredData = {
       </div>
     </div>
   </section>
-
-  <Reviews lang="en" limit={5} />
 
   <section class="final-cta" id="contact" aria-labelledby="final-cta-heading">
     <div class="container">
