@@ -1,0 +1,36 @@
+---
+import SourceIcon from './SourceIcon.astro';
+import { initials, legitimateRating, safeUrl, sourceNames } from './review-utils';
+import type { ReviewItem, ReviewsWidgetConfig } from './review-types';
+import type { ReviewCopy } from './review-copy';
+interface Props { item: ReviewItem; config: ReviewsWidgetConfig; copy: ReviewCopy; lang: 'en' | 'pl'; instanceId: string; }
+const { item, config, copy, lang, instanceId } = Astro.props;
+const rating = legitimateRating(item);
+const avatar = safeUrl(item.sourceMeta?.providerAvatar) || safeUrl(item.avatar);
+const fallbackAvatar = safeUrl(item.avatar);
+const quoteId = `${instanceId}-quote-${item.id}`;
+const date = item.date && /^\d{4}-\d{2}-\d{2}/.test(item.date) && Number.isFinite(Date.parse(item.date)) ? item.date : null;
+const reviewUrl = safeUrl(item.reviewUrl);
+---
+<article class="rw-card" data-review-card data-source={item.source} data-review-id={item.id} aria-label={item.client}>
+  <header class="rw-card-head">
+    {config.showReviewerAvatar && <div class="rw-avatar" aria-hidden="true">
+      <span>{initials(item.client)}</span>
+      {avatar && <img src={avatar} data-fallback={fallbackAvatar !== avatar ? fallbackAvatar : undefined} width="44" height="44" loading="lazy" decoding="async" alt="" />}
+    </div>}
+    <div class="rw-author">
+      {config.showReviewerName && <strong>{item.client}</strong>}
+      {config.showRecommendationState && item.source === 'facebook' && item.recommendation != null && <span class="rw-recommendation"><span aria-hidden="true">{item.recommendation ? '✓' : '−'}</span> {item.recommendation ? copy.recommends : copy.notRecommends}</span>}
+      {config.showRating && rating !== null && <span class="rw-rating" aria-label={`${rating} ${copy.rating}`}><span aria-hidden="true">{'★'.repeat(Math.floor(rating))}{'☆'.repeat(5 - Math.floor(rating))}</span> <small>{rating}/5</small></span>}
+      {item.source !== 'facebook' && rating === null && <span class="rw-context">{copy.testimonial}</span>}
+    </div>
+    {config.showSourceIcon && <SourceIcon source={item.source}/>}
+  </header>
+  <blockquote id={quoteId} class="rw-quote" data-quote lang={typeof item.sourceMeta?.language === 'string' ? item.sourceMeta.language : undefined}>{item.quote}</blockquote>
+  {config.reviewTextMode === 'short' && <button class="rw-expand" type="button" data-expand aria-expanded="false" aria-controls={quoteId} hidden>{copy.more}<span class="rw-sr-only"> — {item.client}</span></button>}
+  <footer class="rw-card-foot">
+    <span>{sourceNames[item.source]}{item.source === 'facebook' && <><span aria-hidden="true"> · </span>{copy.public}</>}</span>
+    {config.showDate && date && <time datetime={date}>{new Intl.DateTimeFormat(lang === 'pl' ? 'pl-PL' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(date))}</time>}
+    {reviewUrl && <a href={reviewUrl} target="_blank" rel="noopener noreferrer">{copy.view}<span class="rw-sr-only"> — {item.client}</span> ↗</a>}
+  </footer>
+</article>
