@@ -389,7 +389,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-aneta.webp"
+        "screenshot": "/images/reviews/facebook-aneta.jpg"
       },
       {
         "enabled": true,
@@ -397,7 +397,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-sylwia.webp"
+        "screenshot": "/images/reviews/facebook-sylwia.jpg"
       },
       {
         "enabled": true,
@@ -405,7 +405,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-agnieszka.webp"
+        "screenshot": "/images/reviews/facebook-agnieszka.jpg"
       },
       {
         "enabled": true,
@@ -413,7 +413,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-sebastian.webp"
+        "screenshot": "/images/reviews/facebook-sebastian.jpg"
       },
       {
         "enabled": true,
@@ -421,7 +421,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-marta.webp"
+        "screenshot": "/images/reviews/facebook-marta.jpg"
       }
     ],
     "enabled": true,
