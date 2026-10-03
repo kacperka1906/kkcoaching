@@ -10,6 +10,7 @@ const { filterReviews, sortReviews, sourceSummary, legitimateRating, safeUrl } =
 const fallback = JSON.parse(await readFile(new URL('../src/data/reviews/reviews.json', import.meta.url), 'utf8'));
 const admin = JSON.parse(await readFile(new URL('../src/data/admin-v2.json', import.meta.url), 'utf8'));
 const adminReviews = admin.reviews.items;
+const widgetConfig = JSON.parse(await readFile(new URL('../src/data/reviews/reviews-config.json', import.meta.url), 'utf8'));
 
 assert.equal(fallback.length, 5);
 assert.equal(adminReviews.length, 5);
@@ -34,6 +35,10 @@ assert.equal(legitimateRating({ ...base, source: 'google', rating: 4.5 }), 4.5);
 assert.deepEqual(sourceSummary(fallback).map(s => [s.source, s.count, s.recommendations, s.average]), [['facebook', 5, 5, null]]);
 assert.equal(safeUrl('javascript:alert(1)'), undefined);
 assert.equal(safeUrl('//evil.example'), undefined);
+assert.equal(widgetConfig.desktopColumns, 1);
+assert.equal(widgetConfig.tabletColumns, 1);
+assert.equal(widgetConfig.mobileCardWidth, '100%');
+assert.equal(widgetConfig.reviewClampLines, 5);
 
 const dated = [{ ...base, id: 'new', date: '2026-01-01' }, { ...base, id: 'missing' }, { ...base, id: 'old', date: '2025-01-01' }];
 assert.deepEqual(sortReviews(dated, 'oldest').map(r => r.id), ['old', 'new', 'missing']);
