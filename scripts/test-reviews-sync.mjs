@@ -11,6 +11,8 @@ const provider=createLocalTestProvider(local);
 const run=(store,extra={})=>refreshReviews({store,provider,local,now:()=>time,...extra});
 const bundle=await build({entryPoints:['netlify/functions/reviews-preview.mts'],bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
 const { createHandler }=await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString('base64')}`);
+const edgeBundle=await build({entryPoints:['netlify/edge-functions/reviews-cache.ts'],bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
+const {createEdgeHandler}=await import(`data:text/javascript;base64,${Buffer.from(edgeBundle.outputFiles[0].text).toString('base64')}`);
 const context={deploy:{context:'deploy-preview',published:false,id:'test-deploy'}};
 const secret='fixture-only-credential-32-characters';
 test('freshness uses a timezone-safe inclusive 24h boundary',()=>{
@@ -114,4 +116,24 @@ test('built preview SEO, local fallback, and no server credentials/SDK in public
  for(const name of await readdir('dist/_astro'))if(name.endsWith('.js')){
   const text=await readFile(`dist/_astro/${name}`,'utf8');assert.doesNotMatch(text,/FACEBOOK_PAGE_ACCESS_TOKEN|REVIEWS_REFRESH_SECRET|graph\.facebook\.com|@netlify\/blobs/);
  }
+});
+test('edge middleware isolates production, rejects test snapshots, injects safe cached data and falls back',async()=>{
+ const html=await readFile('dist/index.html','utf8');
+ const ctx={...context,next:async()=>new Response(html,{headers:{'content-type':'text/html'}})};
+ let snapshot=null,reads=0;
+ const handler=createEdgeHandler({openStore:()=>({getSnapshot:async()=>{reads++;return snapshot;}})});
+ const request=new Request('https://preview.example/');
+ assert.equal(await (await handler(request,ctx)).text(),html);
+ snapshot={source:'facebook',complete:true,syncedAt:time.toISOString(),origin:'local-test',reviews:local};
+ assert.equal(await (await handler(request,ctx)).text(),html);
+ snapshot={...snapshot,origin:'official-api',reviews:[{...local[0],quote:'</script> Literal review text'}]};
+ const injected=await handler(request,ctx),body=await injected.text();
+ assert.equal(injected.headers.get('cache-control'),'private, no-store');
+ assert.match(body,/\\u003c\/script\\u003e Literal review text/);
+ assert.equal(body.replace(/(<script type="application\/json" data-review-cache>).*?(<\/script>)/s,'$1[]$2'),html);
+ const before=reads,production={...ctx,deploy:{...context.deploy,context:'production',published:true}};
+ assert.equal(await (await handler(request,production)).text(),html);assert.equal(reads,before);
+ assert.equal((await handler(new Request('https://preview.example/reviews-admin-preview/'),production)).status,404);
+ const broken=createEdgeHandler({openStore:()=>{throw new Error('private error');}});
+ assert.equal(await (await broken(request,ctx)).text(),html);
 });

@@ -8,9 +8,15 @@ export function shouldRefresh(lastSync, now = new Date()) {
   return Number.isFinite(then) && now.getTime() - then >= DAY;
 }
 const normalized = value => String(value ?? '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('en');
-const contentKey = item => `${item.source}|${normalized(item.client)}|${normalized(item.quote)}`;
+const contentKey = item => JSON.stringify([item.source,normalized(item.client),normalized(item.quote)]);
 export function identity(item) {
-  return item.externalId ? `${item.source}|id:${item.externalId}` : `${contentKey(item)}|${item.date ?? ''}`;
+  return item.externalId ? JSON.stringify([item.source,'id',item.externalId]) : JSON.stringify([contentKey(item),item.date ?? '']);
+}
+function domId(item) {
+  // Deterministic UI identifier only, never represented as a provider ID.
+  let hash=14695981039346656037n;
+  for(const byte of new TextEncoder().encode(identity(item)))hash=BigInt.asUintN(64,(hash^BigInt(byte))*1099511628211n);
+  return `review-${item.source}-${hash.toString(16)}`;
 }
 export function visible(item) {
   return item.enabled === true && item.approved === true && item.quote.trim().length > 0
@@ -46,9 +52,9 @@ export function mergeReviews(previous, incoming, local = []) {
     const old = match(previous), fallback = match(local);
     const base = old || fallback;
     item.avatar ||= base?.avatar ?? null;
-    item.id = base?.id || `review-${result.length + 1}`;
+    item.id = base?.id || domId(item);
     // DOM ID stays stable with provider identity; collisions are resolved below.
-    if (result.some(r => r.id === item.id)) item.id = `review-${result.length + 1}-${item.source}`;
+    if (result.some(r => r.id === item.id)) item.id = `${domId(item)}-${result.length}`;
     if (old && JSON.stringify(cleanReview(old)) === JSON.stringify(item)) stats.skipped++;
     else if (old) stats.updated++;
     else stats.imported++;
