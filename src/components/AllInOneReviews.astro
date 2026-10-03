@@ -56,17 +56,17 @@ const stars = (value: number) => '★★★★★'.slice(0, Math.max(0, Math.min
 ---
 
 {canRender && (
-  <section class="aio-reviews on-white" data-aio-reviews aria-labelledby={\`aio-reviews-heading-\${lang}\`}>
+  <section class="aio-reviews on-white" data-aio-reviews aria-labelledby={'aio-reviews-heading-' + lang}>
     <div class="container">
       <div class="aio-shell">
         <header class="aio-header">
           <div class="aio-heading">
             <span class="eyebrow">{widget.eyebrow[lang]}</span>
-            <h2 id={\`aio-reviews-heading-\${lang}\`}>{widget.heading[lang]}</h2>
+            <h2 id={'aio-reviews-heading-' + lang}>{widget.heading[lang]}</h2>
             <p>{widget.body[lang]}</p>
           </div>
 
-          <div class="aio-summary" aria-label={\`\${reviews.length} \${countLabel}\`}>
+          <div class="aio-summary" aria-label={String(reviews.length) + ' ' + countLabel}>
             <strong>{reviews.length}</strong>
             <span>{countLabel}</span>
             <div class="aio-source-lockup">
@@ -110,14 +110,14 @@ const stars = (value: number) => '★★★★★'.slice(0, Math.max(0, Math.min
                   </div>
                 </div>
 
-                <span class={\`aio-source-icon \${item.source || 'other'}\`} aria-label={sourceLabels[item.source] ?? item.source}>
+                <span class={'aio-source-icon ' + (item.source || 'other')} aria-label={sourceLabels[item.source] ?? item.source}>
                   {item.source === 'facebook' ? 'f' : item.source === 'google' ? 'G' : '•'}
                 </span>
               </div>
 
               <div class="aio-rating-row">
                 {item.rating ? (
-                  <span class="aio-stars" aria-label={\`\${item.rating} out of 5 stars\`}>{stars(Number(item.rating))}</span>
+                  <span class="aio-stars" aria-label={String(item.rating) + ' out of 5 stars'}>{stars(Number(item.rating))}</span>
                 ) : (
                   <span class="aio-recommended">
                     <span aria-hidden="true">✓</span>
@@ -148,7 +148,7 @@ const stars = (value: number) => '★★★★★'.slice(0, Math.max(0, Math.min
                     class="aio-proof"
                     data-proof={item.screenshot}
                     data-client={item.client}
-                    aria-label={\`\${copy.original}: \${item.client}\`}
+                    aria-label={copy.original + ': ' + item.client}
                   >
                     {copy.original}
                   </button>
