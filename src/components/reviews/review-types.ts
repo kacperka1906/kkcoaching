@@ -1,4 +1,4 @@
-export type ReviewSource = 'facebook' | 'google' | 'whatsapp' | 'manual';
+export type ReviewSource = 'facebook' | 'google' | 'whatsapp' | 'messenger' | 'manual';
 export interface ReviewItem {
   id: string; source: ReviewSource; externalId?: string | null;
   client: string; quote: string; avatar?: string | null;

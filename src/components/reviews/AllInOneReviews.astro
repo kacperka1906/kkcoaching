@@ -21,9 +21,7 @@ const writeUrl = safeUrl(config.writeReviewUrl ?? admin.contact.facebookUrl);
   style={`--rw-desktop:${config.desktopColumns};--rw-tablet:${config.tabletColumns};--rw-mobile:${config.mobileCardWidth};--rw-lines:${config.reviewClampLines};--rw-mobile-lines:${config.reviewClampLines + 1}`}>
   <header class:list={['rw-header', { 'rw-sr-only': !config.showHeader && !config.showSourceSummary }]}>
     <div class:list={['rw-heading', { 'rw-sr-only': !config.showHeader }]}>
-      <span class="rw-eyebrow">{copy.eyebrow}</span>
-      <h2 id={`${id}-title`}>{copy.title}</h2>
-      <p>{copy.caption}</p>
+      <h2 id={`${id}-title`} class="rw-heading-compact">{copy.eyebrow}</h2>
     </div>
     {config.showSourceSummary && <div class="rw-summaries">{summaries.map(summary => <div class="rw-summary">
       <SourceIcon source={summary.source as ReviewSource}/>

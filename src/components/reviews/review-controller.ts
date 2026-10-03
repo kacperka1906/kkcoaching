@@ -23,6 +23,9 @@ export function initializeReviews(root: HTMLElement) {
     if (prev) prev.disabled = track.scrollLeft <= 2 || maximum <= 2;
     if (next) next.disabled = atEnd || !list.length;
     if (counter) counter.textContent = `${index + 1} / ${list.length}`;
+    // Fit the visible card, including expansion, instead of the tallest off-screen quote.
+    track.style.height = root.dataset.layout === 'carousel' && index >= 0
+      ? `${list[index].offsetHeight + 11}px` : '';
     if (progress) {
       progress.style.width = `${list.length ? maximum <= 2 ? 100 : (index + 1) / list.length * 100 : 0}%`;
       progress.parentElement!.setAttribute('aria-valuemax', String(list.length));
@@ -39,7 +42,7 @@ export function initializeReviews(root: HTMLElement) {
       button.hidden = !expanded && quote.scrollHeight <= quote.clientHeight + 1;
     });
   }
-  function refresh() { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { position(); clamps(); }); }
+  function refresh() { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { clamps(); position(); }); }
   function navigate(direction: number) {
     const list = visible();
     const targets = list.map(offset);
