@@ -720,5 +720,20 @@
         "pl": "/pl/contact"
       }
     }
+  },
+  "reviewWidget": {
+    "enabled": true,
+    "eyebrow": {
+      "en": "CLIENT REVIEWS",
+      "pl": "OPINIE KLIENTÓW"
+    },
+    "heading": {
+      "en": "Real feedback. One place.",
+      "pl": "Prawdziwe opinie. W jednym miejscu."
+    },
+    "body": {
+      "en": "Recommendations from clients I coach in person and online. Open any original screenshot to verify the source.",
+      "pl": "Rekomendacje od osób, które prowadzę stacjonarnie i online. Każdą opinię możesz otworzyć jako oryginalny screen."
+    }
   }
 }
