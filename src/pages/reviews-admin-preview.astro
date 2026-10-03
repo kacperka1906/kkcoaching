@@ -1,0 +1,59 @@
+---
+// Deliberately separate from the production layout/navigation and Decap admin.
+---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="robots" content="noindex, nofollow"/><title>Reviews controls — PREVIEW ONLY</title><meta name="description" content="Preview-only review provider status and local sync simulations."/><link rel="canonical" href="https://kkcoaching.fit/reviews-admin-preview/"/><meta property="og:title" content="Reviews controls — PREVIEW ONLY"/><meta property="og:description" content="Preview-only review provider status and local sync simulations."/><meta property="og:image" content="https://kkcoaching.fit/og.jpg"/></head>
+<body><main>
+  <h1>Reviews controls — PREVIEW ONLY</h1>
+  <p>Facebook live sync is unavailable: Meta deprecated Recommendation access from Graph API v22.0. A token alone will not resolve this. The five supplied reviews remain the fallback.</p>
+  <section aria-labelledby="facebook"><h2 id="facebook">Facebook</h2>
+    <p><strong>Requires configuration · not configured · disconnected</strong></p>
+    <p>No Meta request is made. Last successful sync, last attempt, cached count and import/update/skip statistics appear below when storage is available.</p>
+    <pre id="provider-status" aria-live="polite">Loading preview storage status…</pre>
+    <form id="refresh-form"><label>Preview admin refresh secret <input id="refresh-secret" type="password" autocomplete="off" maxlength="256"/></label>
+      <button type="submit">Refresh reviews now / Odśwież opinie teraz</button>
+    </form>
+    <p>The server requires a preview-only secret of at least 32 characters. It is never saved by this page. Provider access stays disabled even with this credential.</p>
+    <pre id="refresh-result" aria-live="polite"></pre>
+  </section>
+  <section><h2>Google — disabled</h2><p>Waiting for Google Business Profile verification. No Google API calls.</p></section>
+  <section><h2>WhatsApp — disabled</h2><p>Approval-based ingestion planned. No webhook. Publication requires explicit approval and consent.</p></section>
+  <section><h2>Local simulation — not Facebook sync</h2>
+    <p>Uses the five supplied records and an in-memory store in this tab. It never writes the public cache. Reloading clears it.</p>
+    <button id="simulate">Run successful refresh test</button>
+    <button id="simulate-failure">Test failure after 24 hours</button>
+    <button id="simulate-daily">Check daily freshness</button>
+    <pre id="simulation-result" aria-live="polite">No simulation run.</pre>
+  </section>
+</main><script>
+import local from '../data/reviews/reviews.json';
+import { MemoryReviewStore, createLocalTestProvider, refreshReviews, DAY } from '../lib/reviews/sync.mjs';
+const endpoint='/.netlify/functions/reviews-preview';
+const status=document.querySelector('#provider-status')!;
+const show=(target:Element,value:unknown)=>{target.textContent=JSON.stringify(value,null,2);};
+async function loadStatus(){try{const response=await fetch(endpoint,{cache:'no-store'});if(!response.ok)throw new Error();show(status,await response.json());}catch{status.textContent='Preview endpoint unavailable locally or outside a Deploy Preview. Facebook: not configured. Cache writes have not been tested.';}}
+void loadStatus();
+document.querySelector('#refresh-form')!.addEventListener('submit',async event=>{
+  event.preventDefault();const button=document.querySelector<HTMLButtonElement>('[type="submit"]')!;
+  if(button.disabled)return;button.disabled=true;
+  const field=document.querySelector<HTMLInputElement>('#refresh-secret')!,result=document.querySelector('#refresh-result')!;
+  const credential=field.value;field.value='';
+  try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${credential}`},body:JSON.stringify({source:'facebook',mode:'manual'}),cache:'no-store'});show(result,await response.json());}
+  catch{result.textContent='Preview refresh endpoint unavailable. Existing reviews are unchanged.';}
+  finally{button.disabled=false;}
+});
+const store=new MemoryReviewStore(),provider=createLocalTestProvider(local);
+let time=new Date();
+async function simulate(mode:string,fail=false){
+ const buttons=[...document.querySelectorAll<HTMLButtonElement>('[id^="simulate"]')];buttons.forEach(b=>b.disabled=true);
+ if(fail)time=new Date(time.getTime()+DAY);
+ try{const result=await refreshReviews({store,provider:fail?{...provider,fetch:async()=>{throw new Error('simulated failure');}}:provider,local,mode,now:()=>time});
+ show(document.querySelector('#simulation-result')!,{simulationOnly:true,...result,retainedCount:(await store.getSnapshot('facebook'))?.reviews.length??0});}
+ finally{buttons.forEach(b=>b.disabled=false);}
+}
+document.querySelector('#simulate')!.addEventListener('click',()=>void simulate('manual'));
+document.querySelector('#simulate-failure')!.addEventListener('click',()=>void simulate('manual',true));
+document.querySelector('#simulate-daily')!.addEventListener('click',()=>void simulate('daily'));
+</script>
+<style>body{margin:0;background:#101216;color:#f4f4f5;font:16px/1.6 system-ui}main{max-width:850px;margin:auto;padding:24px}section{padding:20px;margin:20px 0;border:1px solid #52525b;border-radius:12px}h1{font-size:1.7rem}h2{font-size:1.2rem}button,input{font:inherit;padding:10px;border-radius:6px;max-width:100%;box-sizing:border-box}button{cursor:pointer;margin:8px 8px 8px 0}button:disabled{cursor:wait;opacity:.6}label{display:block}input{display:block;width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}</style>
+</body></html>

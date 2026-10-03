@@ -24,6 +24,8 @@ assert.equal(filterReviews([{ ...data[0], featured: false }], { featuredOnly: tr
 assert.equal(legitimateRating({ ...data[0], rating: 5 }), null);
 assert.equal(legitimateRating({ ...data[0], source: 'google', rating: 4.5 }), 4.5);
 assert.equal(legitimateRating({ ...data[0], source: 'manual', rating: 8 }), null);
+assert.equal(legitimateRating({ ...data[0], source: 'manual', rating: 5 }), null);
+assert.equal(legitimateRating({ ...data[0], source: 'whatsapp', rating: 5 }), null);
 assert.deepEqual(sourceSummary(data).map(s => [s.source, s.count, s.recommendations, s.average]), [['facebook', 5, 5, null]]);
 assert.equal(sourceSummary([...data, { ...data[0], source: 'google', rating: 4 }])[1].average, 4);
 const dated = [{ ...data[0], id: 'new', date: '2026-01-01' }, { ...data[0], id: 'missing' }, { ...data[0], id: 'old', date: '2025-01-01' }];
@@ -43,6 +45,8 @@ const sitemap = await readFile(new URL('../dist/sitemap-0.xml', import.meta.url)
 assert.doesNotMatch(sitemap, /reviews-widget-preview/);
 for (const route of ['index.html', 'pl/index.html']) {
   const html = await readFile(new URL(`../dist/${route}`, import.meta.url), 'utf8');
-  assert.doesNotMatch(html, /<section[^>]*data-review-widget|href="[^"]*reviews-widget-preview/);
+  assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1);
+  assert.doesNotMatch(html, /href="[^"]*reviews-admin-preview/);
+  assert.match(html, route.startsWith('pl/') ? /OPINIE PODOPIECZNYCH/ : /CLIENT REVIEWS/);
 }
 console.log('PASS: review consent/filtering/rating/sorting rules, content, unique widgets, noindex, sitemap and homepage isolation.');
