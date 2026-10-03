@@ -25,7 +25,7 @@ const sourceLabels: Record<string, string> = {
 };
 ---
 {canRender && (
-  <section class="reviews-section on-white" data-kk-reviews aria-labelledby={`reviews-heading-${lang}`}>
+  <section id="client-reviews" class="reviews-section on-white" data-kk-reviews aria-labelledby={`reviews-heading-${lang}`}>
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">{settings.eyebrow[lang]}</span>
@@ -107,12 +107,7 @@ const sourceLabels: Record<string, string> = {
   }
 </style>
 
-<script is:inline>
-  (() => {
-    const reviews = Array.from(document.querySelectorAll('[data-kk-reviews]'));
-    if (reviews.length > 1) reviews.slice(1).forEach((section) => section.remove());
-  })();
-</script>
+
 
 
 <script is:inline data-review-dedupe>
@@ -121,5 +116,12 @@ const sourceLabels: Record<string, string> = {
     sections.forEach((section, index) => {
       if (index > 0) section.remove();
     });
+  })()
+
+
+<script is:inline>
+  (() => {
+    const sections = Array.from(document.querySelectorAll('.reviews-section'));
+    sections.slice(1).forEach((section) => section.remove());
   })();
 </script>
