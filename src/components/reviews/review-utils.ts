@@ -6,7 +6,7 @@ export const safeUrl = (url?: unknown): string | undefined => {
   try { const parsed = new URL(url); if (parsed.protocol === 'https:') return parsed.href; } catch {}
 };
 export const legitimateRating = (item: ReviewItem): number | null =>
-  item.source !== 'facebook' && typeof item.rating === 'number' && Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null;
+  item.source === 'google' && typeof item.rating === 'number' && Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null;
 export function filterReviews(items: ReviewItem[], filters: ReviewFilters = {}): ReviewItem[] {
   const includes = (text: string, terms?: string[]) => !terms?.length || terms.some(term => text.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
   const excludes = (text: string, terms?: string[]) => !terms?.some(term => text.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
@@ -43,3 +43,4 @@ export function sourceSummary(items: ReviewItem[]) {
       average: ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : null, ratingCount: ratings.length };
   }).filter(summary => summary.count > 0);
 }
+

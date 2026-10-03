@@ -34,7 +34,7 @@ export function cleanReview(item) {
   try { const url = new URL(item.reviewUrl); if (url.protocol === 'https:' && ['www.facebook.com','facebook.com'].includes(url.hostname) && !url.search && !url.hash) reviewUrl = url.href; } catch {}
   return { id: typeof item.id === 'string' && /^[\w-]{1,100}$/.test(item.id) ? item.id : 'review', source: item.source,
     externalId, client: item.client, quote: item.quote, avatar, date, reviewUrl,
-    rating: item.source === 'facebook' ? null : Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null,
+    rating: item.source !== 'google' ? null : Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null,
     recommendation: typeof item.recommendation === 'boolean' ? item.recommendation : null,
     enabled: item.enabled === true, approved: item.approved === true, featured: item.featured === true,
     consentConfirmed: item.consentConfirmed === true,
@@ -122,3 +122,4 @@ export async function refreshReviews({ store, provider, local = [], mode = 'manu
 }
 export const createLocalTestProvider = reviews => ({ source:'facebook', mode:'local-test', configured:true,
   fetch:async () => ({ complete:true, reviews:reviews.map(item=>({...item,sourceMeta:{...item.sourceMeta,origin:'local-test'}})) }) });
+

@@ -50,9 +50,10 @@ export interface ReviewsWidgetConfig {
   showReviewerName: boolean; showSourceIcon: boolean; showDate: boolean;
   showRating: boolean; showRecommendationState: boolean;
   reviewTextMode: 'short' | 'full'; reviewClampLines: number;
-  desktopColumns: 2 | 3 | 4; tabletColumns: 1 | 2; mobileCardWidth: string;
+  desktopColumns: 1 | 2 | 3 | 4; tabletColumns: 1 | 2; mobileCardWidth: string;
   showNavigationArrows: boolean; showProgress: boolean; showCounter: boolean;
   sort: 'manual' | 'newest' | 'oldest' | 'random';
   showWriteReviewButton: boolean; writeReviewUrl?: string | null;
   accentMode: 'site-red' | 'source';
 }
+

@@ -3,9 +3,10 @@
   "showHeader": true, "showSourceSummary": true,
   "showReviewerAvatar": true, "showReviewerName": true, "showSourceIcon": true,
   "showDate": true, "showRating": true, "showRecommendationState": true,
-  "reviewTextMode": "short", "reviewClampLines": 7,
-  "desktopColumns": 3, "tabletColumns": 2, "mobileCardWidth": "90%",
+  "reviewTextMode": "short", "reviewClampLines": 5,
+  "desktopColumns": 1, "tabletColumns": 1, "mobileCardWidth": "100%",
   "showNavigationArrows": true, "showProgress": true, "showCounter": true,
   "sort": "manual", "showWriteReviewButton": true, "writeReviewUrl": null,
   "accentMode": "site-red"
 }
+
