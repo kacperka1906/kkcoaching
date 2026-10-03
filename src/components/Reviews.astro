@@ -113,3 +113,13 @@ const sourceLabels: Record<string, string> = {
     if (reviews.length > 1) reviews.slice(1).forEach((section) => section.remove());
   })();
 </script>
+
+
+<script is:inline data-review-dedupe>
+  (() => {
+    const sections = document.querySelectorAll('#client-reviews');
+    sections.forEach((section, index) => {
+      if (index > 0) section.remove();
+    });
+  })();
+</script>
