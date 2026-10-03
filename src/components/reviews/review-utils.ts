@@ -1,17 +1,17 @@
 import type { ReviewItem, ReviewFilters, ReviewsWidgetConfig } from './review-types';
-export const sourceNames = { facebook: 'Facebook', google: 'Google', whatsapp: 'WhatsApp', manual: 'KK Coaching' };
+export const sourceNames = { facebook: 'Facebook', google: 'Google', whatsapp: 'WhatsApp', messenger: 'Messenger', manual: 'Direct' };
 export const safeUrl = (url?: unknown): string | undefined => {
   if (typeof url !== 'string') return;
   if (/^\/(?!\/)/.test(url)) return url;
   try { const parsed = new URL(url); if (parsed.protocol === 'https:') return parsed.href; } catch {}
 };
 export const legitimateRating = (item: ReviewItem): number | null =>
-  item.source !== 'facebook' && typeof item.rating === 'number' && Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null;
+  item.source === 'google' && typeof item.rating === 'number' && Number.isFinite(item.rating) && item.rating >= 1 && item.rating <= 5 ? item.rating : null;
 export function filterReviews(items: ReviewItem[], filters: ReviewFilters = {}): ReviewItem[] {
   const includes = (text: string, terms?: string[]) => !terms?.length || terms.some(term => text.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
   const excludes = (text: string, terms?: string[]) => !terms?.some(term => text.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
   return items.filter(item => item.enabled === true && item.approved === true
-    && (item.source !== 'whatsapp' || item.consentConfirmed === true)
+    && (!['whatsapp', 'messenger'].includes(item.source) || item.consentConfirmed === true)
     && (!filters.source || item.source === filters.source)
     && (filters.minRating == null || (legitimateRating(item) ?? -1) >= filters.minRating)
     && includes(item.client, filters.authorInclude) && excludes(item.client, filters.authorExclude)

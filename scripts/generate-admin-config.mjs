@@ -193,6 +193,21 @@ function pairField(name, value) {
   };
 }
 
+function reviewSourceField() {
+  return {
+    label: 'Źródło',
+    name: 'source',
+    widget: 'select',
+    options: [
+      { label: 'Facebook', value: 'facebook' },
+      { label: 'Google', value: 'google' },
+      { label: 'WhatsApp', value: 'whatsapp' },
+      { label: 'Messenger', value: 'messenger' },
+      { label: 'Ręcznie / inne', value: 'manual' }
+    ]
+  };
+}
+
 function reviewItemsField(name) {
   return {
     label: 'Opinie',
@@ -200,21 +215,30 @@ function reviewItemsField(name) {
     widget: 'list',
     collapsed: true,
     summary: '{{fields.client}} — {{fields.source}}',
-    hint: 'Minimum: imię, treść i źródło. Screenshot i gwiazdki są opcjonalne.',
+    hint: 'Nowa opinia pojawi się w widżecie dopiero po włączeniu Widoczna + Zatwierdzona. WhatsApp/Messenger wymagają dodatkowo potwierdzonej zgody klienta.',
     fields: [
       { label: 'Widoczna', name: 'enabled', widget: 'boolean', default: true },
-      { label: 'Imię klienta', name: 'client', widget: 'string' },
+      { label: 'Zatwierdzona do publikacji', name: 'approved', widget: 'boolean', default: false, hint: 'Włącz dopiero po sprawdzeniu treści.' },
+      { label: 'Imię / nazwa klienta', name: 'client', widget: 'string' },
       { label: 'Treść opinii', name: 'quote', widget: 'text' },
-      scalarField('source', 'google'),
-      { label: 'Screenshot oryginalnej wiadomości', name: 'screenshot', widget: 'image', required: false, hint: 'Usuń lub zasłoń prywatne dane, jeśli nie masz zgody na ich publikację.' },
-      { label: 'Ocena 1–5', name: 'rating', widget: 'number', value_type: 'int', min: 1, max: 5, required: false },
-      { label: 'Pokaż na stronie głównej', name: 'featured', widget: 'boolean', default: true }
+      reviewSourceField(),
+      { label: 'Zdjęcie profilowe / avatar', name: 'avatar', widget: 'image', required: false, hint: 'Dla WhatsApp/Messenger użyj zdjęcia tylko, jeśli klient zgodził się na publikację. Bez zdjęcia widżet pokaże inicjały.' },
+      { label: 'Screenshot oryginalnej opinii / wiadomości', name: 'screenshot', widget: 'image', required: false, hint: 'Tylko do dokumentacji. Nie jest pokazywany w widżecie.' },
+      { label: 'Ocena 1–5', name: 'rating', widget: 'number', value_type: 'float', min: 1, max: 5, required: false, hint: 'Uzupełniaj tylko dla źródła, które faktycznie ma ocenę gwiazdkową (np. Google).' },
+      { label: 'Facebook: rekomenduje KK Coaching', name: 'recommendation', widget: 'boolean', default: true, required: false },
+      { label: 'Data opinii', name: 'date', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false },
+      { label: 'Link do oryginalnej opinii', name: 'reviewUrl', widget: 'string', required: false },
+      { label: 'Pokaż na stronie głównej', name: 'featured', widget: 'boolean', default: true },
+      { label: 'Zgoda klienta na publikację', name: 'consentConfirmed', widget: 'boolean', default: false, hint: 'WYMAGANE dla WhatsApp i Messenger. Bez tego prywatna wiadomość nie pojawi się publicznie.' },
+      { label: 'Język opinii', name: 'language', widget: 'select', default: 'en', options: [{ label: 'English', value: 'en' }, { label: 'Polski', value: 'pl' }] },
+      { label: 'Internal ID', name: 'id', widget: 'hidden', required: false }
     ]
   };
 }
 
 function fieldFromValue(name, value, parents = []) {
   if (parents.at(-1) === 'reviews' && name === 'items' && Array.isArray(value)) return reviewItemsField(name);
+  if (parents.at(-1) === 'reviews' && name === 'enabled') return { label: 'Legacy reviews section', name, widget: 'hidden', default: false };
   if (isPair(value)) return pairField(name, value);
   if (Array.isArray(value)) {
     if (value.length === 0) return { label: prettify(name), name, widget: 'list', field: { label: 'Element', name: 'value', widget: 'string' }, collapsed: true };
