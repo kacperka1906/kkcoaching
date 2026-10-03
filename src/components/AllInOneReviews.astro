@@ -1,0 +1,839 @@
+---
+import admin from '../data/admin-v2.json';
+
+interface Props {
+  lang: 'en' | 'pl';
+}
+
+const { lang } = Astro.props;
+const widget = admin.reviewWidget;
+const reviews = admin.reviews.items
+  .filter((item: any) => item.enabled !== false)
+  .filter((item: any) => item.featured !== false);
+
+const canRender = widget?.enabled && reviews.length > 0;
+
+const sourceLabels: Record<string, string> = {
+  google: 'Google',
+  facebook: 'Facebook',
+  instagram: 'Instagram',
+  whatsapp: 'WhatsApp',
+  messenger: 'Messenger',
+  mypthub: 'MyPTHub',
+  email: 'Email',
+  other: lang === 'pl' ? 'Inne' : 'Other'
+};
+
+const sources = [...new Set(reviews.map((item: any) => item.source || 'other'))];
+const sourceCounts = Object.fromEntries(
+  sources.map((source) => [source, reviews.filter((item: any) => (item.source || 'other') === source).length])
+);
+
+const copy = {
+  all: lang === 'pl' ? 'Wszystkie' : 'All',
+  recommendations: lang === 'pl' ? 'rekomendacji' : 'recommendations',
+  reviews: lang === 'pl' ? 'opinii' : 'reviews',
+  readMore: lang === 'pl' ? 'Czytaj więcej' : 'Read more',
+  readLess: lang === 'pl' ? 'Zwiń' : 'Show less',
+  original: lang === 'pl' ? 'Zobacz oryginał' : 'View original',
+  sourcePage: lang === 'pl' ? 'Zobacz na Facebooku' : 'View on Facebook',
+  prev: lang === 'pl' ? 'Poprzednie opinie' : 'Previous reviews',
+  next: lang === 'pl' ? 'Następne opinie' : 'Next reviews',
+  close: lang === 'pl' ? 'Zamknij' : 'Close',
+  verified: lang === 'pl' ? 'Oryginalna rekomendacja' : 'Original recommendation'
+};
+
+const countLabel = reviews.some((item: any) => Number(item.rating) > 0) ? copy.reviews : copy.recommendations;
+
+const initials = (name: string) => name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0]?.toUpperCase())
+  .join('');
+
+const stars = (value: number) => '★★★★★'.slice(0, Math.max(0, Math.min(5, Math.round(value))));
+---
+
+{canRender && (
+  <section class="aio-reviews on-white" data-aio-reviews aria-labelledby={\`aio-reviews-heading-\${lang}\`}>
+    <div class="container">
+      <div class="aio-shell">
+        <header class="aio-header">
+          <div class="aio-heading">
+            <span class="eyebrow">{widget.eyebrow[lang]}</span>
+            <h2 id={\`aio-reviews-heading-\${lang}\`}>{widget.heading[lang]}</h2>
+            <p>{widget.body[lang]}</p>
+          </div>
+
+          <div class="aio-summary" aria-label={\`\${reviews.length} \${countLabel}\`}>
+            <strong>{reviews.length}</strong>
+            <span>{countLabel}</span>
+            <div class="aio-source-lockup">
+              <span class="aio-source-icon facebook" aria-hidden="true">f</span>
+              <span>Facebook</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="aio-toolbar">
+          <div class="aio-filters" role="tablist" aria-label={lang === 'pl' ? 'Filtruj opinie' : 'Filter reviews'}>
+            <button type="button" class="aio-filter is-active" data-source-filter="all" role="tab" aria-selected="true">
+              {copy.all} <span>{reviews.length}</span>
+            </button>
+            {sources.map((source) => (
+              <button type="button" class="aio-filter" data-source-filter={source} role="tab" aria-selected="false">
+                {sourceLabels[source] ?? source} <span>{sourceCounts[source]}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="aio-controls" aria-label={lang === 'pl' ? 'Sterowanie karuzelą' : 'Carousel controls'}>
+            <button type="button" class="aio-arrow" data-aio-prev aria-label={copy.prev}>←</button>
+            <button type="button" class="aio-arrow" data-aio-next aria-label={copy.next}>→</button>
+          </div>
+        </div>
+
+        <div class="aio-track" data-aio-track>
+          {reviews.map((item: any) => (
+            <article class="aio-card" data-source={item.source || 'other'} data-review-card>
+              <div class="aio-card-head">
+                <div class="aio-author">
+                  {item.profileImage ? (
+                    <img class="aio-avatar" src={item.profileImage} alt="" width="44" height="44" loading="lazy" />
+                  ) : (
+                    <span class="aio-avatar aio-initials" aria-hidden="true">{initials(item.client)}</span>
+                  )}
+                  <div>
+                    <strong>{item.client}</strong>
+                    {item.date && <time datetime={item.date}>{item.date}</time>}
+                  </div>
+                </div>
+
+                <span class={\`aio-source-icon \${item.source || 'other'}\`} aria-label={sourceLabels[item.source] ?? item.source}>
+                  {item.source === 'facebook' ? 'f' : item.source === 'google' ? 'G' : '•'}
+                </span>
+              </div>
+
+              <div class="aio-rating-row">
+                {item.rating ? (
+                  <span class="aio-stars" aria-label={\`\${item.rating} out of 5 stars\`}>{stars(Number(item.rating))}</span>
+                ) : (
+                  <span class="aio-recommended">
+                    <span aria-hidden="true">✓</span>
+                    {copy.verified}
+                  </span>
+                )}
+              </div>
+
+              <div class="aio-quote-wrap">
+                <blockquote class="aio-quote" data-aio-quote>“{item.quote}”</blockquote>
+                <button
+                  type="button"
+                  class="aio-read-more"
+                  data-aio-expand
+                  data-more={copy.readMore}
+                  data-less={copy.readLess}
+                  hidden
+                >
+                  {copy.readMore}
+                </button>
+              </div>
+
+              <div class="aio-card-foot">
+                <span class="aio-source-name">{sourceLabels[item.source] ?? item.source}</span>
+                {item.screenshot && (
+                  <button
+                    type="button"
+                    class="aio-proof"
+                    data-proof={item.screenshot}
+                    data-client={item.client}
+                    aria-label={\`\${copy.original}: \${item.client}\`}
+                  >
+                    {copy.original}
+                  </button>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="aio-bottom">
+          <div class="aio-dots" data-aio-dots aria-hidden="true"></div>
+          <a class="aio-source-link" href={admin.contact.facebookUrl} target="_blank" rel="noopener">
+            {copy.sourcePage} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="aio-modal" data-aio-modal aria-hidden="true">
+      <button type="button" class="aio-modal-close" data-aio-close aria-label={copy.close}>×</button>
+      <div class="aio-modal-panel" role="dialog" aria-modal="true" aria-label={copy.original}>
+        <img src="" alt="" data-aio-modal-image />
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .aio-reviews {
+    border-top: 1px solid #E3E5E8;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(178, 31, 48, .06), transparent 32%),
+      #fff;
+  }
+
+  .aio-shell {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .aio-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 34px;
+    margin-bottom: 30px;
+  }
+
+  .aio-heading {
+    max-width: 720px;
+  }
+
+  .aio-heading h2 {
+    margin-bottom: 12px;
+  }
+
+  .aio-heading p {
+    max-width: 62ch;
+    color: var(--steel);
+    margin: 0;
+  }
+
+  .aio-summary {
+    min-width: 220px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 12px;
+    align-items: center;
+    padding: 18px 20px;
+    border: 1px solid #E1E4E8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(20, 22, 26, .06);
+  }
+
+  .aio-summary > strong {
+    grid-row: 1 / span 2;
+    color: var(--graphite);
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .aio-summary > span {
+    align-self: end;
+    color: var(--steel);
+    font-size: .82rem;
+    font-weight: 700;
+  }
+
+  .aio-source-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #4B5260;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+
+  .aio-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .aio-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .aio-filter {
+    appearance: none;
+    border: 1px solid #DDE1E5;
+    border-radius: 999px;
+    background: #fff;
+    color: #505761;
+    padding: 9px 13px;
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: border-color .18s ease, background .18s ease, color .18s ease;
+  }
+
+  .aio-filter span {
+    margin-left: 5px;
+    color: #8A9098;
+    font-weight: 700;
+  }
+
+  .aio-filter:hover,
+  .aio-filter:focus-visible,
+  .aio-filter.is-active {
+    border-color: rgba(178, 31, 48, .34);
+    background: rgba(178, 31, 48, .07);
+    color: var(--red);
+  }
+
+  .aio-controls {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
+  .aio-arrow {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #DDE1E5;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--graphite);
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(20, 22, 26, .05);
+  }
+
+  .aio-arrow:hover,
+  .aio-arrow:focus-visible {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .aio-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 36px) / 3);
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 2px 2px 16px;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+
+  .aio-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .aio-card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 340px;
+    padding: 22px;
+    border: 1px solid #E0E3E7;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(20, 22, 26, .07);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+
+  .aio-card:hover {
+    transform: translateY(-2px);
+    border-color: #D4D8DE;
+    box-shadow: 0 16px 36px rgba(20, 22, 26, .1);
+  }
+
+  .aio-card[hidden] {
+    display: none;
+  }
+
+  .aio-card-head,
+  .aio-author,
+  .aio-card-foot,
+  .aio-rating-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .aio-card-head {
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .aio-author {
+    gap: 11px;
+    min-width: 0;
+  }
+
+  .aio-author > div {
+    min-width: 0;
+  }
+
+  .aio-author strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .94rem;
+  }
+
+  .aio-author time {
+    display: block;
+    margin-top: 2px;
+    color: #8B9199;
+    font-size: .72rem;
+  }
+
+  .aio-avatar {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .aio-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #F0F2F4, #E2E5E9);
+    color: #343942;
+    font-size: .8rem;
+    font-weight: 900;
+  }
+
+  .aio-source-icon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #ECEFF3;
+    color: #555C66;
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+    font-size: .9rem;
+  }
+
+  .aio-source-icon.facebook {
+    background: #1877F2;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 1.15rem;
+  }
+
+  .aio-source-icon.google {
+    background: #fff;
+    border: 1px solid #E0E3E7;
+    color: #4285F4;
+  }
+
+  .aio-rating-row {
+    min-height: 28px;
+    margin-top: 17px;
+  }
+
+  .aio-stars {
+    color: #F4A825;
+    letter-spacing: 1px;
+    font-size: 1rem;
+  }
+
+  .aio-recommended {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #56606A;
+    font-size: .75rem;
+    font-weight: 800;
+  }
+
+  .aio-recommended span {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #E7F6EC;
+    color: #14833B;
+    font-size: .72rem;
+  }
+
+  .aio-quote-wrap {
+    flex: 1;
+    margin-top: 13px;
+  }
+
+  .aio-quote {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: #2F3338;
+    font-size: .94rem;
+    line-height: 1.62;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+  }
+
+  .aio-card.is-expanded .aio-quote {
+    display: block;
+    overflow: visible;
+  }
+
+  .aio-read-more,
+  .aio-proof {
+    appearance: none;
+    border: 0;
+    background: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .aio-read-more {
+    margin-top: 8px;
+    color: var(--red);
+    font-size: .76rem;
+    font-weight: 800;
+  }
+
+  .aio-card-foot {
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #ECEEF1;
+  }
+
+  .aio-source-name {
+    color: #777E87;
+    font-size: .72rem;
+    font-weight: 800;
+  }
+
+  .aio-proof {
+    color: #4B5260;
+    font-size: .72rem;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: #C8CDD3;
+    text-underline-offset: 3px;
+  }
+
+  .aio-proof:hover,
+  .aio-proof:focus-visible {
+    color: var(--red);
+  }
+
+  .aio-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 12px;
+  }
+
+  .aio-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 18px;
+  }
+
+  .aio-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #D3D7DC;
+    transition: width .18s ease, background .18s ease;
+  }
+
+  .aio-dot.is-active {
+    width: 22px;
+    background: var(--red);
+  }
+
+  .aio-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #4D545E;
+    font-size: .78rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .aio-source-link:hover,
+  .aio-source-link:focus-visible {
+    color: var(--red);
+  }
+
+  .aio-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(9, 11, 14, .92);
+  }
+
+  .aio-modal.is-open {
+    display: flex;
+  }
+
+  .aio-modal-panel {
+    width: min(94vw, 900px);
+    max-height: 91vh;
+    overflow: auto;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .4);
+  }
+
+  .aio-modal-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .aio-modal-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10000;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: #15181C;
+    font-size: 1.65rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    .aio-track {
+      grid-auto-columns: calc((100% - 18px) / 2);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .aio-header {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .aio-summary {
+      min-width: 0;
+      width: 100%;
+      padding: 15px 17px;
+    }
+
+    .aio-summary > strong {
+      font-size: 1.9rem;
+    }
+
+    .aio-toolbar {
+      align-items: flex-end;
+    }
+
+    .aio-filters {
+      flex-wrap: nowrap;
+      max-width: calc(100vw - 130px);
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .aio-filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .aio-filter {
+      flex: 0 0 auto;
+    }
+
+    .aio-arrow {
+      width: 39px;
+      height: 39px;
+    }
+
+    .aio-track {
+      grid-auto-columns: min(86vw, 360px);
+      gap: 14px;
+      margin-right: calc((100vw - 100%) * -1);
+      padding-right: 18px;
+    }
+
+    .aio-card {
+      min-height: 325px;
+      padding: 19px;
+      border-radius: 14px;
+    }
+
+    .aio-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .aio-modal {
+      padding: 10px;
+    }
+
+    .aio-modal-close {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aio-track {
+      scroll-behavior: auto;
+    }
+
+    .aio-card {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('[data-aio-reviews]').forEach((widget) => {
+      if (widget.dataset.aioInit === '1') return;
+      widget.dataset.aioInit = '1';
+
+      const track = widget.querySelector('[data-aio-track]');
+      const cards = [...widget.querySelectorAll('[data-review-card]')];
+      const prev = widget.querySelector('[data-aio-prev]');
+      const next = widget.querySelector('[data-aio-next]');
+      const dots = widget.querySelector('[data-aio-dots]');
+      const filters = [...widget.querySelectorAll('[data-source-filter]')];
+      const modal = widget.querySelector('[data-aio-modal]');
+      const modalImage = widget.querySelector('[data-aio-modal-image]');
+      const modalClose = widget.querySelector('[data-aio-close]');
+
+      if (!track || cards.length === 0) return;
+
+      const visibleCards = () => cards.filter((card) => !card.hidden);
+
+      const cardStep = () => {
+        const first = visibleCards()[0];
+        if (!first) return track.clientWidth;
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        return first.getBoundingClientRect().width + gap;
+      };
+
+      const rebuildDots = () => {
+        if (!dots) return;
+        dots.innerHTML = '';
+        visibleCards().forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.className = 'aio-dot' + (index === 0 ? ' is-active' : '');
+          dots.appendChild(dot);
+        });
+      };
+
+      const updateDots = () => {
+        if (!dots) return;
+        const step = Math.max(1, cardStep());
+        const index = Math.max(0, Math.min(visibleCards().length - 1, Math.round(track.scrollLeft / step)));
+        [...dots.children].forEach((dot, dotIndex) => {
+          dot.classList.toggle('is-active', dotIndex === index);
+        });
+      };
+
+      prev?.addEventListener('click', () => {
+        track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+      });
+
+      next?.addEventListener('click', () => {
+        track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
+
+      filters.forEach((filter) => {
+        filter.addEventListener('click', () => {
+          const source = filter.dataset.sourceFilter;
+          filters.forEach((item) => {
+            const active = item === filter;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          cards.forEach((card) => {
+            card.hidden = source !== 'all' && card.dataset.source !== source;
+          });
+          track.scrollTo({ left: 0, behavior: 'auto' });
+          rebuildDots();
+          updateDots();
+        });
+      });
+
+      cards.forEach((card) => {
+        const quote = card.querySelector('[data-aio-quote]');
+        const button = card.querySelector('[data-aio-expand]');
+        if (!quote || !button) return;
+
+        requestAnimationFrame(() => {
+          if (quote.scrollHeight > quote.clientHeight + 2) button.hidden = false;
+        });
+
+        button.addEventListener('click', () => {
+          const expanded = card.classList.toggle('is-expanded');
+          button.textContent = expanded ? button.dataset.less : button.dataset.more;
+        });
+      });
+
+      const closeModal = () => {
+        if (!modal || !modalImage) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImage.removeAttribute('src');
+        document.body.style.overflow = '';
+      };
+
+      widget.querySelectorAll('[data-proof]').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!modal || !modalImage) return;
+          modalImage.src = button.dataset.proof || '';
+          modalImage.alt = button.dataset.client
+            ? 'Original review from ' + button.dataset.client
+            : 'Original review';
+          modal.classList.add('is-open');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          modalClose?.focus();
+        });
+      });
+
+      modalClose?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal?.classList.contains('is-open')) closeModal();
+      });
+
+      rebuildDots();
+      updateDots();
+    });
+  })();
+</script>
