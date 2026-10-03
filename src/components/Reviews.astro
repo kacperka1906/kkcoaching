@@ -12,6 +12,7 @@ const items = settings.items
   .filter((item: any) => item.enabled !== false)
   .filter((item: any) => item.featured !== false)
   .slice(0, Math.max(1, limit));
+
 const canRender = settings.enabled && items.length > 0;
 const sourceLabels: Record<string, string> = {
   google: lang === 'pl' ? 'Opinia Google' : 'Google Review',
@@ -24,104 +25,277 @@ const sourceLabels: Record<string, string> = {
   other: lang === 'pl' ? 'Inne' : 'Other'
 };
 ---
+
 {canRender && (
-  <section id="client-reviews" class="reviews-section on-white" data-kk-reviews aria-labelledby={`reviews-heading-${lang}`}>
+  <section
+    id="facebook-reviews"
+    class="reviews-section on-white"
+    data-review-widget
+    aria-labelledby={`reviews-heading-${lang}`}
+  >
     <div class="container">
       <div class="section-head centered">
         <span class="eyebrow">{settings.eyebrow[lang]}</span>
         <h2 id={`reviews-heading-${lang}`}>{settings.heading[lang]}</h2>
         <p>{settings.body[lang]}</p>
       </div>
-      <div class="reviews-grid">
+
+      <div class="reviews-grid" aria-label={lang === 'pl' ? 'Opinie klientów' : 'Client reviews'}>
         {items.map((item: any) => (
-          <article class:list={['review-card', { 'review-card--screenshot': Boolean(item.screenshot) }]}>
+          <article class="review-card">
             {item.screenshot ? (
-              <a
-                class="review-shot-link"
-                href={item.screenshot}
-                target="_blank"
-                rel="noopener"
-                aria-label={lang === 'pl' ? `Otwórz pełną rekomendację: ${item.client}` : `Open full recommendation: ${item.client}`}
+              <button
+                class="review-shot-button"
+                type="button"
+                data-review-image={item.screenshot}
+                data-review-client={item.client}
+                aria-label={lang === 'pl' ? `Powiększ opinię: ${item.client}` : `Enlarge review: ${item.client}`}
               >
                 <img
                   class="review-shot"
                   src={item.screenshot}
-                  alt={lang === 'pl' ? `Oryginalna rekomendacja ${item.client} na Facebooku` : `Original Facebook recommendation from ${item.client}`}
+                  alt={lang === 'pl'
+                    ? `Oryginalna rekomendacja ${item.client} na Facebooku`
+                    : `Original Facebook recommendation from ${item.client}`}
                   loading="lazy"
                   decoding="async"
                 />
-              </a>
-            ) : (
-              <>
-                {item.rating && <div class="review-stars" aria-label={`${item.rating} out of 5 stars`}>{'★★★★★'.slice(0, Math.max(0, Math.min(5, Math.round(item.rating))))}</div>}
-                {item.quote && <blockquote>“{item.quote}”</blockquote>}
-                <div class="review-meta">
-                  <strong>{item.client}</strong>
-                  {item.source && <span class="review-source">{sourceLabels[item.source] ?? item.source}</span>}
-                </div>
-              </>
+              </button>
+            ) : item.quote ? (
+              <blockquote>“{item.quote}”</blockquote>
+            ) : null}
+
+            <div class="review-meta">
+              <strong>{item.client}</strong>
+              {item.source && (
+                <span class="review-source">{sourceLabels[item.source] ?? item.source}</span>
+              )}
+            </div>
+
+            {item.screenshot && (
+              <span class="review-expand-hint">
+                {lang === 'pl' ? 'Dotknij screena, aby powiększyć' : 'Tap the screenshot to enlarge'}
+              </span>
             )}
           </article>
         ))}
       </div>
-      {(settings.googleReviewsUrl || settings.leaveGoogleReviewUrl) && (
-        <div class="review-actions">
-          {settings.googleReviewsUrl && <a class="btn btn-outline-dark" href={settings.googleReviewsUrl} target="_blank" rel="noopener">{settings.seeAllLabel[lang]}</a>}
-          {settings.leaveGoogleReviewUrl && <a class="btn btn-primary" href={settings.leaveGoogleReviewUrl} target="_blank" rel="noopener">{settings.leaveReviewLabel[lang]}</a>}
-        </div>
-      )}
+    </div>
+
+    <div class="review-lightbox" data-review-lightbox aria-hidden="true">
+      <button
+        class="review-lightbox-close"
+        type="button"
+        aria-label={lang === 'pl' ? 'Zamknij' : 'Close'}
+      >×</button>
+      <div class="review-lightbox-inner">
+        <img src="" alt="" data-review-lightbox-image />
+      </div>
     </div>
   </section>
 )}
 
 <style>
-  .reviews-section { border-top: 1px solid #E3E5E8; }
-  .reviews-grid { columns: 2; column-gap: 18px; }
-  .review-card { display: flex; flex-direction: column; min-width: 0; padding: 18px; margin: 0 0 18px; break-inside: avoid; border: 1px solid #E1E4E8; border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 22px rgba(20,22,26,.05); }
-  .review-card--screenshot { padding: 8px; }
-  .review-stars { color: var(--red); font-size: 1rem; letter-spacing: .08em; font-weight: 800; margin-bottom: 12px; }
-  blockquote { margin: 0 0 18px; color: var(--graphite); font-size: .98rem; line-height: 1.65; flex: 1; }
-  .review-shot-link {
+  .reviews-section {
+    border-top: 1px solid #E3E5E8;
+    background: var(--white);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #E1E4E8;
+    border-radius: 14px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 28px rgba(20,22,26,.06);
+  }
+
+  .review-shot-button {
     display: block;
     width: 100%;
-    overflow: hidden;
+    padding: 0;
+    border: 0;
     border-radius: 10px;
-    background: #FFFFFF;
+    overflow: hidden;
+    background: #F7F8F9;
     cursor: zoom-in;
+    text-align: left;
   }
+
   .review-shot {
     display: block;
     width: 100%;
     height: auto;
+    object-fit: contain;
+    object-position: top center;
   }
-  .review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-  .review-meta strong { font-size: .92rem; }
-  .review-source { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 8px; border-radius: 999px; background: #F1F2F4; color: var(--steel); font-size: .72rem; font-weight: 700; }
-  .review-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  @media (max-width: 700px) {
-    .reviews-grid { columns: 1; }
-    .review-card { padding: 14px; margin-bottom: 16px; }
-    .review-card--screenshot { padding: 6px; }
-    .review-actions { display: grid; grid-template-columns: 1fr; }
-    .review-actions .btn { width: 100%; }
+
+  blockquote {
+    margin: 4px 6px 16px;
+    color: var(--graphite);
+    font-size: .98rem;
+    line-height: 1.65;
+  }
+
+  .review-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    padding: 12px 4px 0;
+  }
+
+  .review-meta strong {
+    font-size: .92rem;
+  }
+
+  .review-source {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #F1F2F4;
+    color: var(--steel);
+    font-size: .72rem;
+    font-weight: 700;
+  }
+
+  .review-expand-hint {
+    padding: 6px 4px 2px;
+    color: #7A8088;
+    font-size: .72rem;
+    line-height: 1.35;
+  }
+
+  .review-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10,12,15,.92);
+  }
+
+  .review-lightbox.is-open {
+    display: flex;
+  }
+
+  .review-lightbox-inner {
+    width: min(94vw, 900px);
+    max-height: 92vh;
+    overflow: auto;
+    border-radius: 12px;
+    background: #FFFFFF;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  }
+
+  .review-lightbox img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .review-lightbox-close {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 10000;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: #17191D;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  }
+
+  @media (max-width: 900px) and (min-width: 621px) {
+    .reviews-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .reviews-grid {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 18px 12px;
+      margin: 0 -18px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .review-card {
+      flex: 0 0 min(88vw, 390px);
+      scroll-snap-align: start;
+      padding: 10px;
+    }
+
+    .review-lightbox {
+      padding: 12px;
+    }
+
+    .review-lightbox-close {
+      top: 12px;
+      right: 12px;
+    }
   }
 </style>
 
-
-
-
-<script is:inline data-review-dedupe>
-  (() => {
-    const sections = document.querySelectorAll('#client-reviews');
-    sections.forEach((section, index) => {
-      if (index > 0) section.remove();
-    });
-  })()
-
-
 <script is:inline>
   (() => {
-    const sections = Array.from(document.querySelectorAll('.reviews-section'));
-    sections.slice(1).forEach((section) => section.remove());
+    const widgets = [...document.querySelectorAll('[data-review-widget]')];
+    widgets.slice(1).forEach((node) => node.remove());
+
+    const widget = widgets[0];
+    if (!widget) return;
+
+    const lightbox = widget.querySelector('[data-review-lightbox]');
+    const image = widget.querySelector('[data-review-lightbox-image]');
+    if (!lightbox || !image) return;
+
+    const close = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      image.removeAttribute('src');
+    };
+
+    widget.querySelectorAll('[data-review-image]').forEach((button) => {
+      button.addEventListener('click', () => {
+        image.src = button.dataset.reviewImage || '';
+        image.alt = button.dataset.reviewClient
+          ? `Facebook recommendation: ${button.dataset.reviewClient}`
+          : 'Facebook recommendation';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    widget.querySelector('.review-lightbox-close')?.addEventListener('click', close);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
   })();
 </script>
