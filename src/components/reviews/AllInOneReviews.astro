@@ -1,0 +1,55 @@
+---
+import ReviewCard from './ReviewCard.astro';
+import SourceIcon from './SourceIcon.astro';
+import { localReviews } from './review-providers';
+import { filterReviews, sortReviews, sourceSummary, safeUrl } from './review-utils';
+import { reviewCopy } from './review-copy';
+import defaults from '../../data/reviews/reviews-config.json';
+import admin from '../../data/admin-v2.json';
+import type { ReviewItem, ReviewFilters, ReviewsWidgetConfig, ReviewSource } from './review-types';
+import './reviews.css';
+interface Props { lang?: 'en' | 'pl'; id?: string; items?: ReviewItem[]; config?: Partial<ReviewsWidgetConfig>; filters?: ReviewFilters; }
+const { lang = 'en', id = 'client-reviews', items = localReviews, config: overrides = {}, filters = {} } = Astro.props;
+const config = { ...defaults, ...overrides } as ReviewsWidgetConfig;
+const copy = reviewCopy[lang];
+const reviews = sortReviews(filterReviews(items, filters), config.sort === 'random' ? 'manual' : config.sort);
+const summaries = sourceSummary(reviews);
+const writeUrl = safeUrl(config.writeReviewUrl ?? admin.contact.facebookUrl);
+---
+<section class="rw-widget" data-review-widget data-layout={config.layout} data-theme={config.theme} data-sort={config.sort} data-accent={config.accentMode}
+  data-text-mode={config.reviewTextMode} data-more={copy.more} data-less={copy.less} aria-labelledby={`${id}-title`}
+  style={`--rw-desktop:${config.desktopColumns};--rw-tablet:${config.tabletColumns};--rw-mobile:${config.mobileCardWidth};--rw-lines:${config.reviewClampLines};--rw-mobile-lines:${config.reviewClampLines + 1}`}>
+  <header class:list={['rw-header', { 'rw-sr-only': !config.showHeader && !config.showSourceSummary }]}>
+    <div class:list={['rw-heading', { 'rw-sr-only': !config.showHeader }]}>
+      <span class="rw-eyebrow">{copy.eyebrow}</span>
+      <h2 id={`${id}-title`}>{copy.title}</h2>
+      <p>{copy.caption}</p>
+    </div>
+    {config.showSourceSummary && <div class="rw-summaries">{summaries.map(summary => <div class="rw-summary">
+      <SourceIcon source={summary.source as ReviewSource}/>
+      <div><strong>{summary.name}</strong><span>{summary.source === 'facebook' ? copy.recommendationCount(summary.recommendations) : `${summary.count} ${copy.reviews}`}</span>
+      {summary.average !== null && <span>{summary.average.toFixed(1)} / 5 · {summary.ratingCount} {copy.reviews}</span>}</div>
+    </div>)}</div>}
+  </header>
+  <div class="rw-toolbar">
+    <div class="rw-tabs" role="group" aria-label={copy.sources}>
+      <button type="button" data-filter="all" aria-pressed="true">{copy.all}<span>{reviews.length}</span></button>
+      {summaries.map(summary => <button type="button" data-filter={summary.source} aria-pressed="false"><SourceIcon source={summary.source as ReviewSource}/>{summary.name}<span>{summary.count}</span></button>)}
+    </div>
+    {config.showWriteReviewButton && writeUrl && <a class="rw-leave" href={writeUrl} target="_blank" rel="noopener noreferrer">{copy.leave}<span aria-hidden="true">↗</span></a>}
+  </div>
+  <div class="rw-track" data-track id={`${id}-track`} tabindex="0" aria-label={copy.original}>
+    {reviews.map(item => <ReviewCard item={item} config={config} copy={copy} lang={lang} instanceId={id}/>)}
+  </div>
+  <p class="rw-empty" data-empty hidden={reviews.length > 0}>{copy.empty}</p>
+  <div class="rw-navigation" data-navigation>
+    <span class="rw-caption">{copy.original}</span>
+    {config.showProgress && <div class="rw-progress" role="progressbar" aria-label={copy.position} aria-valuemin="0" aria-valuemax={reviews.length} aria-valuenow={reviews.length ? 1 : 0}><span data-progress></span></div>}
+    {config.showCounter && <output class="rw-counter" data-counter aria-live="polite" aria-atomic="true">{reviews.length ? 1 : 0} / {reviews.length}</output>}
+    {config.showNavigationArrows && <div class="rw-arrows"><button type="button" data-prev aria-label={copy.previous} aria-controls={`${id}-track`} disabled><span aria-hidden="true">←</span></button><button type="button" data-next aria-label={copy.next} aria-controls={`${id}-track`}><span aria-hidden="true">→</span></button></div>}
+  </div>
+</section>
+<script>
+  import { initializeReviews } from './review-controller';
+  document.querySelectorAll<HTMLElement>('[data-review-widget]').forEach(initializeReviews);
+</script>

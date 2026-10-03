@@ -1,0 +1,32 @@
+[
+  {
+    "id": "aneta", "source": "facebook", "client": "Aneta K-o", "avatar": "/images/reviews/aneta.jpg",
+    "quote": "I highly recommend Kacper and KK Coaching. I’ve been working with him since April, and I’m really happy with my progress. What I appreciate most is that both the nutrition and training plans are realistic, personalized, and adjusted to my goals, lifestyle, and abilities. Even during my knee injury, he has always tried to find the best solutions for me so I can continue working toward my goals safely.\nKacper is very supportive, knowledgeable, and always takes the time to answer my questions or make adjustments when needed. He explains everything clearly, so you understand not only what to do, but also why you’re doing it.\nThanks to his guidance, I’ve become much more consistent, improved my physique, and learned how to approach nutrition and training in a balanced way without feeling like I’m constantly on a strict diet.\nIf you’re looking for someone professional, motivating, and genuinely involved in your progress, I would definitely recommend Kacper !",
+    "recommendation": true, "rating": null, "date": null, "reviewUrl": null, "enabled": true, "featured": true, "approved": true,
+    "sourceMeta": { "screenshot": "aneta-original.jpg", "language": "en", "visibleDate": "7 wrz", "dateNote": "Screenshot does not show a year." }
+  },
+  {
+    "id": "sylwia", "source": "facebook", "client": "Sylwia Malys", "avatar": "/images/reviews/sylwia.jpg",
+    "quote": "I highly recommend it Kacper  for his professional approach to diet and training- good motivation;)! After 5 months I’m 10 kg lighter - I feel amazing , I can’t wait for more changes!💪🤕",
+    "recommendation": true, "rating": null, "date": null, "reviewUrl": null, "enabled": true, "featured": true, "approved": true,
+    "sourceMeta": { "screenshot": "sylwia-original.jpg", "language": "en", "visibleDate": "9 wrz", "dateNote": "Screenshot does not show a year." }
+  },
+  {
+    "id": "agnieszka", "source": "facebook", "client": "Agnieszka Kałużna", "avatar": "/images/reviews/agnieszka.jpg",
+    "quote": "I’ve been a client of Kacper for the last 6 months. Thanks to him I achieved my body goals. He provided a comprehensive help all the time. The plan for diet and training was specialised and adjusted to my needs and capabilities, which was checked by him every week. He was available for me pretty much 24/7, when I had questions, doubts or when I needed a little motivation, he was there for me. Thank you Kacper.",
+    "recommendation": true, "rating": null, "date": null, "reviewUrl": null, "enabled": true, "featured": true, "approved": true,
+    "sourceMeta": { "screenshot": "agnieszka-original.jpg", "language": "en", "visibleDate": "31 sie", "dateNote": "Screenshot does not show a year." }
+  },
+  {
+    "id": "sebastian", "source": "facebook", "client": "Sebastian Kolesnik", "avatar": "/images/reviews/sebastian.jpg",
+    "quote": "I can recommend Kacper with confidence. The biggest surprise for me was realising I didn’t have to give up the foods I actually enjoy to lose weight and improve my physique. The nutrition plan was built around my preferences and normal life, rather than forcing me to eat from a rigid meal plan. Over time my waist came down, my shape became much more balanced and my upper body started looking noticeably better. On top of that, the training plan was clear, adjustments were made when needed, and everything was explained so I understood what we were doing and why. If you want to lose fat without crash dieting and build a better physique at the same time, I’d definitely recommend him.",
+    "recommendation": true, "rating": null, "date": null, "reviewUrl": null, "enabled": true, "featured": true, "approved": true,
+    "sourceMeta": { "screenshot": "sebastian-original.jpg", "language": "en", "visibleDate": "31 sie", "dateNote": "Screenshot does not show a year." }
+  },
+  {
+    "id": "marta", "source": "facebook", "client": "Marta Kasz", "avatar": "/images/reviews/marta.jpg",
+    "quote": "Równo rok temu oddałam się w ręce najlepszego trenera, jakiego mogłam sobie wymarzyć... mojego męża! ❤️ Zmiana relacji na linii żona-podopieczna mogła być wyzwaniem, ale Kacper pokazał absolutny profesjonalizm.\n\nNa sali treningowej nie ma taryfy ulgowej ani taryfy małżeńskiej. Jest surowo i konkretnie. Kiedy padam ze zmęczenia, a on mówi swoje legendarne: „jeszcze dwa, dasz radę!” – po prostu zaciskam zęby i robię to.\n\nEfekt tego wspólnego roku? Schudłam 7 kg (więcej nie potrzebowałam), a moje ciało zmieniło się nie do poznania. Proporcje są idealne: tam, gdzie miało urosnąć – urosło, a tam, gdzie miało zmaleć – zmalało! Wypracowałam ogromny progres i formę życia. 💪🔥\n\nDziękuję za każdy trening, motywację i to, że nigdy mi nie odpuszczasz. Jesteś trenerem z prawdziwego powołania. Jeśli ktoś z Was szuka kogoś, kto wyciśnie z Was 100% i realnie zmieni Wasze ciało – z czystym sumieniem polecam!",
+    "recommendation": true, "rating": null, "date": null, "reviewUrl": null, "enabled": true, "featured": true, "approved": true,
+    "sourceMeta": { "screenshot": "marta-original.jpg", "language": "pl", "visibleDate": "31 sie", "dateNote": "Screenshot does not show a year." }
+  }
+]
