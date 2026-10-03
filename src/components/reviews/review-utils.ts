@@ -43,4 +43,3 @@ export function sourceSummary(items: ReviewItem[]) {
       average: ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : null, ratingCount: ratings.length };
   }).filter(summary => summary.count > 0);
 }
-

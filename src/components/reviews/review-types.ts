@@ -56,4 +56,3 @@ export interface ReviewsWidgetConfig {
   showWriteReviewButton: boolean; writeReviewUrl?: string | null;
   accentMode: 'site-red' | 'source';
 }
-

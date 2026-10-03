@@ -122,4 +122,3 @@ export async function refreshReviews({ store, provider, local = [], mode = 'manu
 }
 export const createLocalTestProvider = reviews => ({ source:'facebook', mode:'local-test', configured:true,
   fetch:async () => ({ complete:true, reviews:reviews.map(item=>({...item,sourceMeta:{...item.sourceMeta,origin:'local-test'}})) }) });
-
