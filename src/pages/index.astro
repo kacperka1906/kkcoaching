@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Promotions from '../components/Promotions.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import AllInOneReviews from '../components/reviews/AllInOneReviews.astro';
 import site from '../data/site.en.json';
 
 const allServices = (await getCollection('services'))
@@ -104,6 +105,8 @@ const structuredData = {
       </div>
     </div>
   </section>
+
+  <AllInOneReviews lang="en" id="homepage-client-reviews" />
 
   <section aria-labelledby="story-heading">
     <div class="container">
