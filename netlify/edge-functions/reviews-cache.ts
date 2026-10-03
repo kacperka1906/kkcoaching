@@ -6,7 +6,8 @@ import { isPreview, serializePublic } from '../../src/lib/reviews/security.mjs';
 
 export function createEdgeHandler({openStore=()=>new BlobReviewStore(getDeployStore('reviews-phase2-preview'))}={}) {
 return async (request,context) => {
-  if(new URL(request.url).pathname.replace(/\/$/,'')==='/reviews-admin-preview') {
+  const path=new URL(request.url).pathname;
+  if(path==='/reviews-admin-preview'||path.startsWith('/reviews-admin-preview/')) {
     return isPreview(context) ? context.next() : new Response('Not found',{status:404});
   }
   // Platform context, never a user-supplied Host/header, determines isolation.
@@ -29,4 +30,4 @@ return async (request,context) => {
 };
 }
 export default createEdgeHandler();
-export const config={path:['/','/pl/','/reviews-widget-preview/','/pl/reviews-widget-preview/','/reviews-admin-preview','/reviews-admin-preview/']};
+export const config={path:['/','/pl/','/reviews-widget-preview/','/pl/reviews-widget-preview/','/reviews-admin-preview','/reviews-admin-preview/*']};

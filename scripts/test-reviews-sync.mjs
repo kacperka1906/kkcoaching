@@ -134,6 +134,7 @@ test('edge middleware isolates production, rejects test snapshots, injects safe 
  const before=reads,production={...ctx,deploy:{...context.deploy,context:'production',published:true}};
  assert.equal(await (await handler(request,production)).text(),html);assert.equal(reads,before);
  assert.equal((await handler(new Request('https://preview.example/reviews-admin-preview/'),production)).status,404);
+ assert.equal((await handler(new Request('https://preview.example/reviews-admin-preview/index.html'),production)).status,404);
  const broken=createEdgeHandler({openStore:()=>{throw new Error('private error');}});
  assert.equal(await (await broken(request,ctx)).text(),html);
 });
