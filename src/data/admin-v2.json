@@ -389,7 +389,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-aneta.jpg"
+        "screenshot": "/images/reviews/facebook-aneta.webp"
       },
       {
         "enabled": true,
@@ -397,7 +397,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-sylwia.jpg"
+        "screenshot": "/images/reviews/facebook-sylwia.webp"
       },
       {
         "enabled": true,
@@ -405,7 +405,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-agnieszka.jpg"
+        "screenshot": "/images/reviews/facebook-agnieszka.webp"
       },
       {
         "enabled": true,
@@ -413,7 +413,7 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-sebastian.jpg"
+        "screenshot": "/images/reviews/facebook-sebastian.webp"
       },
       {
         "enabled": true,
@@ -421,17 +421,17 @@
         "quote": "",
         "source": "facebook",
         "featured": true,
-        "screenshot": "/images/reviews/facebook-marta.jpg"
+        "screenshot": "/images/reviews/facebook-marta.webp"
       }
     ],
     "enabled": true,
     "body": {
-      "en": "Original recommendations shared publicly on the KK Coaching Facebook page.",
-      "pl": "Oryginalne rekomendacje opublikowane publicznie na stronie KK Coaching na Facebooku."
+      "en": "Original recommendations published on the KK Coaching Facebook page.",
+      "pl": "Oryginalne rekomendacje opublikowane na stronie KK Coaching na Facebooku."
     },
     "heading": {
-      "en": "What clients say about KK Coaching",
-      "pl": "Co mówią podopieczni KK Coaching"
+      "en": "Real client feedback",
+      "pl": "Prawdziwe opinie podopiecznych"
     },
     "leaveReviewLabel": {
       "en": "Leave a Google review",
