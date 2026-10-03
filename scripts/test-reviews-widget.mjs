@@ -43,6 +43,8 @@ const sitemap = await readFile(new URL('../dist/sitemap-0.xml', import.meta.url)
 assert.doesNotMatch(sitemap, /reviews-widget-preview/);
 for (const route of ['index.html', 'pl/index.html']) {
   const html = await readFile(new URL(`../dist/${route}`, import.meta.url), 'utf8');
-  assert.doesNotMatch(html, /<section[^>]*data-review-widget|href="[^"]*reviews-widget-preview/);
+  assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1);
+  assert.doesNotMatch(html, /href="[^"]*reviews-admin-preview/);
+  assert.match(html, route.startsWith('pl/') ? /OPINIE PODOPIECZNYCH/ : /CLIENT REVIEWS/);
 }
 console.log('PASS: review consent/filtering/rating/sorting rules, content, unique widgets, noindex, sitemap and homepage isolation.');

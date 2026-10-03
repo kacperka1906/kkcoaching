@@ -1,7 +1,9 @@
 import { sortReviews } from './review-utils';
 import type { ReviewItem } from './review-types';
+import { applyCachedReviews } from './review-cache';
 export function initializeReviews(root: HTMLElement) {
   if (root.dataset.initialized) return;
+  applyCachedReviews(root);
   root.dataset.initialized = 'true';
   const track = root.querySelector<HTMLElement>('[data-track]')!;
   const cards = [...track.querySelectorAll<HTMLElement>('[data-review-card]')];

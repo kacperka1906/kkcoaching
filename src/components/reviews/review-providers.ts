@@ -1,7 +1,7 @@
 import data from '../../data/reviews/reviews.json';
 import type { ReviewItem, ReviewProvider, ReviewProviderState } from './review-types';
 export const providerStates: ReviewProviderState[] = [
-  { source: 'facebook', enabled: true, connected: false, status: 'ready', lastSync: null, lastAttempt: null },
+  { source: 'facebook', enabled: false, connected: false, status: 'requires configuration', lastSync: null, lastAttempt: null },
   { source: 'manual', enabled: true, connected: false, status: 'ready', lastSync: null, lastAttempt: null },
   { source: 'google', enabled: false, connected: false, status: 'disabled', lastSync: null, lastAttempt: null },
   { source: 'whatsapp', enabled: false, connected: false, status: 'disabled', lastSync: null, lastAttempt: null }

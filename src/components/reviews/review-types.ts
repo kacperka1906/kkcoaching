@@ -11,7 +11,7 @@ export interface ReviewItem {
 }
 export interface ReviewProviderState {
   source: ReviewSource; enabled: boolean; connected: boolean;
-  status: 'disabled' | 'ready' | 'syncing' | 'error';
+  status: 'disabled' | 'ready' | 'syncing' | 'error' | 'requires configuration';
   lastSync?: string | null; lastAttempt?: string | null; error?: string | null;
 }
 export interface ReviewProvider {
@@ -19,9 +19,24 @@ export interface ReviewProvider {
   getStatus(): ReviewProviderState;
   normalize(raw: unknown): ReviewItem[];
 }
-// Phase 2 server-side orchestration contract only. No implementation or endpoint.
-export interface ReviewSyncService {
-  manualRefresh(source: ReviewSource): Promise<ReviewProviderState>;
+export interface SyncProvider {
+  source: ReviewSource; mode: 'disabled' | 'local-test' | 'official-api'; configured: boolean;
+  fetch(options: { signal: AbortSignal }): Promise<{ complete: boolean; reviews: ReviewItem[] }>;
+}
+export interface StoredReviewSnapshot {
+  source: ReviewSource; reviews: ReviewItem[]; syncedAt: string; attemptedAt: string;
+  complete: true; origin: SyncProvider['mode'];
+  stats: { imported: number; updated: number; skipped: number; total: number };
+}
+export interface ReviewStoreState {
+  snapshot: StoredReviewSnapshot | null; lastAttempt: string | null; error: string | null;
+  lease: { token: string; expiresAt: string } | null;
+}
+export interface ReviewStore {
+  kind: string;
+  read(source: ReviewSource): Promise<{ data: ReviewStoreState | null; etag: string | null }>;
+  compareAndSet(source: ReviewSource, etag: string | null, state: ReviewStoreState): Promise<string | null>;
+  getSnapshot(source: ReviewSource): Promise<StoredReviewSnapshot | null>;
 }
 export interface ReviewFilters {
   source?: ReviewSource; minRating?: number;
