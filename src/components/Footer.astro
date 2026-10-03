@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import TrainingLocation from './TrainingLocation.astro';
-import Reviews from './Reviews.astro';
+import AllInOneReviews from './AllInOneReviews.astro';
 import RelatedCoaching from './RelatedCoaching.astro';
 import BusinessEntity from './BusinessEntity.astro';
 import AuthorProfilePageSchema from './AuthorProfilePageSchema.astro';
@@ -32,7 +32,7 @@ const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching
 {showPricing && <ServicePricing lang={lang} pathname={pathname} />}
 {showRelated && <RelatedCoaching lang={lang} pathname={pathname} />}
 {showTrainingLocation && <TrainingLocation lang={lang} />}
-{showReviews && <Reviews lang={lang} />}
+{showReviews && <AllInOneReviews lang={lang} />}
 
 <footer>
   <div class="container">
