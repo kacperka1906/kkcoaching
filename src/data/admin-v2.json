@@ -382,8 +382,44 @@
     "directionsUrl": ""
   },
   "reviews": {
-    "items": [],
-    "enabled": false,
+    "items": [
+      {
+        "enabled": true,
+        "client": "Aneta K-o",
+        "quote": "I highly recommend Kacper and KK Coaching. I’ve been working with him since April, and I’m really happy with my progress. What I appreciate most is that both the nutrition and training plans are realistic, personalized, and adjusted to my goals, lifestyle, and abilities.",
+        "source": "facebook",
+        "featured": true
+      },
+      {
+        "enabled": true,
+        "client": "Sylwia Malys",
+        "quote": "I highly recommend Kacper for his professional approach to diet and training — good motivation! After 5 months I’m 10 kg lighter, I feel amazing, I can’t wait for more changes!",
+        "source": "facebook",
+        "featured": true
+      },
+      {
+        "enabled": true,
+        "client": "Agnieszka Kałużna",
+        "quote": "I’ve been a client of Kacper for the last 6 months. Thanks to him I achieved my body goals. The plan for diet and training was specialised and adjusted to my needs and capabilities, which was checked by him every week.",
+        "source": "facebook",
+        "featured": true
+      },
+      {
+        "enabled": true,
+        "client": "Sebastian Kolesnik",
+        "quote": "I can recommend Kacper with confidence. The biggest surprise for me was realising I didn’t have to give up the foods I actually enjoy to lose weight and improve my physique. The nutrition plan was built around my preferences and normal life.",
+        "source": "facebook",
+        "featured": true
+      },
+      {
+        "enabled": true,
+        "client": "Marta Kasz",
+        "quote": "Równo rok temu oddałam się w ręce najlepszego trenera, jakiego mogłam sobie wymarzyć — mojego męża. Kacper pokazał absolutny profesjonalizm. Schudłam 7 kg, a moje ciało zmieniło się nie do poznania. Wypracowałam ogromny progres i formę życia.",
+        "source": "facebook",
+        "featured": true
+      }
+    ],
+    "enabled": true,
     "body": {
       "en": "Real feedback from people I coach in person and online.",
       "pl": "Prawdziwe opinie osób, które prowadzę stacjonarnie i online."
@@ -411,7 +447,7 @@
       "en": "View original message",
       "pl": "Zobacz oryginalną wiadomość"
     },
-    "homeLimit": 4
+    "homeLimit": 5
   },
   "home": {
     "seo": {
