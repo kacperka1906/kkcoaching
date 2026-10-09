@@ -61,7 +61,7 @@ const personalPlans = [
       name: local(plan.name),
       price: money(plan.price),
       promoPrice: money(discounted(plan.price)),
-      period: period(plan.weeks),
+      period: '',
       detail: local(plan.detail),
       promoDetail: isPl
         ? `${sessionLabel(plan.sessions)} · ${money(discounted(plan.price) / plan.sessions)} za trening w październiku`
@@ -91,8 +91,8 @@ const hybridPlans = pricing.hybrid.packages
     period: period(plan.weeks),
     detail: local(plan.detail),
     promoDetail: isPl
-      ? `Pełne prowadzenie online + ${plan.sessions} treningów 1:1`
-      : `Full Online Coaching + ${plan.sessions} personal training sessions`,
+      ? `Pełne prowadzenie online + ${plan.sessions} treningów personalnych / ${plan.weeks} tygodnie`
+      : `Full Online Coaching + ${plan.sessions} personal training sessions / ${plan.weeks} weeks`,
     featured: plan.featured
   }));
 
