@@ -44,7 +44,7 @@
     "payg": {
       "enabled": true,
       "name": {
-        "en": "Pay as you go",
+        "en": "Single Session",
         "pl": "Pojedynczy trening"
       },
       "price": 30,
@@ -60,8 +60,8 @@
         "id": "weekly1",
         "enabled": true,
         "name": {
-          "en": "1× weekly",
-          "pl": "1× w tygodniu"
+          "en": "4 Session Block",
+          "pl": "Pakiet 4 treningów"
         },
         "price": 114,
         "weeks": 4,
@@ -76,8 +76,8 @@
         "id": "weekly2",
         "enabled": true,
         "name": {
-          "en": "2× weekly",
-          "pl": "2× w tygodniu"
+          "en": "8 Session Block",
+          "pl": "Pakiet 8 treningów"
         },
         "price": 216,
         "weeks": 4,
@@ -92,8 +92,8 @@
         "id": "weekly3",
         "enabled": true,
         "name": {
-          "en": "3× weekly",
-          "pl": "3× w tygodniu"
+          "en": "12 Session Block",
+          "pl": "Pakiet 12 treningów"
         },
         "price": 300,
         "weeks": 4,
@@ -176,8 +176,8 @@
         "id": "weekly1",
         "enabled": true,
         "name": {
-          "en": "Hybrid 1× weekly",
-          "pl": "Hybrid 1× w tygodniu"
+          "en": "Hybrid + 4 PT Sessions",
+          "pl": "Hybrid + 4 treningi personalne"
         },
         "price": 160,
         "weeks": 4,
@@ -192,8 +192,8 @@
         "id": "weekly2",
         "enabled": true,
         "name": {
-          "en": "Hybrid 2× weekly",
-          "pl": "Hybrid 2× w tygodniu"
+          "en": "Hybrid + 8 PT Sessions",
+          "pl": "Hybrid + 8 treningów personalnych"
         },
         "price": 240,
         "weeks": 4,
