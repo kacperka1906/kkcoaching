@@ -90,7 +90,7 @@ const structuredData = {
       offers: {
         '@type': 'Offer',
         priceCurrency: 'GBP',
-        price,
+        price: octoberOfferActive ? octoberPriceValue : price,
         availability: 'https://schema.org/InStock',
         url: 'https://kkcoaching.fit/pl/training-plan'
       }
