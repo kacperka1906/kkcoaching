@@ -25,12 +25,12 @@
         "pl": "Cennik"
       },
       "heading": {
-        "en": "Train more consistently. Pay less per session.",
-        "pl": "Trenuj częściej, płac mniej."
+        "en": "Train on your terms. Save more with larger session blocks.",
+        "pl": "Trenuj na swoich zasadach i oszczędzaj z większymi pakietami."
       },
       "intro": {
-        "en": "Start with a single session or choose a 4-week package. More frequent training means a lower rate per session.",
-        "pl": "Możesz zacząć od pojedynczego treningu albo wybrać pakiet na 4 tygodnie. Im częściej trenujemy, tym niższa cena jednej sesji."
+        "en": "Book a single session or choose a block of 4, 8 or 12 sessions, with a lower price per session on larger blocks.",
+        "pl": "Wybierz pojedynczy trening lub pakiet 4, 8 albo 12 sesji. Im większy pakiet, tym niższa cena za pojedynczy trening."
       },
       "note": {
         "en": "All packages are built around scheduled 1:1 sessions at JD Gyms Cwmbran. An active JD Gyms membership is required and is paid separately.",
@@ -136,10 +136,9 @@
     },
     "price": 80,
     "billingWeeks": 4,
-    "minimumWeeks": 12,
     "detail": {
-      "en": "Initial 12-week commitment.",
-      "pl": "Pierwsze 12 tygodni współpracy."
+      "en": "No minimum commitment. Coaching is billed in 4-week periods.",
+      "pl": "Bez minimalnego okresu zobowiązania. Rozliczenie odbywa się co 4 tygodnie."
     },
     "featured": false
   },
