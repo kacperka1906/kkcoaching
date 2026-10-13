@@ -106,9 +106,11 @@ const languageOptions = form.languageOptions;
   const status = document.getElementById('form-status');
   const interestSelect = form?.querySelector<HTMLSelectElement>('#interest');
   const leadIntent = form?.querySelector<HTMLInputElement>('#lead-intent');
-  const allowedIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const allowedUrlIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const allowedInterestValues = new Set(['', 'pt', 'online', 'hybrid', 'training-plan', 'taster', 'unsure']);
+  const allowedLeadIntents = new Set(['direct', 'pt', 'online', 'hybrid', 'training-plan', 'taster']);
   const requestedIntent = new URLSearchParams(window.location.search).get('interest') || '';
-  const initialIntent = allowedIntents.has(requestedIntent) ? requestedIntent : '';
+  const initialIntent = allowedUrlIntents.has(requestedIntent) ? requestedIntent : '';
 
   if (interestSelect && initialIntent) interestSelect.value = initialIntent;
   if (leadIntent) leadIntent.value = initialIntent || 'direct';
@@ -141,13 +143,18 @@ const languageOptions = form.languageOptions;
 
       if (!res.ok) throw new Error('Request failed');
 
+      const submittedInterest = String(formData.get('interest') ?? '');
+      const submittedLeadIntent = String(formData.get('lead_intent') ?? 'direct');
+      const analyticsInterest = allowedInterestValues.has(submittedInterest) ? submittedInterest : '';
+      const analyticsLeadIntent = allowedLeadIntents.has(submittedLeadIntent) ? submittedLeadIntent : 'direct';
+
       const gtag = (window as any).gtag;
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', {
           form_name: 'contact_enquiry',
           lead_language: form.dataset.leadLanguage || 'en',
-          interest: String(formData.get('interest') ?? ''),
-          lead_intent: String(formData.get('lead_intent') ?? 'direct')
+          interest: analyticsInterest,
+          lead_intent: analyticsLeadIntent
         });
       }
 
