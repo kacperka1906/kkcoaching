@@ -102,8 +102,8 @@
         "pl": "Umów darmowy trening próbny"
       },
       "ctaDestination": {
-        "en": "/contact",
-        "pl": "/pl/contact"
+        "en": "/contact?interest=taster",
+        "pl": "/pl/contact?interest=taster"
       }
     }
   ]

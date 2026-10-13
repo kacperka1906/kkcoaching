@@ -127,11 +127,13 @@
       ],
       "interest": { "en": "Interested in", "pl": "Jaka forma współpracy Cię interesuje?" },
       "interestOptions": [
-        { "en": "Personal Training", "pl": "Trening personalny 1:1 w Cwmbran" },
-        { "en": "Online Coaching", "pl": "Coaching online" },
-        { "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
-        { "en": "Training Plan", "pl": "Indywidualny plan treningowy" },
-        { "en": "Not sure yet", "pl": "Jeszcze nie wiem" }
+        { "value": "", "en": "Please select an option", "pl": "Wybierz opcję" },
+        { "value": "pt", "en": "Personal Training", "pl": "Trening personalny 1:1 w Cwmbran" },
+        { "value": "online", "en": "Online Coaching", "pl": "Coaching online" },
+        { "value": "hybrid", "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
+        { "value": "training-plan", "en": "Personalised Training Plan", "pl": "Indywidualny plan treningowy" },
+        { "value": "taster", "en": "Free 1:1 Taster Session", "pl": "Darmowy trening próbny 1:1" },
+        { "value": "unsure", "en": "Not sure yet", "pl": "Jeszcze nie wiem" }
       ],
       "goal": { "en": "What would you like to achieve?", "pl": "Jaki jest Twój główny cel?" },
       "goalPlaceholder": { "en": "Fat loss, muscle gain, getting stronger, feeling more confident in the gym...", "pl": "np. redukcja, budowanie mięśni, powrót do regularnych treningów..." },

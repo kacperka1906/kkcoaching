@@ -15,6 +15,18 @@
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
+const ALLOWED_INTERESTS = new Set(['', 'pt', 'online', 'hybrid', 'training-plan', 'taster', 'unsure']);
+const ALLOWED_LEAD_INTENTS = new Set(['direct', 'pt', 'online', 'hybrid', 'training-plan', 'taster']);
+const INTEREST_LABELS = {
+  '': 'Not specified',
+  pt: 'Personal Training',
+  online: 'Online Coaching',
+  hybrid: 'Hybrid Coaching',
+  'training-plan': 'Personalised Training Plan',
+  taster: 'Free 1:1 Taster Session',
+  unsure: 'Not sure yet'
+};
+
 function isValidEmail(value) {
   return typeof value === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -61,13 +73,17 @@ exports.handler = async (event) => {
   // Basic length caps to keep the email readable and reduce spam payload size.
   const cap = (val, max) => String(val || '').slice(0, max);
 
+  const interest = typeof data.interest === 'string' && ALLOWED_INTERESTS.has(data.interest) ? data.interest : '';
+  const leadIntent = typeof data.lead_intent === 'string' && ALLOWED_LEAD_INTENTS.has(data.lead_intent) ? data.lead_intent : 'direct';
+
   const safe = {
     name: cap(data.name, 100),
     email: cap(data.email, 150),
     phone: cap(data.phone, 40),
     location: cap(data.location, 100),
     language: cap(data.language, 30),
-    interest: cap(data.interest, 60),
+    interest,
+    leadIntent,
     goal: cap(data.goal, 1000),
     blocker: cap(data.blocker, 1000)
   };
@@ -79,7 +95,8 @@ exports.handler = async (event) => {
     <p><strong>Phone / WhatsApp:</strong> ${escapeHtml(safe.phone)}</p>
     <p><strong>Location:</strong> ${escapeHtml(safe.location)}</p>
     <p><strong>Preferred language:</strong> ${escapeHtml(safe.language)}</p>
-    <p><strong>Interested in:</strong> ${escapeHtml(safe.interest)}</p>
+    <p><strong>Interested in:</strong> ${escapeHtml(INTEREST_LABELS[safe.interest] || INTEREST_LABELS[''])}</p>
+    <p><strong>Original lead intent:</strong> ${escapeHtml(safe.leadIntent)}</p>
     <p><strong>Main goal:</strong><br>${escapeHtml(safe.goal)}</p>
     <p><strong>What's holding them back:</strong><br>${escapeHtml(safe.blocker)}</p>
   `;

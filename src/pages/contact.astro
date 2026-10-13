@@ -60,8 +60,9 @@ const languageOptions = form.languageOptions;
         <div class="field">
           <label for="interest">{form.interest[lang]}</label>
           <select id="interest" name="interest">
-            {form.interestOptions.map(option => <option>{option[lang]}</option>)}
+            {form.interestOptions.map(option => <option value={option.value}>{option[lang]}</option>)}
           </select>
+          <input type="hidden" id="lead-intent" name="lead_intent" value="direct" />
         </div>
         <div class="field">
           <label for="goal">{form.goal[lang]} <span aria-hidden="true">*</span></label>
@@ -103,6 +104,16 @@ const languageOptions = form.languageOptions;
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
+  const interestSelect = form?.querySelector<HTMLSelectElement>('#interest');
+  const leadIntent = form?.querySelector<HTMLInputElement>('#lead-intent');
+  const allowedUrlIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const allowedInterestValues = new Set(['', 'pt', 'online', 'hybrid', 'training-plan', 'taster', 'unsure']);
+  const allowedLeadIntents = new Set(['direct', 'pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const requestedIntent = new URLSearchParams(window.location.search).get('interest') || '';
+  const initialIntent = allowedUrlIntents.has(requestedIntent) ? requestedIntent : '';
+
+  if (interestSelect && initialIntent) interestSelect.value = initialIntent;
+  if (leadIntent) leadIntent.value = initialIntent || 'direct';
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -132,12 +143,18 @@ const languageOptions = form.languageOptions;
 
       if (!res.ok) throw new Error('Request failed');
 
+      const submittedInterest = String(formData.get('interest') ?? '');
+      const submittedLeadIntent = String(formData.get('lead_intent') ?? 'direct');
+      const analyticsInterest = allowedInterestValues.has(submittedInterest) ? submittedInterest : '';
+      const analyticsLeadIntent = allowedLeadIntents.has(submittedLeadIntent) ? submittedLeadIntent : 'direct';
+
       const gtag = (window as any).gtag;
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', {
           form_name: 'contact_enquiry',
           lead_language: form.dataset.leadLanguage || 'en',
-          interest: String(formData.get('interest') ?? '')
+          interest: analyticsInterest,
+          lead_intent: analyticsLeadIntent
         });
       }
 

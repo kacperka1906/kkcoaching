@@ -12,7 +12,7 @@
     "lead": { "en": "Train independently with a structured programme built around your goal, weekly schedule, experience and available equipment.", "pl": "Trenuj samodzielnie z konkretnym programem ułożonym pod Twój cel, grafik, doświadczenie i dostępny sprzęt." },
     "oneOffLabel": { "en": "one-off", "pl": "jednorazowo" },
     "primaryCta": { "en": "Ask About a Training Plan", "pl": "Zapytaj o plan treningowy" },
-    "primaryHref": { "en": "/contact", "pl": "/pl/contact" },
+    "primaryHref": { "en": "/contact?interest=training-plan", "pl": "/pl/contact?interest=training-plan" },
     "secondaryCta": { "en": "Compare Coaching Options", "pl": "Porównaj opcje współpracy" },
     "secondaryHref": { "en": "/services", "pl": "/pl/services" },
     "scopeNote": { "en": "One-off service · no subscription · no ongoing check-ins or coaching support", "pl": "Usługa jednorazowa · bez abonamentu · bez regularnych raportów i bieżącego prowadzenia" }
@@ -67,6 +67,6 @@
     "heading": { "en": "Tell me what you are training for.", "pl": "Napisz mi, jaki masz cel." },
     "body": { "en": "Send me your goal, weekly schedule and training setup. I will confirm whether the one-off plan is the right option before we start.", "pl": "Podaj swój cel, liczbę dni treningowych i warunki, w których ćwiczysz. Potwierdzę, czy jednorazowy plan będzie dla Ciebie odpowiednią opcją." },
     "cta": { "en": "Ask About a Training Plan", "pl": "Zapytaj o plan treningowy" },
-    "href": { "en": "/contact", "pl": "/pl/contact" }
+    "href": { "en": "/contact?interest=training-plan", "pl": "/pl/contact?interest=training-plan" }
   }
 }

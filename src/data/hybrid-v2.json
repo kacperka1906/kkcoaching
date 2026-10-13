@@ -27,8 +27,8 @@
       "pl": "Umów bezpłatną konsultację"
     },
     "primaryHref": {
-      "en": "/contact",
-      "pl": "/pl/contact"
+      "en": "/contact?interest=hybrid",
+      "pl": "/pl/contact?interest=hybrid"
     },
     "secondaryCta": {
       "en": "Compare Coaching Options",
@@ -312,8 +312,8 @@
       "pl": "Umów bezpłatną konsultację"
     },
     "href": {
-      "en": "/contact",
-      "pl": "/pl/contact"
+      "en": "/contact?interest=hybrid",
+      "pl": "/pl/contact?interest=hybrid"
     }
   }
 }

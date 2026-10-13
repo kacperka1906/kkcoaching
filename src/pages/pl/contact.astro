@@ -31,7 +31,8 @@ const languageOptions = [...formCopy.languageOptions].reverse();
         </div>
         <div class="field">
           <label for="interest">{formCopy.interest[lang]}</label>
-          <select id="interest" name="interest">{formCopy.interestOptions.map(option => <option>{option[lang]}</option>)}</select>
+          <select id="interest" name="interest">{formCopy.interestOptions.map(option => <option value={option.value}>{option[lang]}</option>)}</select>
+          <input type="hidden" id="lead-intent" name="lead_intent" value="direct" />
         </div>
         <div class="field"><label for="goal">{formCopy.goal[lang]} <span aria-hidden="true">*</span></label><textarea id="goal" name="goal" rows="3" required placeholder={formCopy.goalPlaceholder[lang]}></textarea></div>
         <div class="field"><label for="blocker">{formCopy.blocker[lang]}</label><textarea id="blocker" name="blocker" rows="3" placeholder={formCopy.blockerPlaceholder[lang]}></textarea></div>
@@ -53,6 +54,16 @@ const languageOptions = [...formCopy.languageOptions].reverse();
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
+  const interestSelect = form?.querySelector<HTMLSelectElement>('#interest');
+  const leadIntent = form?.querySelector<HTMLInputElement>('#lead-intent');
+  const allowedUrlIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const allowedInterestValues = new Set(['', 'pt', 'online', 'hybrid', 'training-plan', 'taster', 'unsure']);
+  const allowedLeadIntents = new Set(['direct', 'pt', 'online', 'hybrid', 'training-plan', 'taster']);
+  const requestedIntent = new URLSearchParams(window.location.search).get('interest') || '';
+  const initialIntent = allowedUrlIntents.has(requestedIntent) ? requestedIntent : '';
+
+  if (interestSelect && initialIntent) interestSelect.value = initialIntent;
+  if (leadIntent) leadIntent.value = initialIntent || 'direct';
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!status) return;
@@ -64,8 +75,12 @@ const languageOptions = [...formCopy.languageOptions].reverse();
     try {
       const res = await fetch('/.netlify/functions/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(formData)) });
       if (!res.ok) throw new Error('Request failed');
+      const submittedInterest = String(formData.get('interest') ?? '');
+      const submittedLeadIntent = String(formData.get('lead_intent') ?? 'direct');
+      const analyticsInterest = allowedInterestValues.has(submittedInterest) ? submittedInterest : '';
+      const analyticsLeadIntent = allowedLeadIntents.has(submittedLeadIntent) ? submittedLeadIntent : 'direct';
       const gtag = (window as any).gtag;
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: String(formData.get('interest') ?? '') });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: analyticsInterest, lead_intent: analyticsLeadIntent });
       window.location.href = thankYou;
     } catch (err) {
       status.textContent = form.dataset.error || 'Coś poszło nie tak podczas wysyłania.';

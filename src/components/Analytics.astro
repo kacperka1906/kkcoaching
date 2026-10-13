@@ -63,7 +63,8 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
         });
       }
 
-      if (href === '/contact' || href === '/pl/contact') {
+      const contactPath = href.split('?')[0].replace(/\/+$/, '') || '/';
+      if (contactPath === '/contact' || contactPath === '/pl/contact') {
         track('consultation_start', common);
       }
     });
