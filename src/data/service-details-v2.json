@@ -28,8 +28,8 @@
         "pl": "Umów bezpłatną konsultację"
       },
       "primaryHref": {
-        "en": "/contact",
-        "pl": "/pl/contact"
+        "en": "/contact?interest=pt",
+        "pl": "/pl/contact?interest=pt"
       },
       "secondaryCta": {
         "en": "See Client Results",
@@ -439,8 +439,8 @@
         "pl": "Umów bezpłatną konsultację"
       },
       "href": {
-        "en": "/contact",
-        "pl": "/pl/contact"
+        "en": "/contact?interest=pt",
+        "pl": "/pl/contact?interest=pt"
       }
     }
   }
