@@ -114,10 +114,12 @@ const languageOptions = form.languageOptions;
 
   if (interestSelect && initialIntent) interestSelect.value = initialIntent;
   if (leadIntent) leadIntent.value = initialIntent || 'direct';
+  const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  let isSubmitting = false;
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!status) return;
+    if (!status || isSubmitting) return;
 
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -132,6 +134,9 @@ const languageOptions = form.languageOptions;
       return;
     }
 
+    isSubmitting = true;
+    if (submitButton) submitButton.disabled = true;
+    form.setAttribute('aria-busy', 'true');
     status.textContent = form.dataset.sending || 'Sending...';
 
     try {
@@ -160,6 +165,9 @@ const languageOptions = form.languageOptions;
 
       window.location.href = thankYou;
     } catch (err) {
+      isSubmitting = false;
+      if (submitButton) submitButton.disabled = false;
+      form.removeAttribute('aria-busy');
       status.textContent = form.dataset.error || 'Something went wrong. Please try WhatsApp or email instead.';
     }
   });

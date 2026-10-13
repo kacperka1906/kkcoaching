@@ -46,7 +46,7 @@ const compactOnScroll = admin.header.compactOnScroll;
 
     <div class="header-right">
       {admin.header.showHeaderCta && <a class="header-cta" href={ctaHref}>{ctaLabel}</a>}
-      <a class="lang-switch" href={languageHref} aria-label={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}>
+      <a class="lang-switch" href={languageHref} aria-label={lang === 'pl' ? 'EN — Switch to English' : 'PL — Przełącz na polski'}>
         {lang === 'pl' ? 'EN' : 'PL'}
       </a>
       <button class="nav-toggle" aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'} aria-controls="mainNav" aria-expanded="false" id="navToggle">&#9776;</button>
@@ -126,7 +126,7 @@ const compactOnScroll = admin.header.compactOnScroll;
     white-space: nowrap;
   }
   nav.main-nav a:hover,
-  nav.main-nav a[aria-current="page"] { color: var(--red); }
+  nav.main-nav a[aria-current="page"] { color: #FFDDE1; }
   nav.main-nav a[aria-current="page"] { font-weight: 700; }
 
   .header-right { display: flex; align-items: center; gap: 12px; }

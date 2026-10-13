@@ -64,13 +64,18 @@ const languageOptions = [...formCopy.languageOptions].reverse();
 
   if (interestSelect && initialIntent) interestSelect.value = initialIntent;
   if (leadIntent) leadIntent.value = initialIntent || 'direct';
+  const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  let isSubmitting = false;
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!status) return;
+    if (!status || isSubmitting) return;
     if (!form.checkValidity()) { form.reportValidity(); return; }
     const formData = new FormData(form);
     const thankYou = form.dataset.thankYou || '/pl/thank-you';
     if (formData.get('company')) { window.location.href = thankYou; return; }
+    isSubmitting = true;
+    if (submitButton) submitButton.disabled = true;
+    form.setAttribute('aria-busy', 'true');
     status.textContent = form.dataset.sending || 'Wysyłanie...';
     try {
       const res = await fetch('/.netlify/functions/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(formData)) });
@@ -83,6 +88,9 @@ const languageOptions = [...formCopy.languageOptions].reverse();
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: analyticsInterest, lead_intent: analyticsLeadIntent });
       window.location.href = thankYou;
     } catch (err) {
+      isSubmitting = false;
+      if (submitButton) submitButton.disabled = false;
+      form.removeAttribute('aria-busy');
       status.textContent = form.dataset.error || 'Coś poszło nie tak podczas wysyłania.';
     }
   });
