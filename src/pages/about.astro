@@ -9,6 +9,8 @@ const copy = pages.about;
 const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [admin.contact.instagramUrl, admin.contact.facebookUrl].filter(Boolean);
 const aboutImage = copy.image;
+const aboutLeadLinkText = 'personal trainer based in Cwmbran';
+const [aboutLeadBefore, aboutLeadAfter = ''] = site.story.bodyFull.split(aboutLeadLinkText);
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -52,7 +54,7 @@ const structuredData = {
       <div class="about-copy">
         <span class="eyebrow">{copy.heroEyebrow[lang]}</span>
         <h1>{site.story.heading}</h1>
-        <p class="lead">{site.story.bodyFull}</p>
+        <p class="lead">{aboutLeadBefore}<a href="/personal-training-cwmbran/">{aboutLeadLinkText}</a>{aboutLeadAfter}</p>
       </div>
     </div>
   </section>
