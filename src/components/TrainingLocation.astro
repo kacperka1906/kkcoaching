@@ -22,8 +22,13 @@ const serviceId = pathname.includes('personal-training-cwmbran')
     : null;
 
 const onLocalServiceLanding = Boolean(serviceId);
-const nextStepHref = onLocalServiceLanding
-  ? (isPl ? '/pl/contact' : '/contact')
+const localServiceIntent = pathname.includes('personal-training-cwmbran')
+  ? 'pt'
+  : pathname.includes('hybrid-coaching')
+    ? 'hybrid'
+    : null;
+const nextStepHref = onLocalServiceLanding && localServiceIntent
+  ? `${isPl ? '/pl/contact' : '/contact'}?interest=${localServiceIntent}`
   : (isPl ? '/pl/personal-training-cwmbran' : '/personal-training-cwmbran');
 const serviceLabel = onLocalServiceLanding ? copy.serviceLanding[lang] : copy.serviceDefault[lang];
 const venueFacts = location.facts.filter(fact => fact.enabled).map(fact => fact.text[lang]);
