@@ -10,7 +10,10 @@ const siteUrl = String(Astro.site).replace(/\/$/, '');
 const sameAs = [admin.contact.instagramUrl, admin.contact.facebookUrl].filter(Boolean);
 const aboutImage = copy.image;
 const aboutLeadLinkText = 'personal trainer based in Cwmbran';
-const [aboutLeadBefore, aboutLeadAfter = ''] = site.story.bodyFull.split(aboutLeadLinkText);
+const aboutLeadHasLinkText = site.story.bodyFull.includes(aboutLeadLinkText);
+const [aboutLeadBefore, aboutLeadAfter = ''] = aboutLeadHasLinkText
+  ? site.story.bodyFull.split(aboutLeadLinkText)
+  : [site.story.bodyFull, ''];
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -54,7 +57,9 @@ const structuredData = {
       <div class="about-copy">
         <span class="eyebrow">{copy.heroEyebrow[lang]}</span>
         <h1>{site.story.heading}</h1>
-        <p class="lead">{aboutLeadBefore}<a href="/personal-training-cwmbran/">{aboutLeadLinkText}</a>{aboutLeadAfter}</p>
+        <p class="lead">
+          {aboutLeadHasLinkText ? <>{aboutLeadBefore}<a href="/personal-training-cwmbran/">{aboutLeadLinkText}</a>{aboutLeadAfter}</> : site.story.bodyFull}
+        </p>
       </div>
     </div>
   </section>
