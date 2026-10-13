@@ -131,7 +131,7 @@
         { "value": "pt", "en": "Personal Training", "pl": "Trening personalny 1:1 w Cwmbran" },
         { "value": "online", "en": "Online Coaching", "pl": "Coaching online" },
         { "value": "hybrid", "en": "Hybrid Coaching", "pl": "Coaching hybrydowy" },
-        { "value": "training-plan", "en": "Training Plan", "pl": "Indywidualny plan treningowy" },
+        { "value": "training-plan", "en": "Personalised Training Plan", "pl": "Indywidualny plan treningowy" },
         { "value": "taster", "en": "Free 1:1 Taster Session", "pl": "Darmowy trening próbny 1:1" },
         { "value": "unsure", "en": "Not sure yet", "pl": "Jeszcze nie wiem" }
       ],
