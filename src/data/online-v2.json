@@ -27,8 +27,8 @@
       "pl": "Zacznij współpracę online"
     },
     "primaryHref": {
-      "en": "/contact",
-      "pl": "/pl/contact"
+      "en": "/contact?interest=online",
+      "pl": "/pl/contact?interest=online"
     },
     "secondaryCta": {
       "en": "See Client Results",
@@ -455,8 +455,8 @@
       "pl": "Zacznij współpracę online"
     },
     "href": {
-      "en": "/contact",
-      "pl": "/pl/contact"
+      "en": "/contact?interest=online",
+      "pl": "/pl/contact?interest=online"
     }
   }
 }
