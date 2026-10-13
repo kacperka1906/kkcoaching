@@ -22,7 +22,7 @@ const INTEREST_LABELS = {
   pt: 'Personal Training',
   online: 'Online Coaching',
   hybrid: 'Hybrid Coaching',
-  'training-plan': 'Training Plan',
+  'training-plan': 'Personalised Training Plan',
   taster: 'Free 1:1 Taster Session',
   unsure: 'Not sure yet'
 };
