@@ -116,7 +116,8 @@ const copy = {
   cta: local(section.cta)
 };
 
-const contactHref = isPl ? '/pl/contact' : '/contact';
+const intent = type === 'personal' ? 'pt' : type === 'online' ? 'online' : 'hybrid';
+const contactHref = `${isPl ? '/pl/contact' : '/contact'}?interest=${intent}`;
 ---
 <section class="service-pricing" aria-labelledby="service-pricing-heading">
   <div class="container">
