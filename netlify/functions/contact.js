@@ -50,6 +50,9 @@ exports.handler = async (event) => {
   } catch {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
+  }
 
   // --- Honeypot: bots fill every field, real users never see or fill this one. ---
   if (data.company) {
@@ -58,8 +61,9 @@ exports.handler = async (event) => {
   }
 
   // --- Server-side validation (never trust the client alone) ---
-  const required = ['name', 'email', 'phone', 'goal', 'consent'];
-  const missing = required.filter((field) => !data[field]);
+  const required = ['name', 'email', 'phone', 'goal'];
+  const missing = required.filter((field) => typeof data[field] !== 'string' || !data[field].trim());
+  if (data.consent !== 'on' && data.consent !== true) missing.push('consent');
   if (missing.length > 0) {
     return {
       statusCode: 400,
