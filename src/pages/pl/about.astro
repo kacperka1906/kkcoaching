@@ -15,7 +15,10 @@ const aboutLead = originalAboutLead.replace(
   'Nazywam się Kacper Kaszowski, jestem trenerem personalnym w Cwmbran i prowadzę KK Coaching.'
 );
 const aboutLeadLinkText = 'trenerem personalnym w Cwmbran';
-const [aboutLeadBefore, aboutLeadAfter = ''] = aboutLead.split(aboutLeadLinkText);
+const aboutLeadHasLinkText = aboutLead.includes(aboutLeadLinkText);
+const [aboutLeadBefore, aboutLeadAfter = ''] = aboutLeadHasLinkText
+  ? aboutLead.split(aboutLeadLinkText)
+  : [aboutLead, ''];
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -59,7 +62,9 @@ const structuredData = {
       <div class="about-copy">
         <span class="eyebrow">{copy.heroEyebrow[lang]}</span>
         <h1>{site.story.heading}</h1>
-        <p class="lead">{aboutLeadBefore}<a href="/pl/personal-training-cwmbran/">{aboutLeadLinkText}</a>{aboutLeadAfter}</p>
+        <p class="lead">
+          {aboutLeadHasLinkText ? <>{aboutLeadBefore}<a href="/pl/personal-training-cwmbran/">{aboutLeadLinkText}</a>{aboutLeadAfter}</> : aboutLead}
+        </p>
       </div>
     </div>
   </section>
