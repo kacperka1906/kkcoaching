@@ -159,8 +159,21 @@ for (const page of pages) {
               errors.push(`${page.label} trial contains ${other} content: ${value}`);
             }
           }
-          if (!/<p class="trial-price">\s*<strong>£0<\/strong>/.test(card)) errors.push(`${page.label} trial £0 price markup is missing`);
-          if (countOccurrences(card, '<li>') !== 5) errors.push(`${page.label} trial must render exactly five feature list items`);
+          // Astro adds scoped attributes to HTML tags; check the price within its own paragraph.
+          const priceParagraph = card.match(/<p\b(?=[^>]*\bclass="[^"]*\btrial-price\b[^"]*")[^>]*>([\s\S]*?)<\/p>/);
+          const priceIsZero = priceParagraph && /<strong\b[^>]*>\s*£0\s*<\/strong>/.test(priceParagraph[1]);
+          if (!priceIsZero) errors.push(`${page.label} trial £0 price markup is missing`);
+          // Count complete li elements only inside the dedicated feature list.
+          const featuresList = card.match(/<ul\b(?=[^>]*\bclass="[^"]*\btrial-features\b[^"]*")[^>]*>([\s\S]*?)<\/ul>/);
+          const featureItems = featuresList ? [...featuresList[1].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)] : [];
+          if (featureItems.length !== 5) errors.push(`${page.label} trial must render exactly five feature list items`);
+          if (featuresList) {
+            for (const feature of offer.trialFeatures[lang]) {
+              if (featureItems.filter(item => item[1].trim() === feature).length !== 1) {
+                errors.push(`${page.label} trial feature must appear exactly once: ${feature}`);
+              }
+            }
+          }
           const ctaMatch = card.match(/<a\b[^>]*data-free-trial-checkout="(en|pl)"[^>]*>/);
           if (!ctaMatch || ctaMatch[1] !== lang || !ctaMatch[0].includes(`href="${trialDestinations[lang]}"`)) {
             errors.push(`${page.label} trial CTA language or checkout URL is incorrect`);
