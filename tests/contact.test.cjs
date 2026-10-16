@@ -152,3 +152,30 @@ test('analytics is loaded once only after accepted consent', () => {
     assert.equal(window.dataLayer.filter(args => args[0] === 'config').length, 1);
   }
 });
+
+
+test('contact delivery failures are bounded and never log provider response text or exceptions', async () => {
+  const originalFetch = global.fetch;
+  const originalError = console.error;
+  const logs = [];
+  console.error = (...args) => logs.push(args.join(' '));
+  try {
+    let receivedSignal;
+    global.fetch = async (_url, options) => {
+      receivedSignal = options.signal;
+      return { ok: false, status: 429, text: async () => 'sensitive customer info and key' };
+    };
+    const failed = await handler({ httpMethod: 'POST', body: JSON.stringify(valid) });
+    assert.equal(failed.statusCode, 502);
+    assert.ok(receivedSignal);
+    global.fetch = async () => { throw new Error('sensitive customer info and key'); };
+    const networkFailed = await handler({ httpMethod: 'POST', body: JSON.stringify(valid) });
+    assert.equal(networkFailed.statusCode, 500);
+    assert.ok(logs.some(line => line.includes('429')));
+    assert.ok(!logs.join(' ').includes('sensitive customer info'));
+    assert.ok(!logs.join(' ').includes('key'));
+  } finally {
+    global.fetch = originalFetch;
+    console.error = originalError;
+  }
+});
