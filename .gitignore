@@ -4,3 +4,5 @@ dist/
 .env
 .netlify/
 deno.lock
+test-results/
+playwright-report/

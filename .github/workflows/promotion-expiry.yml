@@ -1,0 +1,41 @@
+name: Promotion expiry regressions
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  expiry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        instant: ['2026-10-31T23:59:59Z', '2026-11-01T00:00:00Z']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Full production pipeline with a controlled build date
+        run: npm run build
+        env:
+          PROMOTION_TEST_INSTANT: ${{ matrix.instant }}
+          NODE_OPTIONS: --require=./tests/support/freeze-build-clock.cjs
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - run: npm test
+      - name: Browser preview, cached-build expiry and both languages
+        run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: expiry-traces-${{ strategy.job-index }}
+          path: test-results/

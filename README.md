@@ -76,8 +76,9 @@ PT meta description currently also has a dedicated finalizer.
 
 `pricing.json` contains standard fees. `promotions.json` controls current offer
 eligibility/date windows; components and finalizers apply the promotional prices.
-Verify both rendered HTML and JSON-LD after all build steps. Arrange a production
-rebuild when an offer expires: client-side hiding cannot refresh static schema.
+Verify both rendered HTML and JSON-LD after all build steps. Expired offers are
+omitted from fresh builds. The scheduled refresh requires secure production
+configuration; see [expiry behaviour, activation and rollback](docs/promotion-expiry-fix-2026-10-16.md).
 
 Preserve real testimonials and consent records. Publish credentials only when
 substantiated; the Level 4 qualification must not be marked complete without its

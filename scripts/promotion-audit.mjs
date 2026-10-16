@@ -1,10 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { isOfferActive } from '../src/lib/promotions.mjs';
 
 const root = process.cwd();
 const promotions = JSON.parse(fs.readFileSync(path.join(root, 'src/data/promotions.json'), 'utf8'));
 const offers = promotions.offers;
 const errors = [];
+const buildDate = new Date(JSON.parse(fs.readFileSync(path.join(root, 'dist/promotion-state.json'), 'utf8')).builtAt);
 
 const allowedServices = new Set(['online', 'hybrid', 'personal-training', 'general', 'all']);
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -60,6 +62,17 @@ if (!Array.isArray(offers)) {
       }
     }
 
+    if (offer.id === 'october-2026-free-pt-taster') {
+      if (!offer.enabled || offer.startDate || offer.endDate || offer.autoDisableAfterEndDate !== false
+          || offer.display?.homepage !== true || offer.display?.servicePage !== true
+          || offer.service !== 'personal-training') {
+        errors.push(`${prefix} taster must remain permanent on home and PT pages`);
+      }
+      for (const lang of ['en', 'pl']) {
+        const expected = `${lang === 'pl' ? '/pl' : ''}/contact?interest=taster`;
+        if (offer.ctaDestination?.[lang] !== expected) errors.push(`${prefix} incorrect ${lang} taster destination`);
+      }
+    }
     if (offer.id === trialId) {
       if (!offer.enabled || offer.service !== 'general' || offer.display?.homepage !== true || offer.display?.servicePage !== false) {
         errors.push(`${prefix} trial must be enabled on homepages only`);
@@ -104,6 +117,10 @@ if (!Array.isArray(offers)) {
   }
 }
 
+for (const requiredId of [trialId, 'october-2026-free-pt-taster']) {
+  if (!offers?.some(offer => offer.id === requiredId)) errors.push(`Missing permanent offer ${requiredId}`);
+}
+
 const pages = [
   { lang: 'en', placement: 'homepage', service: null, label: 'EN homepage', file: path.join(root, 'dist/index.html') },
   { lang: 'pl', placement: 'homepage', service: null, label: 'PL homepage', file: path.join(root, 'dist/pl/index.html') },
@@ -116,7 +133,7 @@ const pages = [
 ];
 
 const matchesPage = (offer, page) => {
-  if (!offer.enabled) return false;
+  if (!isOfferActive(offer, buildDate)) return false;
   if (page.placement === 'homepage') return offer.display.homepage;
   if (!offer.display.servicePage) return false;
   return offer.service === page.service || offer.service === 'all';
@@ -129,6 +146,13 @@ for (const page of pages) {
   }
 
   const html = fs.readFileSync(page.file, 'utf8');
+  if (page.placement === 'homepage') {
+    const intended = [trialId, 'october-2026-free-pt-taster', 'october-2026-20-off-everything']
+      .filter(id => offers.some(offer => offer.id === id && matchesPage(offer, page)));
+    const actual = [...html.matchAll(/data-promotion-id="([^"]+)"/g)].map(match => match[1]);
+    const known = actual.filter(id => intended.includes(id));
+    if (JSON.stringify(known) !== JSON.stringify(intended)) errors.push(`${page.label} incorrect promotion DOM order`);
+  }
   if (html.includes('data-online-promotion')) errors.push(`${page.label} still contains the legacy online promotion marker`);
 
   for (const offer of offers ?? []) {
@@ -136,10 +160,10 @@ for (const page of pages) {
     const expected = matchesPage(offer, page);
     const rendered = html.includes(marker);
     const occurrenceCount = countOccurrences(html, marker);
+    if (occurrenceCount !== (expected ? 1 : 0)) {
+      errors.push(`${page.label} ${offer.id} must appear exactly ${expected ? 'once' : 'zero times'} (found ${occurrenceCount})`);
+    }
     if (offer.id === trialId) {
-      if (occurrenceCount !== (expected ? 1 : 0)) {
-        errors.push(`${page.label} trial must appear exactly ${expected ? 'once' : 'zero times'} (found ${occurrenceCount})`);
-      }
       if (expected) {
         // Validate only the trial article, not text that may appear elsewhere on the page.
         const articleMatch = html.match(new RegExp(`<article\\b(?=[^>]*data-promotion-id="${trialId}")[^>]*>[\\s\\S]*?<\\/article>`));
