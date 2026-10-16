@@ -93,9 +93,9 @@ if (builtActive) test('an open plan page expires at London midnight and updates 
 
 
 for (const [route, alternate, intent] of [
-  ['/contact/?interest=taster', '/pl/contact?interest=taster', 'taster'],
-  ['/pl/contact/?interest=training-plan', '/contact?interest=training-plan', 'training-plan'],
-  ['/contact/?interest=invalid', '/pl/contact', 'invalid']
+  ['/contact/?interest=taster', '/pl/contact/?interest=taster', 'taster'],
+  ['/pl/contact/?interest=training-plan', '/contact/?interest=training-plan', 'training-plan'],
+  ['/contact/?interest=invalid', '/pl/contact/', 'invalid']
 ]) {
   test('contact intent survives language switching safely: ' + route, async ({ page }) => {
     await page.goto(route);
