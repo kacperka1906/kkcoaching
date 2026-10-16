@@ -266,15 +266,19 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 
   .promotion-card.is-featured { border-left-color: var(--red); }
 
+  /* Explicit two-column composition: October offers above, full-width trial below. */
   .promotion-home .promotion-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 
   .promotion-home .promotion-card {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 22px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 26px;
     align-content: start;
   }
 
@@ -460,6 +464,12 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
   }
 
   [hidden] { display: none !important; }
+
+  /* Below this width, the October price comparison deserves an entire row. */
+  @media (max-width: 1100px) {
+    .promotion-home .promotion-grid { grid-template-columns: minmax(0, 1fr); }
+    .promotion-home .promotion-card.is-trial { grid-column: 1; }
+  }
 
   @media (max-width: 980px) {
     .promotion-home .promotion-card.is-trial { grid-template-columns: 1fr; }
