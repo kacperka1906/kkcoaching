@@ -1,0 +1,28 @@
+name: Production release smoke
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Read-only drift/expiry verification; UTC schedule avoids the busy top of the hour.
+    - cron: '17 8 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout audited release
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Read-only live site smoke with short deployment grace period
+        run: node scripts/live-production-smoke.mjs

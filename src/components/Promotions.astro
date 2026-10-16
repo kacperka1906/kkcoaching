@@ -1,4 +1,5 @@
 ---
+import { isOfferActive } from '../lib/promotions.mjs';
 import promotions from '../data/promotions.json';
 import pricing from '../data/pricing.json';
 
@@ -70,22 +71,9 @@ const spacesLabel = (offer: (typeof promotions.offers)[number]) => {
   return isPl ? polishSpaces(remaining) : `${remaining} ${remaining === 1 ? 'SPACE' : 'SPACES'} REMAINING`;
 };
 
-const dateKeyInLondon = (date: Date) => {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).formatToParts(date);
-  const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-  return `${map.year}-${map.month}-${map.day}`;
-};
-
-const today = dateKeyInLondon(new Date());
-
 const candidateOffers = promotions.offers
   .filter(offer => {
-    if (!offer.enabled) return false;
+    if (!isOfferActive(offer)) return false;
     if (placement === 'homepage') return offer.display.homepage;
     if (!offer.display.servicePage || !service) return false;
     return offer.service === service || offer.service === 'all';
@@ -105,26 +93,18 @@ const candidateOffers = promotions.offers
     return Number(b.featured) - Number(a.featured) || b.priority - a.priority;
   });
 
-const preparedOffers = candidateOffers.map(offer => {
-  const startsNow = !offer.startDate || today >= offer.startDate;
-  const beforeEnd = !offer.autoDisableAfterEndDate || !offer.endDate || today <= offer.endDate;
-  return { offer, initiallyVisible: startsNow && beforeEnd };
-});
-
-const hasInitiallyVisible = preparedOffers.some(item => item.initiallyVisible);
 const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 ---
 {candidateOffers.length > 0 && (
   <section
     class:list={['promotion-section', placement === 'homepage' ? 'promotion-home' : 'promotion-service', 'on-dark']}
     data-promotions-section
-    hidden={!hasInitiallyVisible}
     aria-label={sectionLabel}
   >
     <div class="container">
       {placement === 'homepage' && <span class="promotion-section-label">{sectionLabel}</span>}
       <div class="promotion-grid">
-        {preparedOffers.map(({ offer, initiallyVisible }) => (
+        {candidateOffers.map(offer => (
           <article
             class:list={['promotion-card', offer.featured && 'is-featured', offer.id === 'free-7-day-kk-coaching-trial' && 'is-trial', offer.id === 'october-2026-20-off-everything' && 'is-october-discount']}
             data-promotion-card
@@ -132,7 +112,6 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
             data-start-date={offer.startDate}
             data-end-date={offer.endDate}
             data-auto-disable={offer.autoDisableAfterEndDate ? 'true' : 'false'}
-            hidden={!initiallyVisible}
           >
             <div class="promotion-main">
               <div class="promotion-meta">
@@ -195,46 +174,6 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
       </div>
     </div>
   </section>
-)}
-
-{candidateOffers.length > 0 && (
-  <script is:inline>
-    (() => {
-      const sections = [...document.querySelectorAll('[data-promotions-section]')];
-      if (!sections.length) return;
-
-      const londonDateKey = (date) => {
-        const parts = new Intl.DateTimeFormat('en-GB', {
-          timeZone: 'Europe/London',
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit'
-        }).formatToParts(date);
-        const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-        return `${map.year}-${map.month}-${map.day}`;
-      };
-
-      const today = londonDateKey(new Date());
-
-      sections.forEach((section) => {
-        const cards = [...section.querySelectorAll('[data-promotion-card]')];
-        let visibleCount = 0;
-
-        cards.forEach((card) => {
-          const start = card.dataset.startDate || '';
-          const end = card.dataset.endDate || '';
-          const autoDisable = card.dataset.autoDisable === 'true';
-          const afterStart = !start || today >= start;
-          const beforeEnd = !autoDisable || !end || today <= end;
-          const visible = afterStart && beforeEnd;
-          card.hidden = !visible;
-          if (visible) visibleCount += 1;
-        });
-
-        section.hidden = visibleCount === 0;
-      });
-    })();
-  </script>
 )}
 
 <style>

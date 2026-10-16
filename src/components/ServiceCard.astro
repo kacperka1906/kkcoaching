@@ -1,5 +1,6 @@
 ---
 import pricing from '../data/pricing.json';
+import { isOfferActive } from '../lib/promotions.mjs';
 import promotions from '../data/promotions.json';
 
 interface Props {
@@ -51,22 +52,7 @@ const money = (value: number) => `${currency}${Number.isInteger(value) ? value.t
 const octoberOffer = promotions.offers.find(offer => offer.id === 'october-2026-20-off-everything');
 const octoberDiscount = 0.20;
 const discounted = (value: number) => value * (1 - octoberDiscount);
-const dateKeyInLondon = (date: Date) => {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).formatToParts(date);
-  const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-  return `${map.year}-${map.month}-${map.day}`;
-};
-const today = dateKeyInLondon(new Date());
-const octoberOfferActive = Boolean(
-  octoberOffer?.enabled
-  && (!octoberOffer.startDate || today >= octoberOffer.startDate)
-  && (!octoberOffer.autoDisableAfterEndDate || !octoberOffer.endDate || today <= octoberOffer.endDate)
-);
+const octoberOfferActive = isOfferActive(octoberOffer);
 const activePersonal = pricing.personal.packages.filter(plan => plan.enabled && plan.sessions > 0);
 const activeHybrid = pricing.hybrid.packages.filter(plan => plan.enabled);
 const lowestPersonalRate = activePersonal.length
@@ -127,17 +113,19 @@ const githubFallback = image.startsWith('/images/')
       <div
         class="service-price-wrap"
         data-october-pricing
-        data-enabled={octoberOffer?.enabled ? 'true' : 'false'}
+        data-enabled={octoberOfferActive ? 'true' : 'false'}
         data-start-date={octoberOffer?.startDate || ''}
         data-end-date={octoberOffer?.endDate || ''}
         data-auto-disable={octoberOffer?.autoDisableAfterEndDate ? 'true' : 'false'}
       >
         <p class="service-price" data-standard-only hidden={octoberOfferActive}>{priceLabel}</p>
-        <div class="service-october-price" data-october-only hidden={!octoberOfferActive}>
-          <span class="october-price-badge">{isPl ? 'PAŹDZIERNIK · NOWI KLIENCI −20%' : 'OCTOBER · NEW CLIENTS −20%'}</span>
-          <span class="service-standard-line">{isPl ? 'Standard' : 'Standard'} <s>{priceLabel}</s></span>
-          <strong>{octoberPriceLabel}</strong>
-        </div>
+        {octoberOfferActive && (
+          <div class="service-october-price" data-october-only>
+            <span class="october-price-badge">{isPl ? 'PAŹDZIERNIK · NOWI KLIENCI −20%' : 'OCTOBER · NEW CLIENTS −20%'}</span>
+            <span class="service-standard-line">{isPl ? 'Standard' : 'Standard'} <s>{priceLabel}</s></span>
+            <strong>{octoberPriceLabel}</strong>
+          </div>
+        )}
       </div>
     )}
     <p>{tagline}</p>
@@ -163,43 +151,7 @@ const githubFallback = image.startsWith('/images/')
   })();
 </script>
 
-<script is:inline>
-  (() => {
-    if (window.__kkOctoberPricingBound) return;
-    window.__kkOctoberPricingBound = true;
 
-    const applyOctoberPricing = () => {
-      const parts = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Europe/London',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      }).formatToParts(new Date());
-      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-      const today = `${map.year}-${map.month}-${map.day}`;
-
-      document.querySelectorAll('[data-october-pricing]').forEach((block) => {
-        const enabled = block.dataset.enabled === 'true';
-        const start = block.dataset.startDate || '';
-        const end = block.dataset.endDate || '';
-        const autoDisable = block.dataset.autoDisable === 'true';
-        const active = enabled && (!start || today >= start) && (!autoDisable || !end || today <= end);
-        if (block.hasAttribute('data-october-only')) {
-          block.hidden = !active;
-          return;
-        }
-        block.querySelectorAll('[data-standard-only]').forEach((el) => { el.hidden = active; });
-        block.querySelectorAll('[data-october-only]').forEach((el) => { el.hidden = !active; });
-      });
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', applyOctoberPricing, { once: true });
-    } else {
-      applyOctoberPricing();
-    }
-  })();
-</script>
 
 <style>
   .service-card {

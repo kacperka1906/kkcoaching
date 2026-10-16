@@ -59,15 +59,33 @@ const compactOnScroll = admin.header.compactOnScroll;
   const toggle = document.getElementById('navToggle');
   const nav = document.getElementById('mainNav');
 
+  // Astro renders contact pages statically: query parameters are only known
+  // in the browser. Preserve allowlisted enquiry intent when switching EN/PL.
+  const languageLink = header?.querySelector('.lang-switch');
+  const contactPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (languageLink && ['/contact', '/pl/contact'].includes(contactPath)) {
+    const requestedIntent = new URLSearchParams(window.location.search).get('interest');
+    if (['pt', 'online', 'hybrid', 'training-plan', 'taster'].includes(requestedIntent || '')) {
+      const destination = new URL(languageLink.getAttribute('href') || '', window.location.origin);
+      destination.searchParams.set('interest', requestedIntent);
+      languageLink.setAttribute('href', destination.pathname + destination.search);
+    }
+  }
+
+
   if (header?.dataset.stickyMobile === 'true') {
     document.body.classList.add('has-fixed-mobile-header');
   }
 
-  const closeMenu = () => {
+  const closeMenu = (returnFocus = false) => {
     nav?.classList.remove('is-open');
     document.body.classList.remove('menu-open');
     toggle?.setAttribute('aria-expanded', 'false');
-    if (toggle) toggle.innerHTML = '&#9776;';
+    if (toggle) {
+      toggle.innerHTML = '&#9776;';
+      toggle.setAttribute('aria-label', header?.querySelector('.lang-switch')?.textContent?.trim() === 'EN' ? 'Otwórz menu' : 'Open menu');
+      if (returnFocus) toggle.focus({ preventScroll: true });
+    }
   };
 
   toggle?.addEventListener('click', () => {
@@ -75,12 +93,19 @@ const compactOnScroll = admin.header.compactOnScroll;
     document.body.classList.toggle('menu-open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
     toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+    toggle.setAttribute('aria-label', isOpen
+      ? (header?.querySelector('.lang-switch')?.textContent?.trim() === 'EN' ? 'Zamknij menu' : 'Close menu')
+      : (header?.querySelector('.lang-switch')?.textContent?.trim() === 'EN' ? 'Otwórz menu' : 'Open menu'));
+    if (isOpen) nav?.querySelector('a')?.focus({ preventScroll: true });
   });
 
-  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
+    if (event.key === 'Escape' && nav?.classList.contains('is-open')) closeMenu(true);
   });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 940 && nav?.classList.contains('is-open')) closeMenu();
+  }, { passive: true });
 
   if (header?.dataset.compactOnScroll === 'true') {
     const updateScrolledState = () => header.classList.toggle('is-scrolled', window.scrollY > 24);

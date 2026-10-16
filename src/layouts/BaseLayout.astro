@@ -272,6 +272,9 @@ const robotsContent = noindex
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
   <Analytics />
+  <script>
+    import '../scripts/promotion-expiry.mjs';
+  </script>
 
   <script is:inline>
     const identityHash = window.location.hash;
@@ -293,6 +296,8 @@ const robotsContent = noindex
 </html>
 
 <style is:global>
+  /* Grid/flex declarations must never override calendar/interaction hiding. */
+  [hidden] { display: none !important; }
   :root {
     --graphite: #17191D;
     --red: #A51F2E;
