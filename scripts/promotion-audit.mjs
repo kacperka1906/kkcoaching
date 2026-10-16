@@ -159,9 +159,9 @@ for (const page of pages) {
               errors.push(`${page.label} trial contains ${other} content: ${value}`);
             }
           }
-          if (!/<p class="trial-price">\\s*<strong>£0<\\/strong>/.test(card)) errors.push(`${page.label} trial £0 price markup is missing`);
+          if (!/<p class="trial-price">\s*<strong>£0<\/strong>/.test(card)) errors.push(`${page.label} trial £0 price markup is missing`);
           if (countOccurrences(card, '<li>') !== 5) errors.push(`${page.label} trial must render exactly five feature list items`);
-          const ctaMatch = card.match(/<a\\b[^>]*data-free-trial-checkout="(en|pl)"[^>]*>/);
+          const ctaMatch = card.match(/<a\b[^>]*data-free-trial-checkout="(en|pl)"[^>]*>/);
           if (!ctaMatch || ctaMatch[1] !== lang || !ctaMatch[0].includes(`href="${trialDestinations[lang]}"`)) {
             errors.push(`${page.label} trial CTA language or checkout URL is incorrect`);
           }
