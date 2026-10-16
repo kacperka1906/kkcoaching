@@ -101,16 +101,12 @@ for (const [route, alternate, intent] of [
     await page.goto(route);
     const languageLink = page.locator('.lang-switch');
     await expect(languageLink).toHaveAttribute('href', alternate);
-    if (intent !== 'invalid') {
-      await expect(page.locator('#interest')).toHaveValue(intent);
-    }
+    if (intent !== 'invalid') await expect(page.locator('#interest')).toHaveValue(intent);
     await languageLink.click();
-    await expect(page).toHaveURL(new RegExp(alternate.replace(/[.*+?^${}()|[\]\\]/g, '\\    if (intent !== 'invalid') {
-      await expect(page.locator('#interest')).toHaveValue(intent);
-    }
+    await expect(page).toHaveURL('http://127.0.0.1:4322' + alternate);
+    await expect(page.locator('#interest')).toHaveValue(intent === 'invalid' ? '' : intent);
   });
 }
-
 for (const route of ['/', '/pl/']) {') + '
   test('mobile menu keyboard entry and Escape return focus: ' + route, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 850 });
