@@ -56,6 +56,16 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
         track('directions_click', common);
       }
 
+      const trialLanguage = link.getAttribute('data-free-trial-checkout');
+      if (trialLanguage === 'pl' || trialLanguage === 'en') {
+        track('free_trial_checkout_click', {
+          language: trialLanguage,
+          offer: '7_day_trial',
+          destination: absoluteHref,
+          placement: 'current_offers'
+        });
+      }
+
       if (link.classList.contains('btn')) {
         track('cta_click', {
           ...common,
