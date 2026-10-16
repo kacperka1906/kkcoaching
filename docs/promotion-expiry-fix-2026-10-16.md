@@ -56,7 +56,7 @@ Repeated `@id` entity definitions remain compatible graph fragments, with older 
 
 ## Rollback
 
-Before release, decline/close the PR; production is unchanged. After an approved release, set `PROMOTION_REFRESH_ENABLED=false` to stop automatic refresh requests, then use an explicitly approved Netlify rollback if the application change must be reverted. Do not change prices or permanent offer data as a rollback. Rolling back to the audited commit reintroduces the expiry defect; remove/disable the scheduler before restoring an older artifact without a manifest, and treat that rollback as temporary. Corrective rollout/rollback itself still requires deployment approval.
+Before release, decline/close the PR; production is unchanged. After an approved release, use an explicitly approved Netlify rollback if the application change must be reverted. Set `PROMOTION_REFRESH_ENABLED=false` for the next function deployment; a Netlify variable edit may require redeployment and must not be assumed to update a running function immediately. For an immediate pause before that deployment, revoke a dedicated refresh build hook (do not disrupt a hook shared with other workflows), and inspect/cancel any already queued refresh builds as part of the approved rollback. Do not change prices or permanent offer data as a rollback. Rolling back to the audited commit reintroduces the expiry defect; remove/disable the scheduler before restoring an older artifact without a manifest, and treat that rollback as temporary. Corrective rollout/rollback itself still requires deployment approval.
 
 ## Validation evidence
 
