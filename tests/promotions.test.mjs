@@ -22,12 +22,12 @@ for (const [instant, date, active] of [
 });
 
 const env = { PROMOTION_REFRESH_ENABLED: 'true', PROMOTION_BUILD_HOOK_URL: 'https://api.netlify.com/build_hooks/test-hook' };
-function fixture({ date = '2026-11-01T00:05:00Z', ids = [...permanent, octoberId], hookOK = true, stateOK = true } = {}) {
+function fixture({ date = '2026-11-01T00:05:00Z', ids = [...permanent, octoberId], hookOK = true, stateOK = true, manifestDate = '2026-10-16' } = {}) {
   const calls = [];
   const fetcher = async (url, options) => {
     calls.push({ url, options });
     return url.endsWith('promotion-state.json')
-      ? { ok: stateOK, json: async () => ({ version: 1, activeOfferIds: ids }) }
+      ? { ok: stateOK, json: async () => ({ version: 1, londonDate: manifestDate, activeOfferIds: ids }) }
       : { ok: hookOK };
   };
   return { calls, handler: refresh.createHandler({ env, fetcher, now: () => new Date(date) }) };
@@ -48,7 +48,7 @@ for (const config of [
   assert.equal(calls.length, 1);
 });
 test('failed hook is reported so a later schedule can retry stale state', async () => {
-  await assert.rejects(fixture({ hookOK: false }).handler(), /next scheduled run will retry/);
+  await assert.rejects(fixture({ hookOK: false }).handler(), /next scheduled retry window will retry/);
 });
 test('missing/failed manifest does not request a build', async () => {
   const { calls, handler } = fixture({ stateOK: false });
@@ -68,8 +68,57 @@ test('enabled refresh requires the correct secure hook destination', async () =>
 test('hook network failures do not expose the secret URL', async () => {
   let calls = 0;
   const handler = refresh.createHandler({ env, now: () => new Date('2026-11-01T00:05:00Z'), fetcher: async () => {
-    if (++calls === 1) return { ok: true, json: async () => ({ version: 1, activeOfferIds: [...permanent, octoberId] }) };
+    if (++calls === 1) return { ok: true, json: async () => ({ version: 1, londonDate: '2026-10-16', activeOfferIds: [...permanent, octoberId] }) };
     throw new Error(`Failed request to ${env.PROMOTION_BUILD_HOOK_URL}`);
   } });
-  await assert.rejects(handler(), error => /next scheduled run/.test(error.message) && !error.message.includes('test-hook'));
+  await assert.rejects(handler(), error => /next scheduled retry window/.test(error.message) && !error.message.includes('test-hook'));
+});
+
+test('stale builds retry at limited hours on the first changed London date', async () => {
+  for (const hour of [0, 1, 3, 6, 12]) {
+    const { calls, handler } = fixture({ date: '2026-11-01T' + String(hour).padStart(2, '0') + ':05:00Z' });
+    assert.match((await handler()).body, /Requested/);
+    assert.equal(calls.length, 2, 'first-day retry slot ' + hour);
+  }
+});
+
+test('stale state does not trigger hourly build storms', async () => {
+  for (const date of ['2026-11-01T02:05:00Z', '2026-11-01T13:05:00Z', '2026-11-02T01:05:00Z', '2026-11-10T06:05:00Z']) {
+    const { calls, handler } = fixture({ date });
+    assert.match((await handler()).body, /deferred/);
+    assert.equal(calls.length, 1, 'no build hook invoked at ' + date);
+  }
+});
+
+test('still retries once at London midnight on later stale days', async () => {
+  for (const date of ['2026-11-02T00:05:00Z', '2026-11-10T00:05:00Z']) {
+    const { calls, handler } = fixture({ date });
+    assert.match((await handler()).body, /Requested/);
+    assert.equal(calls.length, 2);
+  }
+});
+
+test('first promotion-start retry observes BST London midnight, not UTC midnight', async () => {
+  const { calls, handler } = fixture({
+    date: '2026-09-30T23:05:00Z',
+    manifestDate: '2026-09-30',
+    ids: permanent
+  });
+  assert.match((await handler()).body, /Requested/);
+  assert.equal(calls.length, 2);
+  const later = fixture({
+    date: '2026-10-01T01:05:00Z',
+    manifestDate: '2026-09-30',
+    ids: permanent
+  });
+  assert.match((await later.handler()).body, /deferred/);
+  assert.equal(later.calls.length, 1);
+});
+
+test('rejects malformed or future-dated manifests without requesting builds', async () => {
+  for (const manifestDate of ['', '2026-02-30', '2026-13-01', '2026-11-02']) {
+    const { calls, handler } = fixture({ manifestDate });
+    await assert.rejects(handler(), /Invalid published promotion state/);
+    assert.equal(calls.length, 1);
+  }
 });
