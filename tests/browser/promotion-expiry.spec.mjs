@@ -107,7 +107,7 @@ for (const [route, alternate, intent] of [
     await expect(page.locator('#interest')).toHaveValue(intent === 'invalid' ? '' : intent);
   });
 }
-for (const route of ['/', '/pl/']) {') + '
+for (const route of ['/', '/pl/']) {
   test('mobile menu keyboard entry and Escape return focus: ' + route, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 850 });
     await page.goto(route);
