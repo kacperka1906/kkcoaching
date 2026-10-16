@@ -47,13 +47,13 @@ const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching
         <p class="location">{admin.brand.locationSummary[lang]}</p>
       </div>
       <div>
-        <h4>{footer.sectionLabels.quickLinks[lang]}</h4>
+        <h2>{footer.sectionLabels.quickLinks[lang]}</h2>
         <ul>
           {footer.quickLinks.filter(link => link.enabled).map(link => <li><a href={link.href[lang]}>{link.label[lang]}</a></li>)}
         </ul>
       </div>
       <div>
-        <h4>{footer.sectionLabels.contact[lang]}</h4>
+        <h2>{footer.sectionLabels.contact[lang]}</h2>
         <ul>
           <li><a href={phoneHref}>{footer.sectionLabels.phone[lang]} · {admin.contact.phone}</a></li>
           <li><a href={`mailto:${admin.contact.email}`}>{admin.contact.email}</a></li>
@@ -89,7 +89,7 @@ const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching
         </ul>
       </div>
       <div>
-        <h4>{footer.sectionLabels.legal[lang]}</h4>
+        <h2>{footer.sectionLabels.legal[lang]}</h2>
         <ul>
           {footer.legalLinks.filter(link => link.enabled).map(link => <li><a href={link.href[lang]}>{link.label[lang]}</a></li>)}
           <li><button type="button" class="footer-link-button" data-cookie-settings>{footer.sectionLabels.cookieSettings[lang]}</button></li>
@@ -113,7 +113,7 @@ const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching
   .footer-grid { display: grid; grid-template-columns: 1.6fr 1.05fr 1.35fr 0.9fr; gap: 32px; margin-bottom: 40px; }
   @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
-  footer h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
+  footer h2 { color: var(--white); font-size: 0.9rem; margin-bottom: 14px; }
   footer ul { list-style: none; }
   footer ul li { margin-bottom: 8px; overflow-wrap: anywhere; }
   footer a, .footer-link-button { text-decoration: none; color: inherit; }
