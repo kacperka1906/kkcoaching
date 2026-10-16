@@ -8,15 +8,7 @@ interface Props {
 }
 
 const { lang, altPath } = Astro.props;
-const rawLanguageHref = altPath ?? (lang === 'pl' ? '/' : '/pl');
-// Keep a deliberate service selection when visitors change language on the contact page.
-// Do not propagate arbitrary tracking parameters or unrecognised input.
-const contactIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
-const requestedIntent = Astro.url.searchParams.get('interest');
-const contactPage = ['/contact', '/pl/contact'].includes(Astro.url.pathname.replace(/\/+$/, '') || '/');
-const languageHref = contactPage && contactIntents.has(requestedIntent ?? '')
-  ? `${rawLanguageHref}?interest=${encodeURIComponent(requestedIntent!)}`
-  : rawLanguageHref;
+const languageHref = altPath ?? (lang === 'pl' ? '/' : '/pl');
 const homeLabel = lang === 'pl' ? 'KK Coaching - strona główna' : 'KK Coaching - home';
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const nav = admin.header.items
@@ -66,6 +58,20 @@ const compactOnScroll = admin.header.compactOnScroll;
   const header = document.getElementById('siteHeader');
   const toggle = document.getElementById('navToggle');
   const nav = document.getElementById('mainNav');
+
+  // Astro renders contact pages statically: query parameters are only known
+  // in the browser. Preserve allowlisted enquiry intent when switching EN/PL.
+  const languageLink = header?.querySelector('.lang-switch');
+  const contactPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (languageLink && ['/contact', '/pl/contact'].includes(contactPath)) {
+    const requestedIntent = new URLSearchParams(window.location.search).get('interest');
+    if (['pt', 'online', 'hybrid', 'training-plan', 'taster'].includes(requestedIntent || '')) {
+      const destination = new URL(languageLink.getAttribute('href') || '', window.location.origin);
+      destination.searchParams.set('interest', requestedIntent);
+      languageLink.setAttribute('href', destination.pathname + destination.search);
+    }
+  }
+
 
   if (header?.dataset.stickyMobile === 'true') {
     document.body.classList.add('has-fixed-mobile-header');
