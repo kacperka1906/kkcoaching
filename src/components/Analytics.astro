@@ -56,6 +56,37 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
         track('directions_click', common);
       }
 
+      const trialLanguage = link.getAttribute('data-free-trial-checkout');
+      if (trialLanguage === 'pl' || trialLanguage === 'en') {
+        // Outbound navigation can cancel an asynchronous GA4 request.
+        // For ordinary left-click navigation, wait briefly for the GA callback.
+        const normalNavigation = event.button === 0 && !event.metaKey && !event.ctrlKey &&
+          !event.shiftKey && !event.altKey && !link.hasAttribute('download') &&
+          (!link.target || link.target === '_self');
+        let completed = false;
+        let fallback;
+        const finish = () => {
+          if (completed) return;
+          completed = true;
+          if (fallback) clearTimeout(fallback);
+          if (normalNavigation) window.location.assign(absoluteHref);
+        };
+        if (normalNavigation) {
+          event.preventDefault();
+          fallback = setTimeout(finish, 900);
+        }
+        gtag('event', 'free_trial_checkout_click', {
+          page_path: window.location.pathname,
+          language: trialLanguage,
+          offer: '7_day_trial',
+          destination: absoluteHref,
+          placement: 'current_offers',
+          transport_type: 'beacon',
+          event_callback: normalNavigation ? finish : undefined,
+          event_timeout: 800
+        });
+      }
+
       if (link.classList.contains('btn')) {
         track('cta_click', {
           ...common,

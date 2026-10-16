@@ -9,6 +9,13 @@ const errors = [];
 const allowedServices = new Set(['online', 'hybrid', 'personal-training', 'general', 'all']);
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const ids = new Set();
+const trialId = 'free-7-day-kk-coaching-trial';
+const trialDestinations = {
+  en: 'https://kkcoaching.mypthub.net/p/240389',
+  pl: 'https://kkcoaching.mypthub.net/p/240387'
+};
+const countOccurrences = (text, fragment) => text.split(fragment).length - 1;
+
 
 const pairIsValid = (value) => value
   && typeof value.en === 'string' && value.en.trim()
@@ -50,6 +57,32 @@ if (!Array.isArray(offers)) {
     } else {
       for (const name of ['title', 'offerText']) {
         if (!pairIsValid(offer[name])) errors.push(`${prefix}.${name} must contain non-empty en/pl values when showPrice is disabled`);
+      }
+    }
+
+    if (offer.id === trialId) {
+      if (!offer.enabled || offer.service !== 'general' || offer.display?.homepage !== true || offer.display?.servicePage !== false) {
+        errors.push(`${prefix} trial must be enabled on homepages only`);
+      }
+      if (offer.showPrice !== true || offer.promotionalPrice !== 0 || offer.standardPrice !== 0) {
+        errors.push(`${prefix} trial must have showPrice=true and £0 pricing`);
+      }
+      if (offer.startDate || offer.endDate || offer.autoDisableAfterEndDate !== false) {
+        errors.push(`${prefix} trial must have no start/end date or automatic expiry`);
+      }
+      for (const lang of ['en', 'pl']) {
+        if (offer.ctaDestination?.[lang] !== trialDestinations[lang]) {
+          errors.push(`${prefix} trial ${lang} checkout URL is incorrect`);
+        }
+        if (!Array.isArray(offer.trialFeatures?.[lang]) ||
+            offer.trialFeatures[lang].length !== 5 ||
+            offer.trialFeatures[lang].some(item => typeof item !== 'string' || !item.trim()) ||
+            new Set(offer.trialFeatures[lang]).size !== 5) {
+          errors.push(`${prefix} trial must contain exactly five distinct ${lang} features`);
+        }
+        if (!offer.title?.[lang]?.trim() || !offer.offerText?.[lang]?.trim()) {
+          errors.push(`${prefix} trial ${lang} title and description are required`);
+        }
       }
     }
 
@@ -102,19 +135,71 @@ for (const page of pages) {
     const marker = `data-promotion-id="${offer.id}"`;
     const expected = matchesPage(offer, page);
     const rendered = html.includes(marker);
+    const occurrenceCount = countOccurrences(html, marker);
+    if (offer.id === trialId) {
+      if (occurrenceCount !== (expected ? 1 : 0)) {
+        errors.push(`${page.label} trial must appear exactly ${expected ? 'once' : 'zero times'} (found ${occurrenceCount})`);
+      }
+      if (expected) {
+        // Validate only the trial article, not text that may appear elsewhere on the page.
+        const articleMatch = html.match(new RegExp(`<article\\b(?=[^>]*data-promotion-id="${trialId}")[^>]*>[\\s\\S]*?<\\/article>`));
+        if (!articleMatch) {
+          errors.push(`${page.label} trial article markup is missing`);
+        } else {
+          const card = articleMatch[0];
+          const lang = page.lang;
+          const other = lang === 'en' ? 'pl' : 'en';
+          const ownTexts = [offer.headline[lang], offer.title[lang], offer.offerText[lang], offer.promotionalPeriod[lang], offer.ctaText[lang], offer.smallPrint[lang], ...offer.trialFeatures[lang]];
+          for (const value of ownTexts) {
+            if (!card.includes(value)) errors.push(`${page.label} trial missing ${lang} content: ${value}`);
+          }
+          const foreignTexts = [offer.headline[other], offer.title[other], offer.offerText[other], offer.promotionalPeriod[other], offer.ctaText[other], offer.smallPrint[other], ...offer.trialFeatures[other]];
+          for (const value of foreignTexts) {
+            if (value !== offer.headline[lang] && card.includes(value)) {
+              errors.push(`${page.label} trial contains ${other} content: ${value}`);
+            }
+          }
+          // Astro adds scoped attributes to HTML tags; check the price within its own paragraph.
+          const priceParagraph = card.match(/<p\b(?=[^>]*\bclass="[^"]*\btrial-price\b[^"]*")[^>]*>([\s\S]*?)<\/p>/);
+          const priceIsZero = priceParagraph && /<strong\b[^>]*>\s*£0\s*<\/strong>/.test(priceParagraph[1]);
+          if (!priceIsZero) errors.push(`${page.label} trial £0 price markup is missing`);
+          // Count complete li elements only inside the dedicated feature list.
+          const featuresList = card.match(/<ul\b(?=[^>]*\bclass="[^"]*\btrial-features\b[^"]*")[^>]*>([\s\S]*?)<\/ul>/);
+          const featureItems = featuresList ? [...featuresList[1].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)] : [];
+          if (featureItems.length !== 5) errors.push(`${page.label} trial must render exactly five feature list items`);
+          if (featuresList) {
+            for (const feature of offer.trialFeatures[lang]) {
+              if (featureItems.filter(item => item[1].trim() === feature).length !== 1) {
+                errors.push(`${page.label} trial feature must appear exactly once: ${feature}`);
+              }
+            }
+          }
+          const ctaMatch = card.match(/<a\b[^>]*data-free-trial-checkout="(en|pl)"[^>]*>/);
+          if (!ctaMatch || ctaMatch[1] !== lang || !ctaMatch[0].includes(`href="${trialDestinations[lang]}"`)) {
+            errors.push(`${page.label} trial CTA language or checkout URL is incorrect`);
+          }
+          if (card.includes(trialDestinations[other])) errors.push(`${page.label} trial includes foreign checkout URL`);
+          if (!/data-start-date=""[^>]*data-end-date=""[^>]*data-auto-disable="false"/.test(card)) {
+            errors.push(`${page.label} trial must not have an expiry date`);
+          }
+        }
+      }
+    }
 
     if (expected && !rendered) errors.push(`${page.label} is missing promotion ${offer.id}`);
     if (!expected && rendered) errors.push(`${page.label} renders promotion ${offer.id} in the wrong placement`);
 
     if (expected) {
       const expectedText = [offer.headline[page.lang], offer.ctaText[page.lang], offer.smallPrint[page.lang]];
-      if (offer.showPrice) expectedText.push(offer.promotionalPeriod[page.lang], offer.standardPriceText[page.lang]);
+      if (offer.id === trialId) {
+        // The trial has its own presentation and is exhaustively checked above.
+      } else if (offer.showPrice) expectedText.push(offer.promotionalPeriod[page.lang], offer.standardPriceText[page.lang]);
       else expectedText.push(offer.title[page.lang], offer.offerText[page.lang]);
 
       for (const text of expectedText) {
         if (!html.includes(text)) errors.push(`${page.label} promotion ${offer.id} is missing text: ${text}`);
       }
-      if (offer.showPrice && !html.includes(`£${offer.promotionalPrice}`)) errors.push(`${page.label} promotion ${offer.id} is missing the promotional price`);
+      if (offer.showPrice && offer.id !== trialId && !html.includes(`£${offer.promotionalPrice}`)) errors.push(`${page.label} promotion ${offer.id} is missing the promotional price`);
     }
   }
 }

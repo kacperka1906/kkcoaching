@@ -90,7 +90,20 @@ const candidateOffers = promotions.offers
     if (!offer.display.servicePage || !service) return false;
     return offer.service === service || offer.service === 'all';
   })
-  .sort((a, b) => Number(b.featured) - Number(a.featured) || b.priority - a.priority);
+  .sort((a, b) => {
+    if (placement === 'homepage') {
+      // Logical DOM order, not CSS order: free trial, free taster, then October discount.
+      const homepageRank = {
+        'free-7-day-kk-coaching-trial': 0,
+        'october-2026-free-pt-taster': 1,
+        'october-2026-20-off-everything': 2
+      };
+      const rankA = homepageRank[a.id] ?? 3;
+      const rankB = homepageRank[b.id] ?? 3;
+      if (rankA !== rankB) return rankA - rankB;
+    }
+    return Number(b.featured) - Number(a.featured) || b.priority - a.priority;
+  });
 
 const preparedOffers = candidateOffers.map(offer => {
   const startsNow = !offer.startDate || today >= offer.startDate;
@@ -113,7 +126,7 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
       <div class="promotion-grid">
         {preparedOffers.map(({ offer, initiallyVisible }) => (
           <article
-            class:list={['promotion-card', offer.featured && 'is-featured']}
+            class:list={['promotion-card', offer.featured && 'is-featured', offer.id === 'free-7-day-kk-coaching-trial' && 'is-trial', offer.id === 'october-2026-20-off-everything' && 'is-october-discount']}
             data-promotion-card
             data-promotion-id={offer.id}
             data-start-date={offer.startDate}
@@ -127,7 +140,16 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
                 <span class="promotion-eyebrow">{offer.headline[lang]}</span>
               </div>
 
-              {offer.showPrice ? (
+              {offer.id === 'free-7-day-kk-coaching-trial' ? (
+                <div class="trial-offer">
+                  <h2>{offer.title[lang]}</h2>
+                  <p class="trial-price"><strong>£0</strong><span>{offer.promotionalPeriod[lang]}</span></p>
+                  <p class="offer-text">{offer.offerText[lang]}</p>
+                  <ul class="trial-features">
+                    {offer.trialFeatures?.[lang]?.map(feature => <li>{feature}</li>)}
+                  </ul>
+                </div>
+              ) : offer.showPrice ? (
                 <div class="price-wrap">
                   <div class="promotion-price" aria-label={`${money(offer.promotionalPrice)} ${offer.promotionalPeriod[lang]}`}>
                     <strong>{money(offer.promotionalPrice)}</strong>
@@ -165,7 +187,7 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
             </div>
 
             <div class="promotion-action">
-              <a href={offer.ctaDestination[lang]} class="btn btn-primary">{offer.ctaText[lang]}</a>
+              <a href={offer.ctaDestination[lang]} class="btn btn-primary" data-free-trial-checkout={offer.id === 'free-7-day-kk-coaching-trial' ? lang : undefined}>{offer.ctaText[lang]}</a>
               <p class="small-print">{offer.smallPrint[lang]}</p>
             </div>
           </article>
@@ -257,15 +279,19 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 
   .promotion-card.is-featured { border-left-color: var(--red); }
 
+  /* Two free offers side by side; the October price table spans the row below. */
   .promotion-home .promotion-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 
   .promotion-home .promotion-card {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 22px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 26px;
     align-content: start;
   }
 
@@ -279,6 +305,29 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
   .promotion-home .promotion-price strong {
     font-size: clamp(2.8rem, 4.7vw, 3.7rem);
   }
+
+  .promotion-home .promotion-card.is-trial {
+    border-left-color: var(--red);
+  }
+
+  .promotion-home .promotion-card.is-october-discount {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1.45fr) minmax(240px, .55fr);
+    align-items: center;
+  }
+
+  .promotion-home .promotion-card.is-october-discount .promotion-action {
+    border-top: 0;
+    border-left: 1px solid #3A3E45;
+    padding-top: 0;
+    padding-left: 26px;
+  }
+
+  .trial-price { display: flex; align-items: baseline; gap: 14px; margin: 16px 0; }
+  .trial-price strong { color: #fff; font-size: clamp(2.8rem, 5vw, 4rem); line-height: 1; }
+  .trial-price span { color: #f4b5bc; font-weight: 800; text-transform: uppercase; }
+  .trial-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px; margin: 20px 0 0; padding-left: 20px; color: #e2e4e7; font-size: .9rem; }
+  .trial-features li { padding-left: 2px; }
 
   .promotion-meta {
     display: flex;
@@ -439,8 +488,23 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 
   [hidden] { display: none !important; }
 
+  /* Below this width, the October price comparison deserves an entire row. */
+  @media (max-width: 1100px) {
+    .promotion-home .promotion-grid { grid-template-columns: minmax(0, 1fr); }
+    .promotion-home .promotion-card.is-october-discount {
+      grid-column: 1;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .promotion-home .promotion-card.is-october-discount .promotion-action {
+      border-left: 0;
+      border-top: 1px solid #3A3E45;
+      padding-left: 0;
+      padding-top: 18px;
+    }
+  }
+
   @media (max-width: 980px) {
-    .promotion-card {
+     .promotion-card {
       grid-template-columns: 1fr;
       gap: 21px;
     }
@@ -454,6 +518,7 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
   }
 
   @media (max-width: 620px) {
+    .trial-features { grid-template-columns: 1fr; }
     .promotion-section { padding: 20px 0 40px; }
     .promotion-service { padding-top: 10px; }
     .promotion-card { padding: 20px 17px; gap: 18px; }

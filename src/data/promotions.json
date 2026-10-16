@@ -62,16 +62,16 @@
       "remainingSpaces": 0,
       "priority": 290,
       "smallPrint": {
-        "en": "New clients only. One free taster session per person. Available during October 2026, subject to availability.",
-        "pl": "Tylko dla nowych klientów. Jeden darmowy trening próbny na osobę. Oferta dostępna w październiku 2026, w zależności od dostępności terminów."
+        "en": "New clients only. One free 60-minute taster session per person at JD Gyms Cwmbran, subject to availability. No obligation to continue.",
+        "pl": "Tylko dla nowych klientów. Jeden bezpłatny trening próbny (60 minut) na osobę w JD Gyms Cwmbran, w zależności od dostępności terminów. Bez obowiązku kontynuowania współpracy."
       },
-      "autoDisableAfterEndDate": true,
-      "internalName": "October 2026 — Free 1:1 Taster Session",
+      "autoDisableAfterEndDate": false,
+      "internalName": "Permanent — Free 1:1 Taster Session",
       "offerText": {
-        "en": "Try a 60-minute 1:1 session free, then get 20% off if you decide to continue in October.",
-        "pl": "Wypróbuj 60-minutowy trening 1:1 za darmo, a jeśli zdecydujesz się kontynuować w październiku, otrzymasz 20% rabatu."
+        "en": "Try a free 60-minute 1:1 personal training session at JD Gyms Cwmbran. See how we can work towards your goals before deciding whether to continue.",
+        "pl": "Wypróbuj bezpłatny, 60-minutowy trening personalny 1:1 w JD Gyms Cwmbran. Poznaj mój sposób pracy, zanim zdecydujesz się na dalszą współpracę."
       },
-      "endDate": "2026-10-31",
+      "endDate": "",
       "showSpaces": false,
       "showPrice": false,
       "standardPrice": 30,
@@ -80,7 +80,7 @@
         "en": "One taster session",
         "pl": "Jeden trening próbny"
       },
-      "startDate": "2026-10-01",
+      "startDate": "",
       "totalSpaces": 0,
       "headline": {
         "en": "Try 1:1 for free",
@@ -105,7 +105,75 @@
         "en": "/contact?interest=taster",
         "pl": "/pl/contact?interest=taster"
       }
+    },
+    {
+      "id": "free-7-day-kk-coaching-trial",
+      "internalName": "Permanent — Free 7-Day KK Coaching Trial",
+      "enabled": true,
+      "featured": false,
+      "priority": 280,
+      "service": "general",
+      "display": {
+        "homepage": true,
+        "servicePage": false
+      },
+      "startDate": "",
+      "endDate": "",
+      "autoDisableAfterEndDate": false,
+      "showPrice": true,
+      "standardPrice": 0,
+      "promotionalPrice": 0,
+      "showSpaces": false,
+      "totalSpaces": 0,
+      "remainingSpaces": 0,
+      "headline": {
+        "en": "FREE 7-DAY TRIAL",
+        "pl": "DARMOWY DOSTĘP"
+      },
+      "title": {
+        "en": "TRY KK COACHING FREE FOR 7 DAYS",
+        "pl": "7 DNI Z KK COACHING ZA DARMO"
+      },
+      "offerText": {
+        "en": "Experience KK Coaching for 7 days — completely free, with no commitment. Discover structured training, sample workouts and meal plans, and progress tracking.",
+        "pl": "Wypróbuj KK Coaching przez 7 dni — bez opłat i zobowiązań. Poznaj przykładowe treningi i posiłki oraz monitorowanie postępów."
+      },
+      "trialFeatures": {
+        "en": [
+          "3 sample full-body workouts (A, B and C)",
+          "3 example meal-plan days with recipes",
+          "7 days of access to the training app",
+          "Workout logging and progress tracking",
+          "KK Coaching Starter Guide"
+        ],
+        "pl": [
+          "3 przykładowe treningi Full Body (A, B i C)",
+          "3 przykładowe dni żywieniowe z przepisami",
+          "Dostęp do aplikacji treningowej przez 7 dni",
+          "Zapisywanie treningów i monitorowanie postępów",
+          "Przewodnik Startowy KK Coaching"
+        ]
+      },
+      "promotionalPeriod": {
+        "en": "7 days",
+        "pl": "7 dni"
+      },
+      "standardPriceText": {
+        "en": "Free demonstration package",
+        "pl": "Darmowy pakiet demonstracyjny"
+      },
+      "ctaText": {
+        "en": "Get Free Access",
+        "pl": "Odbierz darmowy dostęp"
+      },
+      "ctaDestination": {
+        "en": "https://kkcoaching.mypthub.net/p/240389",
+        "pl": "https://kkcoaching.mypthub.net/p/240387"
+      },
+      "smallPrint": {
+        "en": "Demonstration package only. Workouts and meal plans are not individually tailored. No automatic renewal or obligation to purchase further coaching.",
+        "pl": "Pakiet demonstracyjny. Treningi i jadłospisy nie są indywidualnie dopasowane. Bez automatycznego odnawiania i obowiązku zakupu dalszej współpracy."
+      }
     }
   ]
 }
-
