@@ -112,6 +112,7 @@ exports.handler = async (event) => {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         'Content-Type': 'application/json'
       },
+      signal: AbortSignal.timeout(10_000),
       body: JSON.stringify({
         from: process.env.CONTACT_FROM_EMAIL,
         to: process.env.CONTACT_TO_EMAIL,
@@ -122,14 +123,15 @@ exports.handler = async (event) => {
     });
 
     if (!res.ok) {
-      const errText = await res.text();
-      console.error('Resend API error:', errText);
+      // Provider bodies may contain input or request metadata: never log them.
+      console.error('Resend delivery failed with HTTP status:', res.status);
       return { statusCode: 502, body: JSON.stringify({ error: 'Email provider error' }) };
     }
 
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
-  } catch (err) {
-    console.error('Contact function error:', err);
+  } catch {
+    // Never include personal enquiry data, API keys or provider request details in logs.
+    console.error('Contact function delivery/network error');
     return { statusCode: 500, body: JSON.stringify({ error: 'Internal error' }) };
   }
 };
