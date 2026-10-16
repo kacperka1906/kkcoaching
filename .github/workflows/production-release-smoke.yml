@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Read-only drift/expiry verification; UTC schedule avoids the busy top of the hour.
+    - cron: '17 8 * * *'
 
 permissions:
   contents: read
