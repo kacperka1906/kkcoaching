@@ -14,13 +14,14 @@
     "test:contact": "node tests/contact.test.cjs",
     "test:seo": "node scripts/test-seo-integrity.mjs",
     "test:reviews": "node scripts/test-reviews-widget.mjs",
-    "test": "npm run test:contact && npm run test:seo && npm run test:reviews && npm run test:promotions",
+    "test": "npm run test:contact && npm run test:seo && npm run test:reviews && npm run test:promotions && npm run test:live-smoke",
     "build": "npm run build:astro && npm run finalize:html && npm run resources:visibility && npm run urls:normalize && npm run promotions:state && npm run seo:audit",
     "build:verified": "npm run build",
     "preview": "astro preview",
     "promotions:state": "node scripts/write-promotion-state.mjs",
     "test:promotions": "node --test tests/promotions.test.mjs && node scripts/test-promotion-html.mjs && node scripts/test-promotion-negative.mjs",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "test:live-smoke": "node --test tests/live-production-smoke.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
