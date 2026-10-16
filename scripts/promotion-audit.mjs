@@ -15,7 +15,6 @@ const trialDestinations = {
   pl: 'https://kkcoaching.mypthub.net/p/240387'
 };
 const countOccurrences = (text, fragment) => text.split(fragment).length - 1;
-const escapeRegExp = (value) => value.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\const escapeRegExp = (value) => value.replace(/[.*+?^${ }()|[\]\\]/g, '\\const ids = new Set();');');
 
 
 const pairIsValid = (value) => value
