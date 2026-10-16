@@ -104,6 +104,41 @@ for (const [route, alternate, intent] of [
     if (intent !== 'invalid') {
       await expect(page.locator('#interest')).toHaveValue(intent);
     }
+    await languageLink.click();
+    await expect(page).toHaveURL(new RegExp(alternate.replace(/[.*+?^${}()|[\]\\]/g, '\\    if (intent !== 'invalid') {
+      await expect(page.locator('#interest')).toHaveValue(intent);
+    }
+  });
+}
+
+for (const route of ['/', '/pl/']) {') + '
+  test('mobile menu keyboard entry and Escape return focus: ' + route, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 850 });
+    await page.goto(route);
+    const button = page.locator('#navToggle');
+    const nav = page.locator('#mainNav');
+    await button.focus();
+    await page.keyboard.press('Enter');
+    await expect(button).toHaveAttribute('aria-expanded', 'true');
+    await expect(nav.locator('a').first()).toBeFocused();
+    await page.keyboard.press('Escape');
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
+    await expect(button).toBeFocused();
+    await button.click();
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
+    expect(await page.evaluate(() => document.body.classList.contains('menu-open'))).toBe(false);
+  });
+
+  test('footer semantic heading hierarchy: ' + route, async ({ page }) => {
+    await page.goto(route);
+    await expect(page.locator('footer h2')).toHaveCount(3);
+    await expect(page.locator('footer h4')).toHaveCount(0);
+    await expect(page.locator('footer h2').first()).toBeVisible();
+  });
+}
+));
+    await expect(page.locator('#interest')).toHaveValue(intent === 'invalid' ? '' : intent);
   });
 }
 
