@@ -8,279 +8,637 @@ interface Props {
 
 const { lang, limit = admin.reviews.homeLimit } = Astro.props;
 const settings = admin.reviews;
-const items = settings.items
+const allItems = settings.items
   .filter((item: any) => item.enabled !== false)
   .filter((item: any) => item.featured !== false)
   .slice(0, Math.max(1, limit));
 
-const canRender = settings.enabled && items.length > 0;
+const canRender = settings.enabled && allItems.length > 0;
+const facebookCount = allItems.filter((item: any) => item.source === 'facebook').length;
+const googleCount = allItems.filter((item: any) => item.source === 'google').length;
+const sources = [
+  ...(facebookCount ? [{ key: 'facebook', count: facebookCount }] : []),
+  ...(googleCount ? [{ key: 'google', count: googleCount }] : [])
+];
 
-const sourceLabels: Record<string, string> = {
-  google: lang === 'pl' ? 'Opinia Google' : 'Google Review',
-  whatsapp: 'WhatsApp',
-  messenger: 'Messenger',
-  mypthub: 'MyPTHub',
-  instagram: 'Instagram',
-  facebook: lang === 'pl' ? 'Rekomendacja Facebook' : 'Facebook recommendation',
-  email: 'Email',
-  other: lang === 'pl' ? 'Inne' : 'Other'
+const ui = lang === 'pl'
+  ? {
+      eyebrow: 'OPINIE PODOPIECZNYCH',
+      title: 'Prawdziwe historie. Prawdziwe rezultaty.',
+      intro: 'Rekomendacje osób prowadzonych przez KK Coaching — bez przerabiania treści i bez sztucznych ocen.',
+      recommendations: 'rekomendacji',
+      all: 'Wszystkie',
+      recommended: 'Poleca KK Coaching',
+      facebook: 'Facebook',
+      google: 'Google',
+      original: 'Zobacz źródło',
+      previous: 'Poprzednie opinie',
+      next: 'Następne opinie',
+      sourceAria: 'Filtr źródła opinii'
+    }
+  : {
+      eyebrow: 'CLIENT REVIEWS',
+      title: 'Real stories. Real results.',
+      intro: 'Recommendations from people coached by KK Coaching — no rewritten reviews and no artificial ratings.',
+      recommendations: 'recommendations',
+      all: 'All reviews',
+      recommended: 'Recommends KK Coaching',
+      facebook: 'Facebook',
+      google: 'Google',
+      original: 'View source',
+      previous: 'Previous reviews',
+      next: 'Next reviews',
+      sourceAria: 'Review source filter'
+    };
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(part => part[0]?.toUpperCase())
+    .join('');
+
+const sourceUrl = (source: string) => {
+  if (source === 'facebook') return admin.contact.facebookUrl;
+  return '';
 };
 ---
 
 {canRender && (
   <section
     id="client-reviews"
-    class="reviews-section on-white"
-    data-review-widget
+    class="reviews-widget-section"
+    data-reviews-widget
     aria-labelledby={`reviews-heading-${lang}`}
   >
     <div class="container">
-      <div class="section-head centered">
-        <span class="eyebrow">{settings.eyebrow[lang]}</span>
-        <h2 id={`reviews-heading-${lang}`}>{settings.heading[lang]}</h2>
-        <p>{settings.body[lang]}</p>
-      </div>
+      <div class="reviews-shell">
+        <header class="reviews-header">
+          <div class="reviews-heading-copy">
+            <span class="reviews-eyebrow">{ui.eyebrow}</span>
+            <h2 id={`reviews-heading-${lang}`}>{ui.title}</h2>
+            <p>{ui.intro}</p>
+          </div>
 
-      <div class="reviews-grid" aria-label={lang === 'pl' ? 'Opinie klientów' : 'Client reviews'}>
-        {items.map((item: any) => (
-          <article class="review-card">
-            {item.screenshot ? (
-              <button
-                class="review-shot-button"
-                type="button"
-                data-review-image={item.screenshot}
-                data-review-client={item.client}
-                aria-label={lang === 'pl' ? `Powiększ opinię: ${item.client}` : `Enlarge review: ${item.client}`}
-              >
-                <img
-                  class="review-shot"
-                  src={item.screenshot}
-                  alt={lang === 'pl'
-                    ? `Oryginalna rekomendacja ${item.client} na Facebooku`
-                    : `Original Facebook recommendation from ${item.client}`}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ) : item.quote ? (
-              <blockquote>“{item.quote}”</blockquote>
-            ) : null}
-
-            <div class="review-meta">
-              <strong>{item.client}</strong>
-              {item.source && <span class="review-source">{sourceLabels[item.source] ?? item.source}</span>}
+          <div class="reviews-summary" aria-label={`${allItems.length} ${ui.recommendations}`}>
+            <div class="summary-source-mark" aria-hidden="true">
+              <span class="facebook-mark">f</span>
             </div>
-            {item.screenshot && (
-              <span class="review-expand-hint">
-                {lang === 'pl' ? 'Dotknij screena, aby powiększyć' : 'Tap the screenshot to enlarge'}
-              </span>
-            )}
-          </article>
-        ))}
-      </div>
-    </div>
+            <div>
+              <strong>{allItems.length}</strong>
+              <span>{ui.recommendations}</span>
+            </div>
+          </div>
+        </header>
 
-    <div class="review-lightbox" data-review-lightbox aria-hidden="true">
-      <button
-        class="review-lightbox-close"
-        type="button"
-        aria-label={lang === 'pl' ? 'Zamknij' : 'Close'}
-      >×</button>
-      <div class="review-lightbox-inner">
-        <img src="" alt="" data-review-lightbox-image />
+        <div class="reviews-toolbar">
+          <div class="reviews-tabs" role="tablist" aria-label={ui.sourceAria}>
+            <button class="review-tab is-active" type="button" data-review-filter="all" role="tab" aria-selected="true">
+              {ui.all}
+              <span>{allItems.length}</span>
+            </button>
+            {sources.map((source) => (
+              <button class="review-tab" type="button" data-review-filter={source.key} role="tab" aria-selected="false">
+                {source.key === 'facebook' ? ui.facebook : ui.google}
+                <span>{source.count}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="reviews-nav" aria-label={lang === 'pl' ? 'Nawigacja opinii' : 'Review navigation'}>
+            <button type="button" class="review-nav-button" data-review-prev aria-label={ui.previous}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="review-nav-button" data-review-next aria-label={ui.next}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="reviews-viewport">
+          <div class="reviews-track" data-reviews-track>
+            {allItems.map((item: any) => (
+              <article class="review-card" data-review-source={item.source || 'other'}>
+                <div class="review-card-head">
+                  <div class="review-author">
+                    <span class="review-avatar" aria-hidden="true">{initials(item.client)}</span>
+                    <div>
+                      <strong>{item.client}</strong>
+                      <span class="recommendation-label">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+                        {ui.recommended}
+                      </span>
+                    </div>
+                  </div>
+
+                  {item.source === 'facebook' && (
+                    <span class="source-logo facebook-logo" title="Facebook" aria-label="Facebook">f</span>
+                  )}
+                  {item.source === 'google' && (
+                    <span class="source-logo google-logo" title="Google" aria-label="Google">G</span>
+                  )}
+                </div>
+
+                <blockquote>
+                  <span class="quote-mark" aria-hidden="true">“</span>
+                  <span>{item.quote}</span>
+                </blockquote>
+
+                <div class="review-card-foot">
+                  <span class="source-name">{item.source === 'facebook' ? ui.facebook : item.source === 'google' ? ui.google : item.source}</span>
+                  {sourceUrl(item.source) && (
+                    <a href={sourceUrl(item.source)} target="_blank" rel="noopener noreferrer">
+                      {ui.original}
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M19 13v6H5V5h6"/></svg>
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 )}
 
 <style>
-  .reviews-section {
-    border-top: 1px solid #E3E5E8;
-    background: var(--white);
+  .reviews-widget-section {
+    padding: clamp(58px, 7vw, 88px) 0;
+    border-top: 1px solid #E2E4E7;
+    background: #F6F7F8;
   }
 
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    align-items: start;
-  }
-
-  .review-card {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    padding: 12px;
-    border: 1px solid #E1E4E8;
-    border-radius: 14px;
-    background: #FFFFFF;
-    box-shadow: 0 10px 28px rgba(20,22,26,.06);
-  }
-
-  .review-shot-button {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    border-radius: 10px;
+  .reviews-shell {
     overflow: hidden;
-    background: #F7F8F9;
-    cursor: zoom-in;
-    text-align: left;
+    border: 1px solid #E1E4E8;
+    border-radius: 22px;
+    background: #FFFFFF;
+    box-shadow: 0 18px 55px rgba(20,22,26,.08);
   }
 
-  .review-shot {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  blockquote {
-    margin: 4px 6px 16px;
-    color: var(--graphite);
-    font-size: .98rem;
-    line-height: 1.65;
-  }
-
-  .review-meta {
+  .reviews-header {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 10px;
-    padding: 12px 4px 0;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    padding: clamp(24px, 4vw, 40px);
+    border-bottom: 1px solid #ECEEF0;
   }
 
-  .review-meta strong { font-size: .92rem; }
+  .reviews-heading-copy { max-width: 720px; }
 
-  .review-source {
-    display: inline-flex;
-    align-items: center;
-    min-height: 26px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    background: #F1F2F4;
+  .reviews-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--red);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+
+  .reviews-header h2 {
+    margin: 0;
+    color: var(--graphite);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    line-height: 1.08;
+  }
+
+  .reviews-header p {
+    max-width: 66ch;
+    margin: 12px 0 0;
     color: var(--steel);
-    font-size: .72rem;
+    font-size: .98rem;
+    line-height: 1.6;
+  }
+
+  .reviews-summary {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 12px;
+    min-width: 162px;
+    padding: 13px 16px;
+    border: 1px solid #E4E6E9;
+    border-radius: 14px;
+    background: #FAFAFB;
+  }
+
+  .summary-source-mark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 50%;
+    background: #1877F2;
+    color: #FFF;
+    font-size: 1.5rem;
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+  }
+
+  .reviews-summary > div:last-child {
+    display: grid;
+    gap: 1px;
+  }
+
+  .reviews-summary strong {
+    color: var(--graphite);
+    font-size: 1.08rem;
+    line-height: 1;
+  }
+
+  .reviews-summary span:not(.facebook-mark) {
+    color: var(--steel);
+    font-size: .73rem;
     font-weight: 700;
   }
 
-  .review-expand-hint {
-    padding: 6px 4px 2px;
-    color: #7A8088;
-    font-size: .72rem;
-    line-height: 1.35;
-  }
-
-  .review-lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: none;
+  .reviews-toolbar {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(10,12,15,.92);
+    justify-content: space-between;
+    gap: 18px;
+    padding: 16px clamp(18px, 3vw, 32px);
+    border-bottom: 1px solid #ECEEF0;
+    background: #FCFCFD;
   }
 
-  .review-lightbox.is-open { display: flex; }
-
-  .review-lightbox-inner {
-    width: min(94vw, 900px);
-    max-height: 92vh;
-    overflow: auto;
-    border-radius: 12px;
-    background: #FFFFFF;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  .reviews-tabs {
+    display: flex;
+    min-width: 0;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .review-lightbox img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+  .reviews-tabs::-webkit-scrollbar { display: none; }
 
-  .review-lightbox-close {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 10000;
-    width: 44px;
-    height: 44px;
-    border: 0;
+  .review-tab {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #E0E3E6;
     border-radius: 999px;
     background: #FFFFFF;
-    color: #17191D;
-    font-size: 1.6rem;
-    line-height: 1;
+    color: #5B6068;
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0,0,0,.2);
+    transition: .18s ease;
   }
 
-  @media (max-width: 900px) and (min-width: 621px) {
-    .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .review-tab span {
+    display: grid;
+    min-width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 999px;
+    background: #F0F1F3;
+    color: #777C84;
+    font-size: .68rem;
   }
 
-  @media (max-width: 620px) {
-    .reviews-grid {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 18px 12px;
-      margin: 0 -18px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+  .review-tab:hover,
+  .review-tab:focus-visible {
+    border-color: #B7BBC1;
+    color: var(--graphite);
+  }
+
+  .review-tab.is-active {
+    border-color: #202329;
+    background: #202329;
+    color: #FFFFFF;
+  }
+
+  .review-tab.is-active span {
+    background: rgba(255,255,255,.14);
+    color: #FFFFFF;
+  }
+
+  .reviews-nav {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 8px;
+  }
+
+  .review-nav-button {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid #DDE0E4;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: #24272D;
+    cursor: pointer;
+    transition: .18s ease;
+  }
+
+  .review-nav-button:hover,
+  .review-nav-button:focus-visible {
+    border-color: #9EA3AA;
+    transform: translateY(-1px);
+  }
+
+  .review-nav-button svg,
+  .review-card-foot svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .reviews-viewport {
+    overflow: hidden;
+    padding: 24px clamp(18px, 3vw, 32px) 30px;
+  }
+
+  .reviews-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 1px 1px 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reviews-track::-webkit-scrollbar { display: none; }
+
+  .review-card {
+    display: flex;
+    flex: 0 0 calc((100% - 32px) / 3);
+    min-width: 0;
+    min-height: 330px;
+    flex-direction: column;
+    scroll-snap-align: start;
+    padding: 22px;
+    border: 1px solid #E2E4E7;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(20,22,26,.045);
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(20,22,26,.075);
+  }
+
+  .review-card[hidden] { display: none; }
+
+  .review-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .review-author {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .review-avatar {
+    display: grid;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 50%;
+    background: #E9EBEE;
+    color: #31343A;
+    font-size: .82rem;
+    font-weight: 900;
+  }
+
+  .review-author > div {
+    display: grid;
+    min-width: 0;
+    gap: 4px;
+  }
+
+  .review-author strong {
+    overflow: hidden;
+    color: var(--graphite);
+    font-size: .93rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .recommendation-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #70757C;
+    font-size: .69rem;
+    line-height: 1.2;
+  }
+
+  .recommendation-label svg {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: #24904F;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .source-logo {
+    display: grid;
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border-radius: 50%;
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+  }
+
+  .facebook-logo {
+    background: #1877F2;
+    color: #FFFFFF;
+    font-size: 1.18rem;
+  }
+
+  .google-logo {
+    border: 1px solid #E1E4E8;
+    background: #FFFFFF;
+    color: #4285F4;
+    font-size: .94rem;
+  }
+
+  .review-card blockquote {
+    position: relative;
+    flex: 1;
+    margin: 22px 0 20px;
+    padding-top: 10px;
+    color: #34383E;
+    font-size: .93rem;
+    line-height: 1.65;
+  }
+
+  .quote-mark {
+    position: absolute;
+    top: -13px;
+    left: -2px;
+    color: #D8DBDF;
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .review-card blockquote > span:last-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid #ECEEF0;
+  }
+
+  .source-name {
+    color: #7A7F86;
+    font-size: .72rem;
+    font-weight: 800;
+  }
+
+  .review-card-foot a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #4A4F57;
+    font-size: .72rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .review-card-foot a:hover,
+  .review-card-foot a:focus-visible {
+    color: #1877F2;
+  }
+
+  .review-card-foot a svg { width: 14px; height: 14px; }
+
+  @media (max-width: 980px) {
+    .review-card { flex-basis: calc((100% - 16px) / 2); }
+  }
+
+  @media (max-width: 700px) {
+    .reviews-widget-section {
+      padding: 48px 0 58px;
     }
+
+    .reviews-shell {
+      border-radius: 18px;
+    }
+
+    .reviews-header {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 24px 20px 20px;
+    }
+
+    .reviews-header h2 { max-width: 13ch; }
+
+    .reviews-summary {
+      min-width: 0;
+      padding: 10px 13px;
+    }
+
+    .summary-source-mark {
+      width: 34px;
+      height: 34px;
+      font-size: 1.3rem;
+    }
+
+    .reviews-toolbar {
+      padding: 13px 14px;
+    }
+
+    .reviews-nav { gap: 6px; }
+    .review-nav-button { width: 38px; height: 38px; }
+
+    .reviews-viewport {
+      padding: 18px 14px 24px;
+    }
+
+    .reviews-track { gap: 12px; }
 
     .review-card {
-      flex: 0 0 min(88vw, 390px);
-      scroll-snap-align: start;
-      padding: 10px;
+      flex: 0 0 min(86vw, 350px);
+      min-height: 340px;
+      padding: 19px;
     }
-
-    .review-lightbox { padding: 12px; }
-    .review-lightbox-close { top: 12px; right: 12px; }
   }
 </style>
 
 <script is:inline>
   (() => {
-    const widgets = [...document.querySelectorAll('[data-review-widget]')];
-    widgets.slice(1).forEach((node) => node.remove());
+    const widgets = document.querySelectorAll('[data-reviews-widget]');
 
-    const widget = widgets[0];
-    if (!widget || widget.dataset.reviewInit === '1') return;
-    widget.dataset.reviewInit = '1';
+    widgets.forEach((widget) => {
+      if (widget.dataset.widgetInit === '1') return;
+      widget.dataset.widgetInit = '1';
 
-    const lightbox = widget.querySelector('[data-review-lightbox]');
-    const image = widget.querySelector('[data-review-lightbox-image]');
-    if (!lightbox || !image) return;
+      const track = widget.querySelector('[data-reviews-track]');
+      if (!track) return;
 
-    const close = () => {
-      lightbox.classList.remove('is-open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      image.removeAttribute('src');
-    };
+      const getVisibleCards = () => [...track.querySelectorAll('.review-card:not([hidden])')];
 
-    widget.querySelectorAll('[data-review-image]').forEach((button) => {
-      button.addEventListener('click', () => {
-        image.src = button.dataset.reviewImage || '';
-        image.alt = button.dataset.reviewClient
-          ? `Facebook recommendation: ${button.dataset.reviewClient}`
-          : 'Facebook recommendation';
-        lightbox.classList.add('is-open');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+      const cardStep = () => {
+        const card = getVisibleCards()[0];
+        if (!card) return track.clientWidth;
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      widget.querySelector('[data-review-prev]')?.addEventListener('click', () => {
+        track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
       });
-    });
 
-    widget.querySelector('.review-lightbox-close')?.addEventListener('click', close);
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) close();
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') close();
+      widget.querySelector('[data-review-next]')?.addEventListener('click', () => {
+        track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+      });
+
+      widget.querySelectorAll('[data-review-filter]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.reviewFilter || 'all';
+
+          widget.querySelectorAll('[data-review-filter]').forEach((tab) => {
+            const active = tab === button;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+
+          track.querySelectorAll('.review-card').forEach((card) => {
+            card.hidden = filter !== 'all' && card.dataset.reviewSource !== filter;
+          });
+
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        });
+      });
     });
   })();
 </script>
