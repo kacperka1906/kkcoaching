@@ -1,0 +1,644 @@
+---
+import admin from '../data/admin-v2.json';
+
+interface Props {
+  lang: 'en' | 'pl';
+}
+
+const { lang } = Astro.props;
+const settings = admin.reviews;
+const items = settings.items
+  .filter((item: any) => item.enabled !== false)
+  .filter((item: any) => item.featured !== false);
+
+const canRender = settings.enabled && items.length > 0;
+const facebookUrl = admin.contact.facebookUrl || 'https://www.facebook.com/kkcoachingfit/';
+const total = items.length;
+
+const copy = {
+  en: {
+    eyebrow: 'CLIENT REVIEWS',
+    title: 'Real feedback from real clients',
+    caption: 'A hand-picked feed of recommendations shared publicly by KK Coaching clients.',
+    source: 'Facebook',
+    all: 'All reviews',
+    recommendation: 'Recommends KK Coaching',
+    readMore: 'Read more',
+    readLess: 'Show less',
+    leaveReview: 'Leave a review',
+    previous: 'Previous reviews',
+    next: 'Next reviews',
+    sourceAria: 'Open KK Coaching on Facebook',
+    countLabel: 'recommendations',
+    publicLabel: 'Public recommendation'
+  },
+  pl: {
+    eyebrow: 'OPINIE PODOPIECZNYCH',
+    title: 'Prawdziwe opinie prawdziwych klientów',
+    caption: 'Wybrane rekomendacje opublikowane publicznie przez podopiecznych KK Coaching.',
+    source: 'Facebook',
+    all: 'Wszystkie opinie',
+    recommendation: 'Poleca KK Coaching',
+    readMore: 'Czytaj więcej',
+    readLess: 'Pokaż mniej',
+    leaveReview: 'Dodaj opinię',
+    previous: 'Poprzednie opinie',
+    next: 'Następne opinie',
+    sourceAria: 'Otwórz KK Coaching na Facebooku',
+    countLabel: 'rekomendacji',
+    publicLabel: 'Publiczna rekomendacja'
+  }
+}[lang];
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('');
+---
+
+{canRender && (
+  <section class="aio-reviews on-white" data-aio-reviews aria-labelledby={'aio-reviews-title-' + lang}>
+    <div class="container">
+      <div class="aio-shell">
+        <div class="aio-header">
+          <div class="aio-heading">
+            <span class="eyebrow">{copy.eyebrow}</span>
+            <h2 id={'aio-reviews-title-' + lang}>{copy.title}</h2>
+            <p>{copy.caption}</p>
+          </div>
+
+          <div class="aio-summary" aria-label={total + ' ' + copy.source + ' reviews'}>
+            <div class="aio-source-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13.72 21v-8.2h2.75l.41-3.2h-3.16V7.56c0-.93.26-1.56 1.59-1.56H17V3.14c-.29-.04-1.28-.14-2.43-.14-2.4 0-4.04 1.46-4.04 4.15V9.6H7.82v3.2h2.71V21h3.19Z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>{copy.source}</strong>
+              <span>{total} {copy.countLabel}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="aio-toolbar">
+          <div class="aio-tabs" aria-label={lang === 'pl' ? 'Źródła opinii' : 'Review sources'}>
+            <button class="aio-tab is-active" type="button" aria-pressed="true">
+              {copy.all}
+              <span>{total}</span>
+            </button>
+            <button class="aio-tab" type="button" aria-pressed="false">
+              <span class="aio-tab-f" aria-hidden="true">f</span>
+              {copy.source}
+              <span>{total}</span>
+            </button>
+          </div>
+
+          <a class="aio-review-cta" href={facebookUrl} target="_blank" rel="noopener noreferrer">
+            {copy.leaveReview}
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M7.3 4.5h8.2v8.2M15.2 4.8l-9.7 9.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="aio-carousel-wrap">
+          <button class="aio-arrow aio-arrow-prev" type="button" aria-label={copy.previous}>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 4.5-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="aio-carousel" data-aio-track>
+            {items.map((item: any) => (
+              <article class="aio-card" data-aio-card>
+                <div class="aio-card-top">
+                  <div class="aio-avatar" aria-hidden="true">{initials(item.client)}</div>
+                  <div class="aio-author">
+                    <strong>{item.client}</strong>
+                    <span class="aio-recommends">
+                      <span class="aio-check" aria-hidden="true">✓</span>
+                      {copy.recommendation}
+                    </span>
+                  </div>
+                  <a
+                    class="aio-source-icon"
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={copy.sourceAria}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="currentColor" d="M13.72 21v-8.2h2.75l.41-3.2h-3.16V7.56c0-.93.26-1.56 1.59-1.56H17V3.14c-.29-.04-1.28-.14-2.43-.14-2.4 0-4.04 1.46-4.04 4.15V9.6H7.82v3.2h2.71V21h3.19Z"/>
+                    </svg>
+                  </a>
+                </div>
+
+                <div class="aio-quote-wrap">
+                  <p class="aio-quote" data-aio-quote>{item.quote}</p>
+                  <button
+                    class="aio-read-more"
+                    type="button"
+                    data-aio-toggle
+                    data-more={copy.readMore}
+                    data-less={copy.readLess}
+                    hidden
+                  >
+                    {copy.readMore}
+                  </button>
+                </div>
+
+                <div class="aio-card-bottom">
+                  <span>{copy.source}</span>
+                  <span aria-hidden="true">•</span>
+                  <span>{copy.publicLabel}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <button class="aio-arrow aio-arrow-next" type="button" aria-label={copy.next}>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="aio-footer">
+          <div class="aio-progress" aria-hidden="true">
+            <span data-aio-progress></span>
+          </div>
+          <span class="aio-counter" data-aio-counter>1 / {total}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .aio-reviews {
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+  }
+
+  .aio-shell {
+    border: 1px solid #e2e5e9;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 16px 46px rgba(20, 22, 26, .07);
+    padding: 28px;
+    overflow: hidden;
+  }
+
+  .aio-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .aio-heading { max-width: 680px; }
+  .aio-heading h2 { margin: 8px 0 10px; }
+  .aio-heading p {
+    margin: 0;
+    color: var(--steel);
+    line-height: 1.65;
+  }
+
+  .aio-summary {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 190px;
+    padding: 12px 14px;
+    border: 1px solid #e3e7ec;
+    border-radius: 14px;
+    background: #f8f9fb;
+  }
+
+  .aio-source-mark,
+  .aio-source-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1877f2;
+  }
+
+  .aio-source-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px #e7eaf0;
+  }
+
+  .aio-source-mark svg { width: 25px; height: 25px; }
+
+  .aio-summary div:last-child {
+    display: grid;
+    gap: 2px;
+  }
+
+  .aio-summary strong {
+    color: var(--graphite);
+    font-size: .94rem;
+  }
+
+  .aio-summary span {
+    color: #737982;
+    font-size: .76rem;
+  }
+
+  .aio-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0 16px;
+    margin-top: 6px;
+  }
+
+  .aio-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .aio-tabs::-webkit-scrollbar { display: none; }
+
+  .aio-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid #e1e4e8;
+    background: #fff;
+    color: #5f6670;
+    border-radius: 999px;
+    min-height: 38px;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 750;
+    white-space: nowrap;
+    cursor: default;
+  }
+
+  .aio-tab.is-active {
+    color: var(--graphite);
+    border-color: #cfd4da;
+    box-shadow: 0 4px 14px rgba(20, 22, 26, .06);
+  }
+
+  .aio-tab > span:last-child {
+    display: inline-flex;
+    min-width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #f0f2f5;
+    font-size: .68rem;
+  }
+
+  .aio-tab-f {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #1877f2;
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 800;
+    text-transform: lowercase;
+  }
+
+  .aio-review-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: var(--graphite);
+    color: #fff;
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: 800;
+    transition: transform .18s ease, opacity .18s ease;
+  }
+
+  .aio-review-cta:hover {
+    transform: translateY(-1px);
+    opacity: .93;
+  }
+
+  .aio-review-cta svg { width: 17px; height: 17px; }
+
+  .aio-carousel-wrap { position: relative; }
+
+  .aio-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 32px) / 3);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 2px;
+  }
+
+  .aio-carousel::-webkit-scrollbar { display: none; }
+
+  .aio-card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    min-height: 285px;
+    padding: 20px;
+    border: 1px solid #e3e6ea;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(20, 22, 26, .045);
+  }
+
+  .aio-card-top {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .aio-avatar {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #202329, #444b55);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 850;
+    letter-spacing: .02em;
+  }
+
+  .aio-author {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+  }
+
+  .aio-author strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--graphite);
+    font-size: .92rem;
+  }
+
+  .aio-recommends {
+    color: #707782;
+    font-size: .72rem;
+  }
+
+  .aio-check {
+    display: inline-flex;
+    width: 15px;
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+    border-radius: 50%;
+    background: #e8f7ee;
+    color: #1e8e4a;
+    font-size: .66rem;
+    font-weight: 900;
+  }
+
+  .aio-source-icon {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #e5e8ed;
+    border-radius: 10px;
+    background: #f8f9fb;
+  }
+
+  .aio-source-icon svg { width: 22px; height: 22px; }
+
+  .aio-quote-wrap {
+    flex: 1;
+    padding-top: 18px;
+  }
+
+  .aio-quote {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    color: #343940;
+    font-size: .93rem;
+    line-height: 1.65;
+  }
+
+  .aio-quote.is-expanded {
+    display: block;
+    overflow: visible;
+  }
+
+  .aio-read-more {
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--red);
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .aio-card-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding-top: 18px;
+    margin-top: 18px;
+    border-top: 1px solid #eef0f2;
+    color: #858b94;
+    font-size: .7rem;
+  }
+
+  .aio-arrow {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    border: 1px solid #dfe3e8;
+    border-radius: 50%;
+    background: rgba(255,255,255,.97);
+    color: #333840;
+    box-shadow: 0 6px 20px rgba(20,22,26,.10);
+    cursor: pointer;
+  }
+
+  .aio-arrow svg { width: 20px; height: 20px; }
+  .aio-arrow-prev { left: -19px; }
+  .aio-arrow-next { right: -19px; }
+
+  .aio-arrow[disabled] {
+    opacity: .35;
+    cursor: default;
+  }
+
+  .aio-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  .aio-progress {
+    flex: 1;
+    height: 4px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #eef0f2;
+  }
+
+  .aio-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--red);
+    transition: width .2s ease;
+  }
+
+  .aio-counter {
+    min-width: 42px;
+    text-align: right;
+    color: #767d86;
+    font-size: .74rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 900px) {
+    .aio-carousel { grid-auto-columns: calc((100% - 16px) / 2); }
+  }
+
+  @media (max-width: 680px) {
+    .aio-shell {
+      padding: 20px 16px 18px;
+      border-radius: 18px;
+    }
+
+    .aio-header {
+      display: grid;
+      gap: 16px;
+    }
+
+    .aio-summary {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .aio-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+      padding-top: 16px;
+    }
+
+    .aio-review-cta { align-self: flex-start; }
+
+    .aio-carousel {
+      grid-auto-columns: min(86vw, 360px);
+      margin: 0 -4px;
+      padding: 2px 4px 6px;
+    }
+
+    .aio-card {
+      min-height: 300px;
+      padding: 18px;
+    }
+
+    .aio-arrow { display: none; }
+    .aio-footer { padding-top: 12px; }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-aio-reviews]');
+    if (!root || root.dataset.aioInit === '1') return;
+    root.dataset.aioInit = '1';
+
+    const track = root.querySelector('[data-aio-track]');
+    const cards = Array.from(root.querySelectorAll('[data-aio-card]'));
+    const prev = root.querySelector('.aio-arrow-prev');
+    const next = root.querySelector('.aio-arrow-next');
+    const progress = root.querySelector('[data-aio-progress]');
+    const counter = root.querySelector('[data-aio-counter]');
+
+    if (!track || !cards.length) return;
+
+    const update = () => {
+      const max = Math.max(1, track.scrollWidth - track.clientWidth);
+      const ratio = Math.max(0, Math.min(1, track.scrollLeft / max));
+      let nearestIndex = 0;
+      let nearestDelta = Infinity;
+
+      cards.forEach((card, index) => {
+        const delta = Math.abs(card.offsetLeft - track.scrollLeft);
+        if (delta < nearestDelta) {
+          nearestDelta = delta;
+          nearestIndex = index;
+        }
+      });
+
+      if (progress) progress.style.width = Math.max(12, ratio * 100) + '%';
+      if (counter) counter.textContent = (nearestIndex + 1) + ' / ' + cards.length;
+      if (prev) prev.disabled = track.scrollLeft <= 4;
+      if (next) next.disabled = track.scrollLeft >= max - 4;
+    };
+
+    const move = (direction) => {
+      const card = cards[0];
+      const gap = 16;
+      const amount = card ? card.getBoundingClientRect().width + gap : track.clientWidth * .9;
+      track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+    };
+
+    prev?.addEventListener('click', () => move(-1));
+    next?.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+
+    root.querySelectorAll('[data-aio-quote]').forEach((quote) => {
+      const toggle = quote.parentElement?.querySelector('[data-aio-toggle]');
+      if (!toggle) return;
+
+      requestAnimationFrame(() => {
+        toggle.hidden = !(quote.scrollHeight > quote.clientHeight + 2);
+      });
+
+      toggle.addEventListener('click', () => {
+        const expanded = quote.classList.toggle('is-expanded');
+        toggle.textContent = expanded ? toggle.dataset.less : toggle.dataset.more;
+        requestAnimationFrame(update);
+      });
+    });
+
+    update();
+  })();
+</script>
