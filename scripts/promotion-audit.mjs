@@ -147,7 +147,7 @@ for (const page of pages) {
 
   const html = fs.readFileSync(page.file, 'utf8');
   if (page.placement === 'homepage') {
-    const intended = [trialId, 'october-2026-free-pt-taster', 'october-2026-20-off-everything']
+    const intended = [trialId, 'october-2026-free-pt-taster', 'october-2026-20-off-everything', 'winter-kickstart-2026-pt', 'winter-kickstart-2026-hybrid']
       .filter(id => offers.some(offer => offer.id === id && matchesPage(offer, page)));
     const actual = [...html.matchAll(/data-promotion-id="([^"]+)"/g)].map(match => match[1]);
     const known = actual.filter(id => intended.includes(id));
@@ -210,6 +210,11 @@ for (const page of pages) {
       }
     }
 
+    if (offer.id.startsWith('winter-kickstart-2026-') && expected) {
+      if (!html.includes('winter-campaign') || !html.includes('WINTER KICKSTART')) errors.push(`${page.label} missing Winter campaign panel`);
+      if (!html.includes(`data-winter-variant="${offer.service === 'hybrid' ? 'hybrid' : 'pt'}"`)) errors.push(`${page.label} wrong Winter variant`);
+      if (page.placement==='homepage' && (html.includes('data-promotion-card data-promotion-id="winter-kickstart-2026-hybrid"'))) errors.push(`${page.label} Hybrid must not create a second homepage panel`);
+    }
     if (expected && !rendered) errors.push(`${page.label} is missing promotion ${offer.id}`);
     if (!expected && rendered) errors.push(`${page.label} renders promotion ${offer.id} in the wrong placement`);
 
