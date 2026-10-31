@@ -140,5 +140,12 @@ const common = {
 };
 config.collections = (config.collections ?? []).filter(c => c.name !== common.name);
 config.collections.push(common);
+// Only PR #77's Netlify Deploy Preview can edit the campaign draft directly.
+// All production and other deploy contexts preserve the existing main backend
+// and original collections. No shared content is written to main from preview.
+if (process.env.CONTEXT === 'deploy-preview' && process.env.REVIEW_ID === '77') {
+  config.backend.branch = 'feature/moja-kolej-2027-preview';
+  config.collections = [common];
+}
 fs.writeFileSync(configFile, JSON.stringify(config, null, 2) + '\n', 'utf8');
 console.log('MOJA KOLEJ 2027 isolated Polish Decap collection generated.');
