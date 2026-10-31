@@ -48,6 +48,7 @@ const text=isPl ? {
         <span class="winter-type">{item.service==='hybrid'?text.hybrid:text.pt}</span>
         <div class="winter-price"><strong>£{item.promotionalPrice}</strong><span>{text.session}</span></div>
         <p class="winter-duration">{item.promotionalPeriod[lang]}</p>
+        <p class="winter-duration-note">{item.standardPriceText[lang]}</p>
         <p class="winter-description">{item.offerText[lang]}</p>
         <ul class="winter-features">
           {(item.winterFeatures?.[lang]??[]).map(feature=><li>{feature}</li>)}
@@ -57,7 +58,7 @@ const text=isPl ? {
     ))}
   </div>
   <footer class="winter-terms">
-    <p>{text.terms}</p>
+    <p>{offer.smallPrint[lang]}</p>
     <p>{text.more}</p>
   </footer>
 </article>
@@ -78,6 +79,7 @@ const text=isPl ? {
   .winter-price strong {color:white;font-size:clamp(3rem,5.5vw,4.3rem);letter-spacing:-.055em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;}
   .winter-price span {color:#cdd1d6;font-size:.83rem;font-weight:700;}
   .winter-duration {font-size:.84rem;color:#f3c5ca;font-weight:800;margin:9px 0 15px;}
+  .winter-duration-note {font-size:.79rem;color:#cfd2d8;margin:-8px 0 15px;}
   .winter-description {color:#eff0f3;line-height:1.65;font-size:.95rem;}
   .winter-features {display:grid;gap:9px;list-style:none;padding:0;margin:19px 0 26px;}
   .winter-features li {position:relative;padding-left:23px;font-size:.85rem;color:#e0e3e7;line-height:1.5;}
