@@ -25,7 +25,7 @@ assert.doesNotMatch(main, /<a\b[^>]*href="(?:https:\/\/(?:checkout\.stripe\.com|
 assert.match(main, /£450/, 'Working proposed price');
 assert.match(main, /Co niedzielę, po polsku/, 'Sunday live meeting is confirmed');
 assert.match(main, /Dokładną godzinę podamy/, 'The meeting time is not invented');
-for (const value of ['£50','£175','£225','16 spotkań na żywo','25 KWIETNIA 2027','04 STYCZNIA 2027']) assert.ok(main.includes(value), 'Missing programme detail: ' + value);
+for (const value of ['£50','£175','£225','16 niedzielnych spotkań na żywo','25 KWIETNIA 2027','04 STYCZNIA 2027']) assert.ok(main.includes(value), 'Missing programme detail: ' + value);
 assert.equal((main.match(/class="phase-head"/g) ?? []).length, 4, 'Four timeline phases');
 assert.equal((main.match(/class="week-index"/g) ?? []).length, 16, 'Sixteen weekly steps');
 assert.equal((main.match(/<details\b/g) ?? []).length, 15, 'Fifteen FAQ entries');
