@@ -1,0 +1,425 @@
+{
+  "seo": {
+    "title": "MOJA KOLEJ 2027 — 16 tygodni prowadzenia | KK Coaching",
+    "description": "MOJA KOLEJ 2027: 16 tygodni indywidualnego prowadzenia, spotkania na żywo, grupa wsparcia i praktyczne zadania. Podgląd programu — zapisy jeszcze nie ruszyły.",
+    "socialImage": "/images/kacper.jpg",
+    "socialImageAlt": "Kacper Kaszowski — trener KK Coaching"
+  },
+  "media": {
+    "heroImage": "/images/kacper.jpg",
+    "heroAlt": "Kacper Kaszowski, prowadzący KK Coaching",
+    "coachImage": "/images/kacper.jpg",
+    "coachAlt": "Kacper Kaszowski, trener personalny i założyciel KK Coaching"
+  },
+  "pricing": {
+    "total": 450,
+    "reservation": 50,
+    "firstBlock": 175,
+    "secondBlock": 225
+  },
+  "features": [
+    {
+      "id": "grupa",
+      "icon": "whatsapp",
+      "eyebrow": "01 / SPOŁECZNOŚĆ",
+      "title": "Prywatna grupa WhatsApp",
+      "detail": "Miejsce na pytania, pomysły na posiłki, wspólne sukcesy i wsparcie osób, które też chcą znaleźć czas dla siebie.",
+      "items": [
+        "Rozmowy i wymiana doświadczeń",
+        "Przepisy, zakupy i codzienne pomysły",
+        "Cotygodniowe sukcesy i wzajemna motywacja"
+      ]
+    },
+    {
+      "id": "spotkania",
+      "icon": "video",
+      "eyebrow": "02 / SPOTKANIA",
+      "title": "16 niedzielnych spotkań na żywo",
+      "detail": "W każdą niedzielę spotykamy się po polsku na około 45–60 minut. Omawiamy temat tygodnia, pytania, postępy i codzienne wyzwania.",
+      "items": [
+        "16 niedzielnych spotkań grupowych · 10.01–25.04.2027",
+        "Pytania można przesłać wcześniej",
+        "Dokładną godzinę podamy przed zapisami"
+      ]
+    },
+    {
+      "id": "zadania",
+      "icon": "check",
+      "eyebrow": "03 / PRAKTYKA",
+      "title": "Jedno zadanie na tydzień",
+      "detail": "Nie tylko słuchasz. Co tydzień wdrażasz jedną prostą rzecz, którą możesz naprawdę wykorzystać w swoim życiu.",
+      "items": [
+        "Lista zakupów i porównanie etykiet",
+        "Przygotowanie posiłków na zapas",
+        "Plan awaryjny na trudniejszy dzień"
+      ]
+    },
+    {
+      "id": "warsztaty",
+      "icon": "book",
+      "eyebrow": "04 / WIEDZA",
+      "title": "Warsztaty, które się przydają",
+      "detail": "Jedzenie poza domem, czytanie opakowań, gotowanie, regeneracja i planowanie — bez przekombinowanej teorii.",
+      "items": [
+        "Posiłki i zakupy w rozsądnym budżecie",
+        "Sen, regeneracja i codzienne nawyki",
+        "Samodzielne planowanie treningu i jedzenia"
+      ]
+    },
+    {
+      "id": "podsumowania",
+      "icon": "chart",
+      "eyebrow": "05 / TWÓJ PROGRES",
+      "title": "Dwa ważne przystanki",
+      "detail": "Sprawdzamy nie tylko wyniki, ale też to, co działa, co przeszkadza i co warto zmienić.",
+      "items": [
+        "Tydzień 8 — analiza i korekty",
+        "Tydzień 16 — indywidualna ocena całej drogi",
+        "Plan dalszego działania"
+      ]
+    },
+    {
+      "id": "wyroznienia",
+      "icon": "star",
+      "eyebrow": "06 / DOCENIENIE",
+      "title": "Nagrody i wyróżnienia",
+      "detail": "Chcemy docenić nie tylko wynik, ale też systematyczność, zaangażowanie i indywidualny progres.",
+      "items": [
+        "Rozważana profesjonalna sesja zdjęciowa",
+        "Wyróżnienie za systematyczność",
+        "Wyróżnienie za indywidualny postęp"
+      ]
+    }
+  ],
+  "coaching": [
+    "Indywidualny plan treningowy dopasowany do celu i możliwości",
+    "Plan żywieniowy z konkretnymi posiłkami, przepisami i gramaturami",
+    "Aplikacja MyPTHub do treningów i monitorowania postępów",
+    "Zapisywanie ciężarów, powtórzeń, pomiarów i wyników",
+    "Cotygodniowe raporty i informacje zwrotne",
+    "Korekty planów i wskazówki dotyczące techniki",
+    "Kontakt z trenerem w uzgodnionych ramach",
+    "Możliwość dokupienia sesji 1:1 w Cwmbran na osobnych zasadach"
+  ],
+  "phases": [
+    {
+      "number": "01",
+      "title": "Fundamenty",
+      "range": "Tygodnie 1–4",
+      "weeks": [
+        "Start, cele i organizacja tygodnia",
+        "Mądre zakupy i lista produktów",
+        "Czytanie etykiet i świadome wybory",
+        "Planowanie i przygotowywanie posiłków"
+      ]
+    },
+    {
+      "number": "02",
+      "title": "Regularność",
+      "range": "Tygodnie 5–8",
+      "weeks": [
+        "Białko, błonnik i sytość",
+        "Jedzenie poza domem i elastyczność",
+        "Motywacja, dyscyplina i trudniejsze dni",
+        "Podsumowanie pierwszych ośmiu tygodni"
+      ]
+    },
+    {
+      "number": "03",
+      "title": "Rozwój",
+      "range": "Tygodnie 9–12",
+      "weeks": [
+        "Progres treningowy",
+        "Sen, regeneracja i codzienna aktywność",
+        "Zakupy i żywienie w określonym budżecie",
+        "Apetyt, podjadanie i rozpoznawanie nawyków"
+      ]
+    },
+    {
+      "number": "04",
+      "title": "Samodzielność",
+      "range": "Tygodnie 13–16",
+      "weeks": [
+        "Ocena postępów i stagnacji",
+        "Wyjazdy, zmiany planów i trudne tygodnie",
+        "Plan utrzymania wypracowanych nawyków",
+        "Końcowa analiza i dalsza droga"
+      ]
+    }
+  ],
+  "week": [
+    {
+      "day": "Pon.",
+      "title": "Nowy temat",
+      "body": "Poznajesz temat tygodnia i otrzymujesz praktyczne zadanie."
+    },
+    {
+      "day": "Wt.",
+      "title": "Wskazówka",
+      "body": "Pomysł do wykorzystania w kuchni, sklepie lub podczas treningu."
+    },
+    {
+      "day": "Śr.",
+      "title": "Zadanie tygodnia",
+      "body": "Wdrażasz nową umiejętność w codziennym życiu."
+    },
+    {
+      "day": "Czw.",
+      "title": "Pytania i praktyka",
+      "body": "Działasz, sprawdzasz i pytasz w grupie, gdy coś wymaga wyjaśnienia."
+    },
+    {
+      "day": "Pt.",
+      "title": "Małe zwycięstwa",
+      "body": "Dzielimy się postępami i wspieramy nawzajem."
+    },
+    {
+      "day": "Sob.",
+      "title": "Raport i przygotowanie",
+      "body": "Podsumowujesz tydzień, przesyłasz raport i planujesz kolejne dni."
+    },
+    {
+      "day": "Niedz.",
+      "title": "Spotkanie na żywo",
+      "body": "Razem omawiamy temat, pytania i postępy. Co niedzielę, po polsku."
+    }
+  ],
+  "people": [
+    "Chcesz zmniejszyć ilość tkanki tłuszczowej bez kolejnego zrywu na chwilę.",
+    "Chcesz zbudować mięśnie, siłę i poprawić sylwetkę.",
+    "Trenujesz, ale brakuje Ci regularnego progresu.",
+    "Masz pracę, rodzinę i dużo obowiązków — potrzebujesz sensownego planu.",
+    "Nie wiesz, jak planować jedzenie bez ciągłego zaczynania od nowa.",
+    "Chcesz indywidualnego prowadzenia, ale też ludzi, którzy rozumieją Twoją sytuację."
+  ],
+  "faqs": [
+    {
+      "question": "Czy program jest tylko dla osób, które chcą schudnąć?",
+      "answer": "Nie. Cele mogą być różne: redukcja tkanki tłuszczowej, budowa mięśni, poprawa sprawności, regularności lub nawyków. Plan będzie dopasowany do Twojego celu."
+    },
+    {
+      "question": "Czy muszę mieć doświadczenie na siłowni?",
+      "answer": "Nie. Poziom i dobór ćwiczeń dostosujemy do Twojego doświadczenia oraz możliwości."
+    },
+    {
+      "question": "Czy program jest odpowiedni dla początkujących?",
+      "answer": "Tak, również dla osób zaczynających od podstaw. Przed rozpoczęciem współpracy sprawdzimy, czy ten format będzie dla Ciebie odpowiedni."
+    },
+    {
+      "question": "Czy potrzebuję karnetu na siłownię?",
+      "answer": "To zależy od indywidualnego planu treningowego i dostępnego sprzętu. Nie każdy musi trenować na siłowni; wymagania ustalimy podczas wdrożenia."
+    },
+    {
+      "question": "Czy dostanę indywidualny plan treningowy?",
+      "answer": "Tak. Każdy uczestnik otrzymuje indywidualny plan i jego korekty wynikające z raportów oraz postępów."
+    },
+    {
+      "question": "Czy dostanę indywidualny jadłospis?",
+      "answer": "Tak. Plan żywieniowy będzie dopasowany do ustalonego celu i obejmie posiłki, przepisy oraz gramatury."
+    },
+    {
+      "question": "Jak działa grupa WhatsApp?",
+      "answer": "To zamknięta grupa uczestników służąca wymianie doświadczeń, pytaniom i wzajemnemu wsparciu. Przed dołączeniem wyjaśnimy zasady, w tym widoczność numerów telefonów dla innych członków. Nie oznacza to całodobowej dostępności trenera."
+    },
+    {
+      "question": "Czy muszę uczestniczyć w każdym spotkaniu na żywo?",
+      "answer": "Warto uczestniczyć regularnie, ale rozumiemy, że zdarzają się obowiązki i zmiany. Zasady nieobecności oraz ewentualnych materiałów zastępczych podamy przed rozpoczęciem zapisów. Nie obiecujemy nagrań wszystkich spotkań."
+    },
+    {
+      "question": "Co, jeśli pracuję zmianowo?",
+      "answer": "Indywidualny trening i żywienie można dopasować do grafiku. Spotkania grupowe są zaplanowane na każdą niedzielę. Dokładną godzinę podamy przed rozpoczęciem zapisów."
+    },
+    {
+      "question": "Jak wyglądają cotygodniowe raporty?",
+      "answer": "Przekazujesz informacje o realizacji treningów, żywieniu, pomiarach i trudnościach. Na tej podstawie otrzymujesz informację zwrotną i w razie potrzeby zmiany planu."
+    },
+    {
+      "question": "Czy mogę dokupić treningi personalne w Cwmbran?",
+      "answer": "Tak, w miarę dostępności terminów. Sesje 1:1 w JD Gyms Cwmbran są odrębną usługą i podlegają osobnym warunkom oraz wymaganiom dostępu do klubu."
+    },
+    {
+      "question": "Ile kosztuje udział?",
+      "answer": "Robocza cena pierwszej edycji wynosi {{total}} za 16 tygodni. To propozycja do ostatecznego potwierdzenia przed zapisami."
+    },
+    {
+      "question": "Jak będzie wyglądać płatność w dwóch blokach?",
+      "answer": "Proponujemy {{reservation}} na etapie rezerwacji (zaliczane na cenę), następnie {{firstBlock}} przed pierwszym blokiem i {{secondBlock}} przed drugim. Terminy, rezygnacje i zwroty podamy po zatwierdzeniu regulaminu. Teraz nie przyjmujemy wpłat ani rezerwacji."
+    },
+    {
+      "question": "Co dzieje się po 16 tygodniach?",
+      "answer": "Otrzymujesz końcowe podsumowanie i plan dalszego działania. Ewentualna współpraca po zakończeniu tej edycji będzie ustalana osobno."
+    },
+    {
+      "question": "Czy udział w programie gwarantuje określony efekt?",
+      "answer": "Nie. Efekty zależą m.in. od indywidualnej sytuacji, regularności, zdrowia i realizacji planu. Nie gwarantujemy konkretnych zmian masy ciała ani sylwetki."
+    }
+  ],
+  "copy": {
+    "sections": {
+      "hero": {
+        "text001": "KK COACHING PRZEDSTAWIA",
+        "text002": "PODGLĄD PROGRAMU",
+        "text003": "MOJA",
+        "text004": "KOLEJ",
+        "text005": "16 tygodni. 10 osób.",
+        "text006": "Teraz czas na Ciebie.",
+        "text007": "Praca, rodzina, obowiązki… Zawsze jest coś ważniejszego. A kiedy ostatnio zrobiłeś coś dla siebie?",
+        "text008": "Indywidualny trening i żywienie, spotkania na żywo w każdą niedzielę, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.",
+        "text009": "Poznaj program",
+        "text010": "16 niedzielnych spotkań na żywo · 10 stycznia – 25 kwietnia 2027. Godzinę podamy przed zapisami.",
+        "text011": "Zapisy jeszcze nie ruszyły. To podgląd planowanej edycji.",
+        "text012": "KK / 2027",
+        "text013": "TWÓJ RUCH.",
+        "text014": "tygodni pracy",
+        "text015": "miejsc w pierwszej edycji",
+        "text016": "planowany start 2027"
+      },
+      "intro": {
+        "text001": "ODŁÓŻ „KIEDYŚ” NA BOK",
+        "text002": "Ile razy stawiałeś siebie",
+        "text003": "na końcu listy?",
+        "text004": "Nie potrzebujesz idealnego momentu. Potrzebujesz sposobu, który da się pogodzić z normalnym życiem.",
+        "text005": "MOJA KOLEJ 2027",
+        "text006": "to 16 tygodni indywidualnego prowadzenia, praktycznej nauki i pracy w niewielkiej grupie. Bez obietnic cudownej przemiany w kilka dni.",
+        "text007": "16 tygodni prowadzenia.",
+        "text008": "Wiedza i nawyki na znacznie dłużej."
+      },
+      "community": {
+        "text001": "RAZEM ŁATWIEJ WYTRWAĆ",
+        "text002": "Tym razem",
+        "text003": "nie działasz sam.",
+        "text004": "Masz swój indywidualny plan, ale obok Ciebie jest trener i grupa osób, które również postanowiły w końcu znaleźć czas dla siebie.",
+        "text005": "(",
+        "text006": "PRZYKŁAD ZADANIA · TYDZIEŃ 2",
+        "text007": "Przygotuj listę zakupów",
+        "text008": "Porównaj dwie etykiety",
+        "text009": "Zaplanuj 3 posiłki",
+        "text010": ") : feature.id === 'podsumowania' ? (",
+        "text011": "Sprawdzamy postępy",
+        "text012": "Podsumowujemy drogę",
+        "text013": ") :",
+        "text014": ")}",
+        "text015": "Przed dołączeniem wyjaśnimy zasady prywatności, w tym widoczność numerów telefonów dla członków grupy. Bez obietnicy kontaktu 24/7.",
+        "text016": "Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad.",
+        "text017": "}",
+        "text018": "))}"
+      },
+      "coaching": {
+        "text001": "TWÓJ PLAN. TWÓJ CEL.",
+        "text002": "A do tego pełne,",
+        "text003": "indywidualne prowadzenie.",
+        "text004": "Nie dostajesz planu skopiowanego dla dziesięciu osób. Każdy uczestnik pracuje nad własnym celem, w swoim tempie i z programem dopasowanym do możliwości.",
+        "text005": "KK",
+        "text006": "TWÓJ PROGRES",
+        "text007": "● PLAN",
+        "text008": "Tydzień 01",
+        "text009": "Systematyczność, nie perfekcja.",
+        "text010": "Tydzień 16",
+        "text011": ")}",
+        "text012": "Indywidualne prowadzenie jest częścią standardowej pracy KK Coaching. W tej edycji uzupełniają je spotkania, społeczność, warsztaty i wspólny harmonogram."
+      },
+      "roadmap": {
+        "text001": "OD PIERWSZEGO DNIA DO SAMODZIELNOŚCI",
+        "text002": "16 tygodni.",
+        "text003": "Cztery etapy.",
+        "text004": "Każdy etap ma swój temat. Wiedzę od razu przekładasz na praktykę, a indywidualny trening i żywienie towarzyszą Ci przez cały program.",
+        "text005": "(",
+        "text006": "(",
+        "text007": "))}",
+        "text008": "))}",
+        "text009": "04 STYCZNIA 2027",
+        "text010": "25 KWIETNIA 2027"
+      },
+      "rhythm": {
+        "text001": "PRZYKŁADOWY RYTM",
+        "text002": "Jak wygląda",
+        "text003": "Twój tydzień?",
+        "text004": "Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy.",
+        "text005": "(",
+        "text006": "))}"
+      },
+      "fit": {
+        "text001": "RÓŻNE CELE. WSPÓLNA DECYZJA.",
+        "text002": "To może być",
+        "text003": "Twój moment.",
+        "text004": "Nie musisz mieć tego samego celu co pozostali. Ważniejsze, żebyś chciał pracować nad swoim i wiedział, dlaczego to robisz.",
+        "text005": "Program przeznaczony jest dla osób dorosłych. Przy szczególnych potrzebach zdrowotnych może być potrzebna indywidualna ocena i wsparcie odpowiedniego specjalisty.",
+        "text006": ")}"
+      },
+      "coach": {
+        "text001": "KK COACHING / KACPER KASZOWSKI",
+        "text002": "KTO CIĘ POPROWADZI?",
+        "text003": "Ktoś, kto też",
+        "text004": "musiał zacząć od siebie.",
+        "text005": "Jestem Kacper, trener personalny i założyciel KK Coaching. Sam przeszedłem dużą przemianę sylwetki, dlatego wiem, że najtrudniejsza nie jest jedna dobra sesja treningowa. Trudniejsze jest znalezienie sposobu na systematyczność, kiedy życie nie zwalnia.",
+        "text006": "Pracuję z klientami nad treningiem, żywieniem i regularnym monitorowaniem postępów. Mam kwalifikacje Level 2 Gym Instructor i Level 3 Personal Trainer. W programie chcę przekazywać nie tylko gotowe plany, ale też zrozumienie tego, co robimy i po co.",
+        "text007": "Level 2 + Level 3",
+        "text008": "Kwalifikacje trenerskie",
+        "text009": "To pierwsza edycja MOJA KOLEJ 2027. Dotychczasowe historie klientów KK Coaching nie są wynikami tego programu."
+      },
+      "price": {
+        "text001": "WARUNKI ROBOCZE",
+        "text002": "16 tygodni,",
+        "text003": "jedna inwestycja w siebie.",
+        "text004": "Przedstawiamy propozycję ceny i podziału płatności. Ostateczne zasady, w tym warunki rezygnacji i zwrotów, opublikujemy przed uruchomieniem zapisów.",
+        "text005": "To podgląd. Nie przyjmujemy wpłat, nie rezerwujemy miejsc i nie prowadzimy jeszcze zapisów.",
+        "text006": "PROPONOWANA CENA CAŁEGO PROGRAMU",
+        "text007": "/ 16 tygodni",
+        "text008": "Planowany etap rezerwacji",
+        "text009": "Kwota zaliczana na poczet ceny, bez gwarancji udziału",
+        "text010": "Przed pierwszym blokiem",
+        "text011": "Przed drugim blokiem",
+        "text012": "Wszystkie warunki wymagają ostatecznego zatwierdzenia."
+      },
+      "application": {
+        "text001": "PIERWSZA EDYCJA • DO 10 OSÓB",
+        "text002": "Twoja kolej",
+        "text003": "może być następna.",
+        "text004": "Przygotowujemy prosty formularz zgłoszeniowy. Kiedy uruchomimy zapisy, będziesz mógł opowiedzieć nam o swoim celu i tym, dlaczego chcesz wziąć udział.",
+        "text005": "Zapisy jeszcze nie ruszyły. Przygotowujemy pierwszą edycję programu.",
+        "text006": "FORMULARZ ZGŁOSZENIOWY",
+        "text007": "PODGLĄD",
+        "text008": "Imię",
+        "text009": "Adres e-mail",
+        "text010": "Telefon",
+        "text011": "(opcjonalnie)",
+        "text012": "Główny cel",
+        "text013": "Wybierz główny cel",
+        "text014": "Redukcja tkanki tłuszczowej",
+        "text015": "Budowanie mięśni",
+        "text016": "Sprawność i regularność",
+        "text017": "Inny",
+        "text018": "Dlaczego chcesz wziąć udział?",
+        "text019": "Zapisy niedostępne",
+        "text020": "Formularz nie zbiera ani nie przesyła żadnych danych. Pytania o zdrowie będą częścią osobnego, bezpiecznego wdrożenia po uruchomieniu zapisów."
+      },
+      "faq": {
+        "text001": "ZANIM PODEJMIESZ DECYZJĘ",
+        "text002": "Częste",
+        "text003": "pytania.",
+        "text004": "Konkretnie, bez drobnego druku i obietnic bez pokrycia.",
+        "text005": ")}"
+      },
+      "final": {
+        "text001": "MOJA KOLEJ 2027",
+        "text002": "Nie musisz zmieniać wszystkiego naraz.",
+        "text003": "Zacznij od decyzji, że też jesteś ważny.",
+        "text004": "16 tygodni. 10 osób. Teraz czas na Ciebie.",
+        "text005": "Wróć do programu ↑",
+        "text006": "Strona testowa — zapisy i płatności są wyłączone."
+      }
+    },
+    "attributes": {
+      "alt001": "Kacper Kaszowski, prowadzący KK Coaching",
+      "aria_label002": "Najważniejsze informacje",
+      "aria_label003": "Przykładowa lista zadań, nie jest interaktywna",
+      "aria_label004": "Przykładowy widok postępów, grafika poglądowa",
+      "alt005": "Kacper Kaszowski, trener personalny i założyciel KK Coaching",
+      "aria_label006": "Podgląd niedostępnego formularza. Nie można wysyłać danych.",
+      "placeholder007": "Twoje imię",
+      "placeholder008": "twoj@email.com",
+      "placeholder009": "+44…",
+      "placeholder010": "Napisz kilka zdań…"
+    }
+  }
+}
