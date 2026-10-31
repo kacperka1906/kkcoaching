@@ -20,7 +20,8 @@ for (const width of [360, 390, 768, 1024, 1440]) {
     await expect(page.locator('h1')).toContainText('MOJA');
     await expect(page.locator('h1')).toContainText('KOLEJ');
     await expect(page.locator('.preview-tag')).toBeVisible();
-    await expect(page.locator('.apply-form-preview fieldset')).toBeDisabled();
+    await expect(page.locator('.apply-form-preview fieldset')).toHaveAttribute('disabled', '');
+    await expect(page.locator('.apply-form-preview input').first()).toBeDisabled();
     await expect(page.locator('.apply-form-preview button')).toBeDisabled();
     await expect(page.locator('.faq-list details')).toHaveCount(15);
     expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);
