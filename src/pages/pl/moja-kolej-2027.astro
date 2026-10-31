@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const url = '/pl/moja-kolej-2027/';
 const features = [
   { id: 'grupa', icon: 'whatsapp', eyebrow: '01 / SPOŁECZNOŚĆ', title: 'Prywatna grupa WhatsApp', detail: 'Miejsce na pytania, pomysły na posiłki, wspólne sukcesy i wsparcie osób, które też chcą znaleźć czas dla siebie.', items: ['Rozmowy i wymiana doświadczeń', 'Przepisy, zakupy i codzienne pomysły', 'Cotygodniowe sukcesy i wzajemna motywacja'] },
-  { id: 'spotkania', icon: 'video', eyebrow: '02 / SPOTKANIA', title: '16 spotkań na żywo', detail: 'Co tydzień spotykamy się po polsku na około 45–60 minut. Omawiamy temat tygodnia, pytania, postępy i codzienne wyzwania.', items: ['Planowane 16 spotkań grupowych', 'Pytania można przesłać wcześniej', 'Termin do ustalenia przed startem'] },
+  { id: 'spotkania', icon: 'video', eyebrow: '02 / SPOTKANIA', title: '16 spotkań na żywo', detail: 'W każdą niedzielę spotykamy się po polsku na około 45–60 minut. Omawiamy temat tygodnia, pytania, postępy i codzienne wyzwania.', items: ['16 niedzielnych spotkań grupowych', 'Pytania można przesłać wcześniej', 'Dokładną godzinę podamy przed zapisami'] },
   { id: 'zadania', icon: 'check', eyebrow: '03 / PRAKTYKA', title: 'Jedno zadanie na tydzień', detail: 'Nie tylko słuchasz. Co tydzień wdrażasz jedną prostą rzecz, którą możesz naprawdę wykorzystać w swoim życiu.', items: ['Lista zakupów i porównanie etykiet', 'Przygotowanie posiłków na zapas', 'Plan awaryjny na trudniejszy dzień'] },
   { id: 'warsztaty', icon: 'book', eyebrow: '04 / WIEDZA', title: 'Warsztaty, które się przydają', detail: 'Jedzenie poza domem, czytanie opakowań, gotowanie, regeneracja i planowanie — bez przekombinowanej teorii.', items: ['Posiłki i zakupy w rozsądnym budżecie', 'Sen, regeneracja i codzienne nawyki', 'Samodzielne planowanie treningu i jedzenia'] },
   { id: 'podsumowania', icon: 'chart', eyebrow: '05 / TWÓJ PROGRES', title: 'Dwa ważne przystanki', detail: 'Sprawdzamy nie tylko wyniki, ale też to, co działa, co przeszkadza i co warto zmienić.', items: ['Tydzień 8 — analiza i korekty', 'Tydzień 16 — indywidualna ocena całej drogi', 'Plan dalszego działania'] },
@@ -29,10 +29,11 @@ const phases = [
 const week = [
   { day: 'Pon.', title: 'Nowy temat', body: 'Poznajesz temat tygodnia i otrzymujesz praktyczne zadanie.' },
   { day: 'Wt.', title: 'Wskazówka', body: 'Pomysł do wykorzystania w kuchni, sklepie lub podczas treningu.' },
-  { day: 'Śr.', title: 'Spotkanie na żywo', body: 'Rozmawiamy, uczymy się i odpowiadamy na pytania.' },
-  { day: 'Czw.', title: 'Wdrażanie', body: 'Działasz, sprawdzasz i pytasz, gdy coś wymaga wyjaśnienia.' },
+  { day: 'Śr.', title: 'Zadanie tygodnia', body: 'Wdrażasz nową umiejętność w codziennym życiu.' },
+  { day: 'Czw.', title: 'Pytania i praktyka', body: 'Działasz, sprawdzasz i pytasz w grupie, gdy coś wymaga wyjaśnienia.' },
   { day: 'Pt.', title: 'Małe zwycięstwa', body: 'Dzielimy się postępami i wspieramy nawzajem.' },
-  { day: 'Weekend', title: 'Raport i przygotowanie', body: 'Podsumowanie tygodnia, indywidualny raport i plan kolejnych dni.' }
+  { day: 'Sob.', title: 'Raport i przygotowanie', body: 'Podsumowujesz tydzień, przesyłasz raport i planujesz kolejne dni.' },
+  { day: 'Niedz.', title: 'Spotkanie na żywo', body: 'Razem omawiamy temat, pytania i postępy. Co niedzielę, po polsku.' }
 ];
 const people = [
   'Chcesz zmniejszyć ilość tkanki tłuszczowej bez kolejnego zrywu na chwilę.',
@@ -51,7 +52,7 @@ const faqs = [
   ['Czy dostanę indywidualny jadłospis?', 'Tak. Plan żywieniowy będzie dopasowany do ustalonego celu i obejmie posiłki, przepisy oraz gramatury.'],
   ['Jak działa grupa WhatsApp?', 'To zamknięta grupa uczestników służąca wymianie doświadczeń, pytaniom i wzajemnemu wsparciu. Przed dołączeniem wyjaśnimy zasady, w tym widoczność numerów telefonów dla innych członków. Nie oznacza to całodobowej dostępności trenera.'],
   ['Czy muszę uczestniczyć w każdym spotkaniu na żywo?', 'Warto uczestniczyć regularnie, ale rozumiemy, że zdarzają się obowiązki i zmiany. Zasady nieobecności oraz ewentualnych materiałów zastępczych podamy przed rozpoczęciem zapisów. Nie obiecujemy nagrań wszystkich spotkań.'],
-  ['Co, jeśli pracuję zmianowo?', 'Indywidualny trening i żywienie można dopasować do grafiku. Dzień spotkań grupowych pozostaje propozycją i będzie potwierdzony przed startem.'],
+  ['Co, jeśli pracuję zmianowo?', 'Indywidualny trening i żywienie można dopasować do grafiku. Spotkania grupowe są zaplanowane na każdą niedzielę. Dokładną godzinę podamy przed rozpoczęciem zapisów.'],
   ['Jak wyglądają cotygodniowe raporty?', 'Przekazujesz informacje o realizacji treningów, żywieniu, pomiarach i trudnościach. Na tej podstawie otrzymujesz informację zwrotną i w razie potrzeby zmiany planu.'],
   ['Czy mogę dokupić treningi personalne w Cwmbran?', 'Tak, w miarę dostępności terminów. Sesje 1:1 w JD Gyms Cwmbran są odrębną usługą i podlegają osobnym warunkom oraz wymaganiom dostępu do klubu.'],
   ['Ile kosztuje udział?', 'Robocza cena pierwszej edycji wynosi £450 za 16 tygodni. To propozycja do ostatecznego potwierdzenia przed zapisami.'],
@@ -87,7 +88,7 @@ const faqs = [
           <h1 id="mk-title"><span>MOJA</span><span>KOLEJ<span class="period">.</span></span><em>2027</em></h1>
           <p class="hero-slogan">16 tygodni. 10 osób.<br/><strong>Teraz czas na Ciebie.</strong></p>
           <p class="hero-intro">Praca, rodzina, obowiązki… Zawsze jest coś ważniejszego. A kiedy ostatnio zrobiłeś coś dla siebie?</p>
-          <p class="hero-description">Indywidualny trening i żywienie, cotygodniowe spotkania na żywo, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.</p>
+          <p class="hero-description">Indywidualny trening i żywienie, spotkania na żywo w każdą niedzielę, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.</p>
           <a class="mk-button" href="#poznaj-program">Poznaj program <span aria-hidden="true">↓</span></a>
           <p class="hero-note">Zapisy jeszcze nie ruszyły. To podgląd planowanej edycji.</p>
         </div>
@@ -189,10 +190,10 @@ const faqs = [
 
     <section class="mk-rhythm" aria-labelledby="mk-week-title">
       <div class="container">
-        <div class="mk-section-heading centered"><p class="mk-label">PRZYKŁADOWY RYTM</p><h2 id="mk-week-title">Jak wygląda <span>Twój tydzień?</span></h2><p>Małe działania, które łatwiej zmieścić w codzienności. Dzień spotkania i ostateczny harmonogram zostaną ustalone przed zapisami.</p></div>
+        <div class="mk-section-heading centered"><p class="mk-label">PRZYKŁADOWY RYTM</p><h2 id="mk-week-title">Jak wygląda <span>Twój tydzień?</span></h2><p>Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy.</p></div>
         <div class="week-grid">
           {week.map((entry, index) => (
-            <div class:list={['day-card', { 'day-live': index === 2 }]}>
+            <div class:list={['day-card', { 'day-live': index === 6 }]}>
               <span class="day-name">{entry.day}</span><div class="day-dot" aria-hidden="true"></div><h3>{entry.title}</h3><p>{entry.body}</p>
             </div>
           ))}
@@ -363,7 +364,7 @@ const faqs = [
   .timeline-end {display:flex;align-items:center;gap:16px;margin-top:23px;font-weight:850;font-size:.7rem;letter-spacing:.12em;}
   .timeline-end span {height:1px;flex:1;background:#a51f2e;}
   .mk-rhythm {background:#f0f0ed;}
-  .week-grid {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;}
+  .week-grid {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;}
   .day-card {background:#fff;padding:22px 17px;min-height:218px;border:1px solid #e2e2e0;position:relative;}
   .day-card.day-live {background:#272a30;color:#fff;border-color:#272a30;}
   .day-name {font-size:.7rem;letter-spacing:.13em;color:#a51f2e;text-transform:uppercase;font-weight:900;}
