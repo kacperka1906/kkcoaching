@@ -26,7 +26,7 @@ assert.match(main, /£450/, 'Working proposed price');
 for (const value of ['£50','£175','£225','16 spotkań na żywo','25 KWIETNIA 2027','04 STYCZNIA 2027']) assert.ok(main.includes(value), 'Missing programme detail: ' + value);
 assert.equal((main.match(/class="phase-head"/g) ?? []).length, 4, 'Four timeline phases');
 assert.equal((main.match(/class="week-index"/g) ?? []).length, 16, 'Sixteen weekly steps');
-assert.equal((main.match(/<details>/g) ?? []).length, 15, 'Fifteen FAQ entries');
+assert.equal((main.match(/<details\\b/g) ?? []).length, 15, 'Fifteen FAQ entries');
 assert.equal((main.match(/class="day-name"/g) ?? []).length, 6, 'Six weekly rhythm entries');
 assert.ok(main.includes('/images/kacper.jpg'), 'Uses existing coach photography');
 const index = fs.readFileSync(new URL('sitemap-index.xml', dist), 'utf8');
