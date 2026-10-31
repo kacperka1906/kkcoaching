@@ -27,7 +27,7 @@ async function check() {
   assert.equal(config.backend.branch,'main','Production admin writes to main');
   assert.equal(config.collections.filter(c=>c.name==='moja_kolej_2027').length,1,'Dedicated editor is registered once');
   assert.ok(config.collections.length>=11,'All original admin collections preserved');
-  const photo = await fetch(origin + '/images/moja-kolej-hero.webp', {signal: AbortSignal.timeout(15000)});
+  const photo = await fetch(origin + '/images/moja-kolej-2027-mirror.webp', {signal: AbortSignal.timeout(15000)});
   assert.equal(photo.status,200,'Live mirror artwork must be HTTP 200');
   assert.match(photo.headers.get('content-type')||'',/image\/webp/i,'Live artwork must return image/webp');
   assert.ok((await photo.arrayBuffer()).byteLength>10000,'Live mirror artwork must be a valid nonempty image');
