@@ -11,8 +11,9 @@ test('actual Netlify preview HTML, metadata, sitemap and no internal promotion',
   expect(html).toMatch(/<meta name="robots" content="noindex, follow"/);
   expect(html).toMatch(/<link rel="canonical" href="https:\/\/kkcoaching\.fit\/pl\/moja-kolej-2027\/"/);
   expect(html).not.toMatch(/hreflang=/);
-  expect(html).toContain('Zapisy jeszcze nie ruszyły');
-  expect(html).toContain('<fieldset disabled');
+  expect(html).toContain('Zapisy już ruszyły');
+  expect(html).toContain('id="moja-kolej-form"');
+  expect(html).toContain('name="campaign" value="moja-kolej-2027"');
   const xmlIndex = await request.get(origin + '/sitemap-index.xml');
   expect(xmlIndex.status()).toBe(200);
   const names = [...(await xmlIndex.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(x => new URL(x[1]).pathname);
@@ -44,7 +45,7 @@ for (const width of [390, 1440]) {
     await page.evaluate(() => document.querySelectorAll('iframe[title="Netlify Drawer"]').forEach(frame => frame.closest('[data-netlify-deploy-id]')?.remove()));
     if (await decline.isVisible()) await decline.evaluate(button => button.click());
     await expect(page.locator('h1')).toContainText('KOLEJ');
-    await expect(page.locator('.apply-form-preview button')).toBeDisabled();
+    await expect(page.locator('#mk-submit')).toBeEnabled();
     const image = page.locator('.site-header img.site-logo');
     await expect(image).toBeVisible();
     expect(await image.evaluate(el=>el.complete && el.naturalWidth>0)).toBe(true);
