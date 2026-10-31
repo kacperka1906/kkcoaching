@@ -30,7 +30,7 @@ const sectionNames = {
   fit: '07 · Dla kogo jest program',
   coach: '08 · Trener i wiarygodność',
   price: '09 · Cena i zasady',
-  application: '10 · Podgląd formularza (NIEAKTYWNY)',
+  application: '10 · Formularz zapisów (AKTYWNY)',
   faq: '11 · Częste pytania',
   final: '12 · Zakończenie i CTA'
 };
@@ -79,13 +79,13 @@ const common = {
         text('Data startu — pełny zapis na osi czasu', 'startFull'),
         text('Data końca — pełny zapis na osi czasu', 'endFull')
       ]),
-      group('00 · Proponowana cena w GBP', 'pricing', [
+      group('00 · Cena programu w GBP', 'pricing', [
         { label: 'Cena całego programu (£)', name: 'total', widget: 'number', value_type: 'int', min: 1 },
         { label: 'Etap rezerwacji (£)', name: 'reservation', widget: 'number', value_type: 'int', min: 0 },
         { label: 'Przed pierwszym blokiem (£)', name: 'firstBlock', widget: 'number', value_type: 'int', min: 0 },
         { label: 'Przed drugim blokiem (£)', name: 'secondBlock', widget: 'number', value_type: 'int', min: 0 }
       ]),
-      group('Treści sekcji — nagłówki, CTA, objaśnienia, podgląd formularza', 'copy', [
+      group('Treści podstrony — edytuj rozwijając sekcje, w tym 08 · Trener', 'copy', [
         group('Opisy pól i dostępność', 'attributes', attributes),
         group('Sekcje strony', 'sections', sections)
       ]),
@@ -143,8 +143,12 @@ config.collections.push(common);
 // Only PR #77's Netlify Deploy Preview can edit the campaign draft directly.
 // All production and other deploy contexts preserve the existing main backend
 // and original collections. No shared content is written to main from preview.
-if (process.env.CONTEXT === 'deploy-preview' && process.env.REVIEW_ID === '77') {
-  config.backend.branch = 'feature/moja-kolej-2027-preview';
+const reviewBranches = {
+  '77': 'feature/moja-kolej-2027-preview',
+  '78': 'feature/moja-kolej-launch-2027'
+};
+if (process.env.CONTEXT === 'deploy-preview' && reviewBranches[process.env.REVIEW_ID]) {
+  config.backend.branch = reviewBranches[process.env.REVIEW_ID];
   config.collections = [common];
 }
 fs.writeFileSync(configFile, JSON.stringify(config, null, 2) + '\n', 'utf8');

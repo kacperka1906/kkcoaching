@@ -30,7 +30,7 @@ for (const key of ['total','reservation','firstBlock','secondBlock']) {
 assert.ok(data.pricing.total > 0, 'Positive total price required');
 assert.equal(data.pricing.reservation + data.pricing.firstBlock + data.pricing.secondBlock, data.pricing.total, 'GBP instalments must sum to the total');
 const expectedSections = ['hero','intro','community','coaching','roadmap','rhythm','fit','coach','price','application','faq','final'];
-assert.deepEqual(Object.keys(data.copy.sections), expectedSections, 'All campaign sections must remain editable');
+assert.deepEqual(Object.keys(data.copy.sections).sort(), [...expectedSections].sort(), 'All campaign sections must remain editable');
 for (const [section, entries] of Object.entries(data.copy.sections)) {
   assert.ok(Object.keys(entries).length, section+' must contain copy');
   for (const [key,value] of Object.entries(entries)) string(value, section+'.'+key);
@@ -58,7 +58,7 @@ data.phases.forEach((stage,i)=>{
 });
 array(data.week,7,7,'Weekly schedule');
 assert.deepEqual(data.week.map(v=>v.day),['Pon.','Wt.','Śr.','Czw.','Pt.','Sob.','Niedz.'],'Keep Sunday in its fixed slot');
-assert.match(data.week[6].title, /spotkani/i,'Sunday live meeting cannot silently disappear');
+assert.ok(data.week.some(day=>/spotkani/i.test(day.title)), 'At least one live meeting day must remain in schedule');
 data.week.forEach((d,i)=>{ string(d.title,'Day '+i+' title'); string(d.body,'Day '+i+' body'); });
 array(data.faqs,15,40,'Frequently asked questions');
 data.faqs.forEach((entry,i)=>{string(entry.question,'FAQ question '+i);string(entry.answer,'FAQ answer '+i);});
@@ -67,8 +67,8 @@ for(const faq of data.faqs) {
   for (const [,token] of faq.answer.matchAll(/\{\{([^}]+)\}\}/g)) assert.match(token,known,'Unknown FAQ pricing token');
 }
 assert.ok(data.copy.sections.hero.text005.includes('{{weeks}}') && data.copy.sections.hero.text005.includes('{{places}}'), 'Hero numbers must use synchronised tokens');
-assert.ok(data.copy.sections.hero.text002.includes('PODGLĄD'),'Preview banner must stay unmistakable');
-assert.match(data.copy.sections.hero.text011,/Zapisy jeszcze nie ruszyły/i,'No enrolment before programme launch');
+assert.match(data.copy.sections.hero.text011,/zapisy już ruszyły/i,'Live recruitment status must remain clear');
+assert.match(data.copy.sections.application.text005,/Zapisy już ruszyły/i,'Applications are marked as open');
 assert.match(data.copy.sections.application.text001,/PIERWSZA EDYCJA/i,'Application is explicitly the first edition');
-assert.ok(JSON.stringify(data).includes('Nie przyjmujemy wpłat'),'No payment notice is required');
-console.log('MOJA KOLEJ CMS data valid: SEO, uploads, 12 copy sections, 6 modules, 16 weeks, Sunday live, FAQ, GBP instalments and disabled-preview wording.');
+assert.ok(JSON.stringify(data).includes('Zgłoszenie jest bezpłatne'), 'Application is free and not a payment');
+console.log('MOJA KOLEJ CMS data valid: SEO, uploaded image paths, 12 sections, 6 modules, 16 weeks, editable meeting days, FAQ, coherent GBP instalments and live signup notices.');

@@ -18,12 +18,11 @@ async function check() {
   assert.match(head,/<meta name="robots" content="noindex, follow"/,'Noindex and follow');
   assert.match(head,/<link rel="canonical" href="https:\/\/kkcoaching\.fit\/pl\/moja-kolej-2027\/"/,'Correct self canonical');
   assert.doesNotMatch(head,/hreflang=/i,'No fictional English equivalent');
-  assert.match(html,/Zapisy jeszcze nie ruszyły/,'No signup banner');
-  assert.match(html,/<fieldset disabled/,'Form must be disabled');
-  assert.match(html,/<button[^>]+disabled/,'Submit button must be disabled');
-  assert.doesNotMatch(html,/<form\b/i,'No live enrolment form');
+  assert.match(html,/Zapisy już ruszyły/,'Live recruitment banner');
+  assert.match(html,/<form\b[^>]*id="moja-kolej-form"/,'Dedicated application form exists');
+  assert.match(html,/name="campaign" value="moja-kolej-2027"/,'Campaign identity present');
   assert.doesNotMatch(html,/checkout\.stripe\.com/i,'No checkout');
-  assert.match(html,/16 niedzielnych spotkań na żywo/i,'Sunday live session headline');
+  assert.match(html,/Spotkania na żywo/i,'Group meetings headline');
   const config=JSON.parse(await get('/admin/config.yml'));
   assert.equal(config.backend.branch,'main','Production admin writes to main');
   assert.equal(config.collections.filter(c=>c.name==='moja_kolej_2027').length,1,'Dedicated editor is registered once');
@@ -40,6 +39,6 @@ async function check() {
 }
 const max=16;
 for(let i=0;i<max;i++){
-  try{await check();console.log('PASS: live hidden MOJA KOLEJ is HTTP 200, noindex, excluded from sitemap, unlinked, Polish-only, with inactive signup and safe CMS.');process.exit(0);}
+  try{await check();console.log('PASS: live MOJA KOLEJ is HTTP 200, noindex, excluded from sitemap, unlinked, Polish-only, with active application form and isolated CMS.');process.exit(0);}
   catch(e){console.error('Production check '+(i+1)+'/'+max+': '+e.message);if(i===max-1)process.exit(1);await new Promise(done=>setTimeout(done,15_000));}
 }
