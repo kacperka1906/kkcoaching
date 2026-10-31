@@ -1,0 +1,67 @@
+name: MOJA KOLEJ 2027 preview QA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/pages/pl/moja-kolej-2027.astro'
+      - 'astro.config.mjs'
+      - 'tests/moja-kolej-preview.test.mjs'
+      - 'tests/browser/moja-kolej-preview.spec.mjs'
+      - 'tests/browser/moja-kolej-remote.spec.mjs'
+      - '.github/workflows/moja-kolej-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build entire production site including SEO audits
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: npm run build
+      - name: Run all existing regressions
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: npm test
+      - name: Check noindex, sitemap, disabled form and existing pages
+        run: node tests/moja-kolej-preview.test.mjs
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Check five viewport widths, keyboard, reduced motion and no-JS
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: npx playwright test tests/browser/moja-kolej-preview.spec.mjs
+      - name: Verify published Netlify preview and capture final screenshots
+        if: github.event_name == 'pull_request'
+        env:
+          MK_PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--kkcoaching-fit.netlify.app
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: |
+          for attempt in $(seq 1 12); do
+            if curl --silent --show-error --fail --max-time 10 "$MK_PREVIEW_URL/pl/moja-kolej-2027/" > /dev/null; then break; fi
+            sleep 10
+          done
+          npx playwright test tests/browser/moja-kolej-remote.spec.mjs
+      - name: Keep mobile and desktop screenshots / failure logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moja-kolej-preview-qa
+          path: |
+            test-results/**/*.png
+            test-results/**/*.zip
+          if-no-files-found: ignore
