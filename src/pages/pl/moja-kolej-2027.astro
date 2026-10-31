@@ -1,74 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import programme from '../../data/moja-kolej-2027.json';
 
 const url = '/pl/moja-kolej-2027/';
-const features = [
-  { id: 'grupa', icon: 'whatsapp', eyebrow: '01 / SPOŁECZNOŚĆ', title: 'Prywatna grupa WhatsApp', detail: 'Miejsce na pytania, pomysły na posiłki, wspólne sukcesy i wsparcie osób, które też chcą znaleźć czas dla siebie.', items: ['Rozmowy i wymiana doświadczeń', 'Przepisy, zakupy i codzienne pomysły', 'Cotygodniowe sukcesy i wzajemna motywacja'] },
-  { id: 'spotkania', icon: 'video', eyebrow: '02 / SPOTKANIA', title: '16 niedzielnych spotkań na żywo', detail: 'W każdą niedzielę spotykamy się po polsku na około 45–60 minut. Omawiamy temat tygodnia, pytania, postępy i codzienne wyzwania.', items: ['16 niedzielnych spotkań grupowych · 10.01–25.04.2027', 'Pytania można przesłać wcześniej', 'Dokładną godzinę podamy przed zapisami'] },
-  { id: 'zadania', icon: 'check', eyebrow: '03 / PRAKTYKA', title: 'Jedno zadanie na tydzień', detail: 'Nie tylko słuchasz. Co tydzień wdrażasz jedną prostą rzecz, którą możesz naprawdę wykorzystać w swoim życiu.', items: ['Lista zakupów i porównanie etykiet', 'Przygotowanie posiłków na zapas', 'Plan awaryjny na trudniejszy dzień'] },
-  { id: 'warsztaty', icon: 'book', eyebrow: '04 / WIEDZA', title: 'Warsztaty, które się przydają', detail: 'Jedzenie poza domem, czytanie opakowań, gotowanie, regeneracja i planowanie — bez przekombinowanej teorii.', items: ['Posiłki i zakupy w rozsądnym budżecie', 'Sen, regeneracja i codzienne nawyki', 'Samodzielne planowanie treningu i jedzenia'] },
-  { id: 'podsumowania', icon: 'chart', eyebrow: '05 / TWÓJ PROGRES', title: 'Dwa ważne przystanki', detail: 'Sprawdzamy nie tylko wyniki, ale też to, co działa, co przeszkadza i co warto zmienić.', items: ['Tydzień 8 — analiza i korekty', 'Tydzień 16 — indywidualna ocena całej drogi', 'Plan dalszego działania'] },
-  { id: 'wyroznienia', icon: 'star', eyebrow: '06 / DOCENIENIE', title: 'Nagrody i wyróżnienia', detail: 'Chcemy docenić nie tylko wynik, ale też systematyczność, zaangażowanie i indywidualny progres.', items: ['Rozważana profesjonalna sesja zdjęciowa', 'Wyróżnienie za systematyczność', 'Wyróżnienie za indywidualny postęp'] }
-];
-const coaching = [
-  'Indywidualny plan treningowy dopasowany do celu i możliwości',
-  'Plan żywieniowy z konkretnymi posiłkami, przepisami i gramaturami',
-  'Aplikacja MyPTHub do treningów i monitorowania postępów',
-  'Zapisywanie ciężarów, powtórzeń, pomiarów i wyników',
-  'Cotygodniowe raporty i informacje zwrotne',
-  'Korekty planów i wskazówki dotyczące techniki',
-  'Kontakt z trenerem w uzgodnionych ramach',
-  'Możliwość dokupienia sesji 1:1 w Cwmbran na osobnych zasadach'
-];
-const phases = [
-  { number: '01', title: 'Fundamenty', range: 'Tygodnie 1–4', weeks: ['Start, cele i organizacja tygodnia', 'Mądre zakupy i lista produktów', 'Czytanie etykiet i świadome wybory', 'Planowanie i przygotowywanie posiłków'] },
-  { number: '02', title: 'Regularność', range: 'Tygodnie 5–8', weeks: ['Białko, błonnik i sytość', 'Jedzenie poza domem i elastyczność', 'Motywacja, dyscyplina i trudniejsze dni', 'Podsumowanie pierwszych ośmiu tygodni'] },
-  { number: '03', title: 'Rozwój', range: 'Tygodnie 9–12', weeks: ['Progres treningowy', 'Sen, regeneracja i codzienna aktywność', 'Zakupy i żywienie w określonym budżecie', 'Apetyt, podjadanie i rozpoznawanie nawyków'] },
-  { number: '04', title: 'Samodzielność', range: 'Tygodnie 13–16', weeks: ['Ocena postępów i stagnacji', 'Wyjazdy, zmiany planów i trudne tygodnie', 'Plan utrzymania wypracowanych nawyków', 'Końcowa analiza i dalsza droga'] }
-];
-const week = [
-  { day: 'Pon.', title: 'Nowy temat', body: 'Poznajesz temat tygodnia i otrzymujesz praktyczne zadanie.' },
-  { day: 'Wt.', title: 'Wskazówka', body: 'Pomysł do wykorzystania w kuchni, sklepie lub podczas treningu.' },
-  { day: 'Śr.', title: 'Zadanie tygodnia', body: 'Wdrażasz nową umiejętność w codziennym życiu.' },
-  { day: 'Czw.', title: 'Pytania i praktyka', body: 'Działasz, sprawdzasz i pytasz w grupie, gdy coś wymaga wyjaśnienia.' },
-  { day: 'Pt.', title: 'Małe zwycięstwa', body: 'Dzielimy się postępami i wspieramy nawzajem.' },
-  { day: 'Sob.', title: 'Raport i przygotowanie', body: 'Podsumowujesz tydzień, przesyłasz raport i planujesz kolejne dni.' },
-  { day: 'Niedz.', title: 'Spotkanie na żywo', body: 'Razem omawiamy temat, pytania i postępy. Co niedzielę, po polsku.' }
-];
-const people = [
-  'Chcesz zmniejszyć ilość tkanki tłuszczowej bez kolejnego zrywu na chwilę.',
-  'Chcesz zbudować mięśnie, siłę i poprawić sylwetkę.',
-  'Trenujesz, ale brakuje Ci regularnego progresu.',
-  'Masz pracę, rodzinę i dużo obowiązków — potrzebujesz sensownego planu.',
-  'Nie wiesz, jak planować jedzenie bez ciągłego zaczynania od nowa.',
-  'Chcesz indywidualnego prowadzenia, ale też ludzi, którzy rozumieją Twoją sytuację.'
-];
-const faqs = [
-  ['Czy program jest tylko dla osób, które chcą schudnąć?', 'Nie. Cele mogą być różne: redukcja tkanki tłuszczowej, budowa mięśni, poprawa sprawności, regularności lub nawyków. Plan będzie dopasowany do Twojego celu.'],
-  ['Czy muszę mieć doświadczenie na siłowni?', 'Nie. Poziom i dobór ćwiczeń dostosujemy do Twojego doświadczenia oraz możliwości.'],
-  ['Czy program jest odpowiedni dla początkujących?', 'Tak, również dla osób zaczynających od podstaw. Przed rozpoczęciem współpracy sprawdzimy, czy ten format będzie dla Ciebie odpowiedni.'],
-  ['Czy potrzebuję karnetu na siłownię?', 'To zależy od indywidualnego planu treningowego i dostępnego sprzętu. Nie każdy musi trenować na siłowni; wymagania ustalimy podczas wdrożenia.'],
-  ['Czy dostanę indywidualny plan treningowy?', 'Tak. Każdy uczestnik otrzymuje indywidualny plan i jego korekty wynikające z raportów oraz postępów.'],
-  ['Czy dostanę indywidualny jadłospis?', 'Tak. Plan żywieniowy będzie dopasowany do ustalonego celu i obejmie posiłki, przepisy oraz gramatury.'],
-  ['Jak działa grupa WhatsApp?', 'To zamknięta grupa uczestników służąca wymianie doświadczeń, pytaniom i wzajemnemu wsparciu. Przed dołączeniem wyjaśnimy zasady, w tym widoczność numerów telefonów dla innych członków. Nie oznacza to całodobowej dostępności trenera.'],
-  ['Czy muszę uczestniczyć w każdym spotkaniu na żywo?', 'Warto uczestniczyć regularnie, ale rozumiemy, że zdarzają się obowiązki i zmiany. Zasady nieobecności oraz ewentualnych materiałów zastępczych podamy przed rozpoczęciem zapisów. Nie obiecujemy nagrań wszystkich spotkań.'],
-  ['Co, jeśli pracuję zmianowo?', 'Indywidualny trening i żywienie można dopasować do grafiku. Spotkania grupowe są zaplanowane na każdą niedzielę. Dokładną godzinę podamy przed rozpoczęciem zapisów.'],
-  ['Jak wyglądają cotygodniowe raporty?', 'Przekazujesz informacje o realizacji treningów, żywieniu, pomiarach i trudnościach. Na tej podstawie otrzymujesz informację zwrotną i w razie potrzeby zmiany planu.'],
-  ['Czy mogę dokupić treningi personalne w Cwmbran?', 'Tak, w miarę dostępności terminów. Sesje 1:1 w JD Gyms Cwmbran są odrębną usługą i podlegają osobnym warunkom oraz wymaganiom dostępu do klubu.'],
-  ['Ile kosztuje udział?', 'Robocza cena pierwszej edycji wynosi £450 za 16 tygodni. To propozycja do ostatecznego potwierdzenia przed zapisami.'],
-  ['Jak będzie wyglądać płatność w dwóch blokach?', 'Proponujemy £50 na etapie rezerwacji (zaliczane na cenę), następnie £175 przed pierwszym blokiem i £225 przed drugim. Terminy, rezygnacje i zwroty podamy po zatwierdzeniu regulaminu. Teraz nie przyjmujemy wpłat ani rezerwacji.'],
-  ['Co dzieje się po 16 tygodniach?', 'Otrzymujesz końcowe podsumowanie i plan dalszego działania. Ewentualna współpraca po zakończeniu tej edycji będzie ustalana osobno.'],
-  ['Czy udział w programie gwarantuje określony efekt?', 'Nie. Efekty zależą m.in. od indywidualnej sytuacji, regularności, zdrowia i realizacji planu. Nie gwarantujemy konkretnych zmian masy ciała ani sylwetki.']
-];
+const {seo, media, pricing, features, coaching, phases, week, people, faqs, copy} = programme;
+const formatPrice = (amount: number) => `£${amount}`;
+const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|firstBlock|secondBlock)\}\}/g, (_, field: string) => formatPrice(pricing[field]));
 ---
 <BaseLayout
   lang="pl"
   path={url}
   noindex={true}
-  title="MOJA KOLEJ 2027 — 16 tygodni prowadzenia | KK Coaching"
-  description="MOJA KOLEJ 2027: 16 tygodni indywidualnego prowadzenia, spotkania na żywo, grupa wsparcia i praktyczne zadania. Podgląd programu — zapisy jeszcze nie ruszyły."
-  socialImage="/images/kacper.jpg"
-  socialImageAlt="Kacper Kaszowski — trener KK Coaching"
+  title={seo.title}
+  description={seo.description}
+  socialImage={seo.socialImage}
+  socialImageAlt={seo.socialImageAlt}
 >
   <!-- Unpublished programme preview: no checkout, no live sign-up form, no internal promotion. -->
   <svg class="svg-definitions" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
@@ -84,43 +30,43 @@ const faqs = [
     <section class="mk-hero" aria-labelledby="mk-title">
       <div class="container mk-hero-grid">
         <div class="hero-text">
-          <p class="mk-eyebrow"><span class="mk-dot"></span> KK COACHING PRZEDSTAWIA <span class="preview-tag">PODGLĄD PROGRAMU</span></p>
-          <h1 id="mk-title"><span>MOJA</span><span>KOLEJ<span class="period">.</span></span><em>2027</em></h1>
-          <p class="hero-slogan">16 tygodni. 10 osób.<br/><strong>Teraz czas na Ciebie.</strong></p>
-          <p class="hero-intro">Praca, rodzina, obowiązki… Zawsze jest coś ważniejszego. A kiedy ostatnio zrobiłeś coś dla siebie?</p>
-          <p class="hero-description">Indywidualny trening i żywienie, spotkania na żywo w każdą niedzielę, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.</p>
-          <a class="mk-button" href="#poznaj-program">Poznaj program <span aria-hidden="true">↓</span></a>
-          <p class="hero-note">16 niedzielnych spotkań na żywo · 10 stycznia – 25 kwietnia 2027. Godzinę podamy przed zapisami.</p><p class="hero-note">Zapisy jeszcze nie ruszyły. To podgląd planowanej edycji.</p>
+          <p class="mk-eyebrow"><span class="mk-dot"></span> {copy.sections.hero.text001} <span class="preview-tag">{copy.sections.hero.text002}</span></p>
+          <h1 id="mk-title"><span>{copy.sections.hero.text003}</span><span>{copy.sections.hero.text004}<span class="period">.</span></span><em>2027</em></h1>
+          <p class="hero-slogan">{copy.sections.hero.text005}<br/><strong>{copy.sections.hero.text006}</strong></p>
+          <p class="hero-intro">{copy.sections.hero.text007}</p>
+          <p class="hero-description">{copy.sections.hero.text008}</p>
+          <a class="mk-button" href="#poznaj-program">{copy.sections.hero.text009} <span aria-hidden="true">↓</span></a>
+          <p class="hero-note">{copy.sections.hero.text010}</p><p class="hero-note">{copy.sections.hero.text011}</p>
         </div>
         <div class="hero-photo">
-          <img src="/images/kacper.jpg" width="960" height="1200" fetchpriority="high" alt="Kacper Kaszowski, prowadzący KK Coaching" />
+          <img src={media.heroImage} width="960" height="1200" fetchpriority="high" alt={copy.attributes.alt001} />
           <div class="photo-shadow" aria-hidden="true"></div>
-          <div class="photo-caption"><span>KK / 2027</span><strong>TWÓJ RUCH.</strong></div>
+          <div class="photo-caption"><span>{copy.sections.hero.text012}</span><strong>{copy.sections.hero.text013}</strong></div>
         </div>
       </div>
-      <div class="container stats-row" aria-label="Najważniejsze informacje">
-        <div><strong>16</strong><span>tygodni pracy</span></div>
-        <div><strong>10</strong><span>miejsc w pierwszej edycji</span></div>
-        <div><strong>04.01</strong><span>planowany start 2027</span></div>
+      <div class="container stats-row" aria-label={copy.attributes.aria_label002}>
+        <div><strong>16</strong><span>{copy.sections.hero.text014}</span></div>
+        <div><strong>10</strong><span>{copy.sections.hero.text015}</span></div>
+        <div><strong>04.01</strong><span>{copy.sections.hero.text016}</span></div>
       </div>
     </section>
 
     <section class="mk-intro" id="poznaj-program" aria-labelledby="mk-intro-title">
       <div class="container intro-grid">
-        <div><p class="mk-label">ODŁÓŻ „KIEDYŚ” NA BOK</p><h2 id="mk-intro-title">Ile razy stawiałeś siebie <span>na końcu listy?</span></h2></div>
-        <div><p>Nie potrzebujesz idealnego momentu. Potrzebujesz sposobu, który da się pogodzić z normalnym życiem.</p><p><strong>MOJA KOLEJ 2027</strong> to 16 tygodni indywidualnego prowadzenia, praktycznej nauki i pracy w niewielkiej grupie. Bez obietnic cudownej przemiany w kilka dni.</p><blockquote>16 tygodni prowadzenia.<br/>Wiedza i nawyki na znacznie dłużej.</blockquote></div>
+        <div><p class="mk-label">{copy.sections.intro.text001}</p><h2 id="mk-intro-title">{copy.sections.intro.text002} <span>{copy.sections.intro.text003}</span></h2></div>
+        <div><p>{copy.sections.intro.text004}</p><p><strong>{copy.sections.intro.text005}</strong> {copy.sections.intro.text006}</p><blockquote>{copy.sections.intro.text007}<br/>{copy.sections.intro.text008}</blockquote></div>
       </div>
     </section>
 
     <section class="mk-community" aria-labelledby="mk-community-title">
       <div class="container">
         <div class="mk-section-heading centered">
-          <p class="mk-label">RAZEM ŁATWIEJ WYTRWAĆ</p>
-          <h2 id="mk-community-title">Tym razem <span>nie działasz sam.</span></h2>
-          <p>Masz swój indywidualny plan, ale obok Ciebie jest trener i grupa osób, które również postanowiły w końcu znaleźć czas dla siebie.</p>
+          <p class="mk-label">{copy.sections.community.text001}</p>
+          <h2 id="mk-community-title">{copy.sections.community.text002} <span>{copy.sections.community.text003}</span></h2>
+          <p>{copy.sections.community.text004}</p>
         </div>
         <div class="feature-grid">
-          {features.map((feature) => (
+          {features.map((feature) => {copy.sections.community.text005}
             <article class:list={['feature-card', { 'feature-whatsapp': feature.id === 'grupa', 'feature-live': feature.id === 'spotkania' }]}>
               <div class="feature-top">
                 <span class="feature-icon"><svg class:list={{ 'brand-whatsapp': feature.icon === 'whatsapp' }} aria-hidden="true" viewBox="0 0 24 24"><use href={'#mk-' + feature.icon} /></svg></span>
@@ -129,19 +75,19 @@ const faqs = [
               <h3>{feature.title}</h3>
               <p>{feature.detail}</p>
               {feature.id === 'zadania' ? (
-                <div class="mock-task" aria-label="Przykładowa lista zadań, nie jest interaktywna">
-                  <span class="task-title">PRZYKŁAD ZADANIA · TYDZIEŃ 2</span>
-                  <span><span aria-hidden="true" class="fake-check checked">✓</span> Przygotuj listę zakupów</span>
-                  <span><span aria-hidden="true" class="fake-check"></span> Porównaj dwie etykiety</span>
-                  <span><span aria-hidden="true" class="fake-check"></span> Zaplanuj 3 posiłki</span>
+                <div class="mock-task" aria-label={copy.attributes.aria_label003}>
+                  <span class="task-title">{copy.sections.community.text006}</span>
+                  <span><span aria-hidden="true" class="fake-check checked">✓</span> {copy.sections.community.text007}</span>
+                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text008}</span>
+                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text009}</span>
                 </div>
-              ) : feature.id === 'podsumowania' ? (
-                <div class="milestone-mini"><div><b>08</b><span>Sprawdzamy postępy</span></div><div><b>16</b><span>Podsumowujemy drogę</span></div></div>
-              ) : <ul>{feature.items.map(item => <li>{item}</li>)}</ul>}
-              {feature.id === 'grupa' && <p class="small-caution">Przed dołączeniem wyjaśnimy zasady prywatności, w tym widoczność numerów telefonów dla członków grupy. Bez obietnicy kontaktu 24/7.</p>}
-              {feature.id === 'wyroznienia' && <p class="small-caution">Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad.</p>}
+              {copy.sections.community.text010}
+                <div class="milestone-mini"><div><b>08</b><span>{copy.sections.community.text011}</span></div><div><b>16</b><span>{copy.sections.community.text012}</span></div></div>
+              {copy.sections.community.text013} <ul>{feature.items.map(item => <li>{item}</li>{copy.sections.community.text014}</ul>}
+              {feature.id === 'grupa' && <p class="small-caution">{copy.sections.community.text015}</p>}
+              {feature.id === 'wyroznienia' && <p class="small-caution">{copy.sections.community.text016}</p>{copy.sections.community.text017}
             </article>
-          ))}
+          {copy.sections.community.text018}
         </div>
       </div>
     </section>
@@ -149,18 +95,18 @@ const faqs = [
     <section class="mk-coaching" aria-labelledby="mk-coaching-title">
       <div class="container coaching-grid">
         <div class="coaching-lead">
-          <p class="mk-label">TWÓJ PLAN. TWÓJ CEL.</p>
-          <h2 id="mk-coaching-title">A do tego pełne, <span>indywidualne prowadzenie.</span></h2>
-          <p>Nie dostajesz planu skopiowanego dla dziesięciu osób. Każdy uczestnik pracuje nad własnym celem, w swoim tempie i z programem dopasowanym do możliwości.</p>
-          <div class="app-preview" aria-label="Przykładowy widok postępów, grafika poglądowa">
-            <div class="app-header"><span class="app-mark">KK</span><span>TWÓJ PROGRES</span><span class="app-status">● PLAN</span></div>
+          <p class="mk-label">{copy.sections.coaching.text001}</p>
+          <h2 id="mk-coaching-title">{copy.sections.coaching.text002} <span>{copy.sections.coaching.text003}</span></h2>
+          <p>{copy.sections.coaching.text004}</p>
+          <div class="app-preview" aria-label={copy.attributes.aria_label004}>
+            <div class="app-header"><span class="app-mark">{copy.sections.coaching.text005}</span><span>{copy.sections.coaching.text006}</span><span class="app-status">{copy.sections.coaching.text007}</span></div>
             <div class="app-chart" aria-hidden="true"><span style="height:38%"></span><span style="height:52%"></span><span style="height:48%"></span><span style="height:68%"></span><span style="height:62%"></span><span style="height:83%"></span><span style="height:93%"></span></div>
-            <div class="app-footer"><span>Tydzień 01</span><strong>Systematyczność, nie perfekcja.</strong><span>Tydzień 16</span></div>
+            <div class="app-footer"><span>{copy.sections.coaching.text008}</span><strong>{copy.sections.coaching.text009}</strong><span>{copy.sections.coaching.text010}</span></div>
           </div>
         </div>
         <div class="coaching-list">
-          {coaching.map((item, index) => <div class="coaching-point"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p><b aria-hidden="true">✓</b></div>)}
-          <p class="coaching-footnote">Indywidualne prowadzenie jest częścią standardowej pracy KK Coaching. W tej edycji uzupełniają je spotkania, społeczność, warsztaty i wspólny harmonogram.</p>
+          {coaching.map((item, index) => <div class="coaching-point"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p><b aria-hidden="true">✓</b></div>{copy.sections.coaching.text011}
+          <p class="coaching-footnote">{copy.sections.coaching.text012}</p>
         </div>
       </div>
     </section>
@@ -168,89 +114,89 @@ const faqs = [
     <section class="mk-roadmap" id="program-16-tygodni" aria-labelledby="mk-roadmap-title">
       <div class="container">
         <div class="mk-section-heading">
-          <p class="mk-label">OD PIERWSZEGO DNIA DO SAMODZIELNOŚCI</p>
-          <h2 id="mk-roadmap-title">16 tygodni.<br/><span>Cztery etapy.</span></h2>
-          <p>Każdy etap ma swój temat. Wiedzę od razu przekładasz na praktykę, a indywidualny trening i żywienie towarzyszą Ci przez cały program.</p>
+          <p class="mk-label">{copy.sections.roadmap.text001}</p>
+          <h2 id="mk-roadmap-title">{copy.sections.roadmap.text002}<br/><span>{copy.sections.roadmap.text003}</span></h2>
+          <p>{copy.sections.roadmap.text004}</p>
         </div>
         <div class="phase-grid">
-          {phases.map((phase, phaseIndex) => (
+          {phases.map((phase, phaseIndex) => {copy.sections.roadmap.text005}
             <article class="phase">
               <div class="phase-head"><span class="phase-n">{phase.number}</span><div><span class="phase-range">{phase.range}</span><h3>{phase.title}</h3></div></div>
               <ol start={phaseIndex * 4 + 1}>
-                {phase.weeks.map((entry, weekIndex) => (
+                {phase.weeks.map((entry, weekIndex) => {copy.sections.roadmap.text006}
                   <li><span class="week-index">{String(phaseIndex * 4 + weekIndex + 1).padStart(2, '0')}</span><span>{entry}</span></li>
-                ))}
+                {copy.sections.roadmap.text007}
               </ol>
             </article>
-          ))}
+          {copy.sections.roadmap.text008}
         </div>
-        <div class="timeline-end"><strong>04 STYCZNIA 2027</strong><span aria-hidden="true"></span><strong>25 KWIETNIA 2027</strong></div>
+        <div class="timeline-end"><strong>{copy.sections.roadmap.text009}</strong><span aria-hidden="true"></span><strong>{copy.sections.roadmap.text010}</strong></div>
       </div>
     </section>
 
     <section class="mk-rhythm" aria-labelledby="mk-week-title">
       <div class="container">
-        <div class="mk-section-heading centered"><p class="mk-label">PRZYKŁADOWY RYTM</p><h2 id="mk-week-title">Jak wygląda <span>Twój tydzień?</span></h2><p>Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy.</p></div>
+        <div class="mk-section-heading centered"><p class="mk-label">{copy.sections.rhythm.text001}</p><h2 id="mk-week-title">{copy.sections.rhythm.text002} <span>{copy.sections.rhythm.text003}</span></h2><p>{copy.sections.rhythm.text004}</p></div>
         <div class="week-grid">
-          {week.map((entry, index) => (
+          {week.map((entry, index) => {copy.sections.rhythm.text005}
             <div class:list={['day-card', { 'day-live': index === 6 }]}>
               <span class="day-name">{entry.day}</span><div class="day-dot" aria-hidden="true"></div><h3>{entry.title}</h3><p>{entry.body}</p>
             </div>
-          ))}
+          {copy.sections.rhythm.text006}
         </div>
       </div>
     </section>
 
     <section class="mk-fit" aria-labelledby="mk-fit-title">
       <div class="container fit-grid">
-        <div><p class="mk-label">RÓŻNE CELE. WSPÓLNA DECYZJA.</p><h2 id="mk-fit-title">To może być <span>Twój moment.</span></h2><p>Nie musisz mieć tego samego celu co pozostali. Ważniejsze, żebyś chciał pracować nad swoim i wiedział, dlaczego to robisz.</p><p class="fit-note">Program przeznaczony jest dla osób dorosłych. Przy szczególnych potrzebach zdrowotnych może być potrzebna indywidualna ocena i wsparcie odpowiedniego specjalisty.</p></div>
-        <ul class="fit-list">{people.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
+        <div><p class="mk-label">{copy.sections.fit.text001}</p><h2 id="mk-fit-title">{copy.sections.fit.text002} <span>{copy.sections.fit.text003}</span></h2><p>{copy.sections.fit.text004}</p><p class="fit-note">{copy.sections.fit.text005}</p></div>
+        <ul class="fit-list">{people.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{item}</li>{copy.sections.fit.text006}</ul>
       </div>
     </section>
 
     <section class="mk-coach" aria-labelledby="mk-coach-title">
       <div class="container coach-grid">
-        <div class="coach-photo"><img src="/images/kacper.jpg" width="760" height="900" loading="lazy" alt="Kacper Kaszowski, trener personalny i założyciel KK Coaching" /><span>KK COACHING / KACPER KASZOWSKI</span></div>
-        <div><p class="mk-label">KTO CIĘ POPROWADZI?</p><h2 id="mk-coach-title">Ktoś, kto też <span>musiał zacząć od siebie.</span></h2><p>Jestem Kacper, trener personalny i założyciel KK Coaching. Sam przeszedłem dużą przemianę sylwetki, dlatego wiem, że najtrudniejsza nie jest jedna dobra sesja treningowa. Trudniejsze jest znalezienie sposobu na systematyczność, kiedy życie nie zwalnia.</p><p>Pracuję z klientami nad treningiem, żywieniem i regularnym monitorowaniem postępów. Mam kwalifikacje Level 2 Gym Instructor i Level 3 Personal Trainer. W programie chcę przekazywać nie tylko gotowe plany, ale też zrozumienie tego, co robimy i po co.</p><div class="coach-credential"><strong>Level 2 + Level 3</strong><span>Kwalifikacje trenerskie</span></div><p class="coach-quiet">To pierwsza edycja MOJA KOLEJ 2027. Dotychczasowe historie klientów KK Coaching nie są wynikami tego programu.</p></div>
+        <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={copy.attributes.alt005} /><span>{copy.sections.coach.text001}</span></div>
+        <div><p class="mk-label">{copy.sections.coach.text002}</p><h2 id="mk-coach-title">{copy.sections.coach.text003} <span>{copy.sections.coach.text004}</span></h2><p>{copy.sections.coach.text005}</p><p>{copy.sections.coach.text006}</p><div class="coach-credential"><strong>{copy.sections.coach.text007}</strong><span>{copy.sections.coach.text008}</span></div><p class="coach-quiet">{copy.sections.coach.text009}</p></div>
       </div>
     </section>
 
     <section class="mk-price" aria-labelledby="mk-price-title">
       <div class="container price-grid">
-        <div><p class="mk-label">WARUNKI ROBOCZE</p><h2 id="mk-price-title">16 tygodni, <span>jedna inwestycja w siebie.</span></h2><p>Przedstawiamy propozycję ceny i podziału płatności. Ostateczne zasady, w tym warunki rezygnacji i zwrotów, opublikujemy przed uruchomieniem zapisów.</p><p class="price-alert">To podgląd. Nie przyjmujemy wpłat, nie rezerwujemy miejsc i nie prowadzimy jeszcze zapisów.</p></div>
+        <div><p class="mk-label">{copy.sections.price.text001}</p><h2 id="mk-price-title">{copy.sections.price.text002} <span>{copy.sections.price.text003}</span></h2><p>{copy.sections.price.text004}</p><p class="price-alert">{copy.sections.price.text005}</p></div>
         <div class="price-panel">
-          <p>PROPONOWANA CENA CAŁEGO PROGRAMU</p><div class="price-amount">£450 <span>/ 16 tygodni</span></div>
-          <div class="price-lines"><div><span>Planowany etap rezerwacji<br/><small>Kwota zaliczana na poczet ceny, bez gwarancji udziału</small></span><strong>£50</strong></div><div><span>Przed pierwszym blokiem</span><strong>£175</strong></div><div><span>Przed drugim blokiem</span><strong>£225</strong></div></div>
-          <span class="price-final">Wszystkie warunki wymagają ostatecznego zatwierdzenia.</span>
+          <p>{copy.sections.price.text006}</p><div class="price-amount">{formatPrice(pricing.total)} <span>{copy.sections.price.text007}</span></div>
+          <div class="price-lines"><div><span>{copy.sections.price.text008}<br/><small>{copy.sections.price.text009}</small></span><strong>{formatPrice(pricing.reservation)}</strong></div><div><span>{copy.sections.price.text010}</span><strong>{formatPrice(pricing.firstBlock)}</strong></div><div><span>{copy.sections.price.text011}</span><strong>{formatPrice(pricing.secondBlock)}</strong></div></div>
+          <span class="price-final">{copy.sections.price.text012}</span>
         </div>
       </div>
     </section>
 
     <section class="mk-apply" id="zapisy" aria-labelledby="mk-apply-title">
       <div class="container apply-grid">
-        <div><p class="mk-label">PIERWSZA EDYCJA • DO 10 OSÓB</p><h2 id="mk-apply-title">Twoja kolej <span>może być następna.</span></h2><p>Przygotowujemy prosty formularz zgłoszeniowy. Kiedy uruchomimy zapisy, będziesz mógł opowiedzieć nam o swoim celu i tym, dlaczego chcesz wziąć udział.</p><p class="apply-status" role="status"><span aria-hidden="true">●</span> Zapisy jeszcze nie ruszyły. Przygotowujemy pierwszą edycję programu.</p></div>
-        <div class="apply-form-preview" aria-label="Podgląd niedostępnego formularza. Nie można wysyłać danych.">
-          <div class="form-top"><span>FORMULARZ ZGŁOSZENIOWY</span><b>PODGLĄD</b></div>
+        <div><p class="mk-label">{copy.sections.application.text001}</p><h2 id="mk-apply-title">{copy.sections.application.text002} <span>{copy.sections.application.text003}</span></h2><p>{copy.sections.application.text004}</p><p class="apply-status" role="status"><span aria-hidden="true">●</span> {copy.sections.application.text005}</p></div>
+        <div class="apply-form-preview" aria-label={copy.attributes.aria_label006}>
+          <div class="form-top"><span>{copy.sections.application.text006}</span><b>{copy.sections.application.text007}</b></div>
           <fieldset disabled>
-            <label>Imię <input type="text" placeholder="Twoje imię" autocomplete="off" /></label>
-            <label>Adres e-mail <input type="email" placeholder="twoj@email.com" autocomplete="off" /></label>
-            <label>Telefon <span class="optional">(opcjonalnie)</span><input type="tel" placeholder="+44…" autocomplete="off" /></label>
-            <label>Główny cel<select><option>Wybierz główny cel</option><option>Redukcja tkanki tłuszczowej</option><option>Budowanie mięśni</option><option>Sprawność i regularność</option><option>Inny</option></select></label>
-            <label>Dlaczego chcesz wziąć udział?<textarea rows="3" placeholder="Napisz kilka zdań…" autocomplete="off"></textarea></label>
-            <button type="button" disabled aria-disabled="true">Zapisy niedostępne</button>
+            <label>{copy.sections.application.text008} <input type="text" placeholder={copy.attributes.placeholder007} autocomplete="off" /></label>
+            <label>{copy.sections.application.text009} <input type="email" placeholder={copy.attributes.placeholder008} autocomplete="off" /></label>
+            <label>{copy.sections.application.text010} <span class="optional">{copy.sections.application.text011}</span><input type="tel" placeholder={copy.attributes.placeholder009} autocomplete="off" /></label>
+            <label>{copy.sections.application.text012}<select><option>{copy.sections.application.text013}</option><option>{copy.sections.application.text014}</option><option>{copy.sections.application.text015}</option><option>{copy.sections.application.text016}</option><option>{copy.sections.application.text017}</option></select></label>
+            <label>{copy.sections.application.text018}<textarea rows="3" placeholder={copy.attributes.placeholder010} autocomplete="off"></textarea></label>
+            <button type="button" disabled aria-disabled="true">{copy.sections.application.text019}</button>
           </fieldset>
-          <p class="form-help">Formularz nie zbiera ani nie przesyła żadnych danych. Pytania o zdrowie będą częścią osobnego, bezpiecznego wdrożenia po uruchomieniu zapisów.</p>
+          <p class="form-help">{copy.sections.application.text020}</p>
         </div>
       </div>
     </section>
 
     <section class="mk-faq" aria-labelledby="mk-faq-title">
-      <div class="container faq-container"><div class="mk-section-heading centered"><p class="mk-label">ZANIM PODEJMIESZ DECYZJĘ</p><h2 id="mk-faq-title">Częste <span>pytania.</span></h2><p>Konkretnie, bez drobnego druku i obietnic bez pokrycia.</p></div>
-        <div class="faq-list">{faqs.map(([q, a]) => <details><summary>{q}<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>{a}</p></div></details>)}</div>
+      <div class="container faq-container"><div class="mk-section-heading centered"><p class="mk-label">{copy.sections.faq.text001}</p><h2 id="mk-faq-title">{copy.sections.faq.text002} <span>{copy.sections.faq.text003}</span></h2><p>{copy.sections.faq.text004}</p></div>
+        <div class="faq-list">{faqs.map(({question, answer}) => <details><summary>{question}<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>{formatAnswer(answer)}</p></div></details>{copy.sections.faq.text005}</div>
       </div>
     </section>
 
-    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">MOJA KOLEJ 2027</p><h2 id="mk-outro-title">Nie musisz zmieniać wszystkiego naraz.<br/><span>Zacznij od decyzji, że też jesteś ważny.</span></h2><p>16 tygodni. 10 osób. Teraz czas na Ciebie.</p><a class="mk-button outline" href="#poznaj-program">Wróć do programu ↑</a><small>Strona testowa — zapisy i płatności są wyłączone.</small></div></section>
+    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">{copy.sections.final.text001}</p><h2 id="mk-outro-title">{copy.sections.final.text002}<br/><span>{copy.sections.final.text003}</span></h2><p>{copy.sections.final.text004}</p><a class="mk-button outline" href="#poznaj-program">{copy.sections.final.text005}</a><small>{copy.sections.final.text006}</small></div></section>
   </div>
 </BaseLayout>
 
