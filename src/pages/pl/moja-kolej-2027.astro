@@ -5,7 +5,7 @@ import programme from '../../data/moja-kolej-2027.json';
 const url = '/pl/moja-kolej-2027/';
 const {seo, media, pricing, features, coaching, phases, week, people, faqs, copy} = programme;
 const formatPrice = (amount: number) => `£${amount}`;
-const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|firstBlock|secondBlock)\}\}/g, (_, field: string) => formatPrice(pricing[field]));
+const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|firstBlock|secondBlock)\}\}/g, (_, field: keyof typeof pricing) => formatPrice(pricing[field]));
 ---
 <BaseLayout
   lang="pl"
@@ -66,7 +66,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
           <p>{copy.sections.community.text004}</p>
         </div>
         <div class="feature-grid">
-          {features.map((feature) => {copy.sections.community.text005}
+          {features.map((feature) => (
             <article class:list={['feature-card', { 'feature-whatsapp': feature.id === 'grupa', 'feature-live': feature.id === 'spotkania' }]}>
               <div class="feature-top">
                 <span class="feature-icon"><svg class:list={{ 'brand-whatsapp': feature.icon === 'whatsapp' }} aria-hidden="true" viewBox="0 0 24 24"><use href={'#mk-' + feature.icon} /></svg></span>
@@ -76,18 +76,18 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
               <p>{feature.detail}</p>
               {feature.id === 'zadania' ? (
                 <div class="mock-task" aria-label={copy.attributes.aria_label003}>
-                  <span class="task-title">{copy.sections.community.text006}</span>
-                  <span><span aria-hidden="true" class="fake-check checked">✓</span> {copy.sections.community.text007}</span>
+                  <span class="task-title">{copy.sections.community.text005}</span>
+                  <span><span aria-hidden="true" class="fake-check checked">✓</span> {copy.sections.community.text006}</span>
+                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text007}</span>
                   <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text008}</span>
-                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text009}</span>
                 </div>
-              {copy.sections.community.text010}
-                <div class="milestone-mini"><div><b>08</b><span>{copy.sections.community.text011}</span></div><div><b>16</b><span>{copy.sections.community.text012}</span></div></div>
-              {copy.sections.community.text013} <ul>{feature.items.map(item => <li>{item}</li>{copy.sections.community.text014}</ul>}
-              {feature.id === 'grupa' && <p class="small-caution">{copy.sections.community.text015}</p>}
-              {feature.id === 'wyroznienia' && <p class="small-caution">{copy.sections.community.text016}</p>{copy.sections.community.text017}
+              ) : feature.id === 'podsumowania' ? (
+                <div class="milestone-mini"><div><b>08</b><span>{copy.sections.community.text009}</span></div><div><b>16</b><span>{copy.sections.community.text010}</span></div></div>
+              ) : <ul>{feature.items.map(item => <li>{item}</li>)}</ul>}
+              {feature.id === 'grupa' && <p class="small-caution">{copy.sections.community.text011}</p>}
+              {feature.id === 'wyroznienia' && <p class="small-caution">{copy.sections.community.text012}</p>}
             </article>
-          {copy.sections.community.text018}
+          ))}
         </div>
       </div>
     </section>
@@ -105,8 +105,8 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
           </div>
         </div>
         <div class="coaching-list">
-          {coaching.map((item, index) => <div class="coaching-point"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p><b aria-hidden="true">✓</b></div>{copy.sections.coaching.text011}
-          <p class="coaching-footnote">{copy.sections.coaching.text012}</p>
+          {coaching.map((item, index) => <div class="coaching-point"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p><b aria-hidden="true">✓</b></div>)}
+          <p class="coaching-footnote">{copy.sections.coaching.text011}</p>
         </div>
       </div>
     </section>
@@ -119,18 +119,18 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
           <p>{copy.sections.roadmap.text004}</p>
         </div>
         <div class="phase-grid">
-          {phases.map((phase, phaseIndex) => {copy.sections.roadmap.text005}
+          {phases.map((phase, phaseIndex) => (
             <article class="phase">
               <div class="phase-head"><span class="phase-n">{phase.number}</span><div><span class="phase-range">{phase.range}</span><h3>{phase.title}</h3></div></div>
               <ol start={phaseIndex * 4 + 1}>
-                {phase.weeks.map((entry, weekIndex) => {copy.sections.roadmap.text006}
+                {phase.weeks.map((entry, weekIndex) => (
                   <li><span class="week-index">{String(phaseIndex * 4 + weekIndex + 1).padStart(2, '0')}</span><span>{entry}</span></li>
-                {copy.sections.roadmap.text007}
+                ))}
               </ol>
             </article>
-          {copy.sections.roadmap.text008}
+          ))}
         </div>
-        <div class="timeline-end"><strong>{copy.sections.roadmap.text009}</strong><span aria-hidden="true"></span><strong>{copy.sections.roadmap.text010}</strong></div>
+        <div class="timeline-end"><strong>{copy.sections.roadmap.text005}</strong><span aria-hidden="true"></span><strong>{copy.sections.roadmap.text006}</strong></div>
       </div>
     </section>
 
@@ -138,11 +138,11 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
       <div class="container">
         <div class="mk-section-heading centered"><p class="mk-label">{copy.sections.rhythm.text001}</p><h2 id="mk-week-title">{copy.sections.rhythm.text002} <span>{copy.sections.rhythm.text003}</span></h2><p>{copy.sections.rhythm.text004}</p></div>
         <div class="week-grid">
-          {week.map((entry, index) => {copy.sections.rhythm.text005}
+          {week.map((entry, index) => (
             <div class:list={['day-card', { 'day-live': index === 6 }]}>
               <span class="day-name">{entry.day}</span><div class="day-dot" aria-hidden="true"></div><h3>{entry.title}</h3><p>{entry.body}</p>
             </div>
-          {copy.sections.rhythm.text006}
+          ))}
         </div>
       </div>
     </section>
@@ -150,7 +150,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-fit" aria-labelledby="mk-fit-title">
       <div class="container fit-grid">
         <div><p class="mk-label">{copy.sections.fit.text001}</p><h2 id="mk-fit-title">{copy.sections.fit.text002} <span>{copy.sections.fit.text003}</span></h2><p>{copy.sections.fit.text004}</p><p class="fit-note">{copy.sections.fit.text005}</p></div>
-        <ul class="fit-list">{people.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{item}</li>{copy.sections.fit.text006}</ul>
+        <ul class="fit-list">{people.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
       </div>
     </section>
 
@@ -192,7 +192,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
 
     <section class="mk-faq" aria-labelledby="mk-faq-title">
       <div class="container faq-container"><div class="mk-section-heading centered"><p class="mk-label">{copy.sections.faq.text001}</p><h2 id="mk-faq-title">{copy.sections.faq.text002} <span>{copy.sections.faq.text003}</span></h2><p>{copy.sections.faq.text004}</p></div>
-        <div class="faq-list">{faqs.map(({question, answer}) => <details><summary>{question}<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>{formatAnswer(answer)}</p></div></details>{copy.sections.faq.text005}</div>
+        <div class="faq-list">{faqs.map(({question, answer}) => <details><summary>{question}<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>{formatAnswer(answer)}</p></div></details>)}</div>
       </div>
     </section>
 
