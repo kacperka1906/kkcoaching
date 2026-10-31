@@ -22,7 +22,7 @@
   "coaching": [
     "Indywidualny plan treningowy dopasowany do celu i możliwości",
     "Plan żywieniowy z konkretnymi posiłkami, przepisami i gramaturami",
-    "Aplikacja MyPTHub do treningów i monitorowania postępów",
+    "Aplikacja do treningów i monitorowania postępów",
     "Zapisywanie ciężarów, powtórzeń, pomiarów i wyników",
     "Cotygodniowe raporty i informacje zwrotne",
     "Korekty planów i wskazówki dotyczące techniki",
@@ -71,7 +71,7 @@
     {
       "day": "Niedz.",
       "title": "Spotkanie na żywo",
-      "body": "Razem omawiamy temat, pytania i postępy. Co niedzielę, po polsku."
+      "body": "Wspólne omówienie pytań i postępów. Dzień spotkania ustalimy z uczestnikami."
     }
   ],
   "copy": {
@@ -92,22 +92,21 @@
       "price": {
         "text010": "Przed pierwszym blokiem",
         "text011": "Przed drugim blokiem",
-        "text001": "WARUNKI ROBOCZE",
-        "text012": "Wszystkie warunki wymagają ostatecznego zatwierdzenia.",
+        "text001": "PIERWSZA EDYCJA",
         "text002": "16 tygodni,",
         "text003": "jedna inwestycja w siebie.",
-        "text004": "Przedstawiamy propozycję ceny i podziału płatności. Ostateczne zasady, w tym warunki rezygnacji i zwrotów, opublikujemy przed uruchomieniem zapisów.",
-        "text005": "To podgląd. Nie przyjmujemy wpłat, nie rezerwujemy miejsc i nie prowadzimy jeszcze zapisów.",
-        "text006": "PROPONOWANA CENA CAŁEGO PROGRAMU",
+        "text004": "16 tygodni indywidualnego prowadzenia, cotygodniowe spotkania i praktyczne wsparcie w niewielkiej grupie. Cena całego programu obejmuje wszystkie etapy.",
+        "text005": "Zgłoszenie jest bezpłatne. Po przyjęciu do programu otrzymasz warunki uczestnictwa i instrukcję rezerwacji miejsca.",
+        "text006": "CENA CAŁEGO PROGRAMU",
         "text007": "/ 16 tygodni",
-        "text008": "Planowany etap rezerwacji",
-        "text009": "Kwota zaliczana na poczet ceny, bez gwarancji udziału"
+        "text008": "Rezerwacja miejsca",
+        "text009": "Wpłata wliczona w cenę programu — po zaakceptowaniu zgłoszenia i warunków rezerwuje miejsce."
       },
       "community": {
         "text010": "Podsumowujemy drogę",
-        "text011": "Przed dołączeniem wyjaśnimy zasady prywatności, w tym widoczność numerów telefonów dla członków grupy. Bez obietnicy kontaktu 24/7.",
+        "text011": "Przed dołączeniem poznasz zasady grupy i informacje o prywatności.",
         "text001": "RAZEM ŁATWIEJ WYTRWAĆ",
-        "text012": "Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad.",
+        "text012": "Nagrody i wyróżnienia dla uczestników — szczegóły zasad ogłosimy przed startem programu.",
         "text002": "Tym razem",
         "text003": "nie działasz sam.",
         "text004": "Masz swój indywidualny plan, ale obok Ciebie jest trener i grupa osób, które również postanowiły w końcu znaleźć czas dla siebie.",
@@ -123,12 +122,12 @@
         "text003": "na końcu listy?",
         "text004": "Nie potrzebujesz idealnego momentu. Potrzebujesz sposobu, który da się pogodzić z normalnym życiem.",
         "text005": "MOJA KOLEJ 2027",
-        "text006": "to 16 tygodni indywidualnego prowadzenia, praktycznej nauki i pracy w niewielkiej grupie. Bez obietnic cudownej przemiany w kilka dni.",
+        "text006": "to 16 tygodni indywidualnego prowadzenia, praktycznej nauki i pracy w niewielkiej grupie. Bez obietnic cudownej przemiany w kilka dni. Z realnym wsparciem trenera i osób, które tak jak Ty chcą pracować nad swoim celem.",
         "text007": "16 tygodni prowadzenia.",
         "text008": "Wiedza i nawyki na znacznie dłużej."
       },
       "application": {
-        "text020": "Formularz nie zbiera ani nie przesyła żadnych danych. Pytania o zdrowie będą częścią osobnego, bezpiecznego wdrożenia po uruchomieniu zapisów.",
+        "text020": "Zgłoszenie jest bezpłatne i nie oznacza automatycznej rezerwacji miejsca. W sprawach prywatności zobacz politykę prywatności KK Coaching.",
         "text010": "Telefon",
         "text011": "(opcjonalnie)",
         "text001": "PIERWSZA EDYCJA • DO {{places}} OSÓB",
@@ -137,16 +136,16 @@
         "text013": "Wybierz główny cel",
         "text003": "może być następna.",
         "text014": "Redukcja tkanki tłuszczowej",
-        "text004": "Przygotowujemy prosty formularz zgłoszeniowy. Kiedy uruchomimy zapisy, będziesz mógł opowiedzieć nam o swoim celu i tym, dlaczego chcesz wziąć udział.",
+        "text004": "Opowiedz nam krótko o swoim celu i dlaczego chcesz dołączyć. Odezwę się do Ciebie w sprawie dalszych kroków.",
         "text015": "Budowanie mięśni",
-        "text005": "Zapisy jeszcze nie ruszyły. Przygotowujemy pierwszą edycję programu.",
+        "text005": "Zapisy już ruszyły. Liczba miejsc jest ograniczona.",
         "text016": "Sprawność i regularność",
         "text006": "FORMULARZ ZGŁOSZENIOWY",
         "text017": "Inny",
-        "text007": "PODGLĄD",
+        "text007": "ZGŁOSZENIA OTWARTE",
         "text018": "Dlaczego chcesz wziąć udział?",
         "text008": "Imię",
-        "text019": "Zapisy niedostępne",
+        "text019": "Wyślij zgłoszenie",
         "text009": "Adres e-mail"
       },
       "fit": {
@@ -160,15 +159,15 @@
         "text001": "PRZYKŁADOWY RYTM",
         "text002": "Jak wygląda",
         "text003": "Twój tydzień?",
-        "text004": "Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy."
+        "text004": "Przykładowy rytm tygodnia. Regularne spotkania na żywo i zadania dopasujemy organizacyjnie przed rozpoczęciem programu."
       },
       "final": {
         "text001": "MOJA KOLEJ 2027",
         "text002": "Nie musisz zmieniać wszystkiego naraz.",
         "text003": "Zacznij od decyzji, że też jesteś ważny.",
         "text004": "{{weeks}} tygodni. {{places}} osób. Teraz czas na Ciebie.",
-        "text005": "Wróć do programu ↑",
-        "text006": "Strona testowa — zapisy i płatności są wyłączone."
+        "text005": "Przejdź do zapisów ↓",
+        "text006": "Pierwsza edycja startuje 4 stycznia 2027. Wypełnij formularz zgłoszeniowy i zrób pierwszy krok."
       },
       "faq": {
         "text001": "ZANIM PODEJMIESZ DECYZJĘ",
@@ -181,18 +180,17 @@
         "text002": "KTO CIĘ POPROWADZI?",
         "text003": "Ktoś, kto też",
         "text004": "musiał zacząć od siebie.",
-        "text005": "Jestem Kacper, trener personalny i założyciel KK Coaching. Sam przeszedłem dużą przemianę sylwetki, dlatego wiem, że najtrudniejsza nie jest jedna dobra sesja treningowa. Trudniejsze jest znalezienie sposobu na systematyczność, kiedy życie nie zwalnia.",
-        "text006": "Pracuję z klientami nad treningiem, żywieniem i regularnym monitorowaniem postępów. Mam kwalifikacje Level 2 Gym Instructor i Level 3 Personal Trainer. W programie chcę przekazywać nie tylko gotowe plany, ale też zrozumienie tego, co robimy i po co.",
-        "text007": "Level 2 + Level 3",
-        "text008": "Kwalifikacje trenerskie",
-        "text009": "To pierwsza edycja MOJA KOLEJ 2027. Dotychczasowe historie klientów KK Coaching nie są wynikami tego programu."
+        "text005": "Mam na imię Kacper. Jestem trenerem personalnym i założycielem KK Coaching. Sam przeszedłem dużą przemianę sylwetki, dlatego wiem, że największym wyzwaniem nie jest jeden dobry trening, lecz systematyczność mimo pracy, rodziny i codziennych obowiązków.",
+        "text006": "Pomagam uporządkować trening, odżywianie i codzienne nawyki. W programie będziemy działać krok po kroku, z planem dopasowanym do Twojego życia i realnym wsparciem po drodze.",
+        "text007": "Level 3 Personal Trainer",
+        "text008": "Level 4 Sports Nutrition"
       },
       "hero": {
-        "text010": "16 niedzielnych spotkań na żywo · 10 stycznia – 25 kwietnia 2027. Godzinę podamy przed zapisami.",
-        "text011": "Zapisy jeszcze nie ruszyły. To podgląd planowanej edycji.",
+        "text010": "Indywidualny plan • Grupa wsparcia • Spotkania na żywo • Zadania i warsztaty",
+        "text011": "Zapisy już ruszyły — wypełnij formularz poniżej.",
         "text001": "KK COACHING PRZEDSTAWIA",
         "text012": "KK / 2027",
-        "text002": "PODGLĄD PROGRAMU",
+        "text002": "EDYCJA 2027",
         "text013": "TWÓJ RUCH.",
         "text003": "MOJA",
         "text014": "tygodni pracy",
@@ -202,7 +200,7 @@
         "text016": "planowany start 2027",
         "text006": "Teraz czas na Ciebie.",
         "text007": "Praca, rodzina, obowiązki… Zawsze jest coś ważniejszego. A kiedy ostatnio zrobiłeś coś dla siebie?",
-        "text008": "Indywidualny trening i żywienie, spotkania na żywo w każdą niedzielę, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.",
+        "text008": "Indywidualny trening i żywienie, grupa wsparcia, spotkania na żywo, praktyczne zadania i warsztaty. Wszystko po to, by łatwiej budować nawyki i konsekwentnie dążyć do własnego celu.",
         "text009": "Poznaj program"
       },
       "roadmap": {
@@ -216,7 +214,7 @@
       "aria_label002": "Najważniejsze informacje",
       "aria_label003": "Przykładowa lista zadań, nie jest interaktywna",
       "aria_label004": "Przykładowy widok postępów, grafika poglądowa",
-      "aria_label006": "Podgląd niedostępnego formularza. Nie można wysyłać danych.",
+      "aria_label006": "Formularz zgłoszeniowy do programu MOJA KOLEJ 2027",
       "placeholder007": "Twoje imię",
       "placeholder008": "twoj@email.com",
       "placeholder009": "+44…",
@@ -296,7 +294,7 @@
     },
     {
       "question": "Jak działa grupa WhatsApp?",
-      "answer": "To zamknięta grupa uczestników służąca wymianie doświadczeń, pytaniom i wzajemnemu wsparciu. Przed dołączeniem wyjaśnimy zasady, w tym widoczność numerów telefonów dla innych członków. Nie oznacza to całodobowej dostępności trenera."
+      "answer": "To prywatna grupa do rozmów, pytań, pomysłów i wzajemnego wsparcia. Przed dołączeniem otrzymasz informacje o zasadach oraz widoczności numerów telefonów innych uczestników."
     },
     {
       "question": "Czy muszę uczestniczyć w każdym spotkaniu na żywo?",
@@ -304,7 +302,7 @@
     },
     {
       "question": "Co, jeśli pracuję zmianowo?",
-      "answer": "Indywidualny trening i żywienie można dopasować do grafiku. Spotkania grupowe są zaplanowane na każdą niedzielę. Dokładną godzinę podamy przed rozpoczęciem zapisów."
+      "answer": "Trening i żywienie dostosujemy do Twojego grafiku. Termin spotkań grupowych będziemy ustalać organizacyjnie, aby ułatwić udział jak największej liczbie osób."
     },
     {
       "question": "Jak wyglądają cotygodniowe raporty?",
@@ -316,11 +314,11 @@
     },
     {
       "question": "Ile kosztuje udział?",
-      "answer": "Robocza cena pierwszej edycji wynosi {{total}} za 16 tygodni. To propozycja do ostatecznego potwierdzenia przed zapisami."
+      "answer": "Cena pierwszej edycji to {{total}} za 16 tygodni indywidualnego prowadzenia i spotkań grupowych. Samo zgłoszenie jest bezpłatne."
     },
     {
       "question": "Jak będzie wyglądać płatność w dwóch blokach?",
-      "answer": "Proponujemy {{reservation}} na etapie rezerwacji (zaliczane na cenę), następnie {{firstBlock}} przed pierwszym blokiem i {{secondBlock}} przed drugim. Terminy, rezygnacje i zwroty podamy po zatwierdzeniu regulaminu. Teraz nie przyjmujemy wpłat ani rezerwacji."
+      "answer": "Po zaakceptowaniu zgłoszenia przewidziana jest wpłata {{reservation}} na rezerwację miejsca, zaliczana na poczet ceny, następnie {{firstBlock}} przed pierwszym blokiem i {{secondBlock}} przed drugim. Wszystkie warunki, terminy i zasady rezygnacji otrzymasz przed wpłatą."
     },
     {
       "question": "Co dzieje się po 16 tygodniach?",
@@ -348,12 +346,12 @@
       "id": "spotkania",
       "icon": "video",
       "eyebrow": "02 / SPOTKANIA",
-      "title": "16 niedzielnych spotkań na żywo",
-      "detail": "W każdą niedzielę spotykamy się po polsku na około 45–60 minut. Omawiamy temat tygodnia, pytania, postępy i codzienne wyzwania.",
+      "title": "Spotkania na żywo",
+      "detail": "Regularne spotkania, podczas których omawiamy temat tygodnia, pytania uczestników, postępy i codzienne wyzwania. Czas na rozmowę, wiedzę i wspólne szukanie rozwiązań.",
       "items": [
-        "16 niedzielnych spotkań grupowych · 10.01–25.04.2027",
-        "Pytania można przesłać wcześniej",
-        "Dokładną godzinę podamy przed zapisami"
+        "Spotkania grupowe na żywo przez cały program",
+        "Możliwość przesłania pytań wcześniej",
+        "Aktualny termin ustalimy z uczestnikami"
       ]
     },
     {
@@ -361,7 +359,7 @@
       "icon": "check",
       "eyebrow": "03 / PRAKTYKA",
       "title": "Jedno zadanie na tydzień",
-      "detail": "Nie tylko słuchasz. Co tydzień wdrażasz jedną prostą rzecz, którą możesz naprawdę wykorzystać w swoim życiu.",
+      "detail": "Realne zadania, które pomagają budować lepsze nawyki. Co tydzień ćwiczysz jedną praktyczną umiejętność, którą wykorzystasz na co dzień.",
       "items": [
         "Lista zakupów i porównanie etykiet",
         "Przygotowanie posiłków na zapas",
@@ -399,7 +397,7 @@
       "title": "Nagrody i wyróżnienia",
       "detail": "Chcemy docenić nie tylko wynik, ale też systematyczność, zaangażowanie i indywidualny progres.",
       "items": [
-        "Rozważana profesjonalna sesja zdjęciowa",
+        "Profesjonalna sesja zdjęciowa",
         "Wyróżnienie za systematyczność",
         "Wyróżnienie za indywidualny postęp"
       ]
@@ -407,7 +405,7 @@
   ],
   "seo": {
     "title": "MOJA KOLEJ 2027 — 16 tygodni prowadzenia | KK Coaching",
-    "description": "MOJA KOLEJ 2027: 16 tygodni indywidualnego prowadzenia, spotkania na żywo, grupa wsparcia i praktyczne zadania. Podgląd programu — zapisy jeszcze nie ruszyły.",
+    "description": "MOJA KOLEJ 2027: 16 tygodni indywidualnego coachingu online, spotkania grupowe, zadania i wsparcie. Zapisy do pierwszej edycji już trwają.",
     "socialImage": "/images/moja-kolej-hero.webp",
     "socialImageAlt": "Kacper Kaszowski — trener KK Coaching"
   }
