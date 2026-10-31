@@ -16,6 +16,11 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
 <section class="hero" aria-labelledby="hero-heading">
   <img class="hero-photo" src={image} alt={imageAlt} width="768" height="1024" loading="eager" fetchpriority="high" decoding="async" />
   <div class="hero-scrim" aria-hidden="true"></div>
+  {campaign && (
+    <a class="campaign-mobile-banner" href={campaign.href} aria-label="MOJA KOLEJ 2027 — zapisy otwarte, poznaj program">
+      <strong>{campaign.title}</strong><span>Zapisy otwarte <span aria-hidden="true">↗</span></span>
+    </a>
+  )}
   <div class="container hero-inner">
     <div class="hero-copy">
       <h1 id="hero-heading">{heading}</h1>
@@ -73,6 +78,7 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
     );
   }
 
+  .campaign-mobile-banner {display:none;}
   .hero-inner {
     position: relative;
     z-index: 2;
@@ -98,6 +104,10 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
 
 
   @media (max-width: 620px) {
+    .campaign-mobile-banner {display:flex;align-items:center;justify-content:space-between;gap:12px;position:absolute;z-index:3;top:16px;left:18px;right:18px;min-height:54px;padding:12px 14px;background:rgba(20,21,25,.95);border:1px solid #ef6177;border-left:4px solid #eb4158;border-radius:4px;text-decoration:none;color:#fff;box-shadow:0 8px 26px rgba(0,0,0,.36);}
+    .campaign-mobile-banner strong {font-size:.86rem;letter-spacing:.025em;white-space:nowrap;}
+    .campaign-mobile-banner span {font-size:.73rem;color:#ffc3cd;font-weight:750;text-align:right;white-space:nowrap;}
+    .campaign-mobile-banner:focus-visible {outline:3px solid #fff;outline-offset:4px;}
     .hero { min-height: max(720px, calc(100svh - 72px)); }
     .hero-photo { object-position: 52% top; }
     .hero-inner { padding-top: clamp(330px, 48vh, 390px); padding-bottom: 32px; }
