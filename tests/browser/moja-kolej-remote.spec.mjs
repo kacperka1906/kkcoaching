@@ -82,6 +82,12 @@ for (const width of [390, 768, 1024, 1280, 1440]) {
     await page.setViewportSize({width,height:900});
     await page.goto(origin+'/pl/');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth), 'Page must not scroll sideways at '+width).toBe(false);
+    if(width===390){
+      const mobileBanner=page.locator('.campaign-mobile-banner');
+      await expect(mobileBanner).toBeVisible();
+      await expect(mobileBanner).toContainText('MOJA KOLEJ 2027');
+      await expect(mobileBanner).toHaveAttribute('href','/pl/moja-kolej-2027/');
+    }
     const menuButton=page.locator('#navToggle');
     const campaign=page.locator('.nav-program-cta a');
     if (width<=1240) {
