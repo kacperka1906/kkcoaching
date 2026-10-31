@@ -71,6 +71,14 @@ const common = {
         { label: 'Zdjęcie w sekcji trenera', name: 'coachImage', widget: 'image' },
         text('Opis dostępności zdjęcia trenera', 'coachAlt')
       ]),
+      group('00 · Informacje o programie / liczby i daty', 'facts', [
+        text('Rok edycji', 'year'),
+        {label:'Czas trwania (tygodnie)',name:'durationWeeks',widget:'number',value_type:'int',min:1},
+        {label:'Liczba miejsc w pierwszej edycji',name:'maxPlaces',widget:'number',value_type:'int',min:1},
+        text('Data startu — krótki zapis do hero', 'startShort'),
+        text('Data startu — pełny zapis na osi czasu', 'startFull'),
+        text('Data końca — pełny zapis na osi czasu', 'endFull')
+      ]),
       group('00 · Proponowana cena w GBP', 'pricing', [
         { label: 'Cena całego programu (£)', name: 'total', widget: 'number', value_type: 'int', min: 1 },
         { label: 'Etap rezerwacji (£)', name: 'reservation', widget: 'number', value_type: 'int', min: 0 },
