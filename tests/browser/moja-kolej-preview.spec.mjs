@@ -22,7 +22,8 @@ for(const width of [360,390,768,1024,1440]){
    await expect(page.locator('.mk-feature')).toHaveCount(6);
    await expect(page.locator('.mk-week')).toHaveCount(16);
    await expect(page.locator('.mk-faq-items details')).toHaveCount(15);
-   await expect(page.locator('.mk-form-card fieldset')).toBeDisabled();
+   await expect(page.locator('.mk-form-card fieldset')).toHaveAttribute('disabled','');
+   for (const field of await page.locator('.mk-form-card input, .mk-form-card select, .mk-form-card textarea').all()) await expect(field).toBeDisabled();
    await expect(page.locator('.mk-form-card button')).toBeDisabled();
    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content','noindex, follow');
    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',preview.replace('127.0.0.1:4322','kkcoaching.fit').replace('http:','https:'));
