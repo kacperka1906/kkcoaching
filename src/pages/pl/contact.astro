@@ -33,6 +33,8 @@ const languageOptions = [...formCopy.languageOptions].reverse();
           <label for="interest">{formCopy.interest[lang]}</label>
           <select id="interest" name="interest">{formCopy.interestOptions.map(option => <option value={option.value}>{option[lang]}</option>)}</select>
           <input type="hidden" id="lead-intent" name="lead_intent" value="direct" />
+          <input type="hidden" id="winter-campaign" name="campaign" value="" />
+          <input type="hidden" id="winter-variant" name="variant" value="" />
         </div>
         <div class="field"><label for="goal">{formCopy.goal[lang]} <span aria-hidden="true">*</span></label><textarea id="goal" name="goal" rows="3" required placeholder={formCopy.goalPlaceholder[lang]}></textarea></div>
         <div class="field"><label for="blocker">{formCopy.blocker[lang]}</label><textarea id="blocker" name="blocker" rows="3" placeholder={formCopy.blockerPlaceholder[lang]}></textarea></div>
@@ -56,6 +58,8 @@ const languageOptions = [...formCopy.languageOptions].reverse();
   const status = document.getElementById('form-status');
   const interestSelect = form?.querySelector<HTMLSelectElement>('#interest');
   const leadIntent = form?.querySelector<HTMLInputElement>('#lead-intent');
+  const winterCampaignInput = form?.querySelector<HTMLInputElement>('#winter-campaign');
+  const winterVariantInput = form?.querySelector<HTMLInputElement>('#winter-variant');
   const allowedUrlIntents = new Set(['pt', 'online', 'hybrid', 'training-plan', 'taster']);
   const allowedInterestValues = new Set(['', 'pt', 'online', 'hybrid', 'training-plan', 'taster', 'unsure']);
   const allowedLeadIntents = new Set(['direct', 'pt', 'online', 'hybrid', 'training-plan', 'taster']);
@@ -64,6 +68,13 @@ const languageOptions = [...formCopy.languageOptions].reverse();
 
   if (interestSelect && initialIntent) interestSelect.value = initialIntent;
   if (leadIntent) leadIntent.value = initialIntent || 'direct';
+  const params = new URLSearchParams(window.location.search);
+  const campaign = params.get('campaign');
+  const variant = params.get('variant');
+  const verifiedWinter = campaign === 'winter-kickstart-2026' && ((variant === 'pt' && initialIntent === 'pt') || (variant === 'hybrid' && initialIntent === 'hybrid'));
+  if (winterCampaignInput) winterCampaignInput.value = verifiedWinter ? 'winter-kickstart-2026' : '';
+  if (winterVariantInput) winterVariantInput.value = verifiedWinter ? variant! : '';
+
   const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   let isSubmitting = false;
   form?.addEventListener('submit', async (e) => {
@@ -85,7 +96,7 @@ const languageOptions = [...formCopy.languageOptions].reverse();
       const analyticsInterest = allowedInterestValues.has(submittedInterest) ? submittedInterest : '';
       const analyticsLeadIntent = allowedLeadIntents.has(submittedLeadIntent) ? submittedLeadIntent : 'direct';
       const gtag = (window as any).gtag;
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: analyticsInterest, lead_intent: analyticsLeadIntent });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact_enquiry', lead_language: form.dataset.leadLanguage || 'pl', interest: analyticsInterest, lead_intent: analyticsLeadIntent, ...(verifiedWinter ? {campaign:'winter-kickstart-2026',variant} : {}) });
       window.location.href = thankYou;
     } catch (err) {
       isSubmitting = false;

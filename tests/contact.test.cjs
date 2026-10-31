@@ -14,6 +14,8 @@ function contactPage(lang, intent = '', fetchImpl = async () => ({ ok: true }), 
   const source = fs.readFileSync(path.join(root, 'src/pages', lang === 'pl' ? 'pl/contact.astro' : 'contact.astro'), 'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
   const interest = { value: '' };
   const leadIntent = { value: 'direct' };
+  const campaignInput = { value: '' };
+  const variantInput = { value: '' };
   const button = { disabled: false };
   const status = { textContent: '' };
   const events = [];
@@ -24,7 +26,7 @@ function contactPage(lang, intent = '', fetchImpl = async () => ({ ok: true }), 
   const fields = { ...valid };
   const form = {
     dataset: { leadLanguage: lang, thankYou: lang === 'pl' ? '/pl/thank-you' : '/thank-you', error: 'Failed' },
-    querySelector: selector => selector === '#interest' ? interest : selector === '#lead-intent' ? leadIntent : button,
+    querySelector: selector => selector === '#interest' ? interest : selector === '#lead-intent' ? leadIntent : selector === '#winter-campaign' ? campaignInput : selector === '#winter-variant' ? variantInput : button,
     addEventListener: (event, listener) => { if (event === 'submit') submit = listener; },
     checkValidity: () => isValid,
     reportValidity() {},
@@ -32,16 +34,16 @@ function contactPage(lang, intent = '', fetchImpl = async () => ({ ok: true }), 
     removeAttribute: key => attributes.delete(key)
   };
   class MockFormData extends Map {
-    constructor() { super(Object.entries({ ...fields, interest: interest.value, lead_intent: leadIntent.value })); }
+    constructor() { super(Object.entries({ ...fields, interest: interest.value, lead_intent: leadIntent.value, campaign:campaignInput.value, variant:variantInput.value })); }
   }
-  const window = { location: { search: intent ? `?interest=${intent}` : '', href: '' } };
+  const window = { location: { search: intent ? (intent.startsWith('?') ? intent : `?interest=${intent}`) : '', href: '' } };
   if (analytics) window.gtag = (...args) => events.push(args);
   vm.runInNewContext(transformSync(source, { loader: 'ts' }).code, {
     document: { getElementById: id => id === 'contact-form' ? form : status }, window,
     URLSearchParams, FormData: MockFormData,
     fetch: async (url, options) => { requests.push({ url, body: JSON.parse(options.body) }); return fetchImpl(); }
   });
-  return { interest, leadIntent, button, status, attributes, window, events, requests, fields,
+  return { interest, leadIntent, campaignInput, variantInput, button, status, attributes, window, events, requests, fields,
     submit: () => submit({ preventDefault() {} }), setValidity: value => { isValid = value; } };
 }
 
@@ -178,4 +180,47 @@ test('contact delivery failures are bounded and never log provider response text
     global.fetch = originalFetch;
     console.error = originalError;
   }
+});
+
+for(const lang of ['en','pl']){
+ for(const variant of ['pt','hybrid']){
+  test(lang+' Winter Kickstart '+variant+' inquiry is safely tagged',async()=>{
+   const page=contactPage(lang,'?interest='+variant+'&campaign=winter-kickstart-2026&variant='+variant);
+   assert.equal(page.campaignInput.value,'winter-kickstart-2026');
+   assert.equal(page.variantInput.value,variant);
+   await page.submit();
+   assert.equal(page.requests.length,1);
+   assert.equal(page.requests[0].body.campaign,'winter-kickstart-2026');
+   assert.equal(page.requests[0].body.variant,variant);
+   assert.equal(page.events.length,1);
+   assert.equal(page.events[0][2].campaign,'winter-kickstart-2026');
+   assert.equal(page.events[0][2].variant,variant);
+  });
+ }
+ test(lang+' ignores spoofed or inconsistent seasonal query params',async()=>{
+   const page=contactPage(lang,'?interest=online&campaign=winter-kickstart-2026&variant=hybrid');
+   await page.submit();
+   assert.equal(page.campaignInput.value,'');
+   assert.equal(page.variantInput.value,'');
+   assert.equal(page.requests[0].body.campaign,'');
+   assert.equal(page.events[0][2].campaign,undefined);
+ });
+}
+test('backend labels validated Winter inquiries without accepting spoofed campaign metadata',async()=>{
+ const oldFetch=global.fetch;const emails=[];
+ global.fetch=async(_url,options)=>{emails.push(JSON.parse(options.body));return {ok:true}};
+ try{
+  for(const variant of ['pt','hybrid']){
+    const payload={...valid,interest:variant,lead_intent:variant,campaign:'winter-kickstart-2026',variant};
+    assert.equal((await handler({httpMethod:'POST',body:JSON.stringify(payload)})).statusCode,200);
+    assert.ok(emails.at(-1).subject.includes('WINTER KICKSTART 2026'));
+    assert.ok(emails.at(-1).html.includes('Campaign:</strong> winter-kickstart-2026'));
+    assert.ok(emails.at(-1).html.includes('Variant:</strong> '+variant));
+  }
+  const before=emails.length;
+  await handler({httpMethod:'POST',body:JSON.stringify({...valid,interest:'pt',lead_intent:'pt',campaign:'winter-kickstart-2026',variant:'hybrid'})});
+  assert.equal(emails.length,before+1);
+  assert.ok(!emails.at(-1).subject.includes('WINTER'));
+  assert.ok(!emails.at(-1).html.includes('Campaign:</strong>'));
+ }finally{global.fetch=oldFetch;}
 });

@@ -5,10 +5,13 @@ import { isOfferActive } from '../../src/lib/promotions.mjs';
 const state = JSON.parse(fs.readFileSync(new URL('../../dist/promotion-state.json', import.meta.url), 'utf8'));
 const offers = JSON.parse(fs.readFileSync(new URL('../../src/data/promotions.json', import.meta.url), 'utf8')).offers;
 const octoberOffer = offers.find(o => o.id === 'october-2026-20-off-everything');
+const winterPt = offers.find(o => o.id === 'winter-kickstart-2026-pt');
+const winterHybrid = offers.find(o => o.id === 'winter-kickstart-2026-hybrid');
+const builtWinter = isOfferActive(winterPt, new Date(state.builtAt));
 const builtActive = isOfferActive(octoberOffer, new Date(state.builtAt));
 const routes = ['', 'pl/', 'services/', 'pl/services/', 'personal-training-cwmbran/', 'pl/personal-training-cwmbran/',
   'online-coaching/', 'pl/online-coaching/', 'hybrid-coaching/', 'pl/hybrid-coaching/', 'training-plan/', 'pl/training-plan/'];
-const dates = [...new Set([state.builtAt, '2026-11-01T00:00:00Z'].map(value => new Date(value).toISOString()))];
+const dates = [...new Set([state.builtAt, '2026-11-01T00:00:00Z', '2026-11-30T23:59:59Z', '2026-12-01T00:00:00Z'].map(value => new Date(value).toISOString()))];
 
 // Never send analytics, mail or checkout requests from regression tests.
 test.beforeEach(async ({ page }) => {
@@ -44,7 +47,27 @@ for (const instant of dates) for (const width of [390, 1440]) for (const route o
       const lang = route.startsWith('pl/') ? 'pl' : 'en';
       await expect(trial.locator('a')).toHaveAttribute('href', `https://kkcoaching.mypthub.net/p/${lang === 'pl' ? '240387' : '240389'}`);
       const ids = await page.locator('[data-promotion-card]').evaluateAll(cards => cards.filter(c => !c.hidden).map(c => c.dataset.promotionId));
-      expect(ids).toEqual(['free-7-day-kk-coaching-trial', 'october-2026-free-pt-taster', ...(active ? [octoberOffer.id] : [])]);
+      const winterVisible = builtWinter && isOfferActive(winterPt, new Date(instant));
+      expect(ids).toEqual(['free-7-day-kk-coaching-trial', 'october-2026-free-pt-taster', ...(active ? [octoberOffer.id] : []), ...(winterVisible ? [winterPt.id] : [])]);
+      if (builtWinter) {
+        const panel=page.locator('[data-promotion-card][data-promotion-id="winter-kickstart-2026-pt"]');
+        if (winterVisible) {
+          await expect(panel).toBeVisible();
+          await expect(panel.locator('[data-winter-variant="pt"]')).toContainText('£159');
+          await expect(panel.locator('[data-winter-variant="hybrid"]')).toContainText('£219');
+          const variants=await panel.locator('[data-winter-variant]').count();
+          expect(variants).toBe(2);
+        } else await expect(panel).toBeHidden();
+      }
+    }
+    if (!homepage && (pt || route.includes('hybrid-coaching'))) {
+      const win=page.locator('[data-promotion-card][data-promotion-id="winter-kickstart-2026-'+(pt?'pt':'hybrid')+'"]');
+      const expectedWin=builtWinter&&isOfferActive(pt?winterPt:winterHybrid,new Date(instant));
+      if(expectedWin){
+        await expect(win).toBeVisible();
+        await expect(win.locator('[data-winter-variant]')).toHaveCount(1);
+        await expect(win).toContainText(pt?'£159':'£219');
+      } else if(builtWinter) await expect(win).toBeHidden();
     }
     if (homepage || pt) {
       await expect(taster).toBeVisible();

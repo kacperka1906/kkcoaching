@@ -174,6 +174,138 @@
         "en": "Demonstration package only. Workouts and meal plans are not individually tailored. No automatic renewal or obligation to purchase further coaching.",
         "pl": "Pakiet demonstracyjny. Treningi i jadłospisy nie są indywidualnie dopasowane. Bez automatycznego odnawiania i obowiązku zakupu dalszej współpracy."
       }
+    },
+    {
+      "id": "winter-kickstart-2026-pt",
+      "internalName": "WINTER KICKSTART 2026 — PT 1:1",
+      "enabled": true,
+      "featured": false,
+      "priority": 210,
+      "service": "personal-training",
+      "display": {
+        "homepage": true,
+        "servicePage": true
+      },
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-30",
+      "autoDisableAfterEndDate": true,
+      "headline": {
+        "en": "NOVEMBER SPECIAL",
+        "pl": "LISTOPADOWA OFERTA"
+      },
+      "title": {
+        "en": "WINTER KICKSTART — PT 1:1",
+        "pl": "WINTER KICKSTART — TRENINGI 1:1"
+      },
+      "offerText": {
+        "en": "Six 60-minute personal training sessions at JD Gyms Cwmbran. Build confidence, improve technique and start making progress.",
+        "pl": "Sześć indywidualnych treningów po 60 minut w JD Gyms Cwmbran. Lepsza technika, pewność siebie i konkretny plan działania."
+      },
+      "showPrice": true,
+      "promotionalPrice": 159,
+      "standardPrice": 159,
+      "promotionalPeriod": {
+        "en": "6 weeks · 6 personal training sessions",
+        "pl": "6 tygodni · 6 treningów personalnych"
+      },
+      "standardPriceText": {
+        "en": "One 60-minute PT session per week",
+        "pl": "Jedna 60-minutowa sesja PT tygodniowo"
+      },
+      "showSpaces": false,
+      "totalSpaces": 0,
+      "remainingSpaces": 0,
+      "ctaText": {
+        "en": "Enquire About PT",
+        "pl": "Zapytaj o treningi PT"
+      },
+      "ctaDestination": {
+        "en": "/contact?interest=pt&campaign=winter-kickstart-2026&variant=pt",
+        "pl": "/pl/contact?interest=pt&campaign=winter-kickstart-2026&variant=pt"
+      },
+      "smallPrint": {
+        "en": "New clients only · 1–30 November 2026 · Start date arranged individually · Subject to PT availability · JD Gyms membership paid separately · Not combinable with other discounts · No automatic renewal.",
+        "pl": "Tylko nowi klienci · 1–30 listopada 2026 · Termin rozpoczęcia ustalany indywidualnie · W zależności od dostępności trenera · Karnet JD Gyms płatny osobno · Bez łączenia z innymi rabatami · Bez automatycznego odnawiania."
+      },
+      "winterFeatures": {
+        "en": [
+          "6 individual PT sessions (60 minutes each)",
+          "Exercise selection and technique coaching",
+          "Load progression and guidance for independent activity"
+        ],
+        "pl": [
+          "6 indywidualnych treningów (każdy po 60 minut)",
+          "Dobór ćwiczeń i korekta techniki",
+          "Progresja obciążeń i wskazówki do samodzielnej aktywności"
+        ]
+      }
+    },
+    {
+      "id": "winter-kickstart-2026-hybrid",
+      "internalName": "WINTER KICKSTART 2026 — Hybrid",
+      "enabled": true,
+      "featured": true,
+      "priority": 200,
+      "service": "hybrid",
+      "display": {
+        "homepage": true,
+        "servicePage": true
+      },
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-30",
+      "autoDisableAfterEndDate": true,
+      "headline": {
+        "en": "NOVEMBER SPECIAL",
+        "pl": "LISTOPADOWA OFERTA"
+      },
+      "title": {
+        "en": "WINTER KICKSTART — HYBRID",
+        "pl": "WINTER KICKSTART — HYBRID"
+      },
+      "offerText": {
+        "en": "Everything from PT, plus personalised training and nutrition plans, MyPTHub access, weekly check-ins and ongoing coaching support.",
+        "pl": "Wszystko z pakietu PT oraz indywidualne plany treningowe i żywieniowe, dostęp do MyPTHub, cotygodniowe raporty i bieżące wsparcie trenera."
+      },
+      "showPrice": true,
+      "promotionalPrice": 219,
+      "standardPrice": 219,
+      "promotionalPeriod": {
+        "en": "6 weeks · 6 PT sessions + full online coaching",
+        "pl": "6 tygodni · 6 treningów PT + pełne prowadzenie online"
+      },
+      "standardPriceText": {
+        "en": "One PT session weekly + full 6-week online coaching",
+        "pl": "Jedna sesja PT tygodniowo + pełne prowadzenie online"
+      },
+      "showSpaces": false,
+      "totalSpaces": 0,
+      "remainingSpaces": 0,
+      "ctaText": {
+        "en": "Enquire About Hybrid",
+        "pl": "Zapytaj o Hybrid"
+      },
+      "ctaDestination": {
+        "en": "/contact?interest=hybrid&campaign=winter-kickstart-2026&variant=hybrid",
+        "pl": "/pl/contact?interest=hybrid&campaign=winter-kickstart-2026&variant=hybrid"
+      },
+      "smallPrint": {
+        "en": "New clients only · 1–30 November 2026 · Start date arranged individually · Subject to PT availability · JD Gyms membership paid separately · Not combinable with other discounts · No automatic renewal.",
+        "pl": "Tylko nowi klienci · 1–30 listopada 2026 · Termin rozpoczęcia ustalany indywidualnie · W zależności od dostępności trenera · Karnet JD Gyms płatny osobno · Bez łączenia z innymi rabatami · Bez automatycznego odnawiania."
+      },
+      "winterFeatures": {
+        "en": [
+          "6 individual 60-minute PT sessions",
+          "Personalised training and meal plans with recipes",
+          "MyPTHub tracking, weekly check-ins and programme adjustments",
+          "Coaching support between check-ins within agreed hours"
+        ],
+        "pl": [
+          "6 indywidualnych sesji PT po 60 minut",
+          "Dopasowane plany treningowe i jadłospis z przepisami",
+          "MyPTHub, cotygodniowe raporty i korekty planów",
+          "Kontakt z trenerem pomiędzy raportami w ustalonych ramach"
+        ]
+      }
     }
   ]
 }
