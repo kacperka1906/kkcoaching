@@ -27,7 +27,7 @@ test('actual Netlify preview HTML, metadata, sitemap and no internal promotion',
   const adminConfig = JSON.parse(await configResponse.text());
   expect(adminConfig.backend.branch).toBe(process.env.MK_EXPECTED_ADMIN_BRANCH || 'feature/moja-kolej-2027-preview');
   expect(adminConfig.collections.map(x => x.name)).toEqual(['moja_kolej_2027']);
-  const image = await request.get(origin + '/images/moja-kolej-hero.webp');
+  const image = await request.get(origin + '/images/moja-kolej-2027-mirror.webp');
   expect(image.status(), 'Artwork URL must resolve on Netlify').toBe(200);
   expect(image.headers()['content-type'], 'Artwork must be a real image, not a 404 HTML fallback').toMatch(/image\/(webp|octet-stream)/);
   expect((await image.body()).length).toBeGreaterThan(10000);
