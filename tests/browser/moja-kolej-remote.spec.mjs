@@ -34,7 +34,10 @@ for (const width of [390, 1440]) {
     await page.goto(origin + '/pl/moja-kolej-2027/');
     // We test the same privacy path as a visitor rejecting optional cookies.
     const decline = page.getByRole('button',{name:'Odrzuć opcjonalne'});
-    if (await decline.isVisible()) await decline.click();
+    // Netlify adds a preview-only drawer that can cover the cookie controls on mobile.
+    // Prepare screenshots without that instrumentation; the actual site remains untouched.
+    await page.evaluate(() => document.querySelectorAll('iframe[title="Netlify Drawer"]').forEach(frame => frame.closest('[data-netlify-deploy-id]')?.remove()));
+    if (await decline.isVisible()) await decline.evaluate(button => button.click());
     await expect(page.locator('h1')).toContainText('KOLEJ');
     await expect(page.locator('.apply-form-preview button')).toBeDisabled();
     const image = page.locator('.site-header img.site-logo');
