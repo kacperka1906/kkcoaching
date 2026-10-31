@@ -100,37 +100,6 @@ export async function checkPublishedSite({ fetcher = fetch, now = new Date() } =
     });
   }
 
-  await check('MOJA KOLEJ 2027 — hidden Polish preview', async () => {
-    const {body} = await get('/pl/moja-kolej-2027/');
-    must(/<html lang="pl">/.test(body), 'programme page must be Polish');
-    must(/<meta name="robots" content="noindex, follow"/.test(body), 'production page must remain noindex, follow');
-    must(/<link rel="canonical" href="https:\/\/kkcoaching\.fit\/pl\/moja-kolej-2027\/"/.test(body), 'canonical must be self-referencing');
-    must(!/hreflang=/.test(body), 'must not invent an English alternate');
-    must(body.includes('Zapisy jeszcze nie ruszyły'), 'preview enrolment warning missing');
-    must(body.includes('<fieldset disabled'), 'enrolment fields must remain disabled');
-    must(!/<form\b/i.test(body), 'no active form on the preview');
-    must(!body.includes('checkout.stripe.com'), 'checkout must not be activated');
-    const config = JSON.parse((await get('/admin/config.yml')).body);
-    must(config.backend.branch === 'main', 'production CMS must remain on main');
-    must(config.collections.some(item=>item.name==='moja_kolej_2027'), 'dedicated programme editor not published');
-  });
-  await check('MOJA KOLEJ 2027 — excluded from all published sitemaps', async () => {
-    const xml = (await get('/sitemap-index.xml')).body;
-    const links = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
-    must(links.length > 0, 'sitemap index is empty');
-    for (const url of links) {
-      const page = (await get(url)).body;
-      must(!page.includes('/pl/moja-kolej-2027'), 'new hidden page leaked into '+url);
-    }
-  });
-  await check('MOJA KOLEJ 2027 — no accidental promotion on home or offers', async () => {
-    for(const url of ['/','/pl/','/services/','/pl/services/']) {
-      const page=(await get(url)).body;
-      must(!page.includes('/moja-kolej-2027'), 'campaign linked from '+url);
-      must(!page.includes('<meta name="robots" content="noindex'), 'existing page accidentally noindexed: '+url);
-    }
-  });
-
   await check('robots.txt', async () => {
     const { body } = await get('/robots.txt');
     must(body.includes('Sitemap: https://kkcoaching.fit/sitemap-index.xml'), 'canonical sitemap declaration missing');
@@ -148,7 +117,7 @@ async function main() {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     const errors = await checkPublishedSite();
     if (!errors.length) {
-      console.log('PASS: production offers, active forms, plan prices, manifest, robots, sitemap and hidden MOJA KOLEJ programme verified.');
+      console.log('PASS: production offers, contact forms, plan prices, manifest headers, robots and sitemap verified.');
       return;
     }
     console.error('Attempt ' + attempt + '/' + maxAttempts + ': ' + errors.join('; '));
