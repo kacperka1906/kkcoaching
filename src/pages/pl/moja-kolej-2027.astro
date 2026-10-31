@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  { number:'01', symbol:'◉', title:'Prywatna grupa WhatsApp', kicker:'Ludzie, którzy rozumieją Twój cel', body:'Zamknięta grupa do wymiany doświadczeń, pytań i codziennego wsparcia. Rozmawiamy o posiłkach, zakupach, treningu i tym, jak poradzić sobie z trudniejszym tygodniem.', points:['Pomysły na przepisy i zakupy','Pytania, dyskusje i cotygodniowe sukcesy','Wsparcie innych uczestników'], note:'Przed dołączeniem wyjaśnimy, że członkowie grupy mogą widzieć wzajemnie swoje numery telefonu.' },
+  { number:'02', symbol:'▣', title:'Spotkania na żywo', kicker:'16 spotkań na żywo', body:'Raz w tygodniu spotykamy się na grupowej wideorozmowie po polsku. Około 45–60 minut na pytania, praktyczne przykłady, edukację i omówienie postępów.', points:['Planowanych 16 spotkań w całym programie','Możesz wcześniej przesłać pytanie','Dzień i godzina do potwierdzenia'] },
+  { number:'03', symbol:'☑', title:'Zadania tygodniowe', kicker:'Małe działania, które zostają na dłużej', body:'Co tydzień dostajesz jedno konkretne zadanie, żeby wiedza nie kończyła się na przeczytaniu kolejnej porady.', points:['Lista zakupów i porównanie etykiet','Przygotowanie posiłków i plan aktywności','Plan awaryjny na trudniejszy dzień'] },
+  { number:'04', symbol:'✦', title:'Warsztaty i praktyczna wiedza', kicker:'Wiedza do wykorzystania poza programem', body:'Uczymy się robić sensowne zakupy, czytać etykiety, planować jedzenie i trening w realnym grafiku. Bez szukania idealnych warunków.', points:['Budżet, przepisy i zamienniki produktów','Regeneracja, sen i jedzenie na mieście','Samodzielne prowadzenie treningu i żywienia'] },
+  { number:'05', symbol:'↗', title:'Indywidualne podsumowania', kicker:'Sprawdzamy, co naprawdę działa', body:'Nie tylko odhaczamy kolejne tygodnie. Dwa ważne momenty pozwolą spojrzeć na dane, trudności i wnioski.', points:['Tydzień 8 — analiza realizacji, pomiarów i korekty','Tydzień 16 — osiągnięcia, nawyki i dalszy plan'] },
+  { number:'06', symbol:'★', title:'Nagrody i wyróżnienia', kicker:'Doceniamy drogę, nie tylko wynik', body:'Rozważamy sesję fotograficzną jako nagrodę główną oraz wyróżnienia za systematyczność i indywidualny postęp.', points:['Szczegóły po zatwierdzeniu zasad'], note:'Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad.' },
+];
+const coaching = [
+'Indywidualny plan treningowy dopasowany do Twojego celu i możliwości',
+'Plan żywieniowy z konkretnymi posiłkami, przepisami i gramaturami',
+'Dostęp do MyPTHub, zapis treningów i monitorowanie postępów',
+'Cotygodniowe raporty, pomiary i bieżące korekty programu',
+'Informacje zwrotne o technice i kontakt z trenerem w ustalonych ramach',
+'Możliwość dokupienia treningów 1:1 w Cwmbran na odrębnych zasadach'
+];
+const stages = [
+  {number:'01',name:'Fundamenty',range:'Tygodnie 1–4',weeks:[
+    'Start, cele i organizacja tygodnia','Mądre zakupy i lista produktów','Czytanie etykiet i świadome wybory','Planowanie i przygotowywanie posiłków']},
+  {number:'02',name:'Regularność',range:'Tygodnie 5–8',weeks:[
+    'Białko, błonnik i sytość','Jedzenie poza domem i elastyczność','Motywacja, dyscyplina i trudniejsze dni','Indywidualne podsumowanie pierwszych ośmiu tygodni']},
+  {number:'03',name:'Rozwój',range:'Tygodnie 9–12',weeks:[
+    'Progres treningowy','Sen, regeneracja i aktywność codzienna','Zakupy i żywienie w ustalonym budżecie','Apetyt, podjadanie i rozpoznawanie nawyków']},
+  {number:'04',name:'Samodzielność',range:'Tygodnie 13–16',weeks:[
+    'Ocena postępów i stagnacji','Elastyczność podczas wyjazdów i trudnych tygodni','Plan utrzymania wypracowanych nawyków','Końcowa analiza, podsumowanie i dalsza droga']}
+];
+const rhythm = [
+['Poniedziałek','Nowy temat i zadanie'],
+['Wtorek','Praktyczna wskazówka w grupie'],
+['Środa','Planowane spotkanie na żywo'],
+['Czwartek','Zadania, pytania i rozmowy'],
+['Piątek','Sukcesy tygodnia i wzajemne wsparcie'],
+['Weekend','Przygotowanie i indywidualny raport']
+];
+const audiences = [
+'Chcesz zredukować tkankę tłuszczową, ale trudno Ci utrzymać wcześniejsze zmiany.',
+'Chcesz budować mięśnie, siłę lub po prostu poprawić sylwetkę.',
+'Trenujesz, ale brakuje Ci jasnego planu i mierzalnego progresu.',
+'Łączysz pracę, rodzinę i obowiązki, więc potrzebujesz realnego systemu.',
+'Chcesz nauczyć się planować zakupy, posiłki i treningi.',
+'Potrzebujesz indywidualnego prowadzenia oraz ludzi, z którymi łatwiej zachować regularność.'
+];
+const faq = [
+['Czy program jest tylko dla osób, które chcą schudnąć?','Nie. Możesz pracować nad redukcją, budową mięśni, sprawnością, siłą lub regularnością. Plan jest dobierany indywidualnie.'],
+['Czy muszę mieć doświadczenie na siłowni?','Nie. Plan treningowy dostosowujemy do Twojego poziomu i możliwości.'],
+['Czy program jest odpowiedni dla początkujących?','Tak, założeniem programu jest praca zarówno z osobami początkującymi, jak i z tymi, które już trenują.'],
+['Czy potrzebuję karnetu na siłownię?','To zależy od ustalonego planu i dostępnego sprzętu. Omówimy to przed rozpoczęciem współpracy.'],
+['Czy dostanę indywidualny plan treningowy?','Tak. Treningi będą dopasowane do Twojego celu, poziomu i dostępnego czasu.'],
+['Czy dostanę indywidualny jadłospis?','Tak. Plan żywieniowy obejmie konkretne posiłki, gramatury i przepisy dobrane do ustaleń.'],
+['Jak działa grupa WhatsApp?','Będzie to prywatna grupa uczestników do rozmów, pytań i wsparcia. Numery telefonów mogą być widoczne dla pozostałych członków. Nie oznacza to całodobowej dostępności trenera.'],
+['Czy muszę uczestniczyć w każdym spotkaniu na żywo?','Zachęcamy do udziału, ale rozumiemy pracę i obowiązki. Zasady nieobecności i ewentualnych materiałów podamy przed rozpoczęciem zapisów.'],
+['Co, jeśli pracuję zmianowo?','Indywidualny trening i żywienie uwzględniają Twój grafik. Terminy spotkań grupowych zostaną potwierdzone przed zapisami.'],
+['Jak wyglądają cotygodniowe raporty?','Przekazujesz ustalone informacje o treningach, pomiarach, realizacji planu i trudnościach. Na tej podstawie omawiamy postępy i potrzebne zmiany.'],
+['Czy mogę dokupić treningi personalne w Cwmbran?','Tak, taka możliwość jest planowana na odrębnych zasadach i według dostępnych terminów.'],
+['Ile kosztuje udział?','Robocza cena wynosi £450 za cały 16-tygodniowy program. Warunki wymagają jeszcze ostatecznego potwierdzenia.'],
+['Jak będzie wyglądać płatność w dwóch blokach?','Propozycja to £50 zaliczone na poczet całej ceny, następnie £175 przed pierwszym blokiem i £225 przed drugim. Na razie nie przyjmujemy wpłat ani rezerwacji.'],
+['Co dzieje się po 16 tygodniach?','Otrzymasz indywidualne podsumowanie i plan dalszego działania. Ewentualna dalsza współpraca jest osobną decyzją.'],
+['Czy udział w programie gwarantuje określony efekt?','Nie. Rezultaty zależą m.in. od indywidualnych warunków, regularności i realizacji planu. Nie obiecujemy konkretnej zmiany masy ciała ani sylwetki.']
+];
+---
+<BaseLayout
+  title="MOJA KOLEJ 2027 | 16 tygodni z KK Coaching"
+  description="MOJA KOLEJ 2027: 16 tygodni indywidualnego prowadzenia online, 16 spotkań na żywo i kameralna grupa 10 osób. Podgląd programu — zapisy jeszcze nie ruszyły."
+  lang="pl"
+  path="/pl/moja-kolej-2027/"
+  noindex={true}
+  socialImage="/images/kacper-gym-physique.webp"
+  socialImageAlt="Kacper Kaszowski, trener personalny KK Coaching"
+>
+  <div class="mk-preview" role="status"><span class="mk-pulse" aria-hidden="true"></span> PODGLĄD PROGRAMU · Zapisy jeszcze nie ruszyły</div>
+  <section class="mk-hero" aria-labelledby="mk-heading">
+    <div class="container mk-hero-grid">
+      <div class="mk-hero-copy">
+        <span class="mk-overline">KK COACHING PRZEDSTAWIA</span>
+        <h1 id="mk-heading"><span>MOJA</span> <span>KOLEJ<span class="mk-dot">.</span></span> <em>2027</em></h1>
+        <p class="mk-motto">16 tygodni. 10 osób.<br /><strong>Teraz czas na Ciebie.</strong></p>
+        <p class="mk-hero-desc">Indywidualny trening i żywienie, cotygodniowe spotkania na żywo, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.</p>
+        <a href="#poznaj-program" class="mk-button mk-button-red">Poznaj program <span aria-hidden="true">↗</span></a>
+        <p class="mk-hero-status">Pierwsza edycja w przygotowaniu. Bez zapisów i płatności.</p>
+      </div>
+      <div class="mk-hero-visual">
+        <div class="mk-photo-frame">
+          <img src="/images/kacper-gym-physique.webp" alt="Kacper Kaszowski, trener prowadzący KK Coaching" width="760" height="940" fetchpriority="high" decoding="async" />
+          <div class="mk-photo-caption"><span>KK COACHING</span><strong>PROWADZENIE Z PLANEM.</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="container"><div class="mk-stats" aria-label="Najważniejsze informacje o programie">
+      <div><strong>16</strong><span>tygodni</span></div>
+      <div><strong>10</strong><span>miejsc w pierwszej edycji</span></div>
+      <div><strong>04.01</strong><span>start w 2027 roku</span></div>
+    </div></div>
+  </section>
+
+  <section class="mk-intro" id="poznaj-program" aria-labelledby="mk-intro-title">
+    <div class="container mk-intro-grid">
+      <div><span class="mk-kicker">CZAS NA ZMIANĘ</span><h2 id="mk-intro-title">Zawsze jest coś <em>ważniejszego.</em></h2></div>
+      <div><p>Praca, rodzina, obowiązki… Zawsze znajdzie się coś, co trzeba zrobić najpierw. A kiedy ostatnio zrobiłeś coś dla siebie?</p><p class="mk-answer">MOJA KOLEJ.</p><p>Przez 16 tygodni pracujemy nad Twoim celem, ale też uczymy się planowania, regularności i podejmowania lepszych decyzji na co dzień. <strong>16 tygodni prowadzenia. Wiedza i nawyki na znacznie dłużej.</strong></p></div>
+    </div>
+  </section>
+
+  <section class="mk-community" aria-labelledby="mk-community-title">
+    <div class="container">
+      <div class="mk-section-head"><span class="mk-kicker">NAJWIĘKSZA RÓŻNICA</span><h2 id="mk-community-title">Tym razem <em>nie działasz sam.</em></h2><p>Masz swój indywidualny plan, ale obok Ciebie jest trener i grupa osób, które również postanowiły w końcu znaleźć czas dla siebie.</p></div>
+      <div class="mk-feature-grid">
+        {features.map((f, index) => (
+          <article class:list={['mk-feature', {'mk-whatsapp': index === 0, 'mk-meet': index === 1}]}>
+            <div class="mk-feature-top"><span class="mk-symbol" aria-hidden="true">{f.symbol}</span><span class="mk-number">{f.number} / 06</span></div>
+            <span class="mk-feature-kicker">{f.kicker}</span>
+            <h3>{f.title}</h3><p>{f.body}</p>
+            {index === 2 && <div class="mk-check-preview" aria-label="Przykładowe zadania, bez możliwości odznaczania">
+              <div><span aria-hidden="true">☑</span> Ułóż listę zakupów</div><div><span aria-hidden="true">☐</span> Porównaj dwie etykiety</div><div><span aria-hidden="true">☐</span> Zaplanuj jeden posiłek</div>
+              <small>Przykład, nie panel uczestnika</small>
+            </div>}
+            <ul>{f.points.map(point => <li>{point}</li>)}</ul>
+            {f.note && <p class="mk-feature-note">{f.note}</p>}
+          </article>
+        ))}
+      </div>
+      <p class="mk-trademark-note">WhatsApp jest zewnętrzną usługą komunikacyjną. Program nie jest sponsorowany ani organizowany przez WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="mk-coaching" aria-labelledby="mk-coaching-title">
+    <div class="container mk-coaching-grid">
+      <div><span class="mk-kicker">TWÓJ WŁASNY PLAN</span><h2 id="mk-coaching-title">A do tego pełne, <em>indywidualne prowadzenie.</em></h2><p>Każdy uczestnik pracuje nad swoim celem. Nie ma jednej diety ani jednego treningu dla całej grupy.</p>
+        <div class="mk-app-note"><strong>MyPTHub</strong><span>Twój plan, zapis treningów i pomiar postępów w jednym miejscu.</span></div>
+      </div>
+      <div class="mk-coaching-list"><ul>{coaching.map((item,i) => <li><span class="mk-list-num">{String(i+1).padStart(2,'0')}</span><span>{item}</span></li>)}</ul><p>Indywidualne prowadzenie jest częścią standardowej pracy KK Coaching. Tę edycję wyróżniają dodatkowo wspólny harmonogram, mała grupa, zadania, spotkania i warsztaty.</p></div>
+    </div>
+  </section>
+
+  <section class="mk-roadmap" id="plan-16-tygodni" aria-labelledby="mk-roadmap-title">
+    <div class="container">
+      <div class="mk-section-head"><span class="mk-kicker">OD PIERWSZEGO DO OSTATNIEGO TYGODNIA</span><h2 id="mk-roadmap-title">16 tygodni. <em>Cztery etapy.</em></h2><p>Jasny kierunek od pierwszego dnia, bez przypadkowych tematów. To plan edukacyjny — indywidualne treningi i żywienie odbywają się równolegle.</p></div>
+      <div class="mk-timeline">
+        {stages.map((stage, i) => (
+          <article class="mk-stage">
+            <div class="mk-stage-label"><span>ETAP {stage.number}</span><h3>{stage.name}</h3><p>{stage.range}</p></div>
+            <ol start={i*4+1}>{stage.weeks.map((week,j) => <li class:list={{'mk-checkpoint': (i===1&&j===3)||(i===3&&j===3)}}><span class="mk-week">T{String(i*4+j+1).padStart(2,'0')}</span><span>{week}</span></li>)}</ol>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mk-rhythm" aria-labelledby="mk-rhythm-title">
+    <div class="container">
+      <div class="mk-section-head"><span class="mk-kicker">PRAKTYKA, NIE TEORIA</span><h2 id="mk-rhythm-title">Jak wygląda <em>Twój tydzień?</em></h2><p>Proponowany rytm, który pomaga zorganizować działanie. Dokładne terminy spotkań potwierdzimy przed zapisami.</p></div>
+      <div class="mk-rhythm-grid">{rhythm.map(([day,detail],i)=><div class="mk-day"><span class="mk-day-number">{String(i+1).padStart(2,'0')}</span><strong>{day}</strong><p>{detail}</p></div>)}</div>
+    </div>
+  </section>
+
+  <section class="mk-audience" aria-labelledby="mk-audience-title">
+    <div class="container mk-audience-grid">
+      <div><span class="mk-kicker">DLA KOGO?</span><h2 id="mk-audience-title">Nie musisz zaczynać z tego samego miejsca co inni.</h2><p>Program dla dorosłych osób o różnych celach. Liczy się dopasowanie do Twojej sytuacji, nie jeden wspólny wynik na wadze.</p></div>
+      <div><ul>{audiences.map(item=><li>{item}</li>)}</ul><p class="mk-health-note">Przy szczególnych potrzebach zdrowotnych może być potrzebna dodatkowa ocena i wsparcie odpowiedniego specjalisty przed rozpoczęciem programu.</p></div>
+    </div>
+  </section>
+
+  <section class="mk-coach" aria-labelledby="mk-coach-title">
+    <div class="container mk-coach-grid">
+      <div class="mk-coach-image"><img src="/images/kacper-story-dscf1102.webp" alt="Kacper Kaszowski, trener personalny i twórca KK Coaching" width="680" height="720" loading="lazy" decoding="async" /></div>
+      <div><span class="mk-kicker">KTO CIĘ POPROWADZI?</span><h2 id="mk-coach-title">Nie uczę czegoś, czego sam nie musiałem się nauczyć.</h2><p>Jestem Kacper Kaszowski i prowadzę KK Coaching. Sam przeszedłem drogę od około 117 kg do 76 kg, a później stopniowo przebudowałem sylwetkę. Wiem, jak łatwo pogubić się w sprzecznych poradach i ciągle zaczynać od nowa.</p><p>Dziś pracuję z podopiecznymi nad treningiem, żywieniem i regularnością. Mam kwalifikacje Level 2 Gym Instructor i Level 3 Personal Trainer. Zależy mi, żebyś nie tylko realizował plan, ale też rozumiał, dlaczego coś robimy.</p><p class="mk-coach-disclaimer">To nowy program. Dotychczasowe doświadczenia i przemiany podopiecznych KK Coaching nie są wynikami tej edycji.</p><a class="mk-text-link" href="/pl/about/">Poznaj moją historię <span aria-hidden="true">↗</span></a><p class="mk-coach-reviews">Chcesz poznać wcześniejsze efekty i opinie podopiecznych? <a href="/pl/transformations/">Zobacz autentyczne historie klientów KK Coaching</a>. To nie są rezultaty programu MOJA KOLEJ 2027.</p></div>
+    </div>
+  </section>
+
+  <section class="mk-price" aria-labelledby="mk-price-title">
+    <div class="container mk-price-grid">
+      <div><span class="mk-kicker">CENA ROBOCZA · DO POTWIERDZENIA</span><h2 id="mk-price-title">Jedna edycja.<br /><em>16 tygodni razem.</em></h2><p>Proponowane warunki pierwszej edycji. Pełne zasady konsumenckie, rezygnacji, zwrotów i ewentualnych nagród opublikujemy przed rozpoczęciem zapisów.</p></div>
+      <div class="mk-price-card"><span>Planowana cena za całość</span><strong>£450</strong><small>16 tygodni · 10 planowanych miejsc</small>
+        <div class="mk-payment-steps"><div><b>£50</b><span>Planowana wpłata wliczona w cenę</span></div><div><b>£175</b><span>Przed pierwszym blokiem</span></div><div><b>£225</b><span>Przed drugim blokiem</span></div></div>
+        <p class="mk-price-note">To propozycja, nie oferta płatności ani możliwość rezerwacji. Aktualnie nie przyjmujemy wpłat.</p></div>
+    </div>
+  </section>
+
+  <section class="mk-signup" id="zgloszenie" aria-labelledby="mk-signup-title">
+    <div class="container mk-signup-grid">
+      <div><span class="mk-kicker">PIERWSZA EDYCJA</span><h2 id="mk-signup-title">Twoja kolej.<br /><em>Już wkrótce.</em></h2><p>Start programu zaplanowano na 4 stycznia 2027 roku, zakończenie na 25 kwietnia 2027 roku. Na razie oglądasz podgląd — zapisy jeszcze nie ruszyły.</p><div class="mk-signup-state" role="status">Zapisy jeszcze nie ruszyły. Przygotowujemy pierwszą edycję programu.</div></div>
+      <div class="mk-form-card"><h3>Formularz zgłoszeniowy</h3><p>Podgląd pól. Formularz jest wyłączony i niczego nie wysyła.</p>
+        <form aria-label="Nieaktywny formularz zgłoszeniowy — podgląd" onsubmit="return false">
+          <fieldset disabled><legend class="mk-visually-hidden">Przyszły formularz zgłoszeniowy</legend>
+            <label>Imię<input type="text" name="firstName" placeholder="Twoje imię" /></label>
+            <label>E-mail<input type="email" name="email" placeholder="adres@email.com" /></label>
+            <label>Telefon <small>(opcjonalnie)</small><input type="tel" name="phone" placeholder="+44…" /></label>
+            <label>Główny cel<select name="goal"><option value="">Wybierz cel</option><option>Redukcja tkanki tłuszczowej</option><option>Budowanie mięśni</option><option>Poprawa siły i sprawności</option><option>Regularność i nawyki</option><option>Inny cel</option></select></label>
+            <label>Dlaczego chcesz wziąć udział?<textarea name="reason" rows="3" placeholder="Kilka zdań o Twojej motywacji"></textarea></label>
+            <button type="button" disabled>Zapisy jeszcze nie ruszyły</button>
+          </fieldset>
+        </form><p class="mk-form-foot">Nie zbieramy tutaj żadnych danych. Informacje zdrowotne będą omawiane dopiero w odpowiednim procesie wdrożenia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mk-faq" aria-labelledby="mk-faq-title">
+    <div class="container mk-faq-grid"><div><span class="mk-kicker">DOBRZE WIEDZIEĆ</span><h2 id="mk-faq-title">Najczęstsze pytania.</h2><p>Bez niedomówień. Jeśli jakieś zasady nie są jeszcze zatwierdzone, napiszemy o tym wprost.</p></div>
+    <div class="mk-faq-items">{faq.map(([question,answer],i)=><details><summary><span class="mk-faq-index">{String(i+1).padStart(2,'0')}</span>{question}<span class="mk-faq-plus" aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div>
+  </section>
+  <section class="mk-bottom"><div class="container"><span>KK COACHING · PODGLĄD PROGRAMU</span><h2>MOJA KOLEJ<span>.</span> 2027</h2><p>16 tygodni. 10 osób. Teraz czas na Ciebie.</p><a href="#mk-heading">Wróć na początek ↑</a></div></section>
+</BaseLayout>
+
+<style>
+.mk-preview {background:#3a171c;color:#fff;text-align:center;font-size:.77rem;font-weight:800;letter-spacing:.08em;padding:11px 16px;position:relative;z-index:2}
+.mk-pulse {display:inline-block;width:7px;height:7px;background:#ff8895;border-radius:50%;margin-right:7px}
+.mk-hero {background:radial-gradient(ellipse at 72% 35%,#393238 0%,#1b1c20 36%,#111216 72%);color:white;padding:68px 0 0;overflow:hidden}
+.mk-hero-grid {display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:54px;align-items:center}
+.mk-overline,.mk-kicker {display:block;color:#be3448;font-size:.78rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase}
+.mk-overline{color:#ffc5cc;margin-bottom:25px}
+.mk-hero h1 {font-size:clamp(4rem,8vw,8.4rem);font-weight:950;letter-spacing:-.075em;line-height:.79;margin:0 0 29px;display:flex;flex-direction:column}
+.mk-hero h1 span {display:block}.mk-hero h1 em {color:#e2485b;font-size:.75em;font-style:normal;letter-spacing:-.045em;margin-top:18px}
+.mk-dot {color:#e2485b;display:inline!important}.mk-motto {font-size:clamp(1.35rem,2.4vw,2.05rem);line-height:1.28;font-weight:500;margin:0 0 22px}.mk-motto strong{color:#ffd6dc}
+.mk-hero-desc {max-width:570px;color:#d1d4da;font-size:1rem;line-height:1.8;margin-bottom:29px}
+.mk-button {min-height:54px;display:inline-flex;align-items:center;justify-content:center;gap:30px;text-decoration:none;padding:15px 26px;font-weight:850;border-radius:4px}
+.mk-button-red{background:#b72538;color:#fff}.mk-button-red:hover{background:#d33046}.mk-button span{font-size:1.25rem}
+.mk-hero-status {margin:15px 0 0;color:#aeb3bd;font-size:.78rem}
+.mk-hero-visual {height:100%;display:flex;align-items:flex-end}.mk-photo-frame {position:relative;width:100%;max-width:530px;margin-left:auto;overflow:hidden}
+.mk-photo-frame::before{content:'';position:absolute;inset:15% -4% 0 12%;border:1px solid #87464f;z-index:0}
+.mk-photo-frame img{width:100%;height:clamp(430px,44vw,660px);object-fit:cover;object-position:center 22%;filter:grayscale(.22) contrast(1.07);border-radius:2px;position:relative;mask-image:linear-gradient(#000 74%,transparent)}
+.mk-photo-caption {position:absolute;bottom:18px;left:20px;display:grid;gap:4px;border-left:3px solid #e84b5f;padding-left:14px}
+.mk-photo-caption span{color:#ffb9c3;font-size:.7rem;font-weight:900;letter-spacing:.16em}.mk-photo-caption strong{font-size:.86rem;letter-spacing:.055em}
+.mk-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#3c3c45;border-top:1px solid #3c3c45;margin-top:48px}
+.mk-stats>div{background:#17191d;padding:24px 26px;display:flex;align-items:baseline;gap:13px}.mk-stats strong{font-size:clamp(2rem,3vw,3rem);letter-spacing:-.04em;line-height:1;color:#fff}.mk-stats span{color:#c4c7ce;font-size:.8rem;line-height:1.4}
+.mk-intro{background:#f6f5f2;padding:110px 0}
+.mk-intro-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:8vw;align-items:start}
+.mk-intro h2,.mk-section-head h2,.mk-coaching h2,.mk-audience h2,.mk-coach h2,.mk-price h2,.mk-signup h2,.mk-faq h2 {font-size:clamp(2.4rem,4.25vw,4.45rem);letter-spacing:-.055em;line-height:1.05;margin:17px 0 20px;font-weight:900}
+.mk-intro h2 em,.mk-section-head h2 em,.mk-coaching h2 em,.mk-price h2 em,.mk-signup h2 em {font-style:normal;color:#b72538}
+.mk-intro-grid>div:last-child p{font-size:1.12rem;line-height:1.8;color:#3d414a;margin-bottom:21px}.mk-intro-grid .mk-answer{font-size:1.6rem!important;font-weight:950;color:#a51f2e!important;letter-spacing:-.035em}
+.mk-community{background:#17191d;color:#f7f7f7}.mk-section-head{max-width:780px;margin-bottom:40px}.mk-section-head>p{font-size:1.09rem;line-height:1.8;color:#c4c7ce;max-width:670px}.mk-community .mk-kicker,.mk-roadmap .mk-kicker,.mk-rhythm .mk-kicker,.mk-faq .mk-kicker{color:#ec7181}
+.mk-community .mk-section-head h2 em{color:#ee6578}
+.mk-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.mk-feature{min-width:0;display:flex;flex-direction:column;padding:30px 27px;background:#22252a;border:1px solid #3b3e45;border-top:3px solid #a52b3b;border-radius:7px;min-height:445px}
+.mk-feature.mk-whatsapp{border-top-color:#25d366}.mk-feature.mk-meet{border-top-color:#f19ba4;background:#27262b}
+.mk-feature-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.mk-symbol{width:48px;height:48px;display:grid;place-items:center;border:1px solid #57545b;border-radius:14px;font-size:1.8rem;color:#ff9aa7}
+.mk-whatsapp .mk-symbol{color:#25d366;border-color:#246943}.mk-number{color:#8e949e;font-size:.72rem;font-weight:800;letter-spacing:.12em}
+.mk-feature-kicker{font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#f29daa;margin-bottom:11px}.mk-whatsapp .mk-feature-kicker{color:#68e89b}
+.mk-feature h3{font-size:clamp(1.3rem,1.7vw,1.65rem);line-height:1.17;margin:0 0 15px;letter-spacing:-.03em}
+.mk-feature p{color:#c6cad0;font-size:.91rem;line-height:1.7}.mk-feature ul{list-style:none;margin:21px 0 0;padding:0}.mk-feature li{border-top:1px solid #3b3f47;padding:9px 0;color:#e4e5e8;font-size:.85rem;line-height:1.5}.mk-feature li::before{content:'↗';color:#e16d7c;font-weight:900;margin-right:8px}
+.mk-feature .mk-feature-note{margin-top:auto;padding-top:16px;color:#abb0b8;font-size:.75rem;line-height:1.55}
+.mk-check-preview{background:#16191d;border:1px solid #3f4549;border-radius:7px;padding:12px 15px;margin:18px 0 2px;display:grid;gap:7px;font-size:.8rem}
+.mk-check-preview div{display:flex;gap:11px}.mk-check-preview div span{color:#7de0a2}.mk-check-preview small{color:#9da4ad;font-size:.68rem;margin-top:4px}
+.mk-trademark-note{font-size:.75rem;color:#a0a5ad;margin-top:23px}
+.mk-coaching{background:#fff}.mk-coaching-grid,.mk-audience-grid,.mk-price-grid,.mk-signup-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:7vw;align-items:start}
+.mk-coaching-grid>div:first-child>p,.mk-audience-grid>div:first-child>p,.mk-price-grid>div:first-child>p,.mk-signup-grid>div:first-child>p,.mk-faq-grid>div:first-child>p{font-size:1.03rem;color:#4e535b;line-height:1.8}
+.mk-app-note{background:#17191d;color:#fff;border-left:4px solid #b72538;border-radius:5px;display:grid;gap:8px;padding:23px;margin-top:33px}.mk-app-note strong{font-size:1.5rem}.mk-app-note span{font-size:.86rem;color:#ccd0d4}
+.mk-coaching-list ul,.mk-audience ul{list-style:none;padding:0;margin:0}.mk-coaching-list li{display:grid;grid-template-columns:40px 1fr;gap:15px;align-items:start;padding:18px 0;border-bottom:1px solid #dfe1e4;font-size:1rem;font-weight:650;line-height:1.5}
+.mk-list-num{color:#b72538;font-size:.8rem;font-weight:900;margin-top:3px}.mk-coaching-list>p{font-size:.79rem;color:#5d626b;line-height:1.65;margin-top:17px}
+.mk-roadmap{background:#f0f0ef}.mk-roadmap .mk-section-head>p,.mk-rhythm .mk-section-head>p,.mk-faq .mk-section-head>p{color:#535962}
+.mk-timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.mk-stage{background:white;display:grid;grid-template-columns:205px minmax(0,1fr);border:1px solid #d9dce0;border-radius:7px;overflow:hidden}
+.mk-stage-label{background:#191c21;color:white;padding:26px 21px}.mk-stage-label>span{font-size:.69rem;color:#ed8593;letter-spacing:.12em;font-weight:900} .mk-stage-label h3{font-size:1.13rem;overflow-wrap:normal;word-break:normal;margin:10px 0;letter-spacing:-.04em}.mk-stage-label p{font-size:.76rem;color:#c2c5cc}
+.mk-stage ol{list-style:none;padding:14px 20px;counter-reset:none}.mk-stage li{display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:start;padding:13px 0;border-bottom:1px solid #e4e5e7;font-size:.83rem;line-height:1.48}.mk-stage li:last-child{border-bottom:0}
+.mk-week{font-weight:900;color:#aa2436;font-size:.77rem}.mk-checkpoint{font-weight:850;color:#8e1d2e}
+.mk-rhythm{background:#fff}.mk-rhythm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.mk-day{background:#f4f4f3;border:1px solid #e4e5e7;border-left:3px solid #a51f2e;border-radius:5px;padding:20px}.mk-day-number{display:block;color:#b62639;font-size:.75rem;font-weight:900;margin-bottom:14px}.mk-day strong{font-size:1.06rem}.mk-day p{font-size:.85rem;color:#51565f;line-height:1.55;margin-top:6px}
+.mk-audience{background:#17191d;color:white}.mk-audience .mk-kicker{color:#f08c98}.mk-audience h2{max-width:530px}.mk-audience-grid>div:first-child>p{color:#c5c8cf}
+.mk-audience li{border-bottom:1px solid #3d424b;padding:14px 0 14px 34px;position:relative;font-size:.96rem;line-height:1.55}.mk-audience li::before{content:'✓';position:absolute;left:0;color:#ec7485;font-weight:900}.mk-health-note{margin-top:20px;color:#bbc0c9;font-size:.8rem;line-height:1.7}
+.mk-coach{background:#f8f8f7}.mk-coach-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:7vw;align-items:center}.mk-coach-image img{width:100%;height:580px;object-fit:cover;object-position:center top;border-radius:5px}
+.mk-coach-grid>div:last-child>p{font-size:1.03rem;line-height:1.76;margin:16px 0;color:#474d56}.mk-coach-grid .mk-coach-disclaimer{font-size:.78rem!important;color:#68707a!important;border-left:3px solid #b72538;padding-left:16px}
+.mk-coach-reviews{font-size:.82rem!important;margin-top:20px!important}.mk-coach-reviews a{color:#982132;font-weight:800}\n.mk-text-link{color:#a21f31;font-weight:850;display:inline-flex;gap:10px;align-items:center;margin-top:7px}
+.mk-price{background:#17191d;color:#fff}.mk-price .mk-kicker{color:#ee8492}.mk-price-grid>div:first-child>p{color:#bdc2ca}
+.mk-price-card{border:1px solid #56515a;background:#242328;border-top:5px solid #ca3347;padding:32px;border-radius:7px}.mk-price-card>span{font-size:.8rem;color:#c5c7ce;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.mk-price-card>strong{display:block;font-size:clamp(4.7rem,8vw,7rem);line-height:1.06;letter-spacing:-.065em;color:white;margin:10px 0}.mk-price-card>small{display:block;color:#d8b2ba;margin-bottom:22px}
+.mk-payment-steps{border-top:1px solid #55515a}.mk-payment-steps>div{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:14px;border-bottom:1px solid #55515a;padding:14px 0}.mk-payment-steps b{color:#faadb8;font-size:1.35rem}.mk-payment-steps span{font-size:.9rem;color:#d1d4d9}
+.mk-price-card .mk-price-note{font-size:.75rem;color:#b9bec6;margin-top:19px;line-height:1.6}
+.mk-signup{background:#f2f2f0}.mk-signup-state{background:#fff;border-left:4px solid #aa2637;border-radius:4px;padding:18px;color:#4f222a;font-weight:800;font-size:.88rem;line-height:1.6;margin-top:28px}
+.mk-form-card{background:#fff;padding:35px;border:1px solid #d6d9dd;border-radius:8px;box-shadow:0 10px 30px #14161b0d}.mk-form-card h3{font-size:1.6rem;letter-spacing:-.035em;margin-bottom:4px}.mk-form-card>p{font-size:.86rem;color:#606770;line-height:1.55}
+.mk-form-card form{margin-top:25px}.mk-form-card fieldset{border:0;padding:0;display:grid;gap:14px}.mk-form-card label{display:grid;gap:6px;font-size:.82rem;font-weight:800;color:#4e545c}.mk-form-card label small{font-weight:500}
+.mk-form-card input,.mk-form-card select,.mk-form-card textarea{font:inherit;width:100%;border-radius:4px;border:1px solid #bec4c9;padding:12px 14px;color:#555b63;background:#f2f3f4;min-height:48px;opacity:1}.mk-form-card textarea{resize:none}
+.mk-form-card button{background:#6a6c72;border:0;color:#fff;border-radius:4px;padding:15px;min-height:52px;font-weight:850;font-size:.95rem;cursor:not-allowed;opacity:1}
+.mk-form-card .mk-form-foot{font-size:.75rem;color:#6f737a;margin-top:17px}.mk-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mk-faq{background:#fff}.mk-faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:5vw}.mk-faq h2{font-size:clamp(2.2rem,3.6vw,3.3rem);overflow-wrap:normal;word-break:normal}.mk-faq-items{border-top:1px solid #d8dce0}.mk-faq-items details{border-bottom:1px solid #d8dce0}.mk-faq-items summary{list-style:none;display:grid;grid-template-columns:35px 1fr 28px;gap:12px;align-items:center;cursor:pointer;min-height:62px;padding:13px 2px;font-size:.93rem;font-weight:800;line-height:1.35}.mk-faq-items summary::-webkit-details-marker{display:none}.mk-faq-index{font-size:.71rem;color:#b72538}.mk-faq-plus{font-size:1.5rem;font-weight:400;text-align:right;color:#a52235}.mk-faq-items details[open] .mk-faq-plus{transform:rotate(45deg)}
+.mk-faq-items details p{margin:0 30px 20px 47px;color:#555b64;font-size:.91rem;line-height:1.75}
+.mk-bottom{background:#a51f2e;color:#fff;text-align:center;padding:65px 0}.mk-bottom span{font-size:.69rem;letter-spacing:.16em;font-weight:900}.mk-bottom h2{font-size:clamp(2.2rem,6vw,4.7rem);letter-spacing:-.075em;line-height:1.12;margin:15px 0}.mk-bottom h2 span{font-size:inherit}.mk-bottom p{color:#ffe4e7;margin-bottom:20px}.mk-bottom a{color:#fff;font-weight:800}
+:global(.mk-hero a:focus-visible),:global(.mk-bottom a:focus-visible),:global(.mk-faq summary:focus-visible),:global(.mk-coach a:focus-visible){outline:3px solid #f7a4b0;outline-offset:4px}
+@media(max-width:1024px){.mk-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mk-timeline{grid-template-columns:1fr}.mk-stage{grid-template-columns:195px minmax(0,1fr)}.mk-stage-label{padding:22px 18px}.mk-hero-grid{gap:25px}.mk-hero h1{font-size:clamp(3.6rem,8.5vw,6rem)}}
+@media(max-width:768px){.mk-hero{padding:43px 0 0}.mk-hero-grid{grid-template-columns:1fr}.mk-hero h1{font-size:clamp(4.3rem,14vw,7.5rem)}.mk-hero-visual{max-width:550px;margin:0 auto;width:100%}.mk-photo-frame img{height:440px;object-position:center 24%}.mk-stats{margin-top:5px}.mk-stats>div{display:grid;gap:6px;padding:19px}.mk-intro-grid,.mk-coaching-grid,.mk-audience-grid,.mk-coach-grid,.mk-price-grid,.mk-signup-grid,.mk-faq-grid{grid-template-columns:1fr;gap:30px}.mk-intro{padding:65px 0}.mk-coach-image{max-width:530px}.mk-coach-image img{height:470px}.mk-timeline{grid-template-columns:1fr}.mk-rhythm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.mk-preview{font-size:.65rem;letter-spacing:.025em}.mk-hero h1{font-size:clamp(3.65rem,17vw,5.5rem);margin-bottom:24px}.mk-motto{font-size:1.45rem}.mk-hero-desc{font-size:.93rem}.mk-button{width:100%}.mk-hero-status{text-align:center}.mk-photo-frame img{height:340px}.mk-stats>div{padding:15px 9px}.mk-stats strong{font-size:1.75rem}.mk-stats span{font-size:.65rem}.mk-feature-grid{grid-template-columns:1fr}.mk-feature{min-height:unset;padding:25px 22px}.mk-stage{grid-template-columns:1fr}.mk-stage-label{padding:17px 20px}.mk-stage-label h3{margin:5px 0}.mk-stage ol{padding:6px 18px 10px}.mk-rhythm-grid{grid-template-columns:1fr}.mk-day{padding:16px 19px}.mk-coach-image img{height:365px}.mk-price-card,.mk-form-card{padding:24px 19px}.mk-payment-steps>div{grid-template-columns:75px 1fr}.mk-faq-items summary{grid-template-columns:25px 1fr 20px;gap:9px;font-size:.88rem}.mk-faq-items details p{margin-left:34px}}
+@media(prefers-reduced-motion:reduce){.mk-faq-plus{transition:none!important}.mk-hero *{animation:none!important}}
+</style>
