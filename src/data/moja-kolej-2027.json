@@ -1,7 +1,7 @@
 {
   "media": {
-    "heroImage": "/images/kacper.jpg",
-    "heroAlt": "Kacper Kaszowski, prowadzący KK Coaching",
+    "heroImage": "/images/moja-kolej-hero.webp",
+    "heroAlt": "Przemiana sylwetki Kacpra — obecna sylwetka i spojrzenie na wcześniejszą wersję siebie w lustrze",
     "coachImage": "/images/kacper.jpg",
     "coachAlt": "Kacper Kaszowski, trener personalny i założyciel KK Coaching"
   },
@@ -407,6 +407,6 @@
     "title": "MOJA KOLEJ 2027 — 16 tygodni prowadzenia | KK Coaching",
     "description": "MOJA KOLEJ 2027: 16 tygodni indywidualnego coachingu online, spotkania grupowe, zadania i wsparcie. Zapisy do pierwszej edycji już trwają.",
     "socialImage": "/images/moja-kolej-hero.webp",
-    "socialImageAlt": "Kacper Kaszowski — trener KK Coaching"
+    "socialImageAlt": "Przemiana sylwetki Kacpra — obecna sylwetka i spojrzenie na wcześniejszą wersję siebie w lustrze"
   }
 }
