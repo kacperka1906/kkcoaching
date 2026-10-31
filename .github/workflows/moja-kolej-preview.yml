@@ -6,6 +6,7 @@ on:
       - 'src/pages/pl/moja-kolej-2027.astro'
       - 'astro.config.mjs'
       - 'tests/moja-kolej-preview.test.mjs'
+      - 'tests/browser/moja-kolej-preview.spec.mjs'
       - '.github/workflows/moja-kolej-preview.yml'
 permissions:
   contents: read
@@ -20,9 +21,19 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npx playwright install --with-deps chromium
       - name: Build complete production-equivalent site and run existing SEO audits
         run: npm run build
       - name: Run existing site regression suites
         run: npm test
       - name: Verify campaign isolation, text, and disabled signups
         run: node tests/moja-kolej-preview.test.mjs
+      - name: Browser review at 360 / 390 / 768 / 1024 / 1440px
+        run: npx playwright test tests/browser/moja-kolej-preview.spec.mjs
+      - name: Save mobile and desktop previews for review
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: moja-kolej-2027-screenshots
+          path: test-results/moja-kolej-2027/
+          if-no-files-found: ignore
