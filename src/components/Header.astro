@@ -24,7 +24,7 @@ const stickyMobile = admin.header.stickyMobile;
 const compactOnScroll = admin.header.compactOnScroll;
 ---
 <header
-  class:list={['site-header', { 'sticky-mobile': stickyMobile }]}
+  class:list={['site-header', { 'sticky-mobile': stickyMobile, 'polish-header': lang === 'pl' }]}
   data-sticky-mobile={String(stickyMobile)}
   data-compact-on-scroll={String(compactOnScroll)}
   id="siteHeader"
@@ -41,6 +41,13 @@ const compactOnScroll = admin.header.compactOnScroll;
             <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
           </li>
         ))}
+        {lang === 'pl' && (
+          <li class="nav-program-cta">
+            <a href="/pl/moja-kolej-2027/" aria-current={currentPath === '/pl/moja-kolej-2027' ? 'page' : undefined}>
+              <span class="program-dot" aria-hidden="true"></span>MOJA KOLEJ 2027
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
 
@@ -104,7 +111,7 @@ const compactOnScroll = admin.header.compactOnScroll;
     if (event.key === 'Escape' && nav?.classList.contains('is-open')) closeMenu(true);
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 940 && nav?.classList.contains('is-open')) closeMenu();
+    if (window.innerWidth > (header?.classList.contains('polish-header') ? 1240 : 940) && nav?.classList.contains('is-open')) closeMenu();
   }, { passive: true });
 
   if (header?.dataset.compactOnScroll === 'true') {
@@ -154,6 +161,25 @@ const compactOnScroll = admin.header.compactOnScroll;
   nav.main-nav a[aria-current="page"] { color: #FFDDE1; }
   nav.main-nav a[aria-current="page"] { font-weight: 700; }
 
+
+  nav.main-nav li.nav-program-cta { display:flex;align-items:center; }
+  nav.main-nav li.nav-program-cta a {
+    display:inline-flex;align-items:center;gap:7px;
+    padding:9px 11px;white-space:nowrap;
+    border:1.5px solid #ed6173;border-radius:5px;
+    background:rgba(173,27,47,.16);color:#fff;
+    font-size:.78rem;font-weight:800;letter-spacing:.02em;
+    box-shadow:0 0 0 1px rgba(237,97,115,.07);
+    transition:background-color .15s ease,border-color .15s ease;
+  }
+  nav.main-nav li.nav-program-cta a:hover,
+  nav.main-nav li.nav-program-cta a[aria-current="page"] {
+    background:#a71f35;border-color:#ff9baa;color:#fff;
+  }
+  .program-dot {width:7px;height:7px;flex:0 0 7px;background:#fc7187;border-radius:50%;}
+  nav.main-nav li.nav-program-cta a:hover .program-dot {background:#fff;}
+  nav.main-nav li.nav-program-cta a:focus-visible {outline:3px solid #fff;outline-offset:3px;}
+
   .header-right { display: flex; align-items: center; gap: 12px; }
   .header-cta {
     background: var(--red);
@@ -198,6 +224,24 @@ const compactOnScroll = admin.header.compactOnScroll;
     .header-cta { display: none; }
     nav.main-nav ul { gap: 11px; }
     nav.main-nav a { font-size: 0.82rem; }
+  }
+
+
+  /* Polish campaign navigation gets its own wider layout, without modifying EN header. */
+  .site-header.polish-header .container {max-width:1490px;}
+  @media (max-width: 1530px) and (min-width: 941px) {
+    .site-header.polish-header .header-cta {display:none;}
+  }
+  @media (min-width: 941px) and (max-width: 1240px) {
+    .site-header.polish-header .nav-toggle {display:inline-flex;align-items:center;justify-content:center;}
+    .site-header.polish-header nav.main-nav {display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 65px);overflow-y:auto;background:var(--graphite);padding:12px 24px 22px;box-shadow:0 12px 30px rgba(0,0,0,.28);}
+    .site-header.polish-header nav.main-nav.is-open {display:block;}
+    .site-header.polish-header nav.main-nav ul {flex-direction:column;gap:0;}
+    .site-header.polish-header nav.main-nav li {border-bottom:1px solid #30333a;}
+    .site-header.polish-header nav.main-nav a {display:block;padding:13px 7px;font-size:1rem;white-space:normal;}
+    .site-header.polish-header nav.main-nav li.nav-program-cta {display:flex;padding:12px 0;border-bottom:0;}
+    .site-header.polish-header nav.main-nav li.nav-program-cta a {display:flex;width:100%;justify-content:center;min-height:52px;background:#a51f2e;border:2px solid #ff90a1;color:#fff;font-size:1.04rem;}
+    .site-header.polish-header nav.main-nav li.nav-item-cta a {color:#fff;font-weight:700;}
   }
 
   @media (max-width: 940px) {
@@ -245,5 +289,8 @@ const compactOnScroll = admin.header.compactOnScroll;
       padding: 13px 16px;
     }
     nav.main-nav li.nav-item-cta a:hover { background: var(--red-hover); color: var(--white); }
+    nav.main-nav li.nav-program-cta {padding:12px 0;border-bottom:0;}
+    nav.main-nav li.nav-program-cta a {width:100%;min-height:52px;justify-content:center;padding:15px 14px;font-size:1.05rem;background:#a51f2e;border:2px solid #ff90a1;color:#fff;box-shadow:0 5px 18px rgba(165,31,46,.3);}
+    nav.main-nav li.nav-program-cta .program-dot {background:#fff;width:9px;height:9px;flex-basis:9px;}
   }
 </style>

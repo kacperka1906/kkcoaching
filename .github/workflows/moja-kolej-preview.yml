@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - 'src/pages/pl/moja-kolej-2027.astro'
+      - 'src/pages/pl/index.astro'
+      - 'src/components/Header.astro'
+      - 'src/components/Hero.astro'
+      - 'src/data/moja-kolej-2027.json'
+      - 'scripts/extend-admin-moja-kolej.mjs'
       - 'astro.config.mjs'
       - 'tests/moja-kolej-preview.test.mjs'
       - 'tests/browser/moja-kolej-preview.spec.mjs'
@@ -37,7 +42,7 @@ jobs:
         env:
           ASTRO_TELEMETRY_DISABLED: '1'
         run: npm test
-      - name: Check noindex, sitemap, disabled form and existing pages
+      - name: Check noindex, artwork, sitemap, published PL-only campaign and unchanged EN pages
         run: node tests/moja-kolej-preview.test.mjs
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
