@@ -39,7 +39,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
           <p class="hero-note">{copy.sections.hero.text010}</p><p class="hero-note">{copy.sections.hero.text011}</p>
         </div>
         <div class="hero-photo">
-          <img src={media.heroImage} width="960" height="1200" fetchpriority="high" alt={copy.attributes.alt001} />
+          <img src={media.heroImage} width="960" height="1200" fetchpriority="high" alt={media.heroAlt} />
           <div class="photo-shadow" aria-hidden="true"></div>
           <div class="photo-caption"><span>{copy.sections.hero.text012}</span><strong>{copy.sections.hero.text013}</strong></div>
         </div>
@@ -156,7 +156,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
 
     <section class="mk-coach" aria-labelledby="mk-coach-title">
       <div class="container coach-grid">
-        <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={copy.attributes.alt005} /><span>{copy.sections.coach.text001}</span></div>
+        <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={media.coachAlt} /><span>{copy.sections.coach.text001}</span></div>
         <div><p class="mk-label">{copy.sections.coach.text002}</p><h2 id="mk-coach-title">{copy.sections.coach.text003} <span>{copy.sections.coach.text004}</span></h2><p>{copy.sections.coach.text005}</p><p>{copy.sections.coach.text006}</p><div class="coach-credential"><strong>{copy.sections.coach.text007}</strong><span>{copy.sections.coach.text008}</span></div><p class="coach-quiet">{copy.sections.coach.text009}</p></div>
       </div>
     </section>
