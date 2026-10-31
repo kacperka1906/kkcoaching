@@ -158,7 +158,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-coach" aria-labelledby="mk-coach-title">
       <div class="container coach-grid">
         <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={media.coachAlt} /><span>{renderCopy(copy.sections.coach.text001)}</span></div>
-        <div><p class="mk-label">{renderCopy(copy.sections.coach.text002)}</p><h2 id="mk-coach-title">{renderCopy(copy.sections.coach.text003)} <span>{renderCopy(copy.sections.coach.text004)}</span></h2><p>{renderCopy(copy.sections.coach.text005)}</p><p>{renderCopy(copy.sections.coach.text006)}</p><div class="coach-credential"><strong>{renderCopy(copy.sections.coach.text007)}</strong><span>{renderCopy(copy.sections.coach.text008)}</span></div></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.coach.text002)}</p><h2 id="mk-coach-title">{renderCopy(copy.sections.coach.text003)} <span>{renderCopy(copy.sections.coach.text004)}</span></h2><p>{renderCopy(copy.sections.coach.text005)}</p><p>{renderCopy(copy.sections.coach.text006)}</p></div>
       </div>
     </section>
 
@@ -373,7 +373,8 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   .price-amount span {font-size:.87rem;color:#c5c7ca;letter-spacing:0;font-weight:500;}
   .price-lines>div {display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #474a50;align-items:center;font-size:.9rem;}
   .price-lines small {font-size:.72rem;color:#babcc3;}
-  .price-lines strong {font-size:1.25rem;}
+  .price-lines>div>span {flex:1 1 auto;min-width:0;overflow-wrap:break-word;}
+  .price-lines strong {font-size:1.25rem;white-space:nowrap;flex:0 0 auto;font-variant-numeric:tabular-nums;}
   .price-final {font-size:.73rem;color:#c4bfc4;display:block;margin-top:18px;}
   .mk-apply {background:#f4f4f1;}
   .apply-grid {display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,7vw,100px);}
