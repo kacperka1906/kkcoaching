@@ -49,6 +49,7 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           MK_PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--kkcoaching-fit.netlify.app
+          MK_EXPECTED_ADMIN_BRANCH: ${{ github.head_ref }}
           ASTRO_TELEMETRY_DISABLED: '1'
         run: |
           for attempt in $(seq 1 12); do
