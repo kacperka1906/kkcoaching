@@ -32,6 +32,9 @@ assert.equal((main.match(/class="week-index"/g) ?? []).length, 16, 'Sixteen week
 assert.equal((main.match(/<details\b/g) ?? []).length, 15, 'Fifteen FAQ entries');
 assert.equal((main.match(/class="day-name"/g) ?? []).length, 7, 'Seven weekly rhythm entries');
 assert.ok(main.includes(programme.media.heroImage), 'Uses editable hero image');
+assert.ok(fs.existsSync(new URL('images/moja-kolej-hero.webp', dist)), 'Real mirror image must be present in published dist folder');
+assert.ok(fs.statSync(new URL('images/moja-kolej-hero.webp', dist)).size > 10000, 'Mirror image must not be an empty placeholder');
+assert.doesNotMatch(main, /class="coach-credential"/, 'Coach qualifications block is removed');
 assert.ok(main.includes(programme.media.coachImage), 'Uses editable coach image');
 assert.ok(main.includes(String(programme.facts.maxPlaces)), 'Group size is rendered');
 assert.ok(main.includes(programme.facts.year), 'Year is rendered');
@@ -47,7 +50,13 @@ for (const name of sitemaps) {
 for (const original of ['index.html','pl/index.html','services/index.html','pl/services/index.html',
   'contact/index.html','pl/contact/index.html']) {
   const existing = fs.readFileSync(new URL(original, dist), 'utf8');
-  assert.ok(!existing.includes('/moja-kolej-2027'), original + ' must not link to preview');
+  if (original.startsWith('pl/')) {
+    assert.ok(existing.includes('href="/pl/moja-kolej-2027/"'), original + ' should advertise the programme in Polish menu');
+  } else {
+    assert.ok(!existing.includes('/moja-kolej-2027'), original + ' must not advertise the programme in English');
+  }
+  if (original === 'pl/index.html') assert.ok(existing.includes('campaign-spotlight'), 'Polish homepage spotlight is live');
+  if (original === 'index.html') assert.ok(!existing.includes('campaign-spotlight'), 'English homepage remains without campaign');
   assert.doesNotMatch(existing, /<meta name="robots" content="noindex/, original + ' remains indexable');
 }
 const siteConfig = fs.readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
