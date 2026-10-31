@@ -23,8 +23,6 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
   )}
   <div class="container hero-inner">
     <div class="hero-copy">
-      <h1 id="hero-heading">{heading}</h1>
-      <p class="lead">{lead}</p>
       {campaign && (
         <aside class="campaign-spotlight" aria-label="Nowość w KK Coaching">
           <div class="campaign-spotlight-copy">
@@ -35,6 +33,8 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
           <a class="campaign-spotlight-link" href={campaign.href}>{campaign.buttonLabel}<span aria-hidden="true">↗</span></a>
         </aside>
       )}
+      <h1 id="hero-heading">{heading}</h1>
+      <p class="lead">{lead}</p>
       <div class="hero-ctas">
         <a href={ctaPrimaryHref} class="btn btn-primary">{ctaPrimary}</a>
         <a href={ctaSecondaryHref} class="btn btn-secondary">{ctaSecondary}</a>
@@ -92,7 +92,7 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
   .hero p.lead { color: #D3D6DA; font-size: 1.05rem; max-width: 46ch; margin-bottom: 26px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
   .trust-line { color: #AEB3BA; font-size: 0.82rem; line-height: 1.5; letter-spacing: 0.01em; }
-  .campaign-spotlight {display:flex;align-items:center;justify-content:space-between;gap:22px;max-width:660px;margin:4px 0 22px;padding:17px 20px;background:rgba(20,21,24,.9);border:1px solid rgba(252,119,135,.63);border-left:4px solid #ee4057;box-shadow:0 12px 32px rgba(0,0,0,.18);border-radius:5px;}
+  .campaign-spotlight {display:flex;align-items:center;justify-content:space-between;gap:22px;max-width:660px;margin:0 0 28px;padding:17px 20px;background:rgba(20,21,24,.9);border:1px solid rgba(252,119,135,.63);border-left:4px solid #ee4057;box-shadow:0 12px 32px rgba(0,0,0,.18);border-radius:5px;}
   .campaign-spotlight-copy {min-width:0;}
   .campaign-eyebrow {display:flex;align-items:center;gap:8px;color:#ffc6cf;font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
   .campaign-pulse {width:7px;height:7px;border-radius:50%;background:#fa7081;flex:0 0 7px;}
@@ -116,7 +116,7 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
     .hero-ctas { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .hero-ctas .btn { width: 100%; }
     .trust-line { text-align: center; font-size: 0.76rem; max-width: 42ch; margin: 0 auto; }
-    .campaign-spotlight {flex-direction:column;align-items:stretch;gap:15px;margin:4px 0 18px;padding:16px;}
+    .campaign-spotlight {display:none;}
     .campaign-spotlight-link {width:100%;font-size:.92rem;}
     .campaign-spotlight strong {font-size:1.4rem;}
   }

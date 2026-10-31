@@ -111,3 +111,28 @@ for (const width of [390, 768, 1024, 1280, 1440]) {
     }
   });
 }
+
+test('Polish homepage places campaign above H1 without duplicating mobile promotion', async ({page}) => {
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto(origin+'/pl/');
+  const campaign=page.locator('.campaign-spotlight');
+  const heading=page.locator('.hero #hero-heading');
+  await expect(campaign).toBeVisible();
+  await expect(heading).toBeVisible();
+  const positions=await page.evaluate(()=>{
+    const hero=document.querySelector('.hero');
+    const campaign=hero?.querySelector('.campaign-spotlight');
+    const heading=hero?.querySelector('#hero-heading');
+    return {campaignBottom:campaign?.getBoundingClientRect().bottom, headingTop:heading?.getBoundingClientRect().top, h1Count:document.querySelectorAll('main h1').length, ordered:campaign && heading ? !!(campaign.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING) : false};
+  });
+  expect(positions.ordered).toBe(true);
+  expect(positions.campaignBottom).toBeLessThan(positions.headingTop);
+  expect(positions.h1Count).toBe(1);
+  await page.setViewportSize({width:390,height:844});
+  await expect(campaign).toBeHidden();
+  await expect(page.locator('.campaign-mobile-banner')).toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
+  await page.goto(origin+'/');
+  await expect(page.locator('.campaign-spotlight')).toHaveCount(0);
+  await expect(page.locator('.campaign-mobile-banner')).toHaveCount(0);
+});
