@@ -261,7 +261,7 @@
         "text002": "PODGLĄD PROGRAMU",
         "text003": "MOJA",
         "text004": "KOLEJ",
-        "text005": "16 tygodni. 10 osób.",
+        "text005": "{{weeks}} tygodni. {{places}} osób.",
         "text006": "Teraz czas na Ciebie.",
         "text007": "Praca, rodzina, obowiązki… Zawsze jest coś ważniejszego. A kiedy ostatnio zrobiłeś coś dla siebie?",
         "text008": "Indywidualny trening i żywienie, spotkania na żywo w każdą niedzielę, zamknięta grupa wsparcia, praktyczne zadania i wiedza, dzięki której łatwiej zadbasz o siebie również po zakończeniu programu.",
@@ -358,7 +358,7 @@
         "text012": "Wszystkie warunki wymagają ostatecznego zatwierdzenia."
       },
       "application": {
-        "text001": "PIERWSZA EDYCJA • DO 10 OSÓB",
+        "text001": "PIERWSZA EDYCJA • DO {{places}} OSÓB",
         "text002": "Twoja kolej",
         "text003": "może być następna.",
         "text004": "Przygotowujemy prosty formularz zgłoszeniowy. Kiedy uruchomimy zapisy, będziesz mógł opowiedzieć nam o swoim celu i tym, dlaczego chcesz wziąć udział.",
@@ -389,7 +389,7 @@
         "text001": "MOJA KOLEJ 2027",
         "text002": "Nie musisz zmieniać wszystkiego naraz.",
         "text003": "Zacznij od decyzji, że też jesteś ważny.",
-        "text004": "16 tygodni. 10 osób. Teraz czas na Ciebie.",
+        "text004": "{{weeks}} tygodni. {{places}} osób. Teraz czas na Ciebie.",
         "text005": "Wróć do programu ↑",
         "text006": "Strona testowa — zapisy i płatności są wyłączone."
       }
@@ -404,5 +404,13 @@
       "placeholder009": "+44…",
       "placeholder010": "Napisz kilka zdań…"
     }
+  },
+  "facts": {
+    "year": "2027",
+    "durationWeeks": 16,
+    "maxPlaces": 10,
+    "startShort": "04.01",
+    "startFull": "04 STYCZNIA 2027",
+    "endFull": "25 KWIETNIA 2027"
   }
 }
