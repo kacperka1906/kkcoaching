@@ -1,0 +1,45 @@
+name: Winter promotions — scheduled production refresh
+on:
+  schedule:
+    # GMT on both boundary dates; stagger to reduce scheduler queue delays.
+    - cron: '1,7,22,37,52 0-3 1 11,12 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: winter-promotion-refresh
+  cancel-in-progress: false
+
+jobs:
+  publish-correct-month:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - id: check
+        name: Compare public promotion manifest with exact London offer dates
+        run: node scripts/check-promotion-release.mjs
+      - name: Trigger Netlify Git integration via a bounded, auditable commit
+        if: steps.check.outputs.needs_refresh == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'kk-coaching-promotion-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          date -u +'%Y-%m-%dT%H:%M:%SZ' > .github/promotion-build-trigger.txt
+          git add .github/promotion-build-trigger.txt
+          git commit -m 'chore: refresh active Winter/October promotions after London date boundary'
+          git push origin HEAD:main
+      - name: Explain scheduling reliability
+        if: always()
+        run: echo 'GitHub schedules can be delayed and the Netlify build must finish before the static HTML changes. Verify the production manifest after both dates.'
