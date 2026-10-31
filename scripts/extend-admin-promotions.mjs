@@ -72,6 +72,14 @@ const promotionFields = [
       { label: 'Automatycznie ukryj po dacie zakończenia', name: 'autoDisableAfterEndDate', widget: 'boolean', default: true },
 
       pair('Krótki dopisek / warunki', 'smallPrint', 'text', true, 'Tylko informacje, których klient nie widzi już wyżej. Nie powtarzaj ceny ani liczby miejsc.'),
+      {
+        label: 'Winter Kickstart — korzyści pakietu (tylko sezonowe rekordy)',
+        name: 'winterFeatures',widget:'object',required:false,collapsed:true,
+        fields:[
+          {label:'Korzyści EN',name:'en',widget:'list',required:false,field:{label:'Korzyść',name:'value',widget:'string'}},
+          {label:'Korzyści PL',name:'pl',widget:'list',required:false,field:{label:'Korzyść',name:'value',widget:'string'}}
+        ]
+      },
 
       {
         label: 'Opcjonalny tytuł promocji bez ceny',
