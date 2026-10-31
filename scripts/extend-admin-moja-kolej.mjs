@@ -30,7 +30,7 @@ const sectionNames = {
   fit: '07 · Dla kogo jest program',
   coach: '08 · Trener i wiarygodność',
   price: '09 · Cena i zasady',
-  application: '10 · Podgląd formularza (NIEAKTYWNY)',
+  application: '10 · Formularz zapisów (AKTYWNY)',
   faq: '11 · Częste pytania',
   final: '12 · Zakończenie i CTA'
 };
@@ -79,13 +79,13 @@ const common = {
         text('Data startu — pełny zapis na osi czasu', 'startFull'),
         text('Data końca — pełny zapis na osi czasu', 'endFull')
       ]),
-      group('00 · Proponowana cena w GBP', 'pricing', [
+      group('00 · Cena programu w GBP', 'pricing', [
         { label: 'Cena całego programu (£)', name: 'total', widget: 'number', value_type: 'int', min: 1 },
         { label: 'Etap rezerwacji (£)', name: 'reservation', widget: 'number', value_type: 'int', min: 0 },
         { label: 'Przed pierwszym blokiem (£)', name: 'firstBlock', widget: 'number', value_type: 'int', min: 0 },
         { label: 'Przed drugim blokiem (£)', name: 'secondBlock', widget: 'number', value_type: 'int', min: 0 }
       ]),
-      group('Treści sekcji — nagłówki, CTA, objaśnienia, podgląd formularza', 'copy', [
+      group('Treści podstrony — edytuj rozwijając sekcje, w tym 08 · Trener', 'copy', [
         group('Opisy pól i dostępność', 'attributes', attributes),
         group('Sekcje strony', 'sections', sections)
       ]),
