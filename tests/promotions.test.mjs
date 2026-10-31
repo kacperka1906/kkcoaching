@@ -8,6 +8,9 @@ const offers = JSON.parse(fs.readFileSync(new URL('../src/data/promotions.json',
 const octoberId = 'october-2026-20-off-everything';
 const permanent = ['free-7-day-kk-coaching-trial', 'october-2026-free-pt-taster'].sort();
 const october = offers.find(o => o.id === octoberId);
+const winterIds = ['winter-kickstart-2026-pt','winter-kickstart-2026-hybrid'].sort();
+const winterOffers = winterIds.map(id => offers.find(o => o.id === id));
+assert.ok(winterOffers.every(Boolean), 'Both Winter Kickstart variants exist');
 for (const [instant, date, active] of [
   ['2026-09-30T22:59:59Z', '2026-09-30', false],
   ['2026-09-30T23:00:00Z', '2026-10-01', true],
@@ -18,7 +21,8 @@ for (const [instant, date, active] of [
 ]) test(`London boundary ${instant}`, () => {
   assert.equal(londonDateKey(new Date(instant)), date);
   assert.equal(isOfferActive(october, new Date(instant)), active);
-  assert.deepEqual(activeOfferIds(offers, new Date(instant)), [...permanent, ...(active ? [octoberId] : [])].sort());
+  const winterActive = date >= '2026-11-01' && date <= '2026-11-30';
+  assert.deepEqual(activeOfferIds(offers, new Date(instant)), [...permanent, ...(active ? [octoberId] : []), ...(winterActive ? winterIds : [])].sort());
 });
 
 const env = { PROMOTION_REFRESH_ENABLED: 'true', PROMOTION_BUILD_HOOK_URL: 'https://api.netlify.com/build_hooks/test-hook' };
@@ -40,7 +44,7 @@ test('scheduler requests one build when published HTML is stale', async () => {
 });
 for (const config of [
   { date: '2026-10-31T23:59:59Z' },
-  { ids: permanent },
+  { ids: [...permanent, ...winterIds] },
   { date: '2027-07-01T12:00:00Z', ids: permanent }
 ]) test(`scheduler skips matching state ${JSON.stringify(config)}`, async () => {
   const { calls, handler } = fixture(config);
@@ -121,4 +125,23 @@ test('rejects malformed or future-dated manifests without requesting builds', as
     await assert.rejects(handler(), /Invalid published promotion state/);
     assert.equal(calls.length, 1);
   }
+});
+
+for (const [instant,active] of [
+  ['2026-10-31T23:59:59Z',false],
+  ['2026-11-01T00:00:00Z',true],
+  ['2026-11-30T23:59:59Z',true],
+  ['2026-12-01T00:00:00Z',false]
+]) test('Winter Kickstart London boundary '+instant,()=>{
+  assert.ok(winterOffers.every(offer=>isOfferActive(offer,new Date(instant))===active));
+  assert.deepEqual(winterOffers.map(offer=>offer.promotionalPrice).sort((a,b)=>a-b),[159,219]);
+});
+test('Winter Kickstart stays isolated from permanent offers and both variants expire together',()=>{
+  const [hybrid,pt]=winterOffers.sort((a,b)=>a.service.localeCompare(b.service));
+  assert.equal(pt.startDate,hybrid.startDate);
+  assert.equal(pt.endDate,hybrid.endDate);
+  assert.ok(winterOffers.every(offer=>offer.autoDisableAfterEndDate));
+  assert.ok(winterOffers.every(offer=>offer.display.homepage && offer.display.servicePage));
+  assert.deepEqual(offers.filter(offer=>offer.id.startsWith('winter-kickstart')).map(offer=>offer.service).sort(),['hybrid','personal-training']);
+  assert.ok(winterOffers.every(offer=>offer.ctaDestination.en.includes('campaign=winter-kickstart-2026')));
 });
