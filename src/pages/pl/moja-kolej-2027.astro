@@ -3,8 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import programme from '../../data/moja-kolej-2027.json';
 
 const url = '/pl/moja-kolej-2027/';
-const {seo, media, pricing, features, coaching, phases, week, people, faqs, copy} = programme;
+const {seo, media, pricing, facts, features, coaching, phases, week, people, faqs, copy} = programme;
 const formatPrice = (amount: number) => `£${amount}`;
+const renderCopy = (value: string) => value.replace(/\{\{(weeks|places)\}\}/g, (_, key: string) => key === 'weeks' ? String(facts.durationWeeks) : String(facts.maxPlaces));
 const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|firstBlock|secondBlock)\}\}/g, (_, field: keyof typeof pricing) => formatPrice(pricing[field]));
 ---
 <BaseLayout
@@ -30,40 +31,40 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-hero" aria-labelledby="mk-title">
       <div class="container mk-hero-grid">
         <div class="hero-text">
-          <p class="mk-eyebrow"><span class="mk-dot"></span> {copy.sections.hero.text001} <span class="preview-tag">{copy.sections.hero.text002}</span></p>
-          <h1 id="mk-title"><span>{copy.sections.hero.text003}</span><span>{copy.sections.hero.text004}<span class="period">.</span></span><em>2027</em></h1>
-          <p class="hero-slogan">{copy.sections.hero.text005}<br/><strong>{copy.sections.hero.text006}</strong></p>
-          <p class="hero-intro">{copy.sections.hero.text007}</p>
-          <p class="hero-description">{copy.sections.hero.text008}</p>
-          <a class="mk-button" href="#poznaj-program">{copy.sections.hero.text009} <span aria-hidden="true">↓</span></a>
-          <p class="hero-note">{copy.sections.hero.text010}</p><p class="hero-note">{copy.sections.hero.text011}</p>
+          <p class="mk-eyebrow"><span class="mk-dot"></span> {renderCopy(copy.sections.hero.text001)} <span class="preview-tag">{renderCopy(copy.sections.hero.text002)}</span></p>
+          <h1 id="mk-title"><span>{renderCopy(copy.sections.hero.text003)}</span><span>{renderCopy(copy.sections.hero.text004)}<span class="period">.</span></span><em>{facts.year}</em></h1>
+          <p class="hero-slogan">{renderCopy(copy.sections.hero.text005)}<br/><strong>{renderCopy(copy.sections.hero.text006)}</strong></p>
+          <p class="hero-intro">{renderCopy(copy.sections.hero.text007)}</p>
+          <p class="hero-description">{renderCopy(copy.sections.hero.text008)}</p>
+          <a class="mk-button" href="#poznaj-program">{renderCopy(copy.sections.hero.text009)} <span aria-hidden="true">↓</span></a>
+          <p class="hero-note">{renderCopy(copy.sections.hero.text010)}</p><p class="hero-note">{renderCopy(copy.sections.hero.text011)}</p>
         </div>
         <div class="hero-photo">
           <img src={media.heroImage} width="960" height="1200" fetchpriority="high" alt={media.heroAlt} />
           <div class="photo-shadow" aria-hidden="true"></div>
-          <div class="photo-caption"><span>{copy.sections.hero.text012}</span><strong>{copy.sections.hero.text013}</strong></div>
+          <div class="photo-caption"><span>{renderCopy(copy.sections.hero.text012)}</span><strong>{renderCopy(copy.sections.hero.text013)}</strong></div>
         </div>
       </div>
       <div class="container stats-row" aria-label={copy.attributes.aria_label002}>
-        <div><strong>16</strong><span>{copy.sections.hero.text014}</span></div>
-        <div><strong>10</strong><span>{copy.sections.hero.text015}</span></div>
-        <div><strong>04.01</strong><span>{copy.sections.hero.text016}</span></div>
+        <div><strong>{facts.durationWeeks}</strong><span>{renderCopy(copy.sections.hero.text014)}</span></div>
+        <div><strong>{facts.maxPlaces}</strong><span>{renderCopy(copy.sections.hero.text015)}</span></div>
+        <div><strong>{facts.startShort}</strong><span>{renderCopy(copy.sections.hero.text016)}</span></div>
       </div>
     </section>
 
     <section class="mk-intro" id="poznaj-program" aria-labelledby="mk-intro-title">
       <div class="container intro-grid">
-        <div><p class="mk-label">{copy.sections.intro.text001}</p><h2 id="mk-intro-title">{copy.sections.intro.text002} <span>{copy.sections.intro.text003}</span></h2></div>
-        <div><p>{copy.sections.intro.text004}</p><p><strong>{copy.sections.intro.text005}</strong> {copy.sections.intro.text006}</p><blockquote>{copy.sections.intro.text007}<br/>{copy.sections.intro.text008}</blockquote></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.intro.text001)}</p><h2 id="mk-intro-title">{renderCopy(copy.sections.intro.text002)} <span>{renderCopy(copy.sections.intro.text003)}</span></h2></div>
+        <div><p>{renderCopy(copy.sections.intro.text004)}</p><p><strong>{renderCopy(copy.sections.intro.text005)}</strong> {renderCopy(copy.sections.intro.text006)}</p><blockquote>{renderCopy(copy.sections.intro.text007)}<br/>{renderCopy(copy.sections.intro.text008)}</blockquote></div>
       </div>
     </section>
 
     <section class="mk-community" aria-labelledby="mk-community-title">
       <div class="container">
         <div class="mk-section-heading centered">
-          <p class="mk-label">{copy.sections.community.text001}</p>
-          <h2 id="mk-community-title">{copy.sections.community.text002} <span>{copy.sections.community.text003}</span></h2>
-          <p>{copy.sections.community.text004}</p>
+          <p class="mk-label">{renderCopy(copy.sections.community.text001)}</p>
+          <h2 id="mk-community-title">{renderCopy(copy.sections.community.text002)} <span>{renderCopy(copy.sections.community.text003)}</span></h2>
+          <p>{renderCopy(copy.sections.community.text004)}</p>
         </div>
         <div class="feature-grid">
           {features.map((feature) => (
@@ -76,16 +77,16 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
               <p>{feature.detail}</p>
               {feature.id === 'zadania' ? (
                 <div class="mock-task" aria-label={copy.attributes.aria_label003}>
-                  <span class="task-title">{copy.sections.community.text005}</span>
-                  <span><span aria-hidden="true" class="fake-check checked">✓</span> {copy.sections.community.text006}</span>
-                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text007}</span>
-                  <span><span aria-hidden="true" class="fake-check"></span> {copy.sections.community.text008}</span>
+                  <span class="task-title">{renderCopy(copy.sections.community.text005)}</span>
+                  <span><span aria-hidden="true" class="fake-check checked">✓</span> {renderCopy(copy.sections.community.text006)}</span>
+                  <span><span aria-hidden="true" class="fake-check"></span> {renderCopy(copy.sections.community.text007)}</span>
+                  <span><span aria-hidden="true" class="fake-check"></span> {renderCopy(copy.sections.community.text008)}</span>
                 </div>
               ) : feature.id === 'podsumowania' ? (
-                <div class="milestone-mini"><div><b>08</b><span>{copy.sections.community.text009}</span></div><div><b>16</b><span>{copy.sections.community.text010}</span></div></div>
+                <div class="milestone-mini"><div><b>08</b><span>{renderCopy(copy.sections.community.text009)}</span></div><div><b>16</b><span>{renderCopy(copy.sections.community.text010)}</span></div></div>
               ) : <ul>{feature.items.map(item => <li>{item}</li>)}</ul>}
-              {feature.id === 'grupa' && <p class="small-caution">{copy.sections.community.text011}</p>}
-              {feature.id === 'wyroznienia' && <p class="small-caution">{copy.sections.community.text012}</p>}
+              {feature.id === 'grupa' && <p class="small-caution">{renderCopy(copy.sections.community.text011)}</p>}
+              {feature.id === 'wyroznienia' && <p class="small-caution">{renderCopy(copy.sections.community.text012)}</p>}
             </article>
           ))}
         </div>
@@ -95,18 +96,18 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-coaching" aria-labelledby="mk-coaching-title">
       <div class="container coaching-grid">
         <div class="coaching-lead">
-          <p class="mk-label">{copy.sections.coaching.text001}</p>
-          <h2 id="mk-coaching-title">{copy.sections.coaching.text002} <span>{copy.sections.coaching.text003}</span></h2>
-          <p>{copy.sections.coaching.text004}</p>
+          <p class="mk-label">{renderCopy(copy.sections.coaching.text001)}</p>
+          <h2 id="mk-coaching-title">{renderCopy(copy.sections.coaching.text002)} <span>{renderCopy(copy.sections.coaching.text003)}</span></h2>
+          <p>{renderCopy(copy.sections.coaching.text004)}</p>
           <div class="app-preview" aria-label={copy.attributes.aria_label004}>
-            <div class="app-header"><span class="app-mark">{copy.sections.coaching.text005}</span><span>{copy.sections.coaching.text006}</span><span class="app-status">{copy.sections.coaching.text007}</span></div>
+            <div class="app-header"><span class="app-mark">{renderCopy(copy.sections.coaching.text005)}</span><span>{renderCopy(copy.sections.coaching.text006)}</span><span class="app-status">{renderCopy(copy.sections.coaching.text007)}</span></div>
             <div class="app-chart" aria-hidden="true"><span style="height:38%"></span><span style="height:52%"></span><span style="height:48%"></span><span style="height:68%"></span><span style="height:62%"></span><span style="height:83%"></span><span style="height:93%"></span></div>
-            <div class="app-footer"><span>{copy.sections.coaching.text008}</span><strong>{copy.sections.coaching.text009}</strong><span>{copy.sections.coaching.text010}</span></div>
+            <div class="app-footer"><span>{renderCopy(copy.sections.coaching.text008)}</span><strong>{renderCopy(copy.sections.coaching.text009)}</strong><span>{renderCopy(copy.sections.coaching.text010)}</span></div>
           </div>
         </div>
         <div class="coaching-list">
           {coaching.map((item, index) => <div class="coaching-point"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><p>{item}</p><b aria-hidden="true">✓</b></div>)}
-          <p class="coaching-footnote">{copy.sections.coaching.text011}</p>
+          <p class="coaching-footnote">{renderCopy(copy.sections.coaching.text011)}</p>
         </div>
       </div>
     </section>
@@ -114,9 +115,9 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-roadmap" id="program-16-tygodni" aria-labelledby="mk-roadmap-title">
       <div class="container">
         <div class="mk-section-heading">
-          <p class="mk-label">{copy.sections.roadmap.text001}</p>
-          <h2 id="mk-roadmap-title">{copy.sections.roadmap.text002}<br/><span>{copy.sections.roadmap.text003}</span></h2>
-          <p>{copy.sections.roadmap.text004}</p>
+          <p class="mk-label">{renderCopy(copy.sections.roadmap.text001)}</p>
+          <h2 id="mk-roadmap-title">{renderCopy(copy.sections.roadmap.text002)}<br/><span>{renderCopy(copy.sections.roadmap.text003)}</span></h2>
+          <p>{renderCopy(copy.sections.roadmap.text004)}</p>
         </div>
         <div class="phase-grid">
           {phases.map((phase, phaseIndex) => (
@@ -130,13 +131,13 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
             </article>
           ))}
         </div>
-        <div class="timeline-end"><strong>{copy.sections.roadmap.text005}</strong><span aria-hidden="true"></span><strong>{copy.sections.roadmap.text006}</strong></div>
+        <div class="timeline-end"><strong>{facts.startFull}</strong><span aria-hidden="true"></span><strong>{facts.endFull}</strong></div>
       </div>
     </section>
 
     <section class="mk-rhythm" aria-labelledby="mk-week-title">
       <div class="container">
-        <div class="mk-section-heading centered"><p class="mk-label">{copy.sections.rhythm.text001}</p><h2 id="mk-week-title">{copy.sections.rhythm.text002} <span>{copy.sections.rhythm.text003}</span></h2><p>{copy.sections.rhythm.text004}</p></div>
+        <div class="mk-section-heading centered"><p class="mk-label">{renderCopy(copy.sections.rhythm.text001)}</p><h2 id="mk-week-title">{renderCopy(copy.sections.rhythm.text002)} <span>{renderCopy(copy.sections.rhythm.text003)}</span></h2><p>{renderCopy(copy.sections.rhythm.text004)}</p></div>
         <div class="week-grid">
           {week.map((entry, index) => (
             <div class:list={['day-card', { 'day-live': index === 6 }]}>
@@ -149,54 +150,54 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
 
     <section class="mk-fit" aria-labelledby="mk-fit-title">
       <div class="container fit-grid">
-        <div><p class="mk-label">{copy.sections.fit.text001}</p><h2 id="mk-fit-title">{copy.sections.fit.text002} <span>{copy.sections.fit.text003}</span></h2><p>{copy.sections.fit.text004}</p><p class="fit-note">{copy.sections.fit.text005}</p></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.fit.text001)}</p><h2 id="mk-fit-title">{renderCopy(copy.sections.fit.text002)} <span>{renderCopy(copy.sections.fit.text003)}</span></h2><p>{renderCopy(copy.sections.fit.text004)}</p><p class="fit-note">{renderCopy(copy.sections.fit.text005)}</p></div>
         <ul class="fit-list">{people.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
       </div>
     </section>
 
     <section class="mk-coach" aria-labelledby="mk-coach-title">
       <div class="container coach-grid">
-        <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={media.coachAlt} /><span>{copy.sections.coach.text001}</span></div>
-        <div><p class="mk-label">{copy.sections.coach.text002}</p><h2 id="mk-coach-title">{copy.sections.coach.text003} <span>{copy.sections.coach.text004}</span></h2><p>{copy.sections.coach.text005}</p><p>{copy.sections.coach.text006}</p><div class="coach-credential"><strong>{copy.sections.coach.text007}</strong><span>{copy.sections.coach.text008}</span></div><p class="coach-quiet">{copy.sections.coach.text009}</p></div>
+        <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={media.coachAlt} /><span>{renderCopy(copy.sections.coach.text001)}</span></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.coach.text002)}</p><h2 id="mk-coach-title">{renderCopy(copy.sections.coach.text003)} <span>{renderCopy(copy.sections.coach.text004)}</span></h2><p>{renderCopy(copy.sections.coach.text005)}</p><p>{renderCopy(copy.sections.coach.text006)}</p><div class="coach-credential"><strong>{renderCopy(copy.sections.coach.text007)}</strong><span>{renderCopy(copy.sections.coach.text008)}</span></div><p class="coach-quiet">{renderCopy(copy.sections.coach.text009)}</p></div>
       </div>
     </section>
 
     <section class="mk-price" aria-labelledby="mk-price-title">
       <div class="container price-grid">
-        <div><p class="mk-label">{copy.sections.price.text001}</p><h2 id="mk-price-title">{copy.sections.price.text002} <span>{copy.sections.price.text003}</span></h2><p>{copy.sections.price.text004}</p><p class="price-alert">{copy.sections.price.text005}</p></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.price.text001)}</p><h2 id="mk-price-title">{renderCopy(copy.sections.price.text002)} <span>{renderCopy(copy.sections.price.text003)}</span></h2><p>{renderCopy(copy.sections.price.text004)}</p><p class="price-alert">{renderCopy(copy.sections.price.text005)}</p></div>
         <div class="price-panel">
-          <p>{copy.sections.price.text006}</p><div class="price-amount">{formatPrice(pricing.total)} <span>{copy.sections.price.text007}</span></div>
-          <div class="price-lines"><div><span>{copy.sections.price.text008}<br/><small>{copy.sections.price.text009}</small></span><strong>{formatPrice(pricing.reservation)}</strong></div><div><span>{copy.sections.price.text010}</span><strong>{formatPrice(pricing.firstBlock)}</strong></div><div><span>{copy.sections.price.text011}</span><strong>{formatPrice(pricing.secondBlock)}</strong></div></div>
-          <span class="price-final">{copy.sections.price.text012}</span>
+          <p>{renderCopy(copy.sections.price.text006)}</p><div class="price-amount">{formatPrice(pricing.total)} <span>{renderCopy(copy.sections.price.text007)}</span></div>
+          <div class="price-lines"><div><span>{renderCopy(copy.sections.price.text008)}<br/><small>{renderCopy(copy.sections.price.text009)}</small></span><strong>{formatPrice(pricing.reservation)}</strong></div><div><span>{renderCopy(copy.sections.price.text010)}</span><strong>{formatPrice(pricing.firstBlock)}</strong></div><div><span>{renderCopy(copy.sections.price.text011)}</span><strong>{formatPrice(pricing.secondBlock)}</strong></div></div>
+          <span class="price-final">{renderCopy(copy.sections.price.text012)}</span>
         </div>
       </div>
     </section>
 
     <section class="mk-apply" id="zapisy" aria-labelledby="mk-apply-title">
       <div class="container apply-grid">
-        <div><p class="mk-label">{copy.sections.application.text001}</p><h2 id="mk-apply-title">{copy.sections.application.text002} <span>{copy.sections.application.text003}</span></h2><p>{copy.sections.application.text004}</p><p class="apply-status" role="status"><span aria-hidden="true">●</span> {copy.sections.application.text005}</p></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.application.text001)}</p><h2 id="mk-apply-title">{renderCopy(copy.sections.application.text002)} <span>{renderCopy(copy.sections.application.text003)}</span></h2><p>{renderCopy(copy.sections.application.text004)}</p><p class="apply-status" role="status"><span aria-hidden="true">●</span> {renderCopy(copy.sections.application.text005)}</p></div>
         <div class="apply-form-preview" aria-label={copy.attributes.aria_label006}>
-          <div class="form-top"><span>{copy.sections.application.text006}</span><b>{copy.sections.application.text007}</b></div>
+          <div class="form-top"><span>{renderCopy(copy.sections.application.text006)}</span><b>{renderCopy(copy.sections.application.text007)}</b></div>
           <fieldset disabled>
-            <label>{copy.sections.application.text008} <input type="text" placeholder={copy.attributes.placeholder007} autocomplete="off" /></label>
-            <label>{copy.sections.application.text009} <input type="email" placeholder={copy.attributes.placeholder008} autocomplete="off" /></label>
-            <label>{copy.sections.application.text010} <span class="optional">{copy.sections.application.text011}</span><input type="tel" placeholder={copy.attributes.placeholder009} autocomplete="off" /></label>
-            <label>{copy.sections.application.text012}<select><option>{copy.sections.application.text013}</option><option>{copy.sections.application.text014}</option><option>{copy.sections.application.text015}</option><option>{copy.sections.application.text016}</option><option>{copy.sections.application.text017}</option></select></label>
-            <label>{copy.sections.application.text018}<textarea rows="3" placeholder={copy.attributes.placeholder010} autocomplete="off"></textarea></label>
-            <button type="button" disabled aria-disabled="true">{copy.sections.application.text019}</button>
+            <label>{renderCopy(copy.sections.application.text008)} <input type="text" placeholder={copy.attributes.placeholder007} autocomplete="off" /></label>
+            <label>{renderCopy(copy.sections.application.text009)} <input type="email" placeholder={copy.attributes.placeholder008} autocomplete="off" /></label>
+            <label>{renderCopy(copy.sections.application.text010)} <span class="optional">{renderCopy(copy.sections.application.text011)}</span><input type="tel" placeholder={copy.attributes.placeholder009} autocomplete="off" /></label>
+            <label>{renderCopy(copy.sections.application.text012)}<select><option>{renderCopy(copy.sections.application.text013)}</option><option>{renderCopy(copy.sections.application.text014)}</option><option>{renderCopy(copy.sections.application.text015)}</option><option>{renderCopy(copy.sections.application.text016)}</option><option>{renderCopy(copy.sections.application.text017)}</option></select></label>
+            <label>{renderCopy(copy.sections.application.text018)}<textarea rows="3" placeholder={copy.attributes.placeholder010} autocomplete="off"></textarea></label>
+            <button type="button" disabled aria-disabled="true">{renderCopy(copy.sections.application.text019)}</button>
           </fieldset>
-          <p class="form-help">{copy.sections.application.text020}</p>
+          <p class="form-help">{renderCopy(copy.sections.application.text020)}</p>
         </div>
       </div>
     </section>
 
     <section class="mk-faq" aria-labelledby="mk-faq-title">
-      <div class="container faq-container"><div class="mk-section-heading centered"><p class="mk-label">{copy.sections.faq.text001}</p><h2 id="mk-faq-title">{copy.sections.faq.text002} <span>{copy.sections.faq.text003}</span></h2><p>{copy.sections.faq.text004}</p></div>
+      <div class="container faq-container"><div class="mk-section-heading centered"><p class="mk-label">{renderCopy(copy.sections.faq.text001)}</p><h2 id="mk-faq-title">{renderCopy(copy.sections.faq.text002)} <span>{renderCopy(copy.sections.faq.text003)}</span></h2><p>{renderCopy(copy.sections.faq.text004)}</p></div>
         <div class="faq-list">{faqs.map(({question, answer}) => <details><summary>{question}<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>{formatAnswer(answer)}</p></div></details>)}</div>
       </div>
     </section>
 
-    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">{copy.sections.final.text001}</p><h2 id="mk-outro-title">{copy.sections.final.text002}<br/><span>{copy.sections.final.text003}</span></h2><p>{copy.sections.final.text004}</p><a class="mk-button outline" href="#poznaj-program">{copy.sections.final.text005}</a><small>{copy.sections.final.text006}</small></div></section>
+    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">{renderCopy(copy.sections.final.text001)}</p><h2 id="mk-outro-title">{renderCopy(copy.sections.final.text002)}<br/><span>{renderCopy(copy.sections.final.text003)}</span></h2><p>{renderCopy(copy.sections.final.text004)}</p><a class="mk-button outline" href="#poznaj-program">{renderCopy(copy.sections.final.text005)}</a><small>{renderCopy(copy.sections.final.text006)}</small></div></section>
   </div>
 </BaseLayout>
 
