@@ -24,6 +24,7 @@ for (const width of [360, 390, 768, 1024, 1440]) {
     await expect(page.locator('.apply-form-preview input').first()).toBeDisabled();
     await expect(page.locator('.apply-form-preview button')).toBeDisabled();
     await expect(page.locator('.faq-list details')).toHaveCount(15);
+    await expect(page.locator('.day-card.day-live .day-name')).toHaveText('Niedz.');
     expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);
     expect(errors).toEqual([]);
     await page.locator('.faq-list details').first().locator('summary').click();
