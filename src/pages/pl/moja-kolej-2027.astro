@@ -17,7 +17,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   socialImage={seo.socialImage}
   socialImageAlt={seo.socialImageAlt}
 >
-  <!-- Unpublished programme preview: no checkout, no live sign-up form, no internal promotion. -->
+  <!-- Polish-only campaign: no payments or automatic reservations; forms use a separate protected Netlify endpoint. -->
   <svg class="svg-definitions" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
     <symbol id="mk-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
     <symbol id="mk-video" viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="3"/><path d="m16 10 6-4v12l-6-4"/></symbol>
@@ -32,12 +32,12 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
       <div class="container mk-hero-grid">
         <div class="hero-text">
           <p class="mk-eyebrow"><span class="mk-dot"></span> {renderCopy(copy.sections.hero.text001)} <span class="preview-tag">{renderCopy(copy.sections.hero.text002)}</span></p>
-          <h1 id="mk-title"><span>{renderCopy(copy.sections.hero.text003)}</span><span>{renderCopy(copy.sections.hero.text004)}<span class="period">.</span></span><em>{facts.year}</em></h1>
+          <h1 id="mk-title"><span class="hero-name"><span>{renderCopy(copy.sections.hero.text003)}</span> <span>{renderCopy(copy.sections.hero.text004)}<span class="period">.</span></span></span><em>{facts.year}</em></h1>
           <p class="hero-slogan">{renderCopy(copy.sections.hero.text005)}<br/><strong>{renderCopy(copy.sections.hero.text006)}</strong></p>
           <p class="hero-intro">{renderCopy(copy.sections.hero.text007)}</p>
           <p class="hero-description">{renderCopy(copy.sections.hero.text008)}</p>
           <a class="mk-button" href="#poznaj-program">{renderCopy(copy.sections.hero.text009)} <span aria-hidden="true">↓</span></a>
-          <p class="hero-note">{renderCopy(copy.sections.hero.text010)}</p><p class="hero-note">{renderCopy(copy.sections.hero.text011)}</p>
+          <p class="hero-note hero-benefits">{renderCopy(copy.sections.hero.text010)}</p><a class="hero-apply-link" href="#zapisy">{renderCopy(copy.sections.hero.text011)} <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-photo">
           <img src={media.heroImage} width="960" height="1200" fetchpriority="high" alt={media.heroAlt} />
@@ -85,8 +85,8 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
               ) : feature.id === 'podsumowania' ? (
                 <div class="milestone-mini"><div><b>08</b><span>{renderCopy(copy.sections.community.text009)}</span></div><div><b>16</b><span>{renderCopy(copy.sections.community.text010)}</span></div></div>
               ) : <ul>{feature.items.map(item => <li>{item}</li>)}</ul>}
-              {feature.id === 'grupa' && <p class="small-caution">{renderCopy(copy.sections.community.text011)}</p>}
-              {feature.id === 'wyroznienia' && <p class="small-caution">{renderCopy(copy.sections.community.text012)}</p>}
+
+
             </article>
           ))}
         </div>
@@ -158,7 +158,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     <section class="mk-coach" aria-labelledby="mk-coach-title">
       <div class="container coach-grid">
         <div class="coach-photo"><img src={media.coachImage} width="760" height="900" loading="lazy" alt={media.coachAlt} /><span>{renderCopy(copy.sections.coach.text001)}</span></div>
-        <div><p class="mk-label">{renderCopy(copy.sections.coach.text002)}</p><h2 id="mk-coach-title">{renderCopy(copy.sections.coach.text003)} <span>{renderCopy(copy.sections.coach.text004)}</span></h2><p>{renderCopy(copy.sections.coach.text005)}</p><p>{renderCopy(copy.sections.coach.text006)}</p><div class="coach-credential"><strong>{renderCopy(copy.sections.coach.text007)}</strong><span>{renderCopy(copy.sections.coach.text008)}</span></div><p class="coach-quiet">{renderCopy(copy.sections.coach.text009)}</p></div>
+        <div><p class="mk-label">{renderCopy(copy.sections.coach.text002)}</p><h2 id="mk-coach-title">{renderCopy(copy.sections.coach.text003)} <span>{renderCopy(copy.sections.coach.text004)}</span></h2><p>{renderCopy(copy.sections.coach.text005)}</p><p>{renderCopy(copy.sections.coach.text006)}</p><div class="coach-credential"><strong>{renderCopy(copy.sections.coach.text007)}</strong><span>{renderCopy(copy.sections.coach.text008)}</span></div></div>
       </div>
     </section>
 
@@ -168,25 +168,47 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
         <div class="price-panel">
           <p>{renderCopy(copy.sections.price.text006)}</p><div class="price-amount">{formatPrice(pricing.total)} <span>{renderCopy(copy.sections.price.text007)}</span></div>
           <div class="price-lines"><div><span>{renderCopy(copy.sections.price.text008)}<br/><small>{renderCopy(copy.sections.price.text009)}</small></span><strong>{formatPrice(pricing.reservation)}</strong></div><div><span>{renderCopy(copy.sections.price.text010)}</span><strong>{formatPrice(pricing.firstBlock)}</strong></div><div><span>{renderCopy(copy.sections.price.text011)}</span><strong>{formatPrice(pricing.secondBlock)}</strong></div></div>
-          <span class="price-final">{renderCopy(copy.sections.price.text012)}</span>
+          
         </div>
       </div>
     </section>
 
     <section class="mk-apply" id="zapisy" aria-labelledby="mk-apply-title">
       <div class="container apply-grid">
-        <div><p class="mk-label">{renderCopy(copy.sections.application.text001)}</p><h2 id="mk-apply-title">{renderCopy(copy.sections.application.text002)} <span>{renderCopy(copy.sections.application.text003)}</span></h2><p>{renderCopy(copy.sections.application.text004)}</p><p class="apply-status" role="status"><span aria-hidden="true">●</span> {renderCopy(copy.sections.application.text005)}</p></div>
-        <div class="apply-form-preview" aria-label={copy.attributes.aria_label006}>
+        <div><p class="mk-label">{renderCopy(copy.sections.application.text001)}</p><h2 id="mk-apply-title">{renderCopy(copy.sections.application.text002)} <span>{renderCopy(copy.sections.application.text003)}</span></h2><p>{renderCopy(copy.sections.application.text004)}</p><p class="apply-status is-open"><span aria-hidden="true">●</span> {renderCopy(copy.sections.application.text005)}</p></div>
+
+        <div class="apply-form-preview">
           <div class="form-top"><span>{renderCopy(copy.sections.application.text006)}</span><b>{renderCopy(copy.sections.application.text007)}</b></div>
-          <fieldset disabled>
-            <label>{renderCopy(copy.sections.application.text008)} <input type="text" placeholder={copy.attributes.placeholder007} autocomplete="off" /></label>
-            <label>{renderCopy(copy.sections.application.text009)} <input type="email" placeholder={copy.attributes.placeholder008} autocomplete="off" /></label>
-            <label>{renderCopy(copy.sections.application.text010)} <span class="optional">{renderCopy(copy.sections.application.text011)}</span><input type="tel" placeholder={copy.attributes.placeholder009} autocomplete="off" /></label>
-            <label>{renderCopy(copy.sections.application.text012)}<select><option>{renderCopy(copy.sections.application.text013)}</option><option>{renderCopy(copy.sections.application.text014)}</option><option>{renderCopy(copy.sections.application.text015)}</option><option>{renderCopy(copy.sections.application.text016)}</option><option>{renderCopy(copy.sections.application.text017)}</option></select></label>
-            <label>{renderCopy(copy.sections.application.text018)}<textarea rows="3" placeholder={copy.attributes.placeholder010} autocomplete="off"></textarea></label>
-            <button type="button" disabled aria-disabled="true">{renderCopy(copy.sections.application.text019)}</button>
-          </fieldset>
-          <p class="form-help">{renderCopy(copy.sections.application.text020)}</p>
+          <form id="moja-kolej-form" aria-label={copy.attributes.aria_label006}>
+            <input type="hidden" name="campaign" value="moja-kolej-2027" />
+            <div class="mk-form-fields">
+              <label for="mk-name">{renderCopy(copy.sections.application.text008)} <input id="mk-name" name="name" type="text" minlength="2" maxlength="100" placeholder={copy.attributes.placeholder007} required autocomplete="given-name" /></label>
+              <label for="mk-email">{renderCopy(copy.sections.application.text009)} <input id="mk-email" name="email" type="email" maxlength="150" placeholder={copy.attributes.placeholder008} required autocomplete="email" /></label>
+              <label for="mk-phone">{renderCopy(copy.sections.application.text010)} <span class="optional">{renderCopy(copy.sections.application.text011)}</span><input id="mk-phone" name="phone" type="tel" maxlength="40" placeholder={copy.attributes.placeholder009} autocomplete="tel" /></label>
+              <label for="mk-goal">{renderCopy(copy.sections.application.text012)}
+                <select id="mk-goal" name="goal" required>
+                  <option value="" selected disabled>{renderCopy(copy.sections.application.text013)}</option>
+                  <option value="redukcja">{renderCopy(copy.sections.application.text014)}</option>
+                  <option value="miesnie">{renderCopy(copy.sections.application.text015)}</option>
+                  <option value="sprawnosc">{renderCopy(copy.sections.application.text016)}</option>
+                  <option value="regularnosc">Regularność i lepsze nawyki</option>
+                  <option value="inny">{renderCopy(copy.sections.application.text017)}</option>
+                </select>
+              </label>
+              <label for="mk-why">{renderCopy(copy.sections.application.text018)}
+                <textarea id="mk-why" name="why" rows="4" minlength="10" maxlength="1200" required placeholder={copy.attributes.placeholder010}></textarea>
+              </label>
+            </div>
+            <div class="mk-honeypot" aria-hidden="true"><label for="mk-company">Firma</label><input type="text" id="mk-company" name="company" tabindex="-1" autocomplete="off"/></div>
+            <label class="mk-consent" for="mk-consent">
+              <input id="mk-consent" name="consent" type="checkbox" required/>
+              <span>Zapoznałem się z <a href="/pl/privacy/" target="_blank" rel="noopener">polityką prywatności</a> i wyrażam zgodę na kontakt w sprawie mojego zgłoszenia. <span aria-hidden="true">*</span></span>
+            </label>
+            <button id="mk-submit" type="submit" disabled>{renderCopy(copy.sections.application.text019)}</button>
+            <noscript><p class="form-help">Aby wysłać zgłoszenie, włącz JavaScript w przeglądarce.</p></noscript>
+            <p id="mk-form-status" class="mk-form-status" role="status" aria-live="polite"></p>
+          </form>
+          <p class="form-help">{renderCopy(copy.sections.application.text020)} <a href="/pl/privacy/">Polityka prywatności</a>.</p>
         </div>
       </div>
     </section>
@@ -197,7 +219,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
       </div>
     </section>
 
-    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">{renderCopy(copy.sections.final.text001)}</p><h2 id="mk-outro-title">{renderCopy(copy.sections.final.text002)}<br/><span>{renderCopy(copy.sections.final.text003)}</span></h2><p>{renderCopy(copy.sections.final.text004)}</p><a class="mk-button outline" href="#poznaj-program">{renderCopy(copy.sections.final.text005)}</a><small>{renderCopy(copy.sections.final.text006)}</small></div></section>
+    <section class="mk-outro" aria-labelledby="mk-outro-title"><div class="container"><p class="mk-label">{renderCopy(copy.sections.final.text001)}</p><h2 id="mk-outro-title">{renderCopy(copy.sections.final.text002)}<br/><span>{renderCopy(copy.sections.final.text003)}</span></h2><p>{renderCopy(copy.sections.final.text004)}</p><a class="mk-button outline" href="#zapisy">{renderCopy(copy.sections.final.text005)}</a><small>{renderCopy(copy.sections.final.text006)}</small></div></section>
   </div>
 </BaseLayout>
 
@@ -221,8 +243,8 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   .mk-eyebrow {display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:850;letter-spacing:.17em;font-size:.68rem;color:#ffdee1;margin-bottom:32px;}
   .mk-dot {width:9px;height:9px;border-radius:100%;background:#d5394a;box-shadow:0 0 0 5px rgba(213,57,74,.16);}
   .preview-tag {font-size:.61rem;border:1px solid #805761;border-radius:99px;padding:6px 9px;color:#fff;letter-spacing:.1em;}
-  .mk-hero h1 {font-weight:950;font-size:clamp(4.6rem,9vw,8.7rem);line-height:.81;letter-spacing:-.087em;margin-bottom:33px;overflow-wrap:normal;}
-  .mk-hero h1>span {display:block;}
+  .mk-hero h1 {font-weight:950;font-size:clamp(3.3rem,5.5vw,6.4rem);line-height:.95;letter-spacing:-.082em;margin-bottom:29px;overflow-wrap:normal;}
+  .mk-hero h1>span {display:block;}.mk-hero h1 .hero-name {white-space:nowrap;}
   .mk-hero h1 .period {color:#d83146;}
   .mk-hero h1 em {display:block;color:transparent;-webkit-text-stroke:2px #d83146;font-style:normal;font-size:.7em;letter-spacing:-.045em;line-height:1.05;margin-top:7px;}
   .hero-slogan {font-size:clamp(1.28rem,2.8vw,1.85rem);line-height:1.3!important;font-weight:750;margin-bottom:24px;}
@@ -232,7 +254,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   .mk-button {display:inline-flex;justify-content:space-between;align-items:center;gap:36px;min-height:54px;background:var(--mk-red);color:white;text-decoration:none;font-weight:800;padding:15px 23px;border:2px solid var(--mk-red);border-radius:3px;transition:background .15s ease,transform .15s ease;}
   .mk-button:hover {background:#851726;border-color:#851726;transform:translateY(-2px);}
   .mk a:focus-visible,.mk summary:focus-visible {outline:3px solid #f5a1af;outline-offset:5px;}
-  .hero-note {font-size:.77rem;color:#b8bdc4;margin-top:16px;}
+  .hero-note {font-size:.82rem;color:#d3d6da;margin-top:16px;}.hero-benefits {max-width:55ch;line-height:1.8!important;}.hero-apply-link {display:inline-block;margin-top:14px;color:#f6c0c6;font-weight:750;text-decoration:underline;text-underline-offset:4px;}
   .hero-photo {position:relative;min-height:500px;aspect-ratio:4/5;max-height:620px;overflow:hidden;isolation:isolate;border:1px solid #45474b;background:#26282d;}
   .hero-photo img {width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(25%) contrast(1.08);max-height:none;}
   .photo-shadow {position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(10,10,12,.9));z-index:1;pointer-events:none;}
@@ -358,17 +380,17 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   .mk-apply h2 {margin-bottom:25px;}
   .mk-apply p:not(.mk-label){color:#535961;}
   .apply-status {margin-top:26px;padding:18px;background:#fff;border-left:4px solid #a51f2e;font-weight:750;font-size:.9rem;}
-  .apply-status span {color:#a51f2e;margin-right:8px;}
+  .apply-status span {color:#18834b;margin-right:8px;}.apply-status.is-open {border-left-color:#18834b;background:#edf8f1;color:#125531!important;}
   .apply-form-preview {padding:clamp(22px,4vw,36px);background:white;border:1px solid #e0e1e0;box-shadow:13px 13px 0 #e4e5e3;}
   .form-top {display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:20px;margin-bottom:22px;border-bottom:1px solid #dedfdf;font-size:.73rem;letter-spacing:.1em;font-weight:850;}
   .form-top b {background:#f7ecee;color:#89212d;border-radius:2px;padding:6px 8px;font-size:.64rem;}
-  .apply-form-preview fieldset {border:0;min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 15px;opacity:.87;}
+  .mk-form-fields {display:grid;grid-template-columns:1fr 1fr;gap:14px 15px;}
   .apply-form-preview label {display:flex;flex-direction:column;gap:7px;font-size:.8rem;font-weight:800;}
-  .apply-form-preview label:nth-of-type(4),.apply-form-preview label:nth-of-type(5) {grid-column:1/-1;}
+  .mk-form-fields label:nth-of-type(4),.mk-form-fields label:nth-of-type(5) {grid-column:1/-1;}
   .optional {font-weight:500;color:#666;}
   .apply-form-preview input,.apply-form-preview select,.apply-form-preview textarea {font:inherit;min-width:0;width:100%;border:1px solid #c9cccf;background:#f7f7f7;color:#565961;border-radius:3px;padding:12px;font-weight:400;}
-  .apply-form-preview input:disabled,.apply-form-preview select:disabled,.apply-form-preview textarea:disabled {opacity:1;-webkit-text-fill-color:#616670;}
-  .apply-form-preview button {grid-column:1/-1;background:#5d626a;color:#fff;padding:15px;border:0;border-radius:3px;font-size:.9rem;font-weight:800;cursor:not-allowed;}
+  .apply-form-preview input:focus-visible,.apply-form-preview select:focus-visible,.apply-form-preview textarea:focus-visible {outline:3px solid #a51f2e;outline-offset:2px;background:#fff;}
+  .apply-form-preview button {width:100%;background:#a51f2e;color:#fff;padding:16px;border:0;border-radius:3px;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:15px;min-height:50px;}.apply-form-preview button:disabled {background:#73777d;cursor:wait;}.apply-form-preview button:focus-visible {outline:3px solid #a51f2e;outline-offset:3px;}
   .form-help {font-size:.73rem;margin-top:18px;color:#62676d!important;}
   .mk-faq {background:#fff;}
   .faq-container {max-width:900px!important;}
@@ -386,7 +408,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
   .mk-button.outline:hover {background:#fff;color:#141519;}
   .mk-outro small {display:block;margin-top:22px;color:#b6b8bf;}
   @media (max-width:1080px) {
-    .mk-hero h1 {font-size:clamp(4.5rem,10vw,7rem);}
+    .mk-hero h1 {font-size:clamp(3.1rem,5.3vw,5.8rem);}
     .feature-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
     .phase-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
     .week-grid {grid-template-columns:repeat(3,minmax(0,1fr));}
@@ -398,7 +420,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     .mk-hero-grid {grid-template-columns:1fr;gap:28px;}
     .hero-photo {aspect-ratio:16/11;min-height:0;max-height:340px;}
     .hero-photo img {object-position:center 18%;}
-    .mk-hero h1 {font-size:clamp(4.3rem,17vw,7.7rem);}
+    .mk-hero h1 {font-size:clamp(2.7rem,8.6vw,4.7rem);}
     .hero-description {margin-bottom:26px;}
     .stats-row {grid-template-columns:repeat(3,minmax(0,1fr));margin-top:25px!important;}
     .stats-row>div {flex-direction:column;align-items:start;gap:5px;padding:14px 11px;}
@@ -411,7 +433,7 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     .mk h2 {font-size:clamp(2.18rem,9vw,3.6rem);}
   }
   @media (max-width:520px) {
-    .mk-hero h1 {font-size:clamp(3.7rem,18.3vw,5.6rem);letter-spacing:-.085em;}
+    .mk-hero h1 {font-size:clamp(2.25rem,9.7vw,3.5rem);letter-spacing:-.085em;}
     .mk-eyebrow {font-size:.58rem;letter-spacing:.1em;gap:8px;}
     .mk-hero h1 em {-webkit-text-stroke:1.5px #d83146;}
     .hero-slogan {font-size:1.27rem;}
@@ -426,17 +448,71 @@ const formatAnswer = (answer: string) => answer.replace(/\{\{(total|reservation|
     .day-card h3 {font-size:1rem;}
     .day-card p {font-size:.73rem;}
     .timeline-end {font-size:.55rem;gap:9px;letter-spacing:.04em;}
-    .apply-form-preview fieldset {grid-template-columns:1fr;}
+    .mk-form-fields {grid-template-columns:1fr;}
     .apply-form-preview label {grid-column:1/-1;}
     .price-amount {font-size:3.8rem;}
   }
   @media (max-width:360px) {
-    .mk-hero h1 {font-size:3.64rem;}
+    .mk-hero h1 {font-size:2.2rem;}
     .stats-row span {font-size:.55rem;}
     .day-card {padding:16px 10px;}
   }
+
+  .mk-consent {display:flex!important;flex-direction:row!important;align-items:flex-start;gap:12px!important;margin-top:20px;font-size:.83rem!important;font-weight:500!important;line-height:1.5;}
+  .mk-consent input {width:18px!important;height:18px;flex:0 0 18px;margin-top:2px;accent-color:#a51f2e;}
+  .mk-consent a,.form-help a {color:#85202d;text-decoration:underline;text-underline-offset:3px;}
+  .mk-honeypot {position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .mk-form-status {font-size:.88rem;margin-top:12px;line-height:1.5;}
+  .mk-form-status.is-success {color:#176f3b;}
+  .mk-form-status.is-error {color:#9c1726;}
   @media (prefers-reduced-motion:reduce) {
     .mk .mk-button {transition:none;}
     .mk .mk-button:hover {transform:none;}
   }
 </style>
+
+<script>
+  const form = document.getElementById('moja-kolej-form') as HTMLFormElement | null;
+  const button = form?.querySelector<HTMLButtonElement>('#mk-submit');
+  const status = document.getElementById('mk-form-status');
+  const started = Date.now();
+  let sending = false;
+  if(button) button.disabled = false;
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !button || !status || sending) return;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const payload = Object.fromEntries(new FormData(form).entries());
+    if (payload.company) return;
+    sending = true;
+    button.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    status.className = 'mk-form-status';
+    status.textContent = 'Wysyłanie zgłoszenia…';
+    try {
+      const res = await fetch('/.netlify/functions/moja-kolej-2027', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({...payload, consent: payload.consent === 'on', campaign: 'moja-kolej-2027', elapsedMs: Date.now()-started })
+      });
+      if (!res.ok) throw new Error('delivery failed');
+      const result = await res.json();
+      if (!result.ok || result.discarded) throw new Error('delivery not confirmed');
+      const gtag = (window as any).gtag;
+      if (typeof gtag === 'function') {
+        gtag('event','generate_lead',{form_name:'moja-kolej-2027',lead_language:'pl',lead_intent:'moja-kolej-2027'});
+      }
+      status.className = 'mk-form-status is-success';
+      status.textContent = 'Dziękuję! Twoje zgłoszenie zostało wysłane. Odezwę się w sprawie dalszych kroków.';
+      form.reset();
+      Array.from(form.elements).forEach(element => { if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement) element.disabled = true; });
+      button.textContent = 'Zgłoszenie wysłane';
+    } catch {
+      sending = false;
+      button.disabled = false;
+      status.className = 'mk-form-status is-error';
+      status.textContent = 'Nie udało się wysłać zgłoszenia. Spróbuj ponownie lub skontaktuj się przez stronę kontaktową.';
+      form.removeAttribute('aria-busy');
+    }
+  });
+</script>
