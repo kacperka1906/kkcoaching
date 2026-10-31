@@ -32,8 +32,8 @@ assert.equal((main.match(/class="week-index"/g) ?? []).length, 16, 'Sixteen week
 assert.equal((main.match(/<details\b/g) ?? []).length, 15, 'Fifteen FAQ entries');
 assert.equal((main.match(/class="day-name"/g) ?? []).length, 7, 'Seven weekly rhythm entries');
 assert.ok(main.includes(programme.media.heroImage), 'Uses editable hero image');
-assert.ok(fs.existsSync(new URL('images/moja-kolej-hero.webp', dist)), 'Real mirror image must be present in published dist folder');
-assert.ok(fs.statSync(new URL('images/moja-kolej-hero.webp', dist)).size > 10000, 'Mirror image must not be an empty placeholder');
+assert.ok(fs.existsSync(new URL('images/moja-kolej-2027-mirror.webp', dist)), 'Real mirror image must be present in published dist folder');
+assert.ok(fs.statSync(new URL('images/moja-kolej-2027-mirror.webp', dist)).size > 10000, 'Mirror image must not be an empty placeholder');
 assert.doesNotMatch(main, /class="coach-credential"/, 'Coach qualifications block is removed');
 assert.ok(main.includes(programme.media.coachImage), 'Uses editable coach image');
 assert.ok(main.includes(String(programme.facts.maxPlaces)), 'Group size is rendered');
