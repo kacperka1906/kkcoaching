@@ -143,8 +143,12 @@ config.collections.push(common);
 // Only PR #77's Netlify Deploy Preview can edit the campaign draft directly.
 // All production and other deploy contexts preserve the existing main backend
 // and original collections. No shared content is written to main from preview.
-if (process.env.CONTEXT === 'deploy-preview' && process.env.REVIEW_ID === '77') {
-  config.backend.branch = 'feature/moja-kolej-2027-preview';
+const reviewBranches = {
+  '77': 'feature/moja-kolej-2027-preview',
+  '78': 'feature/moja-kolej-launch-2027'
+};
+if (process.env.CONTEXT === 'deploy-preview' && reviewBranches[process.env.REVIEW_ID]) {
+  config.backend.branch = reviewBranches[process.env.REVIEW_ID];
   config.collections = [common];
 }
 fs.writeFileSync(configFile, JSON.stringify(config, null, 2) + '\n', 'utf8');
