@@ -76,3 +76,32 @@ test('Polish homepage and header advertise campaign; English site is untouched',
   await expect(page.locator('.campaign-spotlight')).toHaveCount(0);
   await expect(page.locator('.site-header .nav-program-cta')).toHaveCount(0);
 });
+
+for (const width of [390, 768, 1024, 1280, 1440]) {
+  test('Polish campaign navigation fits '+width+'px without overlap', async ({ page }) => {
+    await page.setViewportSize({width,height:900});
+    await page.goto(origin+'/pl/');
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth), 'Page must not scroll sideways at '+width).toBe(false);
+    const menuButton=page.locator('#navToggle');
+    const campaign=page.locator('.nav-program-cta a');
+    if (width<=1240) {
+      await expect(menuButton).toBeVisible();
+      await menuButton.click();
+      await expect(campaign).toBeVisible();
+      await expect(campaign).toContainText('MOJA KOLEJ 2027');
+      await menuButton.click();
+    } else {
+      await expect(menuButton).toBeHidden();
+      await expect(campaign).toBeVisible();
+      const overlap=await page.evaluate(()=>{
+        const left=document.querySelector('.nav-program-cta a')?.getBoundingClientRect();
+        const right=document.querySelector('.header-right')?.getBoundingClientRect();
+        return !left || !right || left.right > right.left - 2;
+      });
+      expect(overlap,'Campaign link must not overlap language switch / CTA').toBe(false);
+    }
+    if (width===390 || width===1440) {
+      await page.screenshot({path:'test-results/polish-homepage-programme-'+width+'.png',fullPage:false,animations:'disabled'});
+    }
+  });
+}
