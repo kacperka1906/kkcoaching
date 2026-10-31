@@ -16,6 +16,9 @@ for (const [k,v] of Object.entries(data.seo)) string(v, 'SEO '+k);
 assert.ok(data.seo.title.length <= 70, 'Keep programme SEO title concise');
 assert.ok(data.seo.description.length <= 200, 'Keep programme meta description concise');
 for (const [k,v] of Object.entries(data.media)) string(v, 'Media '+k);
+for (const k of ['year','startShort','startFull','endFull']) string(data.facts[k], 'Programme fact '+k);
+assert.ok(Number.isSafeInteger(data.facts.durationWeeks) && data.facts.durationWeeks >= 1, 'Duration must be a positive number of weeks');
+assert.ok(Number.isSafeInteger(data.facts.maxPlaces) && data.facts.maxPlaces >= 1 && data.facts.maxPlaces <= 200, 'Group capacity must be between 1 and 200');
 for (const key of ['socialImage', 'heroImage', 'coachImage']) {
   const value = key === 'socialImage' ? data.seo.socialImage : data.media[key];
   assert.match(value, /^\/images\/[a-zA-Z0-9._/-]+\.(webp|png|jpg|jpeg|avif)$/i, key+' must be uploaded to the site media folder');
@@ -46,6 +49,7 @@ for(const key of ['coaching','people']){
   data[key].forEach((v,i)=>string(v,key+'.'+i));
 }
 array(data.phases,4,4,'Programme stages');
+assert.equal(data.phases.reduce((n,stage)=>n+stage.weeks.length,0), data.facts.durationWeeks, 'Displayed duration must equal the timeline week count');
 data.phases.forEach((stage,i)=>{
   assert.equal(stage.number,String(i+1).padStart(2,'0'),'Fixed phase numbering for visuals');
   for (const key of ['title','range']) string(stage[key], 'Phase '+i+'.'+key);
@@ -62,6 +66,7 @@ const known = /^(total|reservation|firstBlock|secondBlock)$/;
 for(const faq of data.faqs) {
   for (const [,token] of faq.answer.matchAll(/\{\{([^}]+)\}\}/g)) assert.match(token,known,'Unknown FAQ pricing token');
 }
+assert.ok(data.copy.sections.hero.text005.includes('{{weeks}}') && data.copy.sections.hero.text005.includes('{{places}}'), 'Hero numbers must use synchronised tokens');
 assert.ok(data.copy.sections.hero.text002.includes('PODGLĄD'),'Preview banner must stay unmistakable');
 assert.match(data.copy.sections.hero.text011,/Zapisy jeszcze nie ruszyły/i,'No enrolment before programme launch');
 assert.match(data.copy.sections.application.text001,/PIERWSZA EDYCJA/i,'Application is explicitly the first edition');
