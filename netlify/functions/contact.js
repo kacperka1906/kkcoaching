@@ -79,6 +79,13 @@ exports.handler = async (event) => {
 
   const interest = typeof data.interest === 'string' && ALLOWED_INTERESTS.has(data.interest) ? data.interest : '';
   const leadIntent = typeof data.lead_intent === 'string' && ALLOWED_LEAD_INTENTS.has(data.lead_intent) ? data.lead_intent : 'direct';
+  const winterCampaign = data.campaign === 'winter-kickstart-2026'
+    && ((data.variant === 'pt' && interest === 'pt' && leadIntent === 'pt')
+       || (data.variant === 'hybrid' && interest === 'hybrid' && leadIntent === 'hybrid'));
+  // Unknown or inconsistent campaign markers are never echoed or stored.
+  const campaign = winterCampaign ? 'winter-kickstart-2026' : '';
+  const variant = winterCampaign ? data.variant : '';
+
 
   const safe = {
     name: cap(data.name, 100),
@@ -88,6 +95,8 @@ exports.handler = async (event) => {
     language: cap(data.language, 30),
     interest,
     leadIntent,
+    campaign,
+    variant,
     goal: cap(data.goal, 1000),
     blocker: cap(data.blocker, 1000)
   };
@@ -101,6 +110,7 @@ exports.handler = async (event) => {
     <p><strong>Preferred language:</strong> ${escapeHtml(safe.language)}</p>
     <p><strong>Interested in:</strong> ${escapeHtml(INTEREST_LABELS[safe.interest] || INTEREST_LABELS[''])}</p>
     <p><strong>Original lead intent:</strong> ${escapeHtml(safe.leadIntent)}</p>
+    ${safe.campaign ? `<p><strong>Campaign:</strong> ${escapeHtml(safe.campaign)} · <strong>Variant:</strong> ${escapeHtml(safe.variant)}</p>` : ''}
     <p><strong>Main goal:</strong><br>${escapeHtml(safe.goal)}</p>
     <p><strong>What's holding them back:</strong><br>${escapeHtml(safe.blocker)}</p>
   `;
@@ -117,7 +127,7 @@ exports.handler = async (event) => {
         from: process.env.CONTACT_FROM_EMAIL,
         to: process.env.CONTACT_TO_EMAIL,
         reply_to: safe.email, // owner can hit "reply" and it goes straight to the enquirer
-        subject: `New KK Coaching enquiry - ${safe.name}`,
+        subject: `${safe.campaign ? `WINTER KICKSTART 2026 [${safe.variant.toUpperCase()}] - ` : 'New KK Coaching enquiry - '}${safe.name}`,
         html: htmlBody
       })
     });
