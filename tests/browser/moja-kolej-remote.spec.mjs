@@ -21,6 +21,11 @@ test('actual Netlify preview HTML, metadata, sitemap and no internal promotion',
     expect(res.status()).toBe(200);
     expect(await res.text()).not.toContain('moja-kolej-2027');
   }
+  const configResponse = await request.get(origin + '/admin/config.yml');
+  expect(configResponse.status()).toBe(200);
+  const adminConfig = JSON.parse(await configResponse.text());
+  expect(adminConfig.backend.branch).toBe('feature/moja-kolej-2027-preview');
+  expect(adminConfig.collections.map(x => x.name)).toEqual(['moja_kolej_2027']);
   for (const path of ['/', '/pl/', '/services/', '/pl/services/']) {
     const res = await request.get(origin + path);
     expect(res.status()).toBe(200);
