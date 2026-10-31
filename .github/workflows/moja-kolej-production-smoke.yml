@@ -1,0 +1,28 @@
+name: MOJA KOLEJ — production smoke (read-only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/pages/pl/moja-kolej-2027.astro'
+      - 'src/data/moja-kolej-2027.json'
+      - 'scripts/extend-admin-moja-kolej.mjs'
+      - 'scripts/verify-moja-kolej-production.mjs'
+      - '.github/workflows/moja-kolej-production-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify the actual Netlify production deploy, allowing time for propagation
+        run: node scripts/verify-moja-kolej-production.mjs
