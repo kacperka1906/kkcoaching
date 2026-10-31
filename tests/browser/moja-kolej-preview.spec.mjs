@@ -29,10 +29,14 @@ for(const width of [360,390,768,1024,1440]){
    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',preview.replace('127.0.0.1:4322','kkcoaching.fit').replace('http:','https:'));
    expect(await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth+1)).toBe(false);
    expect(errors).toEqual([]);
-   await page.locator('.mk-faq-items summary').first().click();
-   await expect(page.locator('.mk-faq-items details').first()).toHaveAttribute('open','');
+   // Capture the actual first-load layout, without a cookie banner obscuring content.
+   const reject = page.getByRole('button', {name: /Odrzuć opcjonalne|Reject optional/i});
+   if (await reject.count()) await reject.click();
+   await page.evaluate(() => window.scrollTo(0,0));
    fs.mkdirSync('test-results/moja-kolej-2027',{recursive:true});
    await page.screenshot({path:path.join('test-results/moja-kolej-2027', 'preview-'+width+'.png'),fullPage:true,animations:'disabled'});
+   await page.locator('.mk-faq-items summary').first().click();
+   await expect(page.locator('.mk-faq-items details').first()).toHaveAttribute('open','');
  });
 }
 test('can read preview and complete first CTA with JS disabled',async ({browser})=>{
