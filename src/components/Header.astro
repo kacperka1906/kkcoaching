@@ -24,7 +24,7 @@ const stickyMobile = admin.header.stickyMobile;
 const compactOnScroll = admin.header.compactOnScroll;
 ---
 <header
-  class:list={['site-header', { 'sticky-mobile': stickyMobile }]}
+  class:list={['site-header', { 'sticky-mobile': stickyMobile, 'polish-header': lang === 'pl' }]}
   data-sticky-mobile={String(stickyMobile)}
   data-compact-on-scroll={String(compactOnScroll)}
   id="siteHeader"
@@ -111,7 +111,7 @@ const compactOnScroll = admin.header.compactOnScroll;
     if (event.key === 'Escape' && nav?.classList.contains('is-open')) closeMenu(true);
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 940 && nav?.classList.contains('is-open')) closeMenu();
+    if (window.innerWidth > (header?.classList.contains('polish-header') ? 1240 : 940) && nav?.classList.contains('is-open')) closeMenu();
   }, { passive: true });
 
   if (header?.dataset.compactOnScroll === 'true') {
@@ -224,6 +224,24 @@ const compactOnScroll = admin.header.compactOnScroll;
     .header-cta { display: none; }
     nav.main-nav ul { gap: 11px; }
     nav.main-nav a { font-size: 0.82rem; }
+  }
+
+
+  /* Polish campaign navigation gets its own wider layout, without modifying EN header. */
+  .site-header.polish-header .container {max-width:1490px;}
+  @media (max-width: 1530px) and (min-width: 941px) {
+    .site-header.polish-header .header-cta {display:none;}
+  }
+  @media (min-width: 941px) and (max-width: 1240px) {
+    .site-header.polish-header .nav-toggle {display:inline-flex;align-items:center;justify-content:center;}
+    .site-header.polish-header nav.main-nav {display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 65px);overflow-y:auto;background:var(--graphite);padding:12px 24px 22px;box-shadow:0 12px 30px rgba(0,0,0,.28);}
+    .site-header.polish-header nav.main-nav.is-open {display:block;}
+    .site-header.polish-header nav.main-nav ul {flex-direction:column;gap:0;}
+    .site-header.polish-header nav.main-nav li {border-bottom:1px solid #30333a;}
+    .site-header.polish-header nav.main-nav a {display:block;padding:13px 7px;font-size:1rem;white-space:normal;}
+    .site-header.polish-header nav.main-nav li.nav-program-cta {display:flex;padding:12px 0;border-bottom:0;}
+    .site-header.polish-header nav.main-nav li.nav-program-cta a {display:flex;width:100%;justify-content:center;min-height:52px;background:#a51f2e;border:2px solid #ff90a1;color:#fff;font-size:1.04rem;}
+    .site-header.polish-header nav.main-nav li.nav-item-cta a {color:#fff;font-weight:700;}
   }
 
   @media (max-width: 940px) {
