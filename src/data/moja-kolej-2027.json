@@ -289,20 +289,14 @@
         "text002": "Tym razem",
         "text003": "nie działasz sam.",
         "text004": "Masz swój indywidualny plan, ale obok Ciebie jest trener i grupa osób, które również postanowiły w końcu znaleźć czas dla siebie.",
-        "text005": "(",
-        "text006": "PRZYKŁAD ZADANIA · TYDZIEŃ 2",
-        "text007": "Przygotuj listę zakupów",
-        "text008": "Porównaj dwie etykiety",
-        "text009": "Zaplanuj 3 posiłki",
-        "text010": ") : feature.id === 'podsumowania' ? (",
-        "text011": "Sprawdzamy postępy",
-        "text012": "Podsumowujemy drogę",
-        "text013": ") :",
-        "text014": ")}",
-        "text015": "Przed dołączeniem wyjaśnimy zasady prywatności, w tym widoczność numerów telefonów dla członków grupy. Bez obietnicy kontaktu 24/7.",
-        "text016": "Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad.",
-        "text017": "}",
-        "text018": "))}"
+        "text005": "PRZYKŁAD ZADANIA · TYDZIEŃ 2",
+        "text006": "Przygotuj listę zakupów",
+        "text007": "Porównaj dwie etykiety",
+        "text008": "Zaplanuj 3 posiłki",
+        "text009": "Sprawdzamy postępy",
+        "text010": "Podsumowujemy drogę",
+        "text011": "Przed dołączeniem wyjaśnimy zasady prywatności, w tym widoczność numerów telefonów dla członków grupy. Bez obietnicy kontaktu 24/7.",
+        "text012": "Planujemy również nagrody i wyróżnienia. Szczegóły podamy po zatwierdzeniu zasad."
       },
       "coaching": {
         "text001": "TWÓJ PLAN. TWÓJ CEL.",
@@ -315,36 +309,28 @@
         "text008": "Tydzień 01",
         "text009": "Systematyczność, nie perfekcja.",
         "text010": "Tydzień 16",
-        "text011": ")}",
-        "text012": "Indywidualne prowadzenie jest częścią standardowej pracy KK Coaching. W tej edycji uzupełniają je spotkania, społeczność, warsztaty i wspólny harmonogram."
+        "text011": "Indywidualne prowadzenie jest częścią standardowej pracy KK Coaching. W tej edycji uzupełniają je spotkania, społeczność, warsztaty i wspólny harmonogram."
       },
       "roadmap": {
         "text001": "OD PIERWSZEGO DNIA DO SAMODZIELNOŚCI",
         "text002": "16 tygodni.",
         "text003": "Cztery etapy.",
         "text004": "Każdy etap ma swój temat. Wiedzę od razu przekładasz na praktykę, a indywidualny trening i żywienie towarzyszą Ci przez cały program.",
-        "text005": "(",
-        "text006": "(",
-        "text007": "))}",
-        "text008": "))}",
-        "text009": "04 STYCZNIA 2027",
-        "text010": "25 KWIETNIA 2027"
+        "text005": "04 STYCZNIA 2027",
+        "text006": "25 KWIETNIA 2027"
       },
       "rhythm": {
         "text001": "PRZYKŁADOWY RYTM",
         "text002": "Jak wygląda",
         "text003": "Twój tydzień?",
-        "text004": "Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy.",
-        "text005": "(",
-        "text006": "))}"
+        "text004": "Małe działania, które łatwiej zmieścić w codzienności. Spotkania na żywo odbywają się w każdą niedzielę. Dokładną godzinę podamy przed zapisami. Pozostały rytm tygodnia jest przykładowy."
       },
       "fit": {
         "text001": "RÓŻNE CELE. WSPÓLNA DECYZJA.",
         "text002": "To może być",
         "text003": "Twój moment.",
         "text004": "Nie musisz mieć tego samego celu co pozostali. Ważniejsze, żebyś chciał pracować nad swoim i wiedział, dlaczego to robisz.",
-        "text005": "Program przeznaczony jest dla osób dorosłych. Przy szczególnych potrzebach zdrowotnych może być potrzebna indywidualna ocena i wsparcie odpowiedniego specjalisty.",
-        "text006": ")}"
+        "text005": "Program przeznaczony jest dla osób dorosłych. Przy szczególnych potrzebach zdrowotnych może być potrzebna indywidualna ocena i wsparcie odpowiedniego specjalisty."
       },
       "coach": {
         "text001": "KK COACHING / KACPER KASZOWSKI",
@@ -397,8 +383,7 @@
         "text001": "ZANIM PODEJMIESZ DECYZJĘ",
         "text002": "Częste",
         "text003": "pytania.",
-        "text004": "Konkretnie, bez drobnego druku i obietnic bez pokrycia.",
-        "text005": ")}"
+        "text004": "Konkretnie, bez drobnego druku i obietnic bez pokrycia."
       },
       "final": {
         "text001": "MOJA KOLEJ 2027",
