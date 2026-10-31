@@ -27,13 +27,20 @@ async function check() {
   assert.equal(config.backend.branch,'main','Production admin writes to main');
   assert.equal(config.collections.filter(c=>c.name==='moja_kolej_2027').length,1,'Dedicated editor is registered once');
   assert.ok(config.collections.length>=11,'All original admin collections preserved');
+  const photo = await fetch(origin + '/images/moja-kolej-hero.webp', {signal: AbortSignal.timeout(15000)});
+  assert.equal(photo.status,200,'Live mirror artwork must be HTTP 200');
+  assert.match(photo.headers.get('content-type')||'',/image\/webp/i,'Live artwork must return image/webp');
+  assert.ok((await photo.arrayBuffer()).byteLength>10000,'Live mirror artwork must be a valid nonempty image');
   const index=await get('/sitemap-index.xml');
   const paths=[...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>new URL(x[1]).pathname);
   assert.ok(paths.length>0,'Sitemap index nonempty');
   for (const sitemap of paths) assert.ok(!(await get(sitemap)).includes('/pl/moja-kolej-2027'),'No hidden campaign in '+sitemap);
   for (const p of ['/','/pl/','/services/','/pl/services/']) {
     const data=await get(p);
-    assert.ok(!data.includes('/moja-kolej-2027'),p+' must not link the test page');
+    if(p.startsWith('/pl/')) assert.ok(data.includes('/pl/moja-kolej-2027/'),p+' should promote campaign in PL navigation');
+    else assert.ok(!data.includes('/moja-kolej-2027'),p+' must not promote campaign in EN navigation');
+    if(p==='/pl/') assert.ok(data.includes('campaign-spotlight'),'Polish homepage spotlight missing');
+    if(p==='/') assert.ok(!data.includes('campaign-spotlight'),'English homepage must stay unchanged');
     assert.doesNotMatch(data,/<meta name="robots" content="noindex/,p+' must stay indexable');
   }
 }
