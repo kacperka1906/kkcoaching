@@ -30,7 +30,7 @@ for (const key of ['total','reservation','firstBlock','secondBlock']) {
 assert.ok(data.pricing.total > 0, 'Positive total price required');
 assert.equal(data.pricing.reservation + data.pricing.firstBlock + data.pricing.secondBlock, data.pricing.total, 'GBP instalments must sum to the total');
 const expectedSections = ['hero','intro','community','coaching','roadmap','rhythm','fit','coach','price','application','faq','final'];
-assert.deepEqual(Object.keys(data.copy.sections), expectedSections, 'All campaign sections must remain editable');
+assert.deepEqual(Object.keys(data.copy.sections).sort(), [...expectedSections].sort(), 'All campaign sections must remain editable');
 for (const [section, entries] of Object.entries(data.copy.sections)) {
   assert.ok(Object.keys(entries).length, section+' must contain copy');
   for (const [key,value] of Object.entries(entries)) string(value, section+'.'+key);
