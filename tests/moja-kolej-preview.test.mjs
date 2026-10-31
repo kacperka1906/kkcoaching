@@ -26,7 +26,7 @@ for (const sentence of [
 
 must((body.match(/class="mk-stage"/g) ?? []).length === 4, 'Exactly four curriculum stages');
 must((body.match(/class="mk-week"/g) ?? []).length === 16, 'Exactly 16 programme weeks');
-must((body.match(/class="mk-feature(?:\\s|\")/g) ?? []).length === 6, 'Exactly six community modules');
+must((body.match(/class="mk-feature(?:\\s|")/g) ?? []).length === 6, 'Exactly six community modules');
 must((body.match(/class="mk-faq-index"/g) ?? []).length >= 15, 'At least 15 FAQ answers');
 must(/<fieldset\s+disabled/.test(body), 'Form controls are disabled');
 must(/<button[^>]*type="button"[^>]*disabled/.test(body), 'Cannot submit any form');
