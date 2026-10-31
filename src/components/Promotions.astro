@@ -2,6 +2,7 @@
 import { isOfferActive } from '../lib/promotions.mjs';
 import promotions from '../data/promotions.json';
 import pricing from '../data/pricing.json';
+import WinterKickstart from './WinterKickstart.astro';
 
 interface Props {
   lang: 'en' | 'pl';
@@ -84,7 +85,9 @@ const candidateOffers = promotions.offers
       const homepageRank = {
         'free-7-day-kk-coaching-trial': 0,
         'october-2026-free-pt-taster': 1,
-        'october-2026-20-off-everything': 2
+        'october-2026-20-off-everything': 2,
+        'winter-kickstart-2026-pt': 2,
+        'winter-kickstart-2026-hybrid': 3
       };
       const rankA = homepageRank[a.id] ?? 3;
       const rankB = homepageRank[b.id] ?? 3;
@@ -93,6 +96,9 @@ const candidateOffers = promotions.offers
     return Number(b.featured) - Number(a.featured) || b.priority - a.priority;
   });
 
+const winterPtId = 'winter-kickstart-2026-pt';
+const winterHybridId = 'winter-kickstart-2026-hybrid';
+const winterHybridOffer = candidateOffers.find(offer=>offer.id === winterHybridId);
 const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
 ---
 {candidateOffers.length > 0 && (
@@ -105,6 +111,10 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
       {placement === 'homepage' && <span class="promotion-section-label">{sectionLabel}</span>}
       <div class="promotion-grid">
         {candidateOffers.map(offer => (
+          (placement === 'homepage' && offer.id === winterHybridId) ? null :
+          (offer.id === winterPtId || offer.id === winterHybridId) ? (
+            <WinterKickstart lang={lang} placement={placement} offer={offer} hybridOffer={placement === 'homepage' ? winterHybridOffer : undefined} />
+          ) : (
           <article
             class:list={['promotion-card', offer.featured && 'is-featured', offer.id === 'free-7-day-kk-coaching-trial' && 'is-trial', offer.id === 'october-2026-20-off-everything' && 'is-october-discount']}
             data-promotion-card
@@ -170,6 +180,7 @@ const sectionLabel = isPl ? 'Aktualne promocje' : 'Current offers';
               <p class="small-print">{offer.smallPrint[lang]}</p>
             </div>
           </article>
+          )
         ))}
       </div>
     </div>
