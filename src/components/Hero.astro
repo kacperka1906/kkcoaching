@@ -9,8 +9,9 @@ interface Props {
   trustLine: string;
   image: string;
   imageAlt: string;
+  campaign?: { eyebrow: string; title: string; description: string; href: string; buttonLabel: string };
 }
-const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustLine, image, imageAlt } = Astro.props;
+const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustLine, image, imageAlt, campaign } = Astro.props;
 ---
 <section class="hero" aria-labelledby="hero-heading">
   <img class="hero-photo" src={image} alt={imageAlt} width="768" height="1024" loading="eager" fetchpriority="high" decoding="async" />
@@ -23,6 +24,16 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
         <a href={ctaPrimaryHref} class="btn btn-primary">{ctaPrimary}</a>
         <a href={ctaSecondaryHref} class="btn btn-secondary">{ctaSecondary}</a>
       </div>
+      {campaign && (
+        <aside class="campaign-spotlight" aria-label="Nowość w KK Coaching">
+          <div class="campaign-spotlight-copy">
+            <span class="campaign-eyebrow"><span class="campaign-pulse" aria-hidden="true"></span>{campaign.eyebrow}</span>
+            <strong>{campaign.title}</strong>
+            <p>{campaign.description}</p>
+          </div>
+          <a class="campaign-spotlight-link" href={campaign.href}>{campaign.buttonLabel}<span aria-hidden="true">↗</span></a>
+        </aside>
+      )}
       <p class="trust-line">{trustLine}</p>
     </div>
   </div>
@@ -75,6 +86,16 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
   .hero p.lead { color: #D3D6DA; font-size: 1.05rem; max-width: 46ch; margin-bottom: 26px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
   .trust-line { color: #AEB3BA; font-size: 0.82rem; line-height: 1.5; letter-spacing: 0.01em; }
+  .campaign-spotlight {display:flex;align-items:center;justify-content:space-between;gap:22px;max-width:660px;margin:4px 0 22px;padding:17px 20px;background:rgba(20,21,24,.9);border:1px solid rgba(252,119,135,.63);border-left:4px solid #ee4057;box-shadow:0 12px 32px rgba(0,0,0,.18);border-radius:5px;}
+  .campaign-spotlight-copy {min-width:0;}
+  .campaign-eyebrow {display:flex;align-items:center;gap:8px;color:#ffc6cf;font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
+  .campaign-pulse {width:7px;height:7px;border-radius:50%;background:#fa7081;flex:0 0 7px;}
+  .campaign-spotlight strong {display:block;color:#fff;font-size:1.35rem;letter-spacing:-.02em;line-height:1.15;}
+  .campaign-spotlight p {font-size:.83rem;color:#f1dfe1;line-height:1.5;margin:7px 0 0;}
+  .campaign-spotlight-link {flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;text-decoration:none;color:#fff;background:#ad2135;font-size:.83rem;font-weight:800;border-radius:4px;padding:13px 15px;min-height:46px;}
+  .campaign-spotlight-link:hover {color:#fff;background:#c22c44;}
+  .campaign-spotlight-link:focus-visible {outline:3px solid #fff;outline-offset:3px;}
+
 
   @media (max-width: 620px) {
     .hero { min-height: max(720px, calc(100svh - 72px)); }
@@ -85,6 +106,9 @@ const { heading, lead, ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHre
     .hero-ctas { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .hero-ctas .btn { width: 100%; }
     .trust-line { text-align: center; font-size: 0.76rem; max-width: 42ch; margin: 0 auto; }
+    .campaign-spotlight {flex-direction:column;align-items:stretch;gap:15px;margin:4px 0 18px;padding:16px;}
+    .campaign-spotlight-link {width:100%;font-size:.92rem;}
+    .campaign-spotlight strong {font-size:1.4rem;}
   }
 
   @media (min-width: 861px) {
