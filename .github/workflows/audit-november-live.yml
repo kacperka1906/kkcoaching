@@ -1,0 +1,28 @@
+name: Read-only LIVE November promotion SEO verification
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit-november-live-2026.mjs'
+      - '.github/workflows/audit-november-live.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-html-inspection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out audit branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Read real Netlify HTML + manifest + sitemap and check for expired promotions
+        run: node scripts/audit-november-live-2026.mjs
