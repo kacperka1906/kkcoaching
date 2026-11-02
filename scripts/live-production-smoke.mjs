@@ -52,7 +52,15 @@ export async function checkPublishedSite({ fetcher = fetch, now = new Date() } =
 
   const activeIds = activeOfferIds(offers, now);
   const discountActive = isOfferActive(october, now);
-  const expectedHomepageIds = [trialId, tasterId, ...(discountActive ? [octoberId] : [])];
+  // Mirror the known homepage card order across the October and November campaigns.
+  // The permanent free taster retains its historical October-prefixed technical ID.
+  const expectedHomepageIds = [
+    trialId,
+    tasterId,
+    ...(discountActive ? [octoberId] : []),
+    ...(activeIds.includes('winter-kickstart-2026-pt') ? ['winter-kickstart-2026-pt'] : []),
+    ...(activeIds.includes('winter-kickstart-2026-hybrid') ? ['winter-kickstart-2026-hybrid'] : [])
+  ];
 
   await check('promotion-state', async () => {
     const { body, headers } = await get('/promotion-state.json');
