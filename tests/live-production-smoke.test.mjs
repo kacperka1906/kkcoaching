@@ -9,12 +9,16 @@ const offers = JSON.parse(readFileSync(new URL('../src/data/promotions.json', im
 const trial = 'free-7-day-kk-coaching-trial';
 const taster = 'october-2026-free-pt-taster';
 const october = 'october-2026-20-off-everything';
+const winterPt = 'winter-kickstart-2026-pt';
+const winterHybrid = 'winter-kickstart-2026-hybrid';
 
-function mockSite({ now = '2026-10-16T12:00:00Z', missingTrial = false, oldDiscount = false, missingNoStore = false } = {}) {
+function mockSite({ now = '2026-10-16T12:00:00Z', missingTrial = false, missingWinter = false, oldDiscount = false, missingNoStore = false } = {}) {
   const clock = new Date(now);
   const ids = activeOfferIds(offers, clock);
   const discount = ids.includes(october);
-  const homeIds = [trial, taster, ...(discount ? [october] : [])];
+  const homeIds = [trial, taster, ...(discount ? [october] : []),
+    ...(ids.includes(winterPt) ? [winterPt] : []),
+    ...(ids.includes(winterHybrid) ? [winterHybrid] : [])];
   const mocks = new Map();
 
   mocks.set('/promotion-state.json', {
@@ -26,7 +30,7 @@ function mockSite({ now = '2026-10-16T12:00:00Z', missingTrial = false, oldDisco
   });
 
   for (const [lang, home] of [['en', '/'], ['pl', '/pl/']]) {
-    const cards = homeIds.filter(id => !(id === trial && missingTrial))
+    const cards = homeIds.filter(id => !(id === trial && missingTrial) && !(id === winterPt && missingWinter))
       .map(id => '<article data-promotion-id="' + id + '"></article>').join('');
     mocks.set(home, { body:
       '<html><head><link rel="canonical" href="' + site + home + '"></head>' +
@@ -67,8 +71,14 @@ test('release smoke checks only read-only public routes and passes October', asy
   assert(fixture.paths.every(path => !path.includes('/.netlify/functions/')));
 });
 
-test('release smoke passes November with expired discount omitted', async () => {
-  assert.deepEqual(await checkPublishedSite(mockSite({ now: '2026-11-01T12:00:00Z' })), []);
+test('release smoke passes November when Winter PT and Hybrid replace expired October discount', async () => {
+  const fixture = mockSite({ now: '2026-11-02T18:30:00Z' });
+  assert.deepEqual(await checkPublishedSite(fixture), []);
+});
+
+test('release smoke catches a missing Winter PT card in November without requiring deprecated October discount', async () => {
+  const problems = await checkPublishedSite(mockSite({ now: '2026-11-02T18:30:00Z', missingWinter: true }));
+  assert(problems.some(p => p.includes('unexpected live promotion cards')));
 });
 
 test('release smoke blocks a stale deployment missing trial', async () => {
