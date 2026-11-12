@@ -85,7 +85,7 @@
     },
     "qualifications": {
       "eyebrow": { "en": "Qualifications", "pl": "Kwalifikacje" },
-      "heading": { "en": "Professional qualifications", "pl": "Kwalifikacje zawodowe" },
+      "heading": { "en": "Qualifications & continuing education", "pl": "Kwalifikacje i dalsza edukacja" },
       "items": [
         {
           "title": "Level 3 Personal Trainer",
@@ -94,6 +94,10 @@
         {
           "title": "Level 2 Gym Instructor",
           "description": { "en": "Diploma in Gym Instructing · Achieve More Training · 2026", "pl": "Diploma in Gym Instructing · Achieve More Training · 2026" }
+        },
+        {
+          "title": "Level 4 Sports Nutrition (in progress)",
+          "description": { "en": "Currently studying with OriGym · qualification not yet completed", "pl": "Kurs w OriGym w trakcie · kwalifikacja jeszcze nieukończona" }
         }
       ]
     }
