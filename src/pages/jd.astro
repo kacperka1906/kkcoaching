@@ -42,8 +42,8 @@ const options = [
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">JD GYMS · CWMBRAN</span>
-        <h1 id="jd-heading">Get more from every gym session.</h1>
-        <p class="lead">I'm Kacper, the coach behind KK Coaching. If you scanned my banner at JD Gyms, you're in the right place. Whether you want to build muscle, get stronger or feel more confident using the gym, I'll help you train with a clear plan.</p>
+        <h1 id="jd-heading"><span class="hero-heading-line">Train with a</span><span class="hero-heading-line">clear plan.</span></h1>
+        <p class="lead">I'm Kacper, the coach behind KK Coaching. If you scanned my banner at JD Gyms Cwmbran, you're in the right place. I help people build muscle, lose fat and feel more confident in the gym with structured training and realistic support.</p>
         <div class="hero-actions">
           <a href="/contact/" class="btn btn-primary">Book a Free Consultation</a>
           <a href={whatsappUrl} class="jd-whatsapp" target="_blank" rel="noopener noreferrer">Ask Me on WhatsApp</a>
@@ -76,9 +76,9 @@ const options = [
       <div class="taster-panel">
         <div class="taster-copy">
           <span class="eyebrow">WANT TO TRY TRAINING TOGETHER?</span>
-          <h2 id="taster-heading">Your first 60-minute PT taster is free.</h2>
-          <p>See how I coach, practise your technique and talk through your next steps before deciding if you'd like to continue.</p>
-          <p class="taster-terms">One free 60-minute taster per new KK Coaching client, subject to availability. No pressure to continue. Not a JD Gyms member? You can buy a one-day pass directly from JD Gyms Cwmbran instead of joining for a full month. Gym entry is paid separately.</p>
+          <h2 id="taster-heading">Your 60-minute taster is completely free.</h2>
+          <p>Come and experience a personal training session at JD Gyms Cwmbran. No pressure, no commitment.</p>
+          <p class="taster-terms">Don't have a JD Gyms membership? No problem — you can purchase a one-day pass directly from JD Gyms. Gym entry is paid separately. One free taster per person, subject to availability.</p>
         </div>
         <a href="/contact/?interest=taster" class="btn btn-primary">Ask About a Free Taster</a>
       </div>
@@ -145,7 +145,8 @@ const options = [
   .jd-hero { padding: clamp(36px, 5vw, 76px) 0; }
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(290px, .85fr); gap: clamp(28px, 5vw, 70px); align-items: center; }
   .hero-copy { min-width: 0; }
-  .jd-hero h1 { color: var(--white); font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; max-width: 12ch; margin: 12px 0 20px; }
+  .jd-hero h1 { color: var(--white); font-size: clamp(2.5rem, 4.7vw, 4.35rem); line-height: 1.06; max-width: none; letter-spacing: -.035em; margin: 12px 0 20px; }
+  .hero-heading-line { display: block; white-space: nowrap; }
   .lead { color: #D5D8DC; font-size: clamp(1rem, 1.7vw, 1.14rem); line-height: 1.65; max-width: 58ch; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 12px; }
   .hero-actions .btn, .jd-whatsapp { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; text-align: center; }
@@ -156,8 +157,8 @@ const options = [
   .trust-row li { color: #F2F3F4; border: 1px solid #444B54; border-radius: 999px; padding: 8px 12px; font-size: .8rem; }
   .trust-row span { color: #C7CBD1; }
   .hero-image-wrap { position: relative; max-width: 520px; width: 100%; margin-inline: auto; }
-  .hero-image { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: #2C3036; border: 1px solid #454A52; }
-  .image-caption { position: absolute; left: 14px; right: 14px; bottom: 14px; display: block; padding: 12px 14px; font-size: .72rem; letter-spacing: .06em; line-height: 1.4; font-weight: 800; background: rgba(23,25,29,.9); border-left: 3px solid var(--red); color: #fff; }
+  .hero-image { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; border-radius: var(--radius); background: #2C3036; border: 1px solid #454A52; }
+  .image-caption { display: block; padding: 10px 14px; margin-top: 9px; font-size: .7rem; letter-spacing: .055em; line-height: 1.4; font-weight: 800; background: #292c32; border-left: 3px solid var(--red); color: #fff; }
   .jd-taster { padding: 36px 0 6px; }
   .taster-panel { display: flex; align-items: center; gap: 26px; justify-content: space-between; padding: clamp(22px, 4vw, 38px); border: 1px solid #E2E4E7; border-left: 5px solid var(--red); border-radius: var(--radius); background: #F6F7F8; }
   .taster-copy { max-width: 65ch; }
@@ -202,7 +203,12 @@ const options = [
   }
   @media (max-width: 620px) {
     .jd-hero { padding: 34px 0 44px; }
-    .jd-hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+    .jd-hero h1 { font-size: clamp(2.22rem, 9.1vw, 3.12rem); line-height: 1.08; margin-bottom: 16px; }
+    .jd-hero .lead { font-size: .98rem; line-height: 1.6; }
+    .hero-copy { width: 100%; }
+    .hero-actions { margin-top: 22px; }
+    .trust-row { margin-top: 20px; }
+    .hero-image-wrap { margin-top: 3px; }
     .hero-actions { flex-direction: column; }
     .hero-actions .btn, .hero-actions .jd-whatsapp { width: 100%; }
     .hero-image-wrap { max-width: 390px; }
