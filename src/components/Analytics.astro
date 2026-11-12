@@ -80,7 +80,7 @@ const GA_MEASUREMENT_ID = 'G-LFHEZ5ETW8';
           language: trialLanguage,
           offer: '7_day_trial',
           destination: absoluteHref,
-          placement: 'current_offers',
+          placement: link.getAttribute('data-free-trial-placement') || 'current_offers',
           transport_type: 'beacon',
           event_callback: normalNavigation ? finish : undefined,
           event_timeout: 800
