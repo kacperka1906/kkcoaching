@@ -26,6 +26,7 @@ const options = [
     text: 'Train on your own schedule with an individual programme, practical nutrition guidance and ongoing reviews wherever you are.',
     href: '/online-coaching/',
     cta: 'Explore Online Coaching',
+    trialUrl: 'https://kkcoaching.mypthub.net/p/240389',
     featured: false
   }
 ];
@@ -50,7 +51,7 @@ const options = [
         <p class="hero-note">A quick conversation about your goals and the support that suits you. No pressure to sign up.</p>
         <ul class="trust-row" aria-label="Coach credentials and languages">
           <li>Level 3 Personal Trainer</li>
-          <li>Level 4 Sports Nutrition <span>(in progress)</span></li>
+          <li>Level 4 Sports Nutrition</li>
           <li>English / Polish</li>
         </ul>
       </div>
@@ -99,6 +100,13 @@ const options = [
             <h3>{option.title}</h3>
             <p>{option.text}</p>
             <a href={option.href} class:list={['btn', option.featured ? 'btn-primary' : 'btn-outline-dark']}>{option.cta}</a>
+            {option.trialUrl && (
+              <div class="trial-choice">
+                <span class="trial-choice-label">TRY BEFORE YOU COMMIT</span>
+                <a href={option.trialUrl} class="trial-link" target="_blank" rel="noopener noreferrer">Get 7 Days Free Access <span aria-hidden="true">↗</span></a>
+                <p class="trial-note">Free MyPTHub demo with sample workouts and meals. Not a personalised coaching trial. No automatic renewal.</p>
+              </div>
+            )}
           </article>
         ))}
       </div>
@@ -166,6 +174,11 @@ const options = [
   .option-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
   .option-card p { color: var(--steel); margin-bottom: 24px; flex: 1; }
   .option-card .btn { width: 100%; text-align: center; }
+  .trial-choice { margin-top: 18px; padding-top: 16px; border-top: 1px solid #E3E5E8; }
+  .trial-choice-label { display: block; color: var(--red); font-size: .71rem; letter-spacing: .045em; font-weight: 800; margin-bottom: 5px; }
+  .trial-link { color: var(--graphite); font-size: .98rem; font-weight: 800; text-underline-offset: 4px; }
+  .trial-link:hover { color: var(--red); }
+  .trial-note { margin: 7px 0 0 !important; font-size: .78rem; line-height: 1.45; }
   .steps-section { background: #F6F7F8; padding: 70px 0; }
   .steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
   .step { padding: 23px; border: 1px solid #E0E3E6; border-radius: var(--radius); background: #fff; }
