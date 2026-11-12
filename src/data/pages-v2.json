@@ -92,15 +92,15 @@
           "description": { "en": "Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026", "pl": "Certificate in Planning and Delivering Personal Training · Achieve More Training · 2026" }
         },
         {
-          "title": "Level 2 Gym Instructor",
-          "description": { "en": "Diploma in Gym Instructing · Achieve More Training · 2026", "pl": "Diploma in Gym Instructing · Achieve More Training · 2026" }
-        },
-        {
           "title": "Level 4 Sports Nutrition",
           "description": {
-            "en": "Focus Awards Level 4 Certificate in Nutrition for Weight Management and Athletic Performance (RQF) · OriGym Centre of Excellence · Awarded 23 October 2026",
-            "pl": "Focus Awards Level 4 Certificate in Nutrition for Weight Management and Athletic Performance (RQF) · OriGym Centre of Excellence · Certyfikat przyznany 23.10.2026"
+            "en": "Focus Awards Level 4 Certificate in Nutrition for Weight Management and Athletic Performance (RQF) · Focus Awards · OriGym Centre of Excellence · Awarded 23 October 2026",
+            "pl": "Focus Awards Level 4 Certificate in Nutrition for Weight Management and Athletic Performance (RQF) · Focus Awards · OriGym Centre of Excellence · Certyfikat przyznany 23.10.2026"
           }
+        },
+        {
+          "title": "Level 2 Gym Instructor",
+          "description": { "en": "Diploma in Gym Instructing · Achieve More Training · 2026", "pl": "Diploma in Gym Instructing · Achieve More Training · 2026" }
         }
       ]
     }
