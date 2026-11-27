@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrainingLocation from '../components/TrainingLocation.astro';
+import AllInOneReviews from '../components/reviews/AllInOneReviews.astro';
 import Promotions from '../components/Promotions.astro';
 import details from '../data/service-details-v2.json';
 import admin from '../data/admin-v2.json';
@@ -104,6 +105,8 @@ const structuredData = {
   </section>
 
   <TrainingLocation lang="en" />
+
+  <AllInOneReviews lang="en" id="cwmbran-personal-training-google-reviews" />
 
   <section class="on-white" aria-labelledby="local-search-heading">
     <div class="container">
