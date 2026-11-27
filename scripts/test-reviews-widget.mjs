@@ -19,7 +19,10 @@ assert.ok(google.some(r => r.client === 'Thomas Matthews'));
 assert.ok(google.some(r => r.client === 'Marisa Gough'));
 assert.deepEqual(facebook.map(r => r.client), ['Aneta K-o', 'Sylwia Malys', 'Agnieszka Kałużna', 'Sebastian Kolesnik', 'Marta Kasz']);
 assert.deepEqual(facebook.map(r => r.quote), fallback.map(r => r.quote));
-assert.ok(facebook.every(r => r.enabled && r.approved && r.avatar));
+assert.ok(facebook.every(r => r.approved && r.avatar));
+assert.equal(facebook.find(r => r.id === 'marta').enabled, false);
+assert.equal(google.length, 5);
+assert.ok(google.every(r => r.enabled && r.approved && !r.client.startsWith('Marta') && !r.quote.includes('…') && r.quote.length > 200));
 assert.ok(facebook.every(r => r.source === 'facebook' && r.recommendation === true && r.rating === null));
 assert.ok(adminReviews.find(r => r.client === 'Marta Kasz').quote.endsWith('z czystym sumieniem polecam!'));
 
