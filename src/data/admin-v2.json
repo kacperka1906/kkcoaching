@@ -384,6 +384,17 @@
   "reviews": {
     "items": [
       {
+        "id": "google-thomas",
+        "enabled": true,
+        "approved": true,
+        "client": "Thomas Matthews",
+        "quote": "Two months in, and I honestly haven’t felt this good, strong and confident in years! […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
         "id": "aneta",
         "enabled": true,
         "approved": true,
@@ -467,6 +478,61 @@
         "featured": true,
         "consentConfirmed": false,
         "language": "pl"
+      },
+      {
+        "id": "google-marisa",
+        "enabled": true,
+        "approved": true,
+        "client": "Marisa Gough",
+        "quote": "I'm on month two PT sessions with Kacper and can feel a big difference in strength already. […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-agnieszka",
+        "enabled": true,
+        "approved": true,
+        "client": "Agnieszka kupska",
+        "quote": "I’ve been training with Kacper since February, and I plan to continue for a long time. […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-aneta",
+        "enabled": true,
+        "approved": true,
+        "client": "Aneta Kojlo",
+        "quote": "I highly recommend KK Coaching! […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-sebastian",
+        "enabled": true,
+        "approved": true,
+        "client": "Sebastian Koleśnik",
+        "quote": "I can recommend Kacper with confidence. […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-marta",
+        "enabled": true,
+        "approved": true,
+        "client": "Marta Kaszowska",
+        "quote": "Really happy with the service! Very professional, friendly and knowledgeable. […]",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
       }
     ],
     "enabled": false,
@@ -483,16 +549,16 @@
       "pl": "Dodaj opinię w Google"
     },
     "seeAllLabel": {
-      "en": "See all reviews",
-      "pl": "Zobacz wszystkie opinie"
+      "en": "View reviews on Google Maps",
+      "pl": "Zobacz opinie w Mapach Google"
     },
-    "leaveGoogleReviewUrl": "",
-    "googlePlaceId": "",
+    "leaveGoogleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJw9XmOxnSdIkRt79lrhGJjX0",
+    "googlePlaceId": "ChIJw9XmOxnSdIkRt79lrhGJjX0",
     "eyebrow": {
       "en": "Facebook recommendations",
       "pl": "Rekomendacje z Facebooka"
     },
-    "googleReviewsUrl": "",
+    "googleReviewsUrl": "https://www.google.com/maps/search/?api=1&query=KK+Coaching+Cwmbran&query_place_id=ChIJw9XmOxnSdIkRt79lrhGJjX0",
     "screenshotLabel": {
       "en": "View original message",
       "pl": "Zobacz oryginalną wiadomość"

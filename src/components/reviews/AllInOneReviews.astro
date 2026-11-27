@@ -14,7 +14,9 @@ const config = { ...defaults, ...overrides } as ReviewsWidgetConfig;
 const copy = reviewCopy[lang];
 const reviews = sortReviews(filterReviews(items, filters), config.sort === 'random' ? 'manual' : config.sort);
 const summaries = sourceSummary(reviews);
-const writeUrl = safeUrl(config.writeReviewUrl ?? admin.contact.facebookUrl);
+const googleWriteUrl = safeUrl(admin.reviews.leaveGoogleReviewUrl);
+const writeUrl = safeUrl(config.writeReviewUrl) ?? googleWriteUrl ?? safeUrl(admin.contact.facebookUrl);
+const readUrl = safeUrl(admin.reviews.googleReviewsUrl);
 ---
 <section class="rw-widget" data-review-widget data-layout={config.layout} data-theme={config.theme} data-sort={config.sort} data-accent={config.accentMode}
   data-text-mode={config.reviewTextMode} data-more={copy.more} data-less={copy.less} aria-labelledby={`${id}-title`}
@@ -25,8 +27,7 @@ const writeUrl = safeUrl(config.writeReviewUrl ?? admin.contact.facebookUrl);
     </div>
     {config.showSourceSummary && <div class="rw-summaries">{summaries.map(summary => <div class="rw-summary">
       <SourceIcon source={summary.source as ReviewSource}/>
-      <div><strong>{summary.name}</strong><span>{summary.source === 'facebook' ? copy.recommendationCount(summary.recommendations) : `${summary.count} ${copy.reviews}`}</span>
-      {summary.average !== null && <span>{summary.average.toFixed(1)} / 5 · {summary.ratingCount} {copy.reviews}</span>}</div>
+      <div><strong>{summary.name}</strong><span>{summary.source === 'facebook' ? copy.recommendationCount(summary.recommendations) : summary.source === 'google' ? copy.selected(summary.count) : `${summary.count} ${copy.reviews}`}</span></div>
     </div>)}</div>}
   </header>
   <div class="rw-toolbar">
@@ -34,7 +35,8 @@ const writeUrl = safeUrl(config.writeReviewUrl ?? admin.contact.facebookUrl);
       <button type="button" data-filter="all" aria-pressed="true">{copy.all}<span>{reviews.length}</span></button>
       {summaries.map(summary => <button type="button" data-filter={summary.source} aria-pressed="false"><SourceIcon source={summary.source as ReviewSource}/>{summary.name}<span>{summary.count}</span></button>)}
     </div>
-    {config.showWriteReviewButton && writeUrl && <a class="rw-leave" href={writeUrl} target="_blank" rel="noopener noreferrer">{copy.leave}<span aria-hidden="true">↗</span></a>}
+    {readUrl && <a class="rw-leave" href={readUrl} target="_blank" rel="noopener noreferrer">{admin.reviews.seeAllLabel[lang]}<span aria-hidden="true">↗</span></a>}
+    {config.showWriteReviewButton && writeUrl && <a class="rw-leave" href={writeUrl} target="_blank" rel="noopener noreferrer">{writeUrl === googleWriteUrl ? admin.reviews.leaveReviewLabel[lang] : copy.leave}<span aria-hidden="true">↗</span></a>}
   </div>
   <div class="rw-track" data-track id={`${id}-track`} tabindex="0" aria-label={copy.original}>
     {reviews.map(item => <ReviewCard item={item} config={config} copy={copy} lang={lang} instanceId={id}/>)}
