@@ -13,11 +13,17 @@ const adminReviews = admin.reviews.items;
 const widgetConfig = JSON.parse(await readFile(new URL('../src/data/reviews/reviews-config.json', import.meta.url), 'utf8'));
 
 assert.equal(fallback.length, 5);
-assert.equal(adminReviews.length, 5);
-assert.deepEqual(adminReviews.map(r => r.client), ['Aneta K-o', 'Sylwia Malys', 'Agnieszka Kałużna', 'Sebastian Kolesnik', 'Marta Kasz']);
-assert.deepEqual(adminReviews.map(r => r.quote), fallback.map(r => r.quote));
-assert.ok(adminReviews.every(r => r.enabled && r.approved && r.avatar));
-assert.ok(adminReviews.every(r => r.source === 'facebook' && r.recommendation === true && r.rating === null));
+const facebook = adminReviews.filter(r => r.source === 'facebook');
+const google = adminReviews.filter(r => r.source === 'google');
+assert.ok(google.some(r => r.client === 'Thomas Matthews'));
+assert.ok(google.some(r => r.client === 'Marisa Gough'));
+assert.deepEqual(facebook.map(r => r.client), ['Aneta K-o', 'Sylwia Malys', 'Agnieszka Kałużna', 'Sebastian Kolesnik', 'Marta Kasz']);
+assert.deepEqual(facebook.map(r => r.quote), fallback.map(r => r.quote));
+assert.ok(facebook.every(r => r.approved && r.avatar));
+assert.equal(facebook.find(r => r.id === 'marta').enabled, false);
+assert.equal(google.length, 5);
+assert.ok(google.every(r => r.enabled && r.approved && !r.client.startsWith('Marta') && !r.quote.includes('…') && r.quote.length > 200));
+assert.ok(facebook.every(r => r.source === 'facebook' && r.recommendation === true && r.rating === null));
 assert.ok(adminReviews.find(r => r.client === 'Marta Kasz').quote.endsWith('z czystym sumieniem polecam!'));
 
 const base = { ...fallback[0], approved: true, enabled: true };
@@ -47,16 +53,24 @@ assert.deepEqual(sortReviews(dated, 'newest').map(r => r.id), ['new', 'old', 'mi
 for (const route of ['reviews-widget-preview', 'pl/reviews-widget-preview']) {
   const html = await readFile(new URL(`../dist/${route}/index.html`, import.meta.url), 'utf8');
   assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1, `${route}: one widget`);
-  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, 5);
+  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, google.length);
   assert.match(html, /name="robots" content="noindex, nofollow"/);
-  assert.doesNotMatch(html, /data-filter="google"|data-filter="whatsapp"|data-filter="messenger"|class="rw-rating"/);
+  assert.doesNotMatch(html, /data-filter="all"|data-review-card data-source="facebook"/);
+  assert.ok(html.includes(admin.reviews.leaveGoogleReviewUrl));
+  assert.ok(html.includes(admin.reviews.googlePlaceId));
+  assert.ok(html.includes(admin.reviews.googleReviewsUrl.replaceAll('&', '&amp;')) || html.includes(admin.reviews.googleReviewsUrl));
+  assert.doesNotMatch(html, /data-filter="whatsapp"|data-filter="messenger"/);
 }
 
 for (const route of ['index.html', 'pl/index.html']) {
   const html = await readFile(new URL(`../dist/${route}`, import.meta.url), 'utf8');
   assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1, `${route}: one homepage widget`);
-  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, 5);
-  assert.doesNotMatch(html, /data-filter="google"|data-filter="whatsapp"|data-filter="messenger"|class="rw-rating"/);
+  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, google.length);
+  assert.doesNotMatch(html, /data-filter="all"|data-review-card data-source="facebook"/);
+  assert.ok(html.includes(admin.reviews.leaveGoogleReviewUrl));
+  assert.ok(html.includes(admin.reviews.googlePlaceId));
+  assert.ok(html.includes(admin.reviews.googleReviewsUrl.replaceAll('&', '&amp;')) || html.includes(admin.reviews.googleReviewsUrl));
+  assert.doesNotMatch(html, /data-filter="whatsapp"|data-filter="messenger"/);
 }
 
 const sitemap = await readFile(new URL('../dist/sitemap-0.xml', import.meta.url), 'utf8');

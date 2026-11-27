@@ -384,6 +384,17 @@
   "reviews": {
     "items": [
       {
+        "id": "google-thomas",
+        "enabled": true,
+        "approved": true,
+        "client": "Thomas Matthews",
+        "quote": "Two months in, and I honestly haven’t felt this good, strong and confident in years! I’ve never achieved these results from going to the gym on my own because, if I’m honest, I’ve never had the willpower or consistency. But Kacper keeps me motivated, pushes me and keeps me accountable. Really enjoying the journey!",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
         "id": "aneta",
         "enabled": true,
         "approved": true,
@@ -453,7 +464,7 @@
       },
       {
         "id": "marta",
-        "enabled": true,
+        "enabled": false,
         "approved": true,
         "client": "Marta Kasz",
         "quote": "Równo rok temu oddałam się w ręce najlepszego trenera, jakiego mogłam sobie wymarzyć... mojego męża! ❤️ Zmiana relacji na linii żona-podopieczna mogła być wyzwaniem, ale Kacper pokazał absolutny profesjonalizm.\n\nNa sali treningowej nie ma taryfy ulgowej ani taryfy małżeńskiej. Jest surowo i konkretnie. Kiedy padam ze zmęczenia, a on mówi swoje legendarne: „jeszcze dwa, dasz radę!” – po prostu zaciskam zęby i robię to.\n\nEfekt tego wspólnego roku? Schudłam 7 kg (więcej nie potrzebowałam), a moje ciało zmieniło się nie do poznania. Proporcje są idealne: tam, gdzie miało urosnąć – urosło, a tam, gdzie miało zmaleć – zmalało! Wypracowałam ogromny progres i formę życia. 💪🔥\n\nDziękuję za każdy trening, motywację i to, że nigdy mi nie odpuszczasz. Jesteś trenerem z prawdziwego powołania. Jeśli ktoś z Was szuka kogoś, kto wyciśnie z Was 100% i realnie zmieni Wasze ciało – z czystym sumieniem polecam!",
@@ -467,6 +478,50 @@
         "featured": true,
         "consentConfirmed": false,
         "language": "pl"
+      },
+      {
+        "id": "google-marisa",
+        "enabled": true,
+        "approved": true,
+        "client": "Marisa Gough",
+        "quote": "I'm on month two PT sessions with Kacper and can feel a big difference in strength already. What stands out to me is the attention to detail and he seems to genuinely care about making a difference. Kacper takes the time with the discovery session to really understand your goals and the training plan is completely tailored to that. The app is added plus for tracking progress and following workouts!",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-agnieszka",
+        "enabled": true,
+        "approved": true,
+        "client": "Agnieszka kupska",
+        "quote": "I’ve been training with Kacper since February, and I plan to continue for a long time. For the first time since I started training—that is, in 10 years—I’m seeing results like these. I receive individual attention and guidance during every single session",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-aneta",
+        "enabled": true,
+        "approved": true,
+        "client": "Aneta Kojlo",
+        "quote": "I highly recommend KK Coaching!\n\nBefore I started, I had never been to a gym and honestly never thought I would enjoy working out. But thanks to the motivation, encouragement, and support I received, I finally took that first step, and I'm so glad I did!\n\nThe workouts are tailored to my goals, and the meal plan is simple, easy to follow, and based on foods I actually enjoy eating. No complicated diets or unrealistic expectations!\n\nI've made amazing progress, gained confidence, and learned to truly enjoy my fitness journey.\n\nThank you for motivating me, believing in me, and helping me achieve results I never thought possible!\n\nI couldn't be happier with my experience, and I would absolutely recommend KK Coaching to anyone looking to make a positive change in their life!",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
+      },
+      {
+        "id": "google-sebastian",
+        "enabled": true,
+        "approved": true,
+        "client": "Sebastian Koleśnik",
+        "quote": "I can recommend Kacper with confidence. The biggest surprise for me was realising I didn’t have to give up the foods I actually enjoy to lose weight and improve my physique. The nutrition plan was built around my preferences and normal life, rather than forcing me to eat from a rigid meal plan. Over time my waist came down, my shape became much more balanced and my upper body started looking noticeably better. On top of that, the training plan was clear, adjustments were made when needed, and everything was explained so I understood what we were doing and why. If you want to lose fat without crash dieting and build a better physique at the same time, I’d definitely recommend him.",
+        "source": "google",
+        "rating": 5,
+        "language": "en",
+        "featured": true
       }
     ],
     "enabled": false,
@@ -483,16 +538,16 @@
       "pl": "Dodaj opinię w Google"
     },
     "seeAllLabel": {
-      "en": "See all reviews",
-      "pl": "Zobacz wszystkie opinie"
+      "en": "View reviews on Google Maps",
+      "pl": "Zobacz opinie w Mapach Google"
     },
-    "leaveGoogleReviewUrl": "",
-    "googlePlaceId": "",
+    "leaveGoogleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJw9XmOxnSdIkRt79lrhGJjX0",
+    "googlePlaceId": "ChIJw9XmOxnSdIkRt79lrhGJjX0",
     "eyebrow": {
       "en": "Facebook recommendations",
       "pl": "Rekomendacje z Facebooka"
     },
-    "googleReviewsUrl": "",
+    "googleReviewsUrl": "https://www.google.com/maps/search/?api=1&query=KK+Coaching+Cwmbran&query_place_id=ChIJw9XmOxnSdIkRt79lrhGJjX0",
     "screenshotLabel": {
       "en": "View original message",
       "pl": "Zobacz oryginalną wiadomość"
