@@ -6,6 +6,7 @@ import Promotions from '../../components/Promotions.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import AllInOneReviews from '../../components/reviews/AllInOneReviews.astro';
 import site from '../../data/site.pl.json';
+import admin from '../../data/admin-v2.json';
 
 const allServices = (await getCollection('services'))
   .filter(s => s.id.startsWith('pl/'))
@@ -19,7 +20,8 @@ const siteUrl = String(Astro.site).replace(/\/$/, '');
 const businessId = `${siteUrl}/#business`;
 const personId = `${siteUrl}/#kacper-kaszowski`;
 const websiteId = `${siteUrl}/#website`;
-const sameAs = [site.meta.instagramUrl, site.meta.facebookUrl].filter(Boolean);
+const socialProfiles = [site.meta.instagramUrl, site.meta.facebookUrl || admin.contact.facebookUrl].filter(Boolean);
+const businessProfiles = [...socialProfiles, admin.reviews.googleReviewsUrl].filter(Boolean);
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -41,7 +43,7 @@ const structuredData = {
       url: `${siteUrl}/`,
       email: site.meta.contactEmail,
       telephone: site.meta.whatsappNumber,
-      sameAs,
+      sameAs: businessProfiles,
       founder: { '@id': personId },
       areaServed: ['Cwmbran', 'Torfaen', 'South Wales', 'United Kingdom'],
       knowsLanguage: ['Polish', 'English']
@@ -53,7 +55,7 @@ const structuredData = {
       jobTitle: 'Trener personalny',
       url: `${siteUrl}/pl/about`,
       image: `${siteUrl}/images/kacper-kaszowski-personal-trainer-cwmbran.jpg`,
-      sameAs,
+      sameAs: socialProfiles,
       worksFor: { '@id': businessId }
     }
   ]

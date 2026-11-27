@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrainingLocation from '../../components/TrainingLocation.astro';
+import AllInOneReviews from '../../components/reviews/AllInOneReviews.astro';
 import Promotions from '../../components/Promotions.astro';
 import details from '../../data/service-details-v2.json';
 import admin from '../../data/admin-v2.json';
@@ -62,6 +63,17 @@ const structuredData = {
   <section class="coach-proof on-white" aria-labelledby="coach-heading"><div class="container proof-grid"><img src={copy.coachProof.image} alt={copy.coachProof.imageAlt[lang]} width="650" height="520" loading="lazy" /><div><span class="eyebrow">{copy.coachProof.eyebrow[lang]}</span><h2 id="coach-heading">{copy.coachProof.heading[lang]}</h2>{copy.coachProof.paragraphs.map(item => <p>{item[lang]}</p>)}<div class="mini-stats">{copy.coachProof.stats.map(item => <div><strong>{item.value}</strong><span>{item.label[lang]}</span></div>)}</div><a href={copy.coachProof.href[lang]} class="text-link">{copy.coachProof.cta[lang]}</a></div></div></section>
 
   <section aria-labelledby="results-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.results.eyebrow[lang]}</span><h2 id="results-heading">{copy.results.heading[lang]}</h2><p>{copy.results.body[lang]}</p></div><div class="results-grid">{copy.results.items.map(item => <article class="result-card"><img src={item.image} alt={item.imageAlt[lang]} width="600" height="750" loading="lazy" /><div class="result-copy"><span>{item.meta[lang]}</span><h3>{item.heading[lang]}</h3><p>{item.body[lang]}</p></div></article>)}</div><div class="center-cta"><a href={copy.results.href[lang]} class="btn btn-outline-dark">{copy.results.cta[lang]}</a></div></div></section>
+
+  <section class="on-white" aria-labelledby="cwmbran-reviews-heading">
+    <div class="container">
+      <div class="section-head centered">
+        <span class="eyebrow">Opinie Google</span>
+        <h2 id="cwmbran-reviews-heading">Co mówią klienci KK Coaching</h2>
+        <p>Przeczytaj autentyczne opinie Google od osób trenujących z KK Coaching.</p>
+      </div>
+      <AllInOneReviews lang="pl" id="cwmbran-personal-training-google-reviews" />
+    </div>
+  </section>
 
   <TrainingLocation lang="pl" />
 
