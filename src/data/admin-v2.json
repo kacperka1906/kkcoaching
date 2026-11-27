@@ -535,11 +535,11 @@
     },
     "leaveReviewLabel": {
       "en": "Leave a Google review",
-      "pl": "Dodaj opinię w Google"
+      "pl": "Dodaj opinię"
     },
     "seeAllLabel": {
       "en": "View reviews on Google Maps",
-      "pl": "Zobacz opinie w Mapach Google"
+      "pl": "Opinie w Mapach Google"
     },
     "leaveGoogleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJw9XmOxnSdIkRt79lrhGJjX0",
     "googlePlaceId": "ChIJw9XmOxnSdIkRt79lrhGJjX0",
