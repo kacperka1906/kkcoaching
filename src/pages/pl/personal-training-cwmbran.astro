@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrainingLocation from '../../components/TrainingLocation.astro';
+import AllInOneReviews from '../../components/reviews/AllInOneReviews.astro';
 import Promotions from '../../components/Promotions.astro';
 import details from '../../data/service-details-v2.json';
 import admin from '../../data/admin-v2.json';
@@ -64,6 +65,8 @@ const structuredData = {
   <section aria-labelledby="results-heading"><div class="container"><div class="section-head centered"><span class="eyebrow">{copy.results.eyebrow[lang]}</span><h2 id="results-heading">{copy.results.heading[lang]}</h2><p>{copy.results.body[lang]}</p></div><div class="results-grid">{copy.results.items.map(item => <article class="result-card"><img src={item.image} alt={item.imageAlt[lang]} width="600" height="750" loading="lazy" /><div class="result-copy"><span>{item.meta[lang]}</span><h3>{item.heading[lang]}</h3><p>{item.body[lang]}</p></div></article>)}</div><div class="center-cta"><a href={copy.results.href[lang]} class="btn btn-outline-dark">{copy.results.cta[lang]}</a></div></div></section>
 
   <TrainingLocation lang="pl" />
+
+  <AllInOneReviews lang="pl" id="cwmbran-personal-training-google-reviews" />
 
   <section class="on-white" aria-labelledby="local-search-heading">
     <div class="container">
