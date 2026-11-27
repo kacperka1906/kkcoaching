@@ -9,7 +9,7 @@ import admin from '../../data/admin-v2.json';
 import type { ReviewItem, ReviewFilters, ReviewsWidgetConfig, ReviewSource } from './review-types';
 import './reviews.css';
 interface Props { lang?: 'en' | 'pl'; id?: string; items?: ReviewItem[]; config?: Partial<ReviewsWidgetConfig>; filters?: ReviewFilters; }
-const { lang = 'en', id = 'client-reviews', items = localReviews, config: overrides = {}, filters = {} } = Astro.props;
+const { lang = 'en', id = 'client-reviews', items = localReviews, config: overrides = {}, filters = { source: 'google' } } = Astro.props;
 const config = { ...defaults, ...overrides } as ReviewsWidgetConfig;
 const copy = reviewCopy[lang];
 const reviews = sortReviews(filterReviews(items, filters), config.sort === 'random' ? 'manual' : config.sort);
@@ -31,10 +31,10 @@ const readUrl = safeUrl(admin.reviews.googleReviewsUrl);
     </div>)}</div>}
   </header>
   <div class="rw-toolbar">
-    <div class="rw-tabs" role="group" aria-label={copy.sources}>
+    {summaries.length > 1 && <div class="rw-tabs" role="group" aria-label={copy.sources}>
       <button type="button" data-filter="all" aria-pressed="true">{copy.all}<span>{reviews.length}</span></button>
       {summaries.map(summary => <button type="button" data-filter={summary.source} aria-pressed="false"><SourceIcon source={summary.source as ReviewSource}/>{summary.name}<span>{summary.count}</span></button>)}
-    </div>
+    </div>}
     {readUrl && <a class="rw-leave" href={readUrl} target="_blank" rel="noopener noreferrer">{admin.reviews.seeAllLabel[lang]}<span aria-hidden="true">↗</span></a>}
     {config.showWriteReviewButton && writeUrl && <a class="rw-leave" href={writeUrl} target="_blank" rel="noopener noreferrer">{writeUrl === googleWriteUrl ? admin.reviews.leaveReviewLabel[lang] : copy.leave}<span aria-hidden="true">↗</span></a>}
   </div>

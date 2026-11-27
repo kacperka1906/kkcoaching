@@ -50,9 +50,9 @@ assert.deepEqual(sortReviews(dated, 'newest').map(r => r.id), ['new', 'old', 'mi
 for (const route of ['reviews-widget-preview', 'pl/reviews-widget-preview']) {
   const html = await readFile(new URL(`../dist/${route}/index.html`, import.meta.url), 'utf8');
   assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1, `${route}: one widget`);
-  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, adminReviews.length);
+  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, google.length);
   assert.match(html, /name="robots" content="noindex, nofollow"/);
-  assert.match(html, /data-filter="google"/);
+  assert.doesNotMatch(html, /data-filter="all"|data-review-card data-source="facebook"/);
   assert.ok(html.includes(admin.reviews.leaveGoogleReviewUrl));
   assert.ok(html.includes(admin.reviews.googlePlaceId));
   assert.ok(html.includes(admin.reviews.googleReviewsUrl.replaceAll('&', '&amp;')) || html.includes(admin.reviews.googleReviewsUrl));
@@ -62,8 +62,8 @@ for (const route of ['reviews-widget-preview', 'pl/reviews-widget-preview']) {
 for (const route of ['index.html', 'pl/index.html']) {
   const html = await readFile(new URL(`../dist/${route}`, import.meta.url), 'utf8');
   assert.equal((html.match(/data-review-widget(?:\s|>)/g) || []).length, 1, `${route}: one homepage widget`);
-  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, adminReviews.length);
-  assert.match(html, /data-filter="google"/);
+  assert.equal((html.match(/data-review-card(?:\s|>)/g) || []).length, google.length);
+  assert.doesNotMatch(html, /data-filter="all"|data-review-card data-source="facebook"/);
   assert.ok(html.includes(admin.reviews.leaveGoogleReviewUrl));
   assert.ok(html.includes(admin.reviews.googlePlaceId));
   assert.ok(html.includes(admin.reviews.googleReviewsUrl.replaceAll('&', '&amp;')) || html.includes(admin.reviews.googleReviewsUrl));
